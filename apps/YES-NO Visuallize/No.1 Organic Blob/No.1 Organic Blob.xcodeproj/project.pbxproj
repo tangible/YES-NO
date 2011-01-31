@@ -195,6 +195,8 @@
 		31D3500912F661A700D9D87A /* GL_ShapeDrawer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31D34F7212F661A700D9D87A /* GL_ShapeDrawer.cpp */; };
 		31D3500A12F661A700D9D87A /* GLDebugFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31D34F7412F661A700D9D87A /* GLDebugFont.cpp */; };
 		31D3500B12F661A700D9D87A /* GlutStuff.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31D34F7612F661A700D9D87A /* GlutStuff.cpp */; };
+		31D3505912F66BA400D9D87A /* glsl.frag in Sources */ = {isa = PBXBuildFile; fileRef = 31D3505712F66BA400D9D87A /* glsl.frag */; };
+		31D3505A12F66BA400D9D87A /* glsl.vert in Sources */ = {isa = PBXBuildFile; fileRef = 31D3505812F66BA400D9D87A /* glsl.vert */; };
 		31FF8C4212F0F7BD00F04713 /* ofx3DGraphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31FF8C2912F0F7BD00F04713 /* ofx3DGraphics.cpp */; };
 		31FF8C4312F0F7BD00F04713 /* ofxCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31FF8C2C12F0F7BD00F04713 /* ofxCamera.cpp */; };
 		31FF8C4412F0F7BD00F04713 /* ofxLight.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31FF8C2E12F0F7BD00F04713 /* ofxLight.cpp */; };
@@ -748,6 +750,8 @@
 		31D34F7512F661A700D9D87A /* GLDebugFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLDebugFont.h; sourceTree = "<group>"; };
 		31D34F7612F661A700D9D87A /* GlutStuff.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GlutStuff.cpp; sourceTree = "<group>"; };
 		31D34F7712F661A700D9D87A /* GlutStuff.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlutStuff.h; sourceTree = "<group>"; };
+		31D3505712F66BA400D9D87A /* glsl.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = glsl.frag; sourceTree = "<group>"; };
+		31D3505812F66BA400D9D87A /* glsl.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = glsl.vert; sourceTree = "<group>"; };
 		31FF8C2912F0F7BD00F04713 /* ofx3DGraphics.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofx3DGraphics.cpp; sourceTree = "<group>"; };
 		31FF8C2A12F0F7BD00F04713 /* ofx3DGraphics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofx3DGraphics.h; sourceTree = "<group>"; };
 		31FF8C2B12F0F7BD00F04713 /* ofx3DUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofx3DUtils.h; sourceTree = "<group>"; };
@@ -1779,6 +1783,16 @@
 			path = OpenGL;
 			sourceTree = "<group>";
 		};
+		31D3505612F66BA400D9D87A /* shaders */ = {
+			isa = PBXGroup;
+			children = (
+				31D3505712F66BA400D9D87A /* glsl.frag */,
+				31D3505812F66BA400D9D87A /* glsl.vert */,
+			);
+			name = shaders;
+			path = bin/data/shaders;
+			sourceTree = SOURCE_ROOT;
+		};
 		31FF8C2212F0F7BD00F04713 /* ofx3DUtils */ = {
 			isa = PBXGroup;
 			children = (
@@ -2048,6 +2062,7 @@
 				311E590912F646240077A832 /* Blob */,
 				311E598812F64D630077A832 /* AdminPanel */,
 				311E598B12F64D630077A832 /* HTTPClient */,
+				31D3505612F66BA400D9D87A /* shaders */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -2424,6 +2439,8 @@
 				31D3500912F661A700D9D87A /* GL_ShapeDrawer.cpp in Sources */,
 				31D3500A12F661A700D9D87A /* GLDebugFont.cpp in Sources */,
 				31D3500B12F661A700D9D87A /* GlutStuff.cpp in Sources */,
+				31D3505912F66BA400D9D87A /* glsl.frag in Sources */,
+				31D3505A12F66BA400D9D87A /* glsl.vert in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

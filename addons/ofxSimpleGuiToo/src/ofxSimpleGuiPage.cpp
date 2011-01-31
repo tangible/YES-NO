@@ -201,6 +201,9 @@ ofxSimpleGuiColorPicker &ofxSimpleGuiPage::addColorPicker(string name, float *va
 	return (ofxSimpleGuiColorPicker &)addControl(* new ofxSimpleGuiColorPicker(name, values));
 }
 
+ofxSimpleGuiColorPicker &ofxSimpleGuiPage::addColorPicker(string name, float *values, float max) {
+	return (ofxSimpleGuiColorPicker &)addControl(* new ofxSimpleGuiColorPicker(name, values, max));
+}
 
 
 

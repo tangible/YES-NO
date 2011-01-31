@@ -9,9 +9,10 @@
 
 #include "BlobManager.h"
 
-#define FPS 40
-
-void BlobManager::setup() {
+void BlobManager::setup(int _fps, AdminPanel* _admin) {
+	
+	fps = _fps;
+	admin = _admin;
 
 	counter = 0;
 	counter2 = 0;
@@ -42,11 +43,6 @@ void BlobManager::setup() {
     materialAmbient  = new float[4];
     materialDiffuse  = new float[4];
     materialSpecular = new float[4];
-    for (int i=0; i<4; i++){
-        materialAmbient[i]  = 1.0f;
-        materialDiffuse[i]  = 20.0f;
-        materialSpecular[i] = 1.0f;
-    }
 	
     blurValue  = 1000;
     nMetaBalls = 20;
@@ -68,7 +64,7 @@ void BlobManager::setup() {
 	
 	//-----------------------
 	m_pMetaballs = new CMetaballs (nPoints);
-	m_pMetaballs->SetGridSize(100);
+	m_pMetaballs->SetGridSize(120);
 	CMarchingCubes::BuildTables();
 	
     maxDeceleration = 0;
@@ -83,26 +79,25 @@ void BlobManager::setup() {
 	
 	shader.setup("shaders/glsl");
 	ofDisableArbTex();
-	//	player.loadMovie("movies/foces60fps.mov");
-	//	player.play();
 	img.loadImage("imgs/b.jpeg");
+	isVidTex = false;
 	img.resize(ofGetWidth(), ofGetHeight());
-	//	tex.allocate(img.getWidth(), img.getHeight(), GL_RGB);
-	//	tex.loadData(img.getPixels(), img.getWidth(), img.getHeight(), GL_RGB);
 	glActiveTexture(GL_TEXTURE1);
 	texSlot = 1;
-	//	glBindTexture(GL_TEXTURE_2D, player.getTextureReference().getTextureData().textureID);	
 	glBindTexture(GL_TEXTURE_2D, img.getTextureReference().getTextureData().textureID);	
-	//	glBindTexture(GL_TEXTURE_2D, tex.getTextureData().textureID);		
-	glActiveTexture(GL_TEXTURE0);		
+	glActiveTexture(GL_TEXTURE0);	
+	
+	bg.loadImage("imgs/b.jpeg");
+	float ratioW = ofGetWidth()/bg.getWidth();
+	float ratioH = ofGetHeight()/bg.getHeight();
+	float ratio = 0.6;
+	bg.resize(bg.getWidth()*ratio, bg.getHeight()*ratio);
 	
 	bullet = new ofxBullet();
 	bullet->initPhysics(ofxVec3f(0, 0, 0), false);
 	
-	for (int i = 0; i < nMetaBalls; i++) {
-		
+	for (int i = 0; i < nMetaBalls; i++) {		
 		ofxVec3f rdmPos = ofxVec3f(ofGetWidth()/2+ofRandom(-100, 100), ofGetHeight()/2+ofRandom(-100, 100), ofRandom(-100, 100));
-		
 		MyRigidBody* sph = bullet->createSphere(rdmPos,
 												ofRandom(50, 50), 
 												1, 
@@ -115,10 +110,16 @@ void BlobManager::setup() {
 
 void BlobManager::update() {
 
+	if (isVidTex) {
+		player.update();
+		if (player.bLoaded && !player.isFrameNew()) player.play();			
+		
+	}
+	
 	counter2 = (counter2+1)%blurValue;
 	counter  = counter2 + 1;
 	
-	bullet->stepPhysicsSimulation(FPS);	
+	bullet->stepPhysicsSimulation(fps);	
 	float maxVal = 0.01;
 	ofxVec3f force;
 	ofxVec3f crossVec;
@@ -154,11 +155,14 @@ void BlobManager::update() {
 
 void BlobManager::draw() {
 
-
-//    glDisable(GL_LIGHTING);
-//	glColor3f(1.0, 1.0, 1.0);
-//	img.draw(0, 0);
-	
+    glDisable(GL_LIGHTING);
+	glColor3f(1.0, 1.0, 1.0);
+	if (!isVidTex) {
+		bg.draw(0, 0);
+	}else {
+		player.draw(0, 0, ofGetWidth(), ofGetHeight());
+	}
+	glEnable(GL_LIGHTING);
 	
     //---------------------
     // update metaball point locations
@@ -207,34 +211,34 @@ void BlobManager::draw() {
 	//	setupForTexturing();
 	
     // Actually draw them
-	//	shader.begin();
-	//	shader.setUniform1i("tex", texSlot);
-	//ofSetColor(170, 170, 170);
-    glPushMatrix();
-	float w = ofGetWidth();
-	float h = ofGetHeight();
-	float sz = 0.75*min(w,h);
-	glTranslatef(w/2,h/2,0);
-	glScalef(sz,sz,sz);
+	ofEnableAlphaBlending();
+	shader.begin();
+	shader.setUniform1i("tex", texSlot);
+	shader.setUniform1f("tex_col_mixRatio", admin->TEXCOLMIXRATIO);
+	shader.setUniform1f("blob_transparency", admin->BLOBTRANSPARENCY);	
+		glPushMatrix();
+		float w = ofGetWidth();
+		float h = ofGetHeight();
+		float sz = 0.75*min(w,h);
+		glTranslatef(w/2,h/2,0);
+		glScalef(sz,sz,sz);
+		m_pMetaballs->Render();
+		glPopMatrix();
+	shader.end();
+	ofDisableAlphaBlending();
 	
-	m_pMetaballs->Render();
-    glPopMatrix();
-	//ofSetColor(255, 255, 255);
-	//	shader.end();
-	
-	
-    //---------------------
+	// draw shadow
     bool bDrawDropShadow = true;
     if (bDrawDropShadow){
         glPushAttrib(GL_ALL_ATTRIB_BITS);
-        glColor4f(0,0.002,0.005, 0.17);
+        glColor4f(0, 0.002, 0.005, admin->SHADOWINTENSITY);
         glEnable(GL_BLEND);
         glDisable(GL_LIGHTING);
         glDisable(GL_POLYGON_SMOOTH);
         glDisable(GL_CULL_FACE);
         glDisable(GL_COLOR_MATERIAL);
         glReadPixels(0,0,screenW,screenH, GL_DEPTH_COMPONENT, GL_FLOAT, screenDepth);
-        huntForBlendFunc(1000,1,5);//0,2);
+        huntForBlendFunc(1000,1,5);
 		
         int shadowIndex = 0;
         int screenIndex = 0;
@@ -250,29 +254,57 @@ void BlobManager::draw() {
         shadowCvImage.blurGaussian( 21 );
         unsigned char *blurred = shadowCvImage.getPixels();
         for (int i=0; i<nShadowPixels; i++){
-            shadowPixelsLA[i*2  ] = blurred[i];//(i/shadowW)%255;
+            shadowPixelsLA[i*2  ] = blurred[i];
             shadowPixelsLA[i*2+1] = blurred[i];
         }
         shadowTex.loadData(shadowPixelsLA, shadowW,shadowH, GL_LUMINANCE_ALPHA);
         glPushMatrix();
-		glTranslatef(0,0,-200);//-200);
+		glTranslatef(0,0,-200);
 		glTranslatef(0.53*screenW, 0.73*screenH, 0);
 		glScalef(12,12,1);
 		glRotatef(60.0, 1,0,0);
-		glTranslatef(-shadowW/2,shadowH/2,0);//-200);
-		shadowTex.draw(0, 0, shadowW, 0-shadowH);// shadowW,0-shadowH);
-		//shadowTex.draw(0, mouseY, shadowW*3,0-shadowH*3);
+		glTranslatef(-shadowW/2,shadowH/2,0);
+		shadowTex.draw(0, 0, shadowW, 0-shadowH);
         glPopMatrix();
         glPopAttrib();
     }
-	
-	for (int i = 0; i < spheres.size(); i++) {
-		//spheres[i]->render(bullet->getWorld());
-	}
-	
+	glDisable(GL_DEPTH_TEST);
 }
 
-//======================================================================================
+
+void BlobManager::changeImg(string path) {
+	
+	bool isImg = img.loadImage(path);
+	
+	if (isImg) {
+		img.resize(ofGetWidth(), ofGetHeight());
+		glActiveTexture(GL_TEXTURE1);
+		texSlot = 1;
+		glBindTexture(GL_TEXTURE_2D, img.getTextureReference().getTextureData().textureID);	
+		glActiveTexture(GL_TEXTURE0);		
+		
+		bg.loadImage(path);
+		bg.resize(ofGetWidth(), ofGetHeight());
+
+		isVidTex = false;
+		player.stop();
+		player.close();
+		
+	}else {
+		player.loadMovie(path);
+		player.play();		
+		isVidTex = true;
+		
+//		img.setFromPixels(player.getPixels(), player.getWidth(), player.getHeight(), GL_RGB);
+//		img.resize(ofGetWidth(), ofGetHeight());
+		glActiveTexture(GL_TEXTURE1);
+		texSlot = 1;
+		glBindTexture(GL_TEXTURE_2D, player.getTextureReference().getTextureData().textureID);	
+		glActiveTexture(GL_TEXTURE0);		
+	}
+}
+
+
 void BlobManager::huntForBlendFunc(int period, int defaultSid, int defaultDid){
 	// sets all possible combinations of blend functions,
 	// changing modes every [period] milliseconds.
@@ -340,6 +372,7 @@ void BlobManager::setupForTexturing(){
 }
 
 void BlobManager::setupForNoTexturing(){
+	
     glEnable(GL_POLYGON_SMOOTH);
     glEnable(GL_LIGHTING);
     glEnable(GL_LIGHT0);
@@ -353,26 +386,30 @@ void BlobManager::setupForNoTexturing(){
     glCullFace(GL_FRONT);
     glShadeModel(GL_SMOOTH);
 	
-    glColor3f(0.5, 0.5, 1.0);
+    glColor3f(admin->BLOBBASECOL[0], admin->BLOBBASECOL[1], admin->BLOBBASECOL[2]);
     GLfloat on[]  = {1.0};
     GLfloat off[] = {0.0};
-    glLightModelfv( GL_LIGHT_MODEL_TWO_SIDE,on);
+    glLightModelfv( GL_LIGHT_MODEL_TWO_SIDE, on);
 	
+    GLfloat shininess[] = {admin->BLOBMATERIALSHINENESS};
+    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, admin->BLOBMATERIALAMBIENT);
+    glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, admin->BLOBMATERIALDIFFUSE);
+    glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, admin->BLOBMATERIALSPECULAR);
+    glMaterialfv(GL_FRONT_AND_BACK, GL_SHININESS, shininess);	
 	
-    GLfloat shininess[] = {100};
-    glMaterialfv(GL_FRONT_AND_BACK,GL_AMBIENT,  materialAmbient);
-    glMaterialfv(GL_FRONT_AND_BACK,GL_DIFFUSE,  materialDiffuse);
-    glMaterialfv(GL_FRONT_AND_BACK,GL_SPECULAR, materialSpecular);
-    glMaterialfv(GL_FRONT_AND_BACK,GL_SHININESS,shininess);
-	
-	
-    GLfloat lightPosition[] = { 0.0f, 0.0f, -100.0, 0.0f };
-    GLfloat lightDiffuse[]  = { 1.00, 0.99, 0.98, 1.0};
-    GLfloat lightSpecular[] = { 0.10, 0.10, 0.10, 1.0};
-    GLfloat lightAmbient[]  = { 0.45, 0.43, 0.44, 1.0};
-    glLightfv(GL_LIGHT0,GL_POSITION, lightPosition);
-    glLightfv(GL_LIGHT0,GL_DIFFUSE,  lightDiffuse);
-    glLightfv(GL_LIGHT0,GL_SPECULAR, lightSpecular);
-    glLightfv(GL_LIGHT0,GL_AMBIENT,  lightAmbient);
+//    GLfloat lightPosition[] = { 0.0f, 0.0f, -100.0, 0.0f };
+//    GLfloat lightDiffuse[]  = { 1.00, 0.99, 0.98, 1.0};
+//    GLfloat lightSpecular[] = { 0.10, 0.10, 0.10, 1.0};
+//    GLfloat lightAmbient[]  = { 0.45, 0.43, 0.44, 1.0};
+//    glLightfv(GL_LIGHT0,GL_POSITION, lightPosition);
+//    glLightfv(GL_LIGHT0,GL_DIFFUSE,  lightDiffuse);
+//    glLightfv(GL_LIGHT0,GL_SPECULAR, lightSpecular);
+//    glLightfv(GL_LIGHT0,GL_AMBIENT,  lightAmbient);	
+ 
+	GLfloat lightPosition[] = {0.0f, 0.0f, -100.0, 0.0f};
+	glLightfv(GL_LIGHT0, GL_POSITION, lightPosition);
+    glLightfv(GL_LIGHT0, GL_DIFFUSE, admin->LIGHTDIFFUSE);
+    glLightfv(GL_LIGHT0, GL_SPECULAR, admin->LIGHTSPECULAR);
+    glLightfv(GL_LIGHT0, GL_AMBIENT, admin->LIGHTAMBIENT);		
 	
 }

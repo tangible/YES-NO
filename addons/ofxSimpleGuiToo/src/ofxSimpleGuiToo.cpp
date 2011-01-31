@@ -384,6 +384,10 @@ ofxSimpleGuiColorPicker &ofxSimpleGuiToo::addColorPicker(string name, float *val
 	return pages[currentPage]->addColorPicker(name, values);
 }
 
+ofxSimpleGuiColorPicker &ofxSimpleGuiToo::addColorPicker(string name, float *values, float max) {
+	if(!config) setup();
+	return pages[currentPage]->addColorPicker(name, values, max);
+}
 
 
 //void ofxSimpleGuiToo::setup(ofEventArgs &e) {

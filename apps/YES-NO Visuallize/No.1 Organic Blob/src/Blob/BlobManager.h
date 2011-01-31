@@ -16,19 +16,36 @@
 #include "Marchingcubes.h"
 #include <stack>
 #include "ofxBullet.h"
+#include "AdminPanel.h"
 
 class BlobManager {
 
 public:
-	void setup();
+	void setup(int _fps, AdminPanel* _admin);
 	void update();
 	void draw();
+	
+	void changeImg(string path);
 	
 	void setupForTexturing();
 	void setupForNoTexturing();
 	void huntForBlendFunc (int period, int defaultSid, int defaultDid);	
 	
+	AdminPanel* admin;
 	
+	//---------------------------------------
+	int				fps;
+	ofxShader		shader;
+	ofVideoPlayer	player;
+	bool			isVidTex;
+	int				texSlot;
+	ofImage			img;
+	ofImage			bg;
+	
+	ofxBullet*				bullet;
+	vector<MyRigidBody*>	spheres;		
+	
+	//---------------------------------------
 	int 	counter;
 	int     counter2;
 	
@@ -77,16 +94,6 @@ public:
 	GLfloat *materialDiffuse;
 	GLfloat *materialSpecular;
 	
-	
-	//---------------------------------------
-	ofxShader		shader;
-	ofVideoPlayer	player;
-	int				texSlot;
-	ofImage			img;
-	ofTexture		tex;
-	
-	ofxBullet*				bullet;
-	vector<MyRigidBody*>	spheres;		
 	
 private:
 	

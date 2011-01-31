@@ -65,6 +65,7 @@ public:
 	ofxSimpleGuiTitle			&addTitle(string name="", float height = 0);
 	ofxSimpleGuiToggle			&addToggle(string name, bool &value);
 	ofxSimpleGuiColorPicker		&addColorPicker(string name, float *values);
+	ofxSimpleGuiColorPicker		&addColorPicker(string name, float *values, float max);	
 
 
 	//	void setup(ofEventArgs &e);

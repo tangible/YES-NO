@@ -1,6 +1,7 @@
 #ifndef _APP
 #define _APP
 
+#define FPS 30
 
 #include "ofMain.h"
 #include "BlobManager.h"
