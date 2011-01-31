@@ -1,0 +1,7 @@
+Commited entire oF lib, not only App.
+Because we need to use ofThread.
+ofThread need to modify core oF lib. 
+This is not my tricky hack, but usual requirment for ofThread.
+So to keep the same enviroment on any local, I need to commit everything on git.
+Since current oF master on the github has ofThread inside in it,
+next version oF(007) will have native support for ofThread. 
