@@ -1,0 +1,55 @@
+8
+
+dir
+2
+https://ofx3dutils.googlecode.com/svn/trunk/src
+https://ofx3dutils.googlecode.com/svn
+
+
+
+2008-08-12T12:28:36.351233Z
+2
+jonas@halfdanj.dk
+
+
+svn:special svn:externals svn:needs-lock
+
+testApp.cpp
+file
+3
+
+
+
+2008-08-07T13:38:36.000000Z
+174995d3b4a42fbc124dca3b64d17298
+2008-08-13T11:50:45.017904Z
+3
+jonas@halfdanj.dk
+has-props
+
+main.cpp
+file
+3
+
+
+
+2008-03-30T19:23:20.000000Z
+1afdff57ddf5e251e97cd701d2cfeb5b
+2008-08-13T11:50:45.017904Z
+3
+jonas@halfdanj.dk
+has-props
+
+testApp.h
+file
+3
+
+
+
+2008-08-13T11:44:33.000000Z
+be807abe7997a016b37b48d0ecca096f
+2008-08-13T11:50:45.017904Z
+3
+jonas@halfdanj.dk
+has-props
+

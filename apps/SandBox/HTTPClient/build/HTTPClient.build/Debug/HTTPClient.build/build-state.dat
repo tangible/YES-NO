@@ -1,0 +1,1701 @@
+THTTPClient
+v7
+r0
+t318123349.879625
+cCheck dependencies
+cProcessInfoPlistFile /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/bin//HTTPClientDebug.app/Contents/Info.plist openFrameworks-Info.plist
+cProcessPCH++ /var/folders/3I/3IEdwrCLFz4TdGQPsl-dpE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Carbon-hgozvkdazctelpbmdfhdyuqfxyvm/Carbon.h.gch /System/Library/Frameworks/Carbon.framework/Headers/Carbon.h normal i386 c++ com.apple.compilers.gcc.4_2
+cCompileC build/HTTPClient.build/Debug/HTTPClient.build/Objects-normal/i386/main.o /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/src/main.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+cCompileC build/HTTPClient.build/Debug/HTTPClient.build/Objects-normal/i386/testApp.o /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/src/testApp.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+cCompileC build/HTTPClient.build/Debug/HTTPClient.build/Objects-normal/i386/ofxHttpUtils.o /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../addons/ofxHttpUtils/src/ofxHttpUtils.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+cCompileC build/HTTPClient.build/Debug/HTTPClient.build/Objects-normal/i386/TimedCounter.o /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../addons/ofxTimer/src/TimedCounter.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+cCompileC build/HTTPClient.build/Debug/HTTPClient.build/Objects-normal/i386/tinyxml.o /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../addons/ofxXmlSettings/libs/tinyxml.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+cCompileC build/HTTPClient.build/Debug/HTTPClient.build/Objects-normal/i386/tinyxmlerror.o /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../addons/ofxXmlSettings/libs/tinyxmlerror.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+cCompileC build/HTTPClient.build/Debug/HTTPClient.build/Objects-normal/i386/tinyxmlparser.o /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../addons/ofxXmlSettings/libs/tinyxmlparser.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+cCompileC build/HTTPClient.build/Debug/HTTPClient.build/Objects-normal/i386/ofxXmlSettings.o /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../addons/ofxXmlSettings/src/ofxXmlSettings.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+cLd /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/bin//HTTPClientDebug.app/Contents/MacOS/HTTPClientDebug normal i386
+cPhaseScriptExecution "Run Script" /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build/Script-E4B6FFFD0C3F9AB9008CF71C.sh
+cPBXCp bin/HTTPClientDebug.app/Contents/Frameworks/GLUT.framework ../../../libs/glut/lib/osx/GLUT.framework
+cPBXCp bin/HTTPClientDebug.app/Contents/Resources/openFrameworks-Info.plist openFrameworks-Info.plist
+cCpResource bin/HTTPClientDebug.app/Contents/Resources/icon.icns bin/data/icon.icns
+cTouch /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/bin//HTTPClientDebug.app
+
+N/Developer/usr/lib/gcc/i686-apple-darwin10/4.2.1/include/stddef.h
+c000000004C238F150000000000003197
+t1277398805
+s12695
+i<machine/ansi.h>
+i<sys/_types.h>
+
+N/System/Library/Frameworks/AGL.framework/AGL
+c000000004BD2589F0000000000043820
+t1272076447
+s276512
+
+N/System/Library/Frameworks/AppKit.framework/AppKit
+c000000004C623FBF0000000002B48610
+t1281507263
+s45385232
+
+N/System/Library/Frameworks/ApplicationServices.framework/ApplicationServices
+c000000004A12050E0000000000022140
+t1242694926
+s139584
+
+N/System/Library/Frameworks/ApplicationServices.framework/Headers/ApplicationServices.h
+c000000004A12050C0000000000000475
+t1242694924
+s1141
+
+N/System/Library/Frameworks/AudioToolbox.framework/AudioToolbox
+c000000004C91794F00000000004D2720
+t1284602191
+s5056288
+
+N/System/Library/Frameworks/Carbon.framework/Carbon
+c000000004C0FDD7E000000000000A5F0
+t1276108158
+s42480
+
+N/System/Library/Frameworks/Carbon.framework/Headers/Carbon.h
+c000000004C23BF2D00000000000005FF
+t1277411117
+s1535
+
+N/System/Library/Frameworks/Cocoa.framework/Cocoa
+c000000004A1F2D63000000000000A5E0
+t1243557219
+s42464
+
+N/System/Library/Frameworks/CoreAudio.framework/CoreAudio
+c000000004CD4F57800000000002181A0
+t1289024888
+s2195872
+
+N/System/Library/Frameworks/CoreFoundation.framework/CoreFoundation
+c000000004C971DAF0000000000781330
+t1284971951
+s7869232
+
+N/System/Library/Frameworks/CoreServices.framework/CoreServices
+c000000004C23F49F0000000000021710
+t1277424799
+s136976
+
+N/System/Library/Frameworks/CoreServices.framework/Headers/CoreServices.h
+c000000004A11F0980000000000000400
+t1242689688
+s1024
+
+N/System/Library/Frameworks/IOKit.framework/IOKit
+c000000004C8AD97D000000000017B260
+t1284168061
+s1552992
+
+N/System/Library/Frameworks/OpenGL.framework/Headers/gl.h
+c000000004BD2501F0000000000025B59
+t1272074271
+s154457
+
+N/System/Library/Frameworks/OpenGL.framework/Headers/glu.h
+c000000004BD2501F0000000000003F84
+t1272074271
+s16260
+
+N/System/Library/Frameworks/OpenGL.framework/OpenGL
+c000000004D22BC490000000000043330
+t1294122057
+s275248
+
+N/System/Library/Frameworks/QuickTime.framework/Headers/QuickTime.h
+c000000004C23C4D00000000000000659
+t1277412560
+s1625
+
+N/System/Library/Frameworks/QuickTime.framework/QuickTime
+c000000004CC7AED00000000000783950
+t1288154832
+s7878992
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/addons/ofxHttpUtils/src/ofxHttpTypes.h
+c000000004CC139B200000000000004D8
+t1287731634
+s1240
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/addons/ofxHttpUtils/src/ofxHttpUtils.h
+c000000004CC139B20000000000000ABF
+t1287731634
+s2751
+i"ofMain.h"
+i"ofxThread.h"
+i"Poco/Net/HTTPClientSession.h"
+i"Poco/Net/HTTPRequest.h"
+i"Poco/Net/HTTPResponse.h"
+i"Poco/Net/HTMLForm.h"
+i"Poco/Net/HTTPBasicCredentials.h"
+i"Poco/StreamCopier.h"
+i"Poco/Path.h"
+i"Poco/URI.h"
+i"Poco/Exception.h"
+i"Poco/Mutex.h"
+i<iostream>
+i<queue>
+i<istream>
+i"ofxHttpTypes.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/addons/ofxTimer/src/TimedCounter.h
+c000000004A552163000000000000039B
+t1247093091
+s923
+i"ofMain.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/addons/ofxXmlSettings/libs/tinyxml.h
+c000000004CE33EF6000000000000FD05
+t1289961206
+s64773
+i<ctype.h>
+i<stdio.h>
+i<stdlib.h>
+i<string.h>
+i<assert.h>
+i<string>
+i<iostream>
+i<sstream>
+i"tinystr.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/addons/ofxXmlSettings/src/ofxXmlSettings.h
+c000000004D45E0790000000000001B46
+t1296425081
+s6982
+i"ofMain.h"
+i<string.h>
+i"tinyxml.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../addons/ofxHttpUtils/src/ofxHttpUtils.cpp
+c000000004CC139B20000000000001984
+t1287731634
+s6532
+i"ofxHttpUtils.h"
+i"ofEvents.h"
+i"Poco/Net/FilePartSource.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../addons/ofxHttpUtils/src/ofxHttpUtils.h
+c000000004CC139B20000000000000ABF
+t1287731634
+s2751
+i"ofMain.h"
+i"ofxThread.h"
+i"Poco/Net/HTTPClientSession.h"
+i"Poco/Net/HTTPRequest.h"
+i"Poco/Net/HTTPResponse.h"
+i"Poco/Net/HTMLForm.h"
+i"Poco/Net/HTTPBasicCredentials.h"
+i"Poco/StreamCopier.h"
+i"Poco/Path.h"
+i"Poco/URI.h"
+i"Poco/Exception.h"
+i"Poco/Mutex.h"
+i<iostream>
+i<queue>
+i<istream>
+i"ofxHttpTypes.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../addons/ofxTimer/src/TimedCounter.cpp
+c000000004A5B798000000000000006B6
+t1247508864
+s1718
+i"TimedCounter.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../addons/ofxTimer/src/ofxTimer.h
+c000000004A5B78630000000000000049
+t1247508579
+s73
+i"TimedCounter.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../addons/ofxXmlSettings/libs/tinyxml.cpp
+c000000004CE33EF60000000000009064
+t1289961206
+s36964
+i<ctype.h>
+i<sstream>
+i<iostream>
+i"tinyxml.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../addons/ofxXmlSettings/libs/tinyxml.h
+c000000004CE33EF6000000000000FD05
+t1289961206
+s64773
+i<ctype.h>
+i<stdio.h>
+i<stdlib.h>
+i<string.h>
+i<assert.h>
+i<string>
+i<iostream>
+i<sstream>
+i"tinystr.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../addons/ofxXmlSettings/libs/tinyxmlerror.cpp
+c000000004CE33EF60000000000000712
+t1289961206
+s1810
+i"tinyxml.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../addons/ofxXmlSettings/libs/tinyxmlparser.cpp
+c000000004CE33EF60000000000009B7B
+t1289961206
+s39803
+i<ctype.h>
+i<stddef.h>
+i"tinyxml.h"
+i<windows.h>
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../addons/ofxXmlSettings/src/ofxXmlSettings.cpp
+c000000004D45E0840000000000004D2C
+t1296425092
+s19756
+i"ofxXmlSettings.h"
+i<vector>
+i<string>
+i<iostream>
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../addons/ofxXmlSettings/src/ofxXmlSettings.h
+c000000004D45E0790000000000001B46
+t1296425081
+s6982
+i"ofMain.h"
+i<string.h>
+i"tinyxml.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../libs/FreeImage/lib/osx/freeimage.a
+c000000004CE33EF80000000000AA64B0
+t1289961208
+s11166896
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../libs/GLee/include/GLee.h
+c000000004CE33EF80000000000090A87
+t1289961208
+s592519
+i<windows.h>
+i<GL/gl.h>
+i<OpenGL/gl.h>
+i<GL/gl.h>
+i<GL/glx.h>
+i<stddef.h>
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../libs/GLee/lib/osx/GLee.a
+c000000004CE33EF800000000000C88C8
+t1289961208
+s821448
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../libs/fmodex/include/fmod.h
+c000000004CE33EF80000000000028E68
+t1289961208
+s167528
+i"fmod_codec.h"
+i"fmod_dsp.h"
+i"fmod_memoryinfo.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../libs/fmodex/include/fmod_errors.h
+c000000004CE33EF80000000000003408
+t1289961208
+s13320
+i"fmod.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../libs/fmodex/lib/osx/libfmodex.dylib
+c000000004CE33EF800000000001DD8CC
+t1289961208
+s1956044
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../libs/freeimage/include/FreeImage.h
+c000000004CE33EF8000000000000CC1B
+t1289961208
+s52251
+i<wchar.h>
+i<inttypes.h>
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../libs/freetype/lib/osx/freetype.a
+c000000004CE33EF800000000004D82C8
+t1289961208
+s5079752
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../libs/glut/lib/osx/GLUT.framework
+c000000004CE33EF800000000000000CC
+t1289961208
+s204
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../libs/glut/lib/osx/GLUT.framework/GLUT
+c000000004CE33EF8000000000011A218
+t1289961208
+s1155608
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../libs/poco/lib/osx/CppUnit.a
+c000000004CE33EFA000000000003ABB0
+t1289961210
+s240560
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../libs/poco/lib/osx/PocoFoundation.a
+c000000004CE33EFA00000000005A62E8
+t1289961210
+s5923560
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../libs/poco/lib/osx/PocoNet.a
+c000000004CE33EFA0000000000378278
+t1289961210
+s3637880
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../libs/poco/lib/osx/PocoUtil.a
+c000000004CE33EFA00000000000FFB80
+t1289961210
+s1047424
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../libs/poco/lib/osx/PocoXML.a
+c000000004CE33EFA0000000000239BC0
+t1289961210
+s2333632
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../libs/rtAudio/lib/osx/rtAudio.a
+c000000004CE33EFE00000000000BC8E8
+t1289961214
+s772328
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/bin//HTTPClientDebug.app
+t1296430549
+s102
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/bin//HTTPClientDebug.app/Contents/Info.plist
+t1296427975
+s676
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/bin//HTTPClientDebug.app/Contents/MacOS/HTTPClientDebug
+t1296430549
+s1135536
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/bin//HTTPClientDebug.app/Contents/PkgInfo
+t1296427975
+s8
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/bin/HTTPClientDebug.app/Contents/Frameworks/GLUT.framework
+t1296427982
+s204
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/bin/HTTPClientDebug.app/Contents/Resources/icon.icns
+t1296427982
+s470788
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/bin/HTTPClientDebug.app/Contents/Resources/openFrameworks-Info.plist
+t1296427982
+s679
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/bin/data/icon.icns
+c000000004D45EB3D0000000000072F04
+t1296427837
+s470788
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build/Objects-normal/i386/HTTPClientDebug.LinkFileList
+c000000004D45EBC700000000000004E9
+t1296427975
+s1257
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build/Objects-normal/i386/TimedCounter.o
+t1296427980
+s345936
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build/Objects-normal/i386/main.o
+t1296430159
+s590500
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build/Objects-normal/i386/ofxHttpUtils.o
+t1296427981
+s1046120
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build/Objects-normal/i386/ofxXmlSettings.o
+t1296427982
+s554416
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build/Objects-normal/i386/testApp.o
+t1296430549
+s817072
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build/Objects-normal/i386/tinyxml.o
+t1296427981
+s252832
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build/Objects-normal/i386/tinyxmlerror.o
+t1296427980
+s72436
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build/Objects-normal/i386/tinyxmlparser.o
+t1296427981
+s164172
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build/Script-E4B6FFFD0C3F9AB9008CF71C.sh
+c000000004D45EBC70000000000000113
+t1296427975
+s275
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/openFrameworks-Info.plist
+c000000004D45CFB200000000000002A7
+t1296420786
+s679
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/src/main.cpp
+c000000004D45C0ED000000000000019D
+t1296417005
+s413
+i"ofMain.h"
+i"testApp.h"
+i"ofAppGlutWindow.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/src/testApp.cpp
+c000000004D45F6520000000000000DF2
+t1296430674
+s3570
+i"testApp.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/src/testApp.h
+c000000004D45F44D000000000000034A
+t1296430157
+s842
+i"ofMain.h"
+i"ofxHttpUtils.h"
+i"ofxTimer.h"
+i"ofxXmlSettings.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/fmodex/include/fmod.h
+c000000004CE33EF80000000000028E68
+t1289961208
+s167528
+i"fmod_codec.h"
+i"fmod_dsp.h"
+i"fmod_memoryinfo.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/fmodex/include/fmod_codec.h
+c000000004CE33EF8000000000000334A
+t1289961208
+s13130
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/fmodex/include/fmod_dsp.h
+c000000004CE33EF8000000000000892F
+t1289961208
+s35119
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/fmodex/include/fmod_memoryinfo.h
+c000000004CE33EF80000000000003C95
+t1289961208
+s15509
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/glut/lib/osx/GLUT.framework/Headers/glut.h
+c000000004CE33EF8000000000000578C
+t1289961208
+s22412
+i<windows.h>
+i<AvailabilityMacros.h>
+i<OpenGL/gl.h>
+i<OpenGL/glu.h>
+i<GL/gl.h>
+i<GL/glu.h>
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworks/app/ofAppBaseWindow.h
+c000000004CE33EF80000000000000446
+t1289961208
+s1094
+i"ofTypes.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworks/app/ofAppGlutWindow.h
+c000000004CE33EF8000000000000066B
+t1289961208
+s1643
+i"ofConstants.h"
+i"ofAppBaseWindow.h"
+i"glut.h"
+i<GLUT/glut.h>
+i<GL/glut.h>
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworks/app/ofAppRunner.h
+c000000004CE33EF8000000000000050D
+t1289961208
+s1293
+i"ofMain.h"
+i"ofBaseApp.h"
+i"ofAppBaseWindow.h"
+i"ofAppGlutWindow.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworks/app/ofBaseApp.h
+c000000004CE33EF80000000000000376
+t1289961208
+s886
+i"ofTypes.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworks/communication/ofArduino.h
+c000000004CE33EF80000000000003D3C
+t1289961208
+s15676
+i<list>
+i<vector>
+i<string>
+i<iostream>
+i"ofEvents.h"
+i"ofSerial.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworks/communication/ofSerial.h
+c000000004CE33EF80000000000000D2E
+t1289961208
+s3374
+i"ofConstants.h"
+i<termios.h>
+i<sys/ioctl.h>
+i<getopt.h>
+i<dirent.h>
+i<winbase.h>
+i<tchar.h>
+i<iostream>
+i<string.h>
+i<setupapi.h>
+i<regstr.h>
+i<winioctl.h>
+i<initguid.h>
+i<stdio.h>
+i<stdlib.h>
+i<string.h>
+i<fcntl.h>
+i<errno.h>
+i<ctype.h>
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworks/events/ofEventUtils.h
+c000000004CE33EF80000000000000AFA
+t1289961208
+s2810
+i"ofConstants.h"
+i"Poco/FIFOEvent.h"
+i"Poco/Delegate.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworks/events/ofEvents.h
+c000000004CE33EF8000000000000126C
+t1289961208
+s4716
+i"ofConstants.h"
+i"ofUtils.h"
+i"ofEventUtils.h"
+i"ofxEventUtils.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworks/graphics/ofGraphics.h
+c000000004CE33EF80000000000000D63
+t1289961208
+s3427
+i"ofConstants.h"
+i"ofTypes.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworks/graphics/ofImage.h
+c000000004CE33EF80000000000000D09
+t1289961208
+s3337
+i"ofConstants.h"
+i"ofTexture.h"
+i"ofGraphics.h"
+i"ofAppRunner.h"
+i"FreeImage.h"
+i"ofUtils.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworks/graphics/ofTexture.h
+c000000004CE33EF80000000000000C4B
+t1289961208
+s3147
+i"ofConstants.h"
+i"ofGraphics.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworks/graphics/ofTrueTypeFont.h
+c000000004CE33EF8000000000000087A
+t1289961208
+s2170
+i"ofConstants.h"
+i"ofGraphics.h"
+i"ofUtils.h"
+i"ofTypes.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworks/ofMain.h
+c000000004D44CC4F000000000000035E
+t1296354383
+s862
+i"ofConstants.h"
+i"ofMath.h"
+i"ofUtils.h"
+i"ofxThread.h"
+i"ofTypes.h"
+i"ofSerial.h"
+i"ofArduino.h"
+i"ofTexture.h"
+i"ofTrueTypeFont.h"
+i"ofGraphics.h"
+i"ofImage.h"
+i"ofBaseApp.h"
+i"ofAppRunner.h"
+i"ofSoundStream.h"
+i"ofSoundPlayer.h"
+i"ofVideoGrabber.h"
+i"ofVideoPlayer.h"
+i"ofEvents.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworks/sound/ofSoundPlayer.h
+c000000004CE33EF800000000000006C3
+t1289961208
+s1731
+i"ofConstants.h"
+i"fmod.h"
+i"fmod_errors.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworks/sound/ofSoundStream.h
+c000000004CE33EF80000000000000254
+t1289961208
+s596
+i"ofConstants.h"
+i"ofBaseApp.h"
+i"ofEvents.h"
+i"ofMath.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworks/utils/ofConstants.h
+c000000004CE33EF80000000000002ACC
+t1289961208
+s10956
+i<TargetConditionals.h>
+i<windows.h>
+i"GLee.h"
+i"glu.h"
+i<unistd.h>
+i"GLee.h"
+i<OpenGL/glu.h>
+i<ApplicationServices/ApplicationServices.h>
+i<unistd.h>
+i"GLee.h"
+i<GL/glu.h>
+i<OpenGLES/ES1/gl.h>
+i<OpenGLES/ES1/glext.h>
+i<cstdlib>
+i<cstdio>
+i<cstdarg>
+i<cmath>
+i<ctime>
+i<cstdlib>
+i<string>
+i<iostream>
+i<vector>
+i<cstring>
+i<sstream>
+i<iomanip>
+i<fstream>
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworks/utils/ofMath.h
+c000000004CE33EF80000000000000A66
+t1289961208
+s2662
+i"ofConstants.h"
+i"ofTypes.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworks/utils/ofTypes.h
+c000000004CE33EF80000000000001D5F
+t1289961208
+s7519
+i"ofConstants.h"
+i"ofUtils.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworks/utils/ofUtils.h
+c000000004CE33EF800000000000005A4
+t1289961208
+s1444
+i"ofConstants.h"
+i<shellapi.h>
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworks/utils/ofxThread.h
+c000000004ADFBDFC00000000000004E1
+t1256177148
+s1249
+i"ofConstants.h"
+i<process.h>
+i<pthread.h>
+i<semaphore.h>
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworks/video/ofGstUtils.h
+c000000004CE33EF80000000000000B55
+t1289961208
+s2901
+i<gst/gst.h>
+i<pthread.h>
+i"ofConstants.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworks/video/ofQtUtils.h
+c000000004CE33EF800000000000006CF
+t1289961208
+s1743
+i"ofConstants.h"
+i"ofGraphics.h"
+i<QuickTime/QuickTime.h>
+i<CoreServices/CoreServices.h>
+i<ApplicationServices/ApplicationServices.h>
+i<QTML.h>
+i<FixMath.h>
+i<QuickTimeComponents.h>
+i<TextUtils.h>
+i<MediaHandlers.h>
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworks/video/ofVideoGrabber.h
+c000000004CE33EF80000000000000C9C
+t1289961208
+s3228
+i"ofConstants.h"
+i"ofTexture.h"
+i"ofGraphics.h"
+i"ofTypes.h"
+i"ofQtUtils.h"
+i"videoInput.h"
+i"ofUCUtils.h"
+i"ofGstUtils.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworks/video/ofVideoPlayer.h
+c000000004CE33EF80000000000000C33
+t1289961208
+s3123
+i"ofConstants.h"
+i"ofTexture.h"
+i"ofGstUtils.h"
+i"ofQtUtils.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/lib/osx/openFrameworksDebug.a
+c000000004D45EC35000000000061DFC0
+t1296428085
+s6414272
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/AbstractDelegate.h
+c000000004CE33EF80000000000000B2E
+t1289961208
+s2862
+i"Poco/Foundation.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/AbstractEvent.h
+c000000004CE33EF80000000000002C6A
+t1289961208
+s11370
+i"Poco/Foundation.h"
+i"Poco/SingletonHolder.h"
+i"Poco/SharedPtr.h"
+i"Poco/ActiveResult.h"
+i"Poco/ActiveMethod.h"
+i"Poco/Mutex.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/ActiveMethod.h
+c000000004CE33EF80000000000001C64
+t1289961208
+s7268
+i"Poco/Foundation.h"
+i"Poco/ActiveResult.h"
+i"Poco/ActiveRunnable.h"
+i"Poco/ActiveStarter.h"
+i"Poco/AutoPtr.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/ActiveResult.h
+c000000004CE33EF80000000000002E66
+t1289961208
+s11878
+i"Poco/Foundation.h"
+i"Poco/Mutex.h"
+i"Poco/Event.h"
+i"Poco/RefCountedObject.h"
+i"Poco/Exception.h"
+i<algorithm>
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/ActiveRunnable.h
+c000000004CE33EF80000000000001785
+t1289961208
+s6021
+i"Poco/Foundation.h"
+i"Poco/ActiveResult.h"
+i"Poco/Runnable.h"
+i"Poco/RefCountedObject.h"
+i"Poco/AutoPtr.h"
+i"Poco/Exception.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/ActiveStarter.h
+c000000004CE33EF80000000000000927
+t1289961208
+s2343
+i"Poco/Foundation.h"
+i"Poco/ThreadPool.h"
+i"Poco/ActiveRunnable.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/AutoPtr.h
+c000000004CE33EF80000000000001E0C
+t1289961208
+s7692
+i"Poco/Foundation.h"
+i"Poco/Exception.h"
+i<algorithm>
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/BufferAllocator.h
+c000000004CE33EF800000000000008E2
+t1289961208
+s2274
+i"Poco/Foundation.h"
+i<ios>
+i<cstddef>
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/BufferedBidirectionalStreamBuf.h
+c000000004CE33EF800000000000015FD
+t1289961208
+s5629
+i"Poco/Foundation.h"
+i"Poco/BufferAllocator.h"
+i"Poco/StreamUtil.h"
+i<streambuf>
+i<iosfwd>
+i<ios>
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/Bugcheck.h
+c000000004CE33EF800000000000012FE
+t1289961208
+s4862
+i"Poco/Foundation.h"
+i<string>
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/CompareFunctions.h
+c000000004CE33EF800000000000007EC
+t1289961208
+s2028
+i"Poco/Foundation.h"
+i<functional>
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/Config.h
+c000000004CE33EF800000000000008B5
+t1289961208
+s2229
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/Delegate.h
+c000000004CE33EF80000000000001802
+t1289961208
+s6146
+i"Poco/Foundation.h"
+i"Poco/AbstractDelegate.h"
+i"Poco/FunctionDelegate.h"
+i"Poco/Expire.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/Event.h
+c000000004CE33EF80000000000000E21
+t1289961208
+s3617
+i"Poco/Foundation.h"
+i"Poco/Exception.h"
+i"Poco/Event_WIN32.h"
+i"Poco/Event_POSIX.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/Event_POSIX.h
+c000000004CE33EF80000000000000A91
+t1289961208
+s2705
+i"Poco/Foundation.h"
+i"Poco/Exception.h"
+i<pthread.h>
+i<errno.h>
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/Event_WIN32.h
+c000000004CE33EF80000000000000947
+t1289961208
+s2375
+i"Poco/Foundation.h"
+i"Poco/Exception.h"
+i"Poco/UnWindows.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/Exception.h
+c000000004CE33EF800000000000026AC
+t1289961208
+s9900
+i"Poco/Foundation.h"
+i<stdexcept>
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/Expire.h
+c000000004CE33EF80000000000000CF1
+t1289961208
+s3313
+i"Poco/Foundation.h"
+i"Poco/AbstractDelegate.h"
+i"Poco/Timestamp.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/FIFOEvent.h
+c000000004CE33EF80000000000000AD4
+t1289961208
+s2772
+i"Poco/AbstractEvent.h"
+i"Poco/FIFOStrategy.h"
+i"Poco/AbstractDelegate.h"
+i"Poco/CompareFunctions.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/FIFOStrategy.h
+c000000004CE33EF800000000000010F3
+t1289961208
+s4339
+i"Poco/NotificationStrategy.h"
+i<map>
+i<list>
+i<memory>
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/FileStream.h
+c000000004CE33EF80000000000001950
+t1289961208
+s6480
+i"Poco/Foundation.h"
+i"FileStream_WIN32.h"
+i"FileStream_POSIX.h"
+i<istream>
+i<ostream>
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/FileStream_POSIX.h
+c000000004CE33EF80000000000000B8D
+t1289961208
+s2957
+i"Poco/Foundation.h"
+i"Poco/BufferedBidirectionalStreamBuf.h"
+i<istream>
+i<ostream>
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/FileStream_WIN32.h
+c000000004CE33EF80000000000000B7D
+t1289961208
+s2941
+i"Poco/Foundation.h"
+i"Poco/BufferedBidirectionalStreamBuf.h"
+i"Poco/UnWindows.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/Foundation.h
+c000000004CE33EF80000000000001023
+t1289961208
+s4131
+i"Poco/Config.h"
+i"Poco/Platform.h"
+i"Poco/Platform_WIN32.h"
+i"Poco/Platform_VMS.h"
+i"Poco/Platform_POSIX.h"
+i"Poco/Bugcheck.h"
+i"Poco/Types.h"
+i<string>
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/FunctionDelegate.h
+c000000004CE33EF800000000000013CA
+t1289961208
+s5066
+i"Poco/Foundation.h"
+i"Poco/AbstractDelegate.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/Mutex.h
+c000000004CE33EF80000000000001A61
+t1289961208
+s6753
+i"Poco/Foundation.h"
+i"Poco/Exception.h"
+i"Poco/ScopedLock.h"
+i"Poco/Mutex_WIN32.h"
+i"Poco/Mutex_POSIX.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/Mutex_POSIX.h
+c000000004CE33EF80000000000000AC3
+t1289961208
+s2755
+i"Poco/Foundation.h"
+i"Poco/Exception.h"
+i<pthread.h>
+i<errno.h>
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/Mutex_WIN32.h
+c000000004CE33EF80000000000000A07
+t1289961208
+s2567
+i"Poco/Foundation.h"
+i"Poco/Exception.h"
+i"Poco/UnWindows.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/Net/FilePartSource.h
+c000000004CE33EF80000000000000ACD
+t1289961208
+s2765
+i"Poco/Net/Net.h"
+i"Poco/Net/PartSource.h"
+i"Poco/FileStream.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/Net/HTMLForm.h
+c000000004CE33EF80000000000001A8C
+t1289961208
+s6796
+i"Poco/Net/Net.h"
+i"Poco/Net/NameValueCollection.h"
+i<ostream>
+i<istream>
+i<vector>
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/Net/HTTPBasicCredentials.h
+c000000004CE33EF80000000000000D9F
+t1289961208
+s3487
+i"Poco/Net/Net.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/Net/HTTPClientSession.h
+c000000004CE33EF80000000000001FF7
+t1289961208
+s8183
+i"Poco/Net/Net.h"
+i"Poco/Net/HTTPSession.h"
+i"Poco/Net/SocketAddress.h"
+i<istream>
+i<ostream>
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/Net/HTTPCookie.h
+c000000004CE33EF80000000000001836
+t1289961208
+s6198
+i"Poco/Net/Net.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/Net/HTTPMessage.h
+c000000004CE33EF800000000000014E9
+t1289961208
+s5353
+i"Poco/Net/Net.h"
+i"Poco/Net/MessageHeader.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/Net/HTTPRequest.h
+c000000004CE33EF8000000000000148E
+t1289961208
+s5262
+i"Poco/Net/Net.h"
+i"Poco/Net/HTTPMessage.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/Net/HTTPResponse.h
+c000000004CE33EF8000000000000243C
+t1289961208
+s9276
+i"Poco/Net/Net.h"
+i"Poco/Net/HTTPMessage.h"
+i"Poco/Net/HTTPCookie.h"
+i"Poco/Timestamp.h"
+i<vector>
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/Net/HTTPSession.h
+c000000004CE33EF80000000000001768
+t1289961208
+s5992
+i"Poco/Net/Net.h"
+i"Poco/Net/StreamSocket.h"
+i"Poco/Timespan.h"
+i"Poco/Exception.h"
+i<ios>
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/Net/IPAddress.h
+c000000004CE33EF80000000000002DFA
+t1289961208
+s11770
+i"Poco/Net/Net.h"
+i"Poco/Net/SocketDefs.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/Net/MessageHeader.h
+c000000004CE33EF800000000000014ED
+t1289961208
+s5357
+i"Poco/Net/Net.h"
+i"Poco/Net/NameValueCollection.h"
+i<ostream>
+i<istream>
+i<vector>
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/Net/NameValueCollection.h
+c000000004CE33EF8000000000000134B
+t1289961208
+s4939
+i"Poco/Net/Net.h"
+i"Poco/String.h"
+i<map>
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/Net/Net.h
+c000000004CE33EF80000000000000B82
+t1289961208
+s2946
+i"Poco/Foundation.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/Net/PartSource.h
+c000000004CE33EF80000000000000B9B
+t1289961208
+s2971
+i"Poco/Net/Net.h"
+i<istream>
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/Net/Socket.h
+c000000004CE33EF8000000000000390B
+t1289961208
+s14603
+i"Poco/Net/Net.h"
+i"Poco/Net/SocketImpl.h"
+i<vector>
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/Net/SocketAddress.h
+c000000004CE33EF80000000000001353
+t1289961208
+s4947
+i"Poco/Net/Net.h"
+i"Poco/Net/SocketDefs.h"
+i"Poco/Net/IPAddress.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/Net/SocketDefs.h
+c000000004CE33EF80000000000001B5D
+t1289961208
+s7005
+i"Poco/UnWindows.h"
+i<winsock2.h>
+i<ws2tcpip.h>
+i<unistd.h>
+i<errno.h>
+i<sys/types.h>
+i<sys/socket.h>
+i<sys/select.h>
+i<sys/ioctl.h>
+i<inet.h>
+i<arpa/inet.h>
+i<netinet/in.h>
+i<netinet/tcp.h>
+i<netdb.h>
+i<net/if.h>
+i<sys/sockio.h>
+i<sys/filio.h>
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/Net/SocketImpl.h
+c000000004CE33EF8000000000000389C
+t1289961208
+s14492
+i"Poco/Net/Net.h"
+i"Poco/Net/SocketDefs.h"
+i"Poco/Net/SocketAddress.h"
+i"Poco/RefCountedObject.h"
+i"Poco/Timespan.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/Net/StreamSocket.h
+c000000004CE33EF80000000000001469
+t1289961208
+s5225
+i"Poco/Net/Net.h"
+i"Poco/Net/Socket.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/NotificationStrategy.h
+c000000004CE33EF80000000000000A37
+t1289961208
+s2615
+i"Poco/Foundation.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/Path.h
+c000000004CE33EF8000000000000363E
+t1289961208
+s13886
+i"Poco/Foundation.h"
+i<vector>
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/Platform.h
+c000000004CE33EF80000000000001A3A
+t1289961208
+s6714
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/Platform_POSIX.h
+c000000004CE33EF80000000000000843
+t1289961208
+s2115
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/Platform_VMS.h
+c000000004CE33EF80000000000000BAA
+t1289961208
+s2986
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/Platform_WIN32.h
+c000000004CE33EF80000000000000D4D
+t1289961208
+s3405
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/RefCountedObject.h
+c000000004CE33EF80000000000000B10
+t1289961208
+s2832
+i"Poco/Foundation.h"
+i"Poco/Mutex.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/Runnable.h
+c000000004CE33EF80000000000000861
+t1289961208
+s2145
+i"Poco/Foundation.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/ScopedLock.h
+c000000004CE33EF800000000000008EB
+t1289961208
+s2283
+i"Poco/Foundation.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/SharedPtr.h
+c000000004CE33EF800000000000021DE
+t1289961208
+s8670
+i"Poco/Foundation.h"
+i"Poco/Exception.h"
+i"Poco/Mutex.h"
+i<algorithm>
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/SignalHandler.h
+c000000004CE33EF800000000000011EB
+t1289961208
+s4587
+i"Poco/Foundation.h"
+i<vector>
+i<setjmp.h>
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/SingletonHolder.h
+c000000004CE33EF80000000000000A64
+t1289961208
+s2660
+i"Poco/Foundation.h"
+i"Poco/Mutex.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/StreamCopier.h
+c000000004CE33EF80000000000000A88
+t1289961208
+s2696
+i"Poco/Foundation.h"
+i<istream>
+i<ostream>
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/StreamUtil.h
+c000000004CE33EF80000000000000E2F
+t1289961208
+s3631
+i"Poco/Foundation.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/String.h
+c000000004CE33EF80000000000003909
+t1289961208
+s14601
+i"Poco/Foundation.h"
+i<cstring>
+i<cctype>
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/Thread.h
+c000000004CE33EF80000000000001C3A
+t1289961208
+s7226
+i"Poco/Foundation.h"
+i"Poco/Mutex.h"
+i"Poco/Thread_WIN32.h"
+i"Poco/Thread_POSIX.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/ThreadPool.h
+c000000004CE33EF80000000000001849
+t1289961208
+s6217
+i"Poco/Foundation.h"
+i"Poco/Thread.h"
+i"Poco/Mutex.h"
+i<vector>
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/Thread_POSIX.h
+c000000004CE33EF800000000000012A8
+t1289961208
+s4776
+i"Poco/Foundation.h"
+i"Poco/Runnable.h"
+i"Poco/SignalHandler.h"
+i"Poco/Event.h"
+i"Poco/RefCountedObject.h"
+i"Poco/AutoPtr.h"
+i<pthread.h>
+i<sys/select.h>
+i<errno.h>
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/Thread_WIN32.h
+c000000004CE33EF8000000000000106C
+t1289961208
+s4204
+i"Poco/Foundation.h"
+i"Poco/Runnable.h"
+i"Poco/UnWindows.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/Timespan.h
+c000000004CE33EF80000000000001D3D
+t1289961208
+s7485
+i"Poco/Foundation.h"
+i"Poco/Timestamp.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/Timestamp.h
+c000000004CE33EFA00000000000019A7
+t1289961210
+s6567
+i"Poco/Foundation.h"
+i<ctime>
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/Types.h
+c000000004CE33EFA0000000000001910
+t1289961210
+s6416
+i"Poco/Foundation.h"
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/URI.h
+c000000004CE33EFA0000000000002E0B
+t1289961210
+s11787
+i"Poco/Foundation.h"
+i<vector>
+
+N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/UnWindows.h
+c000000004CE33EFA0000000000000FD1
+t1289961210
+s4049
+i<windows.h>
+
+N/usr/include/AvailabilityMacros.h
+c000000004A11A9B30000000000006724
+t1242671539
+s26404
+
+N/usr/include/TargetConditionals.h
+c000000004A11A9B300000000000031E9
+t1242671539
+s12777
+
+N/usr/include/arpa/inet.h
+c000000004BBD2CC60000000000001533
+t1270688966
+s5427
+
+N/usr/include/assert.h
+c000000004BBD2CE90000000000000DCB
+t1270689001
+s3531
+
+N/usr/include/ctype.h
+c000000004BBD2CE90000000000002C18
+t1270689001
+s11288
+
+N/usr/include/dirent.h
+c000000004BBD2CE900000000000016D3
+t1270689001
+s5843
+
+N/usr/include/errno.h
+c000000004BBD2CE900000000000003EB
+t1270689001
+s1003
+
+N/usr/include/fcntl.h
+c000000004BBD2CE900000000000003EA
+t1270689001
+s1002
+
+N/usr/include/getopt.h
+c000000004BBD2CE90000000000000CBC
+t1270689001
+s3260
+
+N/usr/include/inttypes.h
+c000000004BBD2CE900000000000027D1
+t1270689001
+s10193
+
+N/usr/include/net/if.h
+c000000004C23994300000000000035E3
+t1277401411
+s13795
+
+N/usr/include/netdb.h
+c000000004BBD2D1D000000000000307F
+t1270689053
+s12415
+
+N/usr/include/netinet/in.h
+c000000004C2399440000000000005414
+t1277401412
+s21524
+
+N/usr/include/netinet/tcp.h
+c000000004C239946000000000000202F
+t1277401414
+s8239
+
+N/usr/include/pthread.h
+c000000004BBD2CE900000000000038F0
+t1270689001
+s14576
+
+N/usr/include/semaphore.h
+c000000004BBD2CE9000000000000046F
+t1270689001
+s1135
+
+N/usr/include/setjmp.h
+c000000004BBD2CE90000000000000438
+t1270689001
+s1080
+
+N/usr/include/stdio.h
+c000000004BBD2CE90000000000004174
+t1270689001
+s16756
+
+N/usr/include/stdlib.h
+c000000004BBD2CE90000000000002DF5
+t1270689001
+s11765
+
+N/usr/include/string.h
+c000000004BBD2CE90000000000001731
+t1270689001
+s5937
+
+N/usr/include/sys/_types.h
+c000000004C2399490000000000001845
+t1277401417
+s6213
+
+N/usr/include/sys/filio.h
+c000000004C2399460000000000001073
+t1277401414
+s4211
+
+N/usr/include/sys/ioctl.h
+c000000004C239946000000000000116C
+t1277401414
+s4460
+
+N/usr/include/sys/select.h
+c000000004C23994700000000000016A2
+t1277401415
+s5794
+
+N/usr/include/sys/socket.h
+c000000004C23994800000000000059BC
+t1277401416
+s22972
+
+N/usr/include/sys/sockio.h
+c000000004C2399480000000000002252
+t1277401416
+s8786
+
+N/usr/include/sys/types.h
+c000000004C2399480000000000002905
+t1277401416
+s10501
+
+N/usr/include/termios.h
+c000000004BBD2CE900000000000004D4
+t1270689001
+s1236
+
+N/usr/include/unistd.h
+c000000004BBD2CE9000000000000563E
+t1270689001
+s22078
+
+N/usr/include/wchar.h
+c000000004BBD2CE900000000000025DA
+t1270689001
+s9690
+
+N/var/folders/3I/3IEdwrCLFz4TdGQPsl-dpE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Carbon-hgozvkdazctelpbmdfhdyuqfxyvm/Carbon.h.gch
+t1296427978
+s53737264
+
+NopenFrameworks-Info.plist
+c000000004D45CFB200000000000002A7
+t1296420786
+s679
+
+CCheck dependencies
+r0
+lSLF07#2@18"Check dependencies318123346#318123346#0(110"[WARN]Warning: The Copy Files build phase contains this target's Info.plist file 'openFrameworks-Info.plist'.1(22@103"Warning: The Copy Files build phase contains this target's Info.plist file 'openFrameworks-Info.plist'.318123346#18446744073709551615#0#0(1@0"0(0#1#0"8604037184#0"0#
+
+CCompileC build/HTTPClient.build/Debug/HTTPClient.build/Objects-normal/i386/TimedCounter.o /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../addons/ofxTimer/src/TimedCounter.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+s318120778.588060
+e318120780.093981
+r1
+xCompileC
+xbuild/HTTPClient.build/Debug/HTTPClient.build/Objects-normal/i386/TimedCounter.o
+x/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../addons/ofxTimer/src/TimedCounter.cpp
+xnormal
+xi386
+xc++
+xcom.apple.compilers.gcc.4_2
+oi686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done
+lSLF07#2@131"Compile /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../addons/ofxTimer/src/TimedCounter.cpp318120778#318120780#0(92"i686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done0(0#0#123"/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../addons/ofxTimer/src/TimedCounter.cpp8631054048#1960"    cd /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -mfix-and-continue -ftree-vectorize -msse3 -mssse3 -Wno-deprecated-declarations -Wno-invalid-offsetof -gdwarf-2 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build/HTTPClientDebug.hmap -F/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/bin -F/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../libs/glut/lib/osx -I/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/bin/include -I../../../libs/openFrameworks -I../../../libs/openFrameworks/app -I../../../libs/openFrameworks/communication -I../../../libs/openFrameworks/events -I../../../libs/openFrameworks/graphics -I../../../libs/openFrameworks/sound -I../../../libs/openFrameworks/utils -I../../../libs/openFrameworks/video -I../../../libs/freetype/include -I../../../libs/freetype/include/freetype2 -I../../../libs/poco/include -I../../../addons -I/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build/DerivedSources/i386 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build/DerivedSources -D__MACOSX_CORE__ -lpthread -include /var/folders/3I/3IEdwrCLFz4TdGQPsl-dpE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Carbon-hgozvkdazctelpbmdfhdyuqfxyvm/Carbon.h -c /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../addons/ofxTimer/src/TimedCounter.cpp -o /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build/Objects-normal/i386/TimedCounter.o0#
+
+CCompileC build/HTTPClient.build/Debug/HTTPClient.build/Objects-normal/i386/main.o /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/src/main.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+s318122958.203765
+e318122959.416327
+r1
+xCompileC
+xbuild/HTTPClient.build/Debug/HTTPClient.build/Objects-normal/i386/main.o
+x/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/src/main.cpp
+xnormal
+xi386
+xc++
+xcom.apple.compilers.gcc.4_2
+oi686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done
+lSLF07#2@98"Compile /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/src/main.cpp318122958#318122959#0(92"i686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done0(0#0#90"/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/src/main.cpp8636675232#1919"    cd /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -mfix-and-continue -ftree-vectorize -msse3 -mssse3 -Wno-deprecated-declarations -Wno-invalid-offsetof -gdwarf-2 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build/HTTPClientDebug.hmap -F/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/bin -F/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../libs/glut/lib/osx -I/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/bin/include -I../../../libs/openFrameworks -I../../../libs/openFrameworks/app -I../../../libs/openFrameworks/communication -I../../../libs/openFrameworks/events -I../../../libs/openFrameworks/graphics -I../../../libs/openFrameworks/sound -I../../../libs/openFrameworks/utils -I../../../libs/openFrameworks/video -I../../../libs/freetype/include -I../../../libs/freetype/include/freetype2 -I../../../libs/poco/include -I../../../addons -I/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build/DerivedSources/i386 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build/DerivedSources -D__MACOSX_CORE__ -lpthread -include /var/folders/3I/3IEdwrCLFz4TdGQPsl-dpE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Carbon-hgozvkdazctelpbmdfhdyuqfxyvm/Carbon.h -c /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/src/main.cpp -o /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build/Objects-normal/i386/main.o0#
+
+CCompileC build/HTTPClient.build/Debug/HTTPClient.build/Objects-normal/i386/ofxHttpUtils.o /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../addons/ofxHttpUtils/src/ofxHttpUtils.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+s318120778.587070
+e318120781.297583
+r1
+xCompileC
+xbuild/HTTPClient.build/Debug/HTTPClient.build/Objects-normal/i386/ofxHttpUtils.o
+x/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../addons/ofxHttpUtils/src/ofxHttpUtils.cpp
+xnormal
+xi386
+xc++
+xcom.apple.compilers.gcc.4_2
+oi686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done
+lSLF07#2@135"Compile /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../addons/ofxHttpUtils/src/ofxHttpUtils.cpp318120778#318120781#0(92"i686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done0(0#0#127"/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../addons/ofxHttpUtils/src/ofxHttpUtils.cpp8603400512#1964"    cd /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -mfix-and-continue -ftree-vectorize -msse3 -mssse3 -Wno-deprecated-declarations -Wno-invalid-offsetof -gdwarf-2 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build/HTTPClientDebug.hmap -F/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/bin -F/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../libs/glut/lib/osx -I/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/bin/include -I../../../libs/openFrameworks -I../../../libs/openFrameworks/app -I../../../libs/openFrameworks/communication -I../../../libs/openFrameworks/events -I../../../libs/openFrameworks/graphics -I../../../libs/openFrameworks/sound -I../../../libs/openFrameworks/utils -I../../../libs/openFrameworks/video -I../../../libs/freetype/include -I../../../libs/freetype/include/freetype2 -I../../../libs/poco/include -I../../../addons -I/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build/DerivedSources/i386 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build/DerivedSources -D__MACOSX_CORE__ -lpthread -include /var/folders/3I/3IEdwrCLFz4TdGQPsl-dpE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Carbon-hgozvkdazctelpbmdfhdyuqfxyvm/Carbon.h -c /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../addons/ofxHttpUtils/src/ofxHttpUtils.cpp -o /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build/Objects-normal/i386/ofxHttpUtils.o0#
+
+CCompileC build/HTTPClient.build/Debug/HTTPClient.build/Objects-normal/i386/ofxXmlSettings.o /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../addons/ofxXmlSettings/src/ofxXmlSettings.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+s318120780.936759
+e318120782.225181
+r1
+xCompileC
+xbuild/HTTPClient.build/Debug/HTTPClient.build/Objects-normal/i386/ofxXmlSettings.o
+x/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../addons/ofxXmlSettings/src/ofxXmlSettings.cpp
+xnormal
+xi386
+xc++
+xcom.apple.compilers.gcc.4_2
+oi686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done
+lSLF07#2@139"Compile /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../addons/ofxXmlSettings/src/ofxXmlSettings.cpp318120780#318120782#0(92"i686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done0(0#0#131"/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../addons/ofxXmlSettings/src/ofxXmlSettings.cpp8631411680#1970"    cd /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -mfix-and-continue -ftree-vectorize -msse3 -mssse3 -Wno-deprecated-declarations -Wno-invalid-offsetof -gdwarf-2 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build/HTTPClientDebug.hmap -F/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/bin -F/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../libs/glut/lib/osx -I/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/bin/include -I../../../libs/openFrameworks -I../../../libs/openFrameworks/app -I../../../libs/openFrameworks/communication -I../../../libs/openFrameworks/events -I../../../libs/openFrameworks/graphics -I../../../libs/openFrameworks/sound -I../../../libs/openFrameworks/utils -I../../../libs/openFrameworks/video -I../../../libs/freetype/include -I../../../libs/freetype/include/freetype2 -I../../../libs/poco/include -I../../../addons -I/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build/DerivedSources/i386 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build/DerivedSources -D__MACOSX_CORE__ -lpthread -include /var/folders/3I/3IEdwrCLFz4TdGQPsl-dpE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Carbon-hgozvkdazctelpbmdfhdyuqfxyvm/Carbon.h -c /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../addons/ofxXmlSettings/src/ofxXmlSettings.cpp -o /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build/Objects-normal/i386/ofxXmlSettings.o0#
+
+CCompileC build/HTTPClient.build/Debug/HTTPClient.build/Objects-normal/i386/testApp.o /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/src/testApp.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+s318123346.423485
+e318123349.449763
+r1
+xCompileC
+xbuild/HTTPClient.build/Debug/HTTPClient.build/Objects-normal/i386/testApp.o
+x/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/src/testApp.cpp
+xnormal
+xi386
+xc++
+xcom.apple.compilers.gcc.4_2
+oi686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done
+lSLF07#2@101"Compile /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/src/testApp.cpp318123346#318123349#0(92"i686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done0(0#0#93"/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/src/testApp.cpp8627420800#1925"    cd /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -mfix-and-continue -ftree-vectorize -msse3 -mssse3 -Wno-deprecated-declarations -Wno-invalid-offsetof -gdwarf-2 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build/HTTPClientDebug.hmap -F/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/bin -F/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../libs/glut/lib/osx -I/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/bin/include -I../../../libs/openFrameworks -I../../../libs/openFrameworks/app -I../../../libs/openFrameworks/communication -I../../../libs/openFrameworks/events -I../../../libs/openFrameworks/graphics -I../../../libs/openFrameworks/sound -I../../../libs/openFrameworks/utils -I../../../libs/openFrameworks/video -I../../../libs/freetype/include -I../../../libs/freetype/include/freetype2 -I../../../libs/poco/include -I../../../addons -I/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build/DerivedSources/i386 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build/DerivedSources -D__MACOSX_CORE__ -lpthread -include /var/folders/3I/3IEdwrCLFz4TdGQPsl-dpE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Carbon-hgozvkdazctelpbmdfhdyuqfxyvm/Carbon.h -c /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/src/testApp.cpp -o /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build/Objects-normal/i386/testApp.o0#
+
+CCompileC build/HTTPClient.build/Debug/HTTPClient.build/Objects-normal/i386/tinyxml.o /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../addons/ofxXmlSettings/libs/tinyxml.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+s318120780.094356
+e318120781.145699
+r1
+xCompileC
+xbuild/HTTPClient.build/Debug/HTTPClient.build/Objects-normal/i386/tinyxml.o
+x/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../addons/ofxXmlSettings/libs/tinyxml.cpp
+xnormal
+xi386
+xc++
+xcom.apple.compilers.gcc.4_2
+oi686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done
+lSLF07#2@133"Compile /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../addons/ofxXmlSettings/libs/tinyxml.cpp318120780#318120781#0(92"i686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done0(0#0#125"/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../addons/ofxXmlSettings/libs/tinyxml.cpp8623833856#1957"    cd /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -mfix-and-continue -ftree-vectorize -msse3 -mssse3 -Wno-deprecated-declarations -Wno-invalid-offsetof -gdwarf-2 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build/HTTPClientDebug.hmap -F/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/bin -F/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../libs/glut/lib/osx -I/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/bin/include -I../../../libs/openFrameworks -I../../../libs/openFrameworks/app -I../../../libs/openFrameworks/communication -I../../../libs/openFrameworks/events -I../../../libs/openFrameworks/graphics -I../../../libs/openFrameworks/sound -I../../../libs/openFrameworks/utils -I../../../libs/openFrameworks/video -I../../../libs/freetype/include -I../../../libs/freetype/include/freetype2 -I../../../libs/poco/include -I../../../addons -I/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build/DerivedSources/i386 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build/DerivedSources -D__MACOSX_CORE__ -lpthread -include /var/folders/3I/3IEdwrCLFz4TdGQPsl-dpE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Carbon-hgozvkdazctelpbmdfhdyuqfxyvm/Carbon.h -c /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../addons/ofxXmlSettings/libs/tinyxml.cpp -o /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build/Objects-normal/i386/tinyxml.o0#
+
+CCompileC build/HTTPClient.build/Debug/HTTPClient.build/Objects-normal/i386/tinyxmlerror.o /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../addons/ofxXmlSettings/libs/tinyxmlerror.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+s318120780.331303
+e318120780.936611
+r1
+xCompileC
+xbuild/HTTPClient.build/Debug/HTTPClient.build/Objects-normal/i386/tinyxmlerror.o
+x/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../addons/ofxXmlSettings/libs/tinyxmlerror.cpp
+xnormal
+xi386
+xc++
+xcom.apple.compilers.gcc.4_2
+oi686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done
+lSLF07#2@138"Compile /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../addons/ofxXmlSettings/libs/tinyxmlerror.cpp318120780#318120780#0(92"i686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done0(0#0#130"/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../addons/ofxXmlSettings/libs/tinyxmlerror.cpp8631499968#1967"    cd /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -mfix-and-continue -ftree-vectorize -msse3 -mssse3 -Wno-deprecated-declarations -Wno-invalid-offsetof -gdwarf-2 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build/HTTPClientDebug.hmap -F/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/bin -F/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../libs/glut/lib/osx -I/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/bin/include -I../../../libs/openFrameworks -I../../../libs/openFrameworks/app -I../../../libs/openFrameworks/communication -I../../../libs/openFrameworks/events -I../../../libs/openFrameworks/graphics -I../../../libs/openFrameworks/sound -I../../../libs/openFrameworks/utils -I../../../libs/openFrameworks/video -I../../../libs/freetype/include -I../../../libs/freetype/include/freetype2 -I../../../libs/poco/include -I../../../addons -I/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build/DerivedSources/i386 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build/DerivedSources -D__MACOSX_CORE__ -lpthread -include /var/folders/3I/3IEdwrCLFz4TdGQPsl-dpE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Carbon-hgozvkdazctelpbmdfhdyuqfxyvm/Carbon.h -c /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../addons/ofxXmlSettings/libs/tinyxmlerror.cpp -o /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build/Objects-normal/i386/tinyxmlerror.o0#
+
+CCompileC build/HTTPClient.build/Debug/HTTPClient.build/Objects-normal/i386/tinyxmlparser.o /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../addons/ofxXmlSettings/libs/tinyxmlparser.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+s318120780.340832
+e318120781.169199
+r1
+xCompileC
+xbuild/HTTPClient.build/Debug/HTTPClient.build/Objects-normal/i386/tinyxmlparser.o
+x/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../addons/ofxXmlSettings/libs/tinyxmlparser.cpp
+xnormal
+xi386
+xc++
+xcom.apple.compilers.gcc.4_2
+oi686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done
+lSLF07#2@139"Compile /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../addons/ofxXmlSettings/libs/tinyxmlparser.cpp318120780#318120781#0(92"i686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done0(0#0#131"/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../addons/ofxXmlSettings/libs/tinyxmlparser.cpp8629650176#1969"    cd /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -mfix-and-continue -ftree-vectorize -msse3 -mssse3 -Wno-deprecated-declarations -Wno-invalid-offsetof -gdwarf-2 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build/HTTPClientDebug.hmap -F/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/bin -F/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../libs/glut/lib/osx -I/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/bin/include -I../../../libs/openFrameworks -I../../../libs/openFrameworks/app -I../../../libs/openFrameworks/communication -I../../../libs/openFrameworks/events -I../../../libs/openFrameworks/graphics -I../../../libs/openFrameworks/sound -I../../../libs/openFrameworks/utils -I../../../libs/openFrameworks/video -I../../../libs/freetype/include -I../../../libs/freetype/include/freetype2 -I../../../libs/poco/include -I../../../addons -I/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build/DerivedSources/i386 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build/DerivedSources -D__MACOSX_CORE__ -lpthread -include /var/folders/3I/3IEdwrCLFz4TdGQPsl-dpE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Carbon-hgozvkdazctelpbmdfhdyuqfxyvm/Carbon.h -c /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../addons/ofxXmlSettings/libs/tinyxmlparser.cpp -o /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build/Objects-normal/i386/tinyxmlparser.o0#
+
+CCpResource bin/HTTPClientDebug.app/Contents/Resources/icon.icns bin/data/icon.icns
+s318120782.928455
+e318120782.939777
+r1
+xCpResource
+xbin/HTTPClientDebug.app/Contents/Resources/icon.icns
+xbin/data/icon.icns
+lSLF07#2@23"Copy bin/data/icon.icns318120782#318120782#0(0"0(0#0#96"/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/bin/data/icon.icns8630742432#465"    cd /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -resolve-src-symlinks /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/bin/data/icon.icns /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/bin/HTTPClientDebug.app/Contents/Resources0#
+
+CLd /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/bin//HTTPClientDebug.app/Contents/MacOS/HTTPClientDebug normal i386
+s318123349.449957
+e318123349.849285
+r1
+xLd
+x/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/bin//HTTPClientDebug.app/Contents/MacOS/HTTPClientDebug
+xnormal
+xi386
+lSLF07#2@138"Link /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/bin//HTTPClientDebug.app/Contents/MacOS/HTTPClientDebug318123349#318123349#0(0"0(0#0#0"8636206080#3056"    cd /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient    /Developer/usr/bin/g++-4.2 -arch i386 -L/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/bin -L/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../libs/freeimage/lib/osx -L/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../libs/FreeImage/lib/osx -L/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../libs/GLee/lib/osx -L/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../libs/poco/lib/osx -L/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../libs/rtAudio/lib/osx -L/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../libs/fmodex/lib/osx -L/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../libs/freetype/lib/osx -L/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../libs/FreeImage/lib/osx -F/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/bin -F/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../libs/glut/lib/osx -filelist /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build/Objects-normal/i386/HTTPClientDebug.LinkFileList -dead_strip /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/lib/osx/openFrameworksDebug.a /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../libs/GLee/lib/osx/GLee.a /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../libs/rtAudio/lib/osx/rtAudio.a -framework AGL -framework ApplicationServices -framework AudioToolbox -framework Carbon -framework CoreAudio -framework CoreFoundation -framework CoreServices -framework OpenGL -framework QuickTime -framework AppKit -framework Cocoa -framework IOKit -framework GLUT /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../libs/poco/lib/osx/CppUnit.a /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../libs/poco/lib/osx/PocoFoundation.a /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../libs/poco/lib/osx/PocoNet.a /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../libs/poco/lib/osx/PocoUtil.a /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../libs/poco/lib/osx/PocoXML.a /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../libs/freetype/lib/osx/freetype.a -lfmodex /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../libs/FreeImage/lib/osx/freeimage.a -o /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/bin//HTTPClientDebug.app/Contents/MacOS/HTTPClientDebug0#
+
+CPBXCp bin/HTTPClientDebug.app/Contents/Frameworks/GLUT.framework ../../../libs/glut/lib/osx/GLUT.framework
+s318120782.443477
+e318120782.923436
+r1
+xPBXCp
+xbin/HTTPClientDebug.app/Contents/Frameworks/GLUT.framework
+x../../../libs/glut/lib/osx/GLUT.framework
+lSLF07#2@46"Copy ../../../libs/glut/lib/osx/GLUT.framework318120782#318120782#0(0"0(0#0#119"/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../libs/glut/lib/osx/GLUT.framework8618853024#489"    cd /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -resolve-src-symlinks /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../libs/glut/lib/osx/GLUT.framework /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/bin/HTTPClientDebug.app/Contents/Frameworks0#
+
+CPBXCp bin/HTTPClientDebug.app/Contents/Resources/openFrameworks-Info.plist openFrameworks-Info.plist
+s318120782.923542
+e318120782.928375
+r1
+xPBXCp
+xbin/HTTPClientDebug.app/Contents/Resources/openFrameworks-Info.plist
+xopenFrameworks-Info.plist
+lSLF07#2@30"Copy openFrameworks-Info.plist318120782#318120782#0(0"0(0#0#103"/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/openFrameworks-Info.plist8631478944#472"    cd /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -resolve-src-symlinks /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/openFrameworks-Info.plist /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/bin/HTTPClientDebug.app/Contents/Resources0#
+
+CPhaseScriptExecution "Run Script" /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build/Script-E4B6FFFD0C3F9AB9008CF71C.sh
+s318123349.849418
+e318123349.872507
+r1
+xPhaseScriptExecution
+xRun Script
+x/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build/Script-E4B6FFFD0C3F9AB9008CF71C.sh
+lSLF07#2@36"Run custom shell script 'Run Script'318123349#318123349#0(0"0(0#0#0"8624131232#20870"    cd /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient    setenv ACTION build    setenv ALTERNATE_GROUP staff    setenv ALTERNATE_MODE u+w,go-w,a+rX    setenv ALTERNATE_OWNER makira    setenv ALWAYS_SEARCH_USER_PATHS YES    setenv APPLE_INTERNAL_DEVELOPER_DIR /AppleInternal/Developer    setenv APPLE_INTERNAL_DIR /AppleInternal    setenv APPLE_INTERNAL_DOCUMENTATION_DIR /AppleInternal/Documentation    setenv APPLE_INTERNAL_LIBRARY_DIR /AppleInternal/Library    setenv APPLE_INTERNAL_TOOLS /AppleInternal/Developer/Tools    setenv APPLY_RULES_IN_COPY_FILES NO    setenv ARCHS i386    setenv ARCHS_STANDARD_32_64_BIT "x86_64 i386 ppc"    setenv ARCHS_STANDARD_32_BIT "i386 ppc"    setenv ARCHS_STANDARD_64_BIT x86_64    setenv BUILD_COMPONENTS "headers build"    setenv BUILD_DIR /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build    setenv BUILD_ROOT /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build    setenv BUILD_STYLE Debug    setenv BUILD_VARIANTS normal    setenv BUILT_PRODUCTS_DIR /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/bin/    setenv CACHE_ROOT /var/folders/3I/3IEdwrCLFz4TdGQPsl-dpE+++TI/-Caches-/com.apple.Xcode.501    setenv CCHROOT /var/folders/3I/3IEdwrCLFz4TdGQPsl-dpE+++TI/-Caches-/com.apple.Xcode.501    setenv CHMOD /bin/chmod    setenv CHOWN /usr/sbin/chown    setenv CLASS_FILE_DIR /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build/JavaClasses    setenv CLEAN_PRECOMPS YES    setenv CLONE_HEADERS NO    setenv CODESIGNING_FOLDER_PATH /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/bin//HTTPClientDebug.app    setenv CODE_SIGNING_ALLOWED YES    setenv COMMAND_MODE legacy    setenv COMPOSITE_SDK_DIRS /var/folders/3I/3IEdwrCLFz4TdGQPsl-dpE+++TI/-Caches-/com.apple.Xcode.501/CompositeSDKs    setenv CONFIGURATION Debug    setenv CONFIGURATION_BUILD_DIR /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/bin/    setenv CONFIGURATION_TEMP_DIR /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug    setenv CONTENTS_FOLDER_PATH HTTPClientDebug.app/Contents    setenv COPYING_PRESERVES_HFS_DATA NO    setenv COPY_PHASE_STRIP NO    setenv COPY_RESOURCES_FROM_STATIC_FRAMEWORKS YES    setenv CP /bin/cp    setenv CURRENT_ARCH i386    setenv CURRENT_VARIANT normal    setenv DEAD_CODE_STRIPPING YES    setenv DEBUGGING_SYMBOLS YES    setenv DEBUG_INFORMATION_FORMAT dwarf    setenv DEPLOYMENT_LOCATION NO    setenv DEPLOYMENT_POSTPROCESSING NO    setenv DERIVED_FILES_DIR /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build/DerivedSources    setenv DERIVED_FILE_DIR /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build/DerivedSources    setenv DERIVED_SOURCES_DIR /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build/DerivedSources    setenv DEVELOPER_APPLICATIONS_DIR /Developer/Applications    setenv DEVELOPER_BIN_DIR /Developer/usr/bin    setenv DEVELOPER_DIR /Developer    setenv DEVELOPER_FRAMEWORKS_DIR /Developer/Library/Frameworks    setenv DEVELOPER_FRAMEWORKS_DIR_QUOTED "\"/Developer/Library/Frameworks\""    setenv DEVELOPER_LIBRARY_DIR /Developer/Library    setenv DEVELOPER_SDK_DIR /Developer/SDKs    setenv DEVELOPER_TOOLS_DIR /Developer/Tools    setenv DEVELOPER_USR_DIR /Developer/usr    setenv DEVELOPMENT_LANGUAGE English    setenv DOCUMENTATION_FOLDER_PATH HTTPClientDebug.app/Contents/Resources/English.lproj/Documentation    setenv DO_HEADER_SCANNING_IN_JAM NO    setenv DSTROOT /tmp/HTTPClient.dst    setenv DWARF_DSYM_FILE_NAME HTTPClientDebug.app.dSYM    setenv DWARF_DSYM_FOLDER_PATH /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/bin/    setenv ENABLE_HEADER_DEPENDENCIES YES    setenv ENABLE_OPENMP_SUPPORT NO    setenv EXCLUDED_INSTALLSRC_SUBDIRECTORY_PATTERNS ".svn .git CVS"    setenv EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES "*.nib *.lproj *.framework *.gch (*) CVS .svn .git *.xcodeproj *.xcode *.pbproj *.pbxproj"    setenv EXECUTABLES_FOLDER_PATH HTTPClientDebug.app/Contents/Executables    setenv EXECUTABLE_FOLDER_PATH HTTPClientDebug.app/Contents/MacOS    setenv EXECUTABLE_NAME HTTPClientDebug    setenv EXECUTABLE_PATH HTTPClientDebug.app/Contents/MacOS/HTTPClientDebug    setenv FILE_LIST /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build/Objects/LinkFileList    setenv FIXED_FILES_DIR /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build/FixedFiles    setenv FRAMEWORKS_FOLDER_PATH HTTPClientDebug.app/Contents/Frameworks    setenv FRAMEWORK_FLAG_PREFIX -framework    setenv FRAMEWORK_SEARCH_PATHS "\"/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/bin/\"  \"/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../libs/glut/lib/osx\""    setenv FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 "\"/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../libs/glut/lib/osx\""    setenv FRAMEWORK_VERSION A    setenv FULL_PRODUCT_NAME HTTPClientDebug.app    setenv GCC3_VERSION 3.3    setenv GCC_AUTO_VECTORIZATION YES    setenv GCC_DYNAMIC_NO_PIC NO    setenv GCC_ENABLE_FIX_AND_CONTINUE YES    setenv GCC_ENABLE_SSE3_EXTENSIONS YES    setenv GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS YES    setenv GCC_GENERATE_DEBUGGING_SYMBOLS YES    setenv GCC_INLINES_ARE_PRIVATE_EXTERN NO    setenv GCC_MODEL_TUNING G4    setenv GCC_OPTIMIZATION_LEVEL 0    setenv GCC_PFE_FILE_C_DIALECTS "c objective-c c++ objective-c++"    setenv GCC_PRECOMPILE_PREFIX_HEADER YES    setenv GCC_PREFIX_HEADER /System/Library/Frameworks/Carbon.framework/Headers/Carbon.h    setenv GCC_SYMBOLS_PRIVATE_EXTERN NO    setenv GCC_TREAT_WARNINGS_AS_ERRORS NO    setenv GCC_VERSION 4.2    setenv GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS NO    setenv GCC_WARN_ABOUT_INVALID_OFFSETOF_MACRO NO    setenv GCC_WARN_ALLOW_INCOMPLETE_PROTOCOL NO    setenv GCC_WARN_UNINITIALIZED_AUTOS NO    setenv GCC_WARN_UNUSED_VALUE NO    setenv GCC_WARN_UNUSED_VARIABLE NO    setenv GENERATE_MASTER_OBJECT_FILE NO    setenv GENERATE_PKGINFO_FILE YES    setenv GENERATE_PROFILING_CODE NO    setenv GID 20    setenv GROUP staff    setenv HEADERMAP_INCLUDES_FLAT_ENTRIES_FOR_TARGET_BEING_BUILT YES    setenv HEADERMAP_INCLUDES_FRAMEWORK_ENTRIES_FOR_ALL_PRODUCT_TYPES YES    setenv HEADERMAP_INCLUDES_NONPUBLIC_NONPRIVATE_HEADERS YES    setenv HEADERMAP_INCLUDES_PROJECT_HEADERS YES    setenv HEADER_SEARCH_PATHS "\"/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/bin//include\" ../../../libs/openFrameworks/** ../../../libs/freetype/include/ ../../../libs/freetype/include/freetype2 ../../../libs/poco/include ../../../addons/"    setenv ICONV /usr/bin/iconv    setenv INFOPLIST_EXPAND_BUILD_SETTINGS YES    setenv INFOPLIST_FILE openFrameworks-Info.plist    setenv INFOPLIST_OUTPUT_FORMAT same-as-input    setenv INFOPLIST_PATH HTTPClientDebug.app/Contents/Info.plist    setenv INFOPLIST_PREPROCESS NO    setenv INFOSTRINGS_PATH HTTPClientDebug.app/Contents/Resources/English.lproj/InfoPlist.strings    setenv INSTALL_DIR /tmp/HTTPClient.dst/Users/makira/Applications    setenv INSTALL_GROUP staff    setenv INSTALL_MODE_FLAG u+w,go-w,a+rX    setenv INSTALL_OWNER makira    setenv INSTALL_PATH /Users/makira/Applications    setenv INSTALL_ROOT /tmp/HTTPClient.dst    setenv JAVAC_DEFAULT_FLAGS "-J-Xms64m -J-XX:NewSize=4M -J-Dfile.encoding=UTF8"    setenv JAVA_APP_STUB /System/Library/Frameworks/JavaVM.framework/Resources/MacOS/JavaApplicationStub    setenv JAVA_ARCHIVE_CLASSES YES    setenv JAVA_ARCHIVE_TYPE JAR    setenv JAVA_COMPILER /usr/bin/javac    setenv JAVA_FOLDER_PATH HTTPClientDebug.app/Contents/Resources/Java    setenv JAVA_FRAMEWORK_RESOURCES_DIRS Resources    setenv JAVA_JAR_FLAGS cv    setenv JAVA_SOURCE_SUBDIR .    setenv JAVA_USE_DEPENDENCIES YES    setenv JAVA_ZIP_FLAGS -urg    setenv JIKES_DEFAULT_FLAGS "+E +OLDCSO"    setenv KEEP_PRIVATE_EXTERNS NO    setenv LD_GENERATE_MAP_FILE NO    setenv LD_MAP_FILE_PATH /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build/HTTPClientDebug-LinkMap-normal-i386.txt    setenv LD_OPENMP_FLAGS -fopenmp    setenv LEX /Developer/usr/bin/lex    setenv LIBRARY_FLAG_NOSPACE YES    setenv LIBRARY_FLAG_PREFIX -l    setenv LIBRARY_SEARCH_PATHS "\"/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/bin/\"  \"/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../libs/freeimage/lib/osx\" \"/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../libs/FreeImage/lib/osx\"  \"/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../libs/GLee/lib/osx\" \"/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../libs/poco/lib/osx\" \"/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../libs/rtAudio/lib/osx\"        \"/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../libs/fmodex/lib/osx\" \"/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../libs/freetype/lib/osx\" \"/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../libs/FreeImage/lib/osx\""    setenv LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 "\"/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../libs/freeimage/lib/osx\""    setenv LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_14 "\"/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../libs/fmodex/lib/osx\""    setenv LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_15 "\"/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../libs/freetype/lib/osx\""    setenv LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 "\"/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../libs/FreeImage/lib/osx\""    setenv LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4 "\"/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../libs/GLee/lib/osx\""    setenv LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5 "\"/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../libs/poco/lib/osx\""    setenv LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6 "\"/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../libs/rtAudio/lib/osx\""    setenv LINKER_DISPLAYS_MANGLED_NAMES NO    setenv LINK_FILE_LIST_normal_i386 /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build/Objects-normal/i386/HTTPClientDebug.LinkFileList    setenv LINK_WITH_STANDARD_LIBRARIES YES    setenv LOCALIZED_RESOURCES_FOLDER_PATH HTTPClientDebug.app/Contents/Resources/English.lproj    setenv LOCAL_ADMIN_APPS_DIR /Applications/Utilities    setenv LOCAL_APPS_DIR /Applications    setenv LOCAL_DEVELOPER_DIR /Library/Developer    setenv LOCAL_LIBRARY_DIR /Library    setenv MACH_O_TYPE mh_execute    setenv MAC_OS_X_VERSION_ACTUAL 1066    setenv MAC_OS_X_VERSION_MAJOR 1060    setenv MAC_OS_X_VERSION_MINOR 0606    setenv NATIVE_ARCH i386    setenv NATIVE_ARCH_32_BIT i386    setenv NATIVE_ARCH_64_BIT x86_64    setenv NATIVE_ARCH_ACTUAL x86_64    setenv NO_COMMON YES    setenv OBJECT_FILE_DIR /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build/Objects    setenv OBJECT_FILE_DIR_normal /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build/Objects-normal    setenv OBJROOT /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build    setenv ONLY_ACTIVE_ARCH NO    setenv OPTIMIZATION_LEVEL 0    setenv OS MACOS    setenv OSAC /usr/bin/osacompile    setenv OTHER_CPLUSPLUSFLAGS "-D__MACOSX_CORE__ -lpthread"    setenv PACKAGE_TYPE com.apple.package-type.wrapper.application    setenv PASCAL_STRINGS YES    setenv PATH_PREFIXES_EXCLUDED_FROM_HEADER_DEPENDENCIES "/usr/include /usr/local/include /System/Library/Frameworks /System/Library/PrivateFrameworks /Developer/Headers /Developer/SDKs /Developer/Platforms"    setenv PBDEVELOPMENTPLIST_PATH HTTPClientDebug.app/Contents/pbdevelopment.plist    setenv PFE_FILE_C_DIALECTS c++    setenv PKGINFO_FILE_PATH /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build/PkgInfo    setenv PKGINFO_PATH HTTPClientDebug.app/Contents/PkgInfo    setenv PLATFORM_DEVELOPER_APPLICATIONS_DIR /Developer/Applications    setenv PLATFORM_DEVELOPER_BIN_DIR /Developer/usr/bin    setenv PLATFORM_DEVELOPER_LIBRARY_DIR /Developer/Library    setenv PLATFORM_DEVELOPER_SDK_DIR /Developer/SDKs    setenv PLATFORM_DEVELOPER_TOOLS_DIR /Developer/Tools    setenv PLATFORM_DEVELOPER_USR_DIR /Developer/usr    setenv PLATFORM_NAME macosx    setenv PLATFORM_PRODUCT_BUILD_VERSION 10M2423    setenv PLIST_FILE_OUTPUT_FORMAT same-as-input    setenv PLUGINS_FOLDER_PATH HTTPClientDebug.app/Contents/PlugIns    setenv PREBINDING NO    setenv PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR YES    setenv PRECOMP_DESTINATION_DIR /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build/PrefixHeaders    setenv PRESERVE_DEAD_CODE_INITS_AND_TERMS NO    setenv PRIVATE_HEADERS_FOLDER_PATH HTTPClientDebug.app/Contents/PrivateHeaders    setenv PRODUCT_NAME HTTPClientDebug    setenv PRODUCT_SETTINGS_PATH /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/openFrameworks-Info.plist    setenv PRODUCT_TYPE com.apple.product-type.application    setenv PROFILING_CODE NO    setenv PROJECT HTTPClient    setenv PROJECT_DERIVED_FILE_DIR /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/DerivedSources    setenv PROJECT_DIR /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient    setenv PROJECT_FILE_PATH /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/HTTPClient.xcodeproj    setenv PROJECT_NAME HTTPClient    setenv PROJECT_TEMP_DIR /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build    setenv PUBLIC_HEADERS_FOLDER_PATH HTTPClientDebug.app/Contents/Headers    setenv RECURSIVE_SEARCH_PATHS_FOLLOW_SYMLINKS YES    setenv REMOVE_CVS_FROM_RESOURCES YES    setenv REMOVE_GIT_FROM_RESOURCES YES    setenv REMOVE_SVN_FROM_RESOURCES YES    setenv REZ_COLLECTOR_DIR /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build/ResourceManagerResources    setenv REZ_OBJECTS_DIR /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build/ResourceManagerResources/Objects    setenv REZ_SEARCH_PATHS "\"/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/bin/\" "    setenv RUN_CLANG_STATIC_ANALYZER NO    setenv SCAN_ALL_SOURCE_FILES_FOR_INCLUDES NO    setenv SCRIPTS_FOLDER_PATH HTTPClientDebug.app/Contents/Resources/Scripts    setenv SCRIPT_INPUT_FILE_COUNT 0    setenv SCRIPT_OUTPUT_FILE_COUNT 0    setenv SDKROOT     setenv SED /usr/bin/sed    setenv SEPARATE_STRIP NO    setenv SEPARATE_SYMBOL_EDIT NO    setenv SET_DIR_MODE_OWNER_GROUP YES    setenv SET_FILE_MODE_OWNER_GROUP NO    setenv SHARED_DERIVED_FILE_DIR /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/bin//DerivedSources    setenv SHARED_FRAMEWORKS_FOLDER_PATH HTTPClientDebug.app/Contents/SharedFrameworks    setenv SHARED_PRECOMPS_DIR /var/folders/3I/3IEdwrCLFz4TdGQPsl-dpE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders    setenv SHARED_SUPPORT_FOLDER_PATH HTTPClientDebug.app/Contents/SharedSupport    setenv SKIP_INSTALL NO    setenv SOURCE_ROOT /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient    setenv SRCROOT /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient    setenv STANDARD_C_PLUS_PLUS_LIBRARY_TYPE dynamic    setenv STRINGS_FILE_OUTPUT_ENCODING UTF-16    setenv STRIP_INSTALLED_PRODUCT YES    setenv STRIP_STYLE all    setenv SYMBOL_REPOSITORY_DIR /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build/SymbolRepositories    setenv SYMROOT /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build    setenv SYSTEM_ADMIN_APPS_DIR /Applications/Utilities    setenv SYSTEM_APPS_DIR /Applications    setenv SYSTEM_CORE_SERVICES_DIR /System/Library/CoreServices    setenv SYSTEM_DEMOS_DIR /Applications/Extras    setenv SYSTEM_DEVELOPER_APPS_DIR /Developer/Applications    setenv SYSTEM_DEVELOPER_BIN_DIR /Developer/usr/bin    setenv SYSTEM_DEVELOPER_DEMOS_DIR "/Developer/Applications/Utilities/Built Examples"    setenv SYSTEM_DEVELOPER_DIR /Developer    setenv SYSTEM_DEVELOPER_DOC_DIR "/Developer/ADC Reference Library"    setenv SYSTEM_DEVELOPER_GRAPHICS_TOOLS_DIR "/Developer/Applications/Graphics Tools"    setenv SYSTEM_DEVELOPER_JAVA_TOOLS_DIR "/Developer/Applications/Java Tools"    setenv SYSTEM_DEVELOPER_PERFORMANCE_TOOLS_DIR "/Developer/Applications/Performance Tools"    setenv SYSTEM_DEVELOPER_RELEASENOTES_DIR "/Developer/ADC Reference Library/releasenotes"    setenv SYSTEM_DEVELOPER_TOOLS /Developer/Tools    setenv SYSTEM_DEVELOPER_TOOLS_DOC_DIR "/Developer/ADC Reference Library/documentation/DeveloperTools"    setenv SYSTEM_DEVELOPER_TOOLS_RELEASENOTES_DIR "/Developer/ADC Reference Library/releasenotes/DeveloperTools"    setenv SYSTEM_DEVELOPER_USR_DIR /Developer/usr    setenv SYSTEM_DEVELOPER_UTILITIES_DIR /Developer/Applications/Utilities    setenv SYSTEM_DOCUMENTATION_DIR /Library/Documentation    setenv SYSTEM_LIBRARY_DIR /System/Library    setenv TARGETNAME HTTPClient    setenv TARGET_BUILD_DIR /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/bin/    setenv TARGET_NAME HTTPClient    setenv TARGET_TEMP_DIR /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build    setenv TEMP_DIR /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build    setenv TEMP_FILES_DIR /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build    setenv TEMP_FILE_DIR /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build    setenv TEMP_ROOT /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build    setenv UID 501    setenv UNLOCALIZED_RESOURCES_FOLDER_PATH HTTPClientDebug.app/Contents/Resources    setenv UNSTRIPPED_PRODUCT NO    setenv USER makira    setenv USER_APPS_DIR /Users/makira/Applications    setenv USER_LIBRARY_DIR /Users/makira/Library    setenv USE_DYNAMIC_NO_PIC YES    setenv USE_HEADERMAP YES    setenv USE_HEADER_SYMLINKS NO    setenv VALIDATE_PRODUCT NO    setenv VALID_ARCHS "i386 ppc ppc64 ppc7400 ppc970 x86_64"    setenv VERBOSE_PBXCP NO    setenv VERSIONPLIST_PATH HTTPClientDebug.app/Contents/version.plist    setenv VERSION_INFO_BUILDER makira    setenv VERSION_INFO_FILE HTTPClientDebug_vers.c    setenv VERSION_INFO_STRING "\"@(#)PROGRAM:HTTPClientDebug  PROJECT:HTTPClient-\""    setenv WRAPPER_EXTENSION app    setenv WRAPPER_NAME HTTPClientDebug.app    setenv WRAPPER_SUFFIX .app    setenv XCODE_APP_SUPPORT_DIR /Developer/Library/Xcode    setenv XCODE_PRODUCT_BUILD_VERSION 10M2423    setenv XCODE_VERSION_ACTUAL 0325    setenv XCODE_VERSION_MAJOR 0300    setenv XCODE_VERSION_MINOR 0320    setenv YACC /Developer/usr/bin/yacc    setenv ZERO_LINK NO    /bin/sh -c /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build/Script-E4B6FFFD0C3F9AB9008CF71C.sh0#
+
+CProcessInfoPlistFile /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/bin//HTTPClientDebug.app/Contents/Info.plist openFrameworks-Info.plist
+s318120775.277728
+e318120775.281109
+r1
+xProcessInfoPlistFile
+x/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/bin//HTTPClientDebug.app/Contents/Info.plist
+xopenFrameworks-Info.plist
+lSLF07#2@33"Process openFrameworks-Info.plist318120775#318120775#0(0"0(0#0#103"/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/openFrameworks-Info.plist8600700448#436"    cd /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient    builtin-infoPlistUtility openFrameworks-Info.plist -genpkginfo /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/bin//HTTPClientDebug.app/Contents/PkgInfo -expandbuildsettings -platform macosx -o /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/bin//HTTPClientDebug.app/Contents/Info.plist0#
+
+CProcessPCH++ /var/folders/3I/3IEdwrCLFz4TdGQPsl-dpE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Carbon-hgozvkdazctelpbmdfhdyuqfxyvm/Carbon.h.gch /System/Library/Frameworks/Carbon.framework/Headers/Carbon.h normal i386 c++ com.apple.compilers.gcc.4_2
+s318120775.281231
+e318120778.585199
+r1
+xProcessPCH++
+x/var/folders/3I/3IEdwrCLFz4TdGQPsl-dpE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Carbon-hgozvkdazctelpbmdfhdyuqfxyvm/Carbon.h.gch
+x/System/Library/Frameworks/Carbon.framework/Headers/Carbon.h
+xnormal
+xi386
+xc++
+xcom.apple.compilers.gcc.4_2
+oi686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done
+lSLF07#2@71"Precompile /System/Library/Frameworks/Carbon.framework/Headers/Carbon.h318120775#318120778#0(92"i686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done0(0#0#60"/System/Library/Frameworks/Carbon.framework/Headers/Carbon.h8611382880#1740"    cd /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++-header -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -mfix-and-continue -ftree-vectorize -msse3 -mssse3 -Wno-deprecated-declarations -Wno-invalid-offsetof -gdwarf-2 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build/HTTPClientDebug.hmap -F/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/bin -F/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/../../../libs/glut/lib/osx -I/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/bin/include -I../../../libs/openFrameworks -I../../../libs/openFrameworks/app -I../../../libs/openFrameworks/communication -I../../../libs/openFrameworks/events -I../../../libs/openFrameworks/graphics -I../../../libs/openFrameworks/sound -I../../../libs/openFrameworks/utils -I../../../libs/openFrameworks/video -I../../../libs/freetype/include -I../../../libs/freetype/include/freetype2 -I../../../libs/poco/include -I../../../addons -I/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build/DerivedSources/i386 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/build/HTTPClient.build/Debug/HTTPClient.build/DerivedSources -D__MACOSX_CORE__ -lpthread -c /System/Library/Frameworks/Carbon.framework/Headers/Carbon.h -o /var/folders/3I/3IEdwrCLFz4TdGQPsl-dpE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Carbon-hgozvkdazctelpbmdfhdyuqfxyvm/Carbon.h.gch0#
+
+CTouch /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/bin//HTTPClientDebug.app
+s318123349.873797
+e318123349.879419
+r1
+xTouch
+x/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/bin//HTTPClientDebug.app
+lSLF07#2@108"Touch /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/bin//HTTPClientDebug.app318123349#318123349#0(0"0(0#0#0"8638033088#210"    cd /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient    /usr/bin/touch -c /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/HTTPClient/bin//HTTPClientDebug.app0#
+
