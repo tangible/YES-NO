@@ -1,0 +1,6 @@
+<controls>
+    <Button_change_img>
+        <name>change img</name>
+        <value>0</value>
+    </Button_change_img>
+</controls>
