@@ -5,21 +5,21 @@
     </Button_change_img>
     <SliderFloat_Shadow_Intensity>
         <name>Shadow Intensity</name>
-        <value>0.798828</value>
+        <value>0.771484</value>
     </SliderFloat_Shadow_Intensity>
     <SliderFloat_Blob_Tex&Col_Mix_Ratio>
         <name>Blob Tex&amp;Col Mix Ratio</name>
-        <value>0.876953</value>
+        <value>0.798828</value>
     </SliderFloat_Blob_Tex&Col_Mix_Ratio>
     <SliderFloat_Blob_Transparency>
         <name>Blob Transparency</name>
-        <value>0.794922</value>
+        <value>0.802734</value>
     </SliderFloat_Blob_Transparency>
     <ColorPicker_Blob_Base_Color>
         <name>Blob Base Color</name>
-        <values_0>0.929688</values_0>
-        <values_1>0.167969</values_1>
-        <values_2>0.140625</values_2>
+        <values_0>0.925781</values_0>
+        <values_1>0.500000</values_1>
+        <values_2>0.500000</values_2>
         <values_3>1.000000</values_3>
     </ColorPicker_Blob_Base_Color>
     <ColorPicker_Blob_Material_Ambient>

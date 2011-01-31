@@ -79,7 +79,7 @@ void BlobManager::setup(int _fps, AdminPanel* _admin) {
 	
 	shader.setup("shaders/glsl");
 	ofDisableArbTex();
-	img.loadImage("imgs/b.jpeg");
+	img.loadImage("imgs/a.jpeg");
 	isVidTex = false;
 	img.resize(ofGetWidth(), ofGetHeight());
 	glActiveTexture(GL_TEXTURE1);
@@ -87,11 +87,11 @@ void BlobManager::setup(int _fps, AdminPanel* _admin) {
 	glBindTexture(GL_TEXTURE_2D, img.getTextureReference().getTextureData().textureID);	
 	glActiveTexture(GL_TEXTURE0);	
 	
-	bg.loadImage("imgs/b.jpeg");
-	float ratioW = ofGetWidth()/bg.getWidth();
-	float ratioH = ofGetHeight()/bg.getHeight();
-	float ratio = 0.6;
-	bg.resize(bg.getWidth()*ratio, bg.getHeight()*ratio);
+	bg.loadImage("imgs/a.jpeg");
+//	float ratioW = ofGetWidth()/bg.getWidth();
+//	float ratioH = ofGetHeight()/bg.getHeight();
+//	float ratio = 0.6;
+	bg.resize(ofGetWidth(), ofGetHeight());
 	
 	bullet = new ofxBullet();
 	bullet->initPhysics(ofxVec3f(0, 0, 0), false);

@@ -277,8 +277,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>9</integer>
-									<integer>8</integer>
+									<integer>7</integer>
 									<integer>4</integer>
 									<integer>0</integer>
 								</array>
@@ -303,7 +302,7 @@
 							<real>278</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>401 100 972 708 0 0 1440 878 </string>
+						<string>402 100 972 708 0 0 1440 878 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -321,7 +320,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>BlobManager.cpp</string>
+								<string>App.h</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -329,11 +328,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>BlobManager.cpp</string>
+										<string>App.h</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>31F7CD4512F6AC4B0003806A</string>
+										<string>31F7CD7712F6B4770003806A</string>
 										<key>history</key>
 										<array>
 											<string>313E6EE312DD15D200883C18</string>
@@ -363,11 +362,11 @@
 											<string>31F7CD1A12F6AAA60003806A</string>
 											<string>31F7CD1B12F6AAA60003806A</string>
 											<string>31F7CD1C12F6AAA60003806A</string>
-											<string>31F7CD1D12F6AAA60003806A</string>
-											<string>31F7CD1E12F6AAA60003806A</string>
 											<string>31F7CD1F12F6AAA60003806A</string>
-											<string>31F7CD2812F6AB0B0003806A</string>
-											<string>31F7CD2912F6AB0B0003806A</string>
+											<string>31F7CD7412F6B4770003806A</string>
+											<string>31F7CD7512F6B4770003806A</string>
+											<string>31F7CD7612F6B4770003806A</string>
+											<string>31F7CD1E12F6AAA60003806A</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -381,7 +380,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {672, 662}}</string>
 								<key>RubberWindowFrame</key>
-								<string>401 100 972 708 0 0 1440 878 </string>
+								<string>402 100 972 708 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -401,7 +400,7 @@
 								<key>Frame</key>
 								<string>{{0, 667}, {672, 0}}</string>
 								<key>RubberWindowFrame</key>
-								<string>401 100 972 708 0 0 1440 878 </string>
+								<string>402 100 972 708 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
@@ -574,7 +573,7 @@
 		<string>/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/YES-NO Visuallize/No.1 Organic Blob/No.1 Organic Blob.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>401 100 972 708 0 0 1440 878 </string>
+	<string>402 100 972 708 0 0 1440 878 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
