@@ -10,18 +10,23 @@
 #include "AdminPanel.h"
 #include "ofxSimpleGuiToo.h"
 
-bool changeImgBtn = false;
-bool restoreDefBtn = false;
-
 void AdminPanel::setup(){
 	
 	gui.addTitle("Motion Setting");
-	gui.addSlider("Motion Tick FPS", PHYSICSTICKFPS, 10, 100);
-	gui.addTitle("Graphics Setting");
-	gui.addButton("Change Texture", changeImgBtn);
-	gui.addButton("Restore Default", restoreDefBtn);
+	gui.addSlider("Motion Tick PerSec", PHYSICSTICKFPS, 10, 100);
+	gui.addToggle("Toggle Motion", TOGGLEMOTION);
+	gui.addTitle("Graphics Setting").setNewColumn(true);
+	gui.addButton("Change Texture", CHANGETEXBTN);
+	gui.addButton("Restore Default", RESTORDEFBTN);
 	gui.addSlider("Shadow Intensity", SHADOWINTENSITY, 0.0, 1.0);
-	gui.addSlider("Light Pos X", LIGHTX, -1000.0, 1000.0);
+	gui.addSlider("Shadow Scale", SHADOWSCALE, 0, 20);
+	gui.addSlider("Shadow Pos X", SHADOWPOSX, -1000, 1000);
+	gui.addSlider("Shadow Pos Y", SHADOWPOSY, -1000, 1000);
+	gui.addSlider("Shadow RotDegree", SHADOWROTDEG, 0.0, 360.0);
+	gui.addToggle("Shadow Rot X", SHADOWROTX);
+	gui.addToggle("Shadow Rot Y", SHADOWROTY);
+	gui.addToggle("Shadow Rot Z", SHADOWROTZ);
+	gui.addSlider("Light Pos X", LIGHTX, -1000.0, 1000.0).setNewColumn(true);
 	gui.addSlider("Light Pos Y", LIGHTY, -1000.0, 1000.0);
 	gui.addSlider("Light Pos Z", LIGHTZ, -1000.0, 1000.0);	
 	gui.addSlider("Blob Tex&Col Mix Ratio", TEXCOLMIXRATIO, 0.0, 1.0);
@@ -31,7 +36,7 @@ void AdminPanel::setup(){
 //	gui.addColorPicker("Blob Material Diffuse", BLOBMATERIALDIFFUSE);
 	gui.addColorPicker("Blob Material Specular", BLOBMATERIALSPECULAR);
 	gui.addSlider("Blob Material Shineness", BLOBMATERIALSHINENESS, 0.0, 50.0);	
-	gui.addColorPicker("Light Ambient", LIGHTAMBIENT).setNewColumn(true);
+	gui.addColorPicker("Light Ambient", LIGHTAMBIENT);
 	gui.addColorPicker("Light Diffuse", LIGHTDIFFUSE);
 	gui.addColorPicker("Light Specular", LIGHTSPECULAR);	
 	
@@ -48,10 +53,10 @@ void AdminPanel::setup(){
 
 void AdminPanel::update(){
 	
-	if(changeImgBtn) {
-		changeImgBtn = false;
+	if(CHANGETEXBTN) {
+		CHANGETEXBTN = false;
 		openFileDialogue("img");
-	}else if (restoreDefBtn) {
+	}else if (RESTORDEFBTN) {
 		restoreDefault();
 	}
 	
@@ -91,7 +96,17 @@ void AdminPanel::restoreDefault() {
 
 	// default init
 	PHYSICSTICKFPS = 25;
+	TOGGLEMOTION = true;
+	CHANGETEXBTN = false;
+	RESTORDEFBTN = false;
 	SHADOWINTENSITY = 0.658;
+	SHADOWSCALE = 12;
+	SHADOWPOSX = 0;
+	SHADOWPOSY = 0;
+	SHADOWROTDEG = 60.0;
+	SHADOWROTX = true;
+	SHADOWROTY = false;
+	SHADOWROTZ = false;
 	LIGHTX = 0.0;
 	LIGHTY = -488.0;
 	LIGHTZ = 895.0;

@@ -17,17 +17,17 @@ void BlobManager::setup(int _fps, AdminPanel* _admin) {
 	ofDisableArbTex();	
 	
 	// init metaball params
-    nMetaBalls = 5;
+    nMetaBalls = 10;
 	nPoints  = nMetaBalls;	
     boundsAvg.x = boundsAvg.y = boundsAvg.z = 0;
     boundsScaling = 1.0 / 1020.0f;	
-	for (int i = 0; i < 2; i++) {
+	for (int j = 0; j < 1; j++) {
 		metaBallChunk* mchunk = new metaBallChunk();
 		mchunk->ballPoints     = new ofPoint[nPoints];
 		mchunk->ballPointsPrev = new ofPoint[nPoints];
 		mchunk->ballPointsPrev2= new ofPoint[nPoints];
 		mchunk->ballSizes     = new float[nPoints];
-		for (int i=0; i<nPoints; i++){
+		for (int i=0; i < nPoints; i++){
 			mchunk->ballPoints[i].set(0.0,0.0,0.0);
 			mchunk->ballPointsPrev[i].set(0.0,0.0,0.0);
 			mchunk->ballPointsPrev2[i].set(0.0,0.0,0.0);
@@ -35,6 +35,7 @@ void BlobManager::setup(int _fps, AdminPanel* _admin) {
 		}
 		mchunk->m_pMetaballs = new CMetaballs(nPoints);
 		mchunk->m_pMetaballs->SetGridSize(100);
+		mchunk->chunkID = j;
 		mBallChunks.push_back(mchunk);
 	}
 	CMarchingCubes::BuildTables();
@@ -91,39 +92,87 @@ void BlobManager::update() {
 		
 	}
 	
-	counter2 = (counter2+1)%blurValue;
-	counter  = counter2 + 1;
-	
-	bullet->stepPhysicsSimulation(admin->PHYSICSTICKFPS);	
-	float maxVal = 0.01;
-	ofxVec3f force;
-	ofxVec3f crossVec;
-	crossVec.set(0, 0, 0);
-	crossVec.rotate(ofGetFrameNum(), ofGetFrameNum(), ofGetFrameNum());
-	ofxVec3f tangentVec;	
-	int rdmIdx = (int)ofRandom(0, 21);
-	for (int i = 0; i < spheres.size(); i++) {
-		force.set(-spheres[i]->getBodyPos() + 
-				  ofxVec3f(ofGetWidth()/2 + admin->TESTX, ofGetHeight()/2 + admin->TESTY, 0));
-		force *= maxVal * 15;
-		tangentVec = force.crossed(crossVec);
-		tangentVec.normalize();
-		tangentVec *= maxVal*100;
-		force += tangentVec;
-		btVector3 btImpulse(force.x, force.y, force.z);
-		spheres[i]->getRigidBody()->applyCentralImpulse(btImpulse);
+	if (admin->TOGGLEMOTION) {
+		counter2 = (counter2+1)%blurValue;
+		counter  = counter2 + 1;
 		
-		ofxVec3f impulse;
-		impulse.set(ofRandomf(), ofRandomf(), ofRandomf());
-		if (i == rdmIdx) {
-			impulse *= ofRandom(-250.0, 250.0);
-		}else {
-			impulse *= 0;
+		bullet->stepPhysicsSimulation(admin->PHYSICSTICKFPS);	
+		float maxVal = 0.01;
+		ofxVec3f force;
+		ofxVec3f crossVec;
+		crossVec.set(0, 0, 0);
+		crossVec.rotate(ofGetFrameNum(), ofGetFrameNum(), ofGetFrameNum());
+		ofxVec3f tangentVec;	
+		int rdmIdx = (int)ofRandom(0, 21);
+		for (int i = 0; i < spheres.size(); i++) {
+			force.set(-spheres[i]->getBodyPos() + 
+					  ofxVec3f(ofGetWidth()/2 + admin->TESTX, ofGetHeight()/2 + admin->TESTY, 0));
+			force *= maxVal * 15;
+			tangentVec = force.crossed(crossVec);
+			tangentVec.normalize();
+			tangentVec *= maxVal*100;
+			force += tangentVec;
+			btVector3 btImpulse(force.x, force.y, force.z);
+			spheres[i]->getRigidBody()->applyCentralImpulse(btImpulse);
+			
+			ofxVec3f impulse;
+			impulse.set(ofRandomf(), ofRandomf(), ofRandomf());
+			if (i == rdmIdx) {
+				impulse *= ofRandom(-250.0, 250.0);
+			}else {
+				impulse *= 0;
+			}
+			btImpulse = btVector3(impulse.x, impulse.y, impulse.z);
+			spheres[i]->getRigidBody()->applyCentralImpulse(btImpulse);
+		}		
+		
+		// update metaball point locations
+		float bx,by,bz;
+		float px,py,pz;
+		bx = by = bz = 0.5;
+		
+		float frac = (float)counter/(float)blurValue;
+		frac = 0.50 + 0.50  * cos(TWO_PI * frac);
+		frac = 0.05 + 0.95 * frac;
+		frac = pow(frac, 4.0f);
+		float A = frac;
+		float B = 1.0-A;
+		
+		float sizeBase = 0;
+		int speherecount = 0;
+		for (int j = 0; j < mBallChunks.size(); j++) {
+			metaBallChunk* mChunk = mBallChunks[j];
+			for (int i=0; i < nMetaBalls; i++){
+				// compute scaled coordinates
+				if ((counter > 1)){
+					ofxVec3f pos = spheres[speherecount]->getBodyPos()-ofxVec3f(ofGetWidth()/2, ofGetHeight()/2, -400);
+					bx = (pos.x - boundsAvg.x) * boundsScaling;
+					by = (pos.y - boundsAvg.y) * boundsScaling;
+					bz = (pos.z - boundsAvg.z) * boundsScaling;
+				}
+				speherecount++;
+				
+				// stash the previous coordinates
+				px = mChunk->ballPoints[i].x;
+				py = mChunk->ballPoints[i].y;
+				pz = mChunk->ballPoints[i].z;
+				
+				// compute blurred new coordinates
+				bx = A*px + B*bx;
+				by = A*py + B*by;
+				bz = A*pz + B*bz;
+				mChunk->ballPoints[i].set(bx,by,bz);
+				
+				// compute sizes
+				sizeBase           = 0.247; //0.135;
+				float sizeBaseSin  = 0.035 * sin(ofGetElapsedTimeMillis()/4000.0);
+				float sizeLevelSin = 0.010 * sin(ofGetElapsedTimeMillis()/1300.0);
+				mChunk->ballSizes[i] = sizeBase + sizeBaseSin + sizeLevelSin;
+			}
+			
+			mChunk->m_pMetaballs->UpdateBallsFromPointsAndSizes(nPoints, mChunk->ballPoints, mChunk->ballSizes);
 		}
-		btImpulse = btVector3(impulse.x, impulse.y, impulse.z);
-		spheres[i]->getRigidBody()->applyCentralImpulse(btImpulse);
-	}		
-	
+	}
 }
 
 void BlobManager::draw() {
@@ -136,53 +185,6 @@ void BlobManager::draw() {
 		player.draw(0, 0, ofGetWidth(), ofGetHeight());
 	}
 	glEnable(GL_LIGHTING);
-	
-    // update metaball point locations
-    float bx,by,bz;
-    float px,py,pz;
-    bx = by = bz = 0.5;
-	
-    float frac = (float)counter/(float)blurValue;
-    frac = 0.50 + 0.50  * cos(TWO_PI * frac);
-    frac = 0.05 + 0.95 * frac;
-    frac = pow(frac, 4.0f);
-    float A = frac;
-    float B = 1.0-A;
-	
-    float sizeBase = 0;
-	int speherecount = 0;
-	for (int j = 0; j < mBallChunks.size(); j++) {
-		metaBallChunk* mChunk = mBallChunks[j];
-		for (int i=0; i < nMetaBalls; i++){
-			// compute scaled coordinates
-			if ((counter > 1)){
-				ofxVec3f pos = spheres[speherecount]->getBodyPos()-ofxVec3f(ofGetWidth()/2, ofGetHeight()/2, -400);
-				bx = (pos.x - boundsAvg.x) * boundsScaling;
-				by = (pos.y - boundsAvg.y) * boundsScaling;
-				bz = (pos.z - boundsAvg.z) * boundsScaling;
-			}
-			speherecount++;
-			
-			// stash the previous coordinates
-			px = mChunk->ballPoints[i].x;
-			py = mChunk->ballPoints[i].y;
-			pz = mChunk->ballPoints[i].z;
-			
-			// compute blurred new coordinates
-			bx = A*px + B*bx;
-			by = A*py + B*by;
-			bz = A*pz + B*bz;
-			mChunk->ballPoints[i].set(bx,by,bz);
-			
-			// compute sizes
-			sizeBase           = 0.247; //0.135;
-			float sizeBaseSin  = 0.035 * sin(ofGetElapsedTimeMillis()/4000.0);
-			float sizeLevelSin = 0.010 * sin(ofGetElapsedTimeMillis()/1300.0);
-			mChunk->ballSizes[i] = sizeBase + sizeBaseSin + sizeLevelSin;
-		}
-
-		mChunk->m_pMetaballs->UpdateBallsFromPointsAndSizes(nPoints, mChunk->ballPoints, mChunk->ballSizes);
-	}
 		
 	setupForNoTexturing();
 	
@@ -199,19 +201,20 @@ void BlobManager::draw() {
 		glTranslatef(w/2,h/2,0);
 		glScalef(sz,sz,sz);
 	
-	ofPushMatrix();
-	ofTranslate(-0.1, 0, 0);
-	mBallChunks[0]->m_pMetaballs->Render();
-	ofPopMatrix();
+		ofPushMatrix();
+	//	ofTranslate(-0.1, 0, 0);
+		mBallChunks[0]->m_pMetaballs->Render();
+		ofPopMatrix();
 
-	ofPushMatrix();
-	ofTranslate(0.1, 0, 0);
-	mBallChunks[1]->m_pMetaballs->Render();
-	ofPopMatrix();
+	//	ofPushMatrix();
+	//	ofTranslate(0.1, 0, 0);
+	//	mBallChunks[1]->m_pMetaballs->Render();
+	//	ofPopMatrix();
 	
 		glPopMatrix();
 	shader.end();
 	ofDisableAlphaBlending();
+	
 	
 	// draw shadow
     bool bDrawDropShadow = true;
@@ -247,13 +250,15 @@ void BlobManager::draw() {
 		
         shadowTex.loadData(shadowPixelsLA, shadowW,shadowH, GL_LUMINANCE_ALPHA);
         glPushMatrix();
-		glTranslatef(0,0,-200);
-		glTranslatef(0.53*screenW, 0.73*screenH, 0);
-		glScalef(12,12,1);
-		glRotatef(60.0, 1,0,0);
-		glTranslatef(-shadowW/2,shadowH/2,0);
+		//glTranslatef(0.53*screenW, 0.73*screenH, -200);
+		glTranslatef(0.53*screenW+admin->SHADOWPOSX, 0.73*screenH+admin->SHADOWPOSY, 0);
+		glScalef(admin->SHADOWSCALE, admin->SHADOWSCALE, 1);
+		if (!(!admin->SHADOWROTX && !admin->SHADOWROTY && !admin->SHADOWROTZ))
+			glRotatef(admin->SHADOWROTDEG, (admin->SHADOWROTX)?1:0, (admin->SHADOWROTY)?1:0, (admin->SHADOWROTZ)?1:0);
+		glTranslatef(-shadowW/2, shadowH/2, 0);
 		shadowTex.draw(0, 0, shadowW, 0-shadowH);
         glPopMatrix();
+		
         glPopAttrib();
     }
 	glDisable(GL_DEPTH_TEST);

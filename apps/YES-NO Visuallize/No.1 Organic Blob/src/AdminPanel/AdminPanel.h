@@ -31,7 +31,17 @@ public:
 	ofEvent<FileDef> onFileDialogue; 
 	
 	int		PHYSICSTICKFPS;
+	bool	TOGGLEMOTION;
+	bool	CHANGETEXBTN;
+	bool	RESTORDEFBTN;
 	float	SHADOWINTENSITY;
+	int		SHADOWSCALE;
+	int		SHADOWPOSX;
+	int		SHADOWPOSY;
+	float	SHADOWROTDEG;
+	bool	SHADOWROTX;
+	bool	SHADOWROTY;
+	bool	SHADOWROTZ;	
 	float	LIGHTX;
 	float	LIGHTY;
 	float	LIGHTZ;

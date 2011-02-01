@@ -1,8 +1,12 @@
 <controls>
-    <SliderInt_Motion_Tick_FPS>
-        <name>Motion Tick FPS</name>
-        <value>0</value>
-    </SliderInt_Motion_Tick_FPS>
+    <SliderInt_Motion_Tick_PerSec>
+        <name>Motion Tick PerSec</name>
+        <value>64</value>
+    </SliderInt_Motion_Tick_PerSec>
+    <Toggle_Toggle_Motion>
+        <name>Toggle Motion</name>
+        <value>1</value>
+    </Toggle_Toggle_Motion>
     <Button_Change_Texture>
         <name>Change Texture</name>
         <value>0</value>
@@ -13,66 +17,94 @@
     </Button_Restore_Default>
     <SliderFloat_Shadow_Intensity>
         <name>Shadow Intensity</name>
-        <value>0.000000</value>
+        <value>0.781250</value>
     </SliderFloat_Shadow_Intensity>
+    <SliderInt_Shadow_Scale>
+        <name>Shadow Scale</name>
+        <value>12</value>
+    </SliderInt_Shadow_Scale>
+    <SliderInt_Shadow_Pos_X>
+        <name>Shadow Pos X</name>
+        <value>-210</value>
+    </SliderInt_Shadow_Pos_X>
+    <SliderInt_Shadow_Pos_Y>
+        <name>Shadow Pos Y</name>
+        <value>140</value>
+    </SliderInt_Shadow_Pos_Y>
+    <SliderFloat_Shadow_RotDegree>
+        <name>Shadow RotDegree</name>
+        <value>78.750000</value>
+    </SliderFloat_Shadow_RotDegree>
+    <Toggle_Shadow_Rot_X>
+        <name>Shadow Rot X</name>
+        <value>1</value>
+    </Toggle_Shadow_Rot_X>
+    <Toggle_Shadow_Rot_Y>
+        <name>Shadow Rot Y</name>
+        <value>0</value>
+    </Toggle_Shadow_Rot_Y>
+    <Toggle_Shadow_Rot_Z>
+        <name>Shadow Rot Z</name>
+        <value>0</value>
+    </Toggle_Shadow_Rot_Z>
     <SliderFloat_Light_Pos_X>
         <name>Light Pos X</name>
         <value>0.000000</value>
     </SliderFloat_Light_Pos_X>
     <SliderFloat_Light_Pos_Y>
         <name>Light Pos Y</name>
-        <value>0.000000</value>
+        <value>-488.000000</value>
     </SliderFloat_Light_Pos_Y>
     <SliderFloat_Light_Pos_Z>
         <name>Light Pos Z</name>
-        <value>0.000000</value>
+        <value>895.000000</value>
     </SliderFloat_Light_Pos_Z>
     <SliderFloat_Blob_Tex&Col_Mix_Ratio>
         <name>Blob Tex&amp;Col Mix Ratio</name>
-        <value>0.000000</value>
+        <value>0.810547</value>
     </SliderFloat_Blob_Tex&Col_Mix_Ratio>
     <SliderFloat_Blob_Transparency>
         <name>Blob Transparency</name>
-        <value>0.000000</value>
+        <value>0.800000</value>
     </SliderFloat_Blob_Transparency>
     <ColorPicker_Blob_Base_Color>
         <name>Blob Base Color</name>
-        <values_0>0.000000</values_0>
-        <values_1>0.000000</values_1>
-        <values_2>0.000000</values_2>
-        <values_3>0.000000</values_3>
+        <values_0>0.500000</values_0>
+        <values_1>0.500000</values_1>
+        <values_2>0.500000</values_2>
+        <values_3>1.000000</values_3>
     </ColorPicker_Blob_Base_Color>
     <ColorPicker_Blob_Material_Specular>
         <name>Blob Material Specular</name>
-        <values_0>0.000000</values_0>
-        <values_1>0.000000</values_1>
-        <values_2>0.000000</values_2>
-        <values_3>0.000000</values_3>
+        <values_0>1.000000</values_0>
+        <values_1>1.000000</values_1>
+        <values_2>1.000000</values_2>
+        <values_3>1.000000</values_3>
     </ColorPicker_Blob_Material_Specular>
     <SliderFloat_Blob_Material_Shineness>
         <name>Blob Material Shineness</name>
-        <value>0.000000</value>
+        <value>2.500000</value>
     </SliderFloat_Blob_Material_Shineness>
     <ColorPicker_Light_Ambient>
         <name>Light Ambient</name>
-        <values_0>0.000000</values_0>
-        <values_1>0.000000</values_1>
-        <values_2>0.000000</values_2>
-        <values_3>0.000000</values_3>
+        <values_0>0.064500</values_0>
+        <values_1>0.064500</values_1>
+        <values_2>0.064500</values_2>
+        <values_3>1.000000</values_3>
     </ColorPicker_Light_Ambient>
     <ColorPicker_Light_Diffuse>
         <name>Light Diffuse</name>
-        <values_0>0.000000</values_0>
-        <values_1>0.000000</values_1>
-        <values_2>0.000000</values_2>
-        <values_3>0.000000</values_3>
+        <values_0>0.566000</values_0>
+        <values_1>0.566000</values_1>
+        <values_2>0.566000</values_2>
+        <values_3>1.000000</values_3>
     </ColorPicker_Light_Diffuse>
     <ColorPicker_Light_Specular>
         <name>Light Specular</name>
-        <values_0>0.000000</values_0>
-        <values_1>0.000000</values_1>
-        <values_2>0.000000</values_2>
-        <values_3>0.000000</values_3>
+        <values_0>0.940000</values_0>
+        <values_1>0.940000</values_1>
+        <values_2>0.940000</values_2>
+        <values_3>1.000000</values_3>
     </ColorPicker_Light_Specular>
     <SliderInt_test_x>
         <name>test x</name>
