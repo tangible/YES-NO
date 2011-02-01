@@ -33,7 +33,6 @@ void App::draw(){
 
 //--------------------------------------------------------------
 void App::onFileChange(FileDef& fd) {
-	cout << fd.path << endl;
 	blobMgr.changeImg(fd.path);
 }
 

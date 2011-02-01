@@ -22,7 +22,7 @@ void BlobManager::setup(int _fps, AdminPanel* _admin) {
     boundsAvg.x = boundsAvg.y = boundsAvg.z = 0;
     boundsScaling = 1.0 / 1020.0f;	
 	for (int j = 0; j < 1; j++) {
-		metaBallChunk* mchunk = new metaBallChunk();
+		MetaBallChunk* mchunk = new MetaBallChunk();
 		mchunk->ballPoints     = new ofPoint[nPoints];
 		mchunk->ballPointsPrev = new ofPoint[nPoints];
 		mchunk->ballPointsPrev2= new ofPoint[nPoints];
@@ -141,7 +141,7 @@ void BlobManager::update() {
 		float sizeBase = 0;
 		int speherecount = 0;
 		for (int j = 0; j < mBallChunks.size(); j++) {
-			metaBallChunk* mChunk = mBallChunks[j];
+			MetaBallChunk* mChunk = mBallChunks[j];
 			for (int i=0; i < nMetaBalls; i++){
 				// compute scaled coordinates
 				if ((counter > 1)){

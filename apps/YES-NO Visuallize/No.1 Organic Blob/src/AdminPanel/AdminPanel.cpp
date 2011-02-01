@@ -40,7 +40,7 @@ void AdminPanel::setup(){
 	gui.addColorPicker("Light Diffuse", LIGHTDIFFUSE);
 	gui.addColorPicker("Light Specular", LIGHTSPECULAR);	
 	
-	gui.addTitle("test param").setNewColumn(true);
+	gui.addTitle("test param");
 	gui.addSlider("test x", TESTX, -1000, 1000);
 	gui.addSlider("test x", TESTY, -1000, 1000);	
 	

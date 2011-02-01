@@ -47,6 +47,7 @@
 		313E6EC512DD108500883C18 /* ofxCvImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 313E6EBA12DD108500883C18 /* ofxCvImage.cpp */; };
 		313E6EC612DD108500883C18 /* ofxCvShortImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 313E6EBD12DD108500883C18 /* ofxCvShortImage.cpp */; };
 		3164318412E6B4A000B4F23D /* ofxShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3164318212E6B4A000B4F23D /* ofxShader.cpp */; };
+		31ACDD4412F8CEB600F95FC7 /* MetaBallChunk.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31ACDD4312F8CEB600F95FC7 /* MetaBallChunk.cpp */; };
 		31D34F7812F661A700D9D87A /* MyRigidBody.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31D34DE112F661A600D9D87A /* MyRigidBody.cpp */; };
 		31D34F7912F661A700D9D87A /* MySoftBody.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31D34DE312F661A600D9D87A /* MySoftBody.cpp */; };
 		31D34F7A12F661A700D9D87A /* Ragdoll.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31D34DE512F661A600D9D87A /* Ragdoll.cpp */; };
@@ -371,6 +372,8 @@
 		313E6EBF12DD108500883C18 /* ofxOpenCv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxOpenCv.h; sourceTree = "<group>"; };
 		3164318212E6B4A000B4F23D /* ofxShader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxShader.cpp; sourceTree = "<group>"; };
 		3164318312E6B4A000B4F23D /* ofxShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxShader.h; sourceTree = "<group>"; };
+		31ACDD4212F8CEB600F95FC7 /* MetaBallChunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetaBallChunk.h; sourceTree = "<group>"; };
+		31ACDD4312F8CEB600F95FC7 /* MetaBallChunk.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MetaBallChunk.cpp; sourceTree = "<group>"; };
 		31D34DE012F661A600D9D87A /* MyKinematicMotionState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyKinematicMotionState.h; sourceTree = "<group>"; };
 		31D34DE112F661A600D9D87A /* MyRigidBody.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MyRigidBody.cpp; sourceTree = "<group>"; };
 		31D34DE212F661A600D9D87A /* MyRigidBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyRigidBody.h; sourceTree = "<group>"; };
@@ -859,6 +862,8 @@
 			children = (
 				311E594712F649940077A832 /* BlobManager.cpp */,
 				311E594612F649940077A832 /* BlobManager.h */,
+				31ACDD4312F8CEB600F95FC7 /* MetaBallChunk.cpp */,
+				31ACDD4212F8CEB600F95FC7 /* MetaBallChunk.h */,
 				311E590A12F646240077A832 /* MarchingCubes.cpp */,
 				311E590B12F646240077A832 /* MarchingCubes.h */,
 				311E590C12F646240077A832 /* Metaballs.cpp */,
@@ -2441,6 +2446,7 @@
 				31D3500B12F661A700D9D87A /* GlutStuff.cpp in Sources */,
 				31D3505912F66BA400D9D87A /* glsl.frag in Sources */,
 				31D3505A12F66BA400D9D87A /* glsl.vert in Sources */,
+				31ACDD4412F8CEB600F95FC7 /* MetaBallChunk.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,19 +14,10 @@
 #include "ofxShader.h"
 #include "ofxBullet.h"
 #include "AdminPanel.h"
+#include "MetaBallChunk.h"
 #include "Metaballs.h"
 #include "Marchingcubes.h"
 
-struct metaBallChunk {
-	
-	CMetaballs*				m_pMetaballs;
-	ofPoint*				ballPoints;
-	ofPoint*				ballPointsPrev;
-	ofPoint*				ballPointsPrev2;	
-	float*					ballSizes;
-	int						chunkID; // for bullet motion
-	
-};
 
 class BlobManager {
 
@@ -53,12 +44,7 @@ public:
 	ofxBullet*				bullet;
 	vector<MyRigidBody*>	spheres;		
 	
-//	CMetaballs*				m_pMetaballs;
-//	ofPoint*				ballPoints;
-//	ofPoint*				ballPointsPrev;
-//	ofPoint*				ballPointsPrev2;
-//	float*					ballSizes;
-	vector<metaBallChunk*>  mBallChunks;
+	vector<MetaBallChunk*>  mBallChunks;
 	int						nPoints;
 	int						nMetaBalls;
 	ofPoint					boundsAvg;
