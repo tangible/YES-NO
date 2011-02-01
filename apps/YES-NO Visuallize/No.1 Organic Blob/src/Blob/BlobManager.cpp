@@ -21,18 +21,22 @@ void BlobManager::setup(int _fps, AdminPanel* _admin) {
 	nPoints  = nMetaBalls;	
     boundsAvg.x = boundsAvg.y = boundsAvg.z = 0;
     boundsScaling = 1.0 / 1020.0f;	
-	ballPoints     = new ofPoint[nPoints];
-	ballPointsPrev = new ofPoint[nPoints];
-	ballPointsPrev2= new ofPoint[nPoints];
-	ballSizes     = new float[nPoints];
-	for (int i=0; i<nPoints; i++){
-	    ballPoints[i].set(0.0,0.0,0.0);
-	    ballPointsPrev[i].set(0.0,0.0,0.0);
-	    ballPointsPrev2[i].set(0.0,0.0,0.0);
-	    ballSizes[i] = 1.0;
+	for (int i = 0; i < 2; i++) {
+		metaBallChunk* mchunk = new metaBallChunk();
+		mchunk->ballPoints     = new ofPoint[nPoints];
+		mchunk->ballPointsPrev = new ofPoint[nPoints];
+		mchunk->ballPointsPrev2= new ofPoint[nPoints];
+		mchunk->ballSizes     = new float[nPoints];
+		for (int i=0; i<nPoints; i++){
+			mchunk->ballPoints[i].set(0.0,0.0,0.0);
+			mchunk->ballPointsPrev[i].set(0.0,0.0,0.0);
+			mchunk->ballPointsPrev2[i].set(0.0,0.0,0.0);
+			mchunk->ballSizes[i] = 1.0;
+		}
+		mchunk->m_pMetaballs = new CMetaballs(nPoints);
+		mchunk->m_pMetaballs->SetGridSize(100);
+		mBallChunks.push_back(mchunk);
 	}
-	m_pMetaballs = new CMetaballs (nPoints);
-	m_pMetaballs->SetGridSize(100);
 	CMarchingCubes::BuildTables();
 	
 	// blur the motion stiffness
@@ -44,7 +48,7 @@ void BlobManager::setup(int _fps, AdminPanel* _admin) {
 	// setup physical motion
 	bullet = new ofxBullet();
 	bullet->initPhysics(ofxVec3f(0, 0, 0), false);
-	for (int i = 0; i < nMetaBalls; i++) {		
+	for (int i = 0; i < nMetaBalls*mBallChunks.size(); i++) {		
 		ofxVec3f rdmPos = ofxVec3f(ofGetWidth()/2+ofRandom(-100, 100), ofGetHeight()/2+ofRandom(-100, 100), ofRandom(-100, 100));
 		MyRigidBody* sph = bullet->createSphere(rdmPos,
 												ofRandom(50, 50), 
@@ -146,34 +150,40 @@ void BlobManager::draw() {
     float B = 1.0-A;
 	
     float sizeBase = 0;
-    for (int i=0; i<nMetaBalls; i++){
-        // compute scaled coordinates
-        if ((counter > 1)){
-			ofxVec3f pos = spheres[i]->getBodyPos()-ofxVec3f(ofGetWidth()/2, ofGetHeight()/2, -400);
-			bx = (pos.x - boundsAvg.x) * boundsScaling;
-			by = (pos.y - boundsAvg.y) * boundsScaling;
-			bz = (pos.z - boundsAvg.z) * boundsScaling;
-        }
-        // stash the previous coordinates
-        px = ballPoints[i].x;
-        py = ballPoints[i].y;
-        pz = ballPoints[i].z;
-		
-        // compute blurred new coordinates
-        bx = A*px + B*bx;
-        by = A*py + B*by;
-        bz = A*pz + B*bz;
-        ballPoints[i].set(bx,by,bz);
-		
-        // compute sizes
-        sizeBase           = 0.247; //0.135;
-        float sizeBaseSin  = 0.035 * sin(ofGetElapsedTimeMillis()/4000.0);
-        float sizeLevelSin = 0.010 * sin(ofGetElapsedTimeMillis()/1300.0);
-        ballSizes[i] = sizeBase + sizeBaseSin + sizeLevelSin;
-    }
+	int speherecount = 0;
+	for (int j = 0; j < mBallChunks.size(); j++) {
+		metaBallChunk* mChunk = mBallChunks[j];
+		for (int i=0; i < nMetaBalls; i++){
+			// compute scaled coordinates
+			if ((counter > 1)){
+				ofxVec3f pos = spheres[speherecount]->getBodyPos()-ofxVec3f(ofGetWidth()/2, ofGetHeight()/2, -400);
+				bx = (pos.x - boundsAvg.x) * boundsScaling;
+				by = (pos.y - boundsAvg.y) * boundsScaling;
+				bz = (pos.z - boundsAvg.z) * boundsScaling;
+			}
+			speherecount++;
+			
+			// stash the previous coordinates
+			px = mChunk->ballPoints[i].x;
+			py = mChunk->ballPoints[i].y;
+			pz = mChunk->ballPoints[i].z;
+			
+			// compute blurred new coordinates
+			bx = A*px + B*bx;
+			by = A*py + B*by;
+			bz = A*pz + B*bz;
+			mChunk->ballPoints[i].set(bx,by,bz);
+			
+			// compute sizes
+			sizeBase           = 0.247; //0.135;
+			float sizeBaseSin  = 0.035 * sin(ofGetElapsedTimeMillis()/4000.0);
+			float sizeLevelSin = 0.010 * sin(ofGetElapsedTimeMillis()/1300.0);
+			mChunk->ballSizes[i] = sizeBase + sizeBaseSin + sizeLevelSin;
+		}
 
-    m_pMetaballs->UpdateBallsFromPointsAndSizes(nPoints, ballPoints, ballSizes);
-	
+		mChunk->m_pMetaballs->UpdateBallsFromPointsAndSizes(nPoints, mChunk->ballPoints, mChunk->ballSizes);
+	}
+		
 	setupForNoTexturing();
 	
     // Actually draw them
@@ -188,7 +198,17 @@ void BlobManager::draw() {
 		float sz = 0.75*min(w,h);
 		glTranslatef(w/2,h/2,0);
 		glScalef(sz,sz,sz);
-		m_pMetaballs->Render();
+	
+	ofPushMatrix();
+	ofTranslate(-0.1, 0, 0);
+	mBallChunks[0]->m_pMetaballs->Render();
+	ofPopMatrix();
+
+	ofPushMatrix();
+	ofTranslate(0.1, 0, 0);
+	mBallChunks[1]->m_pMetaballs->Render();
+	ofPopMatrix();
+	
 		glPopMatrix();
 	shader.end();
 	ofDisableAlphaBlending();

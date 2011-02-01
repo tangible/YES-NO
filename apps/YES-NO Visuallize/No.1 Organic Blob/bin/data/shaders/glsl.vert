@@ -28,4 +28,5 @@ void main() {
 	
 	light_position = normalize(gl_LightSource[0].position.xyz);
 	light_half_vector = normalize(gl_LightSource[0].halfVector.xyz);
+	
 }

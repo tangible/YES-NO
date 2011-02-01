@@ -17,6 +17,17 @@
 #include "Metaballs.h"
 #include "Marchingcubes.h"
 
+struct metaBallChunk {
+	
+	CMetaballs*				m_pMetaballs;
+	ofPoint*				ballPoints;
+	ofPoint*				ballPointsPrev;
+	ofPoint*				ballPointsPrev2;	
+	float*					ballSizes;
+	int						chunkID; // for bullet motion
+	
+};
+
 class BlobManager {
 
 public:
@@ -42,11 +53,12 @@ public:
 	ofxBullet*				bullet;
 	vector<MyRigidBody*>	spheres;		
 	
-	CMetaballs*				m_pMetaballs;
-	ofPoint*				ballPoints;
-	ofPoint*				ballPointsPrev;
-	ofPoint*				ballPointsPrev2;
-	float*					ballSizes;
+//	CMetaballs*				m_pMetaballs;
+//	ofPoint*				ballPoints;
+//	ofPoint*				ballPointsPrev;
+//	ofPoint*				ballPointsPrev2;
+//	float*					ballSizes;
+	vector<metaBallChunk*>  mBallChunks;
 	int						nPoints;
 	int						nMetaBalls;
 	ofPoint					boundsAvg;
