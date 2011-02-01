@@ -47,7 +47,6 @@ public:
 	ofPoint*				ballPointsPrev;
 	ofPoint*				ballPointsPrev2;
 	float*					ballSizes;
-	int*					ballLevels;
 	int						nPoints;
 	int						nMetaBalls;
 	ofPoint					boundsAvg;
@@ -58,16 +57,16 @@ public:
 	int						counter2;
 	float					maxDeceleration;
 	
-	float*					screenDepth;   // the fetched depth buffer
-	int						nScreenPixels;  // number of pixels in the display device
-	int						screenW;        // width of the display device
-	int						screenH;        // height of the display device
-	ofTexture				shadowTex;      // texture object for displaying the shadow
+	float*					screenDepth;   
+	int						nScreenPixels;  
+	int						screenW;        
+	int						screenH;        
+	ofTexture				shadowTex;      
 	ofxCvGrayscaleImage		shadowCvImage;
-	int						shadowDivX;     // ratio in X of screenW:shadowW
+	int						shadowDivX;     
 	int						shadowDivY;
 	unsigned char*			shadowPixels;
-	unsigned char*			shadowPixelsLA; // Luminance + Alpha
+	unsigned char*			shadowPixelsLA; 
 	int						nShadowPixels;
 	int						shadowW;
 	int						shadowH;

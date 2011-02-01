@@ -17,7 +17,7 @@ void BlobManager::setup(int _fps, AdminPanel* _admin) {
 	ofDisableArbTex();	
 	
 	// init metaball params
-    nMetaBalls = 20;
+    nMetaBalls = 5;
 	nPoints  = nMetaBalls;	
     boundsAvg.x = boundsAvg.y = boundsAvg.z = 0;
     boundsScaling = 1.0 / 1020.0f;	
@@ -25,13 +25,11 @@ void BlobManager::setup(int _fps, AdminPanel* _admin) {
 	ballPointsPrev = new ofPoint[nPoints];
 	ballPointsPrev2= new ofPoint[nPoints];
 	ballSizes     = new float[nPoints];
-	ballLevels     = new int[nPoints];
 	for (int i=0; i<nPoints; i++){
 	    ballPoints[i].set(0.0,0.0,0.0);
 	    ballPointsPrev[i].set(0.0,0.0,0.0);
 	    ballPointsPrev2[i].set(0.0,0.0,0.0);
 	    ballSizes[i] = 1.0;
-	    ballLevels[i] = -30;
 	}
 	m_pMetaballs = new CMetaballs (nPoints);
 	m_pMetaballs->SetGridSize(100);
@@ -168,9 +166,9 @@ void BlobManager::draw() {
         ballPoints[i].set(bx,by,bz);
 		
         // compute sizes
-        sizeBase           = 0.147; //0.135;
+        sizeBase           = 0.247; //0.135;
         float sizeBaseSin  = 0.035 * sin(ofGetElapsedTimeMillis()/4000.0);
-        float sizeLevelSin = 0.010 * sin(ofGetElapsedTimeMillis()/1300.0 - ballLevels[i]);
+        float sizeLevelSin = 0.010 * sin(ofGetElapsedTimeMillis()/1300.0);
         ballSizes[i] = sizeBase + sizeBaseSin + sizeLevelSin;
     }
 
@@ -205,7 +203,7 @@ void BlobManager::draw() {
         glDisable(GL_POLYGON_SMOOTH);
         glDisable(GL_CULL_FACE);
         glDisable(GL_COLOR_MATERIAL);
-        glReadPixels(0,0,screenW,screenH, GL_DEPTH_COMPONENT, GL_FLOAT, screenDepth);
+        glReadPixels(0,0,screenW,screenH, GL_DEPTH_COMPONENT, GL_FLOAT, screenDepth); // fuck slow suck
         huntForBlendFunc(1000,1,5);
 		
         int shadowIndex = 0;
