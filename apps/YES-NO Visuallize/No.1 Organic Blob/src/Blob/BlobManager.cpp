@@ -13,13 +13,52 @@ void BlobManager::setup(int _fps, AdminPanel* _admin) {
 	
 	fps = _fps;
 	admin = _admin;
-
+	shader.setup("shaders/glsl");
+	ofDisableArbTex();	
+	
+	// init metaball params
+    nMetaBalls = 20;
+	nPoints  = nMetaBalls;	
+    boundsAvg.x = boundsAvg.y = boundsAvg.z = 0;
+    boundsScaling = 1.0 / 1020.0f;	
+	ballPoints     = new ofPoint[nPoints];
+	ballPointsPrev = new ofPoint[nPoints];
+	ballPointsPrev2= new ofPoint[nPoints];
+	ballSizes     = new float[nPoints];
+	ballLevels     = new int[nPoints];
+	for (int i=0; i<nPoints; i++){
+	    ballPoints[i].set(0.0,0.0,0.0);
+	    ballPointsPrev[i].set(0.0,0.0,0.0);
+	    ballPointsPrev2[i].set(0.0,0.0,0.0);
+	    ballSizes[i] = 1.0;
+	    ballLevels[i] = -30;
+	}
+	m_pMetaballs = new CMetaballs (nPoints);
+	m_pMetaballs->SetGridSize(100);
+	CMarchingCubes::BuildTables();
+	
+	// blur the motion stiffness
 	counter = 0;
 	counter2 = 0;
-	motionBlur = 0;
+    blurValue  = 1000;	
+    maxDeceleration = 0;
 	
-	screenW = ofGetScreenWidth();
-	screenH = ofGetScreenHeight();
+	// setup physical motion
+	bullet = new ofxBullet();
+	bullet->initPhysics(ofxVec3f(0, 0, 0), false);
+	for (int i = 0; i < nMetaBalls; i++) {		
+		ofxVec3f rdmPos = ofxVec3f(ofGetWidth()/2+ofRandom(-100, 100), ofGetHeight()/2+ofRandom(-100, 100), ofRandom(-100, 100));
+		MyRigidBody* sph = bullet->createSphere(rdmPos,
+												ofRandom(50, 50), 
+												1, 
+												ofxVec4f(ofRandom(0.5, 0.5), ofRandom(0.5, 0.5), ofRandom(0.5, 0.5), 0.7), 
+												DYNAMIC_BODY);		
+		spheres.push_back(sph);
+	}		
+	
+	// settings for shadow
+	screenW = ofGetWidth();
+	screenH = ofGetHeight();
 	nScreenPixels = screenW * screenH;
 	shadowDivX = 8;
 	shadowDivY = 8;
@@ -38,73 +77,7 @@ void BlobManager::setup(int _fps, AdminPanel* _admin) {
         shadowPixelsLA[i] = 255;
         shadowPixelsLA[i+nShadowPixels] = 255;
 	}
-	shadowCvImage.allocate(shadowW, shadowH);
-	
-    materialAmbient  = new float[4];
-    materialDiffuse  = new float[4];
-    materialSpecular = new float[4];
-	
-    blurValue  = 1000;
-    nMetaBalls = 20;
-	nPoints  = nMetaBalls;
-	
-	ballPoints     = new ofPoint[nPoints];
-	ballPointsPrev = new ofPoint[nPoints];
-	ballPointsPrev2= new ofPoint[nPoints];
-	ballMasses     = new float[nPoints];
-	ballLevels     = new int[nPoints];
-	for (int i=0; i<nPoints; i++){
-	    ballPoints[i].set(0.0,0.0,0.0);
-	    ballPointsPrev[i].set(0.0,0.0,0.0);
-	    ballPointsPrev2[i].set(0.0,0.0,0.0);
-	    ballMasses[i] = 1.0;
-	    ballLevels[i] = 0;
-	}
-	// levels = 0,1,1,2,3,4,1,2,3,4,1,2,3,4,1,2,3,4,1,2,3
-	
-	//-----------------------
-	m_pMetaballs = new CMetaballs (nPoints);
-	m_pMetaballs->SetGridSize(120);
-	CMarchingCubes::BuildTables();
-	
-    maxDeceleration = 0;
-    decelerationThreshPct = 0.50;
-    decelerationEventCount = 0;
-	
-	boundsMin.x = boundsMin.y = boundsMin.z =  9999999;
-    boundsMax.x = boundsMax.y = boundsMax.z = -9999999;
-    boundsAvg.x = boundsAvg.y = boundsAvg.z = 0;
-	
-    boundsScaling = 1.0 / 1020.0f;
-	
-	shader.setup("shaders/glsl");
-	ofDisableArbTex();
-	img.loadImage("imgs/a.jpeg");
-	isVidTex = false;
-	img.resize(ofGetWidth(), ofGetHeight());
-	glActiveTexture(GL_TEXTURE1);
-	texSlot = 1;
-	glBindTexture(GL_TEXTURE_2D, img.getTextureReference().getTextureData().textureID);	
-	glActiveTexture(GL_TEXTURE0);	
-	
-	bg.loadImage("imgs/a.jpeg");
-//	float ratioW = ofGetWidth()/bg.getWidth();
-//	float ratioH = ofGetHeight()/bg.getHeight();
-//	float ratio = 0.6;
-	bg.resize(ofGetWidth(), ofGetHeight());
-	
-	bullet = new ofxBullet();
-	bullet->initPhysics(ofxVec3f(0, 0, 0), false);
-	
-	for (int i = 0; i < nMetaBalls; i++) {		
-		ofxVec3f rdmPos = ofxVec3f(ofGetWidth()/2+ofRandom(-100, 100), ofGetHeight()/2+ofRandom(-100, 100), ofRandom(-100, 100));
-		MyRigidBody* sph = bullet->createSphere(rdmPos,
-												ofRandom(50, 50), 
-												1, 
-												ofxVec4f(ofRandom(0.5, 0.5), ofRandom(0.5, 0.5), ofRandom(0.5, 0.5), 0.7), 
-												DYNAMIC_BODY);		
-		spheres.push_back(sph);
-	}	
+	shadowCvImage.allocate(shadowW, shadowH);	
 	
 }
 
@@ -119,7 +92,7 @@ void BlobManager::update() {
 	counter2 = (counter2+1)%blurValue;
 	counter  = counter2 + 1;
 	
-	bullet->stepPhysicsSimulation(fps);	
+	bullet->stepPhysicsSimulation(admin->PHYSICSTICKFPS);	
 	float maxVal = 0.01;
 	ofxVec3f force;
 	ofxVec3f crossVec;
@@ -128,7 +101,8 @@ void BlobManager::update() {
 	ofxVec3f tangentVec;	
 	int rdmIdx = (int)ofRandom(0, 21);
 	for (int i = 0; i < spheres.size(); i++) {
-		force.set(-spheres[i]->getBodyPos()+ofxVec3f(ofGetWidth()/2, ofGetHeight()/2, 0));
+		force.set(-spheres[i]->getBodyPos() + 
+				  ofxVec3f(ofGetWidth()/2 + admin->TESTX, ofGetHeight()/2 + admin->TESTY, 0));
 		force *= maxVal * 15;
 		tangentVec = force.crossed(crossVec);
 		tangentVec.normalize();
@@ -138,10 +112,7 @@ void BlobManager::update() {
 		spheres[i]->getRigidBody()->applyCentralImpulse(btImpulse);
 		
 		ofxVec3f impulse;
-		//impulse.set(ofRandomuf(), ofRandomuf(), ofRandomuf());
 		impulse.set(ofRandomf(), ofRandomf(), ofRandomf());
-		//impulse.rotate(ofRandomf()*360, ofRandomf()*360, ofRandomf()*360);
-		//impulse *= ofRandom(-4.0, 4.0);
 		if (i == rdmIdx) {
 			impulse *= ofRandom(-250.0, 250.0);
 		}else {
@@ -164,7 +135,6 @@ void BlobManager::draw() {
 	}
 	glEnable(GL_LIGHTING);
 	
-    //---------------------
     // update metaball point locations
     float bx,by,bz;
     float px,py,pz;
@@ -176,9 +146,8 @@ void BlobManager::draw() {
     frac = pow(frac, 4.0f);
     float A = frac;
     float B = 1.0-A;
-    motionBlur = A;
 	
-    float massBase = 0;
+    float sizeBase = 0;
     for (int i=0; i<nMetaBalls; i++){
         // compute scaled coordinates
         if ((counter > 1)){
@@ -198,17 +167,16 @@ void BlobManager::draw() {
         bz = A*pz + B*bz;
         ballPoints[i].set(bx,by,bz);
 		
-        // compute masses
-        massBase           = 0.147; //0.135;
-        float massBaseSin  = 0.035 * sin(ofGetElapsedTimeMillis()/4000.0);
-        float massLevelSin = 0.010 * sin(ofGetElapsedTimeMillis()/1300.0 - ballLevels[i]);
-        ballMasses[i] = massBase + massBaseSin + massLevelSin;
+        // compute sizes
+        sizeBase           = 0.147; //0.135;
+        float sizeBaseSin  = 0.035 * sin(ofGetElapsedTimeMillis()/4000.0);
+        float sizeLevelSin = 0.010 * sin(ofGetElapsedTimeMillis()/1300.0 - ballLevels[i]);
+        ballSizes[i] = sizeBase + sizeBaseSin + sizeLevelSin;
     }
 
-    m_pMetaballs->UpdateBallsFromPointsAndMasses (nPoints, ballPoints, ballMasses);
+    m_pMetaballs->UpdateBallsFromPointsAndSizes(nPoints, ballPoints, ballSizes);
 	
 	setupForNoTexturing();
-	//	setupForTexturing();
 	
     // Actually draw them
 	ofEnableAlphaBlending();
@@ -243,6 +211,7 @@ void BlobManager::draw() {
         int shadowIndex = 0;
         int screenIndex = 0;
         int row = 0;
+		
         for (int y=0; y<shadowH; y++){
             row = y*shadowDivY*screenW;
             for (int x=0; x<shadowW; x++){
@@ -257,6 +226,7 @@ void BlobManager::draw() {
             shadowPixelsLA[i*2  ] = blurred[i];
             shadowPixelsLA[i*2+1] = blurred[i];
         }
+		
         shadowTex.loadData(shadowPixelsLA, shadowW,shadowH, GL_LUMINANCE_ALPHA);
         glPushMatrix();
 		glTranslatef(0,0,-200);
@@ -295,8 +265,6 @@ void BlobManager::changeImg(string path) {
 		player.play();		
 		isVidTex = true;
 		
-//		img.setFromPixels(player.getPixels(), player.getWidth(), player.getHeight(), GL_RGB);
-//		img.resize(ofGetWidth(), ofGetHeight());
 		glActiveTexture(GL_TEXTURE1);
 		texSlot = 1;
 		glBindTexture(GL_TEXTURE_2D, player.getTextureReference().getTextureData().textureID);	
@@ -306,8 +274,6 @@ void BlobManager::changeImg(string path) {
 
 
 void BlobManager::huntForBlendFunc(int period, int defaultSid, int defaultDid){
-	// sets all possible combinations of blend functions,
-	// changing modes every [period] milliseconds.
 	
 	int sfact[] = {
 		GL_ZERO,
@@ -360,17 +326,6 @@ void BlobManager::huntForBlendFunc(int period, int defaultSid, int defaultDid){
 	}
 }
 
-
-
-//--------------------------------------------------------------
-void BlobManager::setupForTexturing(){
-    glEnable(GL_POLYGON_SMOOTH);
-    glEnable(GL_DEPTH_TEST);
-    glEnable(GL_NORMALIZE);
-    glShadeModel(GL_SMOOTH);
-    glColor3f(0.9, 0.9, 0.9);
-}
-
 void BlobManager::setupForNoTexturing(){
 	
     glEnable(GL_POLYGON_SMOOTH);
@@ -395,18 +350,9 @@ void BlobManager::setupForNoTexturing(){
     glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, admin->BLOBMATERIALAMBIENT);
     glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, admin->BLOBMATERIALDIFFUSE);
     glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, admin->BLOBMATERIALSPECULAR);
-    glMaterialfv(GL_FRONT_AND_BACK, GL_SHININESS, shininess);	
-	
-//    GLfloat lightPosition[] = { 0.0f, 0.0f, -100.0, 0.0f };
-//    GLfloat lightDiffuse[]  = { 1.00, 0.99, 0.98, 1.0};
-//    GLfloat lightSpecular[] = { 0.10, 0.10, 0.10, 1.0};
-//    GLfloat lightAmbient[]  = { 0.45, 0.43, 0.44, 1.0};
-//    glLightfv(GL_LIGHT0,GL_POSITION, lightPosition);
-//    glLightfv(GL_LIGHT0,GL_DIFFUSE,  lightDiffuse);
-//    glLightfv(GL_LIGHT0,GL_SPECULAR, lightSpecular);
-//    glLightfv(GL_LIGHT0,GL_AMBIENT,  lightAmbient);	
+    glMaterialfv(GL_FRONT_AND_BACK, GL_SHININESS, shininess);
  
-	GLfloat lightPosition[] = {0.0f, 0.0f, -100.0, 0.0f};
+	GLfloat lightPosition[] = {admin->LIGHTX, admin->LIGHTY, admin->LIGHTZ, 0.0f};
 	glLightfv(GL_LIGHT0, GL_POSITION, lightPosition);
     glLightfv(GL_LIGHT0, GL_DIFFUSE, admin->LIGHTDIFFUSE);
     glLightfv(GL_LIGHT0, GL_SPECULAR, admin->LIGHTSPECULAR);

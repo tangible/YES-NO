@@ -103,7 +103,7 @@ void CMetaballs::UpdateBallsFromPoints (int nPoints, ofPoint *points){
 
 
 //=============================================================================
-void CMetaballs::UpdateBallsFromPointsAndMasses (int nPoints, ofPoint *points, float *masses){
+void CMetaballs::UpdateBallsFromPointsAndSizes (int nPoints, ofPoint *points, float *masses){
     if (nPoints <= m_nNumBalls){
         float lo = -1 + m_fVoxelSize*1.0;
         float hi =  1 - m_fVoxelSize*1.0;

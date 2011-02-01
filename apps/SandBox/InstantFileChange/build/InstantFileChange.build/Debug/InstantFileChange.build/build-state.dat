@@ -231,15 +231,15 @@ i"ofxSimpleGuiTitle.h"
 i"ofxSimpleGuiColorPicker.h"
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/addons/ofxSimpleGuiToo/src/ofxSimpleGuiPage.h
-c000000004B96CFA70000000000000E84
-t1268174759
-s3716
+c000000004D46522C0000000000000ED7
+t1296454188
+s3799
 i"ofxSimpleGuiIncludes.h"
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/addons/ofxSimpleGuiToo/src/ofxSimpleGuiToo.h
-c000000004B96CFA70000000000001379
-t1268174759
-s4985
+c000000004D4651D400000000000013CB
+t1296454100
+s5067
 i"ofMain.h"
 i"ofxXmlSettings.h"
 i"ofxSimpleGuiIncludes.h"
@@ -444,21 +444,21 @@ i"ofxSimpleGuiConfig.h"
 i"ofxXmlSettings.h"
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/InstantFileChange/../../../addons/ofxSimpleGuiToo/src/ofxSimpleGuiPage.cpp
-c000000004B96CFA70000000000001EE6
-t1268174759
-s7910
+c000000004D4651F10000000000001FAC
+t1296454129
+s8108
 i"ofxSimpleGuiPage.h"
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/InstantFileChange/../../../addons/ofxSimpleGuiToo/src/ofxSimpleGuiToo.cpp
-c000000004B96CFA7000000000000355C
-t1268174759
-s13660
+c000000004D46520C0000000000003615
+t1296454156
+s13845
 i"ofxSimpleGuiToo.h"
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/InstantFileChange/../../../addons/ofxSimpleGuiToo/src/ofxSimpleGuiToo.h
-c000000004B96CFA70000000000001379
-t1268174759
-s4985
+c000000004D4651D400000000000013CB
+t1296454100
+s5067
 i"ofMain.h"
 i"ofxXmlSettings.h"
 i"ofxSimpleGuiIncludes.h"
@@ -1070,8 +1070,8 @@ i"ofGstUtils.h"
 i"ofQtUtils.h"
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/lib/osx/openFrameworksDebug.a
-c000000004D45EC35000000000061DFC0
-t1296428085
+c000000004D46181F000000000061DFC0
+t1296439327
 s6414272
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/AbstractDelegate.h
@@ -1510,6 +1510,10 @@ N/var/folders/3I/3IEdwrCLFz4TdGQPsl-dpE+++TI/-Caches-/com.apple.Xcode.501/Shared
 t1296420975
 s53737264
 
+N/var/folders/3I/3IEdwrCLFz4TdGQPsl-dpE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Carbon-gybhozvvqndghralwiragmanutdy/Carbon.h.gch
+t2
+s0
+
 NopenFrameworks-Info.plist
 c000000004D45D05400000000000002A7
 t1296420948
@@ -1916,6 +1920,9 @@ xopenFrameworks-Info.plist
 lSLF07#2@33"Process openFrameworks-Info.plist318113830#318113830#0(0"0(0#0#110"/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/InstantFileChange/openFrameworks-Info.plist8619056512#471"    cd /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/InstantFileChange    builtin-infoPlistUtility openFrameworks-Info.plist -genpkginfo /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/InstantFileChange/bin//InstantFileChangeDebug.app/Contents/PkgInfo -expandbuildsettings -platform macosx -o /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/InstantFileChange/bin//InstantFileChangeDebug.app/Contents/Info.plist0#
 
 CProcessPCH++ /var/folders/3I/3IEdwrCLFz4TdGQPsl-dpE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Carbon-bkoqjylwhvaasvbuifzyafzzzowf/Carbon.h.gch /System/Library/Frameworks/Carbon.framework/Headers/Carbon.h normal i386 c++ com.apple.compilers.gcc.4_2
+r0
+
+CProcessPCH++ /var/folders/3I/3IEdwrCLFz4TdGQPsl-dpE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Carbon-gybhozvvqndghralwiragmanutdy/Carbon.h.gch /System/Library/Frameworks/Carbon.framework/Headers/Carbon.h normal i386 c++ com.apple.compilers.gcc.4_2
 r0
 
 CTouch /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/InstantFileChange/bin//InstantFileChangeDebug.app

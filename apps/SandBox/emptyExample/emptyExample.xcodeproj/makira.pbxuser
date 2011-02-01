@@ -4,22 +4,6 @@
 		isa = PBXBookmark;
 		fRef = 318E688C12F604E90097A0A9 /* icon.icns */;
 	};
-	318E689112F605000097A0A9 /* PBXBookmark */ = {
-		isa = PBXBookmark;
-		fRef = E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */;
-	};
-	318E68A512F6055E0097A0A9 /* PlistBookmark */ = {
-		isa = PlistBookmark;
-		fRef = E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */;
-		fallbackIsa = PBXBookmark;
-		isK = 0;
-		kPath = (
-			CFBundleIconFile,
-		);
-		name = "/Users/makira/openFrameworks/of_preRelease_v0062_osxSL_FAT/apps/yesMAYBEno/emptyExample/openFrameworks-Info.plist";
-		rLen = 0;
-		rLoc = 9223372036854775807;
-	};
 	31C6962212963DE0007F71A7 /* emptyExample */ = {
 		isa = PBXExecutable;
 		activeArgIndices = (
@@ -101,6 +85,30 @@
 		path = /Users/makira/openFrameworks/of_preRelease_v0062_osxSL_FAT/libs/openFrameworks/app/ofAppRunner.h;
 		sourceTree = "<absolute>";
 	};
+	31F7CDA412F6D6CD0003806A /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+			CFBundleIconFile,
+		);
+		name = "/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/emptyExample/openFrameworks-Info.plist";
+		rLen = 0;
+		rLoc = 9223372036854775807;
+	};
+	31F7CDAB12F6DBF00003806A /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+			CFBundleIconFile,
+		);
+		name = "/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/emptyExample/openFrameworks-Info.plist";
+		rLen = 0;
+		rLoc = 9223372036854775807;
+	};
 	E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 		activeBuildConfigurationName = Debug;
 		activeExecutable = 31C6962212963DE0007F71A7 /* emptyExample */;
@@ -118,7 +126,7 @@
 				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
-					341,
+					296,
 					20,
 					48,
 					43,
@@ -140,10 +148,10 @@
 				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
-					301,
+					256,
 					60,
 					20,
-					48.16259765625,
+					48,
 					43,
 					43,
 				);
@@ -157,16 +165,16 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 318112974;
-			PBXWorkspaceStateSaveDate = 318112974;
+			PBXPerProjectTemplateStateSaveDate = 318166351;
+			PBXWorkspaceStateSaveDate = 318166351;
 		};
 		perUserProjectItems = {
 			318E689012F605000097A0A9 /* PBXBookmark */ = 318E689012F605000097A0A9 /* PBXBookmark */;
-			318E689112F605000097A0A9 /* PBXBookmark */ = 318E689112F605000097A0A9 /* PBXBookmark */;
-			318E68A512F6055E0097A0A9 /* PlistBookmark */ = 318E68A512F6055E0097A0A9 /* PlistBookmark */;
 			31C69675129646AA007F71A7 /* PBXTextBookmark */ = 31C69675129646AA007F71A7 /* PBXTextBookmark */;
 			31C69676129646AA007F71A7 /* PBXTextBookmark */ = 31C69676129646AA007F71A7 /* PBXTextBookmark */;
 			31C69677129646AA007F71A7 /* PBXTextBookmark */ = 31C69677129646AA007F71A7 /* PBXTextBookmark */;
+			31F7CDA412F6D6CD0003806A /* PlistBookmark */ = 31F7CDA412F6D6CD0003806A /* PlistBookmark */;
+			31F7CDAB12F6DBF00003806A /* PlistBookmark */ = 31F7CDAB12F6DBF00003806A /* PlistBookmark */;
 		};
 		sourceControlManager = 31C6963012963DFE007F71A7 /* Source Control */;
 		userBuildSettings = {

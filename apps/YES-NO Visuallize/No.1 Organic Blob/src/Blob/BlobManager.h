@@ -12,11 +12,10 @@
 #include "ofMain.h"
 #include "ofxOpenCv.h"
 #include "ofxShader.h"
-#include "Metaballs.h"
-#include "Marchingcubes.h"
-#include <stack>
 #include "ofxBullet.h"
 #include "AdminPanel.h"
+#include "Metaballs.h"
+#include "Marchingcubes.h"
 
 class BlobManager {
 
@@ -27,74 +26,50 @@ public:
 	
 	void changeImg(string path);
 	
-	void setupForTexturing();
 	void setupForNoTexturing();
 	void huntForBlendFunc (int period, int defaultSid, int defaultDid);	
 	
-	AdminPanel* admin;
+	AdminPanel*				admin;
 	
-	//---------------------------------------
-	int				fps;
-	ofxShader		shader;
-	ofVideoPlayer	player;
-	bool			isVidTex;
-	int				texSlot;
-	ofImage			img;
-	ofImage			bg;
+	int						fps;
+	ofxShader				shader;
+	ofVideoPlayer			player;
+	bool					isVidTex;
+	int						texSlot;
+	ofImage					img;
+	ofImage					bg;
 	
 	ofxBullet*				bullet;
 	vector<MyRigidBody*>	spheres;		
 	
-	//---------------------------------------
-	int 	counter;
-	int     counter2;
+	CMetaballs*				m_pMetaballs;
+	ofPoint*				ballPoints;
+	ofPoint*				ballPointsPrev;
+	ofPoint*				ballPointsPrev2;
+	float*					ballSizes;
+	int*					ballLevels;
+	int						nPoints;
+	int						nMetaBalls;
+	ofPoint					boundsAvg;
+	float					boundsScaling;
 	
-	//---------------------------------------
-	CMetaballs  *m_pMetaballs;
-	ofPoint     *ballPoints;
-	ofPoint     *ballPointsPrev;
-	ofPoint     *ballPointsPrev2;
-	float       *ballMasses;
-	int         *ballLevels;
-	int         nPoints;
-	int         nMetaBalls;
+	int						blurValue;
+	int						counter;
+	int						counter2;
+	float					maxDeceleration;
 	
-	float       maxDeceleration;
-	float       decelerationThreshPct;
-	int         decelerationEventCount;
-	
-	
-	//---------------------------------------
-	
-	ofPoint     boundsMin;
-	ofPoint     boundsMax;
-	ofPoint     boundsAvg;
-	float       boundsScaling;
-	int         blurValue;
-	float       motionBlur;
-	
-	// for shadow
-	float       *screenDepth;   // the fetched depth buffer
-	int         nScreenPixels;  // number of pixels in the display device
-	int         screenW;        // width of the display device
-	int         screenH;        // height of the display device
-	ofTexture	shadowTex;      // texture object for displaying the shadow
-	ofxCvGrayscaleImage  shadowCvImage;
-	int         shadowDivX;     // ratio in X of screenW:shadowW
-	int         shadowDivY;
-	unsigned char *shadowPixels;
-	unsigned char *shadowPixelsLA; // Luminance + Alpha
-	int         nShadowPixels;
-	int         shadowW;
-	int         shadowH;
-	
-	
-	//---------------------------------------
-	GLfloat *materialAmbient;
-	GLfloat *materialDiffuse;
-	GLfloat *materialSpecular;
-	
-	
-private:
+	float*					screenDepth;   // the fetched depth buffer
+	int						nScreenPixels;  // number of pixels in the display device
+	int						screenW;        // width of the display device
+	int						screenH;        // height of the display device
+	ofTexture				shadowTex;      // texture object for displaying the shadow
+	ofxCvGrayscaleImage		shadowCvImage;
+	int						shadowDivX;     // ratio in X of screenW:shadowW
+	int						shadowDivY;
+	unsigned char*			shadowPixels;
+	unsigned char*			shadowPixelsLA; // Luminance + Alpha
+	int						nShadowPixels;
+	int						shadowW;
+	int						shadowH;
 	
 };

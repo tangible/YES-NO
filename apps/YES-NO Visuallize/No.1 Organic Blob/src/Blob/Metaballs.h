@@ -32,7 +32,7 @@ public:
 	void  Compute();
 	void  Render();
 	void  UpdateBallsFromPoints (int nPoints, ofPoint *points);
-	void  UpdateBallsFromPointsAndMasses (int nPoints, ofPoint *points, float *masses);
+	void  UpdateBallsFromPointsAndSizes (int nPoints, ofPoint *points, float *masses);
 
 	void  SetGridSize(int nSize);
 	int   getNBalls();

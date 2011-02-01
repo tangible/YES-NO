@@ -760,8 +760,8 @@ i"ofGstUtils.h"
 i"ofQtUtils.h"
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/lib/osx/openFrameworksDebug.a
-c000000004D45EC35000000000061DFC0
-t1296428085
+c000000004D46181F000000000061DFC0
+t1296439327
 s6414272
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/AbstractDelegate.h
@@ -1498,8 +1498,8 @@ t1270689001
 s9690
 
 N/var/folders/3I/3IEdwrCLFz4TdGQPsl-dpE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Carbon-hgozvkdazctelpbmdfhdyuqfxyvm/Carbon.h.gch
-t1296427978
-s53737264
+t2
+s0
 
 NopenFrameworks-Info.plist
 c000000004D45CFB200000000000002A7

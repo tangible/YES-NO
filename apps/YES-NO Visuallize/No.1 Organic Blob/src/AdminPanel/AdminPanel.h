@@ -26,19 +26,27 @@ public:
 	void draw();
 	void toggle();
 	void openFileDialogue(string ID);
+	void restoreDefault();
 	
 	ofEvent<FileDef> onFileDialogue; 
 	
-	float SHADOWINTENSITY;
-	float TEXCOLMIXRATIO;
-	float BLOBTRANSPARENCY;
-	float BLOBBASECOL[4];
-	float BLOBMATERIALAMBIENT[4];
-	float BLOBMATERIALDIFFUSE[4];
-	float BLOBMATERIALSPECULAR[4];
-	float BLOBMATERIALSHINENESS;
-	float LIGHTAMBIENT[4];
-	float LIGHTDIFFUSE[4];
-	float LIGHTSPECULAR[4];	
+	int		PHYSICSTICKFPS;
+	float	SHADOWINTENSITY;
+	float	LIGHTX;
+	float	LIGHTY;
+	float	LIGHTZ;
+	float	TEXCOLMIXRATIO;
+	float	BLOBTRANSPARENCY;
+	float	BLOBBASECOL[4];
+	float	BLOBMATERIALAMBIENT[4];
+	float	BLOBMATERIALDIFFUSE[4];
+	float	BLOBMATERIALSPECULAR[4];
+	float	BLOBMATERIALSHINENESS;
+	float	LIGHTAMBIENT[4];
+	float	LIGHTDIFFUSE[4];
+	float	LIGHTSPECULAR[4];	
+	
+	int		TESTX;
+	int		TESTY;
 	
 };
