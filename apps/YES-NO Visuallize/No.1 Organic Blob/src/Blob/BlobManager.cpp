@@ -21,21 +21,8 @@ void BlobManager::setup(int _fps, AdminPanel* _admin) {
 	nPoints  = nMetaBalls;	
     boundsAvg.x = boundsAvg.y = boundsAvg.z = 0;
     boundsScaling = 1.0 / 1020.0f;	
-	for (int j = 0; j < 1; j++) {
-		MetaBallChunk* mchunk = new MetaBallChunk();
-		mchunk->ballPoints     = new ofPoint[nPoints];
-		mchunk->ballPointsPrev = new ofPoint[nPoints];
-		mchunk->ballPointsPrev2= new ofPoint[nPoints];
-		mchunk->ballSizes     = new float[nPoints];
-		for (int i=0; i < nPoints; i++){
-			mchunk->ballPoints[i].set(0.0,0.0,0.0);
-			mchunk->ballPointsPrev[i].set(0.0,0.0,0.0);
-			mchunk->ballPointsPrev2[i].set(0.0,0.0,0.0);
-			mchunk->ballSizes[i] = 1.0;
-		}
-		mchunk->m_pMetaballs = new CMetaballs(nPoints);
-		mchunk->m_pMetaballs->SetGridSize(100);
-		mchunk->chunkID = j;
+	for (int i = 0; i < 2; i++) {
+		MetaBallChunk* mchunk = new MetaBallChunk(nPoints, i);
 		mBallChunks.push_back(mchunk);
 	}
 	CMarchingCubes::BuildTables();
@@ -49,14 +36,19 @@ void BlobManager::setup(int _fps, AdminPanel* _admin) {
 	// setup physical motion
 	bullet = new ofxBullet();
 	bullet->initPhysics(ofxVec3f(0, 0, 0), false);
-	for (int i = 0; i < nMetaBalls*mBallChunks.size(); i++) {		
-		ofxVec3f rdmPos = ofxVec3f(ofGetWidth()/2+ofRandom(-100, 100), ofGetHeight()/2+ofRandom(-100, 100), ofRandom(-100, 100));
-		MyRigidBody* sph = bullet->createSphere(rdmPos,
-												ofRandom(50, 50), 
-												1, 
-												ofxVec4f(ofRandom(0.5, 0.5), ofRandom(0.5, 0.5), ofRandom(0.5, 0.5), 0.7), 
-												DYNAMIC_BODY);		
-		spheres.push_back(sph);
+	for (int i = 0; i < mBallChunks.size(); i++) {		
+		MetaBallChunk* mchunk = mBallChunks[i];
+		int thisID = mchunk->chunkID;
+		for (int j = 0; j < nMetaBalls; j++) {
+			ofxVec3f rdmPos = ofxVec3f(ofGetWidth()/2+ofRandom(-100, 100), ofGetHeight()/2+ofRandom(-100, 100), ofRandom(-100, 100));
+			MyRigidBody* sph = bullet->createSphere(rdmPos,
+													ofRandom(50, 50), 
+													1, 
+													ofxVec4f(ofRandom(0.5, 0.5), ofRandom(0.5, 0.5), ofRandom(0.5, 0.5), 0.7), 
+													DYNAMIC_BODY);		
+			sph->ID = thisID;
+			spheres.push_back(sph);
+		}
 	}		
 	
 	// settings for shadow
@@ -110,9 +102,14 @@ void BlobManager::update() {
 		int speherecount = 0;
 		for (int j = 0; j < mBallChunks.size(); j++) {
 			MetaBallChunk* mChunk = mBallChunks[j];
-			mChunk->updateChunkPos();
+			mChunk->updateChunkBasePos();
+			mChunk->updateBallSizes();
+			int thisChunkID = mChunk->chunkID;
 			
-			for (int i = 0; i < nMetaBalls; i++) {
+			for (int i = 0; i < nPoints; i++) {
+				MyRigidBody* sph = spheres[speherecount];
+				int sphID = sph->ID;
+				
 				force.set(-spheres[speherecount]->getBodyPos() + 
 						  ofxVec3f(ofGetWidth()/2 + mChunk->chunkCurrPos.x, ofGetHeight()/2 + mChunk->chunkCurrPos.y, 0));
 				force *= maxVal * 15;
@@ -173,10 +170,6 @@ void BlobManager::update() {
 				bz = A*pz + B*bz;
 				mChunk->ballPoints[i].set(bx,by,bz);
 				
-				// compute sizes
-				float sizeBaseSin  = 0.035 * sin(ofGetElapsedTimeMillis()/4000.0);
-				float sizeLevelSin = 0.010 * sin(ofGetElapsedTimeMillis()/1300.0);
-				mChunk->ballSizes[i] = mChunk->sizeBase + sizeBaseSin + sizeLevelSin;
 			}
 			
 			mChunk->m_pMetaballs->UpdateBallsFromPointsAndSizes(nPoints, mChunk->ballPoints, mChunk->ballSizes);
@@ -209,16 +202,10 @@ void BlobManager::draw() {
 		float sz = 0.75*min(w,h);
 		glTranslatef(w/2,h/2,0);
 		glScalef(sz,sz,sz);
-	
-		ofPushMatrix();
-	//	ofTranslate(-0.1, 0, 0);
-		mBallChunks[0]->m_pMetaballs->Render();
-		ofPopMatrix();
 
-	//	ofPushMatrix();
-	//	ofTranslate(0.1, 0, 0);
-	//	mBallChunks[1]->m_pMetaballs->Render();
-	//	ofPopMatrix();
+		for (int i = 0; i < mBallChunks.size(); i++) {
+			mBallChunks[i]->m_pMetaballs->Render();
+		}
 	
 		glPopMatrix();
 	shader.end();

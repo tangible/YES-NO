@@ -17,9 +17,12 @@ class MetaBallChunk {
 	
 public:
 	
-	MetaBallChunk();
-	void updateChunkPos();
+	MetaBallChunk(int points, int _chunkID);
+	void updateChunkBasePos();
 	void updateBallSizes();
+	void minimizeOne();
+	
+	int						nPoints;
 	
 	// fields for each metaballs
 	CMetaballs*				m_pMetaballs;
@@ -27,6 +30,7 @@ public:
 	ofPoint*				ballPointsPrev;
 	ofPoint*				ballPointsPrev2;	
 	float*					ballSizes;
+	int						minimizeTgt;
 	
 	// fields for this chunk
 	int						chunkID;

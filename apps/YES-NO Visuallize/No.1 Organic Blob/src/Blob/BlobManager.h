@@ -18,7 +18,6 @@
 #include "Metaballs.h"
 #include "Marchingcubes.h"
 
-
 class BlobManager {
 
 public:

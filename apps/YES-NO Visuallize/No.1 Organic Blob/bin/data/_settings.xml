@@ -17,23 +17,23 @@
     </Button_Restore_Default>
     <SliderFloat_Shadow_Intensity>
         <name>Shadow Intensity</name>
-        <value>0.658000</value>
+        <value>0.765625</value>
     </SliderFloat_Shadow_Intensity>
     <SliderInt_Shadow_Scale>
         <name>Shadow Scale</name>
-        <value>12</value>
+        <value>8</value>
     </SliderInt_Shadow_Scale>
     <SliderInt_Shadow_Pos_X>
         <name>Shadow Pos X</name>
-        <value>0</value>
+        <value>-164</value>
     </SliderInt_Shadow_Pos_X>
     <SliderInt_Shadow_Pos_Y>
         <name>Shadow Pos Y</name>
-        <value>0</value>
+        <value>-242</value>
     </SliderInt_Shadow_Pos_Y>
     <SliderFloat_Shadow_RotDegree>
         <name>Shadow RotDegree</name>
-        <value>60.000000</value>
+        <value>0.000000</value>
     </SliderFloat_Shadow_RotDegree>
     <Toggle_Shadow_Rot_X>
         <name>Shadow Rot X</name>
@@ -61,7 +61,7 @@
     </SliderFloat_Light_Pos_Z>
     <SliderFloat_Blob_Tex&Col_Mix_Ratio>
         <name>Blob Tex&amp;Col Mix Ratio</name>
-        <value>0.224000</value>
+        <value>0.833984</value>
     </SliderFloat_Blob_Tex&Col_Mix_Ratio>
     <SliderFloat_Blob_Transparency>
         <name>Blob Transparency</name>
@@ -69,9 +69,9 @@
     </SliderFloat_Blob_Transparency>
     <ColorPicker_Blob_Base_Color>
         <name>Blob Base Color</name>
-        <values_0>0.500000</values_0>
-        <values_1>0.500000</values_1>
-        <values_2>0.500000</values_2>
+        <values_0>0.859375</values_0>
+        <values_1>0.187500</values_1>
+        <values_2>0.183594</values_2>
         <values_3>1.000000</values_3>
     </ColorPicker_Blob_Base_Color>
     <ColorPicker_Blob_Material_Specular>

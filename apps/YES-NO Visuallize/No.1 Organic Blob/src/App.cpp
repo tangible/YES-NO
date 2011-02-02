@@ -58,6 +58,10 @@ void App::keyPressed  (int key){
 	
 	switch(key) {
 		case ' ': adminPanel.toggle(); break;
+		case 'm': 
+			vector<MetaBallChunk*> mcs = blobMgr.mBallChunks;
+			mcs[0]->minimizeOne();
+			break;	
 	}		
 }
 

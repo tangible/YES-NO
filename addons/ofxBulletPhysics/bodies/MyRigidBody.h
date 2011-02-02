@@ -38,7 +38,7 @@ public:
 	btRigidBody*				getRigidBody(){ return psb; };	
 	btConvexInternalShape*		getRigidShape() { return shape; };
 	
-
+		int							ID;
 		float						deceleration;
 		ofxVec3f					destination;
 		float						currentRadius;
