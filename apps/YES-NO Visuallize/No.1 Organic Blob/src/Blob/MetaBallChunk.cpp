@@ -12,11 +12,16 @@
 MetaBallChunk::MetaBallChunk(int points, int _chunkID) {
 	
 	chunkCurrPos = ofxVec3f(0.0, 0.0, 0.0);
-	chunkDestPos = ofxVec3f(10.0, 10.0, 0.0);
-	deceleration = 0.99;
-	sizeBase = 0.2;
+	chunkDestPos = ofxVec3f(ofRandom(-300, 300), ofRandom(-300, 300), 0.0);
+	deceleration = ofRandom(0.989, 0.9999);
+	sizeBase = ofRandom(0.15, 0.15);
 	minimizeTgt = -1;
 	nPoints = points;
+	
+	chunkCurrCol = ofxVec4f(ofRandomuf(), ofRandomuf(), ofRandomuf(), 1.0);
+	chunkDestCol = ofxVec4f(ofRandomuf(), ofRandomuf(), ofRandomuf(), 1.0);
+	decelerationCol = ofRandom(0.989, 0.9999);
+	whichCol = ofRandom(1, 3);
 	
 	ballPoints     = new ofPoint[nPoints];
 	ballPointsPrev = new ofPoint[nPoints];
@@ -29,7 +34,7 @@ MetaBallChunk::MetaBallChunk(int points, int _chunkID) {
 		ballSizes[i] = 1.0;
 	}
 	m_pMetaballs = new CMetaballs(nPoints);
-	m_pMetaballs->SetGridSize(100);
+	m_pMetaballs->SetGridSize(120);
 	chunkID = _chunkID;	
 }
 
@@ -49,6 +54,7 @@ void MetaBallChunk::updateChunkBasePos() {
 		chunkDestPos = ofxVec3f(ofRandom(-300, 300), 
 								ofRandom(-300, 300), 
 								ofRandom(-300, 300));
+		deceleration = ofRandom(0.989, 0.9999);
 		
 	}
 
@@ -61,11 +67,44 @@ void MetaBallChunk::updateChunkBasePos() {
 	
 }
 
+void MetaBallChunk::updateColor() {
+	
+	if (0.1 < chunkCurrCol.distance(chunkDestCol)) {
+//		for (int i = 0; i < whichCol; i++) {
+//			float amp = chunkDestCol[i] - chunkCurrCol[i];
+//			float tmp = amp * decelerationCol;
+//			chunkCurrCol[i] += amp - tmp;
+//		}
+		
+		float ampx = chunkDestCol.x - chunkCurrCol.x;
+		float ampy = chunkDestCol.y - chunkCurrCol.y;
+		float ampz = chunkDestCol.z - chunkCurrCol.z;
+		float tmpampx = ampx * decelerationCol;
+		float tmpampy = ampy * decelerationCol;
+		float tmpampz = ampz * decelerationCol;
+		chunkCurrCol.x += ampx - tmpampx;
+		chunkCurrCol.y += ampy - tmpampy;
+		chunkCurrCol.z += ampz - tmpampz;		
+	}else {
+		chunkDestCol = ofxVec4f(ofRandomuf(), ofRandomuf(), ofRandomuf(), 1.0);
+		decelerationCol = ofRandom(0.9, 0.95);
+	}
+	
+//	cout << "distance = " + ofToString(chunkCurrCol.distance(chunkDestCol)) << endl;
+//	cout << "chunk curr x = " + ofToString(chunkCurrCol.x) << endl;
+//	cout << "chunk curr y = " + ofToString(chunkCurrCol.y) << endl;
+//	cout << "chunk dest x = " + ofToString(chunkCurrCol.x) << endl;
+//	cout << "chunk dest y = " + ofToString(chunkCurrCol.y) << endl;
+//	cout << " " << endl;	
+}
+
 void MetaBallChunk::updateBallSizes() {
 
 	for (int i = 0; i < nPoints; i++) {
-		float sizeBaseSin  = 0.035 * sin(ofGetElapsedTimeMillis()/4000.0);
-		float sizeLevelSin = 0.010 * sin(ofGetElapsedTimeMillis()/1300.0);
+//		float sizeBaseSin  = 0.035 * sin(ofGetElapsedTimeMillis()/4000.0);
+//		float sizeLevelSin = 0.010 * sin(ofGetElapsedTimeMillis()/1300.0);
+		float sizeBaseSin  = 0.035 * ofNoise(ofGetElapsedTimeMillis());
+		float sizeLevelSin = 0.010 * ofNoise(ofGetElapsedTimeMillis());
 		ballSizes[i] = sizeBase + sizeBaseSin + sizeLevelSin;	
 	}
 }

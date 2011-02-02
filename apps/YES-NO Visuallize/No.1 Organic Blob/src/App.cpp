@@ -3,7 +3,7 @@
 //--------------------------------------------------------------
 void App::setup(){
 	
-	ofSetFrameRate(0);
+	ofSetFrameRate(FPS);
 	ofBackground(255,255,255);
 
 	adminPanel.setup();

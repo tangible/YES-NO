@@ -16,16 +16,16 @@ void BlobManager::setup(int _fps, AdminPanel* _admin) {
 	shader.setup("shaders/glsl");
 	ofDisableArbTex();	
 	
-	// init metaball params
-    nMetaBalls = 10;
-	nPoints  = nMetaBalls;	
-    boundsAvg.x = boundsAvg.y = boundsAvg.z = 0;
-    boundsScaling = 1.0 / 1020.0f;	
-	for (int i = 0; i < 2; i++) {
-		MetaBallChunk* mchunk = new MetaBallChunk(nPoints, i);
+	// init metaball and voxels
+    nMetaBalls = 10;	
+	int numChunk = 2;
+	for (int i = 0; i < numChunk; i++) {
+		MetaBallChunk* mchunk = new MetaBallChunk(nMetaBalls, i);
 		mBallChunks.push_back(mchunk);
 	}
 	CMarchingCubes::BuildTables();
+    boundsAvg.x = boundsAvg.y = boundsAvg.z = 0;
+    boundsScaling = 1.0 / 1020.0f;	
 	
 	// blur the motion stiffness
 	counter = 0;
@@ -104,9 +104,9 @@ void BlobManager::update() {
 			MetaBallChunk* mChunk = mBallChunks[j];
 			mChunk->updateChunkBasePos();
 			mChunk->updateBallSizes();
-			int thisChunkID = mChunk->chunkID;
+			mChunk->updateColor();
 			
-			for (int i = 0; i < nPoints; i++) {
+			for (int i = 0; i < mChunk->nPoints; i++) {
 				MyRigidBody* sph = spheres[speherecount];
 				int sphID = sph->ID;
 				
@@ -172,7 +172,7 @@ void BlobManager::update() {
 				
 			}
 			
-			mChunk->m_pMetaballs->UpdateBallsFromPointsAndSizes(nPoints, mChunk->ballPoints, mChunk->ballSizes);
+			mChunk->m_pMetaballs->UpdateBallsFromPointsAndSizes(mChunk->nPoints, mChunk->ballPoints, mChunk->ballSizes);
 		}
 	}
 }
@@ -190,12 +190,11 @@ void BlobManager::draw() {
 		
 	setupForNoTexturing();
 	
+	
+	
     // Actually draw them
 	ofEnableAlphaBlending();
-	shader.begin();
-	shader.setUniform1i("tex", texSlot);
-	shader.setUniform1f("tex_col_mixRatio", admin->TEXCOLMIXRATIO);
-	shader.setUniform1f("blob_transparency", admin->BLOBTRANSPARENCY);	
+
 		glPushMatrix();
 		float w = ofGetWidth();
 		float h = ofGetHeight();
@@ -204,11 +203,19 @@ void BlobManager::draw() {
 		glScalef(sz,sz,sz);
 
 		for (int i = 0; i < mBallChunks.size(); i++) {
+			ofxVec4f basecol = mBallChunks[i]->chunkCurrCol;
+			glColor3f(basecol.x, basecol.y, basecol.z);
+			shader.begin();
+			shader.setUniform1i("tex", texSlot);
+			shader.setUniform1f("tex_col_mixRatio", admin->TEXCOLMIXRATIO);
+			shader.setUniform1f("blob_transparency", admin->BLOBTRANSPARENCY);				
 			mBallChunks[i]->m_pMetaballs->Render();
+			shader.end();			
+
 		}
-	
+
 		glPopMatrix();
-	shader.end();
+
 	ofDisableAlphaBlending();
 	
 	
@@ -360,7 +367,7 @@ void BlobManager::setupForNoTexturing(){
     glCullFace(GL_FRONT);
     glShadeModel(GL_SMOOTH);
 	
-    glColor3f(admin->BLOBBASECOL[0], admin->BLOBBASECOL[1], admin->BLOBBASECOL[2]);
+    //glColor3f(admin->BLOBBASECOL[0], admin->BLOBBASECOL[1], admin->BLOBBASECOL[2]);
     GLfloat on[]  = {1.0};
     GLfloat off[] = {0.0};
     glLightModelfv( GL_LIGHT_MODEL_TWO_SIDE, on);

@@ -20,6 +20,7 @@ public:
 	MetaBallChunk(int points, int _chunkID);
 	void updateChunkBasePos();
 	void updateBallSizes();
+	void updateColor();
 	void minimizeOne();
 	
 	int						nPoints;
@@ -38,5 +39,9 @@ public:
 	ofxVec3f				chunkDestPos;
 	float					deceleration;
 	float					sizeBase;
+	ofxVec4f				chunkCurrCol;
+	ofxVec4f				chunkDestCol;
+	float					decelerationCol;
+	int						whichCol;
 	
 };

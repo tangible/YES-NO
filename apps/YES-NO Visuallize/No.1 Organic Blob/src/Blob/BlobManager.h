@@ -44,7 +44,6 @@ public:
 	vector<MyRigidBody*>	spheres;		
 	
 	vector<MetaBallChunk*>  mBallChunks;
-	int						nPoints;
 	int						nMetaBalls;
 	ofPoint					boundsAvg;
 	float					boundsScaling;
