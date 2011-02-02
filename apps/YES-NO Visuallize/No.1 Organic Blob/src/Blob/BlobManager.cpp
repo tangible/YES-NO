@@ -97,6 +97,8 @@ void BlobManager::update() {
 		counter  = counter2 + 1;
 		
 		bullet->stepPhysicsSimulation(admin->PHYSICSTICKFPS);	
+		
+		
 		float maxVal = 0.01;
 		ofxVec3f force;
 		ofxVec3f crossVec;
@@ -104,27 +106,36 @@ void BlobManager::update() {
 		crossVec.rotate(ofGetFrameNum(), ofGetFrameNum(), ofGetFrameNum());
 		ofxVec3f tangentVec;	
 		int rdmIdx = (int)ofRandom(0, 21);
-		for (int i = 0; i < spheres.size(); i++) {
-			force.set(-spheres[i]->getBodyPos() + 
-					  ofxVec3f(ofGetWidth()/2 + admin->TESTX, ofGetHeight()/2 + admin->TESTY, 0));
-			force *= maxVal * 15;
-			tangentVec = force.crossed(crossVec);
-			tangentVec.normalize();
-			tangentVec *= maxVal*100;
-			force += tangentVec;
-			btVector3 btImpulse(force.x, force.y, force.z);
-			spheres[i]->getRigidBody()->applyCentralImpulse(btImpulse);
+		
+		int speherecount = 0;
+		for (int j = 0; j < mBallChunks.size(); j++) {
+			MetaBallChunk* mChunk = mBallChunks[j];
+			mChunk->updateChunkPos();
 			
-			ofxVec3f impulse;
-			impulse.set(ofRandomf(), ofRandomf(), ofRandomf());
-			if (i == rdmIdx) {
-				impulse *= ofRandom(-250.0, 250.0);
-			}else {
-				impulse *= 0;
-			}
-			btImpulse = btVector3(impulse.x, impulse.y, impulse.z);
-			spheres[i]->getRigidBody()->applyCentralImpulse(btImpulse);
-		}		
+			for (int i = 0; i < nMetaBalls; i++) {
+				force.set(-spheres[speherecount]->getBodyPos() + 
+						  ofxVec3f(ofGetWidth()/2 + mChunk->chunkCurrPos.x, ofGetHeight()/2 + mChunk->chunkCurrPos.y, 0));
+				force *= maxVal * 15;
+				tangentVec = force.crossed(crossVec);
+				tangentVec.normalize();
+				tangentVec *= maxVal*100;
+				force += tangentVec;
+				btVector3 btImpulse(force.x, force.y, force.z);
+				spheres[speherecount]->getRigidBody()->applyCentralImpulse(btImpulse);
+				
+				ofxVec3f impulse;
+				impulse.set(ofRandomf(), ofRandomf(), ofRandomf());
+				if (i == rdmIdx) {
+					impulse *= ofRandom(-250.0, 250.0);
+				}else {
+					impulse *= 0;
+				}
+				btImpulse = btVector3(impulse.x, impulse.y, impulse.z);
+				spheres[speherecount]->getRigidBody()->applyCentralImpulse(btImpulse);
+				
+				speherecount++;
+			}		
+		}
 		
 		// update metaball point locations
 		float bx,by,bz;
@@ -138,8 +149,7 @@ void BlobManager::update() {
 		float A = frac;
 		float B = 1.0-A;
 		
-		float sizeBase = 0;
-		int speherecount = 0;
+		speherecount = 0;
 		for (int j = 0; j < mBallChunks.size(); j++) {
 			MetaBallChunk* mChunk = mBallChunks[j];
 			for (int i=0; i < nMetaBalls; i++){
@@ -164,10 +174,9 @@ void BlobManager::update() {
 				mChunk->ballPoints[i].set(bx,by,bz);
 				
 				// compute sizes
-				sizeBase           = 0.247; //0.135;
 				float sizeBaseSin  = 0.035 * sin(ofGetElapsedTimeMillis()/4000.0);
 				float sizeLevelSin = 0.010 * sin(ofGetElapsedTimeMillis()/1300.0);
-				mChunk->ballSizes[i] = sizeBase + sizeBaseSin + sizeLevelSin;
+				mChunk->ballSizes[i] = mChunk->sizeBase + sizeBaseSin + sizeLevelSin;
 			}
 			
 			mChunk->m_pMetaballs->UpdateBallsFromPointsAndSizes(nPoints, mChunk->ballPoints, mChunk->ballSizes);

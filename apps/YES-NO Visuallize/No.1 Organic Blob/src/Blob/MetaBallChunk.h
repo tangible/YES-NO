@@ -11,10 +11,16 @@
 
 #include "ofMain.h"
 #include "Metaballs.h"
+#include "ofxVectorMath.h"
 
 class MetaBallChunk {
 	
 public:
+	
+	MetaBallChunk();
+	void updateChunkPos();
+	void updateBallSizes();
+	
 	// fields for each metaballs
 	CMetaballs*				m_pMetaballs;
 	ofPoint*				ballPoints;
@@ -24,6 +30,9 @@ public:
 	
 	// fields for this chunk
 	int						chunkID;
-	ofPoint					chunkBasePos;
+	ofxVec3f				chunkCurrPos;
+	ofxVec3f				chunkDestPos;
+	float					deceleration;
+	float					sizeBase;
 	
 };
