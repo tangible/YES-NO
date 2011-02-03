@@ -18,10 +18,19 @@ MetaBallChunk::MetaBallChunk(int points, int _chunkID) {
 	minimizeTgt = -1;
 	nPoints = points;
 	
-	chunkCurrCol = ofxVec4f(ofRandomuf(), ofRandomuf(), ofRandomuf(), 1.0);
-	chunkDestCol = ofxVec4f(ofRandomuf(), ofRandomuf(), ofRandomuf(), 1.0);
-	decelerationCol = ofRandom(0.989, 0.9999);
-	whichCol = ofRandom(1, 3);
+	if (_chunkID == 0) {
+		chunkBaseCol.r = 0.5; chunkBaseCol.g = 0.0; chunkBaseCol.b = 0.0;
+		chunkColTween.setParameters(easingcirc, ofxTween::easeInOut, 0.5, 0.5, 0, 0);
+		chunkColTween.addValue(0.0, 0.0);
+		chunkColTween.addValue(0.0, 0.0);
+	}else {
+		chunkBaseCol.r = 0.0; chunkBaseCol.g = 0.5; chunkBaseCol.b = 0.0;
+		chunkColTween.setParameters(easingcirc, ofxTween::easeInOut, 0.0, 0.0, 0, 0);
+		chunkColTween.addValue(0.5, 0.5);
+		chunkColTween.addValue(0.0, 0.0);		
+	}
+	chunkColChangeTime = 0;
+	
 	
 	ballPoints = new ofPoint[nPoints];
 	ballPointsPrev = new ofPoint[nPoints];
@@ -37,8 +46,7 @@ MetaBallChunk::MetaBallChunk(int points, int _chunkID) {
 	m_pMetaballs->SetGridSize(120);
 	chunkID = _chunkID;	
 	
-	unsigned delayForever = 100000000;
-	ballSizeTween.setParameters(1,easingback,ofxTween::easeOut,sizeBase,sizeBase*3,1000,delayForever);
+	ballSizeTween.setParameters(1,easingback,ofxTween::easeOut,sizeBase,sizeBase,0,0);
 }
 
 void MetaBallChunk::updateChunkBasePos() {
@@ -65,21 +73,31 @@ void MetaBallChunk::updateChunkBasePos() {
 
 void MetaBallChunk::updateColor() {
 	
-	if (0.1 < chunkCurrCol.distance(chunkDestCol)) {
-		float ampx = chunkDestCol.x - chunkCurrCol.x;
-		float ampy = chunkDestCol.y - chunkCurrCol.y;
-		float ampz = chunkDestCol.z - chunkCurrCol.z;
-		float tmpampx = ampx * decelerationCol;
-		float tmpampy = ampy * decelerationCol;
-		float tmpampz = ampz * decelerationCol;
-		chunkCurrCol.x += ampx - tmpampx;
-		chunkCurrCol.y += ampy - tmpampy;
-		chunkCurrCol.z += ampz - tmpampz;		
+	float r = chunkColTween.getTarget(0);
+	float g = chunkColTween.getTarget(1);
+	float b = chunkColTween.getTarget(2);
+	
+	// react to sms
+	if (chunkColChangeTime != 0) {
+		
+		if (chunkColTween.isCompleted()) {
+			chunkColTween.setParameters(easinglinear, ofxTween::easeInOut, r, chunkBaseCol.r+chunkColChangeVal/chunkColChangeVal, 100*chunkColChangeTime, 0);
+			chunkColTween.addValue(g, chunkBaseCol.g+chunkColChangeVal/chunkColChangeVal);
+			chunkColTween.addValue(b, chunkBaseCol.b+chunkColChangeVal/chunkColChangeVal);	
+			chunkColChangeTime--;			
+		}
+		
 	}else {
-		chunkDestCol = ofxVec4f(ofRandomuf(), ofRandomuf(), ofRandomuf(), 1.0);
-		decelerationCol = ofRandom(0.9, 0.95);
+		if (chunkColTween.isCompleted()) {
+			chunkColTween.setParameters(easingcirc, ofxTween::easeInOut, r, chunkBaseCol.r, 500, 0);
+			chunkColTween.addValue(g, chunkBaseCol.g);
+			chunkColTween.addValue(b, chunkBaseCol.b);
+		}
 	}
-
+	
+	chunkCurrCol.x = chunkColTween.update();
+	chunkCurrCol.y = chunkColTween.getTarget(1);
+	chunkCurrCol.z = chunkColTween.getTarget(2);	
 }
 
 void MetaBallChunk::updateBallSizes() {
@@ -87,13 +105,13 @@ void MetaBallChunk::updateBallSizes() {
 	float sizeNow = ballSizeTween.update();
 	
 	if (ballSizeTween.isCompleted())
-		ballSizeTween.setParameters(1,easingquad,ofxTween::easeOut,sizeNow,sizeBase,500,0);
+		ballSizeTween.setParameters(1,easingquad,ofxTween::easeInOut,sizeNow,sizeBase,500,0);
 	
 	for (int i = 0; i < nPoints; i++) {
 		float sizeBaseSin  = 0.035 * ofNoise(ofGetElapsedTimeMillis());	
 		ballSizes[i] = sizeNow + sizeBaseSin;
 	}
-	if (ballSizeTween.isRunning()) cout << "tween running: " + ofToString(ballSizeTween.update()) << endl;
+	
 }
 
 void MetaBallChunk::minimizeOne() {
@@ -106,8 +124,6 @@ void MetaBallChunk::minimizeOne() {
 	
 	//ballSizes[minimizeTgt] -= 0.1;
 
-	cout << "minimizeTgt = " + ofToString(minimizeTgt) << endl;
-	cout << "ballSizes[minimizeTgt] = " + ofToString(ballSizes[minimizeTgt]) << endl;
 }
 
 void MetaBallChunk::onSMSRecieved(float thisTime, float total) {
@@ -116,7 +132,13 @@ void MetaBallChunk::onSMSRecieved(float thisTime, float total) {
 	sizeBase = ofMap(total, 0.0, 1.0, 0.05, 0.3);
 	float mapForSize = ofMap(thisTime, 0.0, 1.0, sizeBase, sizeBase*3);
 	float mapForSizeDur = ofMap(thisTime, 0.0, 1.0, 200, 1000);
-	ballSizeTween.setParameters(easingelastic,ofxTween::easeOut,
+	ballSizeTween.setParameters(easingelastic,ofxTween::easeInOut,
 								sizeBase,mapForSize,
 								mapForSizeDur,0);
+	
+	// color
+	chunkColChangeVal = ofMap(thisTime, 0.0, 1.0, 0.0001, 1.0);
+	chunkColChangeTime = ofMap(thisTime, 0.0, 1.0, 1.0, 4.0); 
+	chunkColChanged = 0;
+
 }

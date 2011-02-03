@@ -44,9 +44,12 @@ public:
 	float					deceleration;
 	float					sizeBase;
 	ofxVec4f				chunkCurrCol;
-	ofxVec4f				chunkDestCol;
-	float					decelerationCol;
-	int						whichCol;
+	ofxTween				chunkColTween;
+	ofColor					chunkBaseCol;
+	int						chunkColChangeTime;
+	int						chunkColChanged;	
+	float					chunkColChangeVal;
+
 	
 	// tweens
 	ofxEasingBack		easingback;

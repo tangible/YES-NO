@@ -65,11 +65,11 @@
     </SliderFloat_Light_Pos_Z>
     <SliderFloat_Blob_Tex&Col_Mix_Ratio>
         <name>Blob Tex&amp;Col Mix Ratio</name>
-        <value>0.478000</value>
+        <value>0.705078</value>
     </SliderFloat_Blob_Tex&Col_Mix_Ratio>
     <SliderFloat_Blob_Transparency>
         <name>Blob Transparency</name>
-        <value>0.540000</value>
+        <value>0.615234</value>
     </SliderFloat_Blob_Transparency>
     <ColorPicker_Blob_Base_Color>
         <name>Blob Base Color</name>
