@@ -13,6 +13,7 @@
 #include "ofxOpenCv.h"
 #include "ofxShader.h"
 #include "ofxBullet.h"
+#include "ofxTween.h"
 #include "AdminPanel.h"
 #include "HTTPClient.h"
 #include "MetaBallChunk.h"
@@ -26,8 +27,10 @@ public:
 	void update();
 	void draw();
 	
-	void changeImg(string path);
+	void changeImgBG(string path);
+	void changeImgBlobTex(string path);	
 	void recieveSMS(UpdateInfo upInfo);
+	void moveBG();
 	
 	void setupGLStuff();
 	
@@ -35,11 +38,16 @@ public:
 	
 	int						fps;
 	ofxShader				shader;
-	ofVideoPlayer			player;
-	bool					isVidTex;
-	int						texSlot;
-	ofImage					img;
+	int						texSlot;	
+	ofVideoPlayer			bgPlayer;
+	bool					isVidBG;
+	ofVideoPlayer			blobTexPlayer;
+	bool					isVidBlobTex;	
 	ofImage					bg;
+	ofxVec3f				bgCenter;
+	ofxTween				bgXTween;
+	ofxTween				bgYTween;
+	ofImage					blobTex;
 	
 	ofxBullet*				bullet;
 	vector<vector<MyRigidBody*> > sphrersForChunk;
@@ -66,5 +74,19 @@ public:
 	int						nShadowPixels;
 	int						shadowW;
 	int						shadowH;
+	
+	
+	// tweens
+	ofxEasingBack		easingback;
+	ofxEasingBounce 	easingbounce;
+	ofxEasingCirc		easingcirc;
+	ofxEasingCubic		easingcubic;
+	ofxEasingElastic	easingelastic;
+	ofxEasingExpo		easingexpo;
+	ofxEasingLinear 	easinglinear;
+	ofxEasingQuad		easingquad;
+	ofxEasingQuart		easingquart;
+	ofxEasingQuint		easingquint;
+	ofxEasingSine		easingsine;
 	
 };

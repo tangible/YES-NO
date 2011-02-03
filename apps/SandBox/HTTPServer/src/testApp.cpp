@@ -6,6 +6,7 @@ void testApp::setup(){
 	
 	ofSetVerticalSync(true);
 	ofBackground(255,255,255);
+	ofSetDataPathRoot("../Resources/");
 
 	server = ofxHTTPServer::getServer(); // get the instance of the server
 	server->setServerRoot("www");		 // folder with files to be served
@@ -14,7 +15,7 @@ void testApp::setup(){
 	ofAddListener(server->getEvent,this,&testApp::getRequest);
 	server->start(8888);
 	
-	font.loadFont("fonts/Pigiarniq Heavy.ttf", 20);
+	font.loadFont("Pigiarniq Heavy.ttf", 20);
 	r = 0; g = 0; b = 0; 
 
 }
@@ -73,7 +74,7 @@ void testApp::update(){
 void testApp::draw(){
 
 	ofSetColor(r, g, b);
-	font.drawString("oF HTTP Server", 10, 35);
+	font.drawString("HUB Simulator", 20, 35);
 	ofDrawBitmapString(urlParam, 50, 65);
 	
 }

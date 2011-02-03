@@ -12,9 +12,9 @@
 MetaBallChunk::MetaBallChunk(int points, int _chunkID) {
 	
 	chunkCurrPos = ofxVec3f(0.0, 0.0, 0.0);
-	chunkDestPos = ofxVec3f(ofRandom(-300, 300), ofRandom(-300, 300), 0.0);
+	chunkDestPos = ofxVec3f(ofRandom(-400, 400), ofRandom(-400, 400), 0.0);
 	deceleration = ofRandom(0.989, 0.9999);
-	sizeBase = ofRandom(0.15, 0.15);
+	sizeBase = ofRandom(0.2, 0.2);
 	minimizeTgt = -1;
 	nPoints = points;
 	
@@ -23,10 +23,10 @@ MetaBallChunk::MetaBallChunk(int points, int _chunkID) {
 	decelerationCol = ofRandom(0.989, 0.9999);
 	whichCol = ofRandom(1, 3);
 	
-	ballPoints     = new ofPoint[nPoints];
+	ballPoints = new ofPoint[nPoints];
 	ballPointsPrev = new ofPoint[nPoints];
-	ballPointsPrev2= new ofPoint[nPoints];
-	ballSizes     = new float[nPoints];
+	ballPointsPrev2 = new ofPoint[nPoints];
+	ballSizes = new float[nPoints];
 	for (int i=0; i < nPoints; i++){
 		ballPoints[i].set(0.0,0.0,0.0);
 		ballPointsPrev[i].set(0.0,0.0,0.0);
@@ -36,6 +36,9 @@ MetaBallChunk::MetaBallChunk(int points, int _chunkID) {
 	m_pMetaballs = new CMetaballs(nPoints);
 	m_pMetaballs->SetGridSize(120);
 	chunkID = _chunkID;	
+	
+	unsigned delayForever = 100000000;
+	ballSizeTween.setParameters(1,easingback,ofxTween::easeOut,sizeBase,sizeBase*3,1000,delayForever);
 }
 
 void MetaBallChunk::updateChunkBasePos() {
@@ -51,31 +54,18 @@ void MetaBallChunk::updateChunkBasePos() {
 		chunkCurrPos.y += ampy - tmpampy;
 		chunkCurrPos.z += ampz - tmpampz;
 	}else {
-		chunkDestPos = ofxVec3f(ofRandom(-300, 300), 
-								ofRandom(-300, 300), 
-								ofRandom(-300, 300));
+		chunkDestPos = ofxVec3f(ofRandom(-500, 500), 
+								ofRandom(-500, 500), 
+								ofRandom(-500, 500));
 		deceleration = ofRandom(0.989, 0.9999);
 		
 	}
 
-//	cout << "distance = " + ofToString(chunkCurrPos.distance(chunkDestPos)) << endl;
-//	cout << "chunk curr x = " + ofToString(chunkCurrPos.x) << endl;
-//	cout << "chunk curr y = " + ofToString(chunkCurrPos.y) << endl;
-//	cout << "chunk dest x = " + ofToString(chunkDestPos.x) << endl;
-//	cout << "chunk dest y = " + ofToString(chunkDestPos.y) << endl;
-//	cout << " " << endl;
-	
 }
 
 void MetaBallChunk::updateColor() {
 	
 	if (0.1 < chunkCurrCol.distance(chunkDestCol)) {
-//		for (int i = 0; i < whichCol; i++) {
-//			float amp = chunkDestCol[i] - chunkCurrCol[i];
-//			float tmp = amp * decelerationCol;
-//			chunkCurrCol[i] += amp - tmp;
-//		}
-		
 		float ampx = chunkDestCol.x - chunkCurrCol.x;
 		float ampy = chunkDestCol.y - chunkCurrCol.y;
 		float ampz = chunkDestCol.z - chunkCurrCol.z;
@@ -89,24 +79,21 @@ void MetaBallChunk::updateColor() {
 		chunkDestCol = ofxVec4f(ofRandomuf(), ofRandomuf(), ofRandomuf(), 1.0);
 		decelerationCol = ofRandom(0.9, 0.95);
 	}
-	
-//	cout << "distance = " + ofToString(chunkCurrCol.distance(chunkDestCol)) << endl;
-//	cout << "chunk curr x = " + ofToString(chunkCurrCol.x) << endl;
-//	cout << "chunk curr y = " + ofToString(chunkCurrCol.y) << endl;
-//	cout << "chunk dest x = " + ofToString(chunkCurrCol.x) << endl;
-//	cout << "chunk dest y = " + ofToString(chunkCurrCol.y) << endl;
-//	cout << " " << endl;	
+
 }
 
 void MetaBallChunk::updateBallSizes() {
-
+	
+	float sizeNow = ballSizeTween.update();
+	
+	if (ballSizeTween.isCompleted())
+		ballSizeTween.setParameters(1,easingquad,ofxTween::easeOut,sizeNow,sizeBase,500,0);
+	
 	for (int i = 0; i < nPoints; i++) {
-//		float sizeBaseSin  = 0.035 * sin(ofGetElapsedTimeMillis()/4000.0);
-//		float sizeLevelSin = 0.010 * sin(ofGetElapsedTimeMillis()/1300.0);
-		float sizeBaseSin  = 0.035 * ofNoise(ofGetElapsedTimeMillis());
-		float sizeLevelSin = 0.010 * ofNoise(ofGetElapsedTimeMillis());
-		ballSizes[i] = sizeBase + sizeBaseSin + sizeLevelSin;	
+		float sizeBaseSin  = 0.035 * ofNoise(ofGetElapsedTimeMillis());	
+		ballSizes[i] = sizeNow + sizeBaseSin;
 	}
+	if (ballSizeTween.isRunning()) cout << "tween running: " + ofToString(ballSizeTween.update()) << endl;
 }
 
 void MetaBallChunk::minimizeOne() {
@@ -121,4 +108,15 @@ void MetaBallChunk::minimizeOne() {
 
 	cout << "minimizeTgt = " + ofToString(minimizeTgt) << endl;
 	cout << "ballSizes[minimizeTgt] = " + ofToString(ballSizes[minimizeTgt]) << endl;
+}
+
+void MetaBallChunk::onSMSRecieved(float thisTime, float total) {
+	
+	// size
+	sizeBase = ofMap(total, 0.0, 1.0, 0.05, 0.3);
+	float mapForSize = ofMap(thisTime, 0.0, 1.0, sizeBase, sizeBase*3);
+	float mapForSizeDur = ofMap(thisTime, 0.0, 1.0, 200, 1000);
+	ballSizeTween.setParameters(easingelastic,ofxTween::easeOut,
+								sizeBase,mapForSize,
+								mapForSizeDur,0);
 }

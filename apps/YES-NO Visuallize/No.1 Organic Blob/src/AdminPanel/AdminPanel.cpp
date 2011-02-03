@@ -16,7 +16,8 @@ void AdminPanel::setup(){
 	gui.addSlider("Motion Tick PerSec", PHYSICSTICKFPS, 10, 100);
 	gui.addToggle("Toggle Motion", TOGGLEMOTION);
 	gui.addTitle("Graphics Setting").setNewColumn(true);
-	gui.addButton("Change Texture", CHANGETEXBTN);
+	gui.addButton("Change BG", CHANGEBGBTN);
+	gui.addButton("Change Blob Tex", CHANGEBLOBTEXBTN);
 	gui.addButton("Restore Default", RESTORDEFBTN);
 	gui.addSlider("Shadow Intensity", SHADOWINTENSITY, 0.0, 1.0);
 	gui.addSlider("Shadow Scale", SHADOWSCALE, 0, 20);
@@ -45,7 +46,7 @@ void AdminPanel::setup(){
 	gui.addSlider("test x", TESTY, -1000, 1000);	
 	
 //	gui.loadFromXML();
-	gui.show();
+//	gui.show();
 	
 	restoreDefault();
 	
@@ -53,9 +54,12 @@ void AdminPanel::setup(){
 
 void AdminPanel::update(){
 	
-	if(CHANGETEXBTN) {
-		CHANGETEXBTN = false;
-		openFileDialogue("img");
+	if(CHANGEBGBTN) {
+		CHANGEBGBTN = false;
+		openFileDialogueBG("BG");
+	}else if (CHANGEBLOBTEXBTN) {
+		CHANGEBLOBTEXBTN = false;
+		openFileDialogueBlobTex("BlobTex");
 	}else if (RESTORDEFBTN) {
 		restoreDefault();
 	}
@@ -81,15 +85,26 @@ void AdminPanel::toggle(){
 	
 }
 
-void AdminPanel::openFileDialogue(string ID){
+void AdminPanel::openFileDialogueBG(string ID){
 	
 	string path;
 	ofxFileDialogOSX::openFile(path);
 	FileDef fi;
 	fi.ID = ID;
 	fi.path = path;
-	ofNotifyEvent(onFileDialogue, fi);
+	ofNotifyEvent(onFileDialogueBG, fi);
 
+}
+
+void AdminPanel::openFileDialogueBlobTex(string ID){
+	
+	string path;
+	ofxFileDialogOSX::openFile(path);
+	FileDef fi;
+	fi.ID = ID;
+	fi.path = path;
+	ofNotifyEvent(onFileDialogueBlobTex, fi);
+	
 }
 
 void AdminPanel::restoreDefault() {
@@ -97,21 +112,22 @@ void AdminPanel::restoreDefault() {
 	// default init
 	PHYSICSTICKFPS = 25;
 	TOGGLEMOTION = true;
-	CHANGETEXBTN = false;
+	CHANGEBGBTN = false;
+	CHANGEBLOBTEXBTN = false;
 	RESTORDEFBTN = false;
-	SHADOWINTENSITY = 0.658;
-	SHADOWSCALE = 12;
-	SHADOWPOSX = 0;
-	SHADOWPOSY = 0;
+	SHADOWINTENSITY = 0.714;
+	SHADOWSCALE = 10;
+	SHADOWPOSX = -242;
+	SHADOWPOSY = -328;
 	SHADOWROTDEG = 60.0;
-	SHADOWROTX = true;
+	SHADOWROTX = false;
 	SHADOWROTY = false;
 	SHADOWROTZ = false;
 	LIGHTX = 0.0;
 	LIGHTY = -488.0;
 	LIGHTZ = 895.0;
-	TEXCOLMIXRATIO = 0.224;
-	BLOBTRANSPARENCY = 0.8;
+	TEXCOLMIXRATIO = 0.478;
+	BLOBTRANSPARENCY = 0.54;
 	BLOBBASECOL[0] = 0.5;
 	BLOBBASECOL[1] = 0.5;
 	BLOBBASECOL[2] = 0.5;

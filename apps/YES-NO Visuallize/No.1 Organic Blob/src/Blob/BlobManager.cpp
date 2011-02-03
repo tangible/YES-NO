@@ -70,14 +70,31 @@ void BlobManager::setup(int _fps, AdminPanel* _admin) {
 	}
 	shadowCvImage.allocate(shadowW, shadowH);	
 	
+	// load imgs for texture
+	bg.loadImage("vancity.jpg");
+	blobTex.loadImage("sky.jpeg");
+	glActiveTexture(GL_TEXTURE1);
+	texSlot = 1;
+	glBindTexture(GL_TEXTURE_2D, blobTex.getTextureReference().getTextureData().textureID);	
+	glActiveTexture(GL_TEXTURE0);		
+	
+	bgCenter = ofxVec3f(ofGetWidth()/2-bg.getWidth()/2, ofGetHeight()/2-bg.getHeight()/2, 0);
+	
+	// move bg
+	bgXTween.setParameters(easingback, ofxTween::easeOut, 0, 0, 0, 0);
+	bgYTween.setParameters(easingback, ofxTween::easeOut, 0, 0, 0, 0);
+	
 }
 
 void BlobManager::update() {
 
-	if (isVidTex) {
-		player.update();
-		if (player.bLoaded && !player.isFrameNew()) player.play();			
-		
+	if (isVidBG) {
+		bgPlayer.update();
+		if (bgPlayer.bLoaded && !bgPlayer.isFrameNew()) bgPlayer.play();			
+	}
+	if (isVidBlobTex) {
+		blobTexPlayer.update();
+		if (blobTexPlayer.bLoaded && !blobTexPlayer.isFrameNew()) blobTexPlayer.play();		
 	}
 	
 	// update metaball point locations
@@ -165,15 +182,24 @@ void BlobManager::update() {
 	}
 }
 
+float xidx = 0.0;
+float yidx = 0.0;
 void BlobManager::draw() {
 
 	// draw BG
     glDisable(GL_LIGHTING);
 	glColor3f(1.0, 1.0, 1.0);
-	if (!isVidTex) {
-		bg.draw(0, 0);
+	if (!isVidBG) {
+//		xidx += ofRandom(0.01, -0.01);
+//		yidx += ofRandom(0.01, -0.01);
+//		float x = ofSignedNoise(xidx)*(ofGetWidth()/2-bg.getWidth()/2);
+//		float y = ofSignedNoise(yidx)*(ofGetHeight()/2-bg.getHeight()/2);
+//		bg.draw(bgCenter.x+x, bgCenter.y+y);
+		
+		bg.draw(ofGetWidth()/2-bg.getWidth()/2+bgXTween.update(), 
+				ofGetHeight()/2-bg.getHeight()/2+bgYTween.update());
 	}else {
-		player.draw(0, 0, ofGetWidth(), ofGetHeight());
+		bgPlayer.draw(0, 0, ofGetWidth(), ofGetHeight());
 	}
 	glEnable(GL_LIGHTING);
 		
@@ -287,50 +313,76 @@ void BlobManager::setupGLStuff(){
 	
 }
 
-void BlobManager::changeImg(string path) {
+void BlobManager::changeImgBG(string path) {
 	
-	bool isImg = img.loadImage(path);
+	bool isImg = bg.loadImage(path);
 	
 	if (isImg) {
-		img.resize(ofGetWidth(), ofGetHeight());
-		glActiveTexture(GL_TEXTURE1);
-		texSlot = 1;
-		glBindTexture(GL_TEXTURE_2D, img.getTextureReference().getTextureData().textureID);	
-		glActiveTexture(GL_TEXTURE0);		
-		
-		bg.loadImage(path);
-		bg.resize(ofGetWidth(), ofGetHeight());
-		
-		isVidTex = false;
-		player.stop();
-		player.close();
+		//bg.resize(ofGetWidth(), ofGetHeight());			
+		isVidBG = false;
+		bgPlayer.stop();
+		bgPlayer.close();
 		
 	}else {
-		player.loadMovie(path);
-		player.play();		
-		isVidTex = true;
+		bgPlayer.loadMovie(path);
+		bgPlayer.play();		
+		isVidBG = true;
+			
+	}
+}
+
+void BlobManager::changeImgBlobTex(string path) {
+	
+	bool isImg = blobTex.loadImage(path);
+	
+	if (isImg) {
+		blobTex.resize(ofGetWidth(), ofGetHeight());
+		glActiveTexture(GL_TEXTURE1);
+		texSlot = 1;
+		glBindTexture(GL_TEXTURE_2D, blobTex.getTextureReference().getTextureData().textureID);	
+		glActiveTexture(GL_TEXTURE0);			
+		
+		isVidBlobTex = false;
+		blobTexPlayer.stop();
+		blobTexPlayer.close();
+		
+	}else {
+		blobTexPlayer.loadMovie(path);
+		blobTexPlayer.play();		
+		isVidBlobTex = true;
 		
 		glActiveTexture(GL_TEXTURE1);
 		texSlot = 1;
-		glBindTexture(GL_TEXTURE_2D, player.getTextureReference().getTextureData().textureID);	
+		glBindTexture(GL_TEXTURE_2D, blobTexPlayer.getTextureReference().getTextureData().textureID);	
 		glActiveTexture(GL_TEXTURE0);		
 	}
 }
 
+void BlobManager::moveBG() {
+	
+	if (bgXTween.isCompleted()) {
+		
+		float cur = bgXTween.getTarget(0);
+		float x = ofRandom(-430, 430);
+		float dur = ofRandom(6000, 8000);
+		bgXTween.setParameters(easingquart, ofxTween::easeInOut, cur, x, dur, 0);
+		
+		cur = bgYTween.getTarget(0);
+		float y = ofRandom(-130, 130);
+		bgYTween.setParameters(easingquart, ofxTween::easeInOut, cur, y, dur, 0);
+		
+	}
+	
+	
+}
+
 void BlobManager::recieveSMS(UpdateInfo upInfo) {
 
-	cout << "ratioTotalYes = " + ofToString(upInfo.ratioTotalYes) << endl;
-	cout << "ratioTotalNo = "+ ofToString(upInfo.ratioTotalNo) << endl;
-	cout << "ratioThisTimeYes = "+ ofToString(upInfo.ratioThisTimeYes) << endl;
-	cout << "ratioThisTimeNo = "+ ofToString(upInfo.ratioThisTimeNo) << endl;
-	cout << "numTotalYes = "+ ofToString(upInfo.numTotalYes) << endl;
-	cout << "numTotalNo = "+ ofToString(upInfo.numTotalNo) << endl;
-	cout << "numYes = "+ ofToString(upInfo.numYes) << endl;
-	cout << "numNo = "+ ofToString(upInfo.numNo) << endl;
-	cout << "starttime = "+ upInfo.requesttime << endl;
-	cout << "" << endl;
-
-	
+//	for (int i = 0; i < mBallChunks.size(); i++) {
+//		mBallChunks[i]->onSMSRecieved();
+//	}
+	mBallChunks[0]->onSMSRecieved(upInfo.ratioThisTimeYes, upInfo.ratioTotalYes);
+	mBallChunks[1]->onSMSRecieved(upInfo.ratioThisTimeNo, upInfo.ratioTotalNo);
 	
 }
 

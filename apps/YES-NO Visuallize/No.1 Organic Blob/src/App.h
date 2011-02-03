@@ -4,10 +4,10 @@
 #define FPS 25
 
 #include "ofMain.h"
+#include "ofxTween.h"
 #include "BlobManager.h"
 #include "AdminPanel.h"
 #include "HTTPClient.h"
-
 
 // No.1 Organic Blob
 class App : public ofBaseApp{
@@ -26,13 +26,37 @@ public:
 	void mouseReleased(int x, int y, int button);
 	void resized(int w, int h);
 	
-	void onFileChange(FileDef& fd);
+	void onFileChangeBG(FileDef& fd);
+	void onFileChangeBlobTex(FileDef& fd);	
 	void onSMSMsgRecieved(UpdateInfo& upInfo);
+	void jitterAndZoomScene();
 
 	BlobManager blobMgr;
 	AdminPanel	adminPanel;
 	HTTPClient	httpClient;	
 	
+	ofxCamera		camera;
+	ofxTween		cameraXTween;
+	ofxTween		eyeXTween;
+	ofxTween		cameraYTween;
+	ofxTween		eyeYTween;
+	ofxTween		cameraZTween;	
+	ofxTween		bgJitterTween;
+	
+	
+	// tweens
+	vector<ofxEasing>   easing;
+	ofxEasingBack		easingback;
+	ofxEasingBounce 	easingbounce;
+	ofxEasingCirc		easingcirc;
+	ofxEasingCubic		easingcubic;
+	ofxEasingElastic	easingelastic;
+	ofxEasingExpo		easingexpo;
+	ofxEasingLinear 	easinglinear;
+	ofxEasingQuad		easingquad;
+	ofxEasingQuart		easingquart;
+	ofxEasingQuint		easingquint;
+	ofxEasingSine		easingsine;	
 };
 
 #endif

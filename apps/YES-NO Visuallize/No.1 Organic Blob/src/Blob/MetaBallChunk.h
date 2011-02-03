@@ -12,6 +12,8 @@
 #include "ofMain.h"
 #include "Metaballs.h"
 #include "ofxVectorMath.h"
+#include "ofxTween.h"
+#include "HTTPClient.h"
 
 class MetaBallChunk {
 	
@@ -22,6 +24,7 @@ public:
 	void updateBallSizes();
 	void updateColor();
 	void minimizeOne();
+	void onSMSRecieved(float thisTime, float total);
 	
 	int						nPoints;
 	
@@ -31,6 +34,7 @@ public:
 	ofPoint*				ballPointsPrev;
 	ofPoint*				ballPointsPrev2;	
 	float*					ballSizes;
+	ofxTween				ballSizeTween;
 	int						minimizeTgt;
 	
 	// fields for this chunk
@@ -43,5 +47,18 @@ public:
 	ofxVec4f				chunkDestCol;
 	float					decelerationCol;
 	int						whichCol;
+	
+	// tweens
+	ofxEasingBack		easingback;
+	ofxEasingBounce 	easingbounce;
+	ofxEasingCirc		easingcirc;
+	ofxEasingCubic		easingcubic;
+	ofxEasingElastic	easingelastic;
+	ofxEasingExpo		easingexpo;
+	ofxEasingLinear 	easinglinear;
+	ofxEasingQuad		easingquad;
+	ofxEasingQuart		easingquart;
+	ofxEasingQuint		easingquint;
+	ofxEasingSine		easingsine;
 	
 };

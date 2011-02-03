@@ -11,8 +11,16 @@ void App::setup(){
 	blobMgr.setup(FPS, &adminPanel);
 	httpClient.setup();
 	
-	ofAddListener(adminPanel.onFileDialogue, this, &App::onFileChange);
+	ofAddListener(adminPanel.onFileDialogueBG, this, &App::onFileChangeBG);
+	ofAddListener(adminPanel.onFileDialogueBlobTex, this, &App::onFileChangeBlobTex);	
 	ofAddListener(httpClient.onSMSRecieved, this, &App::onSMSMsgRecieved);
+	
+	camera.position(ofGetWidth()/2, ofGetHeight()/2, 700);
+	cameraXTween.setParameters(easingback, ofxTween::easeOut, ofGetWidth()/2, ofGetWidth()/2, 0, 0);
+	eyeXTween.setParameters(easingback, ofxTween::easeOut, ofGetWidth()/2, ofGetWidth()/2, 0, 0);
+	cameraYTween.setParameters(easingback, ofxTween::easeOut, ofGetHeight()/2, ofGetHeight()/2, 0, 0);
+	eyeYTween.setParameters(easingback, ofxTween::easeOut, ofGetHeight()/2, ofGetHeight()/2, 0, 0);
+	cameraZTween.setParameters(easingback, ofxTween::easeOut, 700, 700, 0, 0);
 	
 }
 
@@ -23,21 +31,61 @@ void App::update(){
 	adminPanel.update();
 	httpClient.update();	
 	
+	jitterAndZoomScene();
+	camera.position(cameraXTween.update(), cameraYTween.update(), cameraZTween.update());
+	camera.eye(eyeXTween.update(), eyeYTween.update(), 0);
 }
 
 //--------------------------------------------------------------
 void App::draw(){
 	
+	ofPushMatrix();
+	camera.place();
 	blobMgr.draw();
+	ofPopMatrix();
+	
+	ofSetupScreen();
 	adminPanel.draw();
 	
 }
 
 //--------------------------------------------------------------
-void App::onFileChange(FileDef& fd) {
-	blobMgr.changeImg(fd.path);
+void App::jitterAndZoomScene() {
+	
+	if (cameraXTween.isCompleted()) {
+		float x = ofGetWidth()/2+ofRandom(-3, 3);
+		float dur = ofRandom(2000, 3000);
+		float delay = 0.0;//ofRandom(200, 1000);
+		cameraXTween.setParameters(easingelastic, ofxTween::easeInOut, camera.getPosition().x, x, dur, delay);
+		eyeXTween.setParameters(easingelastic, ofxTween::easeInOut, camera.getPosition().x, x, dur, delay);
+
+		float y = ofGetHeight()/2+ofRandom(-3, 3);
+		delay = 0.0;//ofRandom(200, 1000);		
+		cameraYTween.setParameters(easingelastic, ofxTween::easeInOut, camera.getPosition().y, y, dur, delay);
+		eyeYTween.setParameters(easingelastic, ofxTween::easeInOut, camera.getPosition().y, y, dur, delay);
+
+	}
+	
+	if (cameraZTween.isCompleted()) {
+		float z = ofRandom(700, 1000);
+		float dur = ofRandom(4000, 6000);
+		cameraZTween.setParameters(easinglinear, ofxTween::easeInOut, camera.getPosition().z, z, dur, 0);
+	}
+	
+	blobMgr.moveBG();
 }
 
+//--------------------------------------------------------------
+void App::onFileChangeBG(FileDef& fd) {
+	blobMgr.changeImgBG(fd.path);
+}
+
+//--------------------------------------------------------------
+void App::onFileChangeBlobTex(FileDef& fd) {
+	blobMgr.changeImgBlobTex(fd.path);
+}
+
+//--------------------------------------------------------------
 void App::onSMSMsgRecieved(UpdateInfo& upInfo) {
 	blobMgr.recieveSMS(upInfo);
 }

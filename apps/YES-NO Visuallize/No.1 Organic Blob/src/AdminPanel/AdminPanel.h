@@ -25,14 +25,17 @@ public:
 	void update();
 	void draw();
 	void toggle();
-	void openFileDialogue(string ID);
+	void openFileDialogueBG(string ID);
+	void openFileDialogueBlobTex(string ID);	
 	void restoreDefault();
 	
-	ofEvent<FileDef> onFileDialogue; 
+	ofEvent<FileDef> onFileDialogueBG; 
+	ofEvent<FileDef> onFileDialogueBlobTex; 	
 	
 	int		PHYSICSTICKFPS;
 	bool	TOGGLEMOTION;
-	bool	CHANGETEXBTN;
+	bool	CHANGEBGBTN;
+	bool	CHANGEBLOBTEXBTN;
 	bool	RESTORDEFBTN;
 	float	SHADOWINTENSITY;
 	int		SHADOWSCALE;
