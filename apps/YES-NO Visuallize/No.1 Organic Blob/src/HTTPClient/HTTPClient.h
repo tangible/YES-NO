@@ -15,9 +15,23 @@
 #include "ofxTimer.h"
 #include "ofxXmlSettings.h"
 
-struct smsMsg {
+class smsMsg {
+public:
 	string answer;
 	string time;
+};
+
+class UpdateInfo {
+public:
+	float ratioTotalYes;
+	float ratioTotalNo;
+	float ratioThisTimeYes;
+	float ratioThisTimeNo;
+	int numTotalYes;
+	int numTotalNo;
+	int numYes;
+	int numNo;
+	string requesttime;
 };
 
 class HTTPClient {
@@ -27,13 +41,20 @@ public:
 	void update();
 	void sendRequest();
 	void getResponse(ofxHttpResponse & response);
-	vector<smsMsg> yes;
-	vector<smsMsg> no;
+	vector<smsMsg> totalYess;
+	vector<smsMsg> totalNos;
+	vector<smsMsg> thisTimeYess;
+	vector<smsMsg> thisTimeNos;
+	string reqestTime;
+	string recieveTime;
+	
+	ofEvent<UpdateInfo> onSMSRecieved; 
 	
 private:
 	string str_replace(const string &source,
 					   const string &pattern,
 					   const string &placement);	
+	UpdateInfo calcUpdateInfo();
 	
 	ofxHttpUtils	httpUtils;
 	string			responseStr;

@@ -12,6 +12,7 @@ void App::setup(){
 	httpClient.setup();
 	
 	ofAddListener(adminPanel.onFileDialogue, this, &App::onFileChange);
+	ofAddListener(httpClient.onSMSRecieved, this, &App::onSMSMsgRecieved);
 	
 }
 
@@ -35,6 +36,10 @@ void App::draw(){
 //--------------------------------------------------------------
 void App::onFileChange(FileDef& fd) {
 	blobMgr.changeImg(fd.path);
+}
+
+void App::onSMSMsgRecieved(UpdateInfo& upInfo) {
+	blobMgr.recieveSMS(upInfo);
 }
 
 //--------------------------------------------------------------

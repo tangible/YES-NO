@@ -177,7 +177,7 @@ void BlobManager::draw() {
 	}
 	glEnable(GL_LIGHTING);
 		
-	setupForNoTexturing();
+	setupGLStuff();
 	
     // draw metaball
 	ofEnableAlphaBlending();
@@ -217,7 +217,6 @@ void BlobManager::draw() {
         glDisable(GL_CULL_FACE);
         glDisable(GL_COLOR_MATERIAL);
         glReadPixels(0,0,screenW,screenH, GL_DEPTH_COMPONENT, GL_FLOAT, screenDepth); // fuck slow suck
-        huntForBlendFunc(1000,1,5);
 		
         int shadowIndex = 0;
         int screenIndex = 0;
@@ -240,7 +239,6 @@ void BlobManager::draw() {
 		
         shadowTex.loadData(shadowPixelsLA, shadowW,shadowH, GL_LUMINANCE_ALPHA);
         glPushMatrix();
-		//glTranslatef(0.53*screenW, 0.73*screenH, -200);
 		glTranslatef(0.53*screenW+admin->SHADOWPOSX, 0.73*screenH+admin->SHADOWPOSY, 0);
 		glScalef(admin->SHADOWSCALE, admin->SHADOWSCALE, 1);
 		if (!(!admin->SHADOWROTX && !admin->SHADOWROTY && !admin->SHADOWROTZ))
@@ -252,94 +250,10 @@ void BlobManager::draw() {
         glPopAttrib();
     }
 	glDisable(GL_DEPTH_TEST);
+	
 }
 
-
-void BlobManager::changeImg(string path) {
-	
-	bool isImg = img.loadImage(path);
-	
-	if (isImg) {
-		img.resize(ofGetWidth(), ofGetHeight());
-		glActiveTexture(GL_TEXTURE1);
-		texSlot = 1;
-		glBindTexture(GL_TEXTURE_2D, img.getTextureReference().getTextureData().textureID);	
-		glActiveTexture(GL_TEXTURE0);		
-		
-		bg.loadImage(path);
-		bg.resize(ofGetWidth(), ofGetHeight());
-
-		isVidTex = false;
-		player.stop();
-		player.close();
-		
-	}else {
-		player.loadMovie(path);
-		player.play();		
-		isVidTex = true;
-		
-		glActiveTexture(GL_TEXTURE1);
-		texSlot = 1;
-		glBindTexture(GL_TEXTURE_2D, player.getTextureReference().getTextureData().textureID);	
-		glActiveTexture(GL_TEXTURE0);		
-	}
-}
-
-
-void BlobManager::huntForBlendFunc(int period, int defaultSid, int defaultDid){
-	
-	int sfact[] = {
-		GL_ZERO,
-		GL_ONE,
-		GL_DST_COLOR,
-		GL_ONE_MINUS_DST_COLOR,
-		GL_SRC_ALPHA,
-		GL_ONE_MINUS_SRC_ALPHA,
-		GL_DST_ALPHA,
-		GL_ONE_MINUS_DST_ALPHA,
-		GL_SRC_ALPHA_SATURATE
-	};
-	
-	int dfact[] = {
-		GL_ZERO,
-		GL_ONE,
-		GL_SRC_COLOR,
-		GL_ONE_MINUS_SRC_COLOR,
-		GL_SRC_ALPHA,
-		GL_ONE_MINUS_SRC_ALPHA,
-		GL_DST_ALPHA,
-		GL_ONE_MINUS_DST_ALPHA
-	};
-	
-	glEnable(GL_BLEND);
-	
-	if ((defaultSid == -1) && (defaultDid == -1)) {
-		
-		int sid =  (ofGetElapsedTimeMillis()/(8*period))%9;
-		int did =  (ofGetElapsedTimeMillis()/period)%8;
-		glBlendFunc(sfact[sid], dfact[did]);
-		printf("SRC %d	DST %d\n", sid, did);
-		
-	} else if (defaultDid == -1){
-		
-		int did =  (ofGetElapsedTimeMillis()/period)%8;
-		glBlendFunc(sfact[defaultSid], dfact[did]);
-		printf("SRC %d	DST %d\n", defaultSid, did);
-		
-	} else if (defaultSid == -1){
-		
-		int sid =  (ofGetElapsedTimeMillis()/(8*period))%9;
-		glBlendFunc(sfact[sid], dfact[defaultDid]);
-		printf("SRC %d	DST %d\n", sid, defaultDid);
-		
-	} else {
-		
-		glBlendFunc(sfact[defaultSid], dfact[defaultDid]);
-		
-	}
-}
-
-void BlobManager::setupForNoTexturing(){
+void BlobManager::setupGLStuff(){
 	
     glEnable(GL_POLYGON_SMOOTH);
     glEnable(GL_LIGHTING);
@@ -372,3 +286,56 @@ void BlobManager::setupForNoTexturing(){
     glLightfv(GL_LIGHT0, GL_AMBIENT, admin->LIGHTAMBIENT);		
 	
 }
+
+void BlobManager::changeImg(string path) {
+	
+	bool isImg = img.loadImage(path);
+	
+	if (isImg) {
+		img.resize(ofGetWidth(), ofGetHeight());
+		glActiveTexture(GL_TEXTURE1);
+		texSlot = 1;
+		glBindTexture(GL_TEXTURE_2D, img.getTextureReference().getTextureData().textureID);	
+		glActiveTexture(GL_TEXTURE0);		
+		
+		bg.loadImage(path);
+		bg.resize(ofGetWidth(), ofGetHeight());
+		
+		isVidTex = false;
+		player.stop();
+		player.close();
+		
+	}else {
+		player.loadMovie(path);
+		player.play();		
+		isVidTex = true;
+		
+		glActiveTexture(GL_TEXTURE1);
+		texSlot = 1;
+		glBindTexture(GL_TEXTURE_2D, player.getTextureReference().getTextureData().textureID);	
+		glActiveTexture(GL_TEXTURE0);		
+	}
+}
+
+void BlobManager::recieveSMS(UpdateInfo upInfo) {
+
+	cout << "ratioTotalYes = " + ofToString(upInfo.ratioTotalYes) << endl;
+	cout << "ratioTotalNo = "+ ofToString(upInfo.ratioTotalNo) << endl;
+	cout << "ratioThisTimeYes = "+ ofToString(upInfo.ratioThisTimeYes) << endl;
+	cout << "ratioThisTimeNo = "+ ofToString(upInfo.ratioThisTimeNo) << endl;
+	cout << "numTotalYes = "+ ofToString(upInfo.numTotalYes) << endl;
+	cout << "numTotalNo = "+ ofToString(upInfo.numTotalNo) << endl;
+	cout << "numYes = "+ ofToString(upInfo.numYes) << endl;
+	cout << "numNo = "+ ofToString(upInfo.numNo) << endl;
+	cout << "starttime = "+ upInfo.requesttime << endl;
+	cout << "" << endl;
+
+	
+	
+}
+
+
+
+
+
+

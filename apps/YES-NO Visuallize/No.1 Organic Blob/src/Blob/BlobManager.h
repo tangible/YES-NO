@@ -14,6 +14,7 @@
 #include "ofxShader.h"
 #include "ofxBullet.h"
 #include "AdminPanel.h"
+#include "HTTPClient.h"
 #include "MetaBallChunk.h"
 #include "Metaballs.h"
 #include "Marchingcubes.h"
@@ -26,9 +27,9 @@ public:
 	void draw();
 	
 	void changeImg(string path);
+	void recieveSMS(UpdateInfo upInfo);
 	
-	void setupForNoTexturing();
-	void huntForBlendFunc (int period, int defaultSid, int defaultDid);	
+	void setupGLStuff();
 	
 	AdminPanel*				admin;
 	

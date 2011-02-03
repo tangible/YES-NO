@@ -27,6 +27,7 @@ public:
 	void resized(int w, int h);
 	
 	void onFileChange(FileDef& fd);
+	void onSMSMsgRecieved(UpdateInfo& upInfo);
 
 	BlobManager blobMgr;
 	AdminPanel	adminPanel;

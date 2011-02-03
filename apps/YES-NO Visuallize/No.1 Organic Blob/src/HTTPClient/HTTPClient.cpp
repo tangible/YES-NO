@@ -44,6 +44,7 @@ void HTTPClient::sendRequest(){
 	strftime(gmttime, 255, "%Y¥/%m¥/%d¥/%H¥/%I¥/%S", gmtime(&t));
 	string timestr = gmttime;
 	timestr = str_replace(timestr, "¥", "");			
+	reqestTime = timestr;
 	
 	form.addFormField("time", timestr);
 	httpUtils.addForm(form);	
@@ -53,6 +54,16 @@ void HTTPClient::sendRequest(){
 void HTTPClient::getResponse(ofxHttpResponse & response){
 
 	responseStr.clear();
+	
+	time_t t;
+	time(&t);
+	char gmttime[256];
+	strftime(gmttime, 255, "%Y¥/%m¥/%d¥/%H¥/%I¥/%S", gmtime(&t));
+	string timestr = gmttime;
+	timestr = str_replace(timestr, "¥", "");		
+	recieveTime = timestr;
+	thisTimeYess.clear();
+	thisTimeNos.clear();
 	xml.clear();
 	xml.loadFromBuffer(response.responseBody);
 	
@@ -84,9 +95,11 @@ void HTTPClient::getResponse(ofxHttpResponse & response){
 		sms.time = time;
 		
 		if ("YES" == sms.answer) {
-			yes.push_back(sms);
+			totalYess.push_back(sms);
+			thisTimeYess.push_back(sms);
 		}else {
-			no.push_back(sms);
+			totalNos.push_back(sms);
+			thisTimeNos.push_back(sms);
 		}
 		//smsMsgs.push_back(sms);
 		
@@ -100,8 +113,40 @@ void HTTPClient::getResponse(ofxHttpResponse & response){
 //		cout << "Time: "+smsMsgs[i].time << endl;
 //	}
 
+	UpdateInfo upInfo = calcUpdateInfo();
+	ofNotifyEvent(onSMSRecieved, upInfo);
+	
 };
 
+UpdateInfo HTTPClient::calcUpdateInfo() {
+	
+	UpdateInfo upInfo;
+	
+	float totalYes = totalYess.size();
+	float totalNo = totalNos.size();
+	float thisTimeYes = thisTimeYess.size();
+	float thisTimeNo = thisTimeNos.size();
+	
+	float totalSMS = totalYes+totalNo;
+	float totalSMSThisTime = thisTimeYes+thisTimeNo;
+	float raTotalYes = (totalYes==0)?0.0:totalYes/totalSMS;
+	float raTotalNo = (totalNo==0)?0.0:totalNo/totalSMS;
+	float raThisTimeYes = (thisTimeYes==0)?0.0:thisTimeYes/totalSMSThisTime;
+	float raThisTimeNo = (thisTimeNo==0)?0.0:thisTimeNo/totalSMSThisTime;
+	
+	upInfo.ratioTotalYes = raTotalYes;
+	upInfo.ratioTotalNo = raTotalNo;
+	upInfo.ratioThisTimeYes = raThisTimeYes;
+	upInfo.ratioThisTimeNo = raThisTimeNo;
+	upInfo.numTotalYes = totalYes;
+	upInfo.numTotalNo = totalNo;
+	upInfo.numYes = thisTimeYes;
+	upInfo.numNo = thisTimeNo;
+	upInfo.requesttime = reqestTime;
+	
+	return upInfo;
+	
+}
 
 string HTTPClient::str_replace(const string &source,
 							   const string &pattern,
