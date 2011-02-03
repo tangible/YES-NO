@@ -41,8 +41,7 @@ public:
 	ofImage					bg;
 	
 	ofxBullet*				bullet;
-	vector<MyRigidBody*>	spheres;		
-	
+	vector<vector<MyRigidBody*> > sphrersForChunk;
 	vector<MetaBallChunk*>  mBallChunks;
 	int						nMetaBalls;
 	ofPoint					boundsAvg;

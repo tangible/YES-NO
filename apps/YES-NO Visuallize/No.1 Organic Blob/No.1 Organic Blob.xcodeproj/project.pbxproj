@@ -47,6 +47,8 @@
 		313E6EC512DD108500883C18 /* ofxCvImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 313E6EBA12DD108500883C18 /* ofxCvImage.cpp */; };
 		313E6EC612DD108500883C18 /* ofxCvShortImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 313E6EBD12DD108500883C18 /* ofxCvShortImage.cpp */; };
 		3164318412E6B4A000B4F23D /* ofxShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3164318212E6B4A000B4F23D /* ofxShader.cpp */; };
+		318B44A212FA2AB700A50F14 /* glsl.frag in Resources */ = {isa = PBXBuildFile; fileRef = 31D3505712F66BA400D9D87A /* glsl.frag */; };
+		318B44A312FA2AB700A50F14 /* glsl.vert in Resources */ = {isa = PBXBuildFile; fileRef = 31D3505812F66BA400D9D87A /* glsl.vert */; };
 		31ACDD4412F8CEB600F95FC7 /* MetaBallChunk.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31ACDD4312F8CEB600F95FC7 /* MetaBallChunk.cpp */; };
 		31D34F7812F661A700D9D87A /* MyRigidBody.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31D34DE112F661A600D9D87A /* MyRigidBody.cpp */; };
 		31D34F7912F661A700D9D87A /* MySoftBody.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31D34DE312F661A600D9D87A /* MySoftBody.cpp */; };
@@ -2225,6 +2227,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				318B44A212FA2AB700A50F14 /* glsl.frag in Resources */,
+				318B44A312FA2AB700A50F14 /* glsl.vert in Resources */,
 				311E58E612F6456F0077A832 /* icon.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

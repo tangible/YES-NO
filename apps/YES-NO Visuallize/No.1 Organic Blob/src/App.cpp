@@ -5,6 +5,7 @@ void App::setup(){
 	
 	ofSetFrameRate(FPS);
 	ofBackground(255,255,255);
+	ofSetDataPathRoot("../Resources/");
 
 	adminPanel.setup();
 	blobMgr.setup(FPS, &adminPanel);
@@ -59,8 +60,8 @@ void App::keyPressed  (int key){
 	switch(key) {
 		case ' ': adminPanel.toggle(); break;
 		case 'm': 
-			vector<MetaBallChunk*> mcs = blobMgr.mBallChunks;
-			mcs[0]->minimizeOne();
+//			vector<MetaBallChunk*> mcs = blobMgr.mBallChunks;
+//			mcs[0]->minimizeOne();
 			break;	
 	}		
 }

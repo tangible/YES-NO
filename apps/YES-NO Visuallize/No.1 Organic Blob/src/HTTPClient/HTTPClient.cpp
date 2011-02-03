@@ -82,7 +82,13 @@ void HTTPClient::getResponse(ofxHttpResponse & response){
 		smsMsg sms;
 		sms.answer = ans;
 		sms.time = time;
-		smsMsgs.push_back(sms);
+		
+		if ("YES" == sms.answer) {
+			yes.push_back(sms);
+		}else {
+			no.push_back(sms);
+		}
+		//smsMsgs.push_back(sms);
 		
 		xml.popTag();
 	}

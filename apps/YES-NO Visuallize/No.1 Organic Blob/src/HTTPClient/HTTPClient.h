@@ -27,6 +27,8 @@ public:
 	void update();
 	void sendRequest();
 	void getResponse(ofxHttpResponse & response);
+	vector<smsMsg> yes;
+	vector<smsMsg> no;
 	
 private:
 	string str_replace(const string &source,
@@ -35,8 +37,7 @@ private:
 	
 	ofxHttpUtils	httpUtils;
 	string			responseStr;
-	string			action_url;
-	vector<smsMsg>	smsMsgs;	
+	string			action_url;	
 	TimedCounter*	counter;
 	ofxXmlSettings	xml;
 };

@@ -5,7 +5,7 @@
     </SliderInt_Motion_Tick_PerSec>
     <Toggle_Toggle_Motion>
         <name>Toggle Motion</name>
-        <value>0</value>
+        <value>1</value>
     </Toggle_Toggle_Motion>
     <Button_Change_Texture>
         <name>Change Texture</name>
@@ -17,19 +17,19 @@
     </Button_Restore_Default>
     <SliderFloat_Shadow_Intensity>
         <name>Shadow Intensity</name>
-        <value>0.769531</value>
+        <value>0.658000</value>
     </SliderFloat_Shadow_Intensity>
     <SliderInt_Shadow_Scale>
         <name>Shadow Scale</name>
-        <value>8</value>
+        <value>12</value>
     </SliderInt_Shadow_Scale>
     <SliderInt_Shadow_Pos_X>
         <name>Shadow Pos X</name>
-        <value>-171</value>
+        <value>0</value>
     </SliderInt_Shadow_Pos_X>
     <SliderInt_Shadow_Pos_Y>
         <name>Shadow Pos Y</name>
-        <value>-226</value>
+        <value>0</value>
     </SliderInt_Shadow_Pos_Y>
     <SliderFloat_Shadow_RotDegree>
         <name>Shadow RotDegree</name>
@@ -37,7 +37,7 @@
     </SliderFloat_Shadow_RotDegree>
     <Toggle_Shadow_Rot_X>
         <name>Shadow Rot X</name>
-        <value>0</value>
+        <value>1</value>
     </Toggle_Shadow_Rot_X>
     <Toggle_Shadow_Rot_Y>
         <name>Shadow Rot Y</name>
@@ -61,7 +61,7 @@
     </SliderFloat_Light_Pos_Z>
     <SliderFloat_Blob_Tex&Col_Mix_Ratio>
         <name>Blob Tex&amp;Col Mix Ratio</name>
-        <value>0.298828</value>
+        <value>0.224000</value>
     </SliderFloat_Blob_Tex&Col_Mix_Ratio>
     <SliderFloat_Blob_Transparency>
         <name>Blob Transparency</name>
