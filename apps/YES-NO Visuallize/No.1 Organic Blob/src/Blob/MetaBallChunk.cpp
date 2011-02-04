@@ -8,13 +8,19 @@
  */
 
 #include "MetaBallChunk.h"
-
+int gridSize = 110;
+float baseBallSize = 0.10;
+float maxBallSize = 0.60;
 MetaBallChunk::MetaBallChunk(int points, int _chunkID) {
 	
 	chunkCurrPos = ofxVec3f(0.0, 0.0, 0.0);
-	chunkDestPos = ofxVec3f(ofRandom(-400, 400), ofRandom(-400, 400), 0.0);
-	deceleration = ofRandom(0.989, 0.9999);
-	sizeBase = ofRandom(0.2, 0.2);
+	if (_chunkID == 0) {
+		chunkDestPos = ofxVec3f(400.0, 0.0, 0.0);
+	}else {
+		chunkDestPos = ofxVec3f(-400.0, 0.0, 0.0);		
+	}
+	deceleration = ofRandom(0.98, 0.99);
+	sizeBase = baseBallSize;
 	minimizeTgt = -1;
 	nPoints = points;
 	
@@ -43,7 +49,7 @@ MetaBallChunk::MetaBallChunk(int points, int _chunkID) {
 		ballSizes[i] = 1.0;
 	}
 	m_pMetaballs = new CMetaballs(nPoints);
-	m_pMetaballs->SetGridSize(120);
+	m_pMetaballs->SetGridSize(gridSize);
 	chunkID = _chunkID;	
 	
 	ballSizeTween.setParameters(1,easingback,ofxTween::easeOut,sizeBase,sizeBase,0,0);
@@ -62,10 +68,10 @@ void MetaBallChunk::updateChunkBasePos() {
 		chunkCurrPos.y += ampy - tmpampy;
 		chunkCurrPos.z += ampz - tmpampz;
 	}else {
-		chunkDestPos = ofxVec3f(ofRandom(-500, 500), 
-								ofRandom(-500, 500), 
-								ofRandom(-500, 500));
-		deceleration = ofRandom(0.989, 0.9999);
+		chunkDestPos = ofxVec3f(ofRandom(-700, 700), 
+								ofRandom(-350, 350), 
+								ofRandom(-100, 200));
+		deceleration = ofRandom(0.97, 0.99);
 		
 	}
 
@@ -104,12 +110,14 @@ void MetaBallChunk::updateBallSizes() {
 	
 	float sizeNow = ballSizeTween.update();
 	
-	if (ballSizeTween.isCompleted())
+	if (ballSizeTween.isCompleted()) {
+		//ofNotifyEvent(onResizeComplete, chunkID);
 		ballSizeTween.setParameters(1,easingquad,ofxTween::easeInOut,sizeNow,sizeBase,500,0);
+	}
 	
 	for (int i = 0; i < nPoints; i++) {
-		float sizeBaseSin  = 0.035 * ofNoise(ofGetElapsedTimeMillis());	
-		ballSizes[i] = sizeNow + sizeBaseSin;
+		//float sizeBaseSin  = 0.015 * ofNoise(ofGetElapsedTimeMillis());	
+		ballSizes[i] = sizeNow;// + sizeBaseSin;
 	}
 	
 }
@@ -121,16 +129,14 @@ void MetaBallChunk::minimizeOne() {
 	
 	if (ballSizes[minimizeTgt] < -1.0) 
 		minimizeTgt = -1;
-	
-	//ballSizes[minimizeTgt] -= 0.1;
 
 }
 
 void MetaBallChunk::onSMSRecieved(float thisTime, float total) {
 	
 	// size
-	sizeBase = ofMap(total, 0.0, 1.0, 0.05, 0.3);
-	float mapForSize = ofMap(thisTime, 0.0, 1.0, sizeBase, sizeBase*3);
+	sizeBase = ofMap(total, 0.0, 1.0, baseBallSize, maxBallSize);
+	float mapForSize = ofMap(thisTime, 0.0, 1.0, sizeBase, sizeBase*2);
 	float mapForSizeDur = ofMap(thisTime, 0.0, 1.0, 200, 1000);
 	ballSizeTween.setParameters(easingelastic,ofxTween::easeInOut,
 								sizeBase,mapForSize,

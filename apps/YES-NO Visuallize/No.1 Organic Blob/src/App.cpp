@@ -67,7 +67,7 @@ void App::jitterAndZoomScene() {
 	}
 	
 	if (cameraZTween.isCompleted()) {
-		float z = ofRandom(700, 1000);
+		float z = ofRandom(800, 1100);
 		float dur = ofRandom(4000, 6000);
 		cameraZTween.setParameters(easinglinear, ofxTween::easeInOut, camera.getPosition().z, z, dur, 0);
 	}
@@ -112,9 +112,8 @@ void App::keyPressed  (int key){
 	
 	switch(key) {
 		case ' ': adminPanel.toggle(); break;
-		case 'm': 
-//			vector<MetaBallChunk*> mcs = blobMgr.mBallChunks;
-//			mcs[0]->minimizeOne();
+		case 's': 
+			httpClient.sendRequest();
 			break;	
 	}		
 }

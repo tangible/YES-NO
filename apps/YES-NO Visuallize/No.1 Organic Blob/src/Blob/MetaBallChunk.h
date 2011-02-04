@@ -15,6 +15,7 @@
 #include "ofxTween.h"
 #include "HTTPClient.h"
 
+
 class MetaBallChunk {
 	
 public:
@@ -35,6 +36,7 @@ public:
 	ofPoint*				ballPointsPrev2;	
 	float*					ballSizes;
 	ofxTween				ballSizeTween;
+	ofEvent<int>			onResizeComplete;
 	int						minimizeTgt;
 	
 	// fields for this chunk

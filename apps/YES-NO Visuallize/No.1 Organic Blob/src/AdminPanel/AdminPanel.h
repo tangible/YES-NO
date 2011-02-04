@@ -61,5 +61,6 @@ public:
 	
 	int		TESTX;
 	int		TESTY;
+	bool	DRAWDEBUG;
 	
 };

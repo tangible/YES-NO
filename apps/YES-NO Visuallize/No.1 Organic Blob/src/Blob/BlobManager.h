@@ -51,15 +51,16 @@ public:
 	
 	ofxBullet*				bullet;
 	vector<vector<MyRigidBody*> > sphrersForChunk;
+	vector<vector<float> >	sphrersForChunkBaseSize;
+	int						randomImpulsSMSRecievedYes;
+	int						randomImpulsSMSRecievedNo;
 	vector<MetaBallChunk*>  mBallChunks;
+	ofxVec3f				centroidYes;
+	ofxVec3f				centroidNo;	
 	int						nMetaBalls;
+	
 	ofPoint					boundsAvg;
 	float					boundsScaling;
-	
-	int						blurValue;
-	int						counter;
-	int						counter2;
-	float					maxDeceleration;
 	
 	float*					screenDepth;   
 	int						nScreenPixels;  

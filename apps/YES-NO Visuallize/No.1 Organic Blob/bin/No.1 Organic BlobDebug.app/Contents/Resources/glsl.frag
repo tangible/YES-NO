@@ -8,7 +8,7 @@ varying vec3 normal;
 
 void main() {
 
-	vec4 rgbTex = texture2D(tex, vec2(texture_coordinate.x, 1.0-texture_coordinate.y)*0.6);
+	vec4 rgbTex = texture2D(tex, vec2(texture_coordinate.x, 1.0-texture_coordinate.y)*0.5);
 	
 	vec4 ambient = gl_FrontMaterial.ambient * gl_LightSource[0].ambient + gl_LightModel.ambient * gl_FrontMaterial.ambient;
 	vec4 diffuse = gl_FrontMaterial.diffuse * gl_LightSource[0].diffuse;

@@ -99,7 +99,7 @@ void MyRigidBody::render(btDynamicsWorld* m_dynamicsWorld) {
 	
 	drawer.drawOpenGL(m, shape, btVector3(1, 0, 0), 0, aabbMin, aabbMax, ofxBulletStaticUtil::ofxVec4ToBtVec4(bodyColor));
 	
-	ofSetColor(255, 255, 255);
+	//ofSetColor(255, 255, 255);
 }
 
 vector<ofxVec3f> MyRigidBody::getVertsPos() {
