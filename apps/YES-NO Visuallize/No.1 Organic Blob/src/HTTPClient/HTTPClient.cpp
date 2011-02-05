@@ -15,7 +15,7 @@ void HTTPClient::setup(){
 	ofAddListener(httpUtils.newResponseEvent, this, &HTTPClient::getResponse);
 	httpUtils.start();
 	
-	counter = new TimedCounter(5);
+	counter = new TimedCounter(10);
 	counter->startCount();	
 
 };

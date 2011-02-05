@@ -11,6 +11,7 @@ void App::setup(){
 	blobMgr.setup(FPS, &adminPanel);
 	httpClient.setup();
 	
+	
 	ofAddListener(adminPanel.onFileDialogueBG, this, &App::onFileChangeBG);
 	ofAddListener(adminPanel.onFileDialogueBlobTex, this, &App::onFileChangeBlobTex);	
 	ofAddListener(httpClient.onSMSRecieved, this, &App::onSMSMsgRecieved);

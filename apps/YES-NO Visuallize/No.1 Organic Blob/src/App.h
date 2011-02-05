@@ -8,6 +8,7 @@
 #include "BlobManager.h"
 #include "AdminPanel.h"
 #include "HTTPClient.h"
+#include "Effects.h"
 
 /*
  TODO 
@@ -42,6 +43,7 @@ public:
 	BlobManager blobMgr;
 	AdminPanel	adminPanel;
 	HTTPClient	httpClient;	
+	
 	
 	ofxCamera		camera;
 	ofxTween		cameraXTween;

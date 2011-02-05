@@ -1,0 +1,10 @@
+<controls>
+    <SliderFloat_max_speed>
+        <name>max speed</name>
+        <value>41.601562</value>
+    </SliderFloat_max_speed>
+    <SliderFloat_max_force>
+        <name>max force</name>
+        <value>1.894531</value>
+    </SliderFloat_max_force>
+</controls>

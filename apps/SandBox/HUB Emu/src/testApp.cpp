@@ -18,7 +18,7 @@ void testApp::setup(){
 	font.loadFont("Pigiarniq Heavy.ttf", 20);
 	r = 0; g = 0; b = 0; 
 
-	ratio = 5;
+	ratio = 2;
 }
 
 void testApp::getRequest(ofxHTTPServerResponse & response){ processRequest(response); }
@@ -43,14 +43,22 @@ void testApp::processRequest(ofxHTTPServerResponse & response){
 		string yes = "<SMS><Answer>YES</Answer><Time>" + timestr + "</Time></SMS>";
 		string no = "<SMS><Answer>NO</Answer><Time>" + timestr + "</Time></SMS>";
 		string contents = "";
-		for (int i = 0; i < ofRandom(1, 50); i++) {
-			float f = ofRandomuf();
-			float rf = ratio/10;
-			if (f > rf) {
+		int thisreq = ofRandom(1, 50);
+		for (int i = 0; i < thisreq; i++) {
+			int fact = ofMap(ratio, 0, 10, 1, thisreq);
+			
+			for (int j = 0; j < fact; j++) {
 				contents += yes;
-			}else {
+			}
+			for (int j = 0; j < thisreq-fact; j++) {
 				contents += no;
 			}
+			
+//			if (f) {
+//				contents += yes;
+//			}else {
+//				contents += no;
+//			}
 
 		}
 		

@@ -25,7 +25,10 @@ public:
 	void updateBallSizes();
 	void updateColor();
 	void minimizeOne();
-	void onSMSRecieved(float thisTime, float total);
+	
+	// sms events
+	void onSMSRecievedChangeCol(float thisTime, float total);
+	void onSMSRecievedChangeMetaballSize(float thisTime, float total);	
 	
 	int						nPoints;
 	

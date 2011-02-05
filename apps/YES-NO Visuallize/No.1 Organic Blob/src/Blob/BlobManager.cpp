@@ -17,6 +17,23 @@ void BlobManager::setup(int _fps, AdminPanel* _admin) {
 	shader.setup("glsl");
 	ofDisableArbTex();	
 	
+	// init sms
+	for (int i = 0; i < 2; i++) {
+		Flock* f = new Flock();
+		f->flockID = i;
+		flocks.push_back(f);
+		
+		Effects* e = new Effects();
+		e->setup();
+		effects.push_back(e);
+	}		
+	int numImgs = 1;
+	for (int i = 1; i <= numImgs; i++) {
+		ofImage img;
+		img.loadImage(ofToString(i)+".png");
+		imgs.push_back(img);
+	}
+	
 	// init metaball and voxels
 	bullet = new ofxBullet();
 	bullet->initPhysics(ofxVec3f(0, 0, 0), false);	
@@ -93,6 +110,11 @@ void BlobManager::setup(int _fps, AdminPanel* _admin) {
 	// sms param
 	randomImpulsSMSRecievedYes = 0;
 	randomImpulsSMSRecievedNo = 0;
+	
+	ofAddListener(flocks[0]->onBallGetSMSrepEvent, this, &BlobManager::onBallGetSMSrep);
+	ofAddListener(flocks[1]->onBallGetSMSrepEvent, this, &BlobManager::onBallGetSMSrep);	
+//	ofAddListener(flocks[0]->onBallGetSMSrepCompleteEvent, this, &BlobManager::onBallGetSMSrepComplete);
+//	ofAddListener(flocks[1]->onBallGetSMSrepCompleteEvent, this, &BlobManager::onBallGetSMSrepComplete);		
 }
 
 void BlobManager::update() {
@@ -108,6 +130,19 @@ void BlobManager::update() {
 	
 	// update metaball point locations
 	if (admin->TOGGLEMOTION) {
+		
+		for (int i = 0; i < flocks.size(); i++) {
+			Flock* f = flocks[i];
+			int flockID = f->flockID;
+			if (flockID == 0) {
+				f->z = centroidYes.z;
+				f->update(centroidYes.x, centroidYes.y);
+			}else if (flockID == 1) {
+				f->z = centroidNo.z;				
+				f->update(centroidNo.x, centroidNo.y);
+			}
+		}
+												 
 		
 		bullet->stepPhysicsSimulation(admin->PHYSICSTICKFPS);	
 		
@@ -217,13 +252,29 @@ void BlobManager::draw() {
 		}else {
 			bgPlayer.draw(0, 0, ofGetWidth(), ofGetHeight());
 		}
-		glEnable(GL_LIGHTING);
+		
+				
+//		ofEnableAlphaBlending();
+//		effects[0]->draw();		
+//		ofDisableAlphaBlending();
+//		glEnable(GL_LIGHTING);
 		
 		setupGLStuff();		
 		
-		// draw metaball
 		ofEnableAlphaBlending();
-
+		
+		
+			// draw sms
+			for (int i = 0; i < flocks.size(); i++) {
+				Flock* f = flocks[i];
+				
+				ofPushMatrix();
+//				ofTranslate(0, 0, f->z);
+				f->draw();
+				ofPopMatrix();
+			}
+			
+			// draw metaball
 			ofPushMatrix();
 			float w = ofGetWidth();
 			float h = ofGetHeight();
@@ -411,32 +462,10 @@ void BlobManager::moveBG() {
 	
 }
 
-void BlobManager::recieveSMS(UpdateInfo upInfo) {
-
-
-	mBallChunks[0]->onSMSRecieved(upInfo.ratioThisTimeYes, upInfo.ratioTotalYes);
-	mBallChunks[1]->onSMSRecieved(upInfo.ratioThisTimeNo, upInfo.ratioTotalNo);
+void BlobManager::onSMSRecievedChangeSphereSize(int _chunkID, float totalRatioYes, float totalRatioNo) {
 	
-	float totalRatioYes = upInfo.ratioTotalYes;
-	float totalRatioNo = upInfo.ratioTotalNo;
-	int totalYes = upInfo.numTotalYes;
-	int totalNo = upInfo.numTotalNo;
-	float ratioYes = upInfo.ratioThisTimeYes;
-	float ratioNo = upInfo.ratioThisTimeNo;
-	int yes = upInfo.numYes;
-	int no = upInfo.numNo;
-	float maxRadius = 120.0;
-	float minRadius = 10.0;
-	float maxMass = 1.0;
-	float minMass = 1.0;
-	float radYes = ofMap(ratioYes, 0.0, 1.0, minRadius, maxRadius);
-	float radNo = ofMap(ratioNo, 0.0, 1.0, minRadius, maxRadius);
-	float massYes = ofMap(ratioYes, 0.0, 1.0, minMass, maxMass);
-	float massNo = ofMap(ratioNo, 0.0, 1.0, minMass, maxMass);
-	
-	float thisSizeY;
-	float thisSizeN;
 	for (int i = 0; i < mBallChunks.size(); i++) {
+		if (i == _chunkID) {
 		MetaBallChunk* mChunk = mBallChunks[i];
 		vector<MyRigidBody*> spheres = sphrersForChunk[i];		
 		vector<MyRigidBody*> swapSpheres;
@@ -464,9 +493,16 @@ void BlobManager::recieveSMS(UpdateInfo upInfo) {
 			sph->remove(bullet->getWorld());
 		}
 		sphrersForChunk[i].swap(swapSpheres);
-	}
+		}
+	}		
+}
+
+void BlobManager::onSMSRecievedImpulseForSphere(int _chunkID) {
 	
-	
+	float totalRatioYes = upInfo.ratioTotalYes;
+	float totalRatioNo = upInfo.ratioTotalNo;
+	float ratioYes = upInfo.ratioThisTimeYes;
+	float ratioNo = upInfo.ratioThisTimeNo;	
 	float factAY = 1.0-totalRatioYes;
 	float factAN = 1.0-totalRatioNo;
 	float factBY = 1.0-ratioYes;
@@ -481,11 +517,90 @@ void BlobManager::recieveSMS(UpdateInfo upInfo) {
 	int baseImpulse = 50;
 	float inpulseDivY = thisSizeY/factAY+thisSizeY/factBY;
 	float inpulseDivN = thisSizeN/factAN+thisSizeN/factBN;
-	randomImpulsSMSRecievedYes = ofMap(ratioYes, 0.0, 1.0, baseImpulse, inpulseDivY);
-	randomImpulsSMSRecievedNo = ofMap(ratioNo, 0.0, 1.0, baseImpulse, inpulseDivN);
-	// shoot sms
+	
+	if (0 == _chunkID) {
+		randomImpulsSMSRecievedYes = ofMap(ratioYes, 0.0, 1.0, baseImpulse, inpulseDivY);
+	}else if (1 == _chunkID) {
+		randomImpulsSMSRecievedNo = ofMap(ratioNo, 0.0, 1.0, baseImpulse, inpulseDivN);
+	}
+	
+}
 
+void BlobManager::onBallGetSMSrep(int& chunkID) {
+	
+	float totalRatioYes = upInfo.ratioTotalYes;
+	float totalRatioNo = upInfo.ratioTotalNo;
+	float ratioYes = upInfo.ratioThisTimeYes;
+	float ratioNo = upInfo.ratioThisTimeNo;
+	
+	if (chunkID == 0) {
+		mBallChunks[0]->onSMSRecievedChangeCol(ratioYes, totalRatioYes);
+		mBallChunks[0]->onSMSRecievedChangeMetaballSize(ratioYes, totalRatioYes);	
+		//onSMSRecievedChangeSphereSize(0, totalRatioYes, totalRatioNo);
+		onSMSRecievedImpulseForSphere(0);
+		
+	}else if (chunkID == 1) {
+		mBallChunks[1]->onSMSRecievedChangeCol(ratioNo, totalRatioNo);	
+		mBallChunks[1]->onSMSRecievedChangeMetaballSize(ratioNo, totalRatioNo);		
+		//onSMSRecievedChangeSphereSize(1, totalRatioYes, totalRatioNo);
+		onSMSRecievedImpulseForSphere(1);
+	}
+	
 
+//		
+	
+}
+
+void BlobManager::onBallGetSMSrepComplete(int& _chunkID) {
+	
+	float totalRatioYes = upInfo.ratioTotalYes;
+	float totalRatioNo = upInfo.ratioTotalNo;
+	float ratioYes = upInfo.ratioThisTimeYes;
+	float ratioNo = upInfo.ratioThisTimeNo;	
+	float factAY = 1.0-totalRatioYes;
+	float factAN = 1.0-totalRatioNo;
+	float factBY = 1.0-ratioYes;
+	float factBN = 1.0-ratioNo;
+	factAY = (factAY<=0.1)?0.1:factAY;
+	factBY = (factBY<=0.1)?0.1:factBY;
+	factAN = (factAN<=0.1)?0.1:factAN;
+	factBN = (factBN<=0.1)?0.1:factBN;	
+	cout << "factAY = "+ofToString(factAY)+" factBY = "+ofToString(factBY) << endl;
+	cout << "factAN = "+ofToString(factAN)+" factBN = "+ofToString(factBN) << endl;	
+	
+	int baseImpulse = 50;
+	float inpulseDivY = thisSizeY/factAY+thisSizeY/factBY;
+	float inpulseDivN = thisSizeN/factAN+thisSizeN/factBN;
+	
+	if (0 == _chunkID) {
+		randomImpulsSMSRecievedYes = ofMap(ratioYes, 0.0, 1.0, baseImpulse, inpulseDivY);
+	}else if (1 == _chunkID) {
+		randomImpulsSMSRecievedNo = ofMap(ratioNo, 0.0, 1.0, baseImpulse, inpulseDivN);
+	}
+	
+}
+
+void BlobManager::recieveSMS(UpdateInfo _upInfo) {
+
+	upInfo = _upInfo;
+	float ratioYes = upInfo.ratioThisTimeYes;
+	float ratioNo = upInfo.ratioThisTimeNo;	
+	int yes = ratioYes*10;
+	int no = ratioNo*10;
+	
+	for (int i = 0; i < 2; i++) {
+		Flock* f = flocks[i];
+		if (i == 0) {
+			for (int j = 0; j < yes; j++) {
+				f->addBoid();
+			}
+		}else if (i == 1) {
+			for (int j = 0; j < no; j++) {
+				f->addBoid();
+			}
+		}
+	}	
+	
 }
 
 

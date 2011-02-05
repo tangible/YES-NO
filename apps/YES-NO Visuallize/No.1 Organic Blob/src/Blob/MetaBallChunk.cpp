@@ -132,19 +132,23 @@ void MetaBallChunk::minimizeOne() {
 
 }
 
-void MetaBallChunk::onSMSRecieved(float thisTime, float total) {
-	
-	// size
-	sizeBase = ofMap(total, 0.0, 1.0, baseBallSize, maxBallSize);
-	float mapForSize = ofMap(thisTime, 0.0, 1.0, sizeBase, sizeBase*2);
-	float mapForSizeDur = ofMap(thisTime, 0.0, 1.0, 200, 1000);
-	ballSizeTween.setParameters(easingelastic,ofxTween::easeInOut,
-								sizeBase,mapForSize,
-								mapForSizeDur,0);
-	
+void MetaBallChunk::onSMSRecievedChangeCol(float thisTime, float total) {
+
 	// color
 	chunkColChangeVal = ofMap(thisTime, 0.0, 1.0, 0.0001, 1.0);
 	chunkColChangeTime = ofMap(thisTime, 0.0, 1.0, 1.0, 4.0); 
 	chunkColChanged = 0;
 
+}
+
+void MetaBallChunk::onSMSRecievedChangeMetaballSize(float thisTime, float total) {
+	
+	// size
+	sizeBase = ofMap(total, 0.0, 1.0, baseBallSize, maxBallSize);
+	float mapForSize = ofMap(thisTime, 0.0, 1.0, sizeBase, sizeBase*2);
+	float mapForSizeDur = ofMap(thisTime, 0.0, 1.0, 100, 100);
+	ballSizeTween.setParameters(easingelastic,ofxTween::easeInOut,
+								sizeBase,mapForSize,
+								mapForSizeDur,0);
+	
 }

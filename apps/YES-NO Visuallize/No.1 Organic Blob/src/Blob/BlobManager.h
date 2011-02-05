@@ -19,6 +19,8 @@
 #include "MetaBallChunk.h"
 #include "Metaballs.h"
 #include "Marchingcubes.h"
+#include "Flock.h"
+#include "Effects.h"
 
 class BlobManager {
 
@@ -33,6 +35,18 @@ public:
 	void moveBG();
 	
 	void setupGLStuff();
+	
+	// sms events
+	UpdateInfo upInfo;
+	vector<Flock*> flocks; // this is sms
+	float thisSizeY;
+	float thisSizeN;
+	void onSMSRecievedChangeSphereSize(int _chunkID, float totalRatioYes, float totalRatioNo);
+	void onSMSRecievedImpulseForSphere(int _chunkID);
+	void onBallGetSMSrep(int& chunkID);
+	void onBallGetSMSrepComplete(int& chunkID);
+	vector<Effects*> effects;
+	vector<ofImage> imgs;
 	
 	AdminPanel*				admin;
 	
