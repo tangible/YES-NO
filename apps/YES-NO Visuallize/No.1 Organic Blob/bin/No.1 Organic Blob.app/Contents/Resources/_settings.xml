@@ -11,6 +11,10 @@
         <name>Change BG</name>
         <value>0</value>
     </Button_Change_BG>
+    <Button_Change_Question_Img>
+        <name>Change Question Img</name>
+        <value>0</value>
+    </Button_Change_Question_Img>
     <Button_Change_Blob_Tex>
         <name>Change Blob Tex</name>
         <value>0</value>
@@ -57,11 +61,11 @@
     </SliderFloat_Light_Pos_X>
     <SliderFloat_Light_Pos_Y>
         <name>Light Pos Y</name>
-        <value>-488.000000</value>
+        <value>-10.000000</value>
     </SliderFloat_Light_Pos_Y>
     <SliderFloat_Light_Pos_Z>
         <name>Light Pos Z</name>
-        <value>895.000000</value>
+        <value>-379.000000</value>
     </SliderFloat_Light_Pos_Z>
     <SliderFloat_Blob_Tex&Col_Mix_Ratio>
         <name>Blob Tex&amp;Col Mix Ratio</name>
@@ -87,7 +91,7 @@
     </ColorPicker_Blob_Material_Specular>
     <SliderFloat_Blob_Material_Shineness>
         <name>Blob Material Shineness</name>
-        <value>10.000000</value>
+        <value>2.000000</value>
     </SliderFloat_Blob_Material_Shineness>
     <ColorPicker_Light_Ambient>
         <name>Light Ambient</name>
@@ -110,11 +114,8 @@
         <values_2>1.000000</values_2>
         <values_3>1.000000</values_3>
     </ColorPicker_Light_Specular>
-    <SliderInt_test_x>
-        <name>test x</name>
+    <Toggle_DRAWDEBUG>
+        <name>DRAWDEBUG</name>
         <value>0</value>
-        <name>test x</name>
-        <value>0</value>
-    </SliderInt_test_x>
-    <SliderInt_test_x></SliderInt_test_x>
+    </Toggle_DRAWDEBUG>
 </controls>

@@ -20,21 +20,23 @@
 #include "Metaballs.h"
 #include "Marchingcubes.h"
 #include "Flock.h"
-#include "Effects.h"
+#include "QuestionImage.h"
+#include "StateText.h"
 
 class BlobManager {
 
 public:
-	void setup(int _fps, AdminPanel* _admin);
+	void setup(int _fps, AdminPanel* _admin, QuestionImage* _qImage, StateText* _sText);
 	void update();
 	void draw();
 	
+	void moveBG();
+	void setupGLStuff();
+	
+	// file change events
 	void changeImgBG(string path);
 	void changeImgBlobTex(string path);	
-	void recieveSMS(UpdateInfo upInfo);
-	void moveBG();
-	
-	void setupGLStuff();
+	void recieveSMS(UpdateInfo upInfo);	
 	
 	// sms events
 	UpdateInfo upInfo;
@@ -45,10 +47,10 @@ public:
 	void onSMSRecievedImpulseForSphere(int _chunkID);
 	void onBallGetSMSrep(int& chunkID);
 	void onBallGetSMSrepComplete(int& chunkID);
-	vector<Effects*> effects;
-	vector<ofImage> imgs;
 	
 	AdminPanel*				admin;
+	QuestionImage*			qImage;
+	StateText*				sText;
 	
 	int						fps;
 	ofxShader				shader;

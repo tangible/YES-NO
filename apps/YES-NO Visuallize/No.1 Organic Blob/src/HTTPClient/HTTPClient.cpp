@@ -84,6 +84,7 @@ void HTTPClient::getResponse(ofxHttpResponse & response){
 	xml.pushTag("TangibleHUBYesNoResponce");
 	xml.pushTag("SMSs");
 	int numTag = xml.getNumTags("SMS");
+	cout << "numTag recieved = " + ofToString(numTag) << endl;
 	for (int i = 0; i < numTag; i++) {
 		xml.pushTag("SMS", i);
 		string ans = xml.getValue("Answer", "error");
@@ -129,10 +130,10 @@ UpdateInfo HTTPClient::calcUpdateInfo() {
 	
 	float totalSMS = totalYes+totalNo;
 	float totalSMSThisTime = thisTimeYes+thisTimeNo;
-	float raTotalYes = (totalYes==0)?0.0:totalYes/totalSMS;
-	float raTotalNo = (totalNo==0)?0.0:totalNo/totalSMS;
-	float raThisTimeYes = (thisTimeYes==0)?0.0:thisTimeYes/totalSMSThisTime;
-	float raThisTimeNo = (thisTimeNo==0)?0.0:thisTimeNo/totalSMSThisTime;
+	float raTotalYes = (totalYes<=0)?0.0:totalYes/totalSMS;
+	float raTotalNo = (totalNo<=0)?0.0:totalNo/totalSMS;
+	float raThisTimeYes = (thisTimeYes<=0)?0.0:thisTimeYes/totalSMSThisTime;
+	float raThisTimeNo = (thisTimeNo<=0)?0.0:thisTimeNo/totalSMSThisTime;
 	
 	upInfo.ratioTotalYes = raTotalYes;
 	upInfo.ratioTotalNo = raTotalNo;

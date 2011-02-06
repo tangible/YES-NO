@@ -219,16 +219,6 @@
 		isa = PBXCodeSenseManager;
 		indexTemplatePath = "";
 	};
-	31D7DE6312FD11ED006BCBE6 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */;
-		name = "testApp.cpp: 21";
-		rLen = 0;
-		rLoc = 682;
-		rType = 0;
-		vrLen = 969;
-		vrLoc = 204;
-	};
 	31F0B45512FC0E620039634E /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = E4B69E1F0A3A1BDC003C02F2 /* testApp.h */;
@@ -284,6 +274,16 @@
 		rType = 0;
 		vrLen = 412;
 		vrLoc = 0;
+	};
+	31F68ECF12FE5178001E8F94 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */;
+		name = "testApp.cpp: 46";
+		rLen = 0;
+		rLoc = 1566;
+		rType = 0;
+		vrLen = 405;
+		vrLoc = 1765;
 	};
 	E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 		activeBuildConfigurationName = Release;
@@ -346,8 +346,8 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 318577683;
-			PBXWorkspaceStateSaveDate = 318577683;
+			PBXPerProjectTemplateStateSaveDate = 318655653;
+			PBXWorkspaceStateSaveDate = 318655653;
 		};
 		perUserProjectItems = {
 			311DF9D112FD1C2A00D7B432 /* PBXTextBookmark */ = 311DF9D112FD1C2A00D7B432 /* PBXTextBookmark */;
@@ -359,9 +359,9 @@
 			31C3B06512DE852200D8A63E /* PBXTextBookmark */ = 31C3B06512DE852200D8A63E /* PBXTextBookmark */;
 			31C3B08512DE878800D8A63E /* PBXTextBookmark */ = 31C3B08512DE878800D8A63E /* PBXTextBookmark */;
 			31C3B08612DE878800D8A63E /* PBXTextBookmark */ = 31C3B08612DE878800D8A63E /* PBXTextBookmark */;
-			31D7DE6312FD11ED006BCBE6 /* PBXTextBookmark */ = 31D7DE6312FD11ED006BCBE6 /* PBXTextBookmark */;
 			31F0B45512FC0E620039634E /* PBXTextBookmark */ = 31F0B45512FC0E620039634E /* PBXTextBookmark */;
 			31F0B48C12FC0FED0039634E /* PBXTextBookmark */ = 31F0B48C12FC0FED0039634E /* PBXTextBookmark */;
+			31F68ECF12FE5178001E8F94 /* PBXTextBookmark */ = 31F68ECF12FE5178001E8F94 /* PBXTextBookmark */;
 		};
 		sourceControlManager = 31C6963012963DFE007F71A7 /* Source Control */;
 		userBuildSettings = {
@@ -382,9 +382,9 @@
 	};
 	E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {831, 1690}}";
-			sepNavSelRange = "{673, 5}";
-			sepNavVisRange = "{167, 961}";
+			sepNavIntBoundsRect = "{{0, 0}, {831, 1638}}";
+			sepNavSelRange = "{1566, 0}";
+			sepNavVisRange = "{1765, 405}";
 			sepNavWindowFrame = "{{15, 95}, {635, 778}}";
 		};
 	};

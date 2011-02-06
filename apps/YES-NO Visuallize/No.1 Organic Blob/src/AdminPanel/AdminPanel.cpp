@@ -17,6 +17,7 @@ void AdminPanel::setup(){
 	gui.addToggle("Toggle Motion", TOGGLEMOTION);
 	gui.addTitle("Graphics Setting").setNewColumn(true);
 	gui.addButton("Change BG", CHANGEBGBTN);
+	gui.addButton("Change Question Img", CHANGEQIMGBTN);
 	gui.addButton("Change Blob Tex", CHANGEBLOBTEXBTN);
 	gui.addButton("Restore Default", RESTORDEFBTN);
 	gui.addSlider("Shadow Intensity", SHADOWINTENSITY, 0.0, 1.0);
@@ -41,9 +42,7 @@ void AdminPanel::setup(){
 	gui.addColorPicker("Light Diffuse", LIGHTDIFFUSE);
 	gui.addColorPicker("Light Specular", LIGHTSPECULAR);	
 	
-	gui.addTitle("test param");
-	gui.addSlider("test x", TESTX, -1000, 1000);
-	gui.addSlider("test x", TESTY, -1000, 1000);	
+	gui.addTitle("Debug Param");
 	gui.addToggle("DRAWDEBUG", DRAWDEBUG);
 	
 //	gui.loadFromXML();
@@ -58,6 +57,9 @@ void AdminPanel::update(){
 	if(CHANGEBGBTN) {
 		CHANGEBGBTN = false;
 		openFileDialogueBG("BG");
+	}else if (CHANGEQIMGBTN) {
+		CHANGEQIMGBTN = false;
+		openFileDialogueChangeQImg("qimg");
 	}else if (CHANGEBLOBTEXBTN) {
 		CHANGEBLOBTEXBTN = false;
 		openFileDialogueBlobTex("BlobTex");
@@ -97,6 +99,17 @@ void AdminPanel::openFileDialogueBG(string ID){
 
 }
 
+void AdminPanel::openFileDialogueChangeQImg(string ID) {
+	
+	string path;
+	ofxFileDialogOSX::openFile(path);
+	FileDef fi;
+	fi.ID = ID;
+	fi.path = path;
+	ofNotifyEvent(onFileDialogueQImg, fi);	
+	
+}
+
 void AdminPanel::openFileDialogueBlobTex(string ID){
 	
 	string path;
@@ -114,6 +127,7 @@ void AdminPanel::restoreDefault() {
 	PHYSICSTICKFPS = 25;
 	TOGGLEMOTION = true;
 	CHANGEBGBTN = false;
+	CHANGEQIMGBTN = false;
 	CHANGEBLOBTEXBTN = false;
 	RESTORDEFBTN = false;
 	SHADOWINTENSITY = 0.88;
@@ -125,8 +139,8 @@ void AdminPanel::restoreDefault() {
 	SHADOWROTY = false;
 	SHADOWROTZ = false;
 	LIGHTX = 0.0;
-	LIGHTY = -488.0;
-	LIGHTZ = 895.0;
+	LIGHTY = -10.0;
+	LIGHTZ = -379.0;
 	TEXCOLMIXRATIO = 0.13;
 	BLOBTRANSPARENCY = 0.83;
 	BLOBBASECOL[0] = 0.5;
@@ -145,7 +159,7 @@ void AdminPanel::restoreDefault() {
 	BLOBMATERIALSPECULAR[1] = 0.7;
 	BLOBMATERIALSPECULAR[2] = 0.7;
 	BLOBMATERIALSPECULAR[3] = 1.0;		
-	BLOBMATERIALSHINENESS = 10.0;
+	BLOBMATERIALSHINENESS = 2.0;
 	LIGHTAMBIENT[0] = 0.2;
 	LIGHTAMBIENT[1] = 0.2;
 	LIGHTAMBIENT[2] = 0.2;
@@ -159,8 +173,6 @@ void AdminPanel::restoreDefault() {
 	LIGHTSPECULAR[2] = 1.0;
 	LIGHTSPECULAR[3] = 1.0;	
 	
-	TESTX = 0;
-	TESTY = 0;
 	DRAWDEBUG = false;
 
 }

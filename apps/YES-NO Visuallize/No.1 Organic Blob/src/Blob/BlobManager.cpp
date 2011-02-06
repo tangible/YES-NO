@@ -10,10 +10,12 @@
 #include "BlobManager.h"
 int baseSphereSize = 37;
 int maxSphereSize = 110;
-void BlobManager::setup(int _fps, AdminPanel* _admin) {
+void BlobManager::setup(int _fps, AdminPanel* _admin, QuestionImage* _qImage, StateText* _sText) {
 	
 	fps = _fps;
 	admin = _admin;
+	qImage = _qImage;
+	sText = _sText;
 	shader.setup("glsl");
 	ofDisableArbTex();	
 	
@@ -22,17 +24,8 @@ void BlobManager::setup(int _fps, AdminPanel* _admin) {
 		Flock* f = new Flock();
 		f->flockID = i;
 		flocks.push_back(f);
-		
-		Effects* e = new Effects();
-		e->setup();
-		effects.push_back(e);
+
 	}		
-	int numImgs = 1;
-	for (int i = 1; i <= numImgs; i++) {
-		ofImage img;
-		img.loadImage(ofToString(i)+".png");
-		imgs.push_back(img);
-	}
 	
 	// init metaball and voxels
 	bullet = new ofxBullet();
@@ -94,7 +87,7 @@ void BlobManager::setup(int _fps, AdminPanel* _admin) {
 	shadowCvImage.allocate(shadowW, shadowH);	
 	
 	// load imgs for texture
-	bg.loadImage("vancity.jpg");
+	bg.loadImage("vancityWBBlur.jpg");
 	blobTex.loadImage("sky.jpeg");
 	glActiveTexture(GL_TEXTURE1);
 	texSlot = 1;
@@ -113,8 +106,6 @@ void BlobManager::setup(int _fps, AdminPanel* _admin) {
 	
 	ofAddListener(flocks[0]->onBallGetSMSrepEvent, this, &BlobManager::onBallGetSMSrep);
 	ofAddListener(flocks[1]->onBallGetSMSrepEvent, this, &BlobManager::onBallGetSMSrep);	
-//	ofAddListener(flocks[0]->onBallGetSMSrepCompleteEvent, this, &BlobManager::onBallGetSMSrepComplete);
-//	ofAddListener(flocks[1]->onBallGetSMSrepCompleteEvent, this, &BlobManager::onBallGetSMSrepComplete);		
 }
 
 void BlobManager::update() {
@@ -213,9 +204,9 @@ void BlobManager::update() {
 				impulse.set(ofRandomf(), ofRandomf(), ofRandomf());
 				
 				if (i == 0 && randomImpulsSMSRecievedYes != 0) {
-					impulse *= 100 + randomImpulsSMSRecievedYes;
+					impulse *= 200 + randomImpulsSMSRecievedYes;
 				}else if (i == 1 && randomImpulsSMSRecievedNo != 0) {
-					impulse *= 100 + randomImpulsSMSRecievedNo;
+					impulse *= 200 + randomImpulsSMSRecievedNo;
 				}else {
 					impulse *= 80;
 				}
@@ -243,8 +234,9 @@ void BlobManager::draw() {
 	
 	if (!admin->DRAWDEBUG) {
 		
-		// draw BG
+		// draw BG, qimage and statetext
 		glDisable(GL_LIGHTING);
+		
 		glColor3f(1.0, 1.0, 1.0);
 		if (!isVidBG) {
 			bg.draw(ofGetWidth()/2-bg.getWidth()/2+bgXTween.update(), 
@@ -253,25 +245,18 @@ void BlobManager::draw() {
 			bgPlayer.draw(0, 0, ofGetWidth(), ofGetHeight());
 		}
 		
-				
-//		ofEnableAlphaBlending();
-//		effects[0]->draw();		
-//		ofDisableAlphaBlending();
-//		glEnable(GL_LIGHTING);
+		qImage->draw();
+
+		glEnable(GL_LIGHTING);	
 		
 		setupGLStuff();		
 		
 		ofEnableAlphaBlending();
 		
-		
 			// draw sms
 			for (int i = 0; i < flocks.size(); i++) {
 				Flock* f = flocks[i];
-				
-				ofPushMatrix();
-//				ofTranslate(0, 0, f->z);
 				f->draw();
-				ofPopMatrix();
 			}
 			
 			// draw metaball
@@ -286,12 +271,12 @@ void BlobManager::draw() {
 				ofxVec4f basecol = mBallChunks[i]->chunkCurrCol;
 				ofxVec3f currPos = mBallChunks[i]->chunkCurrPos;
 				glColor3f(basecol.x, basecol.y, basecol.z);
-				shader.begin();
-				shader.setUniform1i("tex", texSlot);
-				shader.setUniform1f("tex_col_mixRatio", admin->TEXCOLMIXRATIO);
-				shader.setUniform1f("blob_transparency", admin->BLOBTRANSPARENCY);				
+//				shader.begin();
+//				shader.setUniform1i("tex", texSlot);
+//				shader.setUniform1f("tex_col_mixRatio", admin->TEXCOLMIXRATIO);
+//				shader.setUniform1f("blob_transparency", admin->BLOBTRANSPARENCY);				
 				mBallChunks[i]->m_pMetaballs->Render();
-				shader.end();			
+//				shader.end();			
 
 			}
 
@@ -362,6 +347,15 @@ void BlobManager::draw() {
         glPopAttrib();
     }
 	glDisable(GL_DEPTH_TEST);
+	
+	
+	glDisable(GL_CULL_FACE);
+	glDisable(GL_LIGHTING);
+	ofSetupScreen();
+	ofPushMatrix();
+	sText->draw(upInfo, centroidYes, centroidNo);
+	ofPopMatrix();
+	glDisable(GL_LIGHTING);
 	
 }
 
@@ -511,8 +505,8 @@ void BlobManager::onSMSRecievedImpulseForSphere(int _chunkID) {
 	factBY = (factBY<=0.1)?0.1:factBY;
 	factAN = (factAN<=0.1)?0.1:factAN;
 	factBN = (factBN<=0.1)?0.1:factBN;	
-	cout << "factAY = "+ofToString(factAY)+" factBY = "+ofToString(factBY) << endl;
-	cout << "factAN = "+ofToString(factAN)+" factBN = "+ofToString(factBN) << endl;	
+//	cout << "factAY = "+ofToString(factAY)+" factBY = "+ofToString(factBY) << endl;
+//	cout << "factAN = "+ofToString(factAN)+" factBN = "+ofToString(factBN) << endl;	
 	
 	int baseImpulse = 50;
 	float inpulseDivY = thisSizeY/factAY+thisSizeY/factBY;
@@ -565,8 +559,8 @@ void BlobManager::onBallGetSMSrepComplete(int& _chunkID) {
 	factBY = (factBY<=0.1)?0.1:factBY;
 	factAN = (factAN<=0.1)?0.1:factAN;
 	factBN = (factBN<=0.1)?0.1:factBN;	
-	cout << "factAY = "+ofToString(factAY)+" factBY = "+ofToString(factBY) << endl;
-	cout << "factAN = "+ofToString(factAN)+" factBN = "+ofToString(factBN) << endl;	
+//	cout << "factAY = "+ofToString(factAY)+" factBY = "+ofToString(factBY) << endl;
+//	cout << "factAN = "+ofToString(factAN)+" factBN = "+ofToString(factBN) << endl;	
 	
 	int baseImpulse = 50;
 	float inpulseDivY = thisSizeY/factAY+thisSizeY/factBY;

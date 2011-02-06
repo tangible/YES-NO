@@ -8,7 +8,7 @@
  */
 
 #include "MetaBallChunk.h"
-int gridSize = 110;
+int gridSize = 130;
 float baseBallSize = 0.10;
 float maxBallSize = 0.60;
 MetaBallChunk::MetaBallChunk(int points, int _chunkID) {
@@ -25,12 +25,12 @@ MetaBallChunk::MetaBallChunk(int points, int _chunkID) {
 	nPoints = points;
 	
 	if (_chunkID == 0) {
-		chunkBaseCol.r = 0.5; chunkBaseCol.g = 0.0; chunkBaseCol.b = 0.0;
+		chunkBaseCol.r = 0.0; chunkBaseCol.g = 0.5; chunkBaseCol.b = 0.0;
 		chunkColTween.setParameters(easingcirc, ofxTween::easeInOut, 0.5, 0.5, 0, 0);
 		chunkColTween.addValue(0.0, 0.0);
 		chunkColTween.addValue(0.0, 0.0);
 	}else {
-		chunkBaseCol.r = 0.0; chunkBaseCol.g = 0.5; chunkBaseCol.b = 0.0;
+		chunkBaseCol.r = 0.5; chunkBaseCol.g = 0.0; chunkBaseCol.b = 0.0;
 		chunkColTween.setParameters(easingcirc, ofxTween::easeInOut, 0.0, 0.0, 0, 0);
 		chunkColTween.addValue(0.5, 0.5);
 		chunkColTween.addValue(0.0, 0.0);		
@@ -147,7 +147,7 @@ void MetaBallChunk::onSMSRecievedChangeMetaballSize(float thisTime, float total)
 	sizeBase = ofMap(total, 0.0, 1.0, baseBallSize, maxBallSize);
 	float mapForSize = ofMap(thisTime, 0.0, 1.0, sizeBase, sizeBase*2);
 	float mapForSizeDur = ofMap(thisTime, 0.0, 1.0, 100, 100);
-	ballSizeTween.setParameters(easingelastic,ofxTween::easeInOut,
+	ballSizeTween.setParameters(easingbounce,ofxTween::easeInOut,
 								sizeBase,mapForSize,
 								mapForSizeDur,0);
 	

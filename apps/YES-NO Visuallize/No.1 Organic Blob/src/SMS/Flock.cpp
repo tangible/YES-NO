@@ -24,7 +24,7 @@ void Flock::update(int mx, int my) {
 		ofxVec2f birdLoc = ofxVec2f(boids[i]->loc.x, boids[i]->loc.y);
 		ofxVec2f mouseLoc = ofxVec2f(mx, my);
 		//cout << ofToString(birdLoc.distance(mouseLoc)) << endl;
-		cout << "num birds = "+ofToString((int)boids.size()) << endl;
+		//cout << "num birds = "+ofToString((int)boids.size()) << endl;
 		if (50 > birdLoc.distance(mouseLoc)) {
 			
 			if (1 > boids.size()) {

@@ -8,7 +8,8 @@
 #include "BlobManager.h"
 #include "AdminPanel.h"
 #include "HTTPClient.h"
-#include "Effects.h"
+#include "QuestionImage.h"
+#include "StateText.h"
 
 /*
  TODO 
@@ -36,14 +37,16 @@ public:
 	void resized(int w, int h);
 	
 	void onFileChangeBG(FileDef& fd);
+	void onFileChangeQImg(FileDef& fd);
 	void onFileChangeBlobTex(FileDef& fd);	
 	void onSMSMsgRecieved(UpdateInfo& upInfo);
 	void jitterAndZoomScene();
 
-	BlobManager blobMgr;
-	AdminPanel	adminPanel;
-	HTTPClient	httpClient;	
-	
+	BlobManager		blobMgr;
+	AdminPanel		adminPanel;
+	HTTPClient		httpClient;	
+	QuestionImage	qImage;
+	StateText		stateText;
 	
 	ofxCamera		camera;
 	ofxTween		cameraXTween;

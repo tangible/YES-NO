@@ -43,7 +43,7 @@ void testApp::processRequest(ofxHTTPServerResponse & response){
 		string yes = "<SMS><Answer>YES</Answer><Time>" + timestr + "</Time></SMS>";
 		string no = "<SMS><Answer>NO</Answer><Time>" + timestr + "</Time></SMS>";
 		string contents = "";
-		int thisreq = ofRandom(1, 50);
+		int thisreq = ofRandom(1, 20);
 		for (int i = 0; i < thisreq; i++) {
 			int fact = ofMap(ratio, 0, 10, 1, thisreq);
 			

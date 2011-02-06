@@ -8,11 +8,13 @@ void App::setup(){
 	ofSetDataPathRoot("../Resources/");
 
 	adminPanel.setup();
-	blobMgr.setup(FPS, &adminPanel);
+	qImage.setup();
+	stateText.setup();
+	blobMgr.setup(FPS, &adminPanel, &qImage, &stateText);
 	httpClient.setup();
 	
-	
 	ofAddListener(adminPanel.onFileDialogueBG, this, &App::onFileChangeBG);
+	ofAddListener(adminPanel.onFileDialogueQImg, this, &App::onFileChangeQImg);	
 	ofAddListener(adminPanel.onFileDialogueBlobTex, this, &App::onFileChangeBlobTex);	
 	ofAddListener(httpClient.onSMSRecieved, this, &App::onSMSMsgRecieved);
 	
@@ -42,10 +44,10 @@ void App::draw(){
 	
 	ofPushMatrix();
 	camera.place();
-	blobMgr.draw();
+	blobMgr.draw();		
 	ofPopMatrix();
 	
-	ofSetupScreen();
+	ofSetupScreen();	
 	adminPanel.draw();
 	
 }
@@ -79,6 +81,11 @@ void App::jitterAndZoomScene() {
 //--------------------------------------------------------------
 void App::onFileChangeBG(FileDef& fd) {
 	blobMgr.changeImgBG(fd.path);
+}
+
+//--------------------------------------------------------------
+void App::onFileChangeQImg(FileDef& fd) {
+	qImage.changeImgQImg(fd.path);	
 }
 
 //--------------------------------------------------------------
