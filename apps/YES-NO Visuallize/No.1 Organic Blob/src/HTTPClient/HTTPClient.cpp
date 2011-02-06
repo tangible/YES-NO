@@ -62,8 +62,18 @@ void HTTPClient::getResponse(ofxHttpResponse & response){
 	string timestr = gmttime;
 	timestr = str_replace(timestr, "¥", "");		
 	recieveTime = timestr;
+	
+//	for (int i = 0; i < thisTimeYess.size(); i++) {
+//		smsMsg sms = thisTimeYess[i];
+//		delete sms;
+//	}
 	thisTimeYess.clear();
+//	for (int i = 0; i < thisTimeNos.size(); i++) {
+//		smsMsg sms = thisTimeNos[i];
+//		delete sms;
+//	}
 	thisTimeNos.clear();
+	
 	xml.clear();
 	xml.loadFromBuffer(response.responseBody);
 	
@@ -102,7 +112,6 @@ void HTTPClient::getResponse(ofxHttpResponse & response){
 			totalNos.push_back(sms);
 			thisTimeNos.push_back(sms);
 		}
-		//smsMsgs.push_back(sms);
 		
 		xml.popTag();
 	}

@@ -28,7 +28,7 @@ public:
 	ofEvent<int> onBallGetSMSrepCompleteEvent;
 	
 	vector<Boid*> boids;
-	vector<ofColor> cols;
+	//vector<ofColor> cols;
 };
 
 #endif

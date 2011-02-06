@@ -103,6 +103,8 @@ void BlobManager::setup(int _fps, AdminPanel* _admin, QuestionImage* _qImage, St
 	// sms param
 	randomImpulsSMSRecievedYes = 0;
 	randomImpulsSMSRecievedNo = 0;
+	smsYes = NULL;
+	smsNo = NULL;
 	
 	ofAddListener(flocks[0]->onBallGetSMSrepEvent, this, &BlobManager::onBallGetSMSrep);
 	ofAddListener(flocks[1]->onBallGetSMSrepEvent, this, &BlobManager::onBallGetSMSrep);	
@@ -227,6 +229,8 @@ void BlobManager::update() {
 		}
 		if (0 != randomImpulsSMSRecievedYes) randomImpulsSMSRecievedYes = 0; // once enough
 		if (0 != randomImpulsSMSRecievedNo) randomImpulsSMSRecievedNo = 0;
+		
+
 	}
 }
 
@@ -269,7 +273,6 @@ void BlobManager::draw() {
 
 			for (int i = 0; i < mBallChunks.size(); i++) {
 				ofxVec4f basecol = mBallChunks[i]->chunkCurrCol;
-				ofxVec3f currPos = mBallChunks[i]->chunkCurrPos;
 				glColor3f(basecol.x, basecol.y, basecol.z);
 //				shader.begin();
 //				shader.setUniform1i("tex", texSlot);
@@ -279,7 +282,7 @@ void BlobManager::draw() {
 //				shader.end();			
 
 			}
-
+		
 			ofPopMatrix();
 		
 		ofDisableAlphaBlending();
@@ -351,10 +354,7 @@ void BlobManager::draw() {
 	
 	glDisable(GL_CULL_FACE);
 	glDisable(GL_LIGHTING);
-	ofSetupScreen();
-	ofPushMatrix();
 	sText->draw(upInfo, centroidYes, centroidNo);
-	ofPopMatrix();
 	glDisable(GL_LIGHTING);
 	
 }
@@ -397,8 +397,7 @@ void BlobManager::changeImgBG(string path) {
 	
 	bool isImg = bg.loadImage(path);
 	
-	if (isImg) {
-		//bg.resize(ofGetWidth(), ofGetHeight());			
+	if (isImg) {			
 		isVidBG = false;
 		bgPlayer.stop();
 		bgPlayer.close();
@@ -460,33 +459,33 @@ void BlobManager::onSMSRecievedChangeSphereSize(int _chunkID, float totalRatioYe
 	
 	for (int i = 0; i < mBallChunks.size(); i++) {
 		if (i == _chunkID) {
-		MetaBallChunk* mChunk = mBallChunks[i];
-		vector<MyRigidBody*> spheres = sphrersForChunk[i];		
-		vector<MyRigidBody*> swapSpheres;
-		vector<float> baseSizes = sphrersForChunkBaseSize[i];
-		for (int j = 0; j < nMetaBalls; j++) {
-			MyRigidBody* sph = spheres[j];
-			ofxVec3f pos = sph->getBodyPos();
-			float baseSize = baseSizes[j];
-			
-			float radius = 0.0;
-			if (i == 0) {
-				thisSizeY = ofMap(totalRatioYes, 0.0, 1.0, baseSphereSize, maxSphereSize);
-				radius = thisSizeY;
-			}else if (i == 1) {
-				thisSizeN = ofMap(totalRatioNo, 0.0, 1.0, baseSphereSize, maxSphereSize);				
-				radius = thisSizeN;
+			MetaBallChunk* mChunk = mBallChunks[i];
+			vector<MyRigidBody*> spheres = sphrersForChunk[i];		
+			vector<MyRigidBody*> swapSpheres;
+			vector<float> baseSizes = sphrersForChunkBaseSize[i];
+			for (int j = 0; j < nMetaBalls; j++) {
+				MyRigidBody* sph = spheres[j];
+				ofxVec3f pos = sph->getBodyPos();
+				float baseSize = baseSizes[j];
+				
+				float radius = 0.0;
+				if (i == 0) {
+					thisSizeY = ofMap(totalRatioYes, 0.0, 1.0, baseSphereSize, maxSphereSize);
+					radius = thisSizeY;
+				}else if (i == 1) {
+					thisSizeN = ofMap(totalRatioNo, 0.0, 1.0, baseSphereSize, maxSphereSize);				
+					radius = thisSizeN;
+				}
+				
+				MyRigidBody* swapSph = bullet->createSphere(pos,
+															radius, 
+															1, 
+															ofxVec4f(0.5,0.5,0.5,0.7), 
+															DYNAMIC_BODY);
+				swapSpheres.push_back(swapSph);
+				sph->remove(bullet->getWorld());
 			}
-			
-			MyRigidBody* swapSph = bullet->createSphere(pos,
-														radius, 
-														1, 
-														ofxVec4f(0.5,0.5,0.5,0.7), 
-														DYNAMIC_BODY);
-			swapSpheres.push_back(swapSph);
-			sph->remove(bullet->getWorld());
-		}
-		sphrersForChunk[i].swap(swapSpheres);
+			sphrersForChunk[i].swap(swapSpheres);
 		}
 	}		
 }
@@ -505,8 +504,6 @@ void BlobManager::onSMSRecievedImpulseForSphere(int _chunkID) {
 	factBY = (factBY<=0.1)?0.1:factBY;
 	factAN = (factAN<=0.1)?0.1:factAN;
 	factBN = (factBN<=0.1)?0.1:factBN;	
-//	cout << "factAY = "+ofToString(factAY)+" factBY = "+ofToString(factBY) << endl;
-//	cout << "factAN = "+ofToString(factAN)+" factBN = "+ofToString(factBN) << endl;	
 	
 	int baseImpulse = 50;
 	float inpulseDivY = thisSizeY/factAY+thisSizeY/factBY;
@@ -540,9 +537,6 @@ void BlobManager::onBallGetSMSrep(int& chunkID) {
 		onSMSRecievedImpulseForSphere(1);
 	}
 	
-
-//		
-	
 }
 
 void BlobManager::onBallGetSMSrepComplete(int& _chunkID) {
@@ -559,8 +553,6 @@ void BlobManager::onBallGetSMSrepComplete(int& _chunkID) {
 	factBY = (factBY<=0.1)?0.1:factBY;
 	factAN = (factAN<=0.1)?0.1:factAN;
 	factBN = (factBN<=0.1)?0.1:factBN;	
-//	cout << "factAY = "+ofToString(factAY)+" factBY = "+ofToString(factBY) << endl;
-//	cout << "factAN = "+ofToString(factAN)+" factBN = "+ofToString(factBN) << endl;	
 	
 	int baseImpulse = 50;
 	float inpulseDivY = thisSizeY/factAY+thisSizeY/factBY;
@@ -585,15 +577,26 @@ void BlobManager::recieveSMS(UpdateInfo _upInfo) {
 	for (int i = 0; i < 2; i++) {
 		Flock* f = flocks[i];
 		if (i == 0) {
-			for (int j = 0; j < yes; j++) {
+			//for (int j = 0; j < yes; j++) {
 				f->addBoid();
-			}
+			//}
 		}else if (i == 1) {
-			for (int j = 0; j < no; j++) {
+			//for (int j = 0; j < no; j++) {
 				f->addBoid();
-			}
+			//}
 		}
 	}	
+	
+	int numBallSMS = 2;
+	MetaBallChunk* mchunk = new MetaBallChunk(numBallSMS, 3);
+	mchunk->chunkCurrCol = ofxVec4f(0.1, 0.1, 0.8, 1.0);
+	for (int i = 0; i < numBallSMS; i++) {
+		ofxVec3f pos = ofxVec3f(100-ofGetWidth()/2, 100-ofGetHeight()/2, 0);
+		float bx = (pos.x - boundsAvg.x) * boundsScaling;
+		float by = (pos.y - boundsAvg.y) * boundsScaling;
+		float bz = (pos.z - boundsAvg.z) * boundsScaling;		
+		mchunk->ballPoints[i].set(bx, by, bz);
+	}
 	
 }
 

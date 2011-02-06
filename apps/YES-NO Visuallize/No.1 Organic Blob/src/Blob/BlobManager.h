@@ -41,6 +41,10 @@ public:
 	// sms events
 	UpdateInfo upInfo;
 	vector<Flock*> flocks; // this is sms
+	MetaBallChunk* smsYes;
+	MyRigidBody* smsYesBody;
+	MetaBallChunk* smsNo;
+	MyRigidBody* smsNoBody;
 	float thisSizeY;
 	float thisSizeN;
 	void onSMSRecievedChangeSphereSize(int _chunkID, float totalRatioYes, float totalRatioNo);

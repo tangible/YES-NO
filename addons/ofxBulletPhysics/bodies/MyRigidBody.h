@@ -41,6 +41,7 @@ public:
 		int							ID;
 		float						deceleration;
 		ofxVec3f					destination;
+		float						distance;
 		float						currentRadius;
 		ofxVec3f					rotDir;
 		float						age;

@@ -30,7 +30,6 @@ void StateText::draw(UpdateInfo upInfo, ofxVec3f centroidYes, ofxVec3f centroidN
 	
 	ofxVec3f lineDistY = centroidYes;
 	
-	
 	float yoff = 200;
 	float xoff = 200;
 	float sizeYes = ofMap(upInfo.ratioTotalYes, 0.0, 1.0, 1.0, 10.0);	

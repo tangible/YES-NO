@@ -16,7 +16,7 @@ MetaBallChunk::MetaBallChunk(int points, int _chunkID) {
 	chunkCurrPos = ofxVec3f(0.0, 0.0, 0.0);
 	if (_chunkID == 0) {
 		chunkDestPos = ofxVec3f(400.0, 0.0, 0.0);
-	}else {
+	}else if (_chunkID == 1) {
 		chunkDestPos = ofxVec3f(-400.0, 0.0, 0.0);		
 	}
 	deceleration = ofRandom(0.98, 0.99);
@@ -53,6 +53,9 @@ MetaBallChunk::MetaBallChunk(int points, int _chunkID) {
 	chunkID = _chunkID;	
 	
 	ballSizeTween.setParameters(1,easingback,ofxTween::easeOut,sizeBase,sizeBase,0,0);
+	ballPosTweenX.setParameters(easingcirc, ofxTween::easeIn, 0, -ofGetWidth()/2, 0, 0);
+	ballPosTweenY.setParameters(easingcirc, ofxTween::easeIn, 0, -ofGetHeight()/2, 0, 0);	
+	ballPosTweenZ.setParameters(easingcirc, ofxTween::easeIn, 0, 0, 0, 0);		
 }
 
 void MetaBallChunk::updateChunkBasePos() {
@@ -151,4 +154,56 @@ void MetaBallChunk::onSMSRecievedChangeMetaballSize(float thisTime, float total)
 								sizeBase,mapForSize,
 								mapForSizeDur,0);
 	
+}
+
+void MetaBallChunk::updateForSMS(ofxVec3f centroid, ofPoint boundsAvg, float boundsScaling) {
+	
+	// base pos
+	ofxVec3f curPos = ofxVec3f(ofGetWidth()/2-centroid.x, ofGetHeight()/2-centroid.y, centroid.z);
+	curPos = -curPos;
+	float degree = ofGetFrameNum()*10;
+	float radian = (degree/180)*PI;
+	chunkCurrPos.x = curPos.x+cos(radian)*300;
+	chunkCurrPos.y = curPos.y+sin(radian)*300;
+	
+	cout << ofToString(chunkCurrPos.x) << endl;
+	
+	//chunkCurrPos = -curPos;
+	
+	// balls pos
+	for (int i = 0; i < nPoints; i++) {
+		float bx = (chunkCurrPos.x - boundsAvg.x) * boundsScaling;
+		float by = (chunkCurrPos.y - boundsAvg.y) * boundsScaling;
+		float bz = (chunkCurrPos.z - boundsAvg.z) * boundsScaling;
+
+		ballPoints[i].set(bx, by, bz);		
+		
+	}
+
+	updateBallSizes();
+	m_pMetaballs->UpdateBallsFromPointsAndSizes(nPoints, ballPoints, ballSizes);
+}
+
+void MetaBallChunk::drawForSMS(ofxVec3f centroid, ofPoint boundsAvg, float boundsScaling) {
+
+	ofxVec3f curPos = ofxVec3f(ofGetWidth()/2-centroid.x, ofGetHeight()/2-centroid.y, centroid.z);
+	chunkCurrPos = -curPos;	
+	
+	ofxVec4f basecol = chunkCurrCol;
+	glColor3f(basecol.x, basecol.y, basecol.z);				
+	
+//	float bx = (50 - boundsAvg.x) * boundsScaling;
+//	float by = (boundsAvg.y) * boundsScaling;
+//	float bz = (boundsAvg.z) * boundsScaling;	
+//	
+//	ofPushMatrix();
+//		
+////	ofRotateX(ofGetElapsedTimef()*10);
+////	ofRotateY(ofGetElapsedTimef()*10);
+//	//ofRotateZ(ofGetElapsedTimef()*10);
+//	ofRotateZ(ofGetElapsedTimef()*100);
+//	ofTranslate(bx, by, bz);
+	m_pMetaballs->Render();
+//	ofPopMatrix();
+
 }
