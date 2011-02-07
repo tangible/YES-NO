@@ -20,21 +20,25 @@ class StateText {
 public:
 	
 	void setup();
+	void onSMSReceivedUpdate(int yesORno, UpdateInfo upInfo);
 	void draw(UpdateInfo upInfo, ofxVec3f centroidYes, ofxVec3f centroidNo);
-	
-	int minSize;
-	int maxSize;	
 	
 	ofTrueTypeFont font;	
 	ofxTween yesXTween;
 	ofxTween yesYTween;
 	ofxTween noXTween;
 	ofxTween noYTween;
+	ofxTween yesSizeTween;
+	ofxTween noSizeTween;
 	ofxEasingCirc easingcirc;
+	
+	float minSize;
+	float maxSize;	
 	
 	string yes;
 	string no;
 	string yesNum;
 	string noNum;
-
+	float yesSize;
+	float noSize;
 };

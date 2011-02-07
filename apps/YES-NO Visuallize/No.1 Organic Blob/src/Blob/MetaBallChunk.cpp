@@ -8,16 +8,18 @@
  */
 
 #include "MetaBallChunk.h"
-int gridSize = 130;
+int gridSize = 120;
 float baseBallSize = 0.10;
-float maxBallSize = 0.60;
+float maxBallSize = 1.00;
+
+float baseZ = -200;
 MetaBallChunk::MetaBallChunk(int points, int _chunkID) {
 	
 	chunkCurrPos = ofxVec3f(0.0, 0.0, 0.0);
 	if (_chunkID == 0) {
-		chunkDestPos = ofxVec3f(400.0, 0.0, 0.0);
+		chunkDestPos = ofxVec3f(400.0, 0.0, baseZ);
 	}else if (_chunkID == 1) {
-		chunkDestPos = ofxVec3f(-400.0, 0.0, 0.0);		
+		chunkDestPos = ofxVec3f(-400.0, 0.0, baseZ);		
 	}
 	deceleration = ofRandom(0.98, 0.99);
 	sizeBase = baseBallSize;
@@ -73,7 +75,8 @@ void MetaBallChunk::updateChunkBasePos() {
 	}else {
 		chunkDestPos = ofxVec3f(ofRandom(-700, 700), 
 								ofRandom(-350, 350), 
-								ofRandom(-100, 200));
+//								ofRandom(-100, 200));
+								baseZ);
 		deceleration = ofRandom(0.97, 0.99);
 		
 	}
@@ -88,14 +91,12 @@ void MetaBallChunk::updateColor() {
 	
 	// react to sms
 	if (chunkColChangeTime != 0) {
-		
 		if (chunkColTween.isCompleted()) {
 			chunkColTween.setParameters(easinglinear, ofxTween::easeInOut, r, chunkBaseCol.r+chunkColChangeVal/chunkColChangeVal, 100*chunkColChangeTime, 0);
 			chunkColTween.addValue(g, chunkBaseCol.g+chunkColChangeVal/chunkColChangeVal);
 			chunkColTween.addValue(b, chunkBaseCol.b+chunkColChangeVal/chunkColChangeVal);	
 			chunkColChangeTime--;			
-		}
-		
+		}		
 	}else {
 		if (chunkColTween.isCompleted()) {
 			chunkColTween.setParameters(easingcirc, ofxTween::easeInOut, r, chunkBaseCol.r, 500, 0);
@@ -103,6 +104,7 @@ void MetaBallChunk::updateColor() {
 			chunkColTween.addValue(b, chunkBaseCol.b);
 		}
 	}
+	//cout << "chunkColChangeTime = " + ofToString(chunkColChangeTime) << endl;
 	
 	chunkCurrCol.x = chunkColTween.update();
 	chunkCurrCol.y = chunkColTween.getTarget(1);
@@ -114,7 +116,6 @@ void MetaBallChunk::updateBallSizes() {
 	float sizeNow = ballSizeTween.update();
 	
 	if (ballSizeTween.isCompleted()) {
-		//ofNotifyEvent(onResizeComplete, chunkID);
 		ballSizeTween.setParameters(1,easingquad,ofxTween::easeInOut,sizeNow,sizeBase,500,0);
 	}
 	
@@ -135,12 +136,17 @@ void MetaBallChunk::minimizeOne() {
 
 }
 
-void MetaBallChunk::onSMSRecievedChangeCol(float thisTime, float total) {
+void MetaBallChunk::onSMSRecievedChangeCol(float thisTime, float total, ofColor col) {
 
 	// color
 	chunkColChangeVal = ofMap(thisTime, 0.0, 1.0, 0.0001, 1.0);
 	chunkColChangeTime = ofMap(thisTime, 0.0, 1.0, 1.0, 4.0); 
+	chunkBaseCol = col;
 	chunkColChanged = 0;
+	
+//	cout << "r = " + ofToString(chunkBaseCol.r) << endl;
+//	cout << "g = " + ofToString(chunkBaseCol.g) << endl;
+//	cout << "b = " + ofToString(chunkBaseCol.b) << endl;	
 
 }
 

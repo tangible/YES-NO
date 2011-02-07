@@ -27,7 +27,7 @@ public:
 	void minimizeOne();
 	
 	// sms events
-	void onSMSRecievedChangeCol(float thisTime, float total);
+	void onSMSRecievedChangeCol(float thisTime, float total, ofColor col);
 	void onSMSRecievedChangeMetaballSize(float thisTime, float total);	
 	void updateForSMS(ofxVec3f centroid, ofPoint boundsAvg, float boundsScaling);
 	void drawForSMS(ofxVec3f centroid, ofPoint boundsAvg, float boundsScaling);

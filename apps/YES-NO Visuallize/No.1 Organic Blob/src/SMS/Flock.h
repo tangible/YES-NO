@@ -19,7 +19,7 @@ public:
 	
 	void update(int mx, int my);
 	void draw();
-	void addBoid();
+	void addBoid(int maxSpeed = 20, float maxForce = 3.0);
 	
 	int flockID;
 	int z;

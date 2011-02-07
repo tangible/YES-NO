@@ -70,7 +70,7 @@ void App::jitterAndZoomScene() {
 	}
 	
 	if (cameraZTween.isCompleted()) {
-		float z = ofRandom(800, 1100);
+		float z = ofRandom(900, 1200);
 		float dur = ofRandom(4000, 6000);
 		cameraZTween.setParameters(easinglinear, ofxTween::easeInOut, camera.getPosition().z, z, dur, 0);
 	}

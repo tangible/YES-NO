@@ -94,7 +94,6 @@ void HTTPClient::getResponse(ofxHttpResponse & response){
 	xml.pushTag("TangibleHUBYesNoResponce");
 	xml.pushTag("SMSs");
 	int numTag = xml.getNumTags("SMS");
-	cout << "numTag recieved = " + ofToString(numTag) << endl;
 	for (int i = 0; i < numTag; i++) {
 		xml.pushTag("SMS", i);
 		string ans = xml.getValue("Answer", "error");
@@ -153,6 +152,9 @@ UpdateInfo HTTPClient::calcUpdateInfo() {
 	upInfo.numYes = thisTimeYes;
 	upInfo.numNo = thisTimeNo;
 	upInfo.requesttime = reqestTime;
+	
+//	cout << "thisTimeYes recieved = " + ofToString(upInfo.numYes) << endl;	
+//	cout << "totalYes recieved = " + ofToString(upInfo.numTotalYes) << endl;
 	
 	return upInfo;
 	

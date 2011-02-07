@@ -8,8 +8,8 @@
  */
 
 #include "BlobManager.h"
-int baseSphereSize = 37;
-int maxSphereSize = 110;
+int baseSphereSize = 30;
+int maxSphereSize = 150;
 void BlobManager::setup(int _fps, AdminPanel* _admin, QuestionImage* _qImage, StateText* _sText) {
 	
 	fps = _fps;
@@ -43,9 +43,9 @@ void BlobManager::setup(int _fps, AdminPanel* _admin, QuestionImage* _qImage, St
 			
 			ofxVec3f rdmPos;
 			if (i == 0) {
-				rdmPos = ofxVec3f(ofGetWidth()/2+ofRandom(500, 200), ofGetHeight()/2+ofRandom(-200, 200), ofRandom(-200, 200));
+				rdmPos = ofxVec3f(ofGetWidth()/2+ofRandom(500, 200), ofGetHeight()/2+ofRandom(-200, 200), ofRandom(-500, 0));
 			} else {
-				rdmPos = ofxVec3f(ofGetWidth()/2+ofRandom(-500, -200), ofGetHeight()/2+ofRandom(-200, 200), ofRandom(-200, 200));				
+				rdmPos = ofxVec3f(ofGetWidth()/2+ofRandom(-500, -200), ofGetHeight()/2+ofRandom(-200, 200), ofRandom(-500, 0));				
 			}
 
 			baseSizes.push_back(baseSphereSize);
@@ -105,6 +105,16 @@ void BlobManager::setup(int _fps, AdminPanel* _admin, QuestionImage* _qImage, St
 	randomImpulsSMSRecievedNo = 0;
 	smsYes = NULL;
 	smsNo = NULL;
+	
+	upInfo.ratioTotalYes = 0;
+	upInfo.ratioTotalNo = 0;
+	upInfo.ratioThisTimeYes = 0;
+	upInfo.ratioThisTimeNo = 0;
+	upInfo.numTotalYes = 0;
+	upInfo.numTotalNo = 0;
+	upInfo.numYes = 0;
+	upInfo.numNo = 0;
+	upInfo.requesttime = "";
 	
 	ofAddListener(flocks[0]->onBallGetSMSrepEvent, this, &BlobManager::onBallGetSMSrep);
 	ofAddListener(flocks[1]->onBallGetSMSrepEvent, this, &BlobManager::onBallGetSMSrep);	
@@ -206,10 +216,23 @@ void BlobManager::update() {
 				impulse.set(ofRandomf(), ofRandomf(), ofRandomf());
 				
 				if (i == 0 && randomImpulsSMSRecievedYes != 0) {
-					impulse *= 200 + randomImpulsSMSRecievedYes;
+					impulse *= 1200 + randomImpulsSMSRecievedYes;
 				}else if (i == 1 && randomImpulsSMSRecievedNo != 0) {
-					impulse *= 200 + randomImpulsSMSRecievedNo;
+					impulse *= 1200 + randomImpulsSMSRecievedNo;
 				}else {
+//					cout << "upInfo.ratioTotalYes = "+ofToString(upInfo.ratioTotalYes) << endl;					
+//					cout << "Bfore impulse = " + ofToString(impulse.x) << endl;
+//					if (i == 0) {
+//						impulse *= 80/(upInfo.ratioTotalYes==0.0)?1.0:upInfo.ratioTotalYes;
+//						
+//						cout << "80/(upInfo.ratioTotalYes==0.0)?1.0:upInfo.ratioTotalYes = " + ofToString(80/(upInfo.ratioTotalYes==0.0)?1.0:upInfo.ratioTotalYes) << endl;
+//						
+//					}else if (i == 1) {
+//						impulse *= 80/(upInfo.ratioTotalNo==0.0)?1.0:upInfo.ratioTotalNo;
+//						
+//						cout << "80/(upInfo.ratioTotalYes==0.0)?1.0:upInfo.ratioTotalNo = " + ofToString(80/(upInfo.ratioTotalNo==0.0)?1.0:upInfo.ratioTotalNo) << endl;
+//					}
+//					cout << "After impulse = " + ofToString(impulse.x) << endl;
 					impulse *= 80;
 				}
 
@@ -240,7 +263,6 @@ void BlobManager::draw() {
 		
 		// draw BG, qimage and statetext
 		glDisable(GL_LIGHTING);
-		
 		glColor3f(1.0, 1.0, 1.0);
 		if (!isVidBG) {
 			bg.draw(ofGetWidth()/2-bg.getWidth()/2+bgXTween.update(), 
@@ -255,8 +277,7 @@ void BlobManager::draw() {
 		
 		setupGLStuff();		
 		
-		ofEnableAlphaBlending();
-		
+		ofEnableAlphaBlending();		
 			// draw sms
 			for (int i = 0; i < flocks.size(); i++) {
 				Flock* f = flocks[i];
@@ -268,7 +289,7 @@ void BlobManager::draw() {
 			float w = ofGetWidth();
 			float h = ofGetHeight();
 			float sz = 0.75*min(w,h);
-			ofTranslate(w/2,h/2,0);
+			ofTranslate(w/2, h/2, 0);
 			ofScale(sz,sz,sz);
 
 			for (int i = 0; i < mBallChunks.size(); i++) {
@@ -283,8 +304,7 @@ void BlobManager::draw() {
 
 			}
 		
-			ofPopMatrix();
-		
+			ofPopMatrix();		
 		ofDisableAlphaBlending();
 
 	// debug	
@@ -442,12 +462,12 @@ void BlobManager::moveBG() {
 	if (bgYTween.isCompleted()) {
 		
 		float cur = bgXTween.getTarget(0);
-		float x = ofRandom(-430, 430);
+		float x = ofRandom(-230, 230);
 		float dur = ofRandom(10000, 12000);
 		bgXTween.setParameters(easingquart, ofxTween::easeInOut, cur, x, dur, 0);
 		
 		cur = bgYTween.getTarget(0);
-		float y = ofRandom(-430, 430);
+		float y = ofRandom(-230, 230);
 		bgYTween.setParameters(easingquart, ofxTween::easeInOut, cur, y, dur, 0);
 		
 	}
@@ -506,8 +526,10 @@ void BlobManager::onSMSRecievedImpulseForSphere(int _chunkID) {
 	factBN = (factBN<=0.1)?0.1:factBN;	
 	
 	int baseImpulse = 50;
-	float inpulseDivY = thisSizeY/factAY+thisSizeY/factBY;
-	float inpulseDivN = thisSizeN/factAN+thisSizeN/factBN;
+//	float inpulseDivY = thisSizeY/factAY+thisSizeY/factBY;
+//	float inpulseDivN = thisSizeN/factAN+thisSizeN/factBN;
+	float inpulseDivY = thisSizeY/ratioYes;
+	float inpulseDivN = thisSizeN/ratioNo;
 	
 	if (0 == _chunkID) {
 		randomImpulsSMSRecievedYes = ofMap(ratioYes, 0.0, 1.0, baseImpulse, inpulseDivY);
@@ -524,18 +546,30 @@ void BlobManager::onBallGetSMSrep(int& chunkID) {
 	float ratioYes = upInfo.ratioThisTimeYes;
 	float ratioNo = upInfo.ratioThisTimeNo;
 	
+	ofColor testcol;
+	testcol.r = ofRandom(0.0, 1.0);
+	testcol.g = ofRandom(0.0, 1.0);
+	testcol.b = ofRandom(0.0, 1.0);
+	
 	if (chunkID == 0) {
-		mBallChunks[0]->onSMSRecievedChangeCol(ratioYes, totalRatioYes);
+		mBallChunks[0]->onSMSRecievedChangeCol(ratioYes, totalRatioYes, testcol);
 		mBallChunks[0]->onSMSRecievedChangeMetaballSize(ratioYes, totalRatioYes);	
-		//onSMSRecievedChangeSphereSize(0, totalRatioYes, totalRatioNo);
 		onSMSRecievedImpulseForSphere(0);
+		sText->onSMSReceivedUpdate(0, upInfo);
+		
+		//if (totalRatioYes > 0.5)
+			onSMSRecievedChangeSphereSize(0, totalRatioYes, totalRatioNo);		
 		
 	}else if (chunkID == 1) {
-		mBallChunks[1]->onSMSRecievedChangeCol(ratioNo, totalRatioNo);	
+		mBallChunks[1]->onSMSRecievedChangeCol(ratioNo, totalRatioNo, testcol);	
 		mBallChunks[1]->onSMSRecievedChangeMetaballSize(ratioNo, totalRatioNo);		
-		//onSMSRecievedChangeSphereSize(1, totalRatioYes, totalRatioNo);
 		onSMSRecievedImpulseForSphere(1);
+		sText->onSMSReceivedUpdate(1, upInfo);
+
+		//if (totalRatioNo > 0.5)		
+			onSMSRecievedChangeSphereSize(1, totalRatioYes, totalRatioNo);		
 	}
+	
 	
 }
 
@@ -577,13 +611,9 @@ void BlobManager::recieveSMS(UpdateInfo _upInfo) {
 	for (int i = 0; i < 2; i++) {
 		Flock* f = flocks[i];
 		if (i == 0) {
-			//for (int j = 0; j < yes; j++) {
-				f->addBoid();
-			//}
+			f->addBoid(20*(1.0-ratioYes), 1.0/(1.0-ratioYes));
 		}else if (i == 1) {
-			//for (int j = 0; j < no; j++) {
-				f->addBoid();
-			//}
+			f->addBoid(20*(1.0-ratioNo), 1.0/(1.0-ratioNo));
 		}
 	}	
 	

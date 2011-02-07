@@ -24,15 +24,15 @@ void Flock::update(int mx, int my) {
 		ofxVec2f birdLoc = ofxVec2f(boids[i]->loc.x, boids[i]->loc.y);
 		ofxVec2f mouseLoc = ofxVec2f(mx, my);
 
+		boids[i]->update(boids);		
+		
 		if (50 > birdLoc.distance(mouseLoc)) {		
 			Boid* b = boids[i];
-			delete b;
 			boids.erase(boids.begin()+i);
+			delete b;			
 			ofNotifyEvent(onBallGetSMSrepEvent, flockID);
 		}
 
-		
-		boids[i]->update(boids);
 	}
 }
 
@@ -42,7 +42,7 @@ void Flock::draw() {
 	}
 }
 
-void Flock::addBoid() {
+void Flock::addBoid(int maxSpeed, float maxForce) {
 	Boid* boid = new Boid();
 	boids.push_back(boid);
 }

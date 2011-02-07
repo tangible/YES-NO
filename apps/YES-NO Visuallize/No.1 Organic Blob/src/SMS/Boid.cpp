@@ -9,15 +9,15 @@
 
 #include "Boid.h"
 
-Boid::Boid() {
+Boid::Boid(int maxSpeed, float maxForce) {
 
     loc.x = ofRandomWidth()*2;
 	loc.y = ofRandomHeight()*2;
 	vel = 0;
 	acc = 0;
     r = 3.0;
-    maxspeed = 20;
-    maxforce = 3.0;
+    maxspeed = maxSpeed;
+    maxforce = maxForce;
 }
 
 

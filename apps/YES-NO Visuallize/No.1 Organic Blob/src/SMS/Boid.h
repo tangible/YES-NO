@@ -15,7 +15,7 @@
 
 class Boid {
 public:
-	Boid();
+	Boid(int maxSpeed = 20, float maxForce = 3.0);
 		
 	void update(vector<Boid*> boids);
 	void draw();
