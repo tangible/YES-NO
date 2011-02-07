@@ -12,18 +12,20 @@
 Flock::Flock() {
 }
 
-void Flock::update(int mx, int my) {
+void Flock::update(int mx, int my, int mz) {
 	for(int i=0; i<boids.size(); i++) {
 
 		if(i<5) {
-			boids[i]->seek( ofPoint(mx, my) );
+			boids[i]->seek( ofPoint(mx, my, mz) );
 		} else {
-			boids[i]->arrive( ofPoint(mx, my) );
+			boids[i]->arrive( ofPoint(mx, my, mz) );
 		}		
 		
 		ofxVec2f birdLoc = ofxVec2f(boids[i]->loc.x, boids[i]->loc.y);
 		ofxVec2f mouseLoc = ofxVec2f(mx, my);
 
+		boids[i]->z = mz;
+		
 		boids[i]->update(boids);		
 		
 		if (50 > birdLoc.distance(mouseLoc)) {		
@@ -36,13 +38,13 @@ void Flock::update(int mx, int my) {
 	}
 }
 
-void Flock::draw() {
+ofxVec3f Flock::draw() {
 	for(int i=0; i<boids.size(); i++) {
-		boids[i]->draw();
+		return boids[i]->draw();
 	}
 }
 
 void Flock::addBoid(int maxSpeed, float maxForce) {
-	Boid* boid = new Boid();
+	Boid* boid = new Boid(maxSpeed, maxForce);
 	boids.push_back(boid);
 }

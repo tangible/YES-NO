@@ -201,6 +201,8 @@
 		31D3500B12F661A700D9D87A /* GlutStuff.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31D34F7612F661A700D9D87A /* GlutStuff.cpp */; };
 		31D3505912F66BA400D9D87A /* glsl.frag in Sources */ = {isa = PBXBuildFile; fileRef = 31D3505712F66BA400D9D87A /* glsl.frag */; };
 		31D3505A12F66BA400D9D87A /* glsl.vert in Sources */ = {isa = PBXBuildFile; fileRef = 31D3505812F66BA400D9D87A /* glsl.vert */; };
+		31D6446512FF84CB0002A09C /* Ray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31D6446412FF84CB0002A09C /* Ray.cpp */; };
+		31D644BE12FF8C300002A09C /* blob.png in Resources */ = {isa = PBXBuildFile; fileRef = 31D644BD12FF8C300002A09C /* blob.png */; };
 		31D7DC5812FCF7C2006BCBE6 /* Boid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31D7DC5412FCF7C2006BCBE6 /* Boid.cpp */; };
 		31D7DC5912FCF7C2006BCBE6 /* Flock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31D7DC5612FCF7C2006BCBE6 /* Flock.cpp */; };
 		31F0A79312FA64540039634E /* easing_terms_of_use.html in Resources */ = {isa = PBXBuildFile; fileRef = 31F0A76E12FA64540039634E /* easing_terms_of_use.html */; };
@@ -780,6 +782,9 @@
 		31D34F7712F661A700D9D87A /* GlutStuff.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlutStuff.h; sourceTree = "<group>"; };
 		31D3505712F66BA400D9D87A /* glsl.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = glsl.frag; sourceTree = "<group>"; };
 		31D3505812F66BA400D9D87A /* glsl.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = glsl.vert; sourceTree = "<group>"; };
+		31D6446312FF84CB0002A09C /* Ray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ray.h; sourceTree = "<group>"; };
+		31D6446412FF84CB0002A09C /* Ray.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Ray.cpp; sourceTree = "<group>"; };
+		31D644BD12FF8C300002A09C /* blob.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blob.png; sourceTree = "<group>"; };
 		31D7DC5412FCF7C2006BCBE6 /* Boid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Boid.cpp; sourceTree = "<group>"; };
 		31D7DC5512FCF7C2006BCBE6 /* Boid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Boid.h; sourceTree = "<group>"; };
 		31D7DC5612FCF7C2006BCBE6 /* Flock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Flock.cpp; sourceTree = "<group>"; };
@@ -859,7 +864,7 @@
 		E45BE9770E8CC7DD009D7055 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = /System/Library/Frameworks/CoreServices.framework; sourceTree = "<absolute>"; };
 		E45BE9790E8CC7DD009D7055 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
 		E45BE97A0E8CC7DD009D7055 /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = /System/Library/Frameworks/QuickTime.framework; sourceTree = "<absolute>"; };
-		E4B69B5B0A3A1756003C02F2 /* No.1 Organic BlobDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "No.1 Organic BlobDebug.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4B69B5B0A3A1756003C02F2 /* No.1 Organic Blob.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "No.1 Organic Blob.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.xml; path = "openFrameworks-Info.plist"; sourceTree = "<group>"; };
 		E4C2421610CC549C004149E2 /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E4C2424410CC5A17004149E2 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
@@ -1227,6 +1232,7 @@
 		318B458612FA4ACC00A50F14 /* imgs */ = {
 			isa = PBXGroup;
 			children = (
+				31D644BD12FF8C300002A09C /* blob.png */,
 				31F68ABC12FE2204001E8F94 /* qimg.png */,
 				318B45B212FA4CC600A50F14 /* sky.jpeg */,
 				31F68A5212FE1935001E8F94 /* vancityWBBlur.jpg */,
@@ -1879,6 +1885,8 @@
 				31D7DC5512FCF7C2006BCBE6 /* Boid.h */,
 				31D7DC5612FCF7C2006BCBE6 /* Flock.cpp */,
 				31D7DC5712FCF7C2006BCBE6 /* Flock.h */,
+				31D6446312FF84CB0002A09C /* Ray.h */,
+				31D6446412FF84CB0002A09C /* Ray.cpp */,
 			);
 			path = SMS;
 			sourceTree = "<group>";
@@ -2212,7 +2220,7 @@
 		E4B69B4A0A3A1720003C02F2 = {
 			isa = PBXGroup;
 			children = (
-				E4B69B5B0A3A1756003C02F2 /* No.1 Organic BlobDebug.app */,
+				E4B69B5B0A3A1756003C02F2 /* No.1 Organic Blob.app */,
 				E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */,
 				311E58DF12F6453E0077A832 /* Resources */,
 				E4B69E1C0A3A1BDC003C02F2 /* src */,
@@ -2345,7 +2353,7 @@
 			);
 			name = "No.1 Organic Blob";
 			productName = myOFApp;
-			productReference = E4B69B5B0A3A1756003C02F2 /* No.1 Organic BlobDebug.app */;
+			productReference = E4B69B5B0A3A1756003C02F2 /* No.1 Organic Blob.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -2402,6 +2410,7 @@
 				31F68A5312FE1935001E8F94 /* vancityWBBlur.jpg in Resources */,
 				31F68ABD12FE2204001E8F94 /* qimg.png in Resources */,
 				31F68ACC12FE231A001E8F94 /* Verdana Bold.ttf in Resources */,
+				31D644BE12FF8C300002A09C /* blob.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2640,6 +2649,7 @@
 				31D7DC5912FCF7C2006BCBE6 /* Flock.cpp in Sources */,
 				31F68B8612FE2A7C001E8F94 /* StateText.cpp in Sources */,
 				31F68B8B12FE2AAB001E8F94 /* QuestionImage.cpp in Sources */,
+				31D6446512FF84CB0002A09C /* Ray.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

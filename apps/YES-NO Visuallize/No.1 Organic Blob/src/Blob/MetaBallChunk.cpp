@@ -73,10 +73,10 @@ void MetaBallChunk::updateChunkBasePos() {
 		chunkCurrPos.y += ampy - tmpampy;
 		chunkCurrPos.z += ampz - tmpampz;
 	}else {
-		chunkDestPos = ofxVec3f(ofRandom(-700, 700), 
+		chunkDestPos = ofxVec3f(ofRandom(-750, 750), 
 								ofRandom(-350, 350), 
-//								ofRandom(-100, 200));
-								baseZ);
+								ofRandom(baseZ-100, baseZ+200));
+//								baseZ);
 		deceleration = ofRandom(0.97, 0.99);
 		
 	}
@@ -104,7 +104,6 @@ void MetaBallChunk::updateColor() {
 			chunkColTween.addValue(b, chunkBaseCol.b);
 		}
 	}
-	//cout << "chunkColChangeTime = " + ofToString(chunkColChangeTime) << endl;
 	
 	chunkCurrCol.x = chunkColTween.update();
 	chunkCurrCol.y = chunkColTween.getTarget(1);
@@ -120,7 +119,6 @@ void MetaBallChunk::updateBallSizes() {
 	}
 	
 	for (int i = 0; i < nPoints; i++) {
-		//float sizeBaseSin  = 0.015 * ofNoise(ofGetElapsedTimeMillis());	
 		ballSizes[i] = sizeNow;// + sizeBaseSin;
 	}
 	

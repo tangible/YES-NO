@@ -11,13 +11,26 @@
 
 Boid::Boid(int maxSpeed, float maxForce) {
 
-    loc.x = ofRandomWidth()*2;
-	loc.y = ofRandomHeight()*2;
+	
+	float x = 0.0;
+	for (int i = 0; ;i++) {
+		x = ofRandom(-2000, ofGetWidth()+2000);
+		if (x <= 0.0) break;
+		if (x >= ofGetWidth()) break;
+	}
+	float y = ofRandom(-1000, ofGetHeight()+1000);
+
+	loc.x = x;
+	loc.y = y;
+
+	
 	vel = 0;
 	acc = 0;
     r = 3.0;
     maxspeed = maxSpeed;
     maxforce = maxForce;
+	
+	//img.loadImage("blob.png");
 }
 
 
@@ -32,10 +45,10 @@ void Boid::update(vector<Boid*> boids) {
     loc += vel;
     acc = 0;  // Reset accelertion to 0 each cycle
 	
-	if (loc.x < -r) loc.x = ofGetWidth()+r;
-    if (loc.y < -r) loc.y = ofGetHeight()+r;
-    if (loc.x > ofGetWidth()+r) loc.x = -r;
-    if (loc.y > ofGetHeight()+r) loc.y = -r;
+//	if (loc.x < -r) loc.x = ofGetWidth()+r;
+//    if (loc.y < -r) loc.y = ofGetHeight()+r;
+//    if (loc.x > ofGetWidth()+r) loc.x = -r;
+//    if (loc.y > ofGetHeight()+r) loc.y = -r;
 }
 
 void Boid::seek(ofPoint target) {
@@ -71,26 +84,30 @@ ofPoint Boid::steer(ofPoint target, bool slowdown) {
     return steer;
 }
 
-void Boid::draw() {
+ofxVec3f Boid::draw() {
     // Draw a triangle rotated in the direction of velocity
 	float angle = (float)atan2(-vel.y, vel.x);
     float theta =  -1.0*angle;
 	float heading2D = ofRadToDeg(theta)+90;
 	
-	ofEnableAlphaBlending();
-//    ofSetColor(col.x, col.y, col.z);
-    ofFill();
+
+    ofSetColor(252, 106, 163);
     ofPushMatrix();
-    ofTranslate(loc.x, loc.y);
+    ofTranslate(loc.x, loc.y, z);
     ofRotateZ(heading2D);
-	ofBeginShape();
-    ofVertex(0, -r*10);
-    ofVertex(-r, r*10);
-    ofVertex(r, r*10);
-    ofEndShape(true);
+
+	ofxSphere(0, 0, 0, 30);
+	ofxSphere(-25, 0, 0, 50);
+	ofxSphere(0, -20, 0, 50);	
+	
+//	ofxSphere(10, 0, 0, 10);
+//	ofxSphere(-10, 10, 10, 20);	
+	
     ofPopMatrix();
-//	ofSetColor(255, 255, 255);
-	ofDisableAlphaBlending();
+	ofSetColor(255, 255, 255);
+	
+	return ofxVec3f(loc.x, loc.y, z);
+
 }
 
 void Boid::flock(vector<Boid*> boids) {

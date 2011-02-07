@@ -22,6 +22,7 @@
 #include "Flock.h"
 #include "QuestionImage.h"
 #include "StateText.h"
+#include "Ray.h"
 
 class BlobManager {
 
@@ -40,9 +41,10 @@ public:
 	
 	// sms events
 	UpdateInfo upInfo;
+	vector<Ray*>  rays;
 	vector<Flock*> flocks; // this is sms
 	MetaBallChunk* smsYes;
-	MyRigidBody* smsYesBody;
+	vector<MyRigidBody*> smsYesBody;
 	MetaBallChunk* smsNo;
 	MyRigidBody* smsNoBody;
 	float thisSizeY;
@@ -109,5 +111,8 @@ public:
 	ofxEasingQuart		easingquart;
 	ofxEasingQuint		easingquint;
 	ofxEasingSine		easingsine;
+	
+	
+	ofImage timg;
 	
 };

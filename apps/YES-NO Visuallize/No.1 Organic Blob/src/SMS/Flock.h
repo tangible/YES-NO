@@ -17,8 +17,8 @@ class Flock {
 public:
 	Flock();
 	
-	void update(int mx, int my);
-	void draw();
+	void update(int mx, int my, int mz);
+	ofxVec3f draw();
 	void addBoid(int maxSpeed = 20, float maxForce = 3.0);
 	
 	int flockID;

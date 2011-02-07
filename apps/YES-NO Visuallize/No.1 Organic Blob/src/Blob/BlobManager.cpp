@@ -12,6 +12,13 @@ int baseSphereSize = 30;
 int maxSphereSize = 150;
 void BlobManager::setup(int _fps, AdminPanel* _admin, QuestionImage* _qImage, StateText* _sText) {
 	
+	for (int i = 0; i < 2; i++) {
+		Ray* r = new Ray();
+		if (i == 0) r->setup(centroidYes);
+		if (i == 1) r->setup(centroidNo);
+		rays.push_back(r);
+	}	
+	
 	fps = _fps;
 	admin = _admin;
 	qImage = _qImage;
@@ -118,6 +125,9 @@ void BlobManager::setup(int _fps, AdminPanel* _admin, QuestionImage* _qImage, St
 	
 	ofAddListener(flocks[0]->onBallGetSMSrepEvent, this, &BlobManager::onBallGetSMSrep);
 	ofAddListener(flocks[1]->onBallGetSMSrepEvent, this, &BlobManager::onBallGetSMSrep);	
+	
+	
+	timg.loadImage("blob.png");
 }
 
 void BlobManager::update() {
@@ -139,13 +149,35 @@ void BlobManager::update() {
 			int flockID = f->flockID;
 			if (flockID == 0) {
 				f->z = centroidYes.z;
-				f->update(centroidYes.x, centroidYes.y);
+				f->update(centroidYes.x, centroidYes.y, centroidYes.z);
 			}else if (flockID == 1) {
 				f->z = centroidNo.z;				
-				f->update(centroidNo.x, centroidNo.y);
+				f->update(centroidNo.x, centroidNo.y, centroidNo.z);
 			}
 		}
-												 
+				
+		bool a = false;
+		bool b = false;		
+		for (int i = 0; i < rays.size(); i++) {
+			if (i == 0) {
+				bool near = rays[0]->update(centroidYes);
+//				if (near) {
+//					Ray* r = rays[0];
+//					delete r;
+//					a = true;
+//					rays.erase(rays.begin()+0);
+//				}
+			}else if (i == 1) {
+				bool near = rays[1]->update(centroidNo);
+//				if (near) {
+//					Ray* r = rays[1];
+//					delete r;
+//					b = true;
+//					rays.erase(rays.begin()+1);					
+//				}				
+			}
+		}
+
 		
 		bullet->stepPhysicsSimulation(admin->PHYSICSTICKFPS);	
 		
@@ -216,23 +248,10 @@ void BlobManager::update() {
 				impulse.set(ofRandomf(), ofRandomf(), ofRandomf());
 				
 				if (i == 0 && randomImpulsSMSRecievedYes != 0) {
-					impulse *= 1200 + randomImpulsSMSRecievedYes;
+					impulse *= 1100 + randomImpulsSMSRecievedYes;
 				}else if (i == 1 && randomImpulsSMSRecievedNo != 0) {
-					impulse *= 1200 + randomImpulsSMSRecievedNo;
+					impulse *= 1100 + randomImpulsSMSRecievedNo;
 				}else {
-//					cout << "upInfo.ratioTotalYes = "+ofToString(upInfo.ratioTotalYes) << endl;					
-//					cout << "Bfore impulse = " + ofToString(impulse.x) << endl;
-//					if (i == 0) {
-//						impulse *= 80/(upInfo.ratioTotalYes==0.0)?1.0:upInfo.ratioTotalYes;
-//						
-//						cout << "80/(upInfo.ratioTotalYes==0.0)?1.0:upInfo.ratioTotalYes = " + ofToString(80/(upInfo.ratioTotalYes==0.0)?1.0:upInfo.ratioTotalYes) << endl;
-//						
-//					}else if (i == 1) {
-//						impulse *= 80/(upInfo.ratioTotalNo==0.0)?1.0:upInfo.ratioTotalNo;
-//						
-//						cout << "80/(upInfo.ratioTotalYes==0.0)?1.0:upInfo.ratioTotalNo = " + ofToString(80/(upInfo.ratioTotalNo==0.0)?1.0:upInfo.ratioTotalNo) << endl;
-//					}
-//					cout << "After impulse = " + ofToString(impulse.x) << endl;
 					impulse *= 80;
 				}
 
@@ -253,7 +272,36 @@ void BlobManager::update() {
 		if (0 != randomImpulsSMSRecievedYes) randomImpulsSMSRecievedYes = 0; // once enough
 		if (0 != randomImpulsSMSRecievedNo) randomImpulsSMSRecievedNo = 0;
 		
-
+//		if (smsYes) {
+//			for (int i = 0; i < smsYesBody.size(); i++) {
+//				
+//				// apply force
+//				MyRigidBody* sph = smsYesBody[i];		
+//				
+//				ofxVec3f flockpos = mBallChunks[0]->chunkCurrPos;
+//				
+//				force.set(-sph->getBodyPos() + 
+//						  ofxVec3f(ofGetWidth()/2 + flockpos.x, ofGetHeight()/2 + flockpos.y, flockpos.z));
+//				force *= maxVal * 40;	
+//				btVector3 btImpulse(force.x, force.y, force.z);
+//				sph->getRigidBody()->applyCentralImpulse(btImpulse);				
+//				
+//				ofxVec3f impulse;
+//				impulse.set(ofRandomf(), ofRandomf(), ofRandomf());
+//				impulse *= 80;
+//				btImpulse = btVector3(impulse.x, impulse.y, impulse.z);
+//				sph->getRigidBody()->applyCentralImpulse(btImpulse);
+//				
+//				ofxVec3f pos = sph->getBodyPos()-ofxVec3f(ofGetWidth()/2, ofGetHeight()/2, -400);
+//				float bx = (pos.x - boundsAvg.x) * boundsScaling;
+//				float by = (pos.y - boundsAvg.y) * boundsScaling;
+//				float bz = (pos.z - boundsAvg.z) * boundsScaling;
+//				
+//				smsYes->ballPoints[i].set(bx,by,bz);				
+//
+//			}
+//			smsYes->m_pMetaballs->UpdateBallsFromPointsAndSizes(smsYesBody.size(), smsYes->ballPoints, smsYes->ballSizes);
+//		}
 	}
 }
 
@@ -275,14 +323,14 @@ void BlobManager::draw() {
 
 		glEnable(GL_LIGHTING);	
 		
+//		for (int i = 0; i < rays.size(); i++) {
+//			rays[i]->draw();
+//		}
+		
+		
 		setupGLStuff();		
 		
 		ofEnableAlphaBlending();		
-			// draw sms
-			for (int i = 0; i < flocks.size(); i++) {
-				Flock* f = flocks[i];
-				f->draw();
-			}
 			
 			// draw metaball
 			ofPushMatrix();
@@ -305,6 +353,19 @@ void BlobManager::draw() {
 			}
 		
 			ofPopMatrix();		
+		
+			// draw sms
+			for (int i = 0; i < flocks.size(); i++) {
+				Flock* f = flocks[i];
+				ofxVec3f pos = f->draw();
+//				ofPushMatrix();
+//				ofTranslate(pos.x, pos.y, pos.z);
+//				glDisable(GL_LIGHTING);
+//				timg.draw(0, 0);
+//				glEnable(GL_LIGHTING);
+//				ofPopMatrix();
+			}		
+		
 		ofDisableAlphaBlending();
 
 	// debug	
@@ -610,23 +671,21 @@ void BlobManager::recieveSMS(UpdateInfo _upInfo) {
 	
 	for (int i = 0; i < 2; i++) {
 		Flock* f = flocks[i];
-		if (i == 0) {
-			f->addBoid(20*(1.0-ratioYes), 1.0/(1.0-ratioYes));
-		}else if (i == 1) {
-			f->addBoid(20*(1.0-ratioNo), 1.0/(1.0-ratioNo));
+		if (i == 0 && upInfo.numYes != 0) {
+			f->addBoid(80+ofRandomuf()*20, 4+ofRandomuf()*10);
+		}else if (i == 1 && upInfo.numNo != 0) {
+			f->addBoid(80+ofRandomuf()*20, 4+ofRandomuf()*10);
 		}
+//		if (i == 0) {
+//			f->addBoid(20/ofRandomuf(), 1.0/ofRandomuf());
+//		}else if (i == 1) {
+//			f->addBoid(20/ofRandomuf(), 1.0/ofRandomuf());
+//		}		
 	}	
 	
-	int numBallSMS = 2;
-	MetaBallChunk* mchunk = new MetaBallChunk(numBallSMS, 3);
-	mchunk->chunkCurrCol = ofxVec4f(0.1, 0.1, 0.8, 1.0);
-	for (int i = 0; i < numBallSMS; i++) {
-		ofxVec3f pos = ofxVec3f(100-ofGetWidth()/2, 100-ofGetHeight()/2, 0);
-		float bx = (pos.x - boundsAvg.x) * boundsScaling;
-		float by = (pos.y - boundsAvg.y) * boundsScaling;
-		float bz = (pos.z - boundsAvg.z) * boundsScaling;		
-		mchunk->ballPoints[i].set(bx, by, bz);
-	}
+
+	
+
 	
 }
 

@@ -11,6 +11,7 @@
 #define BOID_H
 
 #include "ofMain.h"
+#include "ofx3DUtils.h"
 #include "ofxVectorMath.h"
 
 class Boid {
@@ -18,10 +19,11 @@ public:
 	Boid(int maxSpeed = 20, float maxForce = 3.0);
 		
 	void update(vector<Boid*> boids);
-	void draw();
+	ofxVec3f draw();
 	void seek(ofPoint target);
 	void arrive(ofPoint target);
 	ofPoint steer(ofPoint target, bool slowdown);
+	ofColor col;
 	
 	void flock(vector<Boid*> boids);
 	ofPoint separate(vector<Boid*> boids);
@@ -31,6 +33,7 @@ public:
 	ofxVec3f loc;
 	ofPoint vel;
 	ofPoint acc;
+	float z;
 
 	float r;
 	float maxforce;
