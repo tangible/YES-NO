@@ -10,7 +10,7 @@
 #include "BlobManager.h"
 int baseSphereSize = 30;
 int maxSphereSize = 150;
-void BlobManager::setup(int _fps, AdminPanel* _admin, QuestionImage* _qImage, StateText* _sText) {
+void BlobManager::setup(int _fps, AdminPanel* _admin, QuestionImage* _qImage, StateText* _sText, ofxCamera* cam) {
 	
 	for (int i = 0; i < 2; i++) {
 		Ray* r = new Ray();
@@ -37,6 +37,11 @@ void BlobManager::setup(int _fps, AdminPanel* _admin, QuestionImage* _qImage, St
 	// init metaball and voxels
 	bullet = new ofxBullet();
 	bullet->initPhysics(ofxVec3f(0, 0, 0), false);	
+
+//	bullet->enableRayCastingMouseInteraction(cam);
+//	myTuio.connect(3333);
+
+	
     nMetaBalls = 10;	
 	int numChunk = 2;
 	for (int i = 0; i < numChunk; i++) {
@@ -126,8 +131,6 @@ void BlobManager::setup(int _fps, AdminPanel* _admin, QuestionImage* _qImage, St
 	ofAddListener(flocks[0]->onBallGetSMSrepEvent, this, &BlobManager::onBallGetSMSrep);
 	ofAddListener(flocks[1]->onBallGetSMSrepEvent, this, &BlobManager::onBallGetSMSrep);	
 	
-	
-	timg.loadImage("blob.png");
 }
 
 void BlobManager::update() {
@@ -153,28 +156,6 @@ void BlobManager::update() {
 			}else if (flockID == 1) {
 				f->z = centroidNo.z;				
 				f->update(centroidNo.x, centroidNo.y, centroidNo.z);
-			}
-		}
-				
-		bool a = false;
-		bool b = false;		
-		for (int i = 0; i < rays.size(); i++) {
-			if (i == 0) {
-				bool near = rays[0]->update(centroidYes);
-//				if (near) {
-//					Ray* r = rays[0];
-//					delete r;
-//					a = true;
-//					rays.erase(rays.begin()+0);
-//				}
-			}else if (i == 1) {
-				bool near = rays[1]->update(centroidNo);
-//				if (near) {
-//					Ray* r = rays[1];
-//					delete r;
-//					b = true;
-//					rays.erase(rays.begin()+1);					
-//				}				
 			}
 		}
 
@@ -272,36 +253,6 @@ void BlobManager::update() {
 		if (0 != randomImpulsSMSRecievedYes) randomImpulsSMSRecievedYes = 0; // once enough
 		if (0 != randomImpulsSMSRecievedNo) randomImpulsSMSRecievedNo = 0;
 		
-//		if (smsYes) {
-//			for (int i = 0; i < smsYesBody.size(); i++) {
-//				
-//				// apply force
-//				MyRigidBody* sph = smsYesBody[i];		
-//				
-//				ofxVec3f flockpos = mBallChunks[0]->chunkCurrPos;
-//				
-//				force.set(-sph->getBodyPos() + 
-//						  ofxVec3f(ofGetWidth()/2 + flockpos.x, ofGetHeight()/2 + flockpos.y, flockpos.z));
-//				force *= maxVal * 40;	
-//				btVector3 btImpulse(force.x, force.y, force.z);
-//				sph->getRigidBody()->applyCentralImpulse(btImpulse);				
-//				
-//				ofxVec3f impulse;
-//				impulse.set(ofRandomf(), ofRandomf(), ofRandomf());
-//				impulse *= 80;
-//				btImpulse = btVector3(impulse.x, impulse.y, impulse.z);
-//				sph->getRigidBody()->applyCentralImpulse(btImpulse);
-//				
-//				ofxVec3f pos = sph->getBodyPos()-ofxVec3f(ofGetWidth()/2, ofGetHeight()/2, -400);
-//				float bx = (pos.x - boundsAvg.x) * boundsScaling;
-//				float by = (pos.y - boundsAvg.y) * boundsScaling;
-//				float bz = (pos.z - boundsAvg.z) * boundsScaling;
-//				
-//				smsYes->ballPoints[i].set(bx,by,bz);				
-//
-//			}
-//			smsYes->m_pMetaballs->UpdateBallsFromPointsAndSizes(smsYesBody.size(), smsYes->ballPoints, smsYes->ballSizes);
-//		}
 	}
 }
 
@@ -322,11 +273,6 @@ void BlobManager::draw() {
 		qImage->draw();
 
 		glEnable(GL_LIGHTING);	
-		
-//		for (int i = 0; i < rays.size(); i++) {
-//			rays[i]->draw();
-//		}
-		
 		
 		setupGLStuff();		
 		
@@ -353,18 +299,6 @@ void BlobManager::draw() {
 			}
 		
 			ofPopMatrix();		
-		
-			// draw sms
-			for (int i = 0; i < flocks.size(); i++) {
-				Flock* f = flocks[i];
-				ofxVec3f pos = f->draw();
-//				ofPushMatrix();
-//				ofTranslate(pos.x, pos.y, pos.z);
-//				glDisable(GL_LIGHTING);
-//				timg.draw(0, 0);
-//				glEnable(GL_LIGHTING);
-//				ofPopMatrix();
-			}		
 		
 		ofDisableAlphaBlending();
 
@@ -438,6 +372,23 @@ void BlobManager::draw() {
 	sText->draw(upInfo, centroidYes, centroidNo);
 	glDisable(GL_LIGHTING);
 	
+	
+//    std::list<TuioCursor*> cursorList = myTuio.client->getTuioCursors();
+//	std::list<TuioCursor*>::iterator tit;
+//	myTuio.client->lockCursorList();
+//	for (tit=cursorList.begin(); tit != cursorList.end(); tit++) {
+//		TuioCursor * cur = (*tit);
+//		//if(tcur!=0){
+//		//TuioCursor cur = *tcur;
+//		glColor3f(0.0,0.0,0.0);
+//		ofEllipse(cur->getX(), cur->getY(), 50.0, 50.0);
+//		string str = "SessionId: "+ofToString((int)(cur->getSessionID()));
+//		ofDrawBitmapString(str, cur->getX()-10.0, cur->getY()+25.0);
+//		str = "CursorId: "+ofToString((int)(cur->getCursorID()));
+//		ofDrawBitmapString(str, cur->getX()-10.0, cur->getY()+40.0);
+//		//}
+//	}
+//	myTuio.client->unlockCursorList();	
 }
 
 void BlobManager::setupGLStuff(){
@@ -587,8 +538,6 @@ void BlobManager::onSMSRecievedImpulseForSphere(int _chunkID) {
 	factBN = (factBN<=0.1)?0.1:factBN;	
 	
 	int baseImpulse = 50;
-//	float inpulseDivY = thisSizeY/factAY+thisSizeY/factBY;
-//	float inpulseDivN = thisSizeN/factAN+thisSizeN/factBN;
 	float inpulseDivY = thisSizeY/ratioYes;
 	float inpulseDivN = thisSizeN/ratioNo;
 	
@@ -617,21 +566,16 @@ void BlobManager::onBallGetSMSrep(int& chunkID) {
 		mBallChunks[0]->onSMSRecievedChangeMetaballSize(ratioYes, totalRatioYes);	
 		onSMSRecievedImpulseForSphere(0);
 		sText->onSMSReceivedUpdate(0, upInfo);
-		
-		//if (totalRatioYes > 0.5)
-			onSMSRecievedChangeSphereSize(0, totalRatioYes, totalRatioNo);		
+		onSMSRecievedChangeSphereSize(0, totalRatioYes, totalRatioNo);		
 		
 	}else if (chunkID == 1) {
 		mBallChunks[1]->onSMSRecievedChangeCol(ratioNo, totalRatioNo, testcol);	
 		mBallChunks[1]->onSMSRecievedChangeMetaballSize(ratioNo, totalRatioNo);		
 		onSMSRecievedImpulseForSphere(1);
 		sText->onSMSReceivedUpdate(1, upInfo);
-
-		//if (totalRatioNo > 0.5)		
-			onSMSRecievedChangeSphereSize(1, totalRatioYes, totalRatioNo);		
+		onSMSRecievedChangeSphereSize(1, totalRatioYes, totalRatioNo);		
+		
 	}
-	
-	
 }
 
 void BlobManager::onBallGetSMSrepComplete(int& _chunkID) {
@@ -676,17 +620,7 @@ void BlobManager::recieveSMS(UpdateInfo _upInfo) {
 		}else if (i == 1 && upInfo.numNo != 0) {
 			f->addBoid(80+ofRandomuf()*20, 4+ofRandomuf()*10);
 		}
-//		if (i == 0) {
-//			f->addBoid(20/ofRandomuf(), 1.0/ofRandomuf());
-//		}else if (i == 1) {
-//			f->addBoid(20/ofRandomuf(), 1.0/ofRandomuf());
-//		}		
-	}	
-	
-
-	
-
-	
+	}		
 }
 
 

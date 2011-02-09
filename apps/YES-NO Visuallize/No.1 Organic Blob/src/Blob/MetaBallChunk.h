@@ -13,7 +13,7 @@
 #include "Metaballs.h"
 #include "ofxVectorMath.h"
 #include "ofxTween.h"
-#include "HTTPClient.h"
+#include "HTTPSMSClient.h"
 
 
 class MetaBallChunk {

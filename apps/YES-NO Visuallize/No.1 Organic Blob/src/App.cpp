@@ -10,7 +10,7 @@ void App::setup(){
 	adminPanel.setup();
 	qImage.setup();
 	stateText.setup();
-	blobMgr.setup(FPS, &adminPanel, &qImage, &stateText);
+	blobMgr.setup(FPS, &adminPanel, &qImage, &stateText, &camera);
 	httpClient.setup();
 	
 	ofAddListener(adminPanel.onFileDialogueBG, this, &App::onFileChangeBG);
@@ -100,26 +100,10 @@ void App::onSMSMsgRecieved(UpdateInfo& upInfo) {
 
 //--------------------------------------------------------------
 void App::keyPressed  (int key){
-//    switch ((char)key){
-//		case ' ':
-//			ofxVec3f rdmPos = ofxVec3f(ofGetWidth()/2+ofRandom(-500, 500), ofGetHeight()/2+ofRandom(-500, 500), 600);
-//			
-//			MyRigidBody* sph = bullet->createSphere(rdmPos,
-//													ofRandom(50, 70), 
-//													1, 
-//													ofxVec4f(ofRandom(0.5, 0.5), ofRandom(0.5, 0.5), ofRandom(0.5, 0.5), 0.7), 
-//													DYNAMIC_BODY);		
-//			
-//			int rdmIdx = ofRandom(0, spheres.size()-1);
-//			MyRigidBody* r = spheres[rdmIdx];
-//			r->remove(bullet->getWorld());
-//			spheres.erase(spheres.begin()+rdmIdx);		
-//			spheres.push_back(sph);	
-//			break;
-//    }
-	
 	switch(key) {
-		case ' ': adminPanel.toggle(); break;
+		case ' ': 
+			adminPanel.toggle(); 
+			break;
 		case 's': 
 			httpClient.sendRequest();
 			break;	

@@ -32,7 +32,8 @@ void ofxBullet::initPhysics(ofxVec3f gravity, bool _bEnableCollisionNotification
 	
     m_dynamicsWorld->setGravity(ofxBulletStaticUtil::ofxVec3ToBtVec3(gravity));
 	
-
+	bMousePressed = false;
+	bTouched = false;
 }
 
 void ofxBullet::exitPhysics() {
@@ -84,6 +85,15 @@ void ofxBullet::enableRayCastingMouseInteraction(ofxCamera* _cam) {
 	ofAddListener(ofEvents.mouseDragged, this, &ofxBullet::mouseDragged);
 	
 }
+
+void ofxBullet::enableRayCastingTouchInteraction(ofxCamera* _cam) {
+	
+	cam = _cam;
+	ofAddListener(ofEvents.touchDown, this, &ofxBullet::touchDown);
+	ofAddListener(ofEvents.touchUp, this, &ofxBullet::touchUp);
+	ofAddListener(ofEvents.touchMoved, this, &ofxBullet::touchMoved);	
+}
+
 //--------------------------------------------------------------
 /*
  #define GLUT_LEFT_BUTTON		0
@@ -141,6 +151,8 @@ void ofxBullet::mousePressed(ofMouseEventArgs& event){
 						
 						//very weak constraint for picking
 						p2p->m_setting.m_tau = 0.1f;
+						
+						bMousePressed = true;
 					}
 				}
 			}	
@@ -155,14 +167,15 @@ void ofxBullet::mouseReleased(ofMouseEventArgs& event){
 	int button = event.button;	
 	
 	if (button == 0) {
-		if (m_pickConstraint && getWorld()) {
+		if (m_pickConstraint && getWorld() && bMousePressed) {
 			getWorld()->removeConstraint(m_pickConstraint);
-			//delete m_pickConstraint;
-			//printf("removed constraint %i",gPickingConstraintId);
+			delete m_pickConstraint;
 			m_pickConstraint = 0;
 			pickedBody->forceActivationState(ACTIVE_TAG);
 			pickedBody->setDeactivationTime( 0.f );
 			pickedBody = 0;
+			
+			bMousePressed = false;
 		}
 	}
 }
@@ -198,6 +211,114 @@ void ofxBullet::mouseDragged(ofMouseEventArgs& event){
 	}
 }
 
+//--------------------------------------------------------------
+void ofxBullet::touchDown(ofTouchEventArgs& event){
+	
+	int x = event.x;
+	int y = event.y;
+//	int button = event.button;
+	
+//	if (button == 0) {
+		if (getWorld()) {
+			
+			btVector3 rayTo = getRayTo(x,y);
+			ofxVec3f campos = cam->getPosition();
+			btVector3 rayFrom = btVector3(campos.x, campos.y, campos.z);
+			
+			btCollisionWorld::ClosestRayResultCallback rayCallback(rayFrom,rayTo);
+			getWorld()->rayTest(rayFrom,rayTo,rayCallback);
+			if (rayCallback.hasHit()) {
+				btRigidBody* body = btRigidBody::upcast(rayCallback.m_collisionObject);
+				if (body) {
+					//other exclusions?
+					if (!(body->isStaticObject() || body->isKinematicObject())) {
+						
+						pickedBody = body;
+						pickedBody->setActivationState(DISABLE_DEACTIVATION);
+						
+						
+						btVector3 pickPos = rayCallback.m_hitPointWorld;
+						printf("pickPos=%f,%f,%f\n",pickPos.getX(),pickPos.getY(),pickPos.getZ());
+						
+						
+						btVector3 localPivot = body->getCenterOfMassTransform().inverse() * pickPos;
+						
+						btPoint2PointConstraint* p2p = new btPoint2PointConstraint(*body,localPivot);
+						p2p->m_setting.m_impulseClamp = oldPickingDist;
+						
+						getWorld()->addConstraint(p2p);
+						m_pickConstraint = p2p;
+						
+						//save mouse position for dragging
+						oldPickingPos = rayTo;
+						hitPos = pickPos;
+						
+						oldPickingDist  = (pickPos-rayFrom).length();
+						
+						//very weak constraint for picking
+						p2p->m_setting.m_tau = 0.1f;
+						
+						bTouched = true;
+					}
+				}
+			}	
+		}
+//	}
+}
+//--------------------------------------------------------------
+void ofxBullet::touchUp(ofTouchEventArgs& event){
+	
+	int x = event.x;
+	int y = event.y;
+//	int button = event.button;	
+	
+//	if (button == 0) {
+		if (m_pickConstraint && getWorld() && bTouched) {
+			getWorld()->removeConstraint(m_pickConstraint);
+			delete m_pickConstraint;
+			//printf("removed constraint %i",gPickingConstraintId);
+			m_pickConstraint = 0;
+			pickedBody->forceActivationState(ACTIVE_TAG);
+			pickedBody->setDeactivationTime( 0.f );
+			pickedBody = 0;
+			
+			bTouched = false;
+		}
+//	}
+}
+//--------------------------------------------------------------
+void ofxBullet::touchMoved(ofTouchEventArgs& event){
+	
+	int x = event.x;
+	int y = event.y;
+//	int button = event.button;	
+	
+	if (m_pickConstraint) {
+		//move the constraint pivot
+		btPoint2PointConstraint* p2p = static_cast<btPoint2PointConstraint*>(m_pickConstraint);
+		if (p2p) {
+			//keep it at the same picking distance
+			
+			btVector3 newRayTo = getRayTo(x,y);
+			btVector3 rayFrom;
+			btVector3 oldPivotInB = p2p->getPivotInB();
+			btVector3 newPivotB;
+			
+			ofxVec3f campos = cam->getPosition();
+			rayFrom = btVector3(campos.x, campos.y, campos.z);
+			btVector3 dir = newRayTo-rayFrom;
+			dir.normalize();
+			dir *= oldPickingDist;
+			
+			newPivotB = rayFrom + dir;
+			
+			p2p->setPivotB(newPivotB);
+		}
+		
+	}
+}
+
+
 
 MyRigidBody* ofxBullet::createGround(ofxVec3f startTrans, ofxVec3f shape, int mass,
 									  ofxVec4f color,
@@ -205,7 +326,7 @@ MyRigidBody* ofxBullet::createGround(ofxVec3f startTrans, ofxVec3f shape, int ma
 
 	btTransform startTransform;
 	startTransform.setIdentity();
-	startTransform.setRotation(btQuaternion(btVector3(0.0,0.0,1.0), ofxBulletStaticUtil::degToRad(20)));
+//	startTransform.setRotation(btQuaternion(btVector3(0.0,0.0,1.0), ofxBulletStaticUtil::degToRad(20)));
 	startTransform.setOrigin(btVector3(ofxBulletStaticUtil::ofxVec3ToBtVec3(startTrans)));
 	
 	MyRigidBody* mrb = new MyRigidBody(bodyType);
@@ -240,6 +361,35 @@ MyRigidBody* ofxBullet::createBackWall(ofxVec3f startTrans, ofxVec3f shape, int 
 	
 	return mrb;	
 	
+}
+
+vector<MyRigidBody*> ofxBullet::createBoundingBox(ofxVec3f centerPos, ofxVec3f dimention,
+												  ofxVec4f color, int mass, int bodyType) {
+	
+	// gournd
+	btTransform groundTrans;
+	groundTrans.setIdentity();
+	ofxVec3f groundVec = ofxVec3f(centerPos.x, centerPos.y+dimention.y, centerPos.z);
+	btVector3 groundBVec = ofxBulletStaticUtil::ofxVec3ToBtVec3(groundVec);
+	groundTrans.setOrigin(groundBVec);
+	MyRigidBody* ground = new MyRigidBody(bodyType);
+	ofxVec3f groundShape = ofxVec3f(1500,0,1600);
+	btVector3 groundBShape = ofxBulletStaticUtil::ofxVec3ToBtVec3(groundShape);
+	ground->createBoxShape(groundTrans, groundBShape, mass, color);
+	m_dynamicsWorld->addRigidBody(ground->getRigidBody());	
+	boudingBox.push_back(ground);
+	
+	// left
+	
+	// right
+	
+	// front							  
+	
+	// back
+	
+	// top
+	
+	return boudingBox;
 }
 
 MyRigidBody* ofxBullet::createStaticPlane(ofxVec3f startTrans, ofxVec3f shape, int mass,

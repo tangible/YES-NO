@@ -7,6 +7,7 @@
 	#include <process.h>
 #else
     #include <pthread.h>
+    #include <semaphore.h>
 #endif
 
 class ofxThread{
@@ -18,9 +19,9 @@ class ofxThread{
 		void startThread(bool _blocking = true, bool _verbose = true);
 		bool lock();
 		bool unlock();
-		void stopThread(bool close = true);
+		void stopThread();
 		void waitForThread(bool stop = true);
-
+	
 	protected:
 
 		//-------------------------------------------------
@@ -35,7 +36,6 @@ class ofxThread{
 			static unsigned int __stdcall thread(void * objPtr){
 				ofxThread* me	= (ofxThread*)objPtr;
 				me->threadedFunction();
-				me->stopThread(false);
 				return 0;
 			}
 
@@ -43,8 +43,6 @@ class ofxThread{
 			static void * thread(void * objPtr){
 				ofxThread* me	= (ofxThread*)objPtr;
 				me->threadedFunction();
-				me->stopThread(false);
-				pthread_exit(NULL);
 				return 0;
 			}
 		#endif

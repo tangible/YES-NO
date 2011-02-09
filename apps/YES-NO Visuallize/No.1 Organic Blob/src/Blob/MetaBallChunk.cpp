@@ -141,10 +141,6 @@ void MetaBallChunk::onSMSRecievedChangeCol(float thisTime, float total, ofColor 
 	chunkColChangeTime = ofMap(thisTime, 0.0, 1.0, 1.0, 4.0); 
 	chunkBaseCol = col;
 	chunkColChanged = 0;
-	
-//	cout << "r = " + ofToString(chunkBaseCol.r) << endl;
-//	cout << "g = " + ofToString(chunkBaseCol.g) << endl;
-//	cout << "b = " + ofToString(chunkBaseCol.b) << endl;	
 
 }
 
@@ -170,10 +166,6 @@ void MetaBallChunk::updateForSMS(ofxVec3f centroid, ofPoint boundsAvg, float bou
 	chunkCurrPos.x = curPos.x+cos(radian)*300;
 	chunkCurrPos.y = curPos.y+sin(radian)*300;
 	
-	cout << ofToString(chunkCurrPos.x) << endl;
-	
-	//chunkCurrPos = -curPos;
-	
 	// balls pos
 	for (int i = 0; i < nPoints; i++) {
 		float bx = (chunkCurrPos.x - boundsAvg.x) * boundsScaling;
@@ -196,18 +188,6 @@ void MetaBallChunk::drawForSMS(ofxVec3f centroid, ofPoint boundsAvg, float bound
 	ofxVec4f basecol = chunkCurrCol;
 	glColor3f(basecol.x, basecol.y, basecol.z);				
 	
-//	float bx = (50 - boundsAvg.x) * boundsScaling;
-//	float by = (boundsAvg.y) * boundsScaling;
-//	float bz = (boundsAvg.z) * boundsScaling;	
-//	
-//	ofPushMatrix();
-//		
-////	ofRotateX(ofGetElapsedTimef()*10);
-////	ofRotateY(ofGetElapsedTimef()*10);
-//	//ofRotateZ(ofGetElapsedTimef()*10);
-//	ofRotateZ(ofGetElapsedTimef()*100);
-//	ofTranslate(bx, by, bz);
 	m_pMetaballs->Render();
-//	ofPopMatrix();
 
 }

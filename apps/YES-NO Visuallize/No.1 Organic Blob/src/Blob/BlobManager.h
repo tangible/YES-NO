@@ -15,7 +15,7 @@
 #include "ofxBullet.h"
 #include "ofxTween.h"
 #include "AdminPanel.h"
-#include "HTTPClient.h"
+#include "HTTPSMSClient.h"
 #include "MetaBallChunk.h"
 #include "Metaballs.h"
 #include "Marchingcubes.h"
@@ -23,11 +23,12 @@
 #include "QuestionImage.h"
 #include "StateText.h"
 #include "Ray.h"
+#include "ofxTuioClient.h"
 
 class BlobManager {
 
 public:
-	void setup(int _fps, AdminPanel* _admin, QuestionImage* _qImage, StateText* _sText);
+	void setup(int _fps, AdminPanel* _admin, QuestionImage* _qImage, StateText* _sText, ofxCamera* cam);
 	void update();
 	void draw();
 	
@@ -57,6 +58,8 @@ public:
 	AdminPanel*				admin;
 	QuestionImage*			qImage;
 	StateText*				sText;
+	
+	ofxTuioClient			myTuio;
 	
 	int						fps;
 	ofxShader				shader;

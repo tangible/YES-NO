@@ -7,17 +7,9 @@
 #include "ofxTween.h"
 #include "BlobManager.h"
 #include "AdminPanel.h"
-#include "HTTPClient.h"
+#include "HTTPSMSClient.h"
 #include "QuestionImage.h"
 #include "StateText.h"
-
-/*
- TODO 
- 20110203
- 1. bulletの球の数をsmsの返答の比で変えること。
- 2. smsが入ってきたら、返答の数によってボールをぶつけること(massをいじればいいかも。そしたらはげしくぶつかるとおもう）
- 3. smsの数をどこかに表示すること。返答によって。
-*/
 
 // No.1 Organic Blob
 class App : public ofBaseApp{
@@ -44,7 +36,7 @@ public:
 
 	BlobManager		blobMgr;
 	AdminPanel		adminPanel;
-	HTTPClient		httpClient;	
+	HTTPSMSClient	httpClient;	
 	QuestionImage	qImage;
 	StateText		stateText;
 	

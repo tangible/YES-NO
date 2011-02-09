@@ -39,9 +39,15 @@ public:
 	void					updateModifierKeys(){};
 	
 	void					enableRayCastingMouseInteraction(ofxCamera* _cam);
+	bool					bMousePressed;
 	void					mouseDragged(ofMouseEventArgs& event);
 	void					mousePressed(ofMouseEventArgs& event);
 	void					mouseReleased(ofMouseEventArgs& event);
+	void					enableRayCastingTouchInteraction(ofxCamera* _cam);
+	bool					bTouched;
+	void					touchDown(ofTouchEventArgs& touch);
+	void					touchUp(ofTouchEventArgs& touch);
+	void					touchMoved(ofTouchEventArgs& touch);	
 	
 	inline btDynamicsWorld* getWorld() { return m_dynamicsWorld; };
 
@@ -56,6 +62,10 @@ public:
 	MyRigidBody*			createBackWall(ofxVec3f startTrans, ofxVec3f shape, int mass = 0,
 											ofxVec4f color = ofxVec4f(0.1, 0.1, 0, 0.5),
 											int bodyType = KINEMATIC_BODY);	
+	vector<MyRigidBody*>	createBoundingBox(ofxVec3f centerPos = ofxVec3f(ofGetWidth()/2, ofGetHeight()/2, 0),
+											  ofxVec3f dimention = ofxVec3f(ofGetWidth(), ofGetHeight(), ofGetWidth()),
+											  ofxVec4f color = ofxVec4f(0.3, 0.0, 3, 0.5), 
+											  int mass = 0, int bodyType = KINEMATIC_BODY);
 	MyRigidBody*			createStaticPlane(ofxVec3f startTrans, ofxVec3f shape, int mass = 0,
 										 ofxVec4f color = ofxVec4f(1.0, 1.0, 1.0, 0.5),
 										 int bodyType = KINEMATIC_BODY);	
@@ -90,6 +100,7 @@ public:
 	ofxCamera*				cam;
 	MyRigidBody*			ground;
 	MyRigidBody*			backWall;
+	vector<MyRigidBody*>	boudingBox;
 	vector<MyRigidBody*>	myRigidVec;			
 	vector<MySoftBody*>		mySoftVec;
 	vector<RagDoll*>		myRagdollVec;

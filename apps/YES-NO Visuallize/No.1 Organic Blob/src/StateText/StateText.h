@@ -11,7 +11,7 @@
 
 #include "ofMain.h"
 #include "ofxTween.h"
-#include "HTTPClient.h"
+#include "HTTPSMSClient.h"
 #include "ofxVectorMath.h"
 #include "ofx3DUtils.h"
 
