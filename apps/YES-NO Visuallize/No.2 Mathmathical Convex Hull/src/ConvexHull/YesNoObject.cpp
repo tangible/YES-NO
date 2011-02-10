@@ -22,11 +22,12 @@ void YesNoObject::setup(ofxBullet* _bullet, ofxVec3f _forcePoint, int initialNum
 void YesNoObject::update() {
 
 	for (int j = 0; j < smss.size(); j++) {
-		MyRigidBody* sms = smss[j];
+		MyRigidBody* sms = smss[j]->sms;
 		ofxVec3f force = ofxVec3f(-sms->getBodyPos() + forcePoint);
 		force *= maxValu * 6;
 		btVector3 impulse(force.x, force.y, force.z);
 		sms->getRigidBody()->applyCentralImpulse(impulse);
+		smss[j]->update();
 	}
 	
 }
@@ -36,7 +37,7 @@ void YesNoObject::draw(ofxVec4f baseCol) {
 	float vertices[smss.size()*3];
 	
 	for (int i = 0; i < smss.size(); i++) {
-		MyRigidBody* sms = smss[i];
+		MyRigidBody* sms = smss[i]->sms;
 		ofxVec3f pos = sms->getBodyPos();
 		vertices[3*i] = pos.x;
 		vertices[3*i+1] = pos.y;
@@ -67,34 +68,34 @@ void YesNoObject::draw(ofxVec4f baseCol) {
 			}
 			glEnd();
 			
-			// process face col per vertex
+			// process vertex col
 			ofxVec4f agedCol = baseCol;
 			float cptr[12];
 			for (int j = 0; j < fp.size(); j++) { // compute col by point's age
 				int idx = fp[j];
 				ofxVec3f facePos = ofxVec3f(points[3*idx], points[3*idx+1], points[3*idx+2]);
-				MyRigidBody* tgtBody;
+				Vertex* tgtVertex;
 				for (int k = 0; ; k++) {					
-					ofxVec3f bodyPos = smss[k]->getBodyPos();
+					ofxVec3f bodyPos = smss[k]->sms->getBodyPos();
 					if (facePos == bodyPos) {
-						tgtBody = smss[k];
+						tgtVertex = smss[k];
 						break;
 					}
 				}
 				float cur = (float)ofGetElapsedTimeMillis();
-				float brn = (float)tgtBody->age;
+				float brn = (float)tgtVertex->sms->age;
 				float age = cur-brn;
-				float c = ofMap(age, 0.0, cur, 1.0, 0.1);
+				float scale = ofMap(age, 0.0, cur, 1.0, -1.0);
 				
-				cptr[4*j] = baseCol.x*c;
-				cptr[4*j+1] = baseCol.y*c;
-				cptr[4*j+2] = baseCol.z*c;
-				cptr[4*j+3] = baseCol.w;
+				tgtVertex->col.setColorScale(scale);
+				tgtVertex->col.setColorAngle(tgtVertex->col.getColorAngle()+0.001);
+				ofColor tgtCol = tgtVertex->col.getColor();
+
+				cptr[4*j] = tgtCol.r /255.0;
+				cptr[4*j+1] = tgtCol.g /255.0;
+				cptr[4*j+2] = tgtCol.b /255.0;
+				cptr[4*j+3] = tgtCol.a /255.0;				
 				
-//				cout << "cur = " + ofToString(cur) << endl;
-//				cout << "age = " + ofToString(age) << endl;
-//				cout << ofToString(c) << endl;
-//				cout << " " << endl;
 			}
 			
 			
@@ -135,12 +136,12 @@ void YesNoObject::draw(ofxVec4f baseCol) {
 void YesNoObject::debugDraw() {
 	
 	for (int i = 0; i < smss.size(); i++) {
-		smss[i]->render(bullet->getWorld());
+		smss[i]->sms->render(bullet->getWorld());
 	}
 	
 }
 
-void YesNoObject::addSMS(int numSMS, ofxVec3f pos) {
+void YesNoObject::addSMS(int numSMS, int YesOrNo, ofxVec3f pos) {
 
 	for (int i = 0; i < numSMS; i++) {
 		
@@ -156,11 +157,21 @@ void YesNoObject::addSMS(int numSMS, ofxVec3f pos) {
 		}
 
 		MyRigidBody* obj = bullet->createBox(rdmPos, 
-											 ofxVec3f(ofRandom(50, 90), ofRandom(50, 90), ofRandom(50, 90)),
+											 ofxVec3f(ofRandom(30, 70), ofRandom(30, 70), ofRandom(30, 70)),
 											 1, ofxVec4f(ofRandom(0.0, 1.0), ofRandom(0.0, 1.0), ofRandom(0.0, 1.0), ofRandom(0.3, 0.3)), 
 											 DYNAMIC_BODY);
-		
-		smss.push_back(obj);
+		Vertex* v = new Vertex();
+		v->col.setColorRadius(1.0);
+		if (YesOrNo == 0) {
+			v->angleMin = 0.0;
+			v->angleMax = 0.5;
+		}else if (YesOrNo == 1) {
+			v->angleMin = 0.5;
+			v->angleMax = 1.0;			
+		}
+		v->col.setColorAngle(ofRandomuf());
+		v->sms = obj;
+		smss.push_back(v);
 	}
 
 }

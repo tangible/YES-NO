@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "HTTPSMSClient.h"
 #include "ConvexHull.h"
+#include "AdminPanel.h"
 
 class App : public ofBaseApp{
 
@@ -19,8 +20,9 @@ public:
 	void mouseReleased(int x, int y, int button);
 	void windowResized(int w, int h);
 
-	ConvexHull  convexHull;
-	ofxCamera	cam;
+	AdminPanel		adminPanel;
+	ConvexHull		convexHull;
+	ofxCamera		cam;
 	
 };
 

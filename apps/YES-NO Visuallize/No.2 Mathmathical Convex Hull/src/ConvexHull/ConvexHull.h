@@ -13,7 +13,7 @@
 #include "ofxBullet.h"
 #include "YesNoObject.h"
 #include "LightScattering.h"
-#include "ofxColor.h"
+#include "AdminPanel.h"
 
 const int YES = 0;
 const int NO = 1;
@@ -22,12 +22,14 @@ class ConvexHull {
 
 public:
 	
-	void setup(int _fps, ofxCamera* _cam);
+	void setup(int _fps, AdminPanel* _adminPanel, ofxCamera* _cam);
 	void update();
 	void draw();
 	void keyPressed(int key);
 	
 	void setupGLStuff();
+	
+	AdminPanel* admin;
 	
 	float mc(float num);
 	

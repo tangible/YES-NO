@@ -12,6 +12,27 @@
 #include "ofMain.h"
 #include "ofxBullet.h"
 #include "chull.h"
+#include "ofxColorPicker.h"
+
+class Vertex {
+
+public:
+	MyRigidBody* sms;
+	ofxColorPicker col;
+	float angleMin;
+	float angleMax;
+	
+	void update() {
+//		if (col.getColorAngle() >= angleMax) {
+//			col.setColorAngle(col.getColorAngle()-0.01);		
+//		}else if (col.getColorAngle() <= angleMin) {
+//			col.setColorAngle(col.getColorAngle()+0.01);		
+//		}
+		cout << "col.getColorAngle() = " + ofToString(col.getColorAngle()) << endl;
+		col.update();
+	}
+	
+};
 
 class YesNoObject {
 	
@@ -22,14 +43,14 @@ public:
 	void draw(ofxVec4f col);
 	void debugDraw();
 	
-	void addSMS(int numSMS, ofxVec3f pos = ofxVec3f(0, 0, 0));
+	void addSMS(int numSMS, int YesOrNo = 0, ofxVec3f pos = ofxVec3f(0, 0, 0));
 	
 	ofxBullet* bullet;
 	
 	int YesOrNo;
 	float maxValu;
 	ofxVec3f forcePoint;
-	vector<MyRigidBody*> smss;	
+	vector<Vertex*> smss;	
 	map<string, ofxVec4f> faceColMap;
 	
 	Chull3D* ch3d;

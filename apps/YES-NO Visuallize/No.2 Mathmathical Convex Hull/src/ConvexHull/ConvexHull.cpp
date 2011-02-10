@@ -9,16 +9,17 @@
 
 #include "ConvexHull.h"
 
-void ConvexHull::setup(int _fps, ofxCamera* _cam) {
+void ConvexHull::setup(int _fps, AdminPanel* _adminPanel, ofxCamera* _cam) {
 
 	fps = _fps;
+	admin = _adminPanel;
 	cam = _cam;
 	
 	bullet = new ofxBullet();
 	bullet->initPhysics(ofxVec3f(0, 0, 0));	
 	bullet->enableRayCastingMouseInteraction(cam);
 	
-	bullet->createGround(ofxVec3f(ofGetWidth()/2, ofGetHeight()-200, 0), ofxVec3f(1500,0,1600), 0, ofxVec4f(0.9, 0.9, 0.9, 0.1));
+	bullet->createGround(ofxVec3f(ofGetWidth()/2, ofGetHeight()-200, 0), ofxVec3f(2000,0,2000), 0, ofxVec4f(0.9, 0.9, 0.9, 0.1));
 	
 	ofxVec3f yesPoint = ofxVec3f(ofGetWidth()/2+300, ofGetHeight()-200, 100);
 	ofxVec3f noPoint = ofxVec3f(ofGetWidth()/2-400, ofGetHeight()-200, -50); 
@@ -58,7 +59,7 @@ void ConvexHull::draw() {
 	
 	bullet->ground->render(bullet->getWorld());
 	
-	setupGLStuff();
+	//setupGLStuff();
 	
 	//ofEnableAlphaBlending();
 //	lScat.drawScatteringObjInYourDrawCycleButBeforeCameraUpdate(7);	
@@ -77,9 +78,9 @@ void ConvexHull::draw() {
 void ConvexHull::keyPressed(int key) {
 
 	if (key == 's') {
-		yes.addSMS(1);
+		yes.addSMS(4, NO);
 	}else if (key == 'a') {
-		no.addSMS(1);
+		no.addSMS(4, YES);
 	}
 
 }
@@ -116,7 +117,7 @@ void ConvexHull::setupGLStuff(){
     glMaterialfv(GL_FRONT_AND_BACK,GL_SHININESS,shininess);
 	
 	
-    GLfloat lightPosition[] = { 100.0f, 0.0f, 100.0, 0.0f };
+	GLfloat lightPosition[] = {admin->LIGHTX, admin->LIGHTY, admin->LIGHTZ, 0.0f};
     GLfloat lightDiffuse[]  = { 1.00, 0.99, 0.98, 1.0};
     GLfloat lightSpecular[] = { 0.10, 0.10, 0.10, 1.0};
     GLfloat lightAmbient[]  = { 0.45, 0.43, 0.44, 1.0};

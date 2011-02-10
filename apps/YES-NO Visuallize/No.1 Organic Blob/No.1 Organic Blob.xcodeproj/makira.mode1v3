@@ -268,20 +268,20 @@
 								<string>311E598812F64D630077A832</string>
 								<string>31AE81B4130137170087065A</string>
 								<string>BB4B014C10F69532006C3DED</string>
-								<string>31D34DDE12F661A600D9D87A</string>
 								<string>1C37FBAC04509CD000000102</string>
 								<string>1C37FABC05509CD000000102</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>6</integer>
+									<integer>14</integer>
+									<integer>12</integer>
 									<integer>4</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 0}, {239, 620}}</string>
+							<string>{{0, 86}, {239, 620}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -300,7 +300,7 @@
 							<real>239</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>347 106 926 679 0 0 1440 878 </string>
+						<string>502 159 926 679 0 0 1440 878 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -318,7 +318,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>App.cpp</string>
+								<string>AdminPanel.h</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -326,11 +326,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>App.cpp</string>
+										<string>AdminPanel.h</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>310C925C13039D03006EF72F</string>
+										<string>310C997A1303ECA2006EF72F</string>
 										<key>history</key>
 										<array>
 											<string>313E6EE312DD15D200883C18</string>
@@ -414,10 +414,9 @@
 											<string>31AE81AD130136D60087065A</string>
 											<string>3168D2CD130209070036D28A</string>
 											<string>3168B0D6130273CE006B852A</string>
-											<string>3168B0D7130273CE006B852A</string>
 											<string>3168B0D8130273CE006B852A</string>
-											<string>3168B0D9130273CE006B852A</string>
-											<string>310C925B13039D03006EF72F</string>
+											<string>310C99791303ECA2006EF72F</string>
+											<string>3168B0D7130273CE006B852A</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -431,7 +430,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {665, 633}}</string>
 								<key>RubberWindowFrame</key>
-								<string>347 106 926 679 0 0 1440 878 </string>
+								<string>502 159 926 679 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -451,7 +450,7 @@
 								<key>Frame</key>
 								<string>{{0, 638}, {665, 0}}</string>
 								<key>RubberWindowFrame</key>
-								<string>347 106 926 679 0 0 1440 878 </string>
+								<string>502 159 926 679 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
@@ -475,9 +474,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>310C925D13039D03006EF72F</string>
+				<string>310C997B1303ECA2006EF72F</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>310C925E13039D03006EF72F</string>
+				<string>310C997C1303ECA2006EF72F</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -619,7 +618,7 @@
 		<string>/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/YES-NO Visuallize/No.1 Organic Blob/No.1 Organic Blob.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>347 106 926 679 0 0 1440 878 </string>
+	<string>502 159 926 679 0 0 1440 878 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
@@ -696,7 +695,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>31C6967E129646AA007F71A7</string>
-				<string>310C925F13039D03006EF72F</string>
+				<string>310C997D1303ECA2006EF72F</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>

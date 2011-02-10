@@ -13,13 +13,15 @@ void App::setup(){
 	
 	cam.position(ofGetWidth()/2, ofGetHeight()/2+200, 1200);
 	
-	convexHull.setup(fps, &cam);
+	adminPanel.setup();
+	convexHull.setup(fps, &adminPanel, &cam);
 	
 }
 
 //--------------------------------------------------------------
 void App::update(){
 	
+	adminPanel.update();
 	convexHull.update();
 	
 }
@@ -27,11 +29,11 @@ void App::update(){
 //--------------------------------------------------------------
 void App::draw(){
 	
-	ofSetColor(200, 200, 200);
-	ofDrawBitmapString(ofToString(ofGetFrameRate()), 10, 20);		
-	
 	cam.place();
 	convexHull.draw();
+	
+	ofSetupScreen();
+	adminPanel.draw();	
 	
 }
 
@@ -39,6 +41,7 @@ void App::draw(){
 void App::keyPressed(int key){
 
 	convexHull.keyPressed(key);
+	if (key == ' ') adminPanel.toggle();
 	
 }
 
