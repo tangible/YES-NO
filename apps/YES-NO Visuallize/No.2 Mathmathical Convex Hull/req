@@ -1,0 +1,14 @@
+start with a small really rudimetnary shape
+
+evolves as more opinions get added when an opnion gets added a triangle gets added to the convex hull
+
+this triangle is large and then gets smaller like the rest
+
+new triangle can appear with a a differnt color and as if it was contagious all other triangles fade to that color for some time until they go back to the original color
+
+no sphere 
+not really like reza's i was thinking more like amorphous shapes not so much like a ball
+
+every facet a different color with a small variation of the surrounding color creating some kind of a gradient effect
+
+have the time affect the size newer entries are bigger or also affect the color so they are almost like a heatmap.

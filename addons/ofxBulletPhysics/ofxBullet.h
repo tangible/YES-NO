@@ -71,7 +71,8 @@ public:
 										 int bodyType = KINEMATIC_BODY);	
 	MyRigidBody*			createBox(ofxVec3f startTrans, ofxVec3f boxShape, int mass,
 									  ofxVec4f color = ofxVec4f(0.1, 0.1, 0, 0.5),
-									  int bodyType = DYNAMIC_BODY);
+									  int bodyType = DYNAMIC_BODY, 
+									  ofxVec3f rot = ofxVec3f(0, 0, 0));
 	MyRigidBody*			createSphere(ofxVec3f startTrans, int radius, int mass,
 										  ofxVec4f color = ofxVec4f(0, 0.1, 0.1, 0.5),
 										  int bodyType = DYNAMIC_BODY);	

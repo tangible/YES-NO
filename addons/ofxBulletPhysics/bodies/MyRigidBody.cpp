@@ -1,3 +1,48 @@
+// HOW TO CHANGE DYNAMIC T0 KINEMATIC
+//	for (int i = 0; i < smss.size(); i++) {
+//		MyRigidBody* sms = smss[i];
+//		
+//		//cout << ofToString(sms->getRigidBody()->getActivationState()) << endl;
+//		
+//		if (sms->getRigidBody()->getActivationState() == WANTS_DEACTIVATION &&
+//			!sms->getRigidBody()->isKinematicObject()) {
+//			
+//			//sms->getRigidBody()->setActivationState(DISABLE_SIMULATION);
+//			
+//			ofxVec3f smspos = sms->getBodyPos();
+//			//int radius = sms->getSphereRadius();
+//			ofxVec3f size = sms->getBoxSize();
+//			ofxVec3f deg = sms->getBodyRotDegree();
+//			int mass = sms->getBodyMass();
+//			
+////			MyRigidBody* obj = bullet->createSphere(smspos, radius, mass, ofxVec4f(0,0,0,0), KINEMATIC_BODY);
+//			MyRigidBody* obj = bullet->createBox(smspos, size, mass, ofxVec4f(0,0.3,0,1), KINEMATIC_BODY, deg);			
+//			obj->getRigidBody()->setInterpolationWorldTransform(obj->getRigidBody()->getWorldTransform());
+//			obj->getRigidBody()->setInterpolationLinearVelocity(btVector3(0,0,0));
+//			obj->getRigidBody()->setInterpolationAngularVelocity(btVector3(0,0,0));
+//			obj->getRigidBody()->setActivationState(DISABLE_SIMULATION);
+//			
+//			sms->remove(bullet->getWorld());
+//			delete sms;
+//
+//			smss[i] = obj;
+//			kinem.push_back(obj);
+//			
+//			cout << "make body kinematic!" << endl;
+//			
+//		}
+//	}
+//	
+//	for (int i = 0; i < kinem.size(); i++) {
+//		MyRigidBody* k = kinem[i];
+//		k->getRigidBody()->setInterpolationWorldTransform(k->getRigidBody()->getWorldTransform());
+//		k->getRigidBody()->setInterpolationLinearVelocity(btVector3(0,0,0));
+//		k->getRigidBody()->setInterpolationAngularVelocity(btVector3(0,0,0));
+//		
+//		
+//	}
+
+
 
 #include "MyRigidBody.h"
 
@@ -33,6 +78,10 @@ void MyRigidBody::createCapsuleShape(btTransform startTrans, int radius, int hei
 
 void MyRigidBody::createRigidBody(int mass, const btTransform startTrans) {
 
+	age = ofGetElapsedTimeMillis();
+	
+	bodyMass = mass;
+	
 	btVector3 inertia(0,0,0);
 	shape->calculateLocalInertia(mass,inertia);
 	
@@ -59,9 +108,9 @@ void MyRigidBody::createRigidBody(int mass, const btTransform startTrans) {
 
 	psb = new btRigidBody(rbci);
 	
-	if (bodyType == 2) {
+	if (bodyType == KINEMATIC_BODY) {
 		psb->setCollisionFlags(psb->getCollisionFlags() | btCollisionObject::CF_KINEMATIC_OBJECT);
-		psb->setActivationState(DISABLE_DEACTIVATION);
+		//psb->setActivationState(DISABLE_DEACTIVATION);
 	}
 }
 
@@ -163,7 +212,7 @@ ofPoint MyRigidBody::getBodyPos() {
 //	return ofPoint(btPos.x(), btPos.y(), btPos.z());	
 }
 
-ofPoint MyRigidBody::getBodyRotDegree() {
+ofxVec3f MyRigidBody::getBodyRotDegree() {
 	
 	btScalar m[16];
 	btDefaultMotionState* myMotionState = (btDefaultMotionState*)psb->getMotionState();

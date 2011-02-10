@@ -13,7 +13,7 @@ class MyRigidBody {
 public:
 	
 	MyRigidBody(int bt){ bodyType = bt; bodyColor = ofxVec4f(0.1, 0.1, 0, 1); };
-	~MyRigidBody();
+	~MyRigidBody(){};
 	
 	void						remove(btDynamicsWorld* m_dynamicsWorld);
 	
@@ -28,15 +28,17 @@ public:
 	
 	void						translateBody(ofxVec3f pos, ofxVec3f rotDir, float degree);
 	ofPoint						getBodyPos();
-	ofPoint						getBodyRotDegree();
+	ofxVec3f					getBodyRotDegree();
 	ofxVec4f					getBodyColor();
 	int							getSphereRadius(); // sphere only
 	ofxVec3f					getBoxSize(); // box only
-	
+	int							getBodyMass() { return bodyMass; };	
 	vector<ofxVec3f>			getVertsPos();
 	
 	btRigidBody*				getRigidBody(){ return psb; };	
 	btConvexInternalShape*		getRigidShape() { return shape; };
+
+	
 	
 		int							ID;
 		float						deceleration;
@@ -44,7 +46,7 @@ public:
 		float						distance;
 		float						currentRadius;
 		ofxVec3f					rotDir;
-		float						age;
+		int						age;
 		bool						delAnimFlag;
 		bool						delFlag;
 
@@ -58,7 +60,8 @@ protected:
 	GL_ShapeDrawer				drawer;
 	
 private:
-		
+	
+	int							bodyMass;
 	int							bodyType;
 	int							sphereRadius; // sphere only
 	btVector3					boxSize; // box only

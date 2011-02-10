@@ -413,10 +413,13 @@ MyRigidBody* ofxBullet::createStaticPlane(ofxVec3f startTrans, ofxVec3f shape, i
 
 MyRigidBody* ofxBullet::createBox(ofxVec3f startTrans, ofxVec3f boxShape, int mass,
 								  ofxVec4f color,
-								  int bodyType) {
+								  int bodyType, ofxVec3f rot) {
 
 	btTransform startTransform;
 	startTransform.setIdentity();
+	startTransform.setRotation(btQuaternion(btVector3(1.0,0.0,0.0), ofxBulletStaticUtil::degToRad(rot.x)));	
+	startTransform.setRotation(btQuaternion(btVector3(0.0,1.0,0.0), ofxBulletStaticUtil::degToRad(rot.y)));	
+	startTransform.setRotation(btQuaternion(btVector3(0.0,0.0,1.0), ofxBulletStaticUtil::degToRad(rot.z)));		
 	startTransform.setOrigin(btVector3(ofxBulletStaticUtil::ofxVec3ToBtVec3(startTrans)));
 	
 	MyRigidBody* mrb = new MyRigidBody(bodyType);

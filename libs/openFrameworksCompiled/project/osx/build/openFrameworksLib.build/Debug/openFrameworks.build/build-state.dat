@@ -1,7 +1,7 @@
 TopenFrameworks
 v7
 r0
-t318922441.879572
+t319018592.027771
 cCheck dependencies
 cCompileC build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofAppGlutWindow.o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/app/ofAppGlutWindow.cpp normal i386 c++ com.apple.compilers.gcc.4_2
 cCompileC build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofAppRunner.o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/app/ofAppRunner.cpp normal i386 c++ com.apple.compilers.gcc.4_2
@@ -1401,7 +1401,7 @@ s9690
 
 CCheck dependencies
 r0
-lSLF07#2@18"Check dependencies318922441#318922441#0(0"0(0#1#0"8615203168#0"0#
+lSLF07#2@18"Check dependencies319018592#319018592#0(0"0(0#1#0"8640198272#0"0#
 
 CCompileC build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofAppGlutWindow.o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/app/ofAppGlutWindow.cpp normal i386 c++ com.apple.compilers.gcc.4_2
 s318891274.952564
