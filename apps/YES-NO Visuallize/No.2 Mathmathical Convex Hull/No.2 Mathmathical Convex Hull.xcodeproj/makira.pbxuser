@@ -5,7 +5,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 122";
 		rLen = 0;
-		rLoc = 1842;
+		rLoc = 1843;
 		rType = 0;
 		vrLen = 1335;
 		vrLoc = 3327;
@@ -25,7 +25,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 225";
 		rLen = 0;
-		rLoc = 1842;
+		rLoc = 1843;
 		rType = 0;
 		vrLen = 1381;
 		vrLoc = 6194;
@@ -125,7 +125,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 204";
 		rLen = 0;
-		rLoc = 1845;
+		rLoc = 1846;
 		rType = 0;
 		vrLen = 1393;
 		vrLoc = 5252;
@@ -135,7 +135,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 228";
 		rLen = 0;
-		rLoc = 1845;
+		rLoc = 1846;
 		rType = 0;
 		vrLen = 1397;
 		vrLoc = 5398;
@@ -145,7 +145,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 101";
 		rLen = 0;
-		rLoc = 1842;
+		rLoc = 1843;
 		rType = 0;
 		vrLen = 1414;
 		vrLoc = 2332;
@@ -175,7 +175,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 101";
 		rLen = 0;
-		rLoc = 1842;
+		rLoc = 1843;
 		rType = 0;
 		vrLen = 1414;
 		vrLoc = 2332;
@@ -185,7 +185,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 161";
 		rLen = 0;
-		rLoc = 1842;
+		rLoc = 1843;
 		rType = 0;
 		vrLen = 1442;
 		vrLoc = 4141;
@@ -195,7 +195,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 161";
 		rLen = 0;
-		rLoc = 1842;
+		rLoc = 1843;
 		rType = 0;
 		vrLen = 1421;
 		vrLoc = 4141;
@@ -205,7 +205,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 252";
 		rLen = 0;
-		rLoc = 1845;
+		rLoc = 1846;
 		rType = 0;
 		vrLen = 1451;
 		vrLoc = 6097;
@@ -215,7 +215,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 243";
 		rLen = 0;
-		rLoc = 1845;
+		rLoc = 1846;
 		rType = 0;
 		vrLen = 1366;
 		vrLoc = 5978;
@@ -225,14 +225,14 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 100";
 		rLen = 0;
-		rLoc = 1841;
+		rLoc = 1842;
 		rType = 0;
 		vrLen = 1451;
 		vrLoc = 2375;
 	};
 	310C8D9513034F29006EF72F /* YesNoObject.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {627, 679}}";
+			sepNavIntBoundsRect = "{{0, 0}, {627, 702}}";
 			sepNavSelRange = "{557, 4}";
 			sepNavVisRange = "{0, 621}";
 			sepNavWindowFrame = "{{15, 118}, {927, 755}}";
@@ -240,9 +240,9 @@
 	};
 	310C8D9613034F29006EF72F /* YesNoObject.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {669, 2275}}";
+			sepNavIntBoundsRect = "{{0, 0}, {669, 2132}}";
 			sepNavSelRange = "{701, 0}";
-			sepNavVisRange = "{288, 1243}";
+			sepNavVisRange = "{1342, 1530}";
 			sepNavWindowFrame = "{{15, 118}, {927, 755}}";
 		};
 	};
@@ -271,7 +271,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 106";
 		rLen = 0;
-		rLoc = 1845;
+		rLoc = 1846;
 		rType = 0;
 		vrLen = 1444;
 		vrLoc = 2738;
@@ -281,7 +281,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 103";
 		rLen = 0;
-		rLoc = 1841;
+		rLoc = 1842;
 		rType = 0;
 		vrLen = 1357;
 		vrLoc = 2404;
@@ -341,7 +341,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 107";
 		rLen = 0;
-		rLoc = 1841;
+		rLoc = 1842;
 		rType = 0;
 		vrLen = 1149;
 		vrLoc = 2008;
@@ -361,7 +361,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 62";
 		rLen = 0;
-		rLoc = 1845;
+		rLoc = 1846;
 		rType = 0;
 		vrLen = 1154;
 		vrLoc = 959;
@@ -391,7 +391,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 62";
 		rLen = 0;
-		rLoc = 1845;
+		rLoc = 1846;
 		rType = 0;
 		vrLen = 1214;
 		vrLoc = 959;
@@ -401,7 +401,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 82";
 		rLen = 0;
-		rLoc = 1947;
+		rLoc = 1948;
 		rType = 0;
 		vrLen = 1336;
 		vrLoc = 1104;
@@ -431,7 +431,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 82";
 		rLen = 0;
-		rLoc = 1947;
+		rLoc = 1948;
 		rType = 0;
 		vrLen = 1235;
 		vrLoc = 245;
@@ -481,7 +481,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 82";
 		rLen = 0;
-		rLoc = 1947;
+		rLoc = 1948;
 		rType = 0;
 		vrLen = 1235;
 		vrLoc = 245;
@@ -491,7 +491,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 82";
 		rLen = 0;
-		rLoc = 1947;
+		rLoc = 1948;
 		rType = 0;
 		vrLen = 1365;
 		vrLoc = 1107;
@@ -521,7 +521,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 68";
 		rLen = 0;
-		rLoc = 1962;
+		rLoc = 1963;
 		rType = 0;
 		vrLen = 1403;
 		vrLoc = 1243;
@@ -541,7 +541,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 68";
 		rLen = 0;
-		rLoc = 1960;
+		rLoc = 1961;
 		rType = 0;
 		vrLen = 1243;
 		vrLoc = 0;
@@ -581,7 +581,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 67";
 		rLen = 0;
-		rLoc = 1942;
+		rLoc = 1943;
 		rType = 0;
 		vrLen = 1215;
 		vrLoc = 1107;
@@ -601,7 +601,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 67";
 		rLen = 0;
-		rLoc = 1942;
+		rLoc = 1943;
 		rType = 0;
 		vrLen = 1196;
 		vrLoc = 0;
@@ -621,7 +621,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 67";
 		rLen = 0;
-		rLoc = 1942;
+		rLoc = 1943;
 		rType = 0;
 		vrLen = 1196;
 		vrLoc = 0;
@@ -641,7 +641,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 67";
 		rLen = 0;
-		rLoc = 1942;
+		rLoc = 1943;
 		rType = 0;
 		vrLen = 1196;
 		vrLoc = 0;
@@ -661,7 +661,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 67";
 		rLen = 0;
-		rLoc = 1942;
+		rLoc = 1943;
 		rType = 0;
 		vrLen = 1196;
 		vrLoc = 0;
@@ -681,7 +681,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 67";
 		rLen = 0;
-		rLoc = 1942;
+		rLoc = 1943;
 		rType = 0;
 		vrLen = 1196;
 		vrLoc = 0;
@@ -701,7 +701,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 67";
 		rLen = 0;
-		rLoc = 1942;
+		rLoc = 1943;
 		rType = 0;
 		vrLen = 1196;
 		vrLoc = 0;
@@ -721,7 +721,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 67";
 		rLen = 0;
-		rLoc = 1942;
+		rLoc = 1943;
 		rType = 0;
 		vrLen = 1196;
 		vrLoc = 0;
@@ -741,7 +741,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 67";
 		rLen = 0;
-		rLoc = 1942;
+		rLoc = 1943;
 		rType = 0;
 		vrLen = 1196;
 		vrLoc = 0;
@@ -761,7 +761,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 67";
 		rLen = 0;
-		rLoc = 1942;
+		rLoc = 1943;
 		rType = 0;
 		vrLen = 1196;
 		vrLoc = 0;
@@ -781,7 +781,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 67";
 		rLen = 0;
-		rLoc = 1942;
+		rLoc = 1943;
 		rType = 0;
 		vrLen = 1196;
 		vrLoc = 0;
@@ -801,7 +801,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 67";
 		rLen = 0;
-		rLoc = 1942;
+		rLoc = 1943;
 		rType = 0;
 		vrLen = 1196;
 		vrLoc = 0;
@@ -825,7 +825,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 67";
 		rLen = 0;
-		rLoc = 1942;
+		rLoc = 1943;
 		rType = 0;
 		vrLen = 1196;
 		vrLoc = 0;
@@ -855,7 +855,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 101";
 		rLen = 0;
-		rLoc = 2807;
+		rLoc = 2808;
 		rType = 0;
 		vrLen = 1410;
 		vrLoc = 1243;
@@ -885,7 +885,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 101";
 		rLen = 0;
-		rLoc = 2807;
+		rLoc = 2808;
 		rType = 0;
 		vrLen = 1402;
 		vrLoc = 1243;
@@ -915,7 +915,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 101";
 		rLen = 0;
-		rLoc = 2807;
+		rLoc = 2808;
 		rType = 0;
 		vrLen = 1405;
 		vrLoc = 1243;
@@ -945,7 +945,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 101";
 		rLen = 0;
-		rLoc = 2807;
+		rLoc = 2808;
 		rType = 0;
 		vrLen = 1404;
 		vrLoc = 1243;
@@ -995,7 +995,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 101";
 		rLen = 0;
-		rLoc = 2807;
+		rLoc = 2808;
 		rType = 0;
 		vrLen = 1405;
 		vrLoc = 1243;
@@ -1005,7 +1005,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 58";
 		rLen = 0;
-		rLoc = 1794;
+		rLoc = 1795;
 		rType = 0;
 		vrLen = 930;
 		vrLoc = 1006;
@@ -1025,7 +1025,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 58";
 		rLen = 0;
-		rLoc = 1794;
+		rLoc = 1795;
 		rType = 0;
 		vrLen = 963;
 		vrLoc = 1006;
@@ -1052,7 +1052,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 59";
 		rLen = 0;
-		rLoc = 1794;
+		rLoc = 1795;
 		rType = 0;
 		vrLen = 989;
 		vrLoc = 1072;
@@ -1112,7 +1112,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 86";
 		rLen = 0;
-		rLoc = 2243;
+		rLoc = 2244;
 		rType = 0;
 		vrLen = 1439;
 		vrLoc = 1262;
@@ -1132,7 +1132,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 87";
 		rLen = 0;
-		rLoc = 2243;
+		rLoc = 2244;
 		rType = 0;
 		vrLen = 1441;
 		vrLoc = 1262;
@@ -1152,7 +1152,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 85";
 		rLen = 0;
-		rLoc = 2243;
+		rLoc = 2244;
 		rType = 0;
 		vrLen = 1299;
 		vrLoc = 1194;
@@ -1172,7 +1172,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 81";
 		rLen = 0;
-		rLoc = 2084;
+		rLoc = 2085;
 		rType = 0;
 		vrLen = 1301;
 		vrLoc = 1194;
@@ -1192,7 +1192,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 80";
 		rLen = 0;
-		rLoc = 2084;
+		rLoc = 2085;
 		rType = 0;
 		vrLen = 1303;
 		vrLoc = 1194;
@@ -1212,7 +1212,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 77";
 		rLen = 0;
-		rLoc = 2084;
+		rLoc = 2085;
 		rType = 0;
 		vrLen = 1303;
 		vrLoc = 1194;
@@ -1232,7 +1232,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 84";
 		rLen = 0;
-		rLoc = 2243;
+		rLoc = 2244;
 		rType = 0;
 		vrLen = 1305;
 		vrLoc = 1194;
@@ -1252,7 +1252,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 88";
 		rLen = 0;
-		rLoc = 2349;
+		rLoc = 2350;
 		rType = 0;
 		vrLen = 1307;
 		vrLoc = 1194;
@@ -1272,7 +1272,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 78";
 		rLen = 0;
-		rLoc = 2084;
+		rLoc = 2085;
 		rType = 0;
 		vrLen = 1366;
 		vrLoc = 1196;
@@ -1292,7 +1292,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 90";
 		rLen = 132;
-		rLoc = 2376;
+		rLoc = 2377;
 		rType = 0;
 		vrLen = 1467;
 		vrLoc = 1262;
@@ -1312,7 +1312,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 95";
 		rLen = 289;
-		rLoc = 2513;
+		rLoc = 2514;
 		rType = 0;
 		vrLen = 1453;
 		vrLoc = 1260;
@@ -1332,7 +1332,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 102";
 		rLen = 438;
-		rLoc = 2807;
+		rLoc = 2808;
 		rType = 0;
 		vrLen = 1469;
 		vrLoc = 1260;
@@ -1352,7 +1352,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 89";
 		rLen = 132;
-		rLoc = 2376;
+		rLoc = 2377;
 		rType = 0;
 		vrLen = 1435;
 		vrLoc = 1260;
@@ -1372,7 +1372,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 83";
 		rLen = 129;
-		rLoc = 2244;
+		rLoc = 2245;
 		rType = 0;
 		vrLen = 1380;
 		vrLoc = 1260;
@@ -1830,7 +1830,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 60";
 		rLen = 0;
-		rLoc = 1841;
+		rLoc = 1842;
 		rType = 0;
 		vrLen = 875;
 		vrLoc = 821;
@@ -1936,7 +1936,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 60";
 		rLen = 0;
-		rLoc = 1841;
+		rLoc = 1842;
 		rType = 0;
 		vrLen = 873;
 		vrLoc = 821;
@@ -1966,7 +1966,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 60";
 		rLen = 0;
-		rLoc = 1841;
+		rLoc = 1842;
 		rType = 0;
 		vrLen = 913;
 		vrLoc = 722;
@@ -3075,7 +3075,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 60";
 		rLen = 0;
-		rLoc = 1841;
+		rLoc = 1842;
 		rType = 0;
 		vrLen = 1185;
 		vrLoc = 1133;
@@ -3145,7 +3145,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 60";
 		rLen = 0;
-		rLoc = 1841;
+		rLoc = 1842;
 		rType = 0;
 		vrLen = 1185;
 		vrLoc = 1133;
@@ -3155,7 +3155,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 60";
 		rLen = 0;
-		rLoc = 1840;
+		rLoc = 1841;
 		rType = 0;
 		vrLen = 786;
 		vrLoc = 1002;
@@ -3185,7 +3185,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 60";
 		rLen = 0;
-		rLoc = 1840;
+		rLoc = 1841;
 		rType = 0;
 		vrLen = 818;
 		vrLoc = 1002;
@@ -3195,7 +3195,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 61";
 		rLen = 0;
-		rLoc = 1841;
+		rLoc = 1842;
 		rType = 0;
 		vrLen = 819;
 		vrLoc = 1003;
@@ -3205,7 +3205,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 60";
 		rLen = 9;
-		rLoc = 1829;
+		rLoc = 1830;
 		rType = 0;
 		vrLen = 871;
 		vrLoc = 1003;
@@ -3265,7 +3265,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 60";
 		rLen = 9;
-		rLoc = 1829;
+		rLoc = 1830;
 		rType = 0;
 		vrLen = 844;
 		vrLoc = 1003;
@@ -5127,7 +5127,7 @@
 		isa = PBXTextBookmark;
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		rLen = 0;
-		rLoc = 9223372036854776452;
+		rLoc = 9223372036854776453;
 		rType = 0;
 	};
 	310C928813039ECF006EF72F /* PBXTextBookmark */ = {
@@ -5579,7 +5579,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 68";
 		rLen = 0;
-		rLoc = 1841;
+		rLoc = 1842;
 		rType = 0;
 		vrLen = 1028;
 		vrLoc = 722;
@@ -5909,7 +5909,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 67";
 		rLen = 0;
-		rLoc = 1841;
+		rLoc = 1842;
 		rType = 0;
 		vrLen = 934;
 		vrLoc = 1033;
@@ -6089,7 +6089,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 66";
 		rLen = 0;
-		rLoc = 1694;
+		rLoc = 1695;
 		rType = 0;
 		vrLen = 872;
 		vrLoc = 1177;
@@ -6119,7 +6119,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 66";
 		rLen = 0;
-		rLoc = 1692;
+		rLoc = 1693;
 		rType = 0;
 		vrLen = 944;
 		vrLoc = 1177;
@@ -6176,7 +6176,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 66";
 		rLen = 0;
-		rLoc = 1691;
+		rLoc = 1692;
 		rType = 0;
 		vrLen = 916;
 		vrLoc = 1177;
@@ -6226,7 +6226,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 66";
 		rLen = 0;
-		rLoc = 1691;
+		rLoc = 1692;
 		rType = 0;
 		vrLen = 916;
 		vrLoc = 1177;
@@ -6710,7 +6710,7 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {627, 1768}}";
 			sepNavSelRange = "{2689, 12}";
-			sepNavVisRange = "{1545, 1209}";
+			sepNavVisRange = "{1545, 1215}";
 		};
 	};
 	310C93EF1303B114006EF72F /* PBXTextBookmark */ = {
@@ -8482,7 +8482,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 66";
 		rLen = 0;
-		rLoc = 1596;
+		rLoc = 1597;
 		rType = 0;
 		vrLen = 1185;
 		vrLoc = 583;
@@ -8552,7 +8552,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 84";
 		rLen = 2;
-		rLoc = 1988;
+		rLoc = 1989;
 		rType = 0;
 		vrLen = 992;
 		vrLoc = 1404;
@@ -8562,7 +8562,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 67";
 		rLen = 0;
-		rLoc = 1691;
+		rLoc = 1692;
 		rType = 0;
 		vrLen = 986;
 		vrLoc = 1430;
@@ -8632,7 +8632,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 67";
 		rLen = 0;
-		rLoc = 1691;
+		rLoc = 1692;
 		rType = 0;
 		vrLen = 1118;
 		vrLoc = 1430;
@@ -8642,7 +8642,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 67";
 		rLen = 0;
-		rLoc = 1691;
+		rLoc = 1692;
 		rType = 0;
 		vrLen = 989;
 		vrLoc = 1404;
@@ -8692,7 +8692,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 67";
 		rLen = 0;
-		rLoc = 1691;
+		rLoc = 1692;
 		rType = 0;
 		vrLen = 1022;
 		vrLoc = 1404;
@@ -8782,7 +8782,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 85";
 		rLen = 0;
-		rLoc = 2033;
+		rLoc = 2034;
 		rType = 0;
 		vrLen = 992;
 		vrLoc = 1403;
@@ -8832,7 +8832,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 69";
 		rLen = 0;
-		rLoc = 1792;
+		rLoc = 1793;
 		rType = 0;
 		vrLen = 1048;
 		vrLoc = 1430;
@@ -8886,7 +8886,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 69";
 		rLen = 0;
-		rLoc = 1792;
+		rLoc = 1793;
 		rType = 0;
 		vrLen = 1005;
 		vrLoc = 1477;
@@ -8946,7 +8946,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 69";
 		rLen = 0;
-		rLoc = 1792;
+		rLoc = 1793;
 		rType = 0;
 		vrLen = 1100;
 		vrLoc = 1479;
@@ -9006,7 +9006,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 69";
 		rLen = 0;
-		rLoc = 1792;
+		rLoc = 1793;
 		rType = 0;
 		vrLen = 1212;
 		vrLoc = 1500;
@@ -9066,7 +9066,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 69";
 		rLen = 0;
-		rLoc = 1792;
+		rLoc = 1793;
 		rType = 0;
 		vrLen = 1124;
 		vrLoc = 1652;
@@ -9146,7 +9146,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 69";
 		rLen = 0;
-		rLoc = 1792;
+		rLoc = 1793;
 		rType = 0;
 		vrLen = 1151;
 		vrLoc = 1742;
@@ -9206,7 +9206,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 69";
 		rLen = 0;
-		rLoc = 1792;
+		rLoc = 1793;
 		rType = 0;
 		vrLen = 1222;
 		vrLoc = 1783;
@@ -9266,7 +9266,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 69";
 		rLen = 0;
-		rLoc = 1792;
+		rLoc = 1793;
 		rType = 0;
 		vrLen = 1310;
 		vrLoc = 1800;
@@ -9326,7 +9326,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 69";
 		rLen = 0;
-		rLoc = 1792;
+		rLoc = 1793;
 		rType = 0;
 		vrLen = 1363;
 		vrLoc = 1800;
@@ -9723,7 +9723,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 69";
 		rLen = 0;
-		rLoc = 1792;
+		rLoc = 1793;
 		rType = 0;
 		vrLen = 1363;
 		vrLoc = 1800;
@@ -9733,7 +9733,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 69";
 		rLen = 0;
-		rLoc = 1762;
+		rLoc = 1763;
 		rType = 0;
 		vrLen = 946;
 		vrLoc = 1399;
@@ -9793,7 +9793,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 69";
 		rLen = 0;
-		rLoc = 1792;
+		rLoc = 1793;
 		rType = 0;
 		vrLen = 999;
 		vrLoc = 1403;
@@ -9863,7 +9863,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 69";
 		rLen = 0;
-		rLoc = 1792;
+		rLoc = 1793;
 		rType = 0;
 		vrLen = 1075;
 		vrLoc = 1403;
@@ -9873,7 +9873,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 70";
 		rLen = 0;
-		rLoc = 1697;
+		rLoc = 1698;
 		rType = 0;
 		vrLen = 880;
 		vrLoc = 1186;
@@ -9953,7 +9953,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 69";
 		rLen = 0;
-		rLoc = 1697;
+		rLoc = 1698;
 		rType = 0;
 		vrLen = 926;
 		vrLoc = 1186;
@@ -9963,7 +9963,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 69";
 		rLen = 0;
-		rLoc = 1697;
+		rLoc = 1698;
 		rType = 0;
 		vrLen = 898;
 		vrLoc = 1186;
@@ -10023,7 +10023,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 72";
 		rLen = 0;
-		rLoc = 1699;
+		rLoc = 1700;
 		rType = 0;
 		vrLen = 921;
 		vrLoc = 1186;
@@ -10093,7 +10093,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 66";
 		rLen = 0;
-		rLoc = 1596;
+		rLoc = 1597;
 		rType = 0;
 		vrLen = 981;
 		vrLoc = 1269;
@@ -10358,7 +10358,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 66";
 		rLen = 0;
-		rLoc = 1596;
+		rLoc = 1597;
 		rType = 0;
 		vrLen = 979;
 		vrLoc = 1269;
@@ -10368,7 +10368,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 69";
 		rLen = 94;
-		rLoc = 1699;
+		rLoc = 1700;
 		rType = 0;
 		vrLen = 999;
 		vrLoc = 1285;
@@ -10428,7 +10428,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 69";
 		rLen = 0;
-		rLoc = 1699;
+		rLoc = 1700;
 		rType = 0;
 		vrLen = 988;
 		vrLoc = 1344;
@@ -10498,7 +10498,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 89";
 		rLen = 0;
-		rLoc = 2047;
+		rLoc = 2048;
 		rType = 0;
 		vrLen = 1016;
 		vrLoc = 1344;
@@ -10508,7 +10508,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 69";
 		rLen = 0;
-		rLoc = 1699;
+		rLoc = 1700;
 		rType = 0;
 		vrLen = 1014;
 		vrLoc = 1344;
@@ -10568,7 +10568,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 69";
 		rLen = 0;
-		rLoc = 1699;
+		rLoc = 1700;
 		rType = 0;
 		vrLen = 957;
 		vrLoc = 1401;
@@ -10628,7 +10628,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 69";
 		rLen = 0;
-		rLoc = 1699;
+		rLoc = 1700;
 		rType = 0;
 		vrLen = 1011;
 		vrLoc = 1404;
@@ -10688,7 +10688,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 69";
 		rLen = 0;
-		rLoc = 1699;
+		rLoc = 1700;
 		rType = 0;
 		vrLen = 1059;
 		vrLoc = 1432;
@@ -10748,7 +10748,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 69";
 		rLen = 0;
-		rLoc = 1699;
+		rLoc = 1700;
 		rType = 0;
 		vrLen = 1018;
 		vrLoc = 1477;
@@ -10808,7 +10808,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 69";
 		rLen = 0;
-		rLoc = 1699;
+		rLoc = 1700;
 		rType = 0;
 		vrLen = 1094;
 		vrLoc = 1498;
@@ -10868,7 +10868,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 69";
 		rLen = 0;
-		rLoc = 1699;
+		rLoc = 1700;
 		rType = 0;
 		vrLen = 1130;
 		vrLoc = 1528;
@@ -10928,7 +10928,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 69";
 		rLen = 0;
-		rLoc = 1699;
+		rLoc = 1700;
 		rType = 0;
 		vrLen = 1257;
 		vrLoc = 1528;
@@ -10978,7 +10978,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 66";
 		rLen = 101;
-		rLoc = 1596;
+		rLoc = 1597;
 		rType = 0;
 		vrLen = 992;
 		vrLoc = 1403;
@@ -11028,7 +11028,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 66";
 		rLen = 0;
-		rLoc = 1638;
+		rLoc = 1639;
 		rType = 0;
 		vrLen = 1051;
 		vrLoc = 1403;
@@ -11078,7 +11078,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 67";
 		rLen = 0;
-		rLoc = 1685;
+		rLoc = 1686;
 		rType = 0;
 		vrLen = 1057;
 		vrLoc = 1404;
@@ -11128,7 +11128,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 67";
 		rLen = 0;
-		rLoc = 1685;
+		rLoc = 1686;
 		rType = 0;
 		vrLen = 1080;
 		vrLoc = 1432;
@@ -11178,7 +11178,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 67";
 		rLen = 0;
-		rLoc = 1685;
+		rLoc = 1686;
 		rType = 0;
 		vrLen = 1035;
 		vrLoc = 1479;
@@ -11228,7 +11228,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 67";
 		rLen = 0;
-		rLoc = 1685;
+		rLoc = 1686;
 		rType = 0;
 		vrLen = 1111;
 		vrLoc = 1500;
@@ -11278,7 +11278,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 67";
 		rLen = 0;
-		rLoc = 1685;
+		rLoc = 1686;
 		rType = 0;
 		vrLen = 1007;
 		vrLoc = 1401;
@@ -11328,7 +11328,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 67";
 		rLen = 0;
-		rLoc = 1685;
+		rLoc = 1686;
 		rType = 0;
 		vrLen = 1079;
 		vrLoc = 1432;
@@ -11398,7 +11398,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 67";
 		rLen = 0;
-		rLoc = 1685;
+		rLoc = 1686;
 		rType = 0;
 		vrLen = 1036;
 		vrLoc = 1479;
@@ -11493,6 +11493,56 @@
 		vrLen = 1089;
 		vrLoc = 1344;
 	};
+	310C974A1303D89B006EF72F /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
+		name = "ConvexHull.cpp: 65";
+		rLen = 0;
+		rLoc = 1596;
+		rType = 0;
+		vrLen = 649;
+		vrLoc = 1401;
+	};
+	310C974B1303D89B006EF72F /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 310C8D9613034F29006EF72F /* YesNoObject.cpp */;
+		name = "YesNoObject.cpp: 34";
+		rLen = 0;
+		rLoc = 701;
+		rType = 0;
+		vrLen = 1530;
+		vrLoc = 1342;
+	};
+	310C974C1303D89B006EF72F /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 310C8D9513034F29006EF72F /* YesNoObject.h */;
+		name = "YesNoObject.h: 32";
+		rLen = 4;
+		rLoc = 557;
+		rType = 0;
+		vrLen = 621;
+		vrLoc = 0;
+	};
+	310C974D1303D89B006EF72F /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 310C93EE1303B114006EF72F /* ofxColorPicker.h */;
+		name = "ofxColorPicker.h: 132";
+		rLen = 12;
+		rLoc = 2689;
+		rType = 0;
+		vrLen = 1215;
+		vrLoc = 1545;
+	};
+	310C974E1303D89B006EF72F /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
+		name = "ConvexHull.cpp: 27";
+		rLen = 0;
+		rLoc = 723;
+		rType = 0;
+		vrLen = 1166;
+		vrLoc = 1344;
+	};
 	3168AF8B13025ECD006B852A /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 31AE87941301DE290087065A /* ofx3DGraphics.cpp */;
@@ -11560,7 +11610,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 214";
 		rLen = 0;
-		rLoc = 1842;
+		rLoc = 1843;
 		rType = 0;
 		vrLen = 1614;
 		vrLoc = 5559;
@@ -11580,7 +11630,7 @@
 		fRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */;
 		name = "ConvexHull.cpp: 122";
 		rLen = 0;
-		rLoc = 1842;
+		rLoc = 1843;
 		rType = 0;
 		vrLen = 1222;
 		vrLoc = 3381;
@@ -11833,7 +11883,7 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1013, 1755}}";
 			sepNavSelRange = "{723, 0}";
-			sepNavVisRange = "{1344, 1089}";
+			sepNavVisRange = "{1344, 1166}";
 		};
 	};
 	31C6962212963DE0007F71A7 /* No.2 Mathmathical Convex Hull */ = {
@@ -11990,6 +12040,30 @@
 				PBXFileTableDataSourceColumnsKey = (
 					PBXFindDataSource_MessageID,
 					PBXFindDataSource_LocationID,
+				);
+			};
+			PBXConfiguration.PBXFileTableDataSource3.XCSCMDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					20,
+					390,
+					20,
+					48.16259765625,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_SCM_ColumnID,
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
 				);
 			};
 			PBXConfiguration.PBXTargetDataSource.PBXTargetDataSource = {
@@ -13155,6 +13229,11 @@
 			310C97421303D362006EF72F /* PBXTextBookmark */ = 310C97421303D362006EF72F /* PBXTextBookmark */;
 			310C97431303D362006EF72F /* PBXTextBookmark */ = 310C97431303D362006EF72F /* PBXTextBookmark */;
 			310C97441303D362006EF72F /* PBXTextBookmark */ = 310C97441303D362006EF72F /* PBXTextBookmark */;
+			310C974A1303D89B006EF72F /* PBXTextBookmark */ = 310C974A1303D89B006EF72F /* PBXTextBookmark */;
+			310C974B1303D89B006EF72F /* PBXTextBookmark */ = 310C974B1303D89B006EF72F /* PBXTextBookmark */;
+			310C974C1303D89B006EF72F /* PBXTextBookmark */ = 310C974C1303D89B006EF72F /* PBXTextBookmark */;
+			310C974D1303D89B006EF72F /* PBXTextBookmark */ = 310C974D1303D89B006EF72F /* PBXTextBookmark */;
+			310C974E1303D89B006EF72F /* PBXTextBookmark */ = 310C974E1303D89B006EF72F /* PBXTextBookmark */;
 			3168AF8B13025ECD006B852A = 3168AF8B13025ECD006B852A /* PBXTextBookmark */;
 			3168B09A130268C1006B852A = 3168B09A130268C1006B852A /* PBXTextBookmark */;
 			3168B09B130268C1006B852A = 3168B09B130268C1006B852A /* PBXTextBookmark */;

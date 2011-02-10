@@ -62,7 +62,7 @@ void ConvexHull::draw() {
 	
 	//ofEnableAlphaBlending();
 //	lScat.drawScatteringObjInYourDrawCycleButBeforeCameraUpdate(7);	
-	
+		
 	no.draw(ofxVec4f(mc(198), mc(255), mc(133), 1.0));
 	yes.draw(ofxVec4f(mc(250), 0, mc(227), 1.0));		
 	
