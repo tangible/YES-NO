@@ -28,7 +28,7 @@ public:
 //		}else if (col.getColorAngle() <= angleMin) {
 //			col.setColorAngle(col.getColorAngle()+0.01);		
 //		}
-		cout << "col.getColorAngle() = " + ofToString(col.getColorAngle()) << endl;
+		//cout << "col.getColorAngle() = " + ofToString(col.getColorAngle()) << endl;
 		col.update();
 	}
 	
@@ -44,6 +44,7 @@ public:
 	void debugDraw();
 	
 	void addSMS(int numSMS, int YesOrNo = 0, ofxVec3f pos = ofxVec3f(0, 0, 0));
+	void calcFaceColor(float* points, vector<int> faceDef, float* colPtrRtn);
 	
 	ofxBullet* bullet;
 	
@@ -51,7 +52,6 @@ public:
 	float maxValu;
 	ofxVec3f forcePoint;
 	vector<Vertex*> smss;	
-	map<string, ofxVec4f> faceColMap;
 	
 	Chull3D* ch3d;
 	

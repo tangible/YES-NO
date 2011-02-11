@@ -32,6 +32,8 @@ void YesNoObject::update() {
 	
 }
 
+int prevFaceNum = 0;
+int faceIndex = 0;
 void YesNoObject::draw(ofxVec4f baseCol) {
 	
 	float vertices[smss.size()*3];
@@ -51,7 +53,14 @@ void YesNoObject::draw(ofxVec4f baseCol) {
 		int* faces;
 		int nFaces = 0;	
 		ch3d->get_convex_hull(&points, &nPoints, &faces, &nFaces);
-
+		
+		faceIndex++;
+		if (prevFaceNum != nFaces) {
+			string fn = "/Users/makira/Project/20110321.VancouverMusium/tmp/"+ofToString(faceIndex)+".txt";
+			ch3d->export_obj((char*)fn.c_str());
+		}
+		prevFaceNum = nFaces;
+						 
 		for (int i = 0; i < nFaces; i++) {
 			vector<int> fp;
 			fp.push_back(faces[3*i]);
@@ -59,7 +68,7 @@ void YesNoObject::draw(ofxVec4f baseCol) {
 			fp.push_back(faces[3*i+2]);		
 			
 			// draw edge
-			ofSetLineWidth(4);
+			ofSetLineWidth(3);
 			glColor4f(0.0, 0.0, 0.0, 10);
 			glBegin(GL_LINE_LOOP);			
 			for (int j = 0; j < fp.size(); j++) {
@@ -68,38 +77,11 @@ void YesNoObject::draw(ofxVec4f baseCol) {
 			}
 			glEnd();
 			
-			// process vertex col
-			ofxVec4f agedCol = baseCol;
+			// calc col
 			float cptr[12];
-			for (int j = 0; j < fp.size(); j++) { // compute col by point's age
-				int idx = fp[j];
-				ofxVec3f facePos = ofxVec3f(points[3*idx], points[3*idx+1], points[3*idx+2]);
-				Vertex* tgtVertex;
-				for (int k = 0; ; k++) {					
-					ofxVec3f bodyPos = smss[k]->sms->getBodyPos();
-					if (facePos == bodyPos) {
-						tgtVertex = smss[k];
-						break;
-					}
-				}
-				float cur = (float)ofGetElapsedTimeMillis();
-				float brn = (float)tgtVertex->sms->age;
-				float age = cur-brn;
-				float scale = ofMap(age, 0.0, cur, 1.0, -1.0);
-				
-				tgtVertex->col.setColorScale(scale);
-				tgtVertex->col.setColorAngle(tgtVertex->col.getColorAngle()+0.001);
-				ofColor tgtCol = tgtVertex->col.getColor();
-
-				cptr[4*j] = tgtCol.r /255.0;
-				cptr[4*j+1] = tgtCol.g /255.0;
-				cptr[4*j+2] = tgtCol.b /255.0;
-				cptr[4*j+3] = tgtCol.a /255.0;				
-				
-			}
+			calcFaceColor(points, fp, &cptr[0]);
 			
-			
-			
+			// draw face
 			float test[10];	
 			float vptr[9];
 			for (int j = 0; j < fp.size(); j++) {
@@ -133,6 +115,76 @@ void YesNoObject::draw(ofxVec4f baseCol) {
 	
 }
 
+// 新しく入ってきたSMSを基準として、全体の色を再構成する
+void YesNoObject::calcFaceColor(float* points, vector<int> faceDef, float* colPtrRtn) {
+	
+	// scale - age dependent
+	// angle - position dependent
+	
+	Vertex *tgtVertex;
+	float cur = (float)ofGetElapsedTimeMillis();
+	float tmpAge = 0.0;
+	float tmpAngle = 0.0;
+	for (int i = 0; i < faceDef.size(); i++) { // compute col by point's age
+		int idx = faceDef[i];
+		ofxVec3f facePos = ofxVec3f(points[3*idx], points[3*idx+1], points[3*idx+2]);
+		for (int j = 0; ; j++) {					
+			ofxVec3f bodyPos = smss[j]->sms->getBodyPos();
+			if (facePos == bodyPos) {
+				tgtVertex = smss[j];
+				break;
+			}
+		}
+		float brn = (float)tgtVertex->sms->age;
+		tmpAge += cur-brn;
+		tmpAngle += tgtVertex->col.getColorAngle();
+	}
+	
+	float avrgAge = tmpAge / faceDef.size();
+	float avrgAng = tmpAngle / faceDef.size();
+	float scale = ofMap(avrgAge, 0.0, cur, 1.0, -1.0);
+	float angle = ofMap(avrgAge, 0.0, cur, 0.0, 1.0);
+	
+	for (int i = 0; i < faceDef.size(); i++) {
+		//tgtVertex->col.setColorScale(scale);
+		//tgtVertex->col.setColorAngle(angle);
+		ofColor tgtCol = tgtVertex->col.getColor();
+		
+		colPtrRtn[4*i] = tgtCol.r /255.0;
+		colPtrRtn[4*i+1] = tgtCol.g /255.0;
+		colPtrRtn[4*i+2] = tgtCol.b /255.0;
+		colPtrRtn[4*i+3] = tgtCol.a /255.0;	
+	}
+	
+//	for (int j = 0; j < faceDef.size(); j++) { // compute col by point's age
+//		int idx = faceDef[j];
+//		ofxVec3f facePos = ofxVec3f(points[3*idx], points[3*idx+1], points[3*idx+2]);
+//		Vertex* tgtVertex;
+//		for (int k = 0; ; k++) {					
+//			ofxVec3f bodyPos = smss[k]->sms->getBodyPos();
+//			if (facePos == bodyPos) {
+//				tgtVertex = smss[k];
+//				break;
+//			}
+//		}
+//		float cur = (float)ofGetElapsedTimeMillis();
+//		float brn = (float)tgtVertex->sms->age;
+//		float age = cur-brn;
+//		float scale = ofMap(age, 0.0, cur, 1.0, -1.0);
+//		
+//		tgtVertex->col.setColorScale(scale);
+//		tgtVertex->col.setColorAngle(tgtVertex->col.getColorAngle()+0.001);
+//		ofColor tgtCol = tgtVertex->col.getColor();
+//		
+//		colPtrRtn[4*j] = tgtCol.r /255.0;
+//		colPtrRtn[4*j+1] = tgtCol.g /255.0;
+//		colPtrRtn[4*j+2] = tgtCol.b /255.0;
+//		colPtrRtn[4*j+3] = tgtCol.a /255.0;				
+//		
+//	}	
+	
+}
+
 void YesNoObject::debugDraw() {
 	
 	for (int i = 0; i < smss.size(); i++) {
@@ -141,6 +193,7 @@ void YesNoObject::debugDraw() {
 	
 }
 
+float smsIdx = 0.0;
 void YesNoObject::addSMS(int numSMS, int YesOrNo, ofxVec3f pos) {
 
 	for (int i = 0; i < numSMS; i++) {
@@ -169,7 +222,13 @@ void YesNoObject::addSMS(int numSMS, int YesOrNo, ofxVec3f pos) {
 			v->angleMin = 0.5;
 			v->angleMax = 1.0;			
 		}
-		v->col.setColorAngle(ofRandomuf());
+		
+		if (smsIdx >= 1.0) {
+			smsIdx = 0.0;
+		}else {
+			smsIdx += 0.01;
+		}
+		v->col.setColorAngle(smsIdx);
 		v->sms = obj;
 		smss.push_back(v);
 	}

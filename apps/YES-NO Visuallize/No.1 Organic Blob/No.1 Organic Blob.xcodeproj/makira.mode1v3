@@ -265,6 +265,7 @@
 							<array>
 								<string>E4B69B4A0A3A1720003C02F2</string>
 								<string>E4B69E1C0A3A1BDC003C02F2</string>
+								<string>311E590912F646240077A832</string>
 								<string>311E598812F64D630077A832</string>
 								<string>31AE81B4130137170087065A</string>
 								<string>BB4B014C10F69532006C3DED</string>
@@ -274,14 +275,14 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>14</integer>
 									<integer>12</integer>
+									<integer>11</integer>
 									<integer>4</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 86}, {239, 620}}</string>
+							<string>{{0, 38}, {239, 620}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -318,7 +319,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>AdminPanel.h</string>
+								<string>BlobManager.cpp</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -326,11 +327,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>AdminPanel.h</string>
+										<string>BlobManager.cpp</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>310C997A1303ECA2006EF72F</string>
+										<string>310C9A311303FD91006EF72F</string>
 										<key>history</key>
 										<array>
 											<string>313E6EE312DD15D200883C18</string>
@@ -412,11 +413,12 @@
 											<string>31B7ADB91300EF4E004A0078</string>
 											<string>31B7ADF41300F208004A0078</string>
 											<string>31AE81AD130136D60087065A</string>
-											<string>3168D2CD130209070036D28A</string>
 											<string>3168B0D6130273CE006B852A</string>
-											<string>3168B0D8130273CE006B852A</string>
+											<string>310C9A2D1303FD91006EF72F</string>
+											<string>310C9A2E1303FD91006EF72F</string>
+											<string>310C9A2F1303FD91006EF72F</string>
+											<string>310C9A301303FD91006EF72F</string>
 											<string>310C99791303ECA2006EF72F</string>
-											<string>3168B0D7130273CE006B852A</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>

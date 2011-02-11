@@ -25,10 +25,7 @@ void ConvexHull::setup(int _fps, AdminPanel* _adminPanel, ofxCamera* _cam) {
 	ofxVec3f noPoint = ofxVec3f(ofGetWidth()/2-400, ofGetHeight()-200, -50); 
 	
 	yes.setup(bullet, yesPoint, 10);
-	no.setup(bullet, noPoint, 15);
-	
-//	lScat.setup(0.75, 0.75, 0.75, 0.8, 
-//				ofxVec2f(1.0-ofMap(yesPoint.x, 0.0, ofGetScreenWidth(), 0.0, 1.0), 1.0-ofMap(yesPoint.y, 0.0, ofGetScreenHeight(), 0.0, 1.0)));
+	//no.setup(bullet, noPoint, 15);
 	
 	// settings for obj vis
     materialAmbient  = new float[4];
@@ -47,12 +44,8 @@ void ConvexHull::update() {
 	bullet->stepPhysicsSimulation(fps);
 
 	yes.update();
-	no.update();
-	
-//	lScat.beginFeedingTargetObjDuringYourUpdateCycle();
-//	
-//	lScat.endFeedingTargetObjDuringYourUpdateCycle();		
-	
+	//no.update();
+
 }
 
 void ConvexHull::draw() {
@@ -60,18 +53,10 @@ void ConvexHull::draw() {
 	bullet->ground->render(bullet->getWorld());
 	
 	//setupGLStuff();
-	
 	//ofEnableAlphaBlending();
-//	lScat.drawScatteringObjInYourDrawCycleButBeforeCameraUpdate(7);	
 		
-	no.draw(ofxVec4f(mc(198), mc(255), mc(133), 1.0));
 	yes.draw(ofxVec4f(mc(250), 0, mc(227), 1.0));		
-	
-//	no.draw(ofxVec4f(198, 255, 133, 255));
-//	yes.draw(ofxVec4f(250, 0, 227, 255));152, 0, 144
-	
-	//yes.draw();73, 144, 137
-	//yes.debugDraw();
+//	no.draw(ofxVec4f(mc(198), mc(255), mc(133), 1.0));	
 
 }
 

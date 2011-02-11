@@ -12,7 +12,6 @@
 #include "ofMain.h"
 #include "ofxBullet.h"
 #include "YesNoObject.h"
-#include "LightScattering.h"
 #include "AdminPanel.h"
 
 const int YES = 0;
@@ -39,8 +38,6 @@ public:
 	int						fps;
 	ofxBullet*				bullet;
 	ofxCamera*				cam;
-	
-	LightScattering			lScat;
 	
 	GLfloat *materialAmbient;
 	GLfloat *materialDiffuse;
