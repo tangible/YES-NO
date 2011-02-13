@@ -4,6 +4,8 @@
 #include "HTTPSMSClient.h"
 #include "ConvexHull.h"
 #include "AdminPanel.h"
+#include "ofxEasyCam.h"
+#include "ofxShader.h"
 
 class App : public ofBaseApp{
 
@@ -22,7 +24,8 @@ public:
 
 	AdminPanel		adminPanel;
 	ConvexHull		convexHull;
-	ofxCamera		cam;
-	
+	ofxEasyCam		cam;
+//	ofxCamera		cam;
+	ofxShader		shader;
 };
 

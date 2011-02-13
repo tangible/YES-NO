@@ -15,7 +15,7 @@ class AnisotropicSpecularReflection : public ofxMyShading {
 
 public:
 	
-	void setup(ofxVec3f _LightPos = ofxVec3f(100.0, -500.0, -100.0),
+	void setup(ofxVec3f _LightPos = ofxVec3f(100.0, 1500.0, -100.0),
 			   ofxVec3f _AmbientColour = ofxVec3f(0.5, 0.5, 0.5),
 			   ofxVec3f _DiffuseColour = ofxVec3f(0.5, 0.5, 0.5),
 			   ofxVec3f _SpecularColour = ofxVec3f(1.0, 1.0, 1.0),

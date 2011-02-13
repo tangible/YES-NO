@@ -44,7 +44,7 @@ public:
 	
 	ofxVec4f bodyColor;	
 	
-protected:
+
 	btSoftBody* psb;
 	btSoftBodyWorldInfo softBodyWI;
 	

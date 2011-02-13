@@ -21,7 +21,7 @@ void AnisotropicSpecularReflection::setup(ofxVec3f _LightPos,
 										  ofxVec3f _SpecDirection) {
 
 	ofxMyShading::setDataPathRoot();
-	shader.setup("fluxus/aniso");
+	shader.setup("aniso");
 	ofxMyShading::resetDataPathRoot();
 	
 	LightPos = _LightPos;

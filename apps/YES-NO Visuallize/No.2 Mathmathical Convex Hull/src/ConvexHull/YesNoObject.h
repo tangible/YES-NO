@@ -13,6 +13,7 @@
 #include "ofxBullet.h"
 #include "chull.h"
 #include "ofxColorPicker.h"
+#include "IncomingSMS.h"
 
 class Vertex {
 
@@ -22,15 +23,7 @@ public:
 	float angleMin;
 	float angleMax;
 	
-	void update() {
-//		if (col.getColorAngle() >= angleMax) {
-//			col.setColorAngle(col.getColorAngle()-0.01);		
-//		}else if (col.getColorAngle() <= angleMin) {
-//			col.setColorAngle(col.getColorAngle()+0.01);		
-//		}
-		//cout << "col.getColorAngle() = " + ofToString(col.getColorAngle()) << endl;
-		col.update();
-	}
+	void update() {}
 	
 };
 
@@ -40,11 +33,15 @@ public:
 	
 	void setup(ofxBullet* _bullet, ofxVec3f _forcePoint, int initialNumObj);
 	void update();
-	void draw(ofxVec4f col);
+	void draw();
 	void debugDraw();
 	
 	void addSMS(int numSMS, int YesOrNo = 0, ofxVec3f pos = ofxVec3f(0, 0, 0));
-	void calcFaceColor(float* points, vector<int> faceDef, float* colPtrRtn);
+	
+	vector<float> caclColAngleAndScaleForObj(vector<float> faceVertexPtr, int nFaces);
+	vector<float> setColPtr(ofColor tgtCol, vector<float> colPtr);
+	Vertex* getVertexByPos(ofxVec3f pos);
+	
 	
 	ofxBullet* bullet;
 	
@@ -52,6 +49,9 @@ public:
 	float maxValu;
 	ofxVec3f forcePoint;
 	vector<Vertex*> smss;	
+	
+//	vector<IncomingSMS> insmss;
+	IncomingSMS		insms;
 	
 	Chull3D* ch3d;
 	

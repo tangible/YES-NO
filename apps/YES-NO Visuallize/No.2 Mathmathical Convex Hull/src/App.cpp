@@ -11,10 +11,13 @@ void App::setup(){
 	ofSetDataPathRoot("../Resources/");
 	ofBackground(100, 100, 100);
 	
-	cam.position(ofGetWidth()/2, ofGetHeight()/2+200, 1200);
+//	cam.position(ofGetWidth()/2, ofGetHeight()/2+200, 1200);
+	cam.setup(this, 1200);
 	
 	adminPanel.setup();
 	convexHull.setup(fps, &adminPanel, &cam);
+	
+	shader.setup("phong");
 	
 }
 
@@ -29,8 +32,21 @@ void App::update(){
 //--------------------------------------------------------------
 void App::draw(){
 	
-	cam.place();
-	convexHull.draw();
+//	cam.place();
+	cam.draw();
+	
+	//shader.begin();
+	shader.setUniform3f("AmbientColour", adminPanel.MATERIALAMBIENT[0], adminPanel.MATERIALAMBIENT[1], adminPanel.MATERIALAMBIENT[2]);
+	shader.setUniform3f("DiffuseColour", adminPanel.MATERIALDIFFUSE[0], adminPanel.MATERIALDIFFUSE[1], adminPanel.MATERIALDIFFUSE[2]);
+	shader.setUniform3f("SpecularColour", adminPanel.MATERIALSPECULAR[0], adminPanel.MATERIALSPECULAR[1], adminPanel.MATERIALSPECULAR[2]);
+	shader.setUniform1f("AmbientIntensity", adminPanel.AMBIENTINTENSITY);
+	shader.setUniform1f("DiffuseIntensity", adminPanel.DEFFUSEINTENSITY);
+	shader.setUniform1f("SpecularIntensity", adminPanel.SPECULARINTENSITY);
+	shader.setUniform1f("Roughness", adminPanel.ROUGHNESS);
+	shader.setUniform1f("Sharpness", adminPanel.SHARPNESS);	
+	shader.setUniform3f("LightPos", adminPanel.LIGHTX, adminPanel.LIGHTY, adminPanel.LIGHTZ);
+	convexHull.draw(mouseX, mouseY);
+	//shader.end();
 	
 	ofSetupScreen();
 	adminPanel.draw();	

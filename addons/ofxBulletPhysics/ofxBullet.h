@@ -19,6 +19,7 @@
 #include "MyRigidBody.h"
 #include "Ragdoll.h"
 #include "ofxBulletStaticUtil.h"
+#include "LinearMath/btConvexHull.h"
 
 
 class ofxBullet : public bulletBaseApp {

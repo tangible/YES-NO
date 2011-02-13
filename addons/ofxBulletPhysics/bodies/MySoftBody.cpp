@@ -47,8 +47,8 @@ MySoftBody::MySoftBody(btBroadphaseInterface* m_broadphase,
     softBodyWI.m_broadphase = m_broadphase;
     softBodyWI.m_dispatcher = m_dispatcher;
 	softBodyWI.m_gravity.setValue(gravity.x(), gravity.y(), gravity.z()); // too much gravity will penetrate ground	
-	softBodyWI.air_density = 1.2;
-	softBodyWI.water_density = 0;
+	softBodyWI.air_density = 10;
+	softBodyWI.water_density = 10;
 	softBodyWI.water_offset = 0;
 	softBodyWI.water_normal	= btVector3(0,0,0);
 	softBodyWI.m_sparsesdf.Initialize();
@@ -91,12 +91,62 @@ void MySoftBody::createEllipsoidShape(btVector3 center, btVector3 radius, int re
 											 center,
 											 radius,
 											 res);
+//	psb->m_materials[0]->m_kLST   =   0.1; // Linear stiffness coefficient [0,1]
+//	psb->m_materials[0]->m_kAST   =   0.1; // Area/Angular stiffness coefficient [0,1]
+//	psb->m_materials[0]->m_kVST   =   0.1; // Volume stiffness coefficient [0,1]
+//	
+//	// 粘り気
+//	psb->m_cfg.kDP            =   0.1;//0.001; 
+//	// 地面との間で巻き込まれたのが回復する力
+//	psb->m_cfg.kDG			  =   1;
+//	// わからない。何かへの抵抗。
+//	psb->m_cfg.kLF			  =   0;
+//	// ???
+//	psb->m_cfg.kDF            =   1;//1;
+//	// 元に戻る力、弾力
+//	psb->m_cfg.kPR            =   500;//2500;
+//	// ぐちゃぐちゃになる度。中身の量。元に戻らない度。
+//	psb->m_cfg.kVC            =   0;//2500;
+//	// 地面と滑るかどうか
+//	psb->m_cfg.kDF            =   0;//1;
+//	// ???
+//	psb->m_cfg.kMT            =   0;//1;	
+//	// ???
+//	psb->m_cfg.kCHR            =   1;//1;	
+//	// ???
+//	psb->m_cfg.kSHR            =   1;//1;
+//	
+//	psb->setTotalMass(1,true);
+//	psb->setPose( false, false );
+	
 	psb->m_materials[0]->m_kLST   =   0.1;
-	psb->m_cfg.kDF            =   1;
-	psb->m_cfg.kDP            =   0.001;
-	psb->m_cfg.kPR            =   2500;
-	psb->setTotalMass(20,true);	
-	psb->setPose(false, false);
+	psb->m_materials[0]->m_kAST   =   0.1; // Area/Angular stiffness coefficient [0,1]
+	psb->m_materials[0]->m_kVST   =   0.1; // Volume stiffness coefficient [0,1]	
+	
+	// 粘り気
+	psb->m_cfg.kDP            =   0.1;//0.001; 
+	// 地面との間で巻き込まれたのが回復する力
+	psb->m_cfg.kDG			  =   0;
+	// わからない。何かへの抵抗。
+	psb->m_cfg.kLF			  =   0;
+	// ???
+	psb->m_cfg.kDF            =   1;//1;
+	// 元に戻る力、弾力
+	psb->m_cfg.kPR            =   2500;//2500;
+	// ぐちゃぐちゃになる度。中身の量。元に戻らない度。
+	psb->m_cfg.kVC            =   0;//2500;
+	// 地面と滑るかどうか
+	psb->m_cfg.kDF            =   1;//1;
+	// ???
+	psb->m_cfg.kMT            =   0;//1;	
+	// ???
+	psb->m_cfg.kCHR            =   1;//1;	
+	// ???
+	psb->m_cfg.kSHR            =   1;//1;
+	
+	psb->setTotalMass(20,true);
+	psb->setPose( false, false );	
+	
 }
 
 void MySoftBody::createClothShape(ofxVec3f clothShape[4], 
@@ -125,29 +175,13 @@ void MySoftBody::createClothShape(ofxVec3f clothShape[4],
 	
 	psb->getCollisionShape()->setMargin(0.5);
 	btSoftBody::Material* pm = psb->appendMaterial();
-	pm->m_kLST		=	0.04;
-//	pm->m_kAST		=	0.9;
-//	pm->m_kVST		=	0.9;	
+	pm->m_kLST		=	0.04;	
 	psb->generateBendingConstraints(1,pm);
 	psb->setTotalMass(150);
-	
-//	psb->m_cfg.kMT = 0.2;
 	psb->m_cfg.kDP = 0.01;
-//	psb->m_cfg.kKHR = 0.6; //*
-
-	
-
-//	psb->m_cfg.collisions   =   btSoftBody::fCollision::CL_SS+btSoftBody::fCollision::CL_RS;	
 	psb->m_cfg.aeromodel	=	btSoftBody::eAeroModel::V_TwoSided;
-
 	psb->generateClusters(1024);
-	
 	psb->setTotalMass(100);
-	
-//	btTransform		trs;
-//	trs.setIdentity();
-//	psb->transform(trs);
-//	psb->addForce(btVector3(0,2,0),0);
 	
 }
 
@@ -159,78 +193,28 @@ void MySoftBody::render() {
 
 	glColor4f(0.0, 0.0, 0.0, 1.0);
 	
-	for(int j=0;j<nodes.size();++j) {
-		ofxPoint(nodes[j].m_x.getX(), nodes[j].m_x.getY(), nodes[j].m_x.getZ());
-//		ofxSphere(nodes[j].m_x.getX(), nodes[j].m_x.getY(), nodes[j].m_x.getZ(), 0.1);
+	for(int i = 0; i < nodes.size() ; i++) {
+		ofxPoint(nodes[i].m_x.getX(), nodes[i].m_x.getY(), nodes[i].m_x.getZ());
 	}
-
-//	int num = 0;
-//	for(int j=0;j<links.size();++j) {
-//		btSoftBody::Node*   node_0=links[j].m_n[0];
-//		btSoftBody::Node*   node_1=links[j].m_n[1];
-////		ofxLine(node_0->m_x.getX(), node_0->m_x.getY(), node_0->m_x.getZ(), 
-////			  node_1->m_x.getX(), node_1->m_x.getY(), node_1->m_x.getZ());
-//		
-//		ofxVec3f node0Vec;
-//		node0Vec.x = node_0->m_x.getX();
-//		node0Vec.y = node_0->m_x.getY();
-//		node0Vec.z = node_0->m_x.getZ();
-//		ofxVec3f node1Vec;
-//		node1Vec.x = node_1->m_x.getX();
-//		node1Vec.y = node_1->m_x.getY();
-//		node1Vec.z = node_1->m_x.getZ();
-//
-//		float distance = node0Vec.distance(node1Vec);
-//		for (float i = 0; i < distance; i+=ofMap(j, 0, links.size(), 0.01, 1)) {
-//			ofxVec3f interp = node0Vec.getInterpolated(node1Vec, ofMap(i, 0, distance, 0, 1));
-//
-//			ofPushMatrix();
-//			ofTranslate(interp.x, interp.y, interp.z);
-//			//ofRotate(90, 1, 0, 0);
-//			ofCircle(0,0, (links.size()-j));
-//			ofPopMatrix();					
-//
-//			num++;
-//		}		
-//	
-////	//		if (j < 5) {
-////	//			ofxLine(node_0->m_x.getX(), node_0->m_x.getY(), node_0->m_x.getZ(), 
-////	//					node_1->m_x.getX(), node_1->m_x.getY(), node_1->m_x.getZ());
-////	//		}else {
-////			float distance = node0Vec.distance(node1Vec);
-////			//for (float i = 0; i < distance; i+=0.1) {
-////			for (float i = 0; i < distance; i+=ofMap(j, 0, links.size(), 0.01, 1)) {
-////				ofxVec3f interp = node0Vec.getInterpolated(node1Vec, ofMap(i, 0, distance, 0, 1));
-////				
-////				if (j == links.size()-1) {
-////					//ofxSphere(interp.x, interp.y, interp.z, j*0.1);
-////					ofxSphere(interp.x, interp.y, interp.z, 0.5);
-////					ballPos = ofxVec3f(interp.x, interp.y, interp.z);
-////				}else {
-////					ofPushMatrix();
-////					ofTranslate(interp.x, interp.y, interp.z);
-////					//ofRotate(90, 1, 0, 0);
-////					ofCircle(0,0, j*0.03);
-////					ofPopMatrix();					
-////				}
-////				
-////				num++;
-////	//			}
-////			}
-//
-//	}
-//	//cout << num << endl;
-//
-//	for(int j=0;j<faces.size();++j) {
-//		btSoftBody::Node*   node_0=faces[j].m_n[0];
-//		btSoftBody::Node*   node_1=faces[j].m_n[1];
-//		btSoftBody::Node*   node_2=faces[j].m_n[2];
-//		ofxTriangleShape(node_0->m_x.getX(), node_0->m_x.getY(), node_0->m_x.getZ(),
-//				  node_1->m_x.getX(), node_1->m_x.getY(), node_1->m_x.getZ(),
-//				  node_2->m_x.getX(), node_2->m_x.getY(), node_2->m_x.getZ());
-//
-//
-//	}
-//
+	
+	ofSetColor(0, 0, 255);
+	for(int i = 0; i < links.size(); i++) {
+		btSoftBody::Node* node_0 = links[i].m_n[0];
+		btSoftBody::Node* node_1 = links[i].m_n[1];
+		ofxLine(node_0->m_x.getX(), node_0->m_x.getY(), node_0->m_x.getZ(), 
+				node_1->m_x.getX(), node_1->m_x.getY(), node_1->m_x.getZ());
+	}		
+	
+	
+	ofSetColor(100, 100, 0.5);
+	for(int i = 0; i < faces.size(); i++) {
+		btSoftBody::Node* node_0 = faces[i].m_n[0];
+		btSoftBody::Node* node_1 = faces[i].m_n[1];
+		btSoftBody::Node* node_2 = faces[i].m_n[2];
+		ofxTriangleShape(node_0->m_x.getX(), node_0->m_x.getY(), node_0->m_x.getZ(),
+						 node_1->m_x.getX(), node_1->m_x.getY(), node_1->m_x.getZ(),
+						 node_2->m_x.getX(), node_2->m_x.getY(), node_2->m_x.getZ());	
+		
+	}	
 	
 }

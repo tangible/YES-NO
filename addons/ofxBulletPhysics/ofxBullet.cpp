@@ -486,22 +486,22 @@ MySoftBody* ofxBullet::createRope(ofxVec3f from, ofxVec3f len,
 								  ofxVec3f gravity,
 								  MyRigidBody* ancchorTgt) {
 	
-	MySoftBody* msb = new MySoftBody(m_broadphase, m_dispatcher,
-									 ofxBulletStaticUtil::ofxVec3ToBtVec3(gravity));
-	
-	msb->createRopeShape(ofxBulletStaticUtil::ofxVec3ToBtVec3(from), 
-						 ofxBulletStaticUtil::ofxVec3ToBtVec3(len), 
-						 res, fixed,
-						 mass, color);
-	
-	mySoftVec.push_back(msb);
-	getSoftDynamicsWorld()->addSoftBody(msb->getSoftBody());
-	
-	if (ancchorTgt) {
-		msb->getSoftBody()->appendAnchor(0, ancchorTgt->getRigidBody());		
-	}
-	
-	return msb;
+//	MySoftBody* msb = new MySoftBody(m_broadphase, m_dispatcher,
+//									 ofxBulletStaticUtil::ofxVec3ToBtVec3(gravity));
+//	
+//	msb->createRopeShape(ofxBulletStaticUtil::ofxVec3ToBtVec3(from), 
+//						 ofxBulletStaticUtil::ofxVec3ToBtVec3(len), 
+//						 res, fixed,
+//						 mass, color);
+//	
+//	mySoftVec.push_back(msb);
+//	getSoftDynamicsWorld()->addSoftBody(msb->getSoftBody());
+//	
+//	if (ancchorTgt) {
+//		msb->getSoftBody()->appendAnchor(0, ancchorTgt->getRigidBody());		
+//	}
+//	
+//	return msb;
 	
 }
 
