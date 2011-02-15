@@ -6,6 +6,7 @@
 #include "AdminPanel.h"
 #include "ofxEasyCam.h"
 #include "ofxShader.h"
+#include "StateText.h"
 
 class App : public ofBaseApp{
 
@@ -24,6 +25,8 @@ public:
 
 	AdminPanel		adminPanel;
 	ConvexHull		convexHull;
+	StateText		stateText;
+	
 	ofxEasyCam		cam;
 //	ofxCamera		cam;
 	ofxShader		shader;

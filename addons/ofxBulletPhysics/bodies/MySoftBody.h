@@ -23,7 +23,9 @@ public:
 	MySoftBody(btBroadphaseInterface* m_broadphase,
 			   btCollisionDispatcher* m_dispatcher,
 			   btVector3 gravity);
-	~MySoftBody();
+	~MySoftBody() {
+		delete psb;
+	};
 	
 	void createRopeShape(btVector3 from, btVector3 len,
 					int res, int fixed,
@@ -32,11 +34,17 @@ public:
 	void createEllipsoidShape(btVector3 center, btVector3 radius, int res);
 	void createClothShape(ofxVec3f clothShape[4],
 						  int resolution, int fix);
+	void createConvexHullShape(const btVector3* vertices, int nVerts);
+	void createTriMeshShape(const btScalar* vertices, const int* triangles, int ntriangles)	;
 	
 	void render();
 	void update();
 	
+	ofxVec3f getBodyCentroid();
+	
 	btSoftBody* getSoftBody();
+	void setSoftBody(btSoftBody* _psb);
+	btSoftBodyWorldInfo getSoftWI();
 	
 	int ballSize;	
 	// edge ball position

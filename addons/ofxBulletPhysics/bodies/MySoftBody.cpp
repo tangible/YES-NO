@@ -59,7 +59,12 @@ MySoftBody::MySoftBody(btBroadphaseInterface* m_broadphase,
 btSoftBody * MySoftBody::getSoftBody(){
 	return psb;
 }	
-
+void MySoftBody::setSoftBody(btSoftBody* _psb) {
+	psb = _psb;
+}
+btSoftBodyWorldInfo MySoftBody::getSoftWI() {
+	return softBodyWI;
+}
 
 void MySoftBody::createRopeShape(btVector3 from, btVector3 len,
 							int res, int fixed,
@@ -118,6 +123,74 @@ void MySoftBody::createEllipsoidShape(btVector3 center, btVector3 radius, int re
 //	
 //	psb->setTotalMass(1,true);
 //	psb->setPose( false, false );
+	
+	psb->m_materials[0]->m_kLST   =   0.1;
+	psb->m_materials[0]->m_kAST   =   0.1; // Area/Angular stiffness coefficient [0,1]
+	psb->m_materials[0]->m_kVST   =   0.1; // Volume stiffness coefficient [0,1]	
+	
+	// 粘り気
+	psb->m_cfg.kDP            =   0.1;//0.001; 
+	// 地面との間で巻き込まれたのが回復する力
+	psb->m_cfg.kDG			  =   0;
+	// わからない。何かへの抵抗。
+	psb->m_cfg.kLF			  =   0;
+	// ???
+	psb->m_cfg.kDF            =   1;//1;
+	// 元に戻る力、弾力
+	psb->m_cfg.kPR            =   2500;//2500;
+	// ぐちゃぐちゃになる度。中身の量。元に戻らない度。
+	psb->m_cfg.kVC            =   0;//2500;
+	// 地面と滑るかどうか
+	psb->m_cfg.kDF            =   1;//1;
+	// ???
+	psb->m_cfg.kMT            =   0;//1;	
+	// ???
+	psb->m_cfg.kCHR            =   1;//1;	
+	// ???
+	psb->m_cfg.kSHR            =   1;//1;
+	
+	psb->setTotalMass(20,true);
+	psb->setPose( false, false );	
+	
+}
+
+void MySoftBody::createConvexHullShape(const btVector3* vertices, int nVerts) {
+	
+	 psb = btSoftBodyHelpers::CreateFromConvexHull(softBodyWI, vertices, nVerts);											
+	
+	psb->m_materials[0]->m_kLST   =   0.1;
+	psb->m_materials[0]->m_kAST   =   0.1; // Area/Angular stiffness coefficient [0,1]
+	psb->m_materials[0]->m_kVST   =   0.1; // Volume stiffness coefficient [0,1]	
+	
+	// 粘り気
+	psb->m_cfg.kDP            =   0.1;//0.001; 
+	// 地面との間で巻き込まれたのが回復する力
+	psb->m_cfg.kDG			  =   0;
+	// わからない。何かへの抵抗。
+	psb->m_cfg.kLF			  =   0;
+	// ???
+	psb->m_cfg.kDF            =   1;//1;
+	// 元に戻る力、弾力
+	psb->m_cfg.kPR            =   2500;//2500;
+	// ぐちゃぐちゃになる度。中身の量。元に戻らない度。
+	psb->m_cfg.kVC            =   0;//2500;
+	// 地面と滑るかどうか
+	psb->m_cfg.kDF            =   1;//1;
+	// ???
+	psb->m_cfg.kMT            =   0;//1;	
+	// ???
+	psb->m_cfg.kCHR            =   1;//1;	
+	// ???
+	psb->m_cfg.kSHR            =   1;//1;
+	
+	psb->setTotalMass(20,true);
+	psb->setPose( false, false );	
+		
+}
+
+void MySoftBody::createTriMeshShape(const btScalar* vertices, const int* triangles, int ntriangles) {
+	
+	psb = btSoftBodyHelpers::CreateFromTriMesh(softBodyWI, vertices, triangles, ntriangles);
 	
 	psb->m_materials[0]->m_kLST   =   0.1;
 	psb->m_materials[0]->m_kAST   =   0.1; // Area/Angular stiffness coefficient [0,1]
@@ -217,4 +290,19 @@ void MySoftBody::render() {
 		
 	}	
 	
+}
+
+ofxVec3f MySoftBody::getBodyCentroid() {
+
+	btSoftBody::tNodeArray& nodes(psb->m_nodes);
+
+	float x = 0.0; 
+	float y = 0.0;
+	float z = 0.0;
+	for (int i = 0; i < nodes.size(); i++) {
+		x += nodes[i].m_x.getX();		
+		y += nodes[i].m_x.getY();		
+		z += nodes[i].m_x.getZ();
+	}
+	return ofxVec3f(x/nodes.size(), y/nodes.size(), z/nodes.size());
 }

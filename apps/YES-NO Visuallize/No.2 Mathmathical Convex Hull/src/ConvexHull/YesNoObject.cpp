@@ -31,6 +31,7 @@ void YesNoObject::update() {
 		smss[j]->update();
 	}
 	
+	
 }
 
 

@@ -9,13 +9,14 @@ void App::setup(){
 	ofEnableAlphaBlending();
 	ofEnableSmoothing();
 	ofSetDataPathRoot("../Resources/");
-	ofBackground(100, 100, 100);
+	ofBackground(255, 255, 255);
 	
 //	cam.position(ofGetWidth()/2, ofGetHeight()/2+200, 1200);
 	cam.setup(this, 1200);
 	
 	adminPanel.setup();
-	convexHull.setup(fps, &adminPanel, &cam);
+	stateText.setup();	
+	convexHull.setup(fps, &adminPanel, &stateText, &cam);
 	
 	shader.setup("phong");
 	
@@ -47,6 +48,7 @@ void App::draw(){
 	shader.setUniform3f("LightPos", adminPanel.LIGHTX, adminPanel.LIGHTY, adminPanel.LIGHTZ);
 	convexHull.draw(mouseX, mouseY);
 	//shader.end();
+	
 	
 	ofSetupScreen();
 	adminPanel.draw();	

@@ -518,6 +518,30 @@ MySoftBody* ofxBullet::createEllipsoid(ofxVec3f gravity, ofxVec3f center, ofxVec
 	
 }
 
+MySoftBody* ofxBullet::createSoftConvexHull(ofxVec3f gravity, const btVector3* vertices, int nVerts) {
+	
+	MySoftBody* msb = new MySoftBody(m_broadphase, m_dispatcher, btVector3(gravity.x,gravity.y,gravity.z));
+	
+	msb->createConvexHullShape(vertices, nVerts);
+	
+	mySoftVec.push_back(msb);
+	getSoftDynamicsWorld()->addSoftBody(msb->getSoftBody());
+	
+	return msb;
+}
+
+MySoftBody* ofxBullet::createSoftTriMesh(ofxVec3f gravity, const btScalar* vertices, const int* triangles, int ntriangles) {
+	
+	MySoftBody* msb = new MySoftBody(m_broadphase, m_dispatcher, btVector3(gravity.x,gravity.y,gravity.z));
+	
+	msb->createTriMeshShape(vertices, triangles, ntriangles);
+	
+	mySoftVec.push_back(msb);
+	getSoftDynamicsWorld()->addSoftBody(msb->getSoftBody());
+	
+	return msb;
+}
+
 MySoftBody* ofxBullet::createCloth(ofxVec3f gravity, ofxVec3f clothShape[4], int resolution, int fix) {
 	
 	MySoftBody* msb = new MySoftBody(m_broadphase, m_dispatcher, btVector3(gravity.x,gravity.y,gravity.z));

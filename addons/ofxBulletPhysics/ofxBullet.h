@@ -14,6 +14,7 @@
 #include "BulletSoftBody/btSoftBody.h"
 #include "BulletSoftBody/btSoftRigidDynamicsWorld.h"
 #include "BulletSoftBody/btSoftBodyRigidBodyCollisionConfiguration.h"
+#include "BulletSoftBody/btSoftBodyHelpers.h"
 #include "bulletBaseApp.h"
 #include "MySoftBody.h"
 #include "MyRigidBody.h"
@@ -89,7 +90,8 @@ public:
 									   MyRigidBody* anchorTgt = NULL);
 	MySoftBody*				createEllipsoid(ofxVec3f gravity, ofxVec3f center, ofxVec3f radius, int res);
 	MySoftBody*				createCloth(ofxVec3f gravity, ofxVec3f clothShape[4], int resolution, int fix);	
-		
+	MySoftBody*				createSoftConvexHull(ofxVec3f gravity, const btVector3* vertices, int nVerts);	
+	MySoftBody*				createSoftTriMesh(ofxVec3f gravity, const btScalar* vertices, const int* triangles, int ntriangles);
 	
 	ofxVec3f				getSceneCenter();
 	void					setSceneCenter(ofxVec3f _center);	

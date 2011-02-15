@@ -215,6 +215,8 @@
 		31AE886E1301DED40087065A /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31AE88681301DED40087065A /* tinyxmlparser.cpp */; };
 		31AE886F1301DED40087065A /* ofxXmlSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31AE886A1301DED40087065A /* ofxXmlSettings.cpp */; };
 		31AE887E1301DFB40087065A /* ConvexHull.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */; };
+		31CD7B2513091B42006DA41E /* StateText.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31CD7B2313091B42006DA41E /* StateText.cpp */; };
+		31CD7B2813091B58006DA41E /* Verdana Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 31CD7B2713091B58006DA41E /* Verdana Bold.ttf */; };
 		E45BE0AA0E8CC67C009D7055 /* GLee.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE0A90E8CC67C009D7055 /* GLee.a */; };
 		E45BE2E40E8CC69C009D7055 /* rtAudio.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE2E30E8CC69C009D7055 /* rtAudio.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -782,6 +784,9 @@
 		31AE886B1301DED40087065A /* ofxXmlSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxXmlSettings.h; sourceTree = "<group>"; };
 		31AE887C1301DFB40087065A /* ConvexHull.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConvexHull.h; sourceTree = "<group>"; };
 		31AE887D1301DFB40087065A /* ConvexHull.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ConvexHull.cpp; sourceTree = "<group>"; };
+		31CD7B2313091B42006DA41E /* StateText.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StateText.cpp; sourceTree = "<group>"; };
+		31CD7B2413091B42006DA41E /* StateText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StateText.h; sourceTree = "<group>"; };
+		31CD7B2713091B58006DA41E /* Verdana Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Verdana Bold.ttf"; sourceTree = "<group>"; };
 		E45BE0390E8CC647009D7055 /* FreeImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FreeImage.h; path = ../../../libs/freeimage/include/FreeImage.h; sourceTree = SOURCE_ROOT; };
 		E45BE03F0E8CC650009D7055 /* fmod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = fmod.h; path = ../../../libs/fmodex/include/fmod.h; sourceTree = SOURCE_ROOT; };
 		E45BE0400E8CC650009D7055 /* fmod.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fmod.hpp; path = ../../../libs/fmodex/include/fmod.hpp; sourceTree = SOURCE_ROOT; };
@@ -1825,6 +1830,25 @@
 			path = ConvexHull;
 			sourceTree = "<group>";
 		};
+		31CD7B2213091B42006DA41E /* StateText */ = {
+			isa = PBXGroup;
+			children = (
+				31CD7B2313091B42006DA41E /* StateText.cpp */,
+				31CD7B2413091B42006DA41E /* StateText.h */,
+			);
+			name = StateText;
+			path = ../SharedModule/StateText;
+			sourceTree = SOURCE_ROOT;
+		};
+		31CD7B2613091B58006DA41E /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				31CD7B2713091B58006DA41E /* Verdana Bold.ttf */,
+			);
+			name = fonts;
+			path = bin/data/fonts;
+			sourceTree = SOURCE_ROOT;
+		};
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
@@ -2042,8 +2066,10 @@
 				E4B69E1F0A3A1BDC003C02F2 /* App.h */,
 				310C997E1303ECDA006EF72F /* AdminPanel */,
 				31AE88781301DF990087065A /* ConvexHull */,
+				31CD7B2213091B42006DA41E /* StateText */,
 				31AE81BC130137470087065A /* HTTPSMSClient */,
 				31965CDF13065C6700C55161 /* shaders */,
+				31CD7B2613091B58006DA41E /* fonts */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -2207,6 +2233,7 @@
 				31965CE513065C7000C55161 /* phong.vert in Resources */,
 				318E688E12F604F90097A0A9 /* icon.icns in Resources */,
 				3196667B13078BB700C55161 /* easing_terms_of_use.html in Resources */,
+				31CD7B2813091B58006DA41E /* Verdana Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2437,6 +2464,7 @@
 				3196668613078BB700C55161 /* ofxEasingQuint.cpp in Sources */,
 				3196668713078BB700C55161 /* ofxEasingSine.cpp in Sources */,
 				3196668813078BB700C55161 /* ofxTween.cpp in Sources */,
+				31CD7B2513091B42006DA41E /* StateText.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
