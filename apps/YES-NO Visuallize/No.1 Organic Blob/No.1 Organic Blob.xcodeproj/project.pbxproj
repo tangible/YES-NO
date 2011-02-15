@@ -10,7 +10,6 @@
 		311E58E612F6456F0077A832 /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 311E58E412F6455B0077A832 /* icon.icns */; };
 		311E591012F646240077A832 /* MarchingCubes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 311E590A12F646240077A832 /* MarchingCubes.cpp */; };
 		311E591112F646240077A832 /* Metaballs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 311E590C12F646240077A832 /* Metaballs.cpp */; };
-		311E591212F646240077A832 /* misc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 311E590E12F646240077A832 /* misc.cpp */; };
 		311E594812F649940077A832 /* BlobManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 311E594712F649940077A832 /* BlobManager.cpp */; };
 		311E598E12F64D630077A832 /* AdminPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 311E598912F64D630077A832 /* AdminPanel.cpp */; };
 		311E59D912F64DEA0077A832 /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 311E599B12F64DEA0077A832 /* tinyxml.cpp */; };
@@ -326,8 +325,6 @@
 		311E590B12F646240077A832 /* MarchingCubes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarchingCubes.h; sourceTree = "<group>"; };
 		311E590C12F646240077A832 /* Metaballs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Metaballs.cpp; sourceTree = "<group>"; };
 		311E590D12F646240077A832 /* Metaballs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Metaballs.h; sourceTree = "<group>"; };
-		311E590E12F646240077A832 /* misc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = misc.cpp; sourceTree = "<group>"; };
-		311E590F12F646240077A832 /* misc.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = misc.hpp; sourceTree = "<group>"; };
 		311E594612F649940077A832 /* BlobManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlobManager.h; sourceTree = "<group>"; };
 		311E594712F649940077A832 /* BlobManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BlobManager.cpp; sourceTree = "<group>"; };
 		311E598912F64D630077A832 /* AdminPanel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AdminPanel.cpp; sourceTree = "<group>"; };
@@ -1029,8 +1026,6 @@
 				311E590B12F646240077A832 /* MarchingCubes.h */,
 				311E590C12F646240077A832 /* Metaballs.cpp */,
 				311E590D12F646240077A832 /* Metaballs.h */,
-				311E590E12F646240077A832 /* misc.cpp */,
-				311E590F12F646240077A832 /* misc.hpp */,
 			);
 			path = Blob;
 			sourceTree = "<group>";
@@ -2722,7 +2717,6 @@
 				31FF8C4712F0F7BD00F04713 /* ofxQuaternion.cpp in Sources */,
 				311E591012F646240077A832 /* MarchingCubes.cpp in Sources */,
 				311E591112F646240077A832 /* Metaballs.cpp in Sources */,
-				311E591212F646240077A832 /* misc.cpp in Sources */,
 				311E594812F649940077A832 /* BlobManager.cpp in Sources */,
 				311E598E12F64D630077A832 /* AdminPanel.cpp in Sources */,
 				311E59D912F64DEA0077A832 /* tinyxml.cpp in Sources */,

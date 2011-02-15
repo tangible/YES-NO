@@ -6484,9 +6484,9 @@ i"ofxColorPicker.h"
 i"IncomingSMS.h"
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/YES-NO Visuallize/No.2 Mathmathical Convex Hull/src/ConvexHull/YesNoObjectSoft.cpp
-c000000004D59CCE40000000000004CAD
-t1297730788
-s19629
+c000000004D59EDF60000000000004CF9
+t1297739254
+s19705
 i"YesNoObjectSoft.h"
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/YES-NO Visuallize/No.2 Mathmathical Convex Hull/src/ConvexHull/YesNoObjectSoft.h
@@ -7638,6 +7638,10 @@ s53737264
 N/var/folders/3I/3IEdwrCLFz4TdGQPsl-dpE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Carbon-cvgsotoragkylnealrdybzbrhaei/Carbon.h.gch
 t1297153433
 s53737264
+
+N/var/folders/3I/3IEdwrCLFz4TdGQPsl-dpE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Carbon-cygvoygwfbjvbldugtzsrnhbjkns/Carbon.h.gch
+t2
+s0
 
 N/var/folders/3I/3IEdwrCLFz4TdGQPsl-dpE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Carbon-dmhpznuepeogeadswbdqdzruvteg/Carbon.h.gch
 t1297470325
@@ -11166,6 +11170,9 @@ xc++
 xcom.apple.compilers.gcc.4_2
 oi686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done
 lSLF07#2@71"Precompile /System/Library/Frameworks/Carbon.framework/Headers/Carbon.h318846230#318846233#0(92"i686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done0(0#0#60"/System/Library/Frameworks/Carbon.framework/Headers/Carbon.h8608888800#2090"    cd "/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/YES-NO Visuallize/No.2 Mathmathical Convex Hull"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++-header -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -mfix-and-continue -ftree-vectorize -msse3 -mssse3 -Wno-deprecated-declarations -Wno-invalid-offsetof -gdwarf-2 "-I/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/YES-NO Visuallize/No.2 Mathmathical Convex Hull/build/No.2 Mathmathical Convex Hull.build/Debug/No.2 Mathmathical Convex Hull.build/No.2 Mathmathical Convex HullDebug.hmap" "-F/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/YES-NO Visuallize/No.2 Mathmathical Convex Hull/bin" "-F/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/YES-NO Visuallize/No.2 Mathmathical Convex Hull/../../../libs/glut/lib/osx" "-I/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/YES-NO Visuallize/No.2 Mathmathical Convex Hull/bin/include" -I../../../libs/openFrameworks -I../../../libs/openFrameworks/app -I../../../libs/openFrameworks/communication -I../../../libs/openFrameworks/events -I../../../libs/openFrameworks/graphics -I../../../libs/openFrameworks/sound -I../../../libs/openFrameworks/utils -I../../../libs/openFrameworks/video -I../../../libs/freetype/include -I../../../libs/freetype/include/freetype2 -I../../../libs/poco/include -I../../../addons "-I/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/YES-NO Visuallize/No.2 Mathmathical Convex Hull/build/No.2 Mathmathical Convex Hull.build/Debug/No.2 Mathmathical Convex Hull.build/DerivedSources/i386" "-I/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/YES-NO Visuallize/No.2 Mathmathical Convex Hull/build/No.2 Mathmathical Convex Hull.build/Debug/No.2 Mathmathical Convex Hull.build/DerivedSources" -D__MACOSX_CORE__ -lpthread -c /System/Library/Frameworks/Carbon.framework/Headers/Carbon.h -o /var/folders/3I/3IEdwrCLFz4TdGQPsl-dpE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Carbon-cvgsotoragkylnealrdybzbrhaei/Carbon.h.gch0#
+
+CProcessPCH++ /var/folders/3I/3IEdwrCLFz4TdGQPsl-dpE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Carbon-cygvoygwfbjvbldugtzsrnhbjkns/Carbon.h.gch /System/Library/Frameworks/Carbon.framework/Headers/Carbon.h normal i386 c++ com.apple.compilers.gcc.4_2
+r0
 
 CProcessPCH++ /var/folders/3I/3IEdwrCLFz4TdGQPsl-dpE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Carbon-dmhpznuepeogeadswbdqdzruvteg/Carbon.h.gch /System/Library/Frameworks/Carbon.framework/Headers/Carbon.h normal i386 c++ com.apple.compilers.gcc.4_2
 s319163122.215844

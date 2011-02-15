@@ -285,8 +285,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>20</integer>
-									<integer>12</integer>
+									<integer>7</integer>
 									<integer>5</integer>
 									<integer>0</integer>
 								</array>
@@ -329,7 +328,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>YesNoObjectSoft.cpp</string>
+								<string>App.cpp</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -337,11 +336,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>YesNoObjectSoft.cpp</string>
+										<string>App.cpp</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>31DA524C130A257B0016C5F7</string>
+										<string>31C218E3130A4A37005323E5</string>
 										<key>history</key>
 										<array>
 											<string>31C69677129646AA007F71A7</string>
@@ -381,7 +380,6 @@
 											<string>31CD7A4913090F7A006DA41E</string>
 											<string>31CD7B3013091CCB006DA41E</string>
 											<string>31CD7B5313091F8E006DA41E</string>
-											<string>31CD7B6A130920E7006DA41E</string>
 											<string>31CD7B6B130920E7006DA41E</string>
 											<string>31CD7B73130920FC006DA41E</string>
 											<string>31CD7B8D13092156006DA41E</string>
@@ -398,7 +396,8 @@
 											<string>31DA5247130A1BE90016C5F7</string>
 											<string>31DA5248130A1BE90016C5F7</string>
 											<string>31DA524B130A257B0016C5F7</string>
-											<string>31DA5249130A1BE90016C5F7</string>
+											<string>31C218E1130A4A37005323E5</string>
+											<string>31C218E2130A4A37005323E5</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -456,9 +455,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>31DA51CC1309FD880016C5F7</string>
+				<string>31C218E4130A4A37005323E5</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>31DA51CD1309FD880016C5F7</string>
+				<string>31C218E5130A4A37005323E5</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -596,11 +595,6 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>31DA520D1309FFBC0016C5F7</string>
-		<string>31DA51DB1309FD880016C5F7</string>
-		<string>31DA51DC1309FD880016C5F7</string>
-		<string>1C78EAAD065D492600B07095</string>
-		<string>1CD10A99069EF8BA00B06720</string>
 		<string>31C6967E129646AA007F71A7</string>
 		<string>/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/YES-NO Visuallize/No.2 Mathmathical Convex Hull/No.2 Mathmathical Convex Hull.xcodeproj</string>
 	</array>
@@ -626,7 +620,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>new_allocator.h</string>
+								<string></string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -643,8 +637,6 @@
 							<string>357pt</string>
 						</dict>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -684,7 +676,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>31C6967E129646AA007F71A7</string>
-				<string>31DA51D21309FD880016C5F7</string>
+				<string>31C218E6130A4A37005323E5</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
