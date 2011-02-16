@@ -1,11 +1,11 @@
 #ifndef _TEST_APP
 #define _TEST_APP
 
-
 #include "ofMain.h"
-#include "glsl.h"
-#include "Obj.h"
-#include "Trackball.h"
+#include "ofxShader.h"
+#include "ofxFBOTexture.h"
+#include "ofxDepthFBO.h"
+#include "ofx3DUtils.h"
 
 class testApp : public ofBaseApp{
 
@@ -22,6 +22,19 @@ public:
 	void mouseReleased(int x, int y, int button);
 	void windowResized(int w, int h);
 	
+	ofxShader defaultShader;
+	ofxShader showDepthShader;
+	ofxShader ssaoShader;
+	ofxDepthFBO depthFBO;
+	ofxFBOTexture sceneFBO;
+	
+	void drawScene();
+	vector<ofxVec4f> objCol;
+	vector<ofxVec3f> objPos;
+	vector<int> objSize;
+	int numObj;	
+	void drawFullScreenQuad(int w, int h);
+
 };
 
 #endif

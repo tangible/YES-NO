@@ -272,6 +272,7 @@
 								<string>31AE81BC130137470087065A</string>
 								<string>31965CDF13065C6700C55161</string>
 								<string>31CD7B2613091B58006DA41E</string>
+								<string>E4C2422310CC54B6004149E2</string>
 								<string>BB4B014C10F69532006C3DED</string>
 								<string>3196663E13078BB700C55161</string>
 								<string>3196665413078BB700C55161</string>
@@ -291,7 +292,7 @@
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 0}, {241, 717}}</string>
+							<string>{{0, 0}, {241, 598}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -303,14 +304,14 @@
 					<key>GeometryConfiguration</key>
 					<dict>
 						<key>Frame</key>
-						<string>{{0, 0}, {258, 735}}</string>
+						<string>{{0, 0}, {258, 616}}</string>
 						<key>GroupTreeTableConfiguration</key>
 						<array>
 							<string>MainColumn</string>
 							<real>241</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>222 102 1193 776 0 0 1440 878 </string>
+						<string>222 221 844 657 0 0 1440 878 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -340,7 +341,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>31C218E3130A4A37005323E5</string>
+										<string>312DB7D6130B8EAE0080D960</string>
 										<key>history</key>
 										<array>
 											<string>31C69677129646AA007F71A7</string>
@@ -380,7 +381,6 @@
 											<string>31CD7A4913090F7A006DA41E</string>
 											<string>31CD7B3013091CCB006DA41E</string>
 											<string>31CD7B5313091F8E006DA41E</string>
-											<string>31CD7B6B130920E7006DA41E</string>
 											<string>31CD7B73130920FC006DA41E</string>
 											<string>31CD7B8D13092156006DA41E</string>
 											<string>31CD7BE513092575006DA41E</string>
@@ -397,7 +397,8 @@
 											<string>31DA5248130A1BE90016C5F7</string>
 											<string>31DA524B130A257B0016C5F7</string>
 											<string>31C218E1130A4A37005323E5</string>
-											<string>31C218E2130A4A37005323E5</string>
+											<string>312DB7D4130B8EAE0080D960</string>
+											<string>312DB7D5130B8EAE0080D960</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -409,14 +410,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {930, 730}}</string>
+								<string>{{0, 0}, {581, 611}}</string>
 								<key>RubberWindowFrame</key>
-								<string>222 102 1193 776 0 0 1440 878 </string>
+								<string>222 221 844 657 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>730pt</string>
+							<string>611pt</string>
 						</dict>
 						<dict>
 							<key>ContentConfiguration</key>
@@ -429,9 +430,9 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 735}, {930, 0}}</string>
+								<string>{{0, 616}, {581, 0}}</string>
 								<key>RubberWindowFrame</key>
-								<string>222 102 1193 776 0 0 1440 878 </string>
+								<string>222 221 844 657 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
@@ -440,7 +441,7 @@
 						</dict>
 					</array>
 					<key>Proportion</key>
-					<string>930pt</string>
+					<string>581pt</string>
 				</dict>
 			</array>
 			<key>Name</key>
@@ -455,9 +456,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>31C218E4130A4A37005323E5</string>
+				<string>312DB7D7130B8EAE0080D960</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>31C218E5130A4A37005323E5</string>
+				<string>312DB7D8130B8EAE0080D960</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -599,7 +600,7 @@
 		<string>/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/YES-NO Visuallize/No.2 Mathmathical Convex Hull/No.2 Mathmathical Convex Hull.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>222 102 1193 776 0 0 1440 878 </string>
+	<string>222 221 844 657 0 0 1440 878 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
@@ -676,7 +677,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>31C6967E129646AA007F71A7</string>
-				<string>31C218E6130A4A37005323E5</string>
+				<string>312DB7D9130B8EAE0080D960</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>

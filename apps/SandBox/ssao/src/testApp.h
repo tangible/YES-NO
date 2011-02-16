@@ -1,12 +1,13 @@
 #ifndef _TEST_APP
 #define _TEST_APP
 
-
 #include "ofMain.h"
-#include "ofxFbo.h"
 #include "ofxShader.h"
+#include "ofxFbo.h"
+#include "ofxFBOTexture.h"
+#include "ofxDepthFBO.h"
+#include "ofxColorFBO.h"
 #include "ofx3DUtils.h"
-#include "ofxEasyCam.h"
 
 class testApp : public ofBaseApp{
 
@@ -23,16 +24,20 @@ public:
 	void mouseReleased(int x, int y, int button);
 	void windowResized(int w, int h);
 	
-//	ofxEasyCam cam;
+	ofxShader defaultShader;
+	ofxShader showDepthShader;
+	ofxShader ssaoShader;
+	ofxDepthFBO depthFBO;
+	ofxColorFBO sceneColFBO;
+//	ofxFbo sceneFBO;
+	ofxFBOTexture sceneFBO;
 	
 	void drawScene();
 	vector<ofxVec4f> objCol;
 	vector<ofxVec3f> objPos;
 	vector<int> objSize;
-	int numObj;
-	
-	ofxShader pass1;
-	ofxShader pass2;
+	int numObj;	
+	void drawFullScreenQuad(int w, int h);
 
 };
 

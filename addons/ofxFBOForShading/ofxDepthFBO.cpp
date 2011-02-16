@@ -10,10 +10,7 @@
 #include "ofxDepthFBO.h"
 
 void ofxDepthFBO::setup(int width, int height) {
-	
-//	depthTex.allocate(width, height, GL_DEPTH_COMPONENT);
-//	tex = depthTex.texData.textureID;
-	
+
 	tex = depthTex.genDepthTexture(width, height);
 
 	glGenFramebuffersEXT(1, &fb);
@@ -23,7 +20,7 @@ void ofxDepthFBO::setup(int width, int height) {
 	glFramebufferTexture2DEXT(GL_FRAMEBUFFER_EXT, GL_DEPTH_ATTACHMENT_EXT,
 							  GL_TEXTURE_2D, tex, 0);
 
-	//glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, fb);
+	glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, 0);
 
 }
 
@@ -37,7 +34,7 @@ void ofxDepthFBO::beforeUpdate() {
 
 void ofxDepthFBO::afterUpdate() {
 
-	//glDisable(GL_DEPTH_TEST);
+	glDisable(GL_DEPTH_TEST);
 	glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, 0);
 
 }
@@ -45,8 +42,10 @@ void ofxDepthFBO::afterUpdate() {
 void ofxDepthFBO::beforeDraw(int texUnit) {
 	
 	glActiveTexture(GL_TEXTURE0+texUnit);
-//	glActiveTextureARB(GL_TEXTURE0+texUnit);	
 	glBindTexture(GL_TEXTURE_2D, tex);
+	
+//	glBindTexture(GL_TEXTURE_RECTANGLE_ARB, tex);	
+//	glBindBuffer(GL_TEXTURE_RECTANGLE_ARB, tex);
 
 }
 
@@ -54,6 +53,5 @@ void ofxDepthFBO::afterDraw() {
 
 	glBindTexture(GL_TEXTURE_2D, 0);
 	glActiveTexture(GL_TEXTURE0);
-//	glActiveTextureARB(GL_TEXTURE0);	
 	
 }
