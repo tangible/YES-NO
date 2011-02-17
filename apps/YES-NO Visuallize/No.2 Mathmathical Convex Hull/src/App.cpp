@@ -9,7 +9,7 @@ void App::setup(){
 	ofEnableAlphaBlending();
 	ofEnableSmoothing();
 	ofSetDataPathRoot("../Resources/");
-	ofBackground(255, 255, 255);
+	ofBackground(0,0,0);
 	
 //	cam.position(ofGetWidth()/2, ofGetHeight()/2+200, 1200);
 	cam.setup(this, 1200);

@@ -1,18 +1,13 @@
 #ifndef _TEST_APP
 #define _TEST_APP
 
+
 #include "ofMain.h"
+#include "ofx3DUtils.h"
 #include "ofxShader.h"
 #include "ofxDepthFBO.h"
 #include "ofxColorFBO.h"
-#include "ofx3DUtils.h"
 #include "ofxEasyCam.h"
-#include "ofxFBOMSTexture.h"
-
-#define DEFAULT_DISTANCE 9.0f
-#define DEFAULT_RANGE 2.0f
-#define NUM_SHADERS 6
-#define NUM_FBOS 5
 
 class testApp : public ofBaseApp{
 
@@ -28,31 +23,26 @@ public:
 	void mousePressed(int x, int y, int button);
 	void mouseReleased(int x, int y, int button);
 	void windowResized(int w, int h);
-	
-	ofxEasyCam cam;	
-	
+
 	ofxShader defaultShader;
 	ofxShader showDepthShader;
-	ofxShader ssaoShader;
+	ofxShader ssaoShader;	
+	ofxShader dofShader;
 	ofxDepthFBO depthFBO;
 	ofxColorFBO colorFBO;
-	ofxFBOMSTexture** dofFBOs;
-	ofxShader** dofShaders;	
-	float focalDistance;
-	float focalRange;	
+	ofxColorFBO ssaoFBO;
+	
+	ofxEasyCam cam;
 	
 	void drawScene();
 	vector<ofxVec4f> objCol;
 	vector<ofxVec3f> objPos;
 	vector<int> objSize;
+	vector<ofxQuaternion> objRot;
+	vector<int> objType;
 	int numObj;	
-	void drawFullScreenQuad(int w, int h);
-
-	void setupGLStuff();
-	GLfloat *materialAmbient;
-	GLfloat *materialDiffuse;
-	GLfloat *materialSpecular;	
-
+	void drawFullScreenQuad(int w, int h);		
+	
 };
 
 #endif

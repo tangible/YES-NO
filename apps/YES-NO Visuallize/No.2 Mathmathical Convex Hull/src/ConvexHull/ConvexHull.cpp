@@ -25,9 +25,9 @@ void ConvexHull::setup(int _fps, AdminPanel* _adminPanel, StateText* _sText, ofx
 	noPoint = ofxVec3f(ofGetWidth()/2-400, ofGetHeight()-440, -50); 
 	
 	currentYesLevel = 1;
-	yesSoft.setup(YES, bullet, yesPoint, ofxVec3f(20, 60, 80), currentYesLevel);
+	yesSoft.setup(YES, bullet, ofxVec3f(0,0,0), ofxVec3f(20, 60, 80), currentYesLevel);
 	currentNoLevel = 10;
-	noSoft.setup(NO, bullet, noPoint, ofxVec3f(120, 60, 70), currentNoLevel);
+	noSoft.setup(NO, bullet, ofxVec3f(0,0,0), ofxVec3f(120, 60, 70), currentNoLevel);
 	
 	ofAddListener(yesSoft.onTheEnd, this, &ConvexHull::onTheEnd);
 	
@@ -56,22 +56,33 @@ void ConvexHull::update() {
 			addSMS(NO);
 		}
 	}else {
-//		if (ofGetFrameNum()%100 == 0) {
-//			addSMS(YES);
-//			addSMS(NO);
-//		}	
+		if (ofGetFrameNum()%100 == 0) {
+			addSMS(YES);
+			addSMS(NO);
+		}	
 	}
 }
 
 void ConvexHull::draw(int mouseX, int mouseY) {
 	
-	//bullet->ground->render(bullet->getWorld());
-	
 	setupGLStuff();
-	//ofEnableAlphaBlending();
 	
+	ofPushMatrix();
+	ofTranslate(yesPoint.x, yesPoint.y, yesPoint.z);
+//	ofRotate(ofGetFrameNum(), 0, 1, 0);
 	yesSoft.draw();
+	ofPopMatrix();
+	
+	ofPushMatrix();
+	if (noSoft.addedSMSs.size() > 0) {
+		ofxVec3f fnorm = ofxVec3f(noSoft.addedSMSs[noSoft.addedSMSs.size()-1]->btnormal->getX(),
+								  noSoft.addedSMSs[noSoft.addedSMSs.size()-1]->btnormal->getY(),
+								  noSoft.addedSMSs[noSoft.addedSMSs.size()-1]->btnormal->getZ());
+		cout << ofToString(fnorm.x) + " " + ofToString(fnorm.y) + " " + ofToString(fnorm.z) << endl;
+	}
+	ofTranslate(noPoint.x, noPoint.y, noPoint.z);	
 	noSoft.draw();
+	ofPopMatrix();
 	
 	for (int i = 0; i < insmsYes.size(); i++) {
 		IncomingSMS *sms = insmsYes[i];
@@ -82,13 +93,13 @@ void ConvexHull::draw(int mouseX, int mouseY) {
 		sms->debugDraw();
 	}
 	
-	UpdateInfo upInfo;
-	upInfo.numTotalYes = insmsYes.size();
-	upInfo.numTotalNo = insmsNo.size();
-	glDisable(GL_CULL_FACE);
-	glDisable(GL_LIGHTING);
-	sText->draw(upInfo, yesSoft.yesORno->getBodyCentroid(), noSoft.yesORno->getBodyCentroid());
-	glDisable(GL_LIGHTING);	
+//	UpdateInfo upInfo;
+//	upInfo.numTotalYes = insmsYes.size();
+//	upInfo.numTotalNo = insmsNo.size();
+//	glDisable(GL_CULL_FACE);
+//	glDisable(GL_LIGHTING);
+//	sText->draw(upInfo, yesSoft.yesORno->getBodyCentroid(), noSoft.yesORno->getBodyCentroid());
+//	glDisable(GL_LIGHTING);	
 }
 
 void ConvexHull::keyPressed(int key) {

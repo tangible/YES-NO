@@ -86,15 +86,7 @@ void YesNoObjectSoft::draw() {
 	btSoftBody::tNodeArray& nodes(yesORno->getSoftBody()->m_nodes);
 	btSoftBody::tLinkArray& links(yesORno->getSoftBody()->m_links);
 	btSoftBody::tFaceArray& faces(yesORno->getSoftBody()->m_faces);
-	
-//	ofSetColor(0, 0, 255);
-//	for(int i = 0; i < links.size(); i++) {
-//		btSoftBody::Node* node_0 = links[i].m_n[0];
-//		btSoftBody::Node* node_1 = links[i].m_n[1];
-//		ofxLine(node_0->m_x.getX(), node_0->m_x.getY(), node_0->m_x.getZ(), 
-//				node_1->m_x.getX(), node_1->m_x.getY(), node_1->m_x.getZ());
-//	}		
-	
+
 	vector<float> faceVertexPtr;
 	vector<float> faceNormalPtr;
 	for(int i = 0; i < faces.size(); i++) {
@@ -154,28 +146,36 @@ void YesNoObjectSoft::draw() {
 		ofxVec3f fa = ofxBulletStaticUtil::btVec3ToOfxVec3(faces[as->faceID].m_n[0]->m_x);
 		ofxVec3f fb = ofxBulletStaticUtil::btVec3ToOfxVec3(faces[as->faceID].m_n[1]->m_x);
 		ofxVec3f fc = ofxBulletStaticUtil::btVec3ToOfxVec3(faces[as->faceID].m_n[2]->m_x);
-		ofxVec3f a = as->getA();
-		ofxVec3f b = as->getB();
-		ofxVec3f c = as->getC();
+		ofxVec3f cen = getFaceCentroid(faces, fid);
 		ofxVec3f norm = as->getNorm();		
 		norm *= as->tw.update();
-		a += norm;
-		b += norm;
-		c += norm;
-		ofxVec3f cen = getFaceCentroid(faces, fid);
-		ofxVec3f an = a-cen;
-		ofxVec3f bn = b-cen;
-		ofxVec3f cn = c-cen;
-		a += an/2;
-		b += bn/2;
-		c += cn/2;
-//		a -= an/2;
-//		b -= bn/2;
-//		c -= cn/2;		
-		ofxQuad(fa, fb, b, a);
-		ofxQuad(fb, fc, c, b);
-		ofxQuad(fc, fa, a, c);
-		ofxTriangleShape(a, b, c);
+		cen += norm;
+		ofxTriangleShape(fb, cen, fa);
+		ofxTriangleShape(fc, cen, fb);
+		ofxTriangleShape(fa, cen, fc);
+		
+//		ofxVec3f a = as->getA();
+//		ofxVec3f b = as->getB();
+//		ofxVec3f c = as->getC();
+//		ofxVec3f norm = as->getNorm();		
+//		norm *= as->tw.update();
+//		a += norm;
+//		b += norm;
+//		c += norm;
+//		ofxVec3f cen = getFaceCentroid(faces, fid);
+//		ofxVec3f an = a-cen;
+//		ofxVec3f bn = b-cen;
+//		ofxVec3f cn = c-cen;
+//		a += an/2;
+//		b += bn/2;
+//		c += cn/2;
+////		a -= an/2;
+////		b -= bn/2;
+////		c -= cn/2;		
+//		ofxQuad(fa, fb, b, a);
+//		ofxQuad(fb, fc, c, b);
+//		ofxQuad(fc, fa, a, c);
+//		ofxTriangleShape(a, b, c);
 
 //		ofxVec3f fa = ofxBulletStaticUtil::btVec3ToOfxVec3(faces[as.faceID].m_n[0]->m_x);
 //		ofxVec3f fb = ofxBulletStaticUtil::btVec3ToOfxVec3(faces[as.faceID].m_n[1]->m_x);
@@ -450,124 +450,12 @@ void YesNoObjectSoft::addSMSCompleted(int faceID, vector<ofxVec3f> pos) {
 	as->node1 = faces[faceID].m_n[1];
 	as->node2 = faces[faceID].m_n[2];
 	float minl = ofMap(resolusion, minRes, maxRes, 10, 40);
-	float maxl = ofMap(resolusion, minRes, maxRes, 100, 450);
+	float maxl = ofMap(resolusion, minRes, maxRes, 200, 650);
 	as->length = ofRandom(minl, maxl);
 	as->faceID = faceID;
 	as->angle = ofRandomuf();
 	as->tw.setParameters(as->ea, ofxTween::easeIn, 0.0, as->length, 200, 0);
 	addedSMSs.push_back(as);
-	
-//	btSoftBody::tFaceArray& faces(yesORno->getSoftBody()->m_faces);
-//	btSoftBody::tNodeArray& nodes(yesORno->getSoftBody()->m_nodes);
-//	
-//	// 1.allign all triangle(face) refs to verts idx
-//	vector<vector<int> > vertsIdx;
-//	for (int i = 0; i < faces.size(); i++) {
-//		btSoftBody::Node* node0 = faces[i].m_n[0];
-//		btSoftBody::Node* node1 = faces[i].m_n[1];
-//		btSoftBody::Node* node2 = faces[i].m_n[2];	
-//		btVector3 n0p = node0->m_x;
-//		btVector3 n1p = node1->m_x;
-//		btVector3 n2p = node2->m_x;
-//		// get each idx of node
-//		int idxN0 = 0; int idxN1 = 0; int idxN2 = 0;
-//		bool n0 = false; bool n1 = false; bool n2 = false;		
-//		for (int j = 0; j < nodes.size(); j++) {
-//			btSoftBody::Node compNode = nodes[j];
-//			btVector3 cnp = compNode.m_x;
-//			if (n0p == cnp) {
-//				idxN0 = j; n0 = true;
-//			}
-//			if (n1p == cnp) {
-//				idxN1 = j; n1 = true;
-//			}
-//			if (n2p == cnp) {
-//				idxN2 = j; n2 = true;
-//			}
-//			if (n0 && n1 && n2) break;
-//		}
-//		vector<int> faceNodeRef;
-//		faceNodeRef.push_back(idxN0);
-//		faceNodeRef.push_back(idxN1);
-//		faceNodeRef.push_back(idxN2);		
-//		vertsIdx.push_back(faceNodeRef);
-//	}
-//	for (int i = 0; i < vertsIdx.size(); i++) {
-//		vector<int> faceNodeRef = vertsIdx[i];
-//		cout << "{" ;
-//		for (int j = 0; j < faceNodeRef.size(); j++) {
-//			int out = faceNodeRef[j];
-//			cout << ofToString(out) + ", ";
-//		}
-//		cout << "}" << endl;
-//	}
-//	cout << "" << endl;
-//	
-//	// 2.get verts pos
-//	vector<btScalar> vertices; 
-//	for (int i = 0; i < nodes.size(); i++) {
-//		btSoftBody::Node n = nodes[i];
-//		btVector3 pos = n.m_x;		
-//		vertices.push_back(pos.getX());
-//		vertices.push_back(pos.getY());
-//		vertices.push_back(pos.getZ());
-//	}
-//	
-//	yesORno = bullet->createSoftTriMesh(ofxVec3f(0, 80, 0), &vertices[0], &vertsIdx[0][0], vertsIdx.size());
-//	
-	
-//	btSoftBody::tFaceArray& faces(yesORno->getSoftBody()->m_faces);
-//	vector<btVector3> ns;
-//	vector<ofxVec3f> comp;
-//	for (int i = 0; i < faces.size(); i++) {
-//		if (i != faceID) {
-//			btSoftBody::Node* node_0 = faces[i].m_n[0];
-//			btSoftBody::Node* node_1 = faces[i].m_n[1];
-//			btSoftBody::Node* node_2 = faces[i].m_n[2];
-//			
-//			bool aPush = true;
-//			bool bPush = true;
-//			bool cPush = true;
-//			for (int j = 0; j < comp.size(); j++) {
-//				ofxVec3f c = comp[j];
-//				if (c == ofxBulletStaticUtil::btVec3ToOfxVec3(node_0->m_x)) {
-//					aPush = false;
-//				}else {
-//					comp.push_back(ofxBulletStaticUtil::btVec3ToOfxVec3(node_0->m_x));
-//				}
-//				if (c == ofxBulletStaticUtil::btVec3ToOfxVec3(node_1->m_x)) {
-//					bPush = false;
-//				}else {
-//					comp.push_back(ofxBulletStaticUtil::btVec3ToOfxVec3(node_1->m_x));
-//				}
-//				if (c == ofxBulletStaticUtil::btVec3ToOfxVec3(node_2->m_x)) {
-//					cPush = false;
-//				}else {
-//					comp.push_back(ofxBulletStaticUtil::btVec3ToOfxVec3(node_2->m_x));
-//				}				
-//			}
-//			
-//			if (aPush) ns.push_back(node_0->m_x);
-//			if (bPush) ns.push_back(node_1->m_x);
-//			if (cPush) ns.push_back(node_2->m_x);
-//			
-//		}else {
-//				
-//			ofxVec3f a = ofxBulletStaticUtil::btVec3ToOfxVec3(faces[i].m_n[0]->m_x);//.rescale(2.0);
-//			ofxVec3f b = ofxBulletStaticUtil::btVec3ToOfxVec3(faces[i].m_n[1]->m_x);//.rescale(2.0);
-//			ofxVec3f c = ofxBulletStaticUtil::btVec3ToOfxVec3(faces[i].m_n[2]->m_x);//.rescale(2.0);				
-//			
-//			ofxVec3f norm = ofxBulletStaticUtil::btVec3ToOfxVec3(faces[i].m_normal);
-//			norm *= 50;
-//			
-//			ns.push_back(ofxBulletStaticUtil::ofxVec3ToBtVec3(a+norm));
-//			ns.push_back(ofxBulletStaticUtil::ofxVec3ToBtVec3(b+norm));
-//			ns.push_back(ofxBulletStaticUtil::ofxVec3ToBtVec3(c+norm));			
-//				
-//	
-//		}
-//	}
-//	yesORno = bullet->createSoftConvexHull(ofxVec3f(0, 80, 0), &ns[0], ns.size());	
 	
 }
 

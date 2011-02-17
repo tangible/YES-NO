@@ -1,76 +1,48 @@
 #include "testApp.h"
 #include "ofxSimpleGuiToo.h"
 
-//--------------------------------------------------------------
+// SSAO
 float camerarangex;
 float camerarangey;
 float aoCap;
 float aoMultiplier;
 float depthTolerance;
 float aorange;
+float readDepthVal;
+
+// DoF
+float focus;
+float aspectratiox;
+float aspectratioy;
+float blurclamp;
+float bias;
+
+//--------------------------------------------------------------
 void testApp::setup(){
-	
+
 	ofSetDataPathRoot("../Resources/");
 	ofDisableArbTex();
 	ofEnableAlphaBlending();
+	ofEnableSmoothing();
 	ofBackground(255, 255, 255);
-	glEnable(GL_DEPTH_TEST);
-	
-	ofxSetSphereResolution(100);
 	
 	cam.setup(this, 700);
 	
 	defaultShader.setup("default");
 	showDepthShader.setup("showdepth");
-	ssaoShader.setup("ssao");
+	ssaoShader.setup("ssao");	
+	dofShader.setup("dof");
 	
 	depthFBO.setup(ofGetWidth(), ofGetHeight());
 	colorFBO.setup(ofGetWidth(), ofGetHeight());
+	ssaoFBO.setup(ofGetWidth(), ofGetHeight());
 	
-	dofFBOs = (ofxFBOMSTexture**) calloc(sizeof(ofxFBOMSTexture*), NUM_FBOS);
-	float w,h;
-	for(int i = 0; i < NUM_FBOS; i++){
-		dofFBOs[i] = new ofxFBOMSTexture();
-		if(i == 0 || i == 1){
-			w = ofGetWidth(); 
-			h = ofGetHeight();
-		}
-		else {
-			w = ofGetWidth()/2;
-			h = ofGetHeight()/2;
-		}
-		dofFBOs[i]->allocate(w, h, true);
-	}	
-	
-	char *files[NUM_SHADERS] = {(char*)"first", (char*)"second", (char*)"third", (char*)"fourth", (char*)"fifth", (char*)"renderblur"};
-	dofShaders = (ofxShader**) calloc(sizeof(ofxShader*), NUM_SHADERS);
-	for(int i = 0; i < NUM_SHADERS; i++){
-		dofShaders[i] = new ofxShader();
-		dofShaders[i]->setup(files[i]);
-	}
-	dofShaders[1]->begin();
-	dofShaders[1]->setUniform1i("Tex0", 0);
-	dofShaders[1]->setUniform1i("Tex1", 1);
-	dofShaders[1]->end();
-	dofShaders[2]->begin();
-	dofShaders[2]->setUniform1i("Width", ofGetWidth()*2);
-	dofShaders[3]->begin();
-	dofShaders[3]->setUniform1i("Height", ofGetHeight()*2);
-	dofShaders[4]->begin();
-	dofShaders[4]->setUniform1i("Tex0", 0);
-	dofShaders[4]->setUniform1i("Tex1", 1);
-	dofShaders[4]->setUniform1i("Tex2", 2);
-	dofShaders[4]->end();
-	
-	focalDistance = DEFAULT_DISTANCE;
-	focalRange = DEFAULT_RANGE;	
-	
-	
-	numObj = 100;
+	ofxSetSphereResolution(100);
+	numObj = 500;
 	for (int i = 0; i < numObj; i++) {
 		float x = ofRandom(ofGetWidth()/2-200, ofGetWidth()/2+200);
 		float y = ofRandom(ofGetHeight()/2-200, ofGetHeight()/2+200);
-		float z = ofRandom(-200, 200);
+		float z = ofRandom(-100, 500);
 		ofxVec3f pos = ofxVec3f(x,y,z);
 		float r = ofRandom(0.0, 255.0);
 		float g = ofRandom(0.0, 255.0);
@@ -78,35 +50,50 @@ void testApp::setup(){
 		float a = ofRandom(200.0, 255.0);
 		ofxVec4f col = ofxVec4f(r,g,b,a);
 		int size = ofRandom(10, 50);
+		ofxQuaternion qua = ofxQuaternion(ofRandomf(), ofRandomf(), ofRandomf(), ofRandomf());
+		int typ = ofRandom(1, 3);
 		objPos.push_back(pos);
+		objRot.push_back(qua);
 		objCol.push_back(col);
 		objSize.push_back(size);
-	}	
-	
-    materialAmbient  = new float[4];
-    materialDiffuse  = new float[4];
-    materialSpecular = new float[4];
-    for (int i=0; i<4; i++){
-        materialAmbient[i]  = 1.0f;
-        materialDiffuse[i]  = 1.0f;
-        materialSpecular[i] = 1.0f;
-    }	
+		objType.push_back(typ);
+	}		
 	
 	//.setNewColumn(true);
-	gui.addTitle("Shader Setting");
+	gui.addTitle("SSAO Setting");
 	gui.addSlider("camerarangex", camerarangex, 0, 10000);
 	gui.addSlider("camerarangey", camerarangey, 0, 10000);
 	gui.addSlider("aoCap", aoCap, 0.0, 2.0);
 	gui.addSlider("aoMultiplier", aoMultiplier, 0.0, 20000.0);
 	gui.addSlider("depthTolerance", depthTolerance, 0.000, 0.002);
 	gui.addSlider("aorange", aorange, 0.0, 2.0);
+	gui.addSlider("readDepthVal", readDepthVal, 0.0, 20.0);
+	gui.addTitle("DOF Setting").setNewColumn(true);
+	gui.addSlider("focus", focus, 0.0, 2.0);
+	gui.addSlider("aspectratiox", aspectratiox, 0.0, ofGetWidth());
+	gui.addSlider("aspectratioy", aspectratioy, 0.0, ofGetHeight());
+	gui.addSlider("blurclamp", blurclamp, 0.0, 1.0);
+	gui.addSlider("bias", bias, 0.0, 1.0);	
 	gui.loadFromXML();
 	gui.show();		
+	camerarangex = 6113.28;
+	camerarangey = 4121.09;
+	aoCap = 1.8795;
+	aoMultiplier = 1523.5625;
+	depthTolerance = 0.0001130;
+	aorange = 0.285156;
+	readDepthVal = 2.0;
+	focus = 0.808594;
+	aspectratiox = ofGetWidth();
+	aspectratioy = ofGetHeight();	
+	blurclamp = 0.0253910;
+	bias = 0.041016;
+	
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
-	
+
 	cam.draw();
 	
 	depthFBO.beforeUpdate();
@@ -115,70 +102,79 @@ void testApp::update(){
 	
 	colorFBO.beforeUpdate();
 	drawScene();
-	colorFBO.afterUpdate();
-}
+	colorFBO.afterUpdate();		
 
-//--------------------------------------------------------------
-void testApp::draw(){
-	
-	ofSetupScreen();
 	
 	int colorTexSlot = 4;
 	colorFBO.beforeDraw(colorTexSlot);	
 	int depthTexSlot = 5;
 	depthFBO.beforeDraw(depthTexSlot);
-	ssaoShader.begin();
-	ssaoShader.setUniform1i("texture0", depthTexSlot);
-	ssaoShader.setUniform1i("texture1", colorTexSlot);
-	ssaoShader.setUniform2f("screensize", ofGetWidth(), ofGetHeight());
-	
-	//--
-	ssaoShader.setUniform2f("camerarange", camerarangex, camerarangey);
-	ssaoShader.setUniform1f("aoCap", aoCap);
-	ssaoShader.setUniform1f("aoMultiplier", aoMultiplier);
-	ssaoShader.setUniform1f("depthTolerance", depthTolerance);
-	ssaoShader.setUniform1f("aorange", aorange);
-	//--
-	
-	drawFullScreenQuad(ofGetWidth(), ofGetHeight());
-	ssaoShader.end();	
+		ssaoFBO.beforeUpdate();
+		ssaoShader.begin();
+		ssaoShader.setUniform1i("texture0", depthTexSlot);
+		ssaoShader.setUniform1i("texture1", colorTexSlot);
+		ssaoShader.setUniform2f("screensize", ofGetWidth(), ofGetHeight());
+		ssaoShader.setUniform2f("camerarange", camerarangex, camerarangey);
+		ssaoShader.setUniform1f("aoCap", aoCap);
+		ssaoShader.setUniform1f("aoMultiplier", aoMultiplier);
+		ssaoShader.setUniform1f("depthTolerance", depthTolerance);
+		ssaoShader.setUniform1f("aorange", aorange);
+		ssaoShader.setUniform1f("readDepthVal", readDepthVal);
+		drawFullScreenQuad(ofGetWidth(), ofGetHeight());
+		ssaoShader.end();
+		ssaoFBO.afterUpdate();
 	depthFBO.afterDraw();
-	colorFBO.afterDraw();
+	colorFBO.afterDraw();	
 	
+}
+
+//--------------------------------------------------------------
+void testApp::draw(){	
 	
-	//	int colorTexSlot = 4;
-	//	colorFBO.beforeDraw(colorTexSlot);
-	//	defaultShader.begin();
-	//	defaultShader.setUniform1i("tex", colorTexSlot);
-	//	drawFullScreenQuad(ofGetWidth(), ofGetHeight());
-	//	defaultShader.end();
-	//	colorFBO.afterDraw();
-	
-	//	int depthTexSlot = 5;
-	//	depthFBO.beforeDraw(depthTexSlot);
-	//	showDepthShader.begin();
-	//	showDepthShader.setUniform1i("depth", depthTexSlot);
-	//	drawFullScreenQuad(ofGetWidth(), ofGetHeight());
-	//	showDepthShader.end();
-	//	depthFBO.afterDraw();
-	
-	gui.draw();
+	int ssaoTexSlot = 6;
+	ssaoFBO.beforeDraw(ssaoTexSlot);
+	int depthTexSlot = 5;
+	depthFBO.beforeDraw(depthTexSlot);
+	dofShader.begin();
+	dofShader.setUniform1i("bgl_RenderedTexture", ssaoTexSlot);
+	dofShader.setUniform1i("bgl_DepthTexture", depthTexSlot);
+	dofShader.setUniform1f("focus", focus);
+	dofShader.setUniform1f("aspectratiox", aspectratiox);
+	dofShader.setUniform1f("aspectratioy", aspectratioy);
+	dofShader.setUniform1f("blurclamp", blurclamp);
+	dofShader.setUniform1f("bias", bias);
+	drawFullScreenQuad(ofGetWidth(), ofGetHeight());
+	dofShader.end();	
+
+	ofSetupScreen();
+	gui.draw();	
 }
 
 //--------------------------------------------------------------
 void testApp::drawScene() {
-	
-	//setupGLStuff();
+	glEnable(GL_DEPTH_TEST);
 	
 	for (int i = 0; i < numObj; i++) {
 		ofxVec3f pos = objPos[i];
 		ofxVec4f col = objCol[i];
 		int size = objSize[i];
 		ofSetColor(col.x, col.y, col.z);
-		ofxSphere(pos.x, pos.y, pos.z, size);
+		ofxQuaternion qua = objRot[i];
+		float rad = 0.0; ofxVec3f rvec;
+		qua.getRotate(rad, rvec);
+		ofPushMatrix();
+		ofTranslate(pos.x, pos.y, pos.z);
+		ofRotate(ofRadToDeg(rad), rvec.x, rvec.y, rvec.z);
+		int typ = objType[i];
+		if (typ == 1) { 
+			ofxSphere(0,0,0, size);
+		}else {
+			ofxBox(0,0,0, size);
+		}
+		ofPopMatrix();
 	}
-	ofSetColor(255, 255, 255);
 	
+	ofSetColor(255, 255, 255);
 }
 
 //--------------------------------------------------------------
@@ -188,47 +184,7 @@ void testApp::drawFullScreenQuad(int w, int h) {
 	ofxVec3f b = ofxVec3f(ofGetWidth(), 0, 0);
 	ofxVec3f c = ofxVec3f(ofGetWidth(), ofGetHeight(), 0);
 	ofxVec3f d = ofxVec3f(0, ofGetHeight(), 0);
-	
-	ofxQuad(a, b, c, d);	
-	
-}
-
-void testApp::setupGLStuff(){
-	
-    glEnable(GL_POLYGON_SMOOTH);
-	//    glEnable(GL_LIGHTING);
-    glEnable(GL_LIGHT0);
-    glEnable(GL_DEPTH_TEST);
-    glEnable(GL_NORMALIZE);
-    glEnable(GL_COLOR_MATERIAL);
-	
-	//    glDisable(GL_BLEND);
-    glPolygonMode(GL_BACK, GL_FILL );
-	//	  glEnable(GL_CULL_FACE);
-	//    glCullFace(GL_FRONT);
-    glShadeModel(GL_SMOOTH);
-	
-    glColor3f(0.5, 0.5, 0.5);
-    GLfloat on[]  = {1.0};
-    GLfloat off[] = {0.0};
-    glLightModelfv( GL_LIGHT_MODEL_TWO_SIDE,on);
-	
-	
-    GLfloat shininess[] = {0};
-    glMaterialfv(GL_FRONT_AND_BACK,GL_AMBIENT,  materialAmbient);
-    glMaterialfv(GL_FRONT_AND_BACK,GL_DIFFUSE,  materialDiffuse);
-    glMaterialfv(GL_FRONT_AND_BACK,GL_SPECULAR, materialSpecular);
-    glMaterialfv(GL_FRONT_AND_BACK,GL_SHININESS,shininess);
-	
-	
-    GLfloat lightPosition[] = { 0.0f, 0.0f, -100.0, 0.0f };
-    GLfloat lightDiffuse[]  = { 1.00, 0.99, 0.98, 1.0};
-    GLfloat lightSpecular[] = { 0.10, 0.10, 0.10, 1.0};
-    GLfloat lightAmbient[]  = { 0.45, 0.43, 0.44, 1.0};
-    glLightfv(GL_LIGHT0,GL_POSITION, lightPosition);
-    glLightfv(GL_LIGHT0,GL_DIFFUSE,  lightDiffuse);
-    glLightfv(GL_LIGHT0,GL_SPECULAR, lightSpecular);
-    glLightfv(GL_LIGHT0,GL_AMBIENT,  lightAmbient);
+	ofxQuad(a, b, c, d);
 	
 }
 

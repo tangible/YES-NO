@@ -68,6 +68,7 @@ public:
 	float getFaceDistanceBetween(btSoftBody::tFaceArray& faces, int face1ID, int face2ID);
 	void updateColorPointer();
 	
+	
 	vector<float> destColorPointer;
 	vector<float> currColorPointer;
 	ofxTween	  colorPointerTween;

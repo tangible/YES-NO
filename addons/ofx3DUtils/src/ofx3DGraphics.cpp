@@ -511,35 +511,7 @@ void ofxQuad(ofxVec3f pos1, ofxVec3f pos2, ofxVec3f pos3, ofxVec3f pos4){
 	ofxVec3f tn2 = pos2;
 	ofxVec3f tn3 = pos3;
 	ofxVec3f tn4 = pos4;
-//	ofxVec3f n1 = tn1.cross(tn2);
-//	ofxVec3f n3 = tn2.cross(tn3);
-//	ofxVec3f n4 = tn3.cross(tn4);
-//	ofxVec3f n2 = tn4.cross(tn1);	
-//	ofxVec3f n = (n1+n3+n4+n2)/4;
-//	glNormal3f(n.x, n.y, n.z);
 
-//	glTexCoord3f(0.0, 1.0, 0.0);	
-//	//glNormal3f(pos1.x, pos1.y, pos1.z);
-//	//	ofxVec3f n1 = pos2.cross(pos1);
-//	//	glNormal3f(n1.x, n1.y, n1.z);
-//	glVertex3f(pos1.x, pos1.y, pos1.z);
-//	glTexCoord3f(1.0, 1.0, 0.0);
-//	//glNormal3f(pos2.x, pos2.y, pos2.z);
-//	//	ofxVec3f n2 = pos1.cross(pos2);
-//	//	glNormal3f(n2.x, n2.y, n2.z);
-//	glVertex3f(pos2.x, pos2.y, pos2.z);
-//	glTexCoord3f(1.0, 0.0, 0.0);
-//	//glNormal3f(pos3.x, pos3.y, pos3.z);
-//	//	ofxVec3f n3 = pos2.cross(pos3);
-//	//	glNormal3f(n3.x, n3.y, n3.z);
-//	glVertex3f(pos3.x, pos3.y, pos3.z);
-//	glTexCoord3f(0.0, 0.0, 0.0);
-//	//glNormal3f(pos4.x, pos4.y, pos4.z);
-//	//	ofxVec3f n4 = pos3.cross(pos4);
-//	//	glNormal3f(n4.x, n4.y, n4.z);
-//	glVertex3f(pos4.x, pos4.y, pos4.z);
-//	glEnd();	
-	
 	ofxVec3f n1 = tn1.cross(tn2);
 	glNormal3f(n1.x, n1.y, n1.z);	
 	glVertex3f(pos1.x, pos1.y, pos1.z);
@@ -566,9 +538,20 @@ void ofxTriangleShape(float x1, float y1, float z1, float x2, float y2, float z2
 	glEnd();
 }
 void ofxTriangleShape(ofxVec3f pos1, ofxVec3f pos2, ofxVec3f pos3){
+	
+	ofxVec3f tn1 = pos1;
+	ofxVec3f tn2 = pos2;
+	ofxVec3f tn3 = pos3;
+	
 	glBegin(GL_TRIANGLES);
+	ofxVec3f n1 = tn1.cross(tn2);
+	glNormal3f(n1.x, n1.y, n1.z);
 	glVertex3f(pos1.x, pos1.y, pos1.z);
+	ofxVec3f n2 = tn2.cross(tn3);
+	glNormal3f(n2.x, n2.y, n2.z);
 	glVertex3f(pos2.x, pos2.y, pos2.z);
+	ofxVec3f n3 = tn3.cross(tn1);
+	glNormal3f(n3.x, n3.y, n3.z);
 	glVertex3f(pos3.x, pos3.y, pos3.z);
 	glEnd();
 }
