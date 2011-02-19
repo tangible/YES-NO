@@ -14,6 +14,7 @@
 #include "AdminPanel.h"
 #include "ofxColorPicker.h"
 #include "YesNoObj.h"
+#include "Flock3D.h"
 
 class ParticleCloud {
 
@@ -30,5 +31,9 @@ public:
 
 	// yes/no obj
 	YesNoObj yes;
+	YesNoObj no;
+	
+	// trails
+	Flock3D flock;
 	
 };

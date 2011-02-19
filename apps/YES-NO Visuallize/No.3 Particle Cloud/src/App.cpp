@@ -14,7 +14,6 @@ void App::setup(){
 	
 	adminPanel.setup();
 	pCloud.setup(fps, &adminPanel);
-	flock.setup(ofGetWidth(), ofGetHeight(), 0, -500, 20);
 	
 	//cam.setup(this, 700);
 	
@@ -32,41 +31,39 @@ void App::setup(){
 //--------------------------------------------------------------
 void App::update(){
 	
-	flock.update(true);
+	adminPanel.update();
+	pCloud.update();
+
+	depthFBO.beforeUpdate();
+	pCloud.draw();
+	depthFBO.afterUpdate();
 	
-//	adminPanel.update();
-//	pCloud.update();
-//
-//	depthFBO.beforeUpdate();
-//	pCloud.draw();
-//	depthFBO.afterUpdate();
-//	
-//	colorFBO.beforeUpdate();
-//	pCloud.draw();
-//	colorFBO.afterUpdate();			
-//	
-//	int colorTexSlot = 4;
-//	colorFBO.beforeDraw(colorTexSlot);	
-//	int depthTexSlot = 5;
-//	depthFBO.beforeDraw(depthTexSlot);
-//	ssaoFBO.beforeUpdate();
-//	ssaoShader.begin();
-//	ssaoShader.setUniform1i("texture0", depthTexSlot);
-//	ssaoShader.setUniform1i("texture1", colorTexSlot);
-//	ssaoShader.setUniform2f("screensize", ofGetWidth(), ofGetHeight());
-//	ssaoShader.setUniform2f("camerarange", adminPanel.camerarangex, adminPanel.camerarangey);
-//	ssaoShader.setUniform1f("aoCap", adminPanel.aoCap);
-//	ssaoShader.setUniform1f("aoMultiplier", adminPanel.aoMultiplier);
-//	ssaoShader.setUniform1f("depthTolerance", adminPanel.depthTolerance);
-//	ssaoShader.setUniform1f("aorange", adminPanel.aorange);
-//	ssaoShader.setUniform1f("readDepthVal", adminPanel.readDepthVal);
-//	ssaoShader.setUniform1f("aoDivision", adminPanel.aoDivision);
-//	ssaoShader.setUniform1f("baseColSubdivision", adminPanel.baseColSubdivision);
-//	drawFullScreenQuad(ofGetWidth(), ofGetHeight());
-//	ssaoShader.end();
-//	ssaoFBO.afterUpdate();
-//	depthFBO.afterDraw();
-//	colorFBO.afterDraw();	
+	colorFBO.beforeUpdate();
+	pCloud.draw();
+	colorFBO.afterUpdate();			
+	
+	int colorTexSlot = 4;
+	colorFBO.beforeDraw(colorTexSlot);	
+	int depthTexSlot = 5;
+	depthFBO.beforeDraw(depthTexSlot);
+	ssaoFBO.beforeUpdate();
+	ssaoShader.begin();
+	ssaoShader.setUniform1i("texture0", depthTexSlot);
+	ssaoShader.setUniform1i("texture1", colorTexSlot);
+	ssaoShader.setUniform2f("screensize", ofGetWidth(), ofGetHeight());
+	ssaoShader.setUniform2f("camerarange", adminPanel.camerarangex, adminPanel.camerarangey);
+	ssaoShader.setUniform1f("aoCap", adminPanel.aoCap);
+	ssaoShader.setUniform1f("aoMultiplier", adminPanel.aoMultiplier);
+	ssaoShader.setUniform1f("depthTolerance", adminPanel.depthTolerance);
+	ssaoShader.setUniform1f("aorange", adminPanel.aorange);
+	ssaoShader.setUniform1f("readDepthVal", adminPanel.readDepthVal);
+	ssaoShader.setUniform1f("aoDivision", adminPanel.aoDivision);
+	ssaoShader.setUniform1f("baseColSubdivision", adminPanel.baseColSubdivision);
+	drawFullScreenQuad(ofGetWidth(), ofGetHeight());
+	ssaoShader.end();
+	ssaoFBO.afterUpdate();
+	depthFBO.afterDraw();
+	colorFBO.afterDraw();	
 	
 }
 
@@ -74,23 +71,21 @@ void App::update(){
 void App::draw(){
 	
 	//cam.draw();
-
-	flock.draw();
 	
-//	int ssaoTexSlot = 6;
-//	ssaoFBO.beforeDraw(ssaoTexSlot);
-//	int depthTexSlot = 5;
-//	depthFBO.beforeDraw(depthTexSlot);
-//	dofShader.begin();
-//	dofShader.setUniform1i("bgl_RenderedTexture", ssaoTexSlot);
-//	dofShader.setUniform1i("bgl_DepthTexture", depthTexSlot);
-//	dofShader.setUniform1f("focus", adminPanel.focus);
-//	dofShader.setUniform1f("aspectratiox", adminPanel.aspectratiox);
-//	dofShader.setUniform1f("aspectratioy", adminPanel.aspectratioy);
-//	dofShader.setUniform1f("blurclamp", adminPanel.blurclamp);
-//	dofShader.setUniform1f("bias", adminPanel.bias);
-//	drawFullScreenQuad(ofGetWidth(), ofGetHeight());
-//	dofShader.end();	
+	int ssaoTexSlot = 6;
+	ssaoFBO.beforeDraw(ssaoTexSlot);
+	int depthTexSlot = 5;
+	depthFBO.beforeDraw(depthTexSlot);
+	dofShader.begin();
+	dofShader.setUniform1i("bgl_RenderedTexture", ssaoTexSlot);
+	dofShader.setUniform1i("bgl_DepthTexture", depthTexSlot);
+	dofShader.setUniform1f("focus", adminPanel.focus);
+	dofShader.setUniform1f("aspectratiox", adminPanel.aspectratiox);
+	dofShader.setUniform1f("aspectratioy", adminPanel.aspectratioy);
+	dofShader.setUniform1f("blurclamp", adminPanel.blurclamp);
+	dofShader.setUniform1f("bias", adminPanel.bias);
+	drawFullScreenQuad(ofGetWidth(), ofGetHeight());
+	dofShader.end();	
 
 	adminPanel.draw();
 	

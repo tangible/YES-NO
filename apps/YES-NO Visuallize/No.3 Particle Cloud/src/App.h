@@ -6,7 +6,6 @@
 #include "ofxColorFBO.h"
 #include "AdminPanel.h"
 #include "ParticleCloud.h"
-#include "Flock3D.h"
 #include "ofxEasyCam.h"
 
 class App : public ofBaseApp{
@@ -22,11 +21,10 @@ public:
 	void mouseDragged(int x, int y, int button);
 	void mousePressed(int x, int y, int button);
 	void mouseReleased(int x, int y, int button);
-	void windowResized(int w, int h);
+	void windowResized(int w, int h);	
 	
 	AdminPanel adminPanel;
 	ParticleCloud pCloud;
-	Flock3D flock;
 	
 	ofxEasyCam cam;
 	

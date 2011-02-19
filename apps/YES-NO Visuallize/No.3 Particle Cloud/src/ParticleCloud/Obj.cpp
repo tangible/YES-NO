@@ -30,7 +30,7 @@ void Obj::movetoForcePoint() {
 	
 	// apply force
 	force.set(-body->getBodyPos() + forcePoint);
-	force *= maxVal * 40;
+	force *= maxVal * 60;
 	tangentVec = force.crossed(crossVec);
 	tangentVec.normalize();
 	tangentVec *= maxVal*100;
@@ -40,7 +40,7 @@ void Obj::movetoForcePoint() {
 	
 	ofxVec3f impulse;
 	impulse.set(ofRandomf(), ofRandomf(), ofRandomf());
-	impulse *= 80;
+	impulse *= 40;
 	
 	btImpulse = btVector3(impulse.x, impulse.y, impulse.z);
 	body->getRigidBody()->applyCentralImpulse(btImpulse);	

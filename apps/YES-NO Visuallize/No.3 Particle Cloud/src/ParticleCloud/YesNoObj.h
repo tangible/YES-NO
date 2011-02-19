@@ -18,22 +18,22 @@
 class YesNoObj {
 
 public:
-	void setup(ofxBullet* bl, AdminPanel* ap);
+	void setup(ofxBullet* bl, AdminPanel* ap, int _YesOrNo);
 	void update();
 	void draw();
+	void computeShape(vector<ofxVec3f> posFeed);
+	
 	
 	ofxBullet* bullet;
 	AdminPanel* adminPanel;
 	ofxColorPicker colPick;	
 	
+	int YesOrNo;
+	float baseMin; // if yes => 0.0, no => 0.5
+	float baseMax; // if yes => 0.5, no => 1.0
+	
 	// objs fields
 	int numObjs;
 	vector<Obj> objs;
-//	vector<MyRigidBody*> objs;
-//	vector<int> objSize;	
-//	vector<float> colAngle;
-//	vector<ofxVec3f> forcePoint;
-//	float colScale;
-//	float colRadius;	
 
 };

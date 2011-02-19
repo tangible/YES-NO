@@ -15,8 +15,8 @@ void Boid::setup(float _width, float _height, float _near, float _far, ofxVec3f 
 	height = _height;
 	near = _near;
 	far = _far;
-	maxSpeed = 4;
-	maxSteerForce = 0.1;
+	maxSpeed = 6;
+	maxSteerForce = 0.03;
 	sc = 3;
 	flap = 0;
 	t = 0;
@@ -24,8 +24,8 @@ void Boid::setup(float _width, float _height, float _near, float _far, ofxVec3f 
 	
 	pos = inPos;
 	vel = ofxVec3f(ofRandomf(), ofRandomf(), ofRandomf());
-	acc = ofxVec3f(101, 0, 0);
-	neighborhoodRadius = 1000;
+	acc = ofxVec3f(0, 0, 0);
+	neighborhoodRadius = 100000;
 	
 }
 
@@ -44,7 +44,7 @@ void Boid::setup(float _width, float _height, float _near, float _far, ofxVec3f 
 	
 	pos = inPos;
 	vel = inVel;
-	acc = ofxVec3f(101, 0, 0);
+	acc = ofxVec3f(0, 0, 0);
 	neighborhoodRadius = r;
 
 }
@@ -65,15 +65,20 @@ void Boid::update(vector<Boid*> bl) {
 	move();
 	checkBounds();
 	
+	if (poss.size() < 200) {
+		poss.push_back(pos);
+	}else {
+		poss.erase(poss.begin());
+		poss.push_back(pos);
+	}
+	
+	
 }
 
 void Boid::draw() {
 	
-	cout << "x="+ofToString(pos.x)+" y="+ofToString(pos.y)+" z="+ofToString(pos.z) << endl;
-	
 	ofPushMatrix();
 	ofTranslate(pos.x, pos.y, pos.z);
-	//ofDrawBitmapString(/*"x="+ofToString(pos.x)+",y="+ofToString(pos.y)+*/",z="+ofToString(pos.z), 0, 0);
 	ofRotateY(ofRadToDeg(atan2(-vel.z, vel.x)));
 	ofRotateZ(ofRadToDeg(asin(vel.y/vel.length())));
 	
@@ -83,6 +88,10 @@ void Boid::draw() {
 	ofxTriangleShape(-3*sc,0,2*sc, -3*sc,2*sc,0, -3*sc,-2*sc,0);
 	
 	ofPopMatrix();
+	
+	for (int i = 0; i < poss.size(); i++) {
+		ofxPoint(poss[i]);
+	}
 	
 }
 

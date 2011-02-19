@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		318E688E12F604F90097A0A9 /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 318E688C12F604E90097A0A9 /* icon.icns */; };
+		31B5E31B130F576B00388627 /* Boid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31B5E315130F576B00388627 /* Boid.cpp */; };
+		31B5E31C130F576B00388627 /* BoidList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31B5E317130F576B00388627 /* BoidList.cpp */; };
+		31B5E31D130F576B00388627 /* Flock3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31B5E319130F576B00388627 /* Flock3D.cpp */; };
 		31E813C9130DF1CB0053787E /* MyRigidBody.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31E8121A130DF1CB0053787E /* MyRigidBody.cpp */; };
 		31E813CA130DF1CB0053787E /* MySoftBody.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31E8121C130DF1CB0053787E /* MySoftBody.cpp */; };
 		31E813CB130DF1CB0053787E /* Ragdoll.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31E8121E130DF1CB0053787E /* Ragdoll.cpp */; };
@@ -199,9 +202,6 @@
 		31E815F7130E0F0B0053787E /* ofxColorPicker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31E815F5130E0F0B0053787E /* ofxColorPicker.cpp */; };
 		31E8170B130E23290053787E /* YesNoObj.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31E8170A130E23290053787E /* YesNoObj.cpp */; };
 		31E8174B130E287F0053787E /* Obj.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31E8174A130E287F0053787E /* Obj.cpp */; };
-		31E81914130E52E00053787E /* Flock3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31E81913130E52E00053787E /* Flock3D.cpp */; };
-		31E81917130E53740053787E /* Boid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31E81916130E53740053787E /* Boid.cpp */; };
-		31E8191A130E53970053787E /* BoidList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31E81919130E53970053787E /* BoidList.cpp */; };
 		E45BE0AA0E8CC67C009D7055 /* GLee.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE0A90E8CC67C009D7055 /* GLee.a */; };
 		E45BE2E40E8CC69C009D7055 /* rtAudio.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE2E30E8CC69C009D7055 /* rtAudio.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -273,6 +273,12 @@
 /* Begin PBXFileReference section */
 		312CFBD3130F2E010010A5FB /* ofxEasyCam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxEasyCam.h; sourceTree = "<group>"; };
 		318E688C12F604E90097A0A9 /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = icon.icns; path = bin/data/icon.icns; sourceTree = "<group>"; };
+		31B5E315130F576B00388627 /* Boid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Boid.cpp; sourceTree = "<group>"; };
+		31B5E316130F576B00388627 /* Boid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Boid.h; sourceTree = "<group>"; };
+		31B5E317130F576B00388627 /* BoidList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BoidList.cpp; sourceTree = "<group>"; };
+		31B5E318130F576B00388627 /* BoidList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoidList.h; sourceTree = "<group>"; };
+		31B5E319130F576B00388627 /* Flock3D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Flock3D.cpp; sourceTree = "<group>"; };
+		31B5E31A130F576B00388627 /* Flock3D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flock3D.h; sourceTree = "<group>"; };
 		31E81219130DF1CB0053787E /* MyKinematicMotionState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyKinematicMotionState.h; sourceTree = "<group>"; };
 		31E8121A130DF1CB0053787E /* MyRigidBody.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MyRigidBody.cpp; sourceTree = "<group>"; };
 		31E8121B130DF1CB0053787E /* MyRigidBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyRigidBody.h; sourceTree = "<group>"; };
@@ -744,12 +750,6 @@
 		31E8170A130E23290053787E /* YesNoObj.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = YesNoObj.cpp; sourceTree = "<group>"; };
 		31E81749130E287F0053787E /* Obj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Obj.h; sourceTree = "<group>"; };
 		31E8174A130E287F0053787E /* Obj.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Obj.cpp; sourceTree = "<group>"; };
-		31E81912130E52E00053787E /* Flock3D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flock3D.h; sourceTree = "<group>"; };
-		31E81913130E52E00053787E /* Flock3D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Flock3D.cpp; sourceTree = "<group>"; };
-		31E81915130E53740053787E /* Boid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Boid.h; sourceTree = "<group>"; };
-		31E81916130E53740053787E /* Boid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Boid.cpp; sourceTree = "<group>"; };
-		31E81918130E53970053787E /* BoidList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoidList.h; sourceTree = "<group>"; };
-		31E81919130E53970053787E /* BoidList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BoidList.cpp; sourceTree = "<group>"; };
 		E45BE0390E8CC647009D7055 /* FreeImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FreeImage.h; path = ../../../libs/freeimage/include/FreeImage.h; sourceTree = SOURCE_ROOT; };
 		E45BE03F0E8CC650009D7055 /* fmod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = fmod.h; path = ../../../libs/fmodex/include/fmod.h; sourceTree = SOURCE_ROOT; };
 		E45BE0400E8CC650009D7055 /* fmod.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fmod.hpp; path = ../../../libs/fmodex/include/fmod.hpp; sourceTree = SOURCE_ROOT; };
@@ -1731,12 +1731,12 @@
 		31E8190E130E52C40053787E /* Flock3D */ = {
 			isa = PBXGroup;
 			children = (
-				31E81912130E52E00053787E /* Flock3D.h */,
-				31E81913130E52E00053787E /* Flock3D.cpp */,
-				31E81918130E53970053787E /* BoidList.h */,
-				31E81919130E53970053787E /* BoidList.cpp */,
-				31E81915130E53740053787E /* Boid.h */,
-				31E81916130E53740053787E /* Boid.cpp */,
+				31B5E319130F576B00388627 /* Flock3D.cpp */,
+				31B5E31A130F576B00388627 /* Flock3D.h */,
+				31B5E317130F576B00388627 /* BoidList.cpp */,
+				31B5E318130F576B00388627 /* BoidList.h */,
+				31B5E315130F576B00388627 /* Boid.cpp */,
+				31B5E316130F576B00388627 /* Boid.h */,
 			);
 			path = Flock3D;
 			sourceTree = "<group>";
@@ -2335,9 +2335,9 @@
 				31E815F7130E0F0B0053787E /* ofxColorPicker.cpp in Sources */,
 				31E8170B130E23290053787E /* YesNoObj.cpp in Sources */,
 				31E8174B130E287F0053787E /* Obj.cpp in Sources */,
-				31E81914130E52E00053787E /* Flock3D.cpp in Sources */,
-				31E81917130E53740053787E /* Boid.cpp in Sources */,
-				31E8191A130E53970053787E /* BoidList.cpp in Sources */,
+				31B5E31B130F576B00388627 /* Boid.cpp in Sources */,
+				31B5E31C130F576B00388627 /* BoidList.cpp in Sources */,
+				31B5E31D130F576B00388627 /* Flock3D.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

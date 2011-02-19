@@ -19,6 +19,7 @@ public:
 	void setup(float _width, float _height, float _near, float _far, int _initBoidNum);
 	void update(bool avoidWall);
 	void draw();
+	vector<ofxVec3f> getTrailPoints(int flockIdx);
 	
 	float width;
 	float height;

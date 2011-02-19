@@ -23,6 +23,9 @@ public:
 	ofxVec3f getObjPos(){return body->getBodyPos();}
 	ofxQuaternion getObjRot(){return body->getBodyRotQuat();}
 	
+	static const int YES = 0;
+	static const int NO = 1;	
+	
 	int size;
 	float colAngle;
 	float colScale;

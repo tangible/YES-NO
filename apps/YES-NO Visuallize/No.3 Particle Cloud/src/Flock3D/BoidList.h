@@ -20,6 +20,7 @@ public:
 	void addBoid(Boid* b);
 	void update(bool aW);
 	void draw();
+	vector<ofxVec3f> getTrailPoints(int boidIdx);
 	
 	float width;
 	float height;

@@ -47,4 +47,6 @@ public:
 	float t;
 	bool avoidWalls;
 	
+	vector<ofxVec3f> poss;
+	
 };

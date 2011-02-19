@@ -57,3 +57,10 @@ void BoidList::draw() {
 	}
 
 }
+
+vector<ofxVec3f> BoidList::getTrailPoints(int boidIdx) {
+
+	Boid* b = boids[boidIdx];
+	return b->poss;
+
+}

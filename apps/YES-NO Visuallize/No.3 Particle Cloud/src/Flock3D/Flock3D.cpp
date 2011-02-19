@@ -49,3 +49,9 @@ void Flock3D::draw() {
 	flock1->draw();
 	
 }
+
+vector<ofxVec3f> Flock3D::getTrailPoints(int flockIdx) {
+
+	return flock1->getTrailPoints(flockIdx);
+
+}
