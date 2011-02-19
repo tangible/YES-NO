@@ -205,7 +205,7 @@ void MySoftBody::createTriMeshShape(const btScalar* vertices, const int* triangl
 	// ???
 	psb->m_cfg.kDF            =   1;//1;
 	// 元に戻る力、弾力
-	psb->m_cfg.kPR            =   2500;//2500;
+	psb->m_cfg.kPR            =   3200;//2500;
 	// ぐちゃぐちゃになる度。中身の量。元に戻らない度。
 	psb->m_cfg.kVC            =   0;//2500;
 	// 地面と滑るかどうか

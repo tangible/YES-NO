@@ -29,6 +29,7 @@ public:
 	void						translateBody(ofxVec3f pos, ofxVec3f rotDir, float degree);
 	ofPoint						getBodyPos();
 	ofxVec3f					getBodyRotDegree();
+	ofxQuaternion				getBodyRotQuat();
 	ofxVec4f					getBodyColor();
 	int							getSphereRadius(); // sphere only
 	ofxVec3f					getBoxSize(); // box only

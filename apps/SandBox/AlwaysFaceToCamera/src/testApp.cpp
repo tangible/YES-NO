@@ -3,21 +3,28 @@
 //--------------------------------------------------------------
 void testApp::setup(){
 
+		cam.setup(this, 700);
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
 
+
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
+	
+	cam.draw();
+	
 	ofxLightsOn();
 	
 	float z = sin( ofGetElapsedTimef() ) * 200.0f;
 	
 	ofxVec3f center(0, 0, 0);
-	ofxVec3f tar(mouseX- ofGetWidth()*.5, mouseY- ofGetHeight()*.5, z);
+	//ofxVec3f tar(mouseX- ofGetWidth()*.5, mouseY- ofGetHeight()*.5, z);
+	ofxVec3f tar = cam.getEye();
+//	ofxVec3f tar = ofxVec3f(ofGetWidth()/2, ofGetHeight()/2, 700);
 	
 	
 	glPushMatrix();

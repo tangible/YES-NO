@@ -225,6 +225,16 @@ ofxVec3f MyRigidBody::getBodyRotDegree() {
 				   ofxBulletStaticUtil::radToDeg(fAngZ));
 }
 
+ofxQuaternion MyRigidBody::getBodyRotQuat() {
+	
+	btDefaultMotionState* myMotionState = (btDefaultMotionState*)psb->getMotionState();
+	btTransform worldTrans;
+	myMotionState->getWorldTransform(worldTrans);
+	btQuaternion bq = worldTrans.getRotation();
+	return ofxQuaternion(bq.x(), bq.y(), bq.z(), bq.w());
+	
+}
+
 ofxVec4f MyRigidBody::getBodyColor() {
 	return bodyColor;
 }
