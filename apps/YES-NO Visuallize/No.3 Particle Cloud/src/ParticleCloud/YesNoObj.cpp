@@ -77,7 +77,7 @@ void YesNoObj::draw() {
 		ofTranslate(pos.x, pos.y, pos.z);
 		ofRotate(ofRadToDeg(rAng), axis.x, axis.y, axis.z);
 		
-		(YesOrNo == Obj::YES) ? ofxSphere(0,0,0, size) : ofxBox(0,0,0, size*1.5);
+		(YesOrNo == Obj::YES) ? ofxSphere(0,0,0, size*1.225) : ofxBox(0,0,0, size*1.6);
 
 		ofPopMatrix();
 		

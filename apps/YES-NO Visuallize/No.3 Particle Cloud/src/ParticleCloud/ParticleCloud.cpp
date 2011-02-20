@@ -9,15 +9,16 @@
 
 #include "ParticleCloud.h"
 
-void ParticleCloud::setup(int _fps, AdminPanel* ap) {
+void ParticleCloud::setup(int _fps, AdminPanel* ap, ofxCamera* cam) {
 	
 	bullet = new ofxBullet();
 	bullet->initPhysics(ofxVec3f(0, 0, 0), false);	
+	bullet->enableRayCastingMouseInteraction(cam);
 	
 	fps = _fps;
 	adminPanel = ap;
 	
-	int numObjs = 190;
+	int numObjs = 200;
 	yes.setup(bullet, ap, Obj::YES, numObjs);
 	no.setup(bullet, ap, Obj::NO, numObjs);
 	

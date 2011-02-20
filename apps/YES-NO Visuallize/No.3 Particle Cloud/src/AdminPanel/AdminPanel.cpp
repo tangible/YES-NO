@@ -77,7 +77,7 @@ void AdminPanel::restoreDefault() {
 	aoDivision = 12.5;
 	baseColSubdivision = 0.896;
 	
-	focus = 1.028594;
+	focus = 0.98;
 	aspectratiox = ofGetWidth();
 	aspectratioy = ofGetHeight();	
 	blurclamp = 0.0253910;

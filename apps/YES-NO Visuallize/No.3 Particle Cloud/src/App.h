@@ -26,7 +26,8 @@ public:
 	AdminPanel adminPanel;
 	ParticleCloud pCloud;
 	
-	ofxEasyCam cam;
+	//ofxEasyCam cam;
+	ofxCamera cam;
 	
 	ofxShader defaultShader;
 	ofxShader showDepthShader;

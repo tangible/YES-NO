@@ -12,10 +12,11 @@ void App::setup(){
 	ofBackground(0,0,0);
 	ofSetFrameRate(fps);
 	
-	adminPanel.setup();
-	pCloud.setup(fps, &adminPanel);
-	
 	//cam.setup(this, 700);
+	cam.position(ofGetWidth()/2, ofGetHeight()/2, 760);	
+	
+	adminPanel.setup();
+	pCloud.setup(fps, &adminPanel, &cam);
 	
 	defaultShader.setup("default");
 	showDepthShader.setup("showdepth");
@@ -34,6 +35,8 @@ void App::update(){
 	adminPanel.update();
 	pCloud.update();
 
+	cam.place();
+	
 	depthFBO.beforeUpdate();
 	pCloud.draw();
 	depthFBO.afterUpdate();
