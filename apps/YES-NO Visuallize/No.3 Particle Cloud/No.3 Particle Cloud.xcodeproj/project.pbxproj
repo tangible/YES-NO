@@ -11,6 +11,7 @@
 		31B5E31B130F576B00388627 /* Boid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31B5E315130F576B00388627 /* Boid.cpp */; };
 		31B5E31C130F576B00388627 /* BoidList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31B5E317130F576B00388627 /* BoidList.cpp */; };
 		31B5E31D130F576B00388627 /* Flock3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31B5E319130F576B00388627 /* Flock3D.cpp */; };
+		31B5E8F41310C04C00388627 /* ofxColorPicker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31B5E8F21310C04C00388627 /* ofxColorPicker.cpp */; };
 		31E813C9130DF1CB0053787E /* MyRigidBody.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31E8121A130DF1CB0053787E /* MyRigidBody.cpp */; };
 		31E813CA130DF1CB0053787E /* MySoftBody.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31E8121C130DF1CB0053787E /* MySoftBody.cpp */; };
 		31E813CB130DF1CB0053787E /* Ragdoll.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31E8121E130DF1CB0053787E /* Ragdoll.cpp */; };
@@ -199,7 +200,6 @@
 		31E8152E130DF7260053787E /* default.vert in Resources */ = {isa = PBXBuildFile; fileRef = 31E814B6130DF32E0053787E /* default.vert */; };
 		31E8152F130DF7260053787E /* showdepth.frag in Resources */ = {isa = PBXBuildFile; fileRef = 31E814B9130DF32E0053787E /* showdepth.frag */; };
 		31E81530130DF7260053787E /* showdepth.vert in Resources */ = {isa = PBXBuildFile; fileRef = 31E814BA130DF32E0053787E /* showdepth.vert */; };
-		31E815F7130E0F0B0053787E /* ofxColorPicker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31E815F5130E0F0B0053787E /* ofxColorPicker.cpp */; };
 		31E8170B130E23290053787E /* YesNoObj.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31E8170A130E23290053787E /* YesNoObj.cpp */; };
 		31E8174B130E287F0053787E /* Obj.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31E8174A130E287F0053787E /* Obj.cpp */; };
 		E45BE0AA0E8CC67C009D7055 /* GLee.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE0A90E8CC67C009D7055 /* GLee.a */; };
@@ -279,6 +279,8 @@
 		31B5E318130F576B00388627 /* BoidList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoidList.h; sourceTree = "<group>"; };
 		31B5E319130F576B00388627 /* Flock3D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Flock3D.cpp; sourceTree = "<group>"; };
 		31B5E31A130F576B00388627 /* Flock3D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flock3D.h; sourceTree = "<group>"; };
+		31B5E8F21310C04C00388627 /* ofxColorPicker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxColorPicker.cpp; sourceTree = "<group>"; };
+		31B5E8F31310C04C00388627 /* ofxColorPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxColorPicker.h; sourceTree = "<group>"; };
 		31E81219130DF1CB0053787E /* MyKinematicMotionState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyKinematicMotionState.h; sourceTree = "<group>"; };
 		31E8121A130DF1CB0053787E /* MyRigidBody.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MyRigidBody.cpp; sourceTree = "<group>"; };
 		31E8121B130DF1CB0053787E /* MyRigidBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyRigidBody.h; sourceTree = "<group>"; };
@@ -744,8 +746,6 @@
 		31E81516130DF6F60053787E /* dof.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = dof.vert; sourceTree = "<group>"; };
 		31E81517130DF6F60053787E /* ssao.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ssao.frag; sourceTree = "<group>"; };
 		31E81518130DF6F60053787E /* ssao.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ssao.vert; sourceTree = "<group>"; };
-		31E815F5130E0F0B0053787E /* ofxColorPicker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxColorPicker.cpp; sourceTree = "<group>"; };
-		31E815F6130E0F0B0053787E /* ofxColorPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxColorPicker.h; sourceTree = "<group>"; };
 		31E81709130E23290053787E /* YesNoObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YesNoObj.h; sourceTree = "<group>"; };
 		31E8170A130E23290053787E /* YesNoObj.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = YesNoObj.cpp; sourceTree = "<group>"; };
 		31E81749130E287F0053787E /* Obj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Obj.h; sourceTree = "<group>"; };
@@ -771,7 +771,7 @@
 		E45BE9770E8CC7DD009D7055 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = /System/Library/Frameworks/CoreServices.framework; sourceTree = "<absolute>"; };
 		E45BE9790E8CC7DD009D7055 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
 		E45BE97A0E8CC7DD009D7055 /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = /System/Library/Frameworks/QuickTime.framework; sourceTree = "<absolute>"; };
-		E4B69B5B0A3A1756003C02F2 /* No.3 Particle CloudDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "No.3 Particle CloudDebug.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4B69B5B0A3A1756003C02F2 /* No.3 Particle Cloud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "No.3 Particle Cloud.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4B69E1D0A3A1BDC003C02F2 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
 		E4B69E1E0A3A1BDC003C02F2 /* App.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = App.cpp; sourceTree = "<group>"; };
 		E4B69E1F0A3A1BDC003C02F2 /* App.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = App.h; sourceTree = "<group>"; };
@@ -842,6 +842,16 @@
 			);
 			name = Resources;
 			sourceTree = "<group>";
+		};
+		31B5E8F11310C04C00388627 /* ofxColorPicker2 */ = {
+			isa = PBXGroup;
+			children = (
+				31B5E8F21310C04C00388627 /* ofxColorPicker.cpp */,
+				31B5E8F31310C04C00388627 /* ofxColorPicker.h */,
+			);
+			name = ofxColorPicker2;
+			path = ../../../addons/ofxColorPicker2;
+			sourceTree = SOURCE_ROOT;
 		};
 		31E81217130DF1CB0053787E /* ofxBulletPhysics */ = {
 			isa = PBXGroup;
@@ -1718,16 +1728,6 @@
 			path = bin/data/shaders;
 			sourceTree = SOURCE_ROOT;
 		};
-		31E815F4130E0F0B0053787E /* ofxColorPicker */ = {
-			isa = PBXGroup;
-			children = (
-				31E815F5130E0F0B0053787E /* ofxColorPicker.cpp */,
-				31E815F6130E0F0B0053787E /* ofxColorPicker.h */,
-			);
-			name = ofxColorPicker;
-			path = ../../../addons/ofxColorPicker;
-			sourceTree = SOURCE_ROOT;
-		};
 		31E8190E130E52C40053787E /* Flock3D */ = {
 			isa = PBXGroup;
 			children = (
@@ -1744,8 +1744,8 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				31B5E8F11310C04C00388627 /* ofxColorPicker2 */,
 				312CFBD2130F2E010010A5FB /* ofxEasyCam */,
-				31E815F4130E0F0B0053787E /* ofxColorPicker */,
 				31E81476130DF32E0053787E /* ofxShader */,
 				31E8147A130DF32E0053787E /* ofxMSAInteractiveObject */,
 				31E8147E130DF32E0053787E /* ofxSimpleGuiToo */,
@@ -1939,7 +1939,7 @@
 			isa = PBXGroup;
 			children = (
 				318E688812F604D30097A0A9 /* Resources */,
-				E4B69B5B0A3A1756003C02F2 /* No.3 Particle CloudDebug.app */,
+				E4B69B5B0A3A1756003C02F2 /* No.3 Particle Cloud.app */,
 				E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */,
 				E4B69E1C0A3A1BDC003C02F2 /* src */,
 				E4C2422310CC54B6004149E2 /* openFrameworks */,
@@ -2066,7 +2066,7 @@
 			);
 			name = "No.3 Particle Cloud";
 			productName = myOFApp;
-			productReference = E4B69B5B0A3A1756003C02F2 /* No.3 Particle CloudDebug.app */;
+			productReference = E4B69B5B0A3A1756003C02F2 /* No.3 Particle Cloud.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -2332,12 +2332,12 @@
 				31E814D3130DF32E0053787E /* ofxDepthFBO.cpp in Sources */,
 				31E814D4130DF32E0053787E /* ofxTexture.cpp in Sources */,
 				31E814FA130DF4200053787E /* AdminPanel.cpp in Sources */,
-				31E815F7130E0F0B0053787E /* ofxColorPicker.cpp in Sources */,
 				31E8170B130E23290053787E /* YesNoObj.cpp in Sources */,
 				31E8174B130E287F0053787E /* Obj.cpp in Sources */,
 				31B5E31B130F576B00388627 /* Boid.cpp in Sources */,
 				31B5E31C130F576B00388627 /* BoidList.cpp in Sources */,
 				31B5E31D130F576B00388627 /* Flock3D.cpp in Sources */,
+				31B5E8F41310C04C00388627 /* ofxColorPicker.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2508,6 +2508,7 @@
 					"-lpthread",
 				);
 				OTHER_LDFLAGS = "";
+				USER_HEADER_SEARCH_PATHS = "../../../addons/ofxBulletPhysics/libs/src2.75/**";
 			};
 			name = Release;
 		};

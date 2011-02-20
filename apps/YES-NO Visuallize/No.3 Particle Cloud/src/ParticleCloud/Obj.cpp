@@ -9,13 +9,17 @@
 
 #include "Obj.h"
 
-void Obj::setup(ofxBullet* bullet, ofxVec3f pos, int radius, int mass) {
+void Obj::setup(ofxBullet* bullet, ofxVec3f pos, int radius, int mass, 
+				float _forceVecFactor,
+				float _tangentVecFactor) {
 
+	forceVecFactor = _forceVecFactor;
+	
 	body = bullet->createSphere(pos,
-											 radius, 
-											 mass, 
-											 ofxVec4f(ofRandom(0.5, 0.5), ofRandom(0.5, 0.5), ofRandom(0.5, 0.5), 0.7), 
-											 DYNAMIC_BODY);	
+								radius, 
+								mass, 
+								ofxVec4f(ofRandom(0.5, 0.5), ofRandom(0.5, 0.5), ofRandom(0.5, 0.5), 0.7), 
+								DYNAMIC_BODY);	
 
 }
 
@@ -30,7 +34,7 @@ void Obj::movetoForcePoint() {
 	
 	// apply force
 	force.set(-body->getBodyPos() + forcePoint);
-	force *= maxVal * 60;
+	force *= maxVal * forceVecFactor;
 	tangentVec = force.crossed(crossVec);
 	tangentVec.normalize();
 	tangentVec *= maxVal*100;

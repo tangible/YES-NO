@@ -87,6 +87,14 @@ void App::draw(){
 	drawFullScreenQuad(ofGetWidth(), ofGetHeight());
 	dofShader.end();	
 
+//	int colorTexSlot = 4;
+//	colorFBO.beforeDraw(colorTexSlot);
+//	defaultShader.begin();
+//	defaultShader.setUniform1i("tex", colorTexSlot);
+//	drawFullScreenQuad(ofGetWidth(), ofGetHeight());
+//	defaultShader.end();
+//	colorFBO.afterDraw();
+	
 	adminPanel.draw();
 	
 }
@@ -105,8 +113,10 @@ void App::drawFullScreenQuad(int w, int h) {
 //--------------------------------------------------------------
 void App::keyPressed(int key){
 
-	if (key = ' ') 
+	if (key == ' ') 
 		adminPanel.toggle();
+	
+	pCloud.debugKeyPress(key);
 
 }
 //--------------------------------------------------------------

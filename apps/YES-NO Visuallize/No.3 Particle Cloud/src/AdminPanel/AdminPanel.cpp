@@ -32,8 +32,9 @@ void AdminPanel::setup() {
 	
 	gui.addButton("Restore Default", RESTORDEFBTN).setNewColumn(true);
 	gui.addToggle("Toggle Simu", TOGGLEMOTION);	
-	gui.addSlider("colScale", colScale, 0.000, 1.000);
-	gui.addSlider("colRadius", colRadius, 0.000, 1.000);
+	gui.addSlider("colScale", colScale, 0.0, 1.0);
+	gui.addSlider("colRadius", colRadius, 0.0, 1.0);
+	gui.addSlider("colAngle", colAngle, -1.0, 1.0);
 	gui.addSlider("sizeBase", sizeBase, -100, 100);
 	gui.loadFromXML();
 	gui.show();	
@@ -76,15 +77,16 @@ void AdminPanel::restoreDefault() {
 	aoDivision = 12.5;
 	baseColSubdivision = 0.896;
 	
-	focus = 0.808594;
+	focus = 1.028594;
 	aspectratiox = ofGetWidth();
 	aspectratioy = ofGetHeight();	
 	blurclamp = 0.0253910;
 	bias = 0.041016;
 	
-	colScale = 0.630;
-	colRadius = 0.220;
-	sizeBase = 0;
+	colScale = 1.0;
+	colRadius = 0.5;
+	colAngle = 0.5;
+	sizeBase = -6.0;
 	
 	RESTORDEFBTN = false;
 	TOGGLEMOTION = true;

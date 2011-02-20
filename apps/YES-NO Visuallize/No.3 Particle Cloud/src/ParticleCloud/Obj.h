@@ -11,11 +11,14 @@
 
 #include "ofMain.h"
 #include "ofxBullet.h"
+#include "ofxColorPicker.h"
 
 class Obj {
 
 public:
-	void setup(ofxBullet* bullet, ofxVec3f pos, int radius, int mass);
+	void setup(ofxBullet* bullet, ofxVec3f pos, int radius, int mass, 
+			   float _forceVecFactor = 55,
+			   float _tangentVecFactor = 100);
 	void setForcePoint(ofxVec3f fp){forcePoint = fp;}
 	void movetoForcePoint();
 	
@@ -30,7 +33,11 @@ public:
 	float colAngle;
 	float colScale;
 	float colRadius;
+	ofxColorPicker colp;
 
+	float positionalSizeFactor;
+	float forceVecFactor;
+	
 private:
 	MyRigidBody* body;
 	ofxVec3f forcePoint;

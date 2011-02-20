@@ -16,16 +16,16 @@
 class Flock3D {
 
 public:
-	void setup(float _width, float _height, float _near, float _far, int _initBoidNum);
+	void setup(int numFlocks, float _width, float _height, float _near, float _far, int _initBoidNum, int _posSize);
 	void update(bool avoidWall);
 	void draw();
-	vector<ofxVec3f> getTrailPoints(int flockIdx);
+	vector<ofxVec3f> getTrailPoints(int YesOrNo, int flockIdx);
 	
 	float width;
 	float height;
 	float near;
 	float far;
 	int initBoidNum;
-	BoidList* flock1;
+	vector<BoidList*> flocks;
 
 };

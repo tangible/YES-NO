@@ -15,12 +15,15 @@
 class BoidList {
 
 public:
-	void setup(float _width, float _height, float _near, float _far, int n, float ih);
+	void setup(float _width, float _height, float _near, float _far, int n, int _posSize);
 	void add();
 	void addBoid(Boid* b);
 	void update(bool aW);
 	void draw();
 	vector<ofxVec3f> getTrailPoints(int boidIdx);
+	
+	static const int YES = 0;
+	static const int NO = 1;	
 	
 	float width;
 	float height;

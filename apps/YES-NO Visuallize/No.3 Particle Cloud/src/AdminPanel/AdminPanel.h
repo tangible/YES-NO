@@ -41,6 +41,7 @@ public:
 	// others
 	float colScale;
 	float colRadius;
+	float colAngle;
 	float sizeBase;
 	
 	bool RESTORDEFBTN;

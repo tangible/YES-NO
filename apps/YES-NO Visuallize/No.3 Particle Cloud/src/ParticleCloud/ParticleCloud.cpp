@@ -10,41 +10,60 @@
 #include "ParticleCloud.h"
 
 void ParticleCloud::setup(int _fps, AdminPanel* ap) {
-
+	
 	bullet = new ofxBullet();
 	bullet->initPhysics(ofxVec3f(0, 0, 0), false);	
 	
 	fps = _fps;
 	adminPanel = ap;
-	yes.setup(bullet, ap, Obj::YES);
-	no.setup(bullet, ap, Obj::NO);
 	
-	flock.setup(ofGetWidth(), ofGetHeight(), 0, -500, 20); // trails for yes and no objs
+	int numObjs = 190;
+	yes.setup(bullet, ap, Obj::YES, numObjs);
+	no.setup(bullet, ap, Obj::NO, numObjs);
+	
+	// trails for yes and no objs
+	flock.setup(2, ofGetWidth()-500, ofGetHeight()-200, 400, -200, 10, numObjs); 
 	
 }
 
 void ParticleCloud::update() {
-
+	
 	if (adminPanel->TOGGLEMOTION) {
 		
 		bullet->stepPhysicsSimulation(fps);
 		flock.update(true);
 		
-		yes.computeShape(flock.getTrailPoints(3));
+		yes.computeMovement(flock);
+		yes.computeCloudShape(flock);
 		yes.update();
 		
-		no.computeShape(flock.getTrailPoints(14));
+		no.computeMovement(flock);
+		no.computeCloudShape(flock);
 		no.update();
 	}
 	
 }
 
 void ParticleCloud::draw() {
-
-//	bullet->render();
+	
+	ofPushMatrix();
+	ofTranslate(250, 100, 0);
+	
 	yes.draw();
 	no.draw();
 	
 //	flock.draw();
+//	bullet->render();
 	
+	ofPopMatrix();
+}
+
+void ParticleCloud::debugKeyPress(int key) {
+
+	if (key == 'y') 
+		yes.addObj();
+
+	if (key == 'n') 
+		no.addObj();		
+
 }

@@ -23,6 +23,7 @@ public:
 	void setup(int _fps, AdminPanel* ap);
 	void update();
 	void draw();
+	void debugKeyPress(int key);
 	
 	int fps;
 	ofxBullet* bullet;

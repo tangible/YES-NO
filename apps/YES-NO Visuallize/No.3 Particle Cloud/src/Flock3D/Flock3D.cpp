@@ -9,22 +9,28 @@
 
 #include "Flock3D.h"
 
-void Flock3D::setup(float _width, float _height, float _near, float _far, int _initBoidNum) {
+void Flock3D::setup(int numFlocks, float _width, float _height, float _near, float _far, int _initBoidNum, int _posSize) {
 	
 	width = _width;
 	height = _height;
 	near = _near;
 	far = _far;
 	initBoidNum = _initBoidNum;
-	flock1 = new BoidList();
-	flock1->setup(width, height, near, far, initBoidNum, 255);
+	
+	for (int i = 0; i < numFlocks; i++) {
+		BoidList* flock = new BoidList();
+		flock->setup(width, height, near, far, initBoidNum, _posSize);
+		flocks.push_back(flock);
+	}
 
 }
 
 void Flock3D::update(bool avoidWall) {
 	
-	flock1->update(avoidWall);
-	
+	for (int i = 0; i < flocks.size(); i++) {
+		flocks[i]->update(avoidWall);
+	}
+		
 }
 
 void Flock3D::draw() {
@@ -46,12 +52,19 @@ void Flock3D::draw() {
 	ofxLine(width,0,far,  width,0,near);
 	ofxLine(width,height,far,  width,height,near);
 	
-	flock1->draw();
+	for (int i = 0; i < flocks.size(); i++) {
+		flocks[i]->draw();
+	}
 	
 }
 
-vector<ofxVec3f> Flock3D::getTrailPoints(int flockIdx) {
+vector<ofxVec3f> Flock3D::getTrailPoints(int YesOrNo, int flockIdx) {
+	
+	if (YesOrNo == BoidList::YES) {
+		return flocks[BoidList::YES]->getTrailPoints(flockIdx);
+	}else {
+		return flocks[BoidList::NO]->getTrailPoints(flockIdx);
+	}
 
-	return flock1->getTrailPoints(flockIdx);
 
 }

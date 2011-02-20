@@ -15,8 +15,8 @@
 class Boid {
 
 public:
-	void setup(float _width, float _height, float _near, float _far, ofxVec3f inPos);
-	void setup(float _width, float _height, float _near, float _far, ofxVec3f inPos, ofxVec3f inVel, float r);
+	void setup(float _width, float _height, float _near, float _far, ofxVec3f inPos, 
+			   float _maxSpeed = 6, float _maxSteerForce = 0.03, int _posSize = 200);
 	void update(vector<Boid*> bl);
 	void draw();
 	void flock(vector<Boid*> bl);	
@@ -47,6 +47,7 @@ public:
 	float t;
 	bool avoidWalls;
 	
+	int posSize;
 	vector<ofxVec3f> poss;
 	
 };

@@ -9,44 +9,25 @@
 
 #include "Boid.h"
 
-void Boid::setup(float _width, float _height, float _near, float _far, ofxVec3f inPos) {
+void Boid::setup(float _width, float _height, float _near, float _far, ofxVec3f inPos,
+				 float _maxSpeed, float _maxSteerForce, int _posSize) {
 
 	width = _width;
 	height = _height;
 	near = _near;
 	far = _far;
-	maxSpeed = 6;
-	maxSteerForce = 0.03;
+	maxSpeed = _maxSpeed;
+	maxSteerForce = _maxSteerForce;
 	sc = 3;
 	flap = 0;
 	t = 0;
 	avoidWalls = false;
-	
+	posSize = _posSize;
 	pos = inPos;
 	vel = ofxVec3f(ofRandomf(), ofRandomf(), ofRandomf());
 	acc = ofxVec3f(0, 0, 0);
 	neighborhoodRadius = 100000;
 	
-}
-
-void Boid::setup(float _width, float _height, float _near, float _far, ofxVec3f inPos, ofxVec3f inVel, float r) {
-
-	width = _width;
-	height = _height;	
-	near = _near;
-	far = _far;	
-	maxSpeed = 4;
-	maxSteerForce = 0.1;
-	sc = 3;
-	flap = 0;
-	t = 0;
-	avoidWalls = false;	
-	
-	pos = inPos;
-	vel = inVel;
-	acc = ofxVec3f(0, 0, 0);
-	neighborhoodRadius = r;
-
 }
 
 void Boid::update(vector<Boid*> bl) {
@@ -65,7 +46,7 @@ void Boid::update(vector<Boid*> bl) {
 	move();
 	checkBounds();
 	
-	if (poss.size() < 200) {
+	if (poss.size() < posSize) {
 		poss.push_back(pos);
 	}else {
 		poss.erase(poss.begin());
