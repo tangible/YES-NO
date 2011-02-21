@@ -24,6 +24,10 @@ public:
 	void computeCloudShape(Flock3D f);
 	void computeMovement(Flock3D f);
 	void addObj();
+
+private:
+	void drawObjs();
+	void drawAddedObjs();
 	
 	ofxBullet* bullet;
 	AdminPanel* adminPanel;
@@ -31,11 +35,11 @@ public:
 	int YesOrNo;
 	float baseMin; // if yes => 0.0, no => 0.5
 	float baseMax; // if yes => 0.5, no => 1.0
-	int boidID;
+	int boidID;	
 	
 	// objs fields
 	int numObjs;
 	vector<Obj> objs;
-	vector<Obj> addedObjs;
-
+	vector<Obj> addedObjs;	
+	
 };

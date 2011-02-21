@@ -23,6 +23,19 @@ void ofxColorFBO::setup(int width, int height) {
 	glRenderbufferStorageEXT(GL_RENDERBUFFER_EXT, GL_DEPTH_COMPONENT, width, height);
 	glFramebufferRenderbufferEXT(GL_FRAMEBUFFER_EXT, GL_DEPTH_ATTACHMENT_EXT, GL_RENDERBUFFER_EXT, depth_rb);	
 	
+//	glGenRenderbuffersEXT(1, &depthBuffer);
+//	glBindRenderbufferEXT(GL_RENDERBUFFER_EXT, depthBuffer);
+//	glRenderbufferStorageMultisampleEXT(GL_RENDERBUFFER_EXT, 4, GL_DEPTH_COMPONENT, width, height);
+//	
+//	glGenRenderbuffersEXT(1, &colorBuffer);
+//	glBindRenderbufferEXT(GL_RENDERBUFFER_EXT, colorBuffer);
+//	glRenderbufferStorageMultisampleEXT(GL_RENDERBUFFER_EXT, 4, GL_RGBA8, width, height);
+//	
+//	glGenFramebuffersEXT(1, &mfbo);
+//	glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, mfbo);
+//	glFramebufferRenderbufferEXT(GL_FRAMEBUFFER_EXT, GL_COLOR_ATTACHMENT0_EXT, GL_RENDERBUFFER_EXT, colorBuffer);
+//	glFramebufferRenderbufferEXT(GL_FRAMEBUFFER_EXT, GL_DEPTH_ATTACHMENT_EXT, GL_RENDERBUFFER_EXT, depthBuffer);	
+	
 	glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, 0);
 	
 }

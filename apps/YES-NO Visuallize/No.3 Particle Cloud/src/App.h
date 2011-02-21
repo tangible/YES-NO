@@ -7,6 +7,8 @@
 #include "AdminPanel.h"
 #include "ParticleCloud.h"
 #include "ofxEasyCam.h"
+#include "StateText.h"
+#include "HTTPSMSClient.h"
 
 class App : public ofBaseApp{
 
@@ -23,8 +25,16 @@ public:
 	void mouseReleased(int x, int y, int button);
 	void windowResized(int w, int h);	
 	
+	void onFileChangeBG(FileDef& fd);	
+	void onClearBG(int& i);
+	void onSMSMsgRecieved(UpdateInfo& upInfo);
+	
 	AdminPanel adminPanel;
 	ParticleCloud pCloud;
+	StateText sText;
+	HTTPSMSClient httpClient;
+	
+	ofImage bg;
 	
 	//ofxEasyCam cam;
 	ofxCamera cam;

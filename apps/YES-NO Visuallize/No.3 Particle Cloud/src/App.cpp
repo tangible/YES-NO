@@ -17,6 +17,8 @@ void App::setup(){
 	
 	adminPanel.setup();
 	pCloud.setup(fps, &adminPanel, &cam);
+	sText.setup();
+	httpClient.setup();
 	
 	defaultShader.setup("default");
 	showDepthShader.setup("showdepth");
@@ -27,6 +29,10 @@ void App::setup(){
 	colorFBO.setup(ofGetWidth(), ofGetHeight());
 	ssaoFBO.setup(ofGetWidth(), ofGetHeight());	
 	
+	ofAddListener(adminPanel.onFileDialogueBG, this, &App::onFileChangeBG);	
+	ofAddListener(adminPanel.onClearBG, this, &App::onClearBG);	
+	ofAddListener(httpClient.onSMSRecieved, this, &App::onSMSMsgRecieved);	
+	
 }
 
 //--------------------------------------------------------------
@@ -36,6 +42,8 @@ void App::update(){
 	pCloud.update();
 
 	cam.place();
+	
+	ofBackground(adminPanel.BGColor[0]*255, adminPanel.BGColor[1]*255, adminPanel.BGColor[2]*255);
 	
 	depthFBO.beforeUpdate();
 	pCloud.draw();
@@ -75,6 +83,9 @@ void App::draw(){
 	
 	//cam.draw();
 	
+	bg.draw(ofGetWidth()/2-bg.getWidth()/2, 
+			ofGetHeight()/2-bg.getHeight()/2);	
+	
 	int ssaoTexSlot = 6;
 	ssaoFBO.beforeDraw(ssaoTexSlot);
 	int depthTexSlot = 5;
@@ -99,7 +110,7 @@ void App::draw(){
 //	colorFBO.afterDraw();
 	
 	adminPanel.draw();
-	
+
 }
 
 //--------------------------------------------------------------
@@ -116,12 +127,23 @@ void App::drawFullScreenQuad(int w, int h) {
 //--------------------------------------------------------------
 void App::keyPressed(int key){
 
-	if (key == ' ') 
-		adminPanel.toggle();
-	
+	adminPanel.keyPressed(key);	
 	pCloud.debugKeyPress(key);
 
 }
+
+//--------------------------------------------------------------
+void App::onFileChangeBG(FileDef& fd) {
+	bg.loadImage(fd.path);
+}
+void App::onClearBG(int& i) {
+	bg.clear();
+}
+void App::onSMSMsgRecieved(UpdateInfo& upInfo) {
+	//blobMgr.recieveSMS(upInfo);
+}
+
+
 //--------------------------------------------------------------
 void App::keyReleased(int key){}
 //--------------------------------------------------------------

@@ -53,65 +53,8 @@ void YesNoObj::update() {
 
 void YesNoObj::draw() {
 
-	ofSetColor(255, 255, 255);
-	for (int i = 0; i < objs.size(); i++) {
-		Obj obj = objs[i];
-		float sizeBase = adminPanel->sizeBase;
-		float size = obj.size;
-		size += sizeBase;
-		size *= obj.positionalSizeFactor;
-		ofxVec3f pos = obj.getObjPos();
-		float cAng = obj.colAngle;
-		obj.colp.setColorAngle(-cAng);//cAng);//0.32);
-		obj.colp.setColorScale(adminPanel->colScale);
-		obj.colp.setColorRadius(adminPanel->colRadius);
-		obj.colp.update();
-		ofColor col = obj.colp.getColor();
-		ofSetColor(col.r, col.g, col.b);
-		
-		ofxQuaternion qt = obj.getObjRot();
-		float rAng; ofxVec3f axis;
-		qt.getRotate(rAng, axis);
-		
-		ofPushMatrix();
-		ofTranslate(pos.x, pos.y, pos.z);
-		ofRotate(ofRadToDeg(rAng), axis.x, axis.y, axis.z);
-		
-		(YesOrNo == Obj::YES) ? ofxSphere(0,0,0, size*1.225) : ofxBox(0,0,0, size*1.6);
-
-		ofPopMatrix();
-		
-	}
-	
-	for (int i = 0; i < addedObjs.size(); i++) {
-		Obj obj = addedObjs[i];
-		float sizeBase = adminPanel->sizeBase;
-		float size = obj.size;
-		size += sizeBase;
-		size *= obj.positionalSizeFactor;
-		ofxVec3f pos = obj.getObjPos();
-		float cAng = obj.colAngle;
-		obj.colp.setColorAngle(-cAng);//cAng);//0.32);
-		obj.colp.setColorScale(adminPanel->colScale);
-		obj.colp.setColorRadius(adminPanel->colRadius);
-		obj.colp.update();
-		ofColor col = obj.colp.getColor();
-		ofSetColor(col.r, col.g, col.b);
-		
-		ofxQuaternion qt = obj.getObjRot();
-		float rAng; ofxVec3f axis;
-		qt.getRotate(rAng, axis);
-		
-		ofPushMatrix();
-		ofTranslate(pos.x, pos.y, pos.z);
-		ofRotate(ofRadToDeg(rAng), axis.x, axis.y, axis.z);
-		
-		(YesOrNo == Obj::YES) ? ofxSphere(0,0,0, size) : ofxBox(0,0,0, size*1.5);
-		
-		ofPopMatrix();
-		
-	}	
-	ofSetColor(255, 255, 255);
+	drawObjs();
+	drawAddedObjs();
 	
 }
 
@@ -178,7 +121,7 @@ void YesNoObj::addObj() {
 	bool far = (ofRandomf() > 0) ? true : false;
 	ofxVec3f rdmPos = ofxVec3f(ofRandom((left)?0:ofGetWidth(), (left)?0:ofGetWidth()),
 							   ofRandom((up)?0:ofGetHeight(), (left)?0:ofGetHeight()),
-							   (far)?-700:700);
+							   -700);
 	
 	
 	Obj obj;
@@ -190,4 +133,72 @@ void YesNoObj::addObj() {
 	
 }
 
+void YesNoObj::drawObjs() {
+	
+	ofSetColor(255, 255, 255);
+	for (int i = 0; i < objs.size(); i++) {
+		Obj obj = objs[i];
+		float sizeBase = adminPanel->sizeBase;
+		float size = obj.size;
+		size += sizeBase;
+		size *= obj.positionalSizeFactor;
+		ofxVec3f pos = obj.getObjPos();
+		float cAng = obj.colAngle;
+		obj.colp.setColorAngle(-cAng);//cAng);//0.32);
+		obj.colp.setColorScale(adminPanel->colScale);
+		obj.colp.setColorRadius(adminPanel->colRadius);
+		obj.colp.update();
+		ofColor col = obj.colp.getColor();
+		ofSetColor(col.r, col.g, col.b);
+		
+		ofxQuaternion qt = obj.getObjRot();
+		float rAng; ofxVec3f axis;
+		qt.getRotate(rAng, axis);
+		
+		ofPushMatrix();
+		ofTranslate(pos.x, pos.y, pos.z);
+		ofRotate(ofRadToDeg(rAng), axis.x, axis.y, axis.z);
+		
+		(YesOrNo == Obj::YES) ? ofxSphere(0,0,0, size*1.225) : ofxBox(0,0,0, size*1.6);
+		
+		ofPopMatrix();
+		
+	}
+	ofSetColor(255, 255, 255);	
+	
+}
 
+void YesNoObj::drawAddedObjs() {
+	
+	ofSetColor(255, 255, 255);
+	for (int i = 0; i < addedObjs.size(); i++) {
+		Obj obj = addedObjs[i];
+		float sizeBase = adminPanel->sizeBase;
+		float size = obj.size;
+		size += sizeBase;
+		size *= obj.positionalSizeFactor;
+		ofxVec3f pos = obj.getObjPos();
+		float cAng = obj.colAngle;
+		obj.colp.setColorAngle(-cAng);//cAng);//0.32);
+		obj.colp.setColorScale(adminPanel->colScale);
+		obj.colp.setColorRadius(adminPanel->colRadius);
+		obj.colp.update();
+		ofColor col = obj.colp.getColor();
+		ofSetColor(col.r, col.g, col.b);
+		
+		ofxQuaternion qt = obj.getObjRot();
+		float rAng; ofxVec3f axis;
+		qt.getRotate(rAng, axis);
+		
+		ofPushMatrix();
+		ofTranslate(pos.x, pos.y, pos.z);
+		ofRotate(ofRadToDeg(rAng), axis.x, axis.y, axis.z);
+		
+		(YesOrNo == Obj::YES) ? ofxSphere(0,0,0, size) : ofxBox(0,0,0, size*1.5);
+		
+		ofPopMatrix();
+		
+	}	
+	ofSetColor(255, 255, 255);	
+	
+}

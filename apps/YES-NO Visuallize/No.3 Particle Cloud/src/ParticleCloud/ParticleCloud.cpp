@@ -13,12 +13,12 @@ void ParticleCloud::setup(int _fps, AdminPanel* ap, ofxCamera* cam) {
 	
 	bullet = new ofxBullet();
 	bullet->initPhysics(ofxVec3f(0, 0, 0), false);	
-	bullet->enableRayCastingMouseInteraction(cam);
+//	bullet->enableRayCastingMouseInteraction(cam, ofxVec3f(250, 100, 0));
 	
 	fps = _fps;
 	adminPanel = ap;
 	
-	int numObjs = 200;
+	int numObjs = 300;
 	yes.setup(bullet, ap, Obj::YES, numObjs);
 	no.setup(bullet, ap, Obj::NO, numObjs);
 	
@@ -46,6 +46,7 @@ void ParticleCloud::update() {
 }
 
 void ParticleCloud::draw() {
+	
 	
 	ofPushMatrix();
 	ofTranslate(250, 100, 0);

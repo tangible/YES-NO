@@ -27,5 +27,6 @@ private:
 	
 	ofxTexture	colTex;
 	GLuint tex, fb, rb, depth_rb;
+	GLuint depthBuffer, colorBuffer, mfbo;
 
 };

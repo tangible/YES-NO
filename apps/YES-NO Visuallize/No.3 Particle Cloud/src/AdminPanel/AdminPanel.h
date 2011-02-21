@@ -10,6 +10,13 @@
 #pragma once
 
 #include "ofMain.h"
+#include "ofxFileDialogOSX.h"
+
+class FileDef {
+public:
+	string ID;
+	string path;	
+};
 
 class AdminPanel {
 
@@ -17,8 +24,12 @@ public:
 	void setup();
 	void update();
 	void draw();
-	void toggle();
+	void keyPressed(int key);
 	void restoreDefault();	
+	void openFileDialogueBG(string ID);
+	
+	ofEvent<FileDef> onFileDialogueBG; 
+	ofEvent<int> onClearBG;
 	
 	// SSAO
 	float camerarangex;
@@ -43,6 +54,10 @@ public:
 	float colRadius;
 	float colAngle;
 	float sizeBase;
+	
+	bool changeBG;
+	bool clearBG;
+	float BGColor[4];
 	
 	bool RESTORDEFBTN;
 	bool TOGGLEMOTION;

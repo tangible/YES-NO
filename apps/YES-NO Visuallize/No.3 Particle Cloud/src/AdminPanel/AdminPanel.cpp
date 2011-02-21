@@ -30,12 +30,21 @@ void AdminPanel::setup() {
 	gui.addSlider("blurclamp", blurclamp, 0.0, 1.0);
 	gui.addSlider("bias", bias, 0.0, 1.0);	
 	
-	gui.addButton("Restore Default", RESTORDEFBTN).setNewColumn(true);
+	gui.addTitle("OBJ Setting").setNewColumn(true);
 	gui.addToggle("Toggle Simu", TOGGLEMOTION);	
 	gui.addSlider("colScale", colScale, 0.0, 1.0);
 	gui.addSlider("colRadius", colRadius, 0.0, 1.0);
 	gui.addSlider("colAngle", colAngle, -1.0, 1.0);
 	gui.addSlider("sizeBase", sizeBase, -100, 100);
+	
+	gui.addTitle("BG & others").setNewColumn(true);
+	gui.addButton("Change BG", changeBG);
+	gui.addButton("Clear BG", clearBG);
+	gui.addColorPicker("Obj Edge Color", BGColor);
+	
+	
+	gui.addButton("Restore Default", RESTORDEFBTN).setNewColumn(true);	
+	
 	gui.loadFromXML();
 	gui.show();	
 	
@@ -47,6 +56,13 @@ void AdminPanel::update(){
 	
 	if (RESTORDEFBTN) {
 		restoreDefault();
+	}else if (changeBG) {
+		changeBG = false;
+		openFileDialogueBG("BG");
+	}else if (clearBG) {
+		clearBG = false;
+		int i = 1;
+		ofNotifyEvent(onClearBG, i);
 	}
 	
 }
@@ -59,9 +75,19 @@ void AdminPanel::draw(){
 	
 }
 
-void AdminPanel::toggle(){
+void AdminPanel::keyPressed(int key){
 	
-	gui.toggleDraw();
+	if(key>='0' && key<='9') {
+		gui.setPage(key - '0');
+		gui.show();
+	} else {
+		switch(key) {
+			case ' ': gui.toggleDraw(); break;
+			case '[': gui.prevPage(); break;
+			case ']': gui.nextPage(); break;
+			case 'p': gui.nextPageWithBlank(); break;
+		}
+	}	
 
 }
 
@@ -90,5 +116,23 @@ void AdminPanel::restoreDefault() {
 	
 	RESTORDEFBTN = false;
 	TOGGLEMOTION = true;
+	
+	changeBG = false;
+	clearBG = false;
+	BGColor[0] = 0.0;
+	BGColor[1] = 0.0;
+	BGColor[2] = 0.0;
+	BGColor[3] = 1.0;	
 
+}
+
+void AdminPanel::openFileDialogueBG(string ID) {
+	
+	string path;
+	ofxFileDialogOSX::openFile(path);
+	FileDef fi;
+	fi.ID = ID;
+	fi.path = path;
+	ofNotifyEvent(onFileDialogueBG, fi);
+	
 }

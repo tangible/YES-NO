@@ -77,18 +77,20 @@ void ofxBullet::exitPhysics() {
 }
 
 
-void ofxBullet::enableRayCastingMouseInteraction(ofxCamera* _cam) {
+void ofxBullet::enableRayCastingMouseInteraction(ofxCamera* _cam, ofxVec3f camPosOffset) {
 	
 	cam = _cam;
+	cameraPosiotionOffset = camPosOffset;
 	ofAddListener(ofEvents.mousePressed, this, &ofxBullet::mousePressed);
 	ofAddListener(ofEvents.mouseReleased, this, &ofxBullet::mouseReleased);
 	ofAddListener(ofEvents.mouseDragged, this, &ofxBullet::mouseDragged);
 	
 }
 
-void ofxBullet::enableRayCastingTouchInteraction(ofxCamera* _cam) {
+void ofxBullet::enableRayCastingTouchInteraction(ofxCamera* _cam, ofxVec3f camPosOffset) {
 	
 	cam = _cam;
+	cameraPosiotionOffset = camPosOffset;	
 	ofAddListener(ofEvents.touchDown, this, &ofxBullet::touchDown);
 	ofAddListener(ofEvents.touchUp, this, &ofxBullet::touchUp);
 	ofAddListener(ofEvents.touchMoved, this, &ofxBullet::touchMoved);	
@@ -222,7 +224,7 @@ void ofxBullet::touchDown(ofTouchEventArgs& event){
 		if (getWorld()) {
 			
 			btVector3 rayTo = getRayTo(x,y);
-			ofxVec3f campos = cam->getPosition();
+			ofxVec3f campos = cam->getPosition()+cameraPosiotionOffset;
 			btVector3 rayFrom = btVector3(campos.x, campos.y, campos.z);
 			
 			btCollisionWorld::ClosestRayResultCallback rayCallback(rayFrom,rayTo);
@@ -304,7 +306,7 @@ void ofxBullet::touchMoved(ofTouchEventArgs& event){
 			btVector3 oldPivotInB = p2p->getPivotInB();
 			btVector3 newPivotB;
 			
-			ofxVec3f campos = cam->getPosition();
+			ofxVec3f campos = cam->getPosition()+cameraPosiotionOffset;
 			rayFrom = btVector3(campos.x, campos.y, campos.z);
 			btVector3 dir = newRayTo-rayFrom;
 			dir.normalize();
@@ -636,7 +638,7 @@ btVector3 ofxBullet::getRayTo(int x, int y) {
 	float tanFov = (top-bottom)*0.5f / nearPlane;
 	float fov = 2.0 * atanf (tanFov);
 	
-	ofxVec3f campos = cam->getPosition();
+	ofxVec3f campos = cam->getPosition()+cameraPosiotionOffset;
 	btVector3 rayFrom = btVector3(campos.x, campos.y, campos.z);
 	ofxVec3f dir = cam->getDir();
 	btVector3 rayForward = btVector3(dir.x, dir.y, dir.z);

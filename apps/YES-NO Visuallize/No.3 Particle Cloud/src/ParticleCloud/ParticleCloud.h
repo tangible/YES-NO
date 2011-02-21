@@ -19,12 +19,12 @@
 class ParticleCloud {
 
 public:
-	
 	void setup(int _fps, AdminPanel* ap, ofxCamera* cam);
 	void update();
 	void draw();
 	void debugKeyPress(int key);
 	
+private:	
 	int fps;
 	ofxBullet* bullet;
 	AdminPanel* adminPanel;

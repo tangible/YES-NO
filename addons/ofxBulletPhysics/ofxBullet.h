@@ -40,16 +40,17 @@ public:
 	void					clientMoveAndDisplay(){};									
 	void					updateModifierKeys(){};
 	
-	void					enableRayCastingMouseInteraction(ofxCamera* _cam);
+	void					enableRayCastingMouseInteraction(ofxCamera* _cam, ofxVec3f camPosOffset = ofxVec3f(0,0,0));
 	bool					bMousePressed;
 	void					mouseDragged(ofMouseEventArgs& event);
 	void					mousePressed(ofMouseEventArgs& event);
 	void					mouseReleased(ofMouseEventArgs& event);
-	void					enableRayCastingTouchInteraction(ofxCamera* _cam);
+	void					enableRayCastingTouchInteraction(ofxCamera* _cam, ofxVec3f camPosOffset = ofxVec3f(0,0,0));
 	bool					bTouched;
 	void					touchDown(ofTouchEventArgs& touch);
 	void					touchUp(ofTouchEventArgs& touch);
-	void					touchMoved(ofTouchEventArgs& touch);	
+	void					touchMoved(ofTouchEventArgs& touch);
+	ofxVec3f				cameraPosiotionOffset;
 	
 	inline btDynamicsWorld* getWorld() { return m_dynamicsWorld; };
 
