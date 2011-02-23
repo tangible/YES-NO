@@ -10,6 +10,13 @@
 #pragma once
 
 #include "ofMain.h"
+#include "ofxFileDialogOSX.h"
+
+class FileDef {
+public:
+	string ID;
+	string path;	
+};
 
 class AdminPanel {
 	
@@ -17,8 +24,15 @@ public:
 	void setup();
 	void update();
 	void draw();
-	void toggle();
+	void keyPressed(int key);
 	void restoreDefault();	
+	void openFileDialogueBG(string ID);
+	void openFileDialogueChangeQImg(string ID);	
+	
+	ofEvent<FileDef> onFileDialogueBG; 
+	ofEvent<int> onClearBG;
+	ofEvent<FileDef> onFileDialogueQImg;
+	ofEvent<int> onClearQImg;	
 
 	bool	RESTORDEFBTN;
 	float	LIGHTX;
@@ -38,4 +52,9 @@ public:
 	float	ROUGHNESS;
 	float	SHARPNESS;
 	
+	bool changeBG;
+	bool clearBG;
+	float BGColor[4];
+	bool changeQImg;
+	bool clearQImg;	
 };

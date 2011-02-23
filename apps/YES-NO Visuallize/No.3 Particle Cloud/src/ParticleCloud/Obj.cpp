@@ -23,7 +23,7 @@ void Obj::setup(ofxBullet* bullet, ofxVec3f pos, int radius, int mass,
 
 }
 
-void Obj::movetoForcePoint() {
+void Obj::movetoForcePoint(int impulseFactor) {
 
 	float maxVal = 0.01;
 	ofxVec3f force;
@@ -44,7 +44,7 @@ void Obj::movetoForcePoint() {
 	
 	ofxVec3f impulse;
 	impulse.set(ofRandomf(), ofRandomf(), ofRandomf());
-	impulse *= 40;
+	impulse *= impulseFactor;
 	
 	btImpulse = btVector3(impulse.x, impulse.y, impulse.z);
 	body->getRigidBody()->applyCentralImpulse(btImpulse);	

@@ -16,8 +16,10 @@ void StateText::setup() {
 	
 	font.loadFont("Verdana Bold.ttf", 200, true, true, true);
 	
-	yes = "YES:";
-	no = "NO:";
+	dfont.loadFont("Helvetica.dfont", 200, true, true, true);
+	
+	yes = "yes";
+	no = "no";
 	yesNum = "0";
 	noNum = "0";
 	yesSize = 0.1;
@@ -30,24 +32,25 @@ void StateText::setup() {
 	yesSizeTween.setParameters(easingcirc, ofxTween::easeIn, 0.0, 0.0, 0, 0);
 	noSizeTween.setParameters(easingcirc, ofxTween::easeIn, 0.0, 0.0, 0, 0);
 
-	yesSize = 0.1;
-	noSize = 0.5;
-	yesNum = "122";
-	noNum = "560";
+	yesSize = 0.3;
+	noSize = 0.3;
+//	yesNum = "122";
+//	noNum = "560";
 }
 
 void StateText::onSMSReceivedUpdate(int yesORno, UpdateInfo upInfo) {
 	
 	if (yesORno == 0) {
 		yesNum = ofToString(upInfo.numTotalYes);
-		yesSize = (upInfo.numTotalYes == 0)?0.1:ofMap(upInfo.ratioTotalYes, 0.0, 1.0, 0.1, 1.0);
-		yesSizeTween.setParameters(easingcirc, ofxTween::easeIn, yesSize, yesSize*1.5, 100, 0);
-	}else {
-		noNum = ofToString(upInfo.numTotalNo);
-		noSize = (upInfo.numTotalNo == 0)?0.1:ofMap(upInfo.ratioTotalNo, 0.0, 1.0, 0.1, 1.0);	
+		yesSize = (upInfo.numTotalYes == 0)?0.3:ofMap(upInfo.ratioTotalYes, 0.0, 1.0, 0.1, 1.0);
+		yesSizeTween.setParameters(easingcirc, ofxTween::easeIn, yesSize, yesSize*1.5, 100, 0);			
+	}else {	
+		noNum = ofToString(upInfo.numTotalNo);		
+		noSize = (upInfo.numTotalNo == 0)?0.3:ofMap(upInfo.ratioTotalNo, 0.0, 1.0, 0.1, 1.0);	
 		noSizeTween.setParameters(easingcirc, ofxTween::easeIn, noSize, noSize*1.5, 100, 0);	
 		
 	}
+	
 }
 
 void StateText::draw(UpdateInfo upInfo, ofxVec3f centroidYes, ofxVec3f centroidNo) {
@@ -130,3 +133,60 @@ void StateText::draw(UpdateInfo upInfo, ofxVec3f centroidYes, ofxVec3f centroidN
 
 	ofxLine(transN.x+sizeStr/2, transN.y+strHeight, 0.0, lineDistN.x, lineDistN.y, lineDistN.z);
 }
+
+void StateText::draw(UpdateInfo upInfo) {
+	
+	glDisable(GL_LIGHTING);
+
+	if (yesSizeTween.isCompleted()) {
+		yesSizeTween.setParameters(easingcirc, ofxTween::easeIn, yesSizeTween.getTarget(0), yesSize, 100, 0);
+	}
+	if (noSizeTween.isCompleted()) {
+		noSizeTween.setParameters(easingcirc, ofxTween::easeIn, noSizeTween.getTarget(0), noSize, 100, 0);	
+	}	
+	
+	float sizeYes = yesSizeTween.update();	
+	float widYesNum = font.stringWidth(yesNum);
+	float heiYesNum = font.getLineHeight()*sizeYes*0.8;
+	float bottom = ofGetHeight()-50;
+	float left = 30;
+	float numOffset = -32*sizeYes;
+	ofPushMatrix();
+	ofSetColor(255, 255, 255);	
+	ofTranslate(left, bottom-heiYesNum, 0);
+	ofScale(sizeYes*0.3, sizeYes*0.3, 0);	
+	font.drawStringAsShapes(yes, 0, 0);
+	ofPopMatrix();
+	ofPushMatrix();
+	ofSetColor(255, 255, 255);
+	ofTranslate(left+numOffset, bottom, 0);
+	ofScale(sizeYes, sizeYes, 0);	
+	font.drawStringAsShapes(yesNum, 0, 0);
+	ofPopMatrix();
+	
+	float sizeNo = noSizeTween.update();
+	float widNoNum = font.stringWidth(noNum)*sizeNo+60;
+	float heiNoNum = font.getLineHeight()*sizeNo*0.8;
+	left = ofGetWidth()-widNoNum;
+	numOffset = -32*sizeNo;
+	ofPushMatrix();
+	ofSetColor(255, 255, 255);
+	ofTranslate(left, bottom-heiNoNum, 0);
+	ofScale(sizeNo*0.3, sizeNo*0.3, 0);
+	font.drawStringAsShapes(no, 0, 0);
+	ofPopMatrix();
+	ofPushMatrix();
+	ofSetColor(255, 255, 255);
+	ofTranslate(left+numOffset, bottom, 0);
+	ofScale(sizeNo, sizeNo, 0);
+	font.drawStringAsShapes(noNum, 0, 0);
+	ofPopMatrix();
+	
+	glEnable(GL_LIGHTING);
+	
+//	ofPushMatrix();
+//	ofScale(0.5, 0.5, 1.0);
+//	dfont.drawString("012abscTTTA", 100, 100);
+//	ofPopMatrix();
+}
+

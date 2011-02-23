@@ -1,12 +1,12 @@
 #pragma once
 
 #include "ofMain.h"
-#include "HTTPSMSClient.h"
+#include "ofxEasyCam.h"
 #include "ConvexHull.h"
 #include "AdminPanel.h"
-#include "ofxEasyCam.h"
-#include "ofxShader.h"
+#include "HTTPSMSClient.h"
 #include "StateText.h"
+#include "QuestionImage.h"
 
 class App : public ofBaseApp{
 
@@ -22,13 +22,24 @@ public:
 	void mousePressed(int x, int y, int button);
 	void mouseReleased(int x, int y, int button);
 	void windowResized(int w, int h);
+	
+	void onFileChangeBG(FileDef& fd);	
+	void onClearBG(int& i);
+	void onFileChangeQImg(FileDef& fd);	
+	void onClearQImg(int& i);	
+	void onSMSMsgRecieved(UpdateInfo& _upInfo);	
 
 	AdminPanel		adminPanel;
 	ConvexHull		convexHull;
-	StateText		stateText;
+	HTTPSMSClient	httpClient;
+	StateText		sText;
+	QuestionImage	qImage;
 	
-	ofxEasyCam		cam;
-//	ofxCamera		cam;
-	ofxShader		shader;
+	ofImage bg;
+	UpdateInfo upInfo;	
+	
+//	ofxEasyCam		cam;
+	ofxCamera		cam;
+
 };
 

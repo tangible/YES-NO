@@ -12,8 +12,14 @@
 
 void AdminPanel::setup(){
 	
-	gui.addTitle("Setting");
-	gui.addButton("Restore Default", RESTORDEFBTN);
+	gui.addTitle("Img Setting");
+	gui.addButton("Change BG", changeBG);
+	gui.addButton("Clear BG", clearBG);
+	gui.addColorPicker("Obj Edge Color", BGColor);
+	gui.addButton("Change Question Img", changeQImg);
+	gui.addButton("Clear Question Img", clearQImg);		
+	
+	gui.addTitle("Setting").setNewColumn(true);
 	gui.addSlider("Light Pos X", LIGHTX, -1000.0, 1000.0);
 	gui.addSlider("Light Pos Y", LIGHTY, -1000.0, 1000.0);
 	gui.addSlider("Light Pos Z", LIGHTZ, -1000.0, 1000.0);		
@@ -29,7 +35,9 @@ void AdminPanel::setup(){
 	gui.addSlider("DiffuseIntensity", DEFFUSEINTENSITY, 0.0, 100.0);
 	gui.addSlider("SpecularIntensity", SPECULARINTENSITY, 0.0, 100.0);
 	gui.addSlider("Roughness", ROUGHNESS, 0.0, 1.0);
-	gui.addSlider("Sharpness", SHARPNESS, 0.0, 1.0);	
+	gui.addSlider("Sharpness", SHARPNESS, 0.0, 1.0);
+	
+	gui.addButton("Restore Default", RESTORDEFBTN).setNewColumn(true);
 	
 	gui.loadFromXML();
 //	gui.show();	
@@ -42,6 +50,20 @@ void AdminPanel::update(){
 	
 	if (RESTORDEFBTN) {
 		restoreDefault();
+	}else if (changeBG) {
+		changeBG = false;
+		openFileDialogueBG("BG");
+	}else if (clearBG) {
+		clearBG = false;
+		int i = 1;
+		ofNotifyEvent(onClearBG, i);
+	}else if (changeQImg) {
+		changeQImg = false;
+		openFileDialogueChangeQImg("QImg");
+	}else if (clearQImg) {
+		clearQImg = false;
+		int i = 1;
+		ofNotifyEvent(onClearQImg, i);
 	}
 	
 }
@@ -49,20 +71,47 @@ void AdminPanel::update(){
 void AdminPanel::draw(){
 	
 	glDisable(GL_LIGHTING);
+	ofSetupScreen();
 	gui.draw();
-	//glEnable(GL_LIGHTING);
+	glEnable(GL_LIGHTING);
+}
+
+void AdminPanel::keyPressed(int key){
+	
+	if(key>='0' && key<='9') {
+		gui.setPage(key - '0');
+		gui.show();
+	} else {
+		switch(key) {
+			case ' ': gui.toggleDraw(); break;
+			case '[': gui.prevPage(); break;
+			case ']': gui.nextPage(); break;
+			case 'p': gui.nextPageWithBlank(); break;
+		}
+	}	
 	
 }
 
-void AdminPanel::toggle(){
+void AdminPanel::openFileDialogueBG(string ID) {
 	
-	gui.toggleDraw();
-//	if (gui.isOn()) {
-//		glutSetCursor(GLUT_CURSOR_INHERIT);
-//	}else {
-//		glutSetCursor(GLUT_CURSOR_NONE);
-//	}	
-//	
+	string path;
+	ofxFileDialogOSX::openFile(path);
+	FileDef fi;
+	fi.ID = ID;
+	fi.path = path;
+	ofNotifyEvent(onFileDialogueBG, fi);
+	
+}
+
+void AdminPanel::openFileDialogueChangeQImg(string ID) {
+	
+	string path;
+	ofxFileDialogOSX::openFile(path);
+	FileDef fi;
+	fi.ID = ID;
+	fi.path = path;
+	ofNotifyEvent(onFileDialogueQImg, fi);	
+	
 }
 
 void AdminPanel::restoreDefault() {
@@ -96,5 +145,14 @@ void AdminPanel::restoreDefault() {
 	LIGHTSPECULAR[1] = 1.0;
 	LIGHTSPECULAR[2] = 1.0;
 	LIGHTSPECULAR[3] = 1.0;		
+	
+	changeBG = false;
+	clearBG = false;
+	BGColor[0] = 0.0;
+	BGColor[1] = 0.0;
+	BGColor[2] = 0.0;
+	BGColor[3] = 1.0;	
+	changeQImg = false;
+	clearQImg = false;	
 	
 }

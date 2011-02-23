@@ -180,3 +180,14 @@ ofxVec3f Boid::seperation(vector<Boid*> boids) {
 	return posSum;
 	
 }
+
+void Boid::changeTrailPointNum(int numPoint) {
+	
+	posSize = numPoint;
+	if (poss.size() > posSize) {
+		for (int i = 0; i < poss.size()-posSize; i++) {
+			poss.erase(poss.begin()+i);
+		}
+	}
+	
+}

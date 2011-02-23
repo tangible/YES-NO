@@ -9,6 +9,7 @@
 #include "ofxEasyCam.h"
 #include "StateText.h"
 #include "HTTPSMSClient.h"
+#include "QuestionImage.h"
 
 class App : public ofBaseApp{
 
@@ -27,14 +28,18 @@ public:
 	
 	void onFileChangeBG(FileDef& fd);	
 	void onClearBG(int& i);
-	void onSMSMsgRecieved(UpdateInfo& upInfo);
+	void onFileChangeQImg(FileDef& fd);	
+	void onClearQImg(int& i);	
+	void onSMSMsgRecieved(UpdateInfo& _upInfo);
 	
 	AdminPanel adminPanel;
 	ParticleCloud pCloud;
+	QuestionImage qImage;	
 	StateText sText;
-	HTTPSMSClient httpClient;
+	HTTPSMSClient httpClient;	
 	
 	ofImage bg;
+	UpdateInfo upInfo;
 	
 	//ofxEasyCam cam;
 	ofxCamera cam;

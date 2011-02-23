@@ -12,10 +12,17 @@
 
 void AdminPanel::setup() {
 	
-	gui.addTitle("SSAO Setting");
+	gui.addTitle("Img Setting");
+	gui.addButton("Change BG", changeBG);
+	gui.addButton("Clear BG", clearBG);
+	gui.addColorPicker("Obj Edge Color", BGColor);
+	gui.addButton("Change Question Img", changeQImg);
+	gui.addButton("Clear Question Img", clearQImg);	
+	
+	gui.addTitle("SSAO Setting").setNewColumn(true);
+	gui.addSlider("aoCap", aoCap, 0.0, 2.0);	
 	gui.addSlider("camerarangex", camerarangex, 0, 10000);
 	gui.addSlider("camerarangey", camerarangey, 0, 10000);
-	gui.addSlider("aoCap", aoCap, 0.0, 10.0);
 	gui.addSlider("aoMultiplier", aoMultiplier, 0.0, 20000.0);
 	gui.addSlider("depthTolerance", depthTolerance, 0.000, 0.002);
 	gui.addSlider("aorange", aorange, 0.0, 2.0);
@@ -23,12 +30,12 @@ void AdminPanel::setup() {
 	gui.addSlider("aoDivision", aoDivision, 0, 30);
 	gui.addSlider("baseColSubdivision", baseColSubdivision, 0.000, 1.000);
 	
-	gui.addTitle("DOF Setting").setNewColumn(true);
+	gui.addTitle("DoF Setting").setNewColumn(true);
+	gui.addSlider("bias", bias, 0.0, 1.0);	
 	gui.addSlider("focus", focus, 0.0, 2.0);
 	gui.addSlider("aspectratiox", aspectratiox, 0.0, ofGetWidth());
 	gui.addSlider("aspectratioy", aspectratioy, 0.0, ofGetHeight());
-	gui.addSlider("blurclamp", blurclamp, 0.0, 1.0);
-	gui.addSlider("bias", bias, 0.0, 1.0);	
+	gui.addSlider("blurclamp", blurclamp, 0.0, 1.0);	
 	
 	gui.addTitle("OBJ Setting").setNewColumn(true);
 	gui.addToggle("Toggle Simu", TOGGLEMOTION);	
@@ -37,16 +44,11 @@ void AdminPanel::setup() {
 	gui.addSlider("colAngle", colAngle, -1.0, 1.0);
 	gui.addSlider("sizeBase", sizeBase, -100, 100);
 	
-	gui.addTitle("BG & others").setNewColumn(true);
-	gui.addButton("Change BG", changeBG);
-	gui.addButton("Clear BG", clearBG);
-	gui.addColorPicker("Obj Edge Color", BGColor);
-	
 	
 	gui.addButton("Restore Default", RESTORDEFBTN).setNewColumn(true);	
 	
 	gui.loadFromXML();
-	gui.show();	
+	//gui.show();	
 	
 	restoreDefault();
 	
@@ -63,6 +65,13 @@ void AdminPanel::update(){
 		clearBG = false;
 		int i = 1;
 		ofNotifyEvent(onClearBG, i);
+	}else if (changeQImg) {
+		changeQImg = false;
+		openFileDialogueChangeQImg("QImg");
+	}else if (clearQImg) {
+		clearQImg = false;
+		int i = 1;
+		ofNotifyEvent(onClearQImg, i);
 	}
 	
 }
@@ -91,11 +100,33 @@ void AdminPanel::keyPressed(int key){
 
 }
 
+void AdminPanel::openFileDialogueBG(string ID) {
+	
+	string path;
+	ofxFileDialogOSX::openFile(path);
+	FileDef fi;
+	fi.ID = ID;
+	fi.path = path;
+	ofNotifyEvent(onFileDialogueBG, fi);
+	
+}
+
+void AdminPanel::openFileDialogueChangeQImg(string ID) {
+	
+	string path;
+	ofxFileDialogOSX::openFile(path);
+	FileDef fi;
+	fi.ID = ID;
+	fi.path = path;
+	ofNotifyEvent(onFileDialogueQImg, fi);	
+	
+}
+
 void AdminPanel::restoreDefault() {
 
 	camerarangex = 6113.28;
 	camerarangey = 4121.09;
-	aoCap = 1.9995;
+	aoCap = 0.304;
 	aoMultiplier = 351.562;
 	depthTolerance = 0.0004730;
 	aorange = 0.385156;
@@ -103,14 +134,14 @@ void AdminPanel::restoreDefault() {
 	aoDivision = 12.5;
 	baseColSubdivision = 0.896;
 	
-	focus = 0.98;
+	focus = 0.761;
 	aspectratiox = ofGetWidth();
 	aspectratioy = ofGetHeight();	
 	blurclamp = 0.0253910;
-	bias = 0.041016;
+	bias = 0.0019;
 	
 	colScale = 1.0;
-	colRadius = 0.5;
+	colRadius = 0.746;
 	colAngle = 0.5;
 	sizeBase = -6.0;
 	
@@ -123,16 +154,7 @@ void AdminPanel::restoreDefault() {
 	BGColor[1] = 0.0;
 	BGColor[2] = 0.0;
 	BGColor[3] = 1.0;	
+	changeQImg = false;
+	clearQImg = false;
 
-}
-
-void AdminPanel::openFileDialogueBG(string ID) {
-	
-	string path;
-	ofxFileDialogOSX::openFile(path);
-	FileDef fi;
-	fi.ID = ID;
-	fi.path = path;
-	ofNotifyEvent(onFileDialogueBG, fi);
-	
 }

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		312411BC1314716C009EF2D9 /* Helvetica.dfont in Resources */ = {isa = PBXBuildFile; fileRef = 312411BB1314716C009EF2D9 /* Helvetica.dfont */; };
+		312411C01314727E009EF2D9 /* qimg3.png in Resources */ = {isa = PBXBuildFile; fileRef = 312411BF1314727E009EF2D9 /* qimg3.png */; };
 		318E688E12F604F90097A0A9 /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 318E688C12F604E90097A0A9 /* icon.icns */; };
 		31B5E31B130F576B00388627 /* Boid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31B5E315130F576B00388627 /* Boid.cpp */; };
 		31B5E31C130F576B00388627 /* BoidList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31B5E317130F576B00388627 /* BoidList.cpp */; };
@@ -221,6 +223,8 @@
 		31E81530130DF7260053787E /* showdepth.vert in Resources */ = {isa = PBXBuildFile; fileRef = 31E814BA130DF32E0053787E /* showdepth.vert */; };
 		31E8170B130E23290053787E /* YesNoObj.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31E8170A130E23290053787E /* YesNoObj.cpp */; };
 		31E8174B130E287F0053787E /* Obj.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31E8174A130E287F0053787E /* Obj.cpp */; };
+		31F4000B1313414D0082B942 /* QuestionImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31F400091313414D0082B942 /* QuestionImage.cpp */; };
+		31F4FEE6131336060082B942 /* Verdana Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 31F4FEE5131336060082B942 /* Verdana Bold.ttf */; };
 		E45BE0AA0E8CC67C009D7055 /* GLee.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE0A90E8CC67C009D7055 /* GLee.a */; };
 		E45BE2E40E8CC69C009D7055 /* rtAudio.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE2E30E8CC69C009D7055 /* rtAudio.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -290,6 +294,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		312411BB1314716C009EF2D9 /* Helvetica.dfont */ = {isa = PBXFileReference; lastKnownFileType = file; path = Helvetica.dfont; sourceTree = "<group>"; };
+		312411BF1314727E009EF2D9 /* qimg3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qimg3.png; sourceTree = "<group>"; };
 		312CFBD3130F2E010010A5FB /* ofxEasyCam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxEasyCam.h; sourceTree = "<group>"; };
 		318E688C12F604E90097A0A9 /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = icon.icns; path = bin/data/icon.icns; sourceTree = "<group>"; };
 		31B5E315130F576B00388627 /* Boid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Boid.cpp; sourceTree = "<group>"; };
@@ -808,6 +814,9 @@
 		31E8170A130E23290053787E /* YesNoObj.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = YesNoObj.cpp; sourceTree = "<group>"; };
 		31E81749130E287F0053787E /* Obj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Obj.h; sourceTree = "<group>"; };
 		31E8174A130E287F0053787E /* Obj.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Obj.cpp; sourceTree = "<group>"; };
+		31F400091313414D0082B942 /* QuestionImage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = QuestionImage.cpp; sourceTree = "<group>"; };
+		31F4000A1313414D0082B942 /* QuestionImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionImage.h; sourceTree = "<group>"; };
+		31F4FEE5131336060082B942 /* Verdana Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Verdana Bold.ttf"; sourceTree = "<group>"; };
 		E45BE0390E8CC647009D7055 /* FreeImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FreeImage.h; path = ../../../libs/freeimage/include/FreeImage.h; sourceTree = SOURCE_ROOT; };
 		E45BE03F0E8CC650009D7055 /* fmod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = fmod.h; path = ../../../libs/fmodex/include/fmod.h; sourceTree = SOURCE_ROOT; };
 		E45BE0400E8CC650009D7055 /* fmod.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fmod.hpp; path = ../../../libs/fmodex/include/fmod.hpp; sourceTree = SOURCE_ROOT; };
@@ -916,6 +925,7 @@
 			children = (
 				31DED7991311E056007CC1D3 /* StateText.cpp */,
 				31DED79A1311E056007CC1D3 /* StateText.h */,
+				31F4FEE4131336060082B942 /* fonts */,
 			);
 			name = StateText;
 			path = ../SharedModule/StateText;
@@ -1926,6 +1936,34 @@
 			path = Flock3D;
 			sourceTree = "<group>";
 		};
+		31F400081313414D0082B942 /* QuestionImage */ = {
+			isa = PBXGroup;
+			children = (
+				31F400091313414D0082B942 /* QuestionImage.cpp */,
+				31F4000A1313414D0082B942 /* QuestionImage.h */,
+				31F404851313A5F00082B942 /* imgs */,
+			);
+			name = QuestionImage;
+			path = ../SharedModule/QuestionImage;
+			sourceTree = SOURCE_ROOT;
+		};
+		31F404851313A5F00082B942 /* imgs */ = {
+			isa = PBXGroup;
+			children = (
+				312411BF1314727E009EF2D9 /* qimg3.png */,
+			);
+			path = imgs;
+			sourceTree = "<group>";
+		};
+		31F4FEE4131336060082B942 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				31F4FEE5131336060082B942 /* Verdana Bold.ttf */,
+				312411BB1314716C009EF2D9 /* Helvetica.dfont */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
@@ -2146,6 +2184,7 @@
 				31E81466130DF1F80053787E /* ParticleCloud */,
 				31E8190E130E52C40053787E /* Flock3D */,
 				31DED7981311E056007CC1D3 /* StateText */,
+				31F400081313414D0082B942 /* QuestionImage */,
 				31DED7A71311E06E007CC1D3 /* HTTPSMSClient */,
 				31E814F7130DF41C0053787E /* AdminPanel */,
 				31E81514130DF6F60053787E /* shaders */,
@@ -2306,6 +2345,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				312411C01314727E009EF2D9 /* qimg3.png in Resources */,
+				31F4FEE6131336060082B942 /* Verdana Bold.ttf in Resources */,
 				31E8151D130DF7000053787E /* dof.frag in Resources */,
 				31E8151E130DF7000053787E /* dof.vert in Resources */,
 				31E8151F130DF7000053787E /* ssao.frag in Resources */,
@@ -2316,6 +2357,7 @@
 				31E81530130DF7260053787E /* showdepth.vert in Resources */,
 				318E688E12F604F90097A0A9 /* icon.icns in Resources */,
 				31DED8121311E92D007CC1D3 /* easing_terms_of_use.html in Resources */,
+				312411BC1314716C009EF2D9 /* Helvetica.dfont in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2548,6 +2590,7 @@
 				31DED81F1311E92D007CC1D3 /* ofxTween.cpp in Sources */,
 				31DED8441311E967007CC1D3 /* TimedCounter.cpp in Sources */,
 				31DED89513121C6C007CC1D3 /* ofxFileDialogOSX.cpp in Sources */,
+				31F4000B1313414D0082B942 /* QuestionImage.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

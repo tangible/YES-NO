@@ -10,15 +10,20 @@ void App::setup(){
 	ofEnableSmoothing();
 	ofSetDataPathRoot("../Resources/");
 	ofBackground(0,0,0);
-	
-//	cam.position(ofGetWidth()/2, ofGetHeight()/2+200, 1200);
-	cam.setup(this, 1200);
-	
+		
 	adminPanel.setup();
-	stateText.setup();	
-	convexHull.setup(fps, &adminPanel, &stateText, &cam);
+	sText.setup();	
+	convexHull.setup(fps, &adminPanel, &cam);
+	qImage.setup();
+	httpClient.setup();
 	
-	shader.setup("phong");
+	ofAddListener(adminPanel.onFileDialogueBG, this, &App::onFileChangeBG);	
+	ofAddListener(adminPanel.onClearBG, this, &App::onClearBG);	
+	ofAddListener(adminPanel.onFileDialogueQImg, this, &App::onFileChangeQImg);	
+	ofAddListener(adminPanel.onClearQImg, this, &App::onClearQImg);		
+	ofAddListener(httpClient.onSMSRecieved, this, &App::onSMSMsgRecieved);	
+	
+	qImage.changeImgQImg("qimg3.png");
 	
 }
 
@@ -33,24 +38,17 @@ void App::update(){
 //--------------------------------------------------------------
 void App::draw(){
 	
-//	cam.place();
-	cam.draw();
+//	bg.draw(ofGetWidth()/2-bg.getWidth()/2, 
+//			ofGetHeight()/2-bg.getHeight()/2);		
+//	qImage.draw();
+//	sText.draw(upInfo);
 	
-	//shader.begin();
-	shader.setUniform3f("AmbientColour", adminPanel.MATERIALAMBIENT[0], adminPanel.MATERIALAMBIENT[1], adminPanel.MATERIALAMBIENT[2]);
-	shader.setUniform3f("DiffuseColour", adminPanel.MATERIALDIFFUSE[0], adminPanel.MATERIALDIFFUSE[1], adminPanel.MATERIALDIFFUSE[2]);
-	shader.setUniform3f("SpecularColour", adminPanel.MATERIALSPECULAR[0], adminPanel.MATERIALSPECULAR[1], adminPanel.MATERIALSPECULAR[2]);
-	shader.setUniform1f("AmbientIntensity", adminPanel.AMBIENTINTENSITY);
-	shader.setUniform1f("DiffuseIntensity", adminPanel.DEFFUSEINTENSITY);
-	shader.setUniform1f("SpecularIntensity", adminPanel.SPECULARINTENSITY);
-	shader.setUniform1f("Roughness", adminPanel.ROUGHNESS);
-	shader.setUniform1f("Sharpness", adminPanel.SHARPNESS);	
-	shader.setUniform3f("LightPos", adminPanel.LIGHTX, adminPanel.LIGHTY, adminPanel.LIGHTZ);
-	convexHull.draw(mouseX, mouseY);
-	//shader.end();
+	ofPushMatrix();
+	ofTranslate(0, 0, -300);
+	convexHull.draw();	
+	ofPopMatrix();
 	
 	
-	ofSetupScreen();
 	adminPanel.draw();	
 	
 }
@@ -58,9 +56,42 @@ void App::draw(){
 //--------------------------------------------------------------
 void App::keyPressed(int key){
 
-	convexHull.keyPressed(key);
-	if (key == ' ') adminPanel.toggle();
-	
+	if (key == 's') {
+		httpClient.emulateSMS();
+	}else if (key == '1') {
+		for (int i = 0; i < 10; i++) {
+			httpClient.emulateSMS();
+		}
+	}else if (key == '5') {
+		for (int i = 0; i < 50; i++) {
+			httpClient.emulateSMS();
+		}
+	}else if (key == '0') {
+		for (int i = 0; i < 100; i++) {
+			httpClient.emulateSMS();
+		}
+	}else {	
+		adminPanel.keyPressed(key);
+	}
+}
+
+//--------------------------------------------------------------
+void App::onFileChangeBG(FileDef& fd) {
+	bg.loadImage(fd.path);
+}
+void App::onClearBG(int& i) {
+	bg.clear();
+}
+void App::onFileChangeQImg(FileDef& fd) {
+	qImage.changeImgQImg(fd.path);
+}
+void App::onClearQImg(int& i) {
+	qImage.clear();
+}
+void App::onSMSMsgRecieved(UpdateInfo& _upInfo) {
+	upInfo = _upInfo;
+	sText.onSMSReceivedUpdate(upInfo.sms.YesOrNo, upInfo);
+	convexHull.feedSMS(upInfo);
 }
 
 //--------------------------------------------------------------

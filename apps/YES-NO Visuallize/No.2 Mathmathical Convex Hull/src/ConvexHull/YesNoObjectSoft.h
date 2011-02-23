@@ -50,7 +50,7 @@ public:
 	
 	int resolusion;
 	static const int minRes = 16;
-	static const int maxRes = 512;
+	static const int maxRes = 5120;
 	ofxVec3f radius;
 	int sizeLevel;
 	
@@ -67,7 +67,6 @@ public:
 	ofxVec3f getFaceCentroid(btSoftBody::tFaceArray& faces, int faceID);	
 	float getFaceDistanceBetween(btSoftBody::tFaceArray& faces, int face1ID, int face2ID);
 	void updateColorPointer();
-	
 	
 	vector<float> destColorPointer;
 	vector<float> currColorPointer;

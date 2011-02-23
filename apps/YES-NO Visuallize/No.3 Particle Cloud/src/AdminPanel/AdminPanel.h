@@ -27,9 +27,12 @@ public:
 	void keyPressed(int key);
 	void restoreDefault();	
 	void openFileDialogueBG(string ID);
+	void openFileDialogueChangeQImg(string ID);
 	
 	ofEvent<FileDef> onFileDialogueBG; 
 	ofEvent<int> onClearBG;
+	ofEvent<FileDef> onFileDialogueQImg;
+	ofEvent<int> onClearQImg;
 	
 	// SSAO
 	float camerarangex;
@@ -58,6 +61,8 @@ public:
 	bool changeBG;
 	bool clearBG;
 	float BGColor[4];
+	bool changeQImg;
+	bool clearQImg;
 	
 	bool RESTORDEFBTN;
 	bool TOGGLEMOTION;

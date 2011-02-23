@@ -229,6 +229,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -267,13 +269,13 @@
 								<string>318E688812F604D30097A0A9</string>
 								<string>E4B69E1C0A3A1BDC003C02F2</string>
 								<string>1C37FBAC04509CD000000102</string>
-								<string>31F7CD7F12F6D54F0003806A</string>
 								<string>1C37FABC05509CD000000102</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>4</integer>
+									<integer>6</integer>
+									<integer>5</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -297,7 +299,7 @@
 							<real>231</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>522 298 788 504 0 0 1440 878 </string>
+						<string>37 307 788 504 0 0 1440 878 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -313,7 +315,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>openFrameworks-Info.plist</string>
+								<string>main.cpp</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -321,18 +323,19 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>openFrameworks-Info.plist</string>
+										<string>main.cpp</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>31F7CDAB12F6DBF00003806A</string>
+										<string>3124122D13148E2A009EF2D9</string>
 										<key>history</key>
 										<array>
-											<string>31C69675129646AA007F71A7</string>
 											<string>31C69676129646AA007F71A7</string>
 											<string>31C69677129646AA007F71A7</string>
 											<string>318E689012F605000097A0A9</string>
-											<string>31F7CDA412F6D6CD0003806A</string>
+											<string>3124121C1314862E009EF2D9</string>
+											<string>3124121D1314862E009EF2D9</string>
+											<string>3124122C13148E2A009EF2D9</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -344,14 +347,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {535, 232}}</string>
+								<string>{{0, 0}, {535, 458}}</string>
 								<key>RubberWindowFrame</key>
-								<string>522 298 788 504 0 0 1440 878 </string>
+								<string>37 307 788 504 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>232pt</string>
+							<string>458pt</string>
 						</dict>
 						<dict>
 							<key>ContentConfiguration</key>
@@ -364,14 +367,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 237}, {535, 226}}</string>
+								<string>{{0, 463}, {535, 0}}</string>
 								<key>RubberWindowFrame</key>
-								<string>522 298 788 504 0 0 1440 878 </string>
+								<string>37 307 788 504 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
 							<key>Proportion</key>
-							<string>226pt</string>
+							<string>0pt</string>
 						</dict>
 					</array>
 					<key>Proportion</key>
@@ -390,9 +393,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>31F7CD8312F6D55B0003806A</string>
+				<string>312412201314862E009EF2D9</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>31F7CD8412F6D55B0003806A</string>
+				<string>312412211314862E009EF2D9</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -534,7 +537,7 @@
 		<string>/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/SandBox/emptyExample/emptyExample.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>522 298 788 504 0 0 1440 878 </string>
+	<string>37 307 788 504 0 0 1440 878 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
@@ -611,7 +614,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>31C6967E129646AA007F71A7</string>
-				<string>31F7CD8512F6D55B0003806A</string>
+				<string>312412221314862E009EF2D9</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>

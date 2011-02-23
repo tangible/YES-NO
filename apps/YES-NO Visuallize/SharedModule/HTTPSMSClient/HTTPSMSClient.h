@@ -17,6 +17,7 @@
 
 class smsMsg {
 public:
+	int YesOrNo;	
 	string answer;
 	string time;
 };
@@ -31,6 +32,7 @@ public:
 	int numTotalNo;
 	int numYes;
 	int numNo;
+	smsMsg sms;
 	string requesttime;
 };
 
@@ -41,6 +43,7 @@ public:
 	void update();
 	void sendRequest();
 	void getResponse(ofxHttpResponse & response);
+	void emulateSMS();
 	vector<smsMsg> totalYess;
 	vector<smsMsg> totalNos;
 	vector<smsMsg> thisTimeYess;
@@ -49,6 +52,9 @@ public:
 	string recieveTime;
 	
 	ofEvent<UpdateInfo> onSMSRecieved; 
+	
+	static const int YES = 0;
+	static const int NO = 1;
 	
 private:
 	string str_replace(const string &source,
@@ -61,4 +67,7 @@ private:
 	string			action_url;	
 	TimedCounter*	counter;
 	ofxXmlSettings	xml;
+	
+	float test;
+	
 };

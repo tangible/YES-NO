@@ -23,7 +23,18 @@ public:
 	void draw();
 	void computeCloudShape(Flock3D f);
 	void computeMovement(Flock3D f);
-	void addObj();
+	void addSMSObj(int size);
+	void changeParticleObjNum(ofxBullet* bullet, int numPart);
+	void changeSizeObjNum(ofxBullet* bullet, int numSize);
+	
+	int getBoidID() { return boidID; }
+	int getObjNum() { return (int)objs.size(); }
+	int getAddeObjNum() { return (int)addedObjs.size(); }
+	
+	float particleObjSize;
+	float addedObjSize;
+	float impulseFactor;
+	float colorRadius;
 
 private:
 	void drawObjs();

@@ -22,6 +22,9 @@ public:
 	void setup();
 	void onSMSReceivedUpdate(int yesORno, UpdateInfo upInfo);
 	void draw(UpdateInfo upInfo, ofxVec3f centroidYes, ofxVec3f centroidNo);
+	void draw(UpdateInfo upInfo);
+	
+	ofTrueTypeFont dfont;
 	
 	ofTrueTypeFont font;	
 	ofxTween yesXTween;

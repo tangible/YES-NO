@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		310C8D9713034F29006EF72F /* YesNoObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 310C8D9613034F29006EF72F /* YesNoObject.cpp */; };
 		310C97D91303DD94006EF72F /* ofxColorPicker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 310C97D71303DD94006EF72F /* ofxColorPicker.cpp */; };
 		310C99691303EC7F006EF72F /* ofxMSAInteractiveObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 310C99411303EC7F006EF72F /* ofxMSAInteractiveObject.cpp */; };
 		310C996A1303EC7F006EF72F /* ofxSimpleGuiButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 310C99461303EC7F006EF72F /* ofxSimpleGuiButton.cpp */; };
@@ -26,19 +25,14 @@
 		310C99771303EC7F006EF72F /* ofxSimpleGuiPage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 310C99641303EC7F006EF72F /* ofxSimpleGuiPage.cpp */; };
 		310C99781303EC7F006EF72F /* ofxSimpleGuiToo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 310C99661303EC7F006EF72F /* ofxSimpleGuiToo.cpp */; };
 		310C99811303ECE1006EF72F /* AdminPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 310C99801303ECE1006EF72F /* AdminPanel.cpp */; };
+		3124125313149008009EF2D9 /* qimg3.png in Resources */ = {isa = PBXBuildFile; fileRef = 3124124E13149008009EF2D9 /* qimg3.png */; };
+		3124125413149008009EF2D9 /* QuestionImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3124124F13149008009EF2D9 /* QuestionImage.cpp */; };
+		3124125D13149042009EF2D9 /* Helvetica.dfont in Resources */ = {isa = PBXBuildFile; fileRef = 3124125B13149042009EF2D9 /* Helvetica.dfont */; };
+		3124125E13149042009EF2D9 /* Verdana Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3124125C13149042009EF2D9 /* Verdana Bold.ttf */; };
+		3124128F131493EA009EF2D9 /* ofxFileDialogOSX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3124128D131493EA009EF2D9 /* ofxFileDialogOSX.cpp */; };
 		3124805D1304FDF00076BAB7 /* IncomingSMS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3124805C1304FDF00076BAB7 /* IncomingSMS.cpp */; };
 		3124890C130605800076BAB7 /* YesNoObjectSoft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */; };
-		3168D354130212870036D28A /* chull.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3168D352130212870036D28A /* chull.cpp */; };
 		318E688E12F604F90097A0A9 /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 318E688C12F604E90097A0A9 /* icon.icns */; };
-		31965CDE13065C2800C55161 /* ofxShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31965CDC13065C2800C55161 /* ofxShader.cpp */; };
-		31965CE213065C6700C55161 /* phong.frag in Sources */ = {isa = PBXBuildFile; fileRef = 31965CE013065C6700C55161 /* phong.frag */; };
-		31965CE313065C6700C55161 /* phong.vert in Sources */ = {isa = PBXBuildFile; fileRef = 31965CE113065C6700C55161 /* phong.vert */; };
-		31965CE413065C7000C55161 /* phong.frag in Resources */ = {isa = PBXBuildFile; fileRef = 31965CE013065C6700C55161 /* phong.frag */; };
-		31965CE513065C7000C55161 /* phong.vert in Resources */ = {isa = PBXBuildFile; fileRef = 31965CE113065C6700C55161 /* phong.vert */; };
-		31965D2F1306608100C55161 /* glossy.frag in Sources */ = {isa = PBXBuildFile; fileRef = 31965D2D1306608100C55161 /* glossy.frag */; };
-		31965D301306608100C55161 /* glossy.vert in Sources */ = {isa = PBXBuildFile; fileRef = 31965D2E1306608100C55161 /* glossy.vert */; };
-		31965D45130662D700C55161 /* glossy.frag in Resources */ = {isa = PBXBuildFile; fileRef = 31965D2D1306608100C55161 /* glossy.frag */; };
-		31965D46130662D700C55161 /* glossy.vert in Resources */ = {isa = PBXBuildFile; fileRef = 31965D2E1306608100C55161 /* glossy.vert */; };
 		3196667B13078BB700C55161 /* easing_terms_of_use.html in Resources */ = {isa = PBXBuildFile; fileRef = 3196665613078BB700C55161 /* easing_terms_of_use.html */; };
 		3196667C13078BB700C55161 /* ofxEasing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3196665713078BB700C55161 /* ofxEasing.cpp */; };
 		3196667D13078BB700C55161 /* ofxEasingBack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3196665913078BB700C55161 /* ofxEasingBack.cpp */; };
@@ -216,7 +210,6 @@
 		31AE886F1301DED40087065A /* ofxXmlSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31AE886A1301DED40087065A /* ofxXmlSettings.cpp */; };
 		31AE887E1301DFB40087065A /* ConvexHull.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31AE887D1301DFB40087065A /* ConvexHull.cpp */; };
 		31CD7B2513091B42006DA41E /* StateText.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31CD7B2313091B42006DA41E /* StateText.cpp */; };
-		31CD7B2813091B58006DA41E /* Verdana Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 31CD7B2713091B58006DA41E /* Verdana Bold.ttf */; };
 		E45BE0AA0E8CC67C009D7055 /* GLee.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE0A90E8CC67C009D7055 /* GLee.a */; };
 		E45BE2E40E8CC69C009D7055 /* rtAudio.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE2E30E8CC69C009D7055 /* rtAudio.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -286,8 +279,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		310C8D9513034F29006EF72F /* YesNoObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YesNoObject.h; sourceTree = "<group>"; };
-		310C8D9613034F29006EF72F /* YesNoObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = YesNoObject.cpp; sourceTree = "<group>"; };
 		310C97D71303DD94006EF72F /* ofxColorPicker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxColorPicker.cpp; sourceTree = "<group>"; };
 		310C97D81303DD94006EF72F /* ofxColorPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxColorPicker.h; sourceTree = "<group>"; };
 		310C99411303EC7F006EF72F /* ofxMSAInteractiveObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxMSAInteractiveObject.cpp; sourceTree = "<group>"; };
@@ -328,20 +319,19 @@
 		310C99671303EC7F006EF72F /* ofxSimpleGuiToo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSimpleGuiToo.h; sourceTree = "<group>"; };
 		310C997F1303ECE1006EF72F /* AdminPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdminPanel.h; sourceTree = "<group>"; };
 		310C99801303ECE1006EF72F /* AdminPanel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AdminPanel.cpp; sourceTree = "<group>"; };
+		3124124E13149008009EF2D9 /* qimg3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qimg3.png; sourceTree = "<group>"; };
+		3124124F13149008009EF2D9 /* QuestionImage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = QuestionImage.cpp; sourceTree = "<group>"; };
+		3124125013149008009EF2D9 /* QuestionImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionImage.h; sourceTree = "<group>"; };
+		3124125B13149042009EF2D9 /* Helvetica.dfont */ = {isa = PBXFileReference; lastKnownFileType = file; path = Helvetica.dfont; sourceTree = "<group>"; };
+		3124125C13149042009EF2D9 /* Verdana Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Verdana Bold.ttf"; sourceTree = "<group>"; };
+		3124128D131493EA009EF2D9 /* ofxFileDialogOSX.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxFileDialogOSX.cpp; sourceTree = "<group>"; };
+		3124128E131493EA009EF2D9 /* ofxFileDialogOSX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxFileDialogOSX.h; sourceTree = "<group>"; };
 		3124805B1304FDF00076BAB7 /* IncomingSMS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IncomingSMS.h; sourceTree = "<group>"; };
 		3124805C1304FDF00076BAB7 /* IncomingSMS.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IncomingSMS.cpp; sourceTree = "<group>"; };
 		312485DB1305F58E0076BAB7 /* ofxEasyCam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxEasyCam.h; sourceTree = "<group>"; };
 		3124890A130605800076BAB7 /* YesNoObjectSoft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YesNoObjectSoft.h; sourceTree = "<group>"; };
 		3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = YesNoObjectSoft.cpp; sourceTree = "<group>"; };
-		3168D352130212870036D28A /* chull.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = chull.cpp; sourceTree = "<group>"; };
-		3168D353130212870036D28A /* chull.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = chull.h; sourceTree = "<group>"; };
 		318E688C12F604E90097A0A9 /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = icon.icns; path = bin/data/icon.icns; sourceTree = "<group>"; };
-		31965CDC13065C2800C55161 /* ofxShader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxShader.cpp; sourceTree = "<group>"; };
-		31965CDD13065C2800C55161 /* ofxShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxShader.h; sourceTree = "<group>"; };
-		31965CE013065C6700C55161 /* phong.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = phong.frag; sourceTree = "<group>"; };
-		31965CE113065C6700C55161 /* phong.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = phong.vert; sourceTree = "<group>"; };
-		31965D2D1306608100C55161 /* glossy.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = glossy.frag; sourceTree = "<group>"; };
-		31965D2E1306608100C55161 /* glossy.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = glossy.vert; sourceTree = "<group>"; };
 		3196665613078BB700C55161 /* easing_terms_of_use.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = easing_terms_of_use.html; sourceTree = "<group>"; };
 		3196665713078BB700C55161 /* ofxEasing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxEasing.cpp; sourceTree = "<group>"; };
 		3196665813078BB700C55161 /* ofxEasing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxEasing.h; sourceTree = "<group>"; };
@@ -786,7 +776,6 @@
 		31AE887D1301DFB40087065A /* ConvexHull.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ConvexHull.cpp; sourceTree = "<group>"; };
 		31CD7B2313091B42006DA41E /* StateText.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StateText.cpp; sourceTree = "<group>"; };
 		31CD7B2413091B42006DA41E /* StateText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StateText.h; sourceTree = "<group>"; };
-		31CD7B2713091B58006DA41E /* Verdana Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Verdana Bold.ttf"; sourceTree = "<group>"; };
 		E45BE0390E8CC647009D7055 /* FreeImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FreeImage.h; path = ../../../libs/freeimage/include/FreeImage.h; sourceTree = SOURCE_ROOT; };
 		E45BE03F0E8CC650009D7055 /* fmod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = fmod.h; path = ../../../libs/fmodex/include/fmod.h; sourceTree = SOURCE_ROOT; };
 		E45BE0400E8CC650009D7055 /* fmod.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fmod.hpp; path = ../../../libs/fmodex/include/fmod.hpp; sourceTree = SOURCE_ROOT; };
@@ -811,7 +800,7 @@
 		E4B69B5B0A3A1756003C02F2 /* No.2 Mathmathical Convex Hull.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "No.2 Mathmathical Convex Hull.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4B69E1D0A3A1BDC003C02F2 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
 		E4B69E1E0A3A1BDC003C02F2 /* App.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = App.cpp; sourceTree = "<group>"; };
-		E4B69E1F0A3A1BDC003C02F2 /* App.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = App.h; sourceTree = "<group>"; };
+		E4B69E1F0A3A1BDC003C02F2 /* App.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = App.h; sourceTree = "<group>"; };
 		E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.xml; path = "openFrameworks-Info.plist"; sourceTree = "<group>"; };
 		E4C2421610CC549C004149E2 /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E4C2424410CC5A17004149E2 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
@@ -958,6 +947,52 @@
 			path = AdminPanel;
 			sourceTree = "<group>";
 		};
+		3124124A13149008009EF2D9 /* QuestionImage */ = {
+			isa = PBXGroup;
+			children = (
+				3124124F13149008009EF2D9 /* QuestionImage.cpp */,
+				3124125013149008009EF2D9 /* QuestionImage.h */,
+				3124124B13149008009EF2D9 /* imgs */,
+			);
+			name = QuestionImage;
+			path = ../SharedModule/QuestionImage;
+			sourceTree = SOURCE_ROOT;
+		};
+		3124124B13149008009EF2D9 /* imgs */ = {
+			isa = PBXGroup;
+			children = (
+				3124124E13149008009EF2D9 /* qimg3.png */,
+			);
+			path = imgs;
+			sourceTree = "<group>";
+		};
+		3124125A13149042009EF2D9 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				3124125B13149042009EF2D9 /* Helvetica.dfont */,
+				3124125C13149042009EF2D9 /* Verdana Bold.ttf */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
+		3124128B131493EA009EF2D9 /* ofxFileDialogOSX */ = {
+			isa = PBXGroup;
+			children = (
+				3124128C131493EA009EF2D9 /* src */,
+			);
+			name = ofxFileDialogOSX;
+			path = ../../../addons/ofxFileDialogOSX;
+			sourceTree = SOURCE_ROOT;
+		};
+		3124128C131493EA009EF2D9 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				3124128D131493EA009EF2D9 /* ofxFileDialogOSX.cpp */,
+				3124128E131493EA009EF2D9 /* ofxFileDialogOSX.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		312485DA1305F58E0076BAB7 /* ofxEasyCam */ = {
 			isa = PBXGroup;
 			children = (
@@ -974,36 +1009,6 @@
 			);
 			name = Resources;
 			sourceTree = "<group>";
-		};
-		31965CDA13065C2800C55161 /* ofxShader */ = {
-			isa = PBXGroup;
-			children = (
-				31965CDB13065C2800C55161 /* src */,
-			);
-			name = ofxShader;
-			path = ../../../addons/ofxShader;
-			sourceTree = SOURCE_ROOT;
-		};
-		31965CDB13065C2800C55161 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				31965CDC13065C2800C55161 /* ofxShader.cpp */,
-				31965CDD13065C2800C55161 /* ofxShader.h */,
-			);
-			path = src;
-			sourceTree = "<group>";
-		};
-		31965CDF13065C6700C55161 /* shaders */ = {
-			isa = PBXGroup;
-			children = (
-				31965D2D1306608100C55161 /* glossy.frag */,
-				31965D2E1306608100C55161 /* glossy.vert */,
-				31965CE013065C6700C55161 /* phong.frag */,
-				31965CE113065C6700C55161 /* phong.vert */,
-			);
-			name = shaders;
-			path = bin/data/shaders;
-			sourceTree = SOURCE_ROOT;
 		};
 		3196663E13078BB700C55161 /* ofxTween */ = {
 			isa = PBXGroup;
@@ -1818,10 +1823,6 @@
 			children = (
 				31AE887C1301DFB40087065A /* ConvexHull.h */,
 				31AE887D1301DFB40087065A /* ConvexHull.cpp */,
-				3168D353130212870036D28A /* chull.h */,
-				3168D352130212870036D28A /* chull.cpp */,
-				310C8D9513034F29006EF72F /* YesNoObject.h */,
-				310C8D9613034F29006EF72F /* YesNoObject.cpp */,
 				3124890A130605800076BAB7 /* YesNoObjectSoft.h */,
 				3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */,
 				3124805B1304FDF00076BAB7 /* IncomingSMS.h */,
@@ -1835,25 +1836,17 @@
 			children = (
 				31CD7B2313091B42006DA41E /* StateText.cpp */,
 				31CD7B2413091B42006DA41E /* StateText.h */,
+				3124125A13149042009EF2D9 /* fonts */,
 			);
 			name = StateText;
 			path = ../SharedModule/StateText;
 			sourceTree = SOURCE_ROOT;
 		};
-		31CD7B2613091B58006DA41E /* fonts */ = {
-			isa = PBXGroup;
-			children = (
-				31CD7B2713091B58006DA41E /* Verdana Bold.ttf */,
-			);
-			name = fonts;
-			path = bin/data/fonts;
-			sourceTree = SOURCE_ROOT;
-		};
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				3124128B131493EA009EF2D9 /* ofxFileDialogOSX */,
 				3196663E13078BB700C55161 /* ofxTween */,
-				31965CDA13065C2800C55161 /* ofxShader */,
 				312485DA1305F58E0076BAB7 /* ofxEasyCam */,
 				310C993F1303EC7F006EF72F /* ofxMSAInteractiveObject */,
 				310C99431303EC7F006EF72F /* ofxSimpleGuiToo */,
@@ -2064,12 +2057,11 @@
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				E4B69E1E0A3A1BDC003C02F2 /* App.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* App.h */,
-				310C997E1303ECDA006EF72F /* AdminPanel */,
 				31AE88781301DF990087065A /* ConvexHull */,
+				310C997E1303ECDA006EF72F /* AdminPanel */,
 				31CD7B2213091B42006DA41E /* StateText */,
+				3124124A13149008009EF2D9 /* QuestionImage */,
 				31AE81BC130137470087065A /* HTTPSMSClient */,
-				31965CDF13065C6700C55161 /* shaders */,
-				31CD7B2613091B58006DA41E /* fonts */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -2227,13 +2219,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				31965D45130662D700C55161 /* glossy.frag in Resources */,
-				31965D46130662D700C55161 /* glossy.vert in Resources */,
-				31965CE413065C7000C55161 /* phong.frag in Resources */,
-				31965CE513065C7000C55161 /* phong.vert in Resources */,
+				3124125D13149042009EF2D9 /* Helvetica.dfont in Resources */,
+				3124125E13149042009EF2D9 /* Verdana Bold.ttf in Resources */,
+				3124125313149008009EF2D9 /* qimg3.png in Resources */,
 				318E688E12F604F90097A0A9 /* icon.icns in Resources */,
 				3196667B13078BB700C55161 /* easing_terms_of_use.html in Resources */,
-				31CD7B2813091B58006DA41E /* Verdana Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2424,8 +2414,6 @@
 				31AE886E1301DED40087065A /* tinyxmlparser.cpp in Sources */,
 				31AE886F1301DED40087065A /* ofxXmlSettings.cpp in Sources */,
 				31AE887E1301DFB40087065A /* ConvexHull.cpp in Sources */,
-				3168D354130212870036D28A /* chull.cpp in Sources */,
-				310C8D9713034F29006EF72F /* YesNoObject.cpp in Sources */,
 				310C97D91303DD94006EF72F /* ofxColorPicker.cpp in Sources */,
 				310C99691303EC7F006EF72F /* ofxMSAInteractiveObject.cpp in Sources */,
 				310C996A1303EC7F006EF72F /* ofxSimpleGuiButton.cpp in Sources */,
@@ -2446,11 +2434,6 @@
 				310C99811303ECE1006EF72F /* AdminPanel.cpp in Sources */,
 				3124805D1304FDF00076BAB7 /* IncomingSMS.cpp in Sources */,
 				3124890C130605800076BAB7 /* YesNoObjectSoft.cpp in Sources */,
-				31965CDE13065C2800C55161 /* ofxShader.cpp in Sources */,
-				31965CE213065C6700C55161 /* phong.frag in Sources */,
-				31965CE313065C6700C55161 /* phong.vert in Sources */,
-				31965D2F1306608100C55161 /* glossy.frag in Sources */,
-				31965D301306608100C55161 /* glossy.vert in Sources */,
 				3196667C13078BB700C55161 /* ofxEasing.cpp in Sources */,
 				3196667D13078BB700C55161 /* ofxEasingBack.cpp in Sources */,
 				3196667E13078BB700C55161 /* ofxEasingBounce.cpp in Sources */,
@@ -2465,6 +2448,8 @@
 				3196668713078BB700C55161 /* ofxEasingSine.cpp in Sources */,
 				3196668813078BB700C55161 /* ofxTween.cpp in Sources */,
 				31CD7B2513091B42006DA41E /* StateText.cpp in Sources */,
+				3124125413149008009EF2D9 /* QuestionImage.cpp in Sources */,
+				3124128F131493EA009EF2D9 /* ofxFileDialogOSX.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -21,6 +21,10 @@ public:
 	void draw();
 	vector<ofxVec3f> getTrailPoints(int YesOrNo, int flockIdx);
 	
+	void doImpulseToFlock(int YesOrNo, int flockIdx);	
+	void changeTrailPointNum(int YesOrNo, int flockIdx, int pointNum);
+	void setBoidSpeed(int YesOrNo, int flockIdx, float speed);
+	
 	float width;
 	float height;
 	float near;

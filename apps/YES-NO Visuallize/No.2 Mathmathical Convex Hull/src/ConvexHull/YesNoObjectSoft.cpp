@@ -46,9 +46,9 @@ void YesNoObjectSoft::update() {
 	
 	updateColorPointer();
 		
-	btVector3 f = btVector3(0.0, 0.0, 0.0);
-	f.setY(ofSignedNoise(ofGetElapsedTimef())*500);
-	yesORno->getSoftBody()->addForce(f);
+//	btVector3 f = btVector3(0.0, 0.0, 0.0);
+//	f.setY(ofSignedNoise(ofGetElapsedTimef())*500);
+//	yesORno->getSoftBody()->addForce(f);
 	
 //	btQuaternion q;
 //	q.setRotation(ofxBulletStaticUtil::ofxVec3ToBtVec3(ofxVec3f(0,1,0)), ofxBulletStaticUtil::degToRad(ofNoise(ofGetFrameNum())));	

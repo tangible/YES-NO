@@ -26,7 +26,8 @@ public:
 	ofxVec3f alignment(vector<Boid*> boids);
 	ofxVec3f cohesion(vector<Boid*> boids);
 	ofxVec3f seperation(vector<Boid*> boids);
-
+	
+	void changeTrailPointNum(int numPoint);
 	
 	float width;
 	float height;

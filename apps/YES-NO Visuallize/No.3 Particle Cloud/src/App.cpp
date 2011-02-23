@@ -18,6 +18,7 @@ void App::setup(){
 	adminPanel.setup();
 	pCloud.setup(fps, &adminPanel, &cam);
 	sText.setup();
+	qImage.setup();
 	httpClient.setup();
 	
 	defaultShader.setup("default");
@@ -31,8 +32,12 @@ void App::setup(){
 	
 	ofAddListener(adminPanel.onFileDialogueBG, this, &App::onFileChangeBG);	
 	ofAddListener(adminPanel.onClearBG, this, &App::onClearBG);	
+	ofAddListener(adminPanel.onFileDialogueQImg, this, &App::onFileChangeQImg);	
+	ofAddListener(adminPanel.onClearQImg, this, &App::onClearQImg);		
 	ofAddListener(httpClient.onSMSRecieved, this, &App::onSMSMsgRecieved);	
 	
+	qImage.changeImgQImg("qimg3.png");
+
 }
 
 //--------------------------------------------------------------
@@ -86,6 +91,9 @@ void App::draw(){
 	bg.draw(ofGetWidth()/2-bg.getWidth()/2, 
 			ofGetHeight()/2-bg.getHeight()/2);	
 	
+	qImage.draw();	
+	sText.draw(upInfo);
+	
 	int ssaoTexSlot = 6;
 	ssaoFBO.beforeDraw(ssaoTexSlot);
 	int depthTexSlot = 5;
@@ -126,10 +134,25 @@ void App::drawFullScreenQuad(int w, int h) {
 
 //--------------------------------------------------------------
 void App::keyPressed(int key){
-
-	adminPanel.keyPressed(key);	
-	pCloud.debugKeyPress(key);
-
+	
+	if (key == 's') {
+		httpClient.emulateSMS();
+	}else if (key == '1') {
+		for (int i = 0; i < 10; i++) {
+			httpClient.emulateSMS();
+		}
+	}else if (key == '5') {
+		for (int i = 0; i < 50; i++) {
+			httpClient.emulateSMS();
+		}
+	}else if (key == '0') {
+		for (int i = 0; i < 100; i++) {
+			httpClient.emulateSMS();
+		}
+	}else {
+		adminPanel.keyPressed(key);	
+		pCloud.debugKeyPress(key);	
+	}
 }
 
 //--------------------------------------------------------------
@@ -139,8 +162,16 @@ void App::onFileChangeBG(FileDef& fd) {
 void App::onClearBG(int& i) {
 	bg.clear();
 }
-void App::onSMSMsgRecieved(UpdateInfo& upInfo) {
-	//blobMgr.recieveSMS(upInfo);
+void App::onFileChangeQImg(FileDef& fd) {
+	qImage.changeImgQImg(fd.path);
+}
+void App::onClearQImg(int& i) {
+	qImage.clear();
+}
+void App::onSMSMsgRecieved(UpdateInfo& _upInfo) {
+	upInfo = _upInfo;
+	sText.onSMSReceivedUpdate(upInfo.sms.YesOrNo, upInfo);
+	pCloud.feedSMS(upInfo);
 }
 
 

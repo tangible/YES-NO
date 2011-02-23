@@ -63,15 +63,7 @@ void HTTPSMSClient::getResponse(ofxHttpResponse & response){
 	timestr = str_replace(timestr, "¥", "");		
 	recieveTime = timestr;
 	
-//	for (int i = 0; i < thisTimeYess.size(); i++) {
-//		smsMsg sms = thisTimeYess[i];
-//		delete sms;
-//	}
 	thisTimeYess.clear();
-//	for (int i = 0; i < thisTimeNos.size(); i++) {
-//		smsMsg sms = thisTimeNos[i];
-//		delete sms;
-//	}
 	thisTimeNos.clear();
 	
 	xml.clear();
@@ -116,11 +108,6 @@ void HTTPSMSClient::getResponse(ofxHttpResponse & response){
 	}
 	xml.popTag();
 	xml.popTag();	
-	
-//	for (int i = 0; i < smsMsgs.size(); i++) {
-//		cout << "Answer: "+smsMsgs[i].answer << endl;
-//		cout << "Time: "+smsMsgs[i].time << endl;
-//	}
 
 	UpdateInfo upInfo = calcUpdateInfo();
 	ofNotifyEvent(onSMSRecieved, upInfo);
@@ -143,6 +130,16 @@ UpdateInfo HTTPSMSClient::calcUpdateInfo() {
 	float raThisTimeYes = (thisTimeYes<=0)?0.0:thisTimeYes/totalSMSThisTime;
 	float raThisTimeNo = (thisTimeNo<=0)?0.0:thisTimeNo/totalSMSThisTime;
 	
+	smsMsg sms;
+	if (test < 0) {
+		sms.YesOrNo = HTTPSMSClient::YES;
+		sms.answer = "YES";
+	}else {
+		sms.YesOrNo = HTTPSMSClient::NO;
+		sms.answer = "NO";
+	}
+	upInfo.sms = sms;
+	
 	upInfo.ratioTotalYes = raTotalYes;
 	upInfo.ratioTotalNo = raTotalNo;
 	upInfo.ratioThisTimeYes = raThisTimeYes;
@@ -157,6 +154,42 @@ UpdateInfo HTTPSMSClient::calcUpdateInfo() {
 //	cout << "totalYes recieved = " + ofToString(upInfo.numTotalYes) << endl;
 	
 	return upInfo;
+	
+}
+
+void HTTPSMSClient::emulateSMS() {
+	
+	ofxHttpResponse response;
+
+	string res = "";
+	string start = "<TangibleHUBYesNoResponce><SMSs>";
+	
+	time_t t;
+	time(&t);
+	char gmttime[256];
+	strftime(gmttime, 255, "%Y¥/%m¥/%d¥/%H¥/%I¥/%S", gmtime(&t));
+	string timestr = gmttime;
+	timestr = str_replace(timestr, "¥", "");		
+	
+	string yes = "<SMS><Answer>YES</Answer><Time>" + timestr + "</Time></SMS>";
+	string no = "<SMS><Answer>NO</Answer><Time>" + timestr + "</Time></SMS>";
+	string contents = "";
+	int thisreq = 1;//ofRandom(1, 20);
+	for (int i = 0; i < thisreq; i++) {
+		
+		test = ofRandomf();
+		if (test < 0) {
+			contents += yes;
+		}else {
+			contents += no;
+		}
+	}
+	
+	string end = "</SMSs></TangibleHUBYesNoResponce>";
+	res = start+contents+end;
+	
+	response.responseBody = res;
+	getResponse(response);
 	
 }
 

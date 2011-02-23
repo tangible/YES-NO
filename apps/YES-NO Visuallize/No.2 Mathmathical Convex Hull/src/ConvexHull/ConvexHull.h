@@ -15,7 +15,6 @@
 #include "YesNoObjectSoft.h"
 #include "AdminPanel.h"
 #include "IncomingSMS.h"
-#include "StateText.h"
 #include "HTTPSMSClient.h"
 
 const int YES = 0;
@@ -27,18 +26,16 @@ public:
 	
 	bool debugRun;
 	
-	void setup(int _fps, AdminPanel* _adminPanel, StateText* _sText, ofxCamera* _cam);
+	void setup(int _fps, AdminPanel* _adminPanel, ofxCamera* _cam);
 	void update();
-	void draw(int mouseX, int mouseY);
-	void keyPressed(int key);
-	float addSMS(int YesOrNo);
+	void draw();
+	float feedSMS(UpdateInfo upInfo);
 	void setupGLStuff();
 	
 	int						fps;
 	ofxBullet*				bullet;
 	ofxCamera*				cam;	
 	AdminPanel*				admin;
-	StateText*				sText;
 	
 	float mc(float num);
 	

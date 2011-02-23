@@ -20,7 +20,7 @@ public:
 			   float _forceVecFactor = 55,
 			   float _tangentVecFactor = 100);
 	void setForcePoint(ofxVec3f fp){forcePoint = fp;}
-	void movetoForcePoint();
+	void movetoForcePoint(int impulseFactor = 40);
 	
 	MyRigidBody* getBody(){return body;}
 	ofxVec3f getObjPos(){return body->getBodyPos();}

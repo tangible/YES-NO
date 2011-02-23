@@ -68,3 +68,26 @@ vector<ofxVec3f> Flock3D::getTrailPoints(int YesOrNo, int flockIdx) {
 
 
 }
+
+void Flock3D::doImpulseToFlock(int YesOrNo, int flockIdx) {
+//	float maxSpeed;
+//	float maxSteerForce;
+	flocks[YesOrNo]->boids[flockIdx]->maxSpeed = 20;
+	flocks[YesOrNo]->boids[flockIdx]->maxSteerForce = 3;
+
+}
+
+void Flock3D::setBoidSpeed(int YesOrNo, int flockIdx, float speed) {
+	flocks[YesOrNo]->boids[flockIdx]->maxSpeed = speed;
+}
+
+void Flock3D::changeTrailPointNum(int YesOrNo, int flockIdx, int pointNum) {
+	
+	flocks[YesOrNo]->boids[flockIdx]->changeTrailPointNum(pointNum);
+	
+}
+
+
+
+
+
