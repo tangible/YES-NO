@@ -7,6 +7,7 @@
 #include "HTTPSMSClient.h"
 #include "StateText.h"
 #include "QuestionImage.h"
+#include "ofxTween.h"
 
 class App : public ofBaseApp{
 
@@ -37,9 +38,14 @@ public:
 	
 	ofImage bg;
 	UpdateInfo upInfo;	
+	vector<UpdateInfo> smsQue;
 	
-//	ofxEasyCam		cam;
-	ofxCamera		cam;
+	ofxEasyCam		cam;
+	//ofxCamera		cam;
+	ofxTween		camOrbitTween;
+	ofxEasingCubic	camOrbitEasing;
+	static const float camOrbitAmt = 4.5;
+	int				prevOrbit;
 
 };
 

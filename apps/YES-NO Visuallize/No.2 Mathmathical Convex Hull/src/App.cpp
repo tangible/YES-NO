@@ -11,6 +11,8 @@ void App::setup(){
 	ofSetDataPathRoot("../Resources/");
 	ofBackground(0,0,0);
 		
+	//cam.position(ofGetWidth()/2, ofGetWidth()/2, 700);
+	cam.setup(this, 1000);
 	adminPanel.setup();
 	sText.setup();	
 	convexHull.setup(fps, &adminPanel, &cam);
@@ -24,7 +26,7 @@ void App::setup(){
 	ofAddListener(httpClient.onSMSRecieved, this, &App::onSMSMsgRecieved);	
 	
 	qImage.changeImgQImg("qimg3.png");
-	
+	prevOrbit = 2;
 }
 
 //--------------------------------------------------------------
@@ -33,24 +35,49 @@ void App::update(){
 	adminPanel.update();
 	convexHull.update();
 	
+	cam.orbitAround(cam.getEye(), ofxVec3f(0,1,0), camOrbitTween.update());
+	
+	if (!convexHull.isYesUpdating && !convexHull.isNoUpdating && smsQue.size() > 0) {
+		
+		UpdateInfo upInfo = smsQue[0];
+		smsQue.erase(smsQue.begin());
+		
+		sText.onSMSReceivedUpdate(upInfo.sms.YesOrNo, upInfo);
+		convexHull.feedSMS(upInfo);
+		
+		if (prevOrbit != upInfo.sms.YesOrNo) {
+			float oamt = 0.0;
+			if (upInfo.sms.YesOrNo == 0) {
+				oamt = -camOrbitAmt;
+			}else {
+				oamt = camOrbitAmt;
+			}
+			if (prevOrbit != 2) oamt *= 2;
+			camOrbitTween.setParameters(camOrbitEasing, ofxTween::easeIn, oamt, 0.0, 600, 0);
+		}
+		prevOrbit = upInfo.sms.YesOrNo;	
+	}
 }
 
 //--------------------------------------------------------------
 void App::draw(){
+	
 	
 //	bg.draw(ofGetWidth()/2-bg.getWidth()/2, 
 //			ofGetHeight()/2-bg.getHeight()/2);		
 //	qImage.draw();
 //	sText.draw(upInfo);
 	
+//	cam.place();
+	cam.draw();
 	ofPushMatrix();
-	ofTranslate(0, 0, -300);
+//	ofTranslate(0, 0, -300);
 	convexHull.draw();	
 	ofPopMatrix();
 	
 	
 	adminPanel.draw();	
-	
+	ofSetColor(255, 255, 255);	
 }
 
 //--------------------------------------------------------------
@@ -90,8 +117,21 @@ void App::onClearQImg(int& i) {
 }
 void App::onSMSMsgRecieved(UpdateInfo& _upInfo) {
 	upInfo = _upInfo;
-	sText.onSMSReceivedUpdate(upInfo.sms.YesOrNo, upInfo);
-	convexHull.feedSMS(upInfo);
+	smsQue.push_back(_upInfo);
+//	sText.onSMSReceivedUpdate(upInfo.sms.YesOrNo, upInfo);
+//	convexHull.feedSMS(upInfo);
+//	
+//	if (prevOrbit != upInfo.sms.YesOrNo) {
+//		float oamt = 0.0;
+//		if (upInfo.sms.YesOrNo == 0) {
+//			oamt = -camOrbitAmt;
+//		}else {
+//			oamt = camOrbitAmt;
+//		}
+//		if (prevOrbit != 2) oamt *= 2;
+//		camOrbitTween.setParameters(camOrbitEasing, ofxTween::easeIn, oamt, 0.0, 400, 0);
+//	}
+//	prevOrbit = upInfo.sms.YesOrNo;
 }
 
 //--------------------------------------------------------------

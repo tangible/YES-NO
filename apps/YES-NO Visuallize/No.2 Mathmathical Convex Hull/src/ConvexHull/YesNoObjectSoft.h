@@ -42,50 +42,27 @@ public:
 	}
 };
 
-static const int YNSOFTMINSIZELEV = 0;
-static const int YNSOFTMAXSIZELEV = 20;
+
 class YesNoObjectSoft {
 
 public:
-	
-	int resolusion;
-	static const int minRes = 16;
-	static const int maxRes = 5120;
-	ofxVec3f radius;
-	int sizeLevel;
-	
-	bool debugRun;
-
-	int incomingSMSFaceID;
 	
 	void setup(int _yesOrNo, ofxBullet* _bullet, ofxVec3f _forcePoint, ofxVec3f scale, int _sizeLevel);
 	void update();
 	void draw();
 	void debugDraw();
-	vector<float>  changeColBySMSRecievedFace(btSoftBody::tFaceArray& faces, int faceID);
+	vector<float> changeColBySMSRecievedFace(int & z);
 	vector<int> sortFaceByDistance(btSoftBody::tFaceArray& faces, int faceID);
 	ofxVec3f getFaceCentroid(btSoftBody::tFaceArray& faces, int faceID);	
 	float getFaceDistanceBetween(btSoftBody::tFaceArray& faces, int face1ID, int face2ID);
+	ofxVec3f getFaceNormal(btSoftBody::tFaceArray& faces, int face1ID);
+	ofxVec3f getObjCentroid(btSoftBody::tFaceArray& faces);
 	void updateColorPointer();
-	
-	vector<float> destColorPointer;
-	vector<float> currColorPointer;
-	ofxTween	  colorPointerTween;
-	ofxEasingCirc easing;
-	
-	vector<addedSMS*> addedSMSs;
-	ofxTween shrinkTimer;
-	TimedCounter* blowUpTimerr;
-	ofxTween blowUpTimer;
-	ofEvent<int> onTheEnd;
-	void finish();
-	bool bFinish;
-	void clear();
-	
-	void debugKeyPressed(int key);
+	void startFaceingToCam(ofxCamera* cam, ofxVec3f offset);
+	void updateRotateion();
 	
 	void addSMS(int faceID);
-	void addSMSCompleted(int faceID, vector<ofxVec3f> pos);
+	void addSMSCompleted(int & z);
 	void blowUp();
 	void shrink();
 	void pinchAndSpreadNode();
@@ -93,12 +70,40 @@ public:
 	void pinchFace(int face);
 	void pinchNode();
 	
+	void clear();
+	
+	ofEvent<int> onFinishAllUpdating;
+	void notifyFinishAllUpdating(int & z);
+	
 	ofxBullet*	bullet;
 	MySoftBody*	yesORno;
-	ofxColorPicker col;
+	ofxColorPicker col;	
+	
+	static const int YES = 0;
+	static const int NO = 0;
+	static const int minRes = 16;
+	static const int maxRes = 5120;
+	static const int YNSOFTMINSIZELEV = 0;
+	static const int YNSOFTMAXSIZELEV = 20;	
+	int resolusion;	
+	ofxVec3f radius;
+	int sizeLevel;
+	
+	int incomingSMSFaceID;	
+	
+	vector<float> destColorPointer;
+	vector<float> currColorPointer;
+	ofxTween	  colorPointerTween;
+	ofxEasingCirc easing;
+	
+	vector<addedSMS*> addedSMSs;
 	
 	int			YesOrNo;
-	float		maxValu;
 	ofxVec3f	forcePoint;
+	
+	ofxTween facingTween;
+	ofxEasingCubic facingEasing;
+	ofxVec3f prevFacingAxis;
+	float prevFaceAngle;
 	
 };

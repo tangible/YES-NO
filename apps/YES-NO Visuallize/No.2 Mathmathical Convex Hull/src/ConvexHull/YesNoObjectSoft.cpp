@@ -14,27 +14,25 @@ void YesNoObjectSoft::setup(int _yesOrNo, ofxBullet* _bullet, ofxVec3f _forcePoi
 	YesOrNo = _yesOrNo;
 	bullet = _bullet;
 	forcePoint = _forcePoint;
-	maxValu = 0.01;
 	sizeLevel = _sizeLevel;
 	
 	ofxVec3f gravity(0, 0, 0);
 	ofxVec3f center(forcePoint);
 	radius = scale;
 	radius *= 2.5;
-	resolusion = ofMap(sizeLevel, YNSOFTMINSIZELEV, YNSOFTMAXSIZELEV, minRes, maxRes);
+	resolusion = 5000;//ofMap(sizeLevel, YNSOFTMINSIZELEV, YNSOFTMAXSIZELEV, minRes, maxRes);
 	yesORno = bullet->createEllipsoid(gravity, center, radius, resolusion);	
 	
 	col.setColorRadius(1.0);
-	col.setColorScale(0.25);
-	col.setColorAngle(0.1);
-	
-	changeColBySMSRecievedFace(yesORno->getSoftBody()->m_faces, 0);
+	col.setColorScale(0.1);
+	col.setColorAngle((_yesOrNo == YES) ? -0.34 : -0.02);
+
 	incomingSMSFaceID = 0;
+	changeColBySMSRecievedFace(incomingSMSFaceID);
+
 	currColorPointer = destColorPointer;
-	
-	bFinish = false;
-	blowUpTimerr = new TimedCounter(1);	
-	
+	prevFaceAngle = 0;
+
 }
 
 void YesNoObjectSoft::clear() {
@@ -45,40 +43,13 @@ void YesNoObjectSoft::clear() {
 void YesNoObjectSoft::update() {
 	
 	updateColorPointer();
+	
+	btVector3 f = btVector3(0.0, 0.0, 0.0);
+	f.setX(ofSignedNoise(ofGetElapsedTimef())*ofRandom(3, 18));
+	f.setY(ofSignedNoise(ofGetElapsedTimef())*ofRandom(3, 18));
+	f.setZ(ofSignedNoise(ofGetElapsedTimef())*ofRandom(3, 18));	
+	yesORno->getSoftBody()->addForce(f);	
 		
-//	btVector3 f = btVector3(0.0, 0.0, 0.0);
-//	f.setY(ofSignedNoise(ofGetElapsedTimef())*500);
-//	yesORno->getSoftBody()->addForce(f);
-	
-//	btQuaternion q;
-//	q.setRotation(ofxBulletStaticUtil::ofxVec3ToBtVec3(ofxVec3f(0,1,0)), ofxBulletStaticUtil::degToRad(ofNoise(ofGetFrameNum())));	
-//	yesORno->getSoftBody()->rotate(q);
-	
-	if (bFinish) {
-		if (shrinkTimer.isRunning()) {
-			shrink();
-			shrinkTimer.update();
-		}
-		if (shrinkTimer.isCompleted()) {
-			blowUpTimerr->startCount();
-			blowUpTimer.setParameters(easing, ofxTween::easeIn, 0, 100, 1000, 0);
-
-//			if (blowUpTimer.isRunning()) {
-//				blowUp();
-//				blowUpTimer.update();
-//			}
-//			if (blowUpTimer.isCompleted()) {
-//				ofNotifyEvent(onTheEnd, YesOrNo);
-//			}			
-		}
-		if (blowUpTimerr->isCounting()) {
-			blowUp();
-			blowUpTimerr->update();
-		}		
-		if (blowUpTimerr->isCountComplete()) {
-			ofNotifyEvent(onTheEnd, YesOrNo);
-		}
-	}
 }
 
 void YesNoObjectSoft::draw() {
@@ -130,8 +101,6 @@ void YesNoObjectSoft::draw() {
 	glDisableClientState(GL_TEXTURE_COORD_ARRAY);	
 	glDisableClientState(GL_COLOR_ARRAY);	
 	
-	
-	//glDisable(GL_LIGHTING);
 	for (int i = 0; i < addedSMSs.size(); i++) {
 		addedSMS *as = addedSMSs[i];
 		
@@ -154,63 +123,54 @@ void YesNoObjectSoft::draw() {
 		ofxTriangleShape(fc, cen, fb);
 		ofxTriangleShape(fa, cen, fc);
 		
-//		ofxVec3f a = as->getA();
-//		ofxVec3f b = as->getB();
-//		ofxVec3f c = as->getC();
-//		ofxVec3f norm = as->getNorm();		
-//		norm *= as->tw.update();
-//		a += norm;
-//		b += norm;
-//		c += norm;
-//		ofxVec3f cen = getFaceCentroid(faces, fid);
-//		ofxVec3f an = a-cen;
-//		ofxVec3f bn = b-cen;
-//		ofxVec3f cn = c-cen;
-//		a += an/2;
-//		b += bn/2;
-//		c += cn/2;
-////		a -= an/2;
-////		b -= bn/2;
-////		c -= cn/2;		
-//		ofxQuad(fa, fb, b, a);
-//		ofxQuad(fb, fc, c, b);
-//		ofxQuad(fc, fa, a, c);
-//		ofxTriangleShape(a, b, c);
-
-//		ofxVec3f fa = ofxBulletStaticUtil::btVec3ToOfxVec3(faces[as.faceID].m_n[0]->m_x);
-//		ofxVec3f fb = ofxBulletStaticUtil::btVec3ToOfxVec3(faces[as.faceID].m_n[1]->m_x);
-//		ofxVec3f fc = ofxBulletStaticUtil::btVec3ToOfxVec3(faces[as.faceID].m_n[2]->m_x);
-//		ofxVec3f a = as.getA();
-//		ofxVec3f b = as.getB();
-//		ofxVec3f c = as.getC();
-//		ofxVec3f norm = as.getNorm();		
-//		norm *= as.length;
-//		col.setColorAngle(as.angle);
-//		col.setColorScale(0.0);
-//		col.update();
-//		ofColor clr = col.getColor();
-//		ofSetColor(clr.r, clr.g, clr.b);
-//		ofxLine(a+norm, b+norm);
-//		ofxLine(b+norm, c+norm);
-//		ofxLine(c+norm, a+norm);
-//		ofxLine(a+norm, fa);
-//		ofxLine(b+norm, fb);
-//		ofxLine(c+norm, fc);
-//		ofxVec3f normb = as.getNorm();	
-//		normb *= 2;
-//		ofxLine(fa+normb, fb+normb);
-//		ofxLine(fb+normb, fc+normb);
-//		ofxLine(fc+normb, fa+normb);
-		
 		ofSetColor(255, 255, 255);
 	}
-	//glEnable(GL_LIGHTING);	
 	
 }
 
 void YesNoObjectSoft::debugDraw() {
 
 	yesORno->render();
+
+}
+
+void YesNoObjectSoft::startFaceingToCam(ofxCamera* cam, ofxVec3f offset) {
+
+	ofxVec3f faceCentroid = getFaceCentroid(yesORno->getSoftBody()->m_faces, incomingSMSFaceID);
+	ofxVec3f objCentroid = yesORno->getBodyCentroid();
+	ofxVec3f camPos = cam->getPosition()-offset;
+	
+	ofxVec3f center = objCentroid;
+	ofxVec3f tar = camPos;
+	ofxVec3f normal = tar - center;
+	normal.normalize();
+	ofxVec3f forward = faceCentroid - objCentroid;
+	forward.normalize();
+	ofxVec3f axis = forward.crossed(normal);
+	axis.normalize();
+	float angle = forward.angle(normal);	
+	
+	ofxVec3f right = axis.crossed(normal);
+	right.normalize();
+	right *= 450;
+	
+	ofxVec3f da = axis;
+	da *= 450;
+	
+	float prev = prevFaceAngle;
+	facingTween.setParameters(facingEasing, ofxTween::easeInOut, prevFaceAngle, angle, 2000, 0);
+	facingTween.addValue(prevFacingAxis.x, axis.x);
+	facingTween.addValue(prevFacingAxis.y, axis.y);
+	facingTween.addValue(prevFacingAxis.z, axis.z);	
+	ofAddListener(facingTween.end_E, this, &YesNoObjectSoft::addSMSCompleted);
+	prevFaceAngle = angle;
+	prevFacingAxis = axis;	
+	
+}
+
+void YesNoObjectSoft::updateRotateion() {
+
+	glRotatef(facingTween.update(), facingTween.getTarget(1), facingTween.getTarget(2), facingTween.getTarget(3));
 
 }
 
@@ -243,8 +203,10 @@ void YesNoObjectSoft::updateColorPointer() {
 	
 }
 
-vector<float> YesNoObjectSoft::changeColBySMSRecievedFace(btSoftBody::tFaceArray& faces, int faceID) {
+vector<float> YesNoObjectSoft::changeColBySMSRecievedFace(int & z) {
 
+	int faceID = incomingSMSFaceID;
+	btSoftBody::tFaceArray& faces = yesORno->getSoftBody()->m_faces;
 	vector<int> faceIDVec = sortFaceByDistance(faces, faceID);
 	
 	vector<float> colPtrRtn;
@@ -253,36 +215,51 @@ vector<float> YesNoObjectSoft::changeColBySMSRecievedFace(btSoftBody::tFaceArray
 	}
 	float * colPtr = &colPtrRtn[0];
 	
-	float angle = 0.0;
-	float angleStep = 0.005;//1.0/faces.size();
+	
+	float angleStep = 0.00001;//1.0/faces.size();
 	float scale = 0.0;
-	float scaleStep = 0.005;//1.0/(faces.size()*4);
+	float scaleStep = 0.00001;//1.0/(faces.size()*4);	
 	int facesSize = faces.size();
 	int faceIDVecSize = faceIDVec.size();
 	for (int i = 0; i < faceIDVec.size(); i++) {
 		btSoftBody::Node* compnode_0 = faces[faceIDVec[i]].m_n[0];
 		btSoftBody::Node* compnode_1 = faces[faceIDVec[i]].m_n[1];
 		btSoftBody::Node* compnode_2 = faces[faceIDVec[i]].m_n[2];		
+		float scaleFactor = ofMap(i, 0, faceIDVec.size(), -5.0, 1.0);
+		scaleFactor = ofRandom(0.8, 1.0);//1.0;//ofClamp(scaleFactor, 0.3, 1.0);
+		float radiusFactor = ofMap(i, 0, faceIDVec.size(), -1.0, 1.0);
+		radiusFactor = 1.0;//ofClamp(radiusFactor, 0.7, 1.0);
+		float angleFactor = ofMap(i, 0, faceIDVec.size(), 0.0, 1.0);;
+		angleFactor = ofClamp(radiusFactor, 0.7, 1.0);
 		
 		for (int j = 0; j < 3; j++) {
 			
 			int idx = faceIDVec[i]*12+j*4;
-			col.setColorAngle(angle);
-			col.setColorScale(scale);
+			float ang = col.getColorAngle();
+			col.setColorAngle(ang*angleFactor);
+			col.setColorScale(scaleFactor);
+			col.setColorRadius(radiusFactor);
 			col.update();
-			ofColor c = col.getColor();
-			colPtr[idx] = c.r/255.0;
-			colPtr[idx+1] = c.g/255.0;
-			colPtr[idx+2] = c.b/255.0;
+			ofColor tgtc = col.getColor();
+			
+			ofColor curc;
+			curc.r = colPtr[idx]*255.0;
+			curc.g = colPtr[idx+1]*255.0;
+			curc.b = colPtr[idx+2]*255.0;
+			//col.setco
+			
+			
+			colPtr[idx] = tgtc.r/255.0;
+			colPtr[idx+1] = tgtc.g/255.0;
+			colPtr[idx+2] = tgtc.b/255.0;
 			colPtr[idx+3] = 1.0;					
 		}		
 		
-		angle += angleStep;
-		scale += scaleStep;
+		//angle += angleStep;
 	}
 
 	destColorPointer = colPtrRtn;
-	return colPtrRtn;	
+	//return colPtrRtn;	
 
 }
 
@@ -327,114 +304,28 @@ float YesNoObjectSoft::getFaceDistanceBetween(btSoftBody::tFaceArray& faces, int
 	
 }
 
-void YesNoObjectSoft::debugKeyPressed(int key) {
-
-	btVector3 f;
-	switch(key) {
-		case 'w':
-			f.setX(0);
-			f.setY(-10000);
-			f.setZ(0);		
-			yesORno->getSoftBody()->addForce(f);
-			break;
-		case 'a':
-			f.setX(-10000);
-			f.setY(0);
-			f.setZ(0);		
-			yesORno->getSoftBody()->addForce(f);
-			break;
-		case 's':
-			f.setX(0);
-			f.setY(10000);
-			f.setZ(0);		
-			yesORno->getSoftBody()->addForce(f);
-			break;
-		case 'd':
-			f.setX(10000);
-			f.setY(0);
-			f.setZ(0);		
-			yesORno->getSoftBody()->addForce(f);
-			break;
-		case 'z':
-			btSoftBody::tFaceArray& faces(yesORno->getSoftBody()->m_faces);
-			int fSize = faces.size();
-			int rdmF = ofRandom(0, fSize);
-			pinchFace(rdmF);
-			break;
-
-	}
+ofxVec3f YesNoObjectSoft::getFaceNormal(btSoftBody::tFaceArray& faces, int faceID) {
 	
-	if (key == 'm') {
-		yesORno->getSoftBody()->scale(btVector3(2.0, 2.0, 2.0
-												));
-	}
-	if (key == 'b') {
-		blowUp();
-	}
-	if (key == 'x') {
-		shrink();
-	}
-	if (key == 'i') {
-		//addSMS();
-	}
-	if (key == 'p') {
-
-		btSoftBody::tNodeArray& nodes(yesORno->getSoftBody()->m_nodes);
-		vector<btVector3> ns;
-		for (int i = 0; i < nodes.size(); i++) {
-			ns.push_back(nodes[i].m_x);
-		}
-		ns.push_back(btVector3(100, 100, 100));
-		
-		yesORno = bullet->createSoftConvexHull(ofxVec3f(0, 80, 0), &ns[0], nodes.size()+1);
-		
-	}
-	if (key == 'g') {
-		yesORno->softBodyWI.m_gravity.setValue(0, 10, 0);
-	}
+	btVector3 btNormal = faces[faceID].m_normal;
+	return ofxVec3f(btNormal.getX(), btNormal.getY(), btNormal.getZ());
 	
-	if (key == 'l') {
-		int faceIdx = 0;
-		btSoftBody::tFaceArray& faces(yesORno->getSoftBody()->m_faces);
-		btSoftBody::Node* node_0 = faces[faceIdx].m_n[0];
-		btSoftBody::Node* node_1 = faces[faceIdx].m_n[1];
-		btSoftBody::Node* node_2 = faces[faceIdx].m_n[2];
-		
-		ofxVec3f centroid = getFaceCentroid(faces, faceIdx);
-		ofxVec3f node0 = ofxBulletStaticUtil::btVec3ToOfxVec3(node_0->m_x);
-		ofxVec3f node1 = ofxBulletStaticUtil::btVec3ToOfxVec3(node_1->m_x);
-		ofxVec3f node2 = ofxBulletStaticUtil::btVec3ToOfxVec3(node_2->m_x);		
-		
-		ofxVec3f dir0 = node0-centroid;
-		ofxVec3f dir1 = node1-centroid;
-		ofxVec3f dir2 = node2-centroid;
-		
-		float factor = 10;
-		node_0->m_battach = 0;
-		node_1->m_battach = 0;
-		node_2->m_battach = 0;		
-		node_0->m_x += ofxBulletStaticUtil::ofxVec3ToBtVec3(dir0) *factor;
-		node_1->m_x += ofxBulletStaticUtil::ofxVec3ToBtVec3(dir1) *factor;
-		node_2->m_x += ofxBulletStaticUtil::ofxVec3ToBtVec3(dir2) *factor;
-		
-//		if (node_0->m_im > 0) node_0->m_f += ofxBulletStaticUtil::ofxVec3ToBtVec3(dir0) *factor;
-//		if (node_1->m_im > 0) node_1->m_f += ofxBulletStaticUtil::ofxVec3ToBtVec3(dir1) *factor;
-//		if (node_2->m_im > 0) node_2->m_f += ofxBulletStaticUtil::ofxVec3ToBtVec3(dir2) *factor;
-	}
 }
 
 void YesNoObjectSoft::addSMS(int faceID) {
 	
 	incomingSMSFaceID = faceID;
-	pinchFace(faceID);
 	destColorPointer.clear();
-	changeColBySMSRecievedFace(yesORno->getSoftBody()->m_faces, faceID);
-	colorPointerTween.setParameters(easing, ofxTween::easeIn, 0, 100, 2000, 0);
+	int i =0;
+	changeColBySMSRecievedFace(i);
+	colorPointerTween.setParameters(easing, ofxTween::easeIn, 0, 100, 2000, 1500);
 
 }
 
-void YesNoObjectSoft::addSMSCompleted(int faceID, vector<ofxVec3f> pos) {
-		
+void YesNoObjectSoft::addSMSCompleted(int & z) {
+	
+	int faceID = incomingSMSFaceID;
+	pinchFace(incomingSMSFaceID);
+	
 	btSoftBody::tFaceArray& faces(yesORno->getSoftBody()->m_faces);
 	
 	ofxVec3f a = ofxBulletStaticUtil::btVec3ToOfxVec3(faces[faceID].m_n[0]->m_x);//.rescale(2.0);
@@ -449,12 +340,13 @@ void YesNoObjectSoft::addSMSCompleted(int faceID, vector<ofxVec3f> pos) {
 	as->node0 = faces[faceID].m_n[0];
 	as->node1 = faces[faceID].m_n[1];
 	as->node2 = faces[faceID].m_n[2];
-	float minl = ofMap(resolusion, minRes, maxRes, 10, 40);
-	float maxl = ofMap(resolusion, minRes, maxRes, 200, 650);
+	float minl = ofMap(resolusion, minRes, maxRes, 10, 199);
+	float maxl = ofMap(resolusion, minRes, maxRes, 200, 350);
 	as->length = ofRandom(minl, maxl);
 	as->faceID = faceID;
 	as->angle = ofRandomuf();
-	as->tw.setParameters(as->ea, ofxTween::easeIn, 0.0, as->length, 200, 0);
+	as->tw.setParameters(as->ea, ofxTween::easeIn, 0.0, as->length, 800, 0);
+	ofAddListener(as->tw.end_E, this, &YesNoObjectSoft::notifyFinishAllUpdating);
 	addedSMSs.push_back(as);
 	
 }
@@ -467,14 +359,14 @@ void YesNoObjectSoft::pinchFace(int faceIdx) {
 	btSoftBody::Node* node_2 = faces[faceIdx].m_n[2];
 	
 	// pinch face
-	int pinchFaceFactor = ofMap(resolusion, minRes, maxRes, 67000, 9700);
+	int pinchFaceFactor = ofMap(resolusion, minRes, maxRes, 67000, 16700);
 	btVector3 normal = faces[faceIdx].m_normal;
 	btVector3 pinchFaceForce = normal*pinchFaceFactor;
 	
 	if (node_0->m_im > 0) node_0->m_f += pinchFaceForce;
 	if (node_1->m_im > 0) node_1->m_f += pinchFaceForce;
 	if (node_2->m_im > 0) node_2->m_f += pinchFaceForce;	
-
+	
 }
 
 void YesNoObjectSoft::blowUp() {
@@ -521,8 +413,8 @@ void YesNoObjectSoft::shrink() {
 	}	
 }
 
-void YesNoObjectSoft::finish() {
-	shrinkTimer.setParameters(easing, ofxTween::easeIn, 0, 100, 2000, 0);
-	bFinish = true;
+void YesNoObjectSoft::notifyFinishAllUpdating(int & z) {
+	
+	ofNotifyEvent(onFinishAllUpdating, YesOrNo);
+	
 }
-

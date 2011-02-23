@@ -135,8 +135,10 @@ void AdminPanel::restoreDefault() {
 	baseColSubdivision = 0.896;
 	
 	focus = 0.761;
-	aspectratiox = ofGetWidth();
-	aspectratioy = ofGetHeight();	
+//	aspectratiox = ofGetWidth();
+//	aspectratioy = ofGetHeight();	
+	aspectratiox = ofGetScreenWidth();
+	aspectratioy = ofGetScreenHeight();		
 	blurclamp = 0.0253910;
 	bias = 0.0019;
 	

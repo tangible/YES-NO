@@ -24,8 +24,6 @@ class ConvexHull {
 
 public:
 	
-	bool debugRun;
-	
 	void setup(int _fps, AdminPanel* _adminPanel, ofxCamera* _cam);
 	void update();
 	void draw();
@@ -37,10 +35,11 @@ public:
 	ofxCamera*				cam;	
 	AdminPanel*				admin;
 	
-	float mc(float num);
-	
 	YesNoObject				yes;
 	YesNoObject				no;
+	bool					isYesUpdating;
+	bool					isNoUpdating;
+	void					onFinishAllUpdating(int & yesOrNo);
 	
 	ofxVec3f				yesPoint;
 	int						currentYesLevel;
@@ -49,12 +48,9 @@ public:
 	int						currentNoLevel;
 	YesNoObjectSoft			noSoft;
 	
-
 	vector<IncomingSMS*>	insmsYes;
 	vector<IncomingSMS*>	insmsNo;
-	bool					bNewSMS;
 	void onSmsReached(SmsInfo& smsInfo);
 	void onSmsCompleted(SmsInfo& smsInfo);
 	
-	void onTheEnd(int& YesOrNo);
 };

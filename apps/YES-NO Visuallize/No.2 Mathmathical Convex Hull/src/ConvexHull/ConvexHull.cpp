@@ -18,19 +18,18 @@ void ConvexHull::setup(int _fps, AdminPanel* _adminPanel, ofxCamera* _cam) {
 	bullet = new ofxBullet();
 	bullet->initPhysics(ofxVec3f(0, -10, 0));	
 	
-	yesPoint = ofxVec3f(ofGetWidth()/2+500, ofGetHeight()-300, 100);
-	noPoint = ofxVec3f(ofGetWidth()/2-400, ofGetHeight()-440, -50); 
+	yesPoint = ofxVec3f(ofGetWidth()/2-400, ofGetHeight()-370, -200);
+	noPoint = ofxVec3f(ofGetWidth()/2+400, ofGetHeight()-370, -200); 
 	
 	currentYesLevel = 20;
-	yesSoft.setup(YES, bullet, ofxVec3f(0,0,0), ofxVec3f(20, 60, 80), currentYesLevel);
-	currentNoLevel = 10;
-	noSoft.setup(NO, bullet, ofxVec3f(0,0,0), ofxVec3f(120, 60, 70), currentNoLevel);
+	yesSoft.setup(YES, bullet, ofxVec3f(0,0,0), ofxVec3f(100, 90, 80), currentYesLevel);
+	currentNoLevel = 20;
+	noSoft.setup(NO, bullet, ofxVec3f(0,0,0), ofxVec3f(120, 60, 80), currentNoLevel);
 	
-	ofAddListener(yesSoft.onTheEnd, this, &ConvexHull::onTheEnd);
-	
-	bNewSMS = false;
-	
-	debugRun = false;
+	isYesUpdating = false;
+	isNoUpdating = false;
+	ofAddListener(yesSoft.onFinishAllUpdating, this, &ConvexHull::onFinishAllUpdating);
+	ofAddListener(noSoft.onFinishAllUpdating, this, &ConvexHull::onFinishAllUpdating);	
 }
 
 void ConvexHull::update() {
@@ -55,11 +54,13 @@ void ConvexHull::draw() {
 	
 	ofPushMatrix();
 	ofTranslate(yesPoint.x, yesPoint.y, yesPoint.z);
+	yesSoft.updateRotateion();
 	yesSoft.draw();
 	ofPopMatrix();
 	
 	ofPushMatrix();
 	ofTranslate(noPoint.x, noPoint.y, noPoint.z);	
+	noSoft.updateRotateion();	
 	noSoft.draw();
 	ofPopMatrix();
 	
@@ -87,12 +88,9 @@ float ConvexHull::feedSMS(UpdateInfo upInfo) {
 				faceID = ofRandom(0, yesSoft.yesORno->getSoftBody()->m_faces.size());
 			}
 		}
-		if (yesSoft.yesORno->getSoftBody()->m_faces.size() == yesSoft.addedSMSs.size()) {
-			yesSoft.finish();
-			cout << "complete!" << endl;
-		}
 		sms->setup(YES, yesSoft.yesORno->getSoftBody()->m_faces, faceID);
 		insmsYes.push_back(sms);
+		isYesUpdating = true;
 	}else if (upInfo.sms.YesOrNo == NO) {
 		int faceID = ofRandom(0, noSoft.yesORno->getSoftBody()->m_faces.size());
 		for (int i = 0; i < noSoft.addedSMSs.size(); i++) {
@@ -103,17 +101,13 @@ float ConvexHull::feedSMS(UpdateInfo upInfo) {
 				faceID = ofRandom(0, noSoft.yesORno->getSoftBody()->m_faces.size());
 			}
 		}
-		if (noSoft.yesORno->getSoftBody()->m_faces.size() == noSoft.addedSMSs.size()) {
-			noSoft.finish();
-			cout << "complete!" << endl;
-		}
 		sms->setup(NO, noSoft.yesORno->getSoftBody()->m_faces, faceID);
 		insmsNo.push_back(sms);		
+		isNoUpdating = true;
 	}
 	
 	ofAddListener(sms->onSmsReached, this, &ConvexHull::onSmsReached);	
 	ofAddListener(sms->onSmsCompleted, this, &ConvexHull::onSmsCompleted);
-	bNewSMS = true;	
 	
 }
 
@@ -121,8 +115,10 @@ void ConvexHull::onSmsReached(SmsInfo& smsInfo) {
 
 	if (smsInfo.YesOrNo == YES) {
 		yesSoft.addSMS(smsInfo.faceID);
+		yesSoft.startFaceingToCam(cam, yesPoint+ofxVec3f(0, 300, -500));
 	}else if (smsInfo.YesOrNo == NO) {
 		noSoft.addSMS(smsInfo.faceID);
+		noSoft.startFaceingToCam(cam, noPoint+ofxVec3f(0, 300, -500));				
 	}
 
 }
@@ -139,12 +135,6 @@ void  ConvexHull::onSmsCompleted(SmsInfo& smsInfo) {
 				insmsYes.erase(insmsYes.begin()+i);
 			}
 		}
-		
-		vector<ofxVec3f> pos;
-		pos.push_back(smsInfo.a);
-		pos.push_back(smsInfo.b);
-		pos.push_back(smsInfo.c);
-		yesSoft.addSMSCompleted(smsInfo.faceID, pos);
 	}else if (NO == smsInfo.YesOrNo) {
 		for (int i = 0; i < insmsNo.size(); i++) {
 			int faceID = smsInfo.faceID;
@@ -155,38 +145,16 @@ void  ConvexHull::onSmsCompleted(SmsInfo& smsInfo) {
 				insmsNo.erase(insmsNo.begin()+i);
 			}
 		}
-		
-		vector<ofxVec3f> pos;
-		pos.push_back(smsInfo.a);
-		pos.push_back(smsInfo.b);
-		pos.push_back(smsInfo.c);
-		noSoft.addSMSCompleted(smsInfo.faceID, pos);
 	}
 		
 	
 }
 
-void ConvexHull::onTheEnd(int& YesOrNo) {
+void ConvexHull::onFinishAllUpdating(int & yesOrNo) {
 	
-	if (YES == YesOrNo) {
-		currentYesLevel++;
-		yesSoft.clear();
-		yesSoft.setup(YES, bullet, yesPoint, ofxVec3f(60, 30, 80), currentYesLevel);	
-		for (int i = 0; i < insmsYes.size(); i++) {
-			IncomingSMS* s = insmsYes[i];
-			delete s;
-		}
-		insmsYes.clear();
-	}else if (NO == YesOrNo) {
-		currentNoLevel++;
-		noSoft.clear();
-		noSoft.setup(NO, bullet, noPoint, ofxVec3f(120, 60, 70), currentNoLevel);	
-		for (int i = 0; i < insmsNo.size(); i++) {
-			IncomingSMS* s = insmsNo[i];
-			delete s;
-		}
-		insmsNo.clear();		
-	}
+	if (yesOrNo == YES) isYesUpdating = false;
+	if (yesOrNo == NO) isNoUpdating = false;
+	cout << "got event" << endl;
 }
 
 void ConvexHull::setupGLStuff(){
