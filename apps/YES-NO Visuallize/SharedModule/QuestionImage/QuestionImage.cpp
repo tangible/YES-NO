@@ -16,11 +16,7 @@ void QuestionImage::setup() {
 }
 
 void QuestionImage::draw() {
-
-	glDisable(GL_LIGHTING);
-	qImg.draw(0, 0);
-	glEnable(GL_LIGHTING);
-	
+	qImg.draw(0, 0);	
 }
 
 void QuestionImage::changeImgQImg(string path) {

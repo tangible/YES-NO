@@ -20,24 +20,26 @@ void YesNoObjectSoft::setup(int _yesOrNo, ofxBullet* _bullet, ofxVec3f _forcePoi
 	ofxVec3f center(forcePoint);
 	radius = scale;
 	radius *= 2.5;
-	resolusion = 5000;//ofMap(sizeLevel, YNSOFTMINSIZELEV, YNSOFTMAXSIZELEV, minRes, maxRes);
+	resolusion = 6000;//ofMap(sizeLevel, YNSOFTMINSIZELEV, YNSOFTMAXSIZELEV, minRes, maxRes);
 	yesORno = bullet->createEllipsoid(gravity, center, radius, resolusion);	
 	
 	col.setColorRadius(1.0);
 	col.setColorScale(0.1);
 	col.setColorAngle((_yesOrNo == YES) ? -0.34 : -0.02);
+	defaultColAng = col.getColorAngle();
 
 	incomingSMSFaceID = 0;
 	changeColBySMSRecievedFace(incomingSMSFaceID);
 
 	currColorPointer = destColorPointer;
 	prevFaceAngle = 0;
+	previousColAng = 0.0;
 
 }
 
 void YesNoObjectSoft::clear() {
 	addedSMSs.clear();
-	delete yesORno;
+	//delete yesORno;
 }
 
 void YesNoObjectSoft::update() {
@@ -45,10 +47,14 @@ void YesNoObjectSoft::update() {
 	updateColorPointer();
 	
 	btVector3 f = btVector3(0.0, 0.0, 0.0);
-	f.setX(ofSignedNoise(ofGetElapsedTimef())*ofRandom(3, 18));
-	f.setY(ofSignedNoise(ofGetElapsedTimef())*ofRandom(3, 18));
-	f.setZ(ofSignedNoise(ofGetElapsedTimef())*ofRandom(3, 18));	
+	f.setX(ofSignedNoise(ofGetElapsedTimef())*ofRandom(10, 38));
+	f.setY(ofSignedNoise(ofGetElapsedTimef())*ofRandom(10, 38));
+	f.setZ(ofSignedNoise(ofGetElapsedTimef())*ofRandom(10, 38));	
 	yesORno->getSoftBody()->addForce(f);	
+	
+	if (ofGetFrameNum() % (int)ofRandom(200, 1000) == 0) {
+		blowUp(ofRandom(50, 100));
+	}
 		
 }
 
@@ -193,7 +199,7 @@ void YesNoObjectSoft::updateColorPointer() {
 			float faceDistBWSMSandCur = getFaceDistanceBetween(faces, incomingSMSFaceID, curFaceID);
 			float mappedDiff = ofMap(faceDistBWSMSandCur, 0.0, farestDist, 0.0, colorDiff);
 			float mappedDist = ofMap(faceDistBWSMSandCur, 0.0, farestDist, destinationColor+mappedDiff, currentColor);
-			float col = ofMap(factor, 0.0, 100.0, currentColor, mappedDist);
+			float col = ofMap(factor, 0.0, 100.0, currentColor, mappedDist);			
 			tmpHolder.push_back(col);
 		}
 		currColorPointer.clear();	
@@ -203,7 +209,7 @@ void YesNoObjectSoft::updateColorPointer() {
 	
 }
 
-vector<float> YesNoObjectSoft::changeColBySMSRecievedFace(int & z) {
+vector<float> YesNoObjectSoft::changeColBySMSRecievedFace(int z) {
 
 	int faceID = incomingSMSFaceID;
 	btSoftBody::tFaceArray& faces = yesORno->getSoftBody()->m_faces;
@@ -215,51 +221,53 @@ vector<float> YesNoObjectSoft::changeColBySMSRecievedFace(int & z) {
 	}
 	float * colPtr = &colPtrRtn[0];
 	
-	
-	float angleStep = 0.00001;//1.0/faces.size();
-	float scale = 0.0;
-	float scaleStep = 0.00001;//1.0/(faces.size()*4);	
 	int facesSize = faces.size();
 	int faceIDVecSize = faceIDVec.size();
+	float thisTimeFactor = 0.05;
+	if (previousColAng >= 0.25) {
+		previousColAng = -0.25;
+	}else {
+		previousColAng += thisTimeFactor;
+	}	
+	float thisTimeAngle = previousColAng;
+
 	for (int i = 0; i < faceIDVec.size(); i++) {
 		btSoftBody::Node* compnode_0 = faces[faceIDVec[i]].m_n[0];
 		btSoftBody::Node* compnode_1 = faces[faceIDVec[i]].m_n[1];
 		btSoftBody::Node* compnode_2 = faces[faceIDVec[i]].m_n[2];		
-		float scaleFactor = ofMap(i, 0, faceIDVec.size(), -5.0, 1.0);
-		scaleFactor = ofRandom(0.8, 1.0);//1.0;//ofClamp(scaleFactor, 0.3, 1.0);
-		float radiusFactor = ofMap(i, 0, faceIDVec.size(), -1.0, 1.0);
-		radiusFactor = 1.0;//ofClamp(radiusFactor, 0.7, 1.0);
-		float angleFactor = ofMap(i, 0, faceIDVec.size(), 0.0, 1.0);;
-		angleFactor = ofClamp(radiusFactor, 0.7, 1.0);
+		
+		float scaleFactor = 0.0;
+		float radiusFactor = 0.0;
+		if (i < faceIDVec.size()/2) {
+			scaleFactor = ofMap(i, 0, faceIDVec.size(), 0.001, 0.499);
+			radiusFactor = ofMap(i, 0, faceIDVec.size(), 0.001, 0.699);
+		}else {
+			scaleFactor = ofMap(i, 0, faceIDVec.size(), 0.499, 0.001);
+			radiusFactor = ofMap(i, 0, faceIDVec.size(), 0.699, 0.001);					
+		}
+		
+		float angleFactor = defaultColAng;
+		if (i > faceIDVec.size()/1.04) {
+			scaleFactor = ofMap(i, faceIDVec.size()/1.04, faceIDVec.size(), 0.55, 1.0);
+			radiusFactor = ofMap(i, faceIDVec.size()/1.04, faceIDVec.size(), 0.85, 1.0);
+		}
 		
 		for (int j = 0; j < 3; j++) {
-			
 			int idx = faceIDVec[i]*12+j*4;
-			float ang = col.getColorAngle();
-			col.setColorAngle(ang*angleFactor);
+			col.setColorAngle(angleFactor);
 			col.setColorScale(scaleFactor);
 			col.setColorRadius(radiusFactor);
 			col.update();
 			ofColor tgtc = col.getColor();
-			
-			ofColor curc;
-			curc.r = colPtr[idx]*255.0;
-			curc.g = colPtr[idx+1]*255.0;
-			curc.b = colPtr[idx+2]*255.0;
-			//col.setco
-			
-			
 			colPtr[idx] = tgtc.r/255.0;
 			colPtr[idx+1] = tgtc.g/255.0;
 			colPtr[idx+2] = tgtc.b/255.0;
 			colPtr[idx+3] = 1.0;					
 		}		
-		
-		//angle += angleStep;
 	}
 
 	destColorPointer = colPtrRtn;
-	//return colPtrRtn;	
+	return colPtrRtn;	
 
 }
 
@@ -359,7 +367,7 @@ void YesNoObjectSoft::pinchFace(int faceIdx) {
 	btSoftBody::Node* node_2 = faces[faceIdx].m_n[2];
 	
 	// pinch face
-	int pinchFaceFactor = ofMap(resolusion, minRes, maxRes, 67000, 16700);
+	int pinchFaceFactor = ofMap(resolusion, minRes, maxRes, 67000, 27700);
 	btVector3 normal = faces[faceIdx].m_normal;
 	btVector3 pinchFaceForce = normal*pinchFaceFactor;
 	
@@ -369,12 +377,10 @@ void YesNoObjectSoft::pinchFace(int faceIdx) {
 	
 }
 
-void YesNoObjectSoft::blowUp() {
+void YesNoObjectSoft::blowUp(float pinchFaceFactor) {
 	// get face and nodes
 	btSoftBody::tFaceArray& faces(yesORno->getSoftBody()->m_faces);
 	int fSize = faces.size();
-	
-	int pinchFaceFactor = ofMap(resolusion, minRes, maxRes, 37000, 2700);
 	
 	for (int i = 0; i < fSize; i++) {
 		

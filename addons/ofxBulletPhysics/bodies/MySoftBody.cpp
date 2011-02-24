@@ -137,7 +137,7 @@ void MySoftBody::createEllipsoidShape(btVector3 center, btVector3 radius, int re
 	// ???
 	psb->m_cfg.kDF            =   1;//1;
 	// 元に戻る力、弾力
-	psb->m_cfg.kPR            =   2500;//2500;
+	psb->m_cfg.kPR            =   2250;//2500;
 	// ぐちゃぐちゃになる度。中身の量。元に戻らない度。
 	psb->m_cfg.kVC            =   0;//2500;
 	// 地面と滑るかどうか

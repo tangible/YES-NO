@@ -40,11 +40,12 @@ public:
 	UpdateInfo upInfo;	
 	vector<UpdateInfo> smsQue;
 	
-	ofxEasyCam		cam;
-	//ofxCamera		cam;
+	//ofxEasyCam		cam;
+	ofxCamera		cam;
 	ofxTween		camOrbitTween;
-	ofxEasingCubic	camOrbitEasing;
-	static const float camOrbitAmt = 4.5;
+//	ofxEasingQuad	camOrbitEasing;
+	ofxEasingSine	camOrbitEasing;	
+	float			camOrbitAmt;
 	int				prevOrbit;
 
 };

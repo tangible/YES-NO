@@ -13,7 +13,8 @@ void App::setup(){
 	ofSetFrameRate(fps);
 	
 	//cam.setup(this, 700);
-	cam.position(ofGetWidth()/2, ofGetHeight()/2, 760);	
+	//cam.position(ofGetWidth()/2, ofGetHeight()/2, 760);	
+	cam.position(ofGetScreenWidth()/2, ofGetScreenHeight()/2, 760);	
 	
 	adminPanel.setup();
 	pCloud.setup(fps, &adminPanel, &cam);
@@ -26,9 +27,12 @@ void App::setup(){
 	ssaoShader.setup("ssao");	
 	dofShader.setup("dof");
 	
-	depthFBO.setup(ofGetWidth(), ofGetHeight());
-	colorFBO.setup(ofGetWidth(), ofGetHeight());
-	ssaoFBO.setup(ofGetWidth(), ofGetHeight());	
+//	depthFBO.setup(ofGetWidth(), ofGetHeight());
+//	colorFBO.setup(ofGetWidth(), ofGetHeight());
+//	ssaoFBO.setup(ofGetWidth(), ofGetHeight());	
+	depthFBO.setup(ofGetScreenWidth(), ofGetScreenHeight());
+	colorFBO.setup(ofGetScreenWidth(), ofGetScreenHeight());
+	ssaoFBO.setup(ofGetScreenWidth(), ofGetScreenHeight());		
 	
 	ofAddListener(adminPanel.onFileDialogueBG, this, &App::onFileChangeBG);	
 	ofAddListener(adminPanel.onClearBG, this, &App::onClearBG);	
@@ -66,7 +70,8 @@ void App::update(){
 	ssaoShader.begin();
 	ssaoShader.setUniform1i("texture0", depthTexSlot);
 	ssaoShader.setUniform1i("texture1", colorTexSlot);
-	ssaoShader.setUniform2f("screensize", ofGetWidth(), ofGetHeight());
+//	ssaoShader.setUniform2f("screensize", ofGetWidth(), ofGetHeight());
+	ssaoShader.setUniform2f("screensize", ofGetScreenWidth(), ofGetScreenHeight());	
 	ssaoShader.setUniform2f("camerarange", adminPanel.camerarangex, adminPanel.camerarangey);
 	ssaoShader.setUniform1f("aoCap", adminPanel.aoCap);
 	ssaoShader.setUniform1f("aoMultiplier", adminPanel.aoMultiplier);
@@ -75,7 +80,8 @@ void App::update(){
 	ssaoShader.setUniform1f("readDepthVal", adminPanel.readDepthVal);
 	ssaoShader.setUniform1f("aoDivision", adminPanel.aoDivision);
 	ssaoShader.setUniform1f("baseColSubdivision", adminPanel.baseColSubdivision);
-	drawFullScreenQuad(ofGetWidth(), ofGetHeight());
+//	drawFullScreenQuad(ofGetWidth(), ofGetHeight());
+	drawFullScreenQuad(ofGetScreenWidth(), ofGetScreenHeight());	
 	ssaoShader.end();
 	ssaoFBO.afterUpdate();
 	depthFBO.afterDraw();
@@ -88,8 +94,10 @@ void App::draw(){
 	
 	//cam.draw();
 	
-	bg.draw(ofGetWidth()/2-bg.getWidth()/2, 
-			ofGetHeight()/2-bg.getHeight()/2);	
+//	bg.draw(ofGetWidth()/2-bg.getWidth()/2, 
+//			ofGetHeight()/2-bg.getHeight()/2);	
+	bg.draw(ofGetScreenWidth()/2-bg.getWidth()/2, 
+			ofGetScreenHeight()/2-bg.getHeight()/2);		
 	
 	qImage.draw();	
 	sText.draw(upInfo);
@@ -106,7 +114,8 @@ void App::draw(){
 	dofShader.setUniform1f("aspectratioy", adminPanel.aspectratioy);
 	dofShader.setUniform1f("blurclamp", adminPanel.blurclamp);
 	dofShader.setUniform1f("bias", adminPanel.bias);
-	drawFullScreenQuad(ofGetWidth(), ofGetHeight());
+//	drawFullScreenQuad(ofGetWidth(), ofGetHeight());
+	drawFullScreenQuad(ofGetScreenWidth(), ofGetScreenHeight());	
 	dofShader.end();	
 
 //	int colorTexSlot = 4;
@@ -125,9 +134,9 @@ void App::draw(){
 void App::drawFullScreenQuad(int w, int h) {
 	
 	ofxVec3f a = ofxVec3f(0, 0, 0);
-	ofxVec3f b = ofxVec3f(ofGetWidth(), 0, 0);
-	ofxVec3f c = ofxVec3f(ofGetWidth(), ofGetHeight(), 0);
-	ofxVec3f d = ofxVec3f(0, ofGetHeight(), 0);
+	ofxVec3f b = ofxVec3f(w, 0, 0);
+	ofxVec3f c = ofxVec3f(w, h, 0);
+	ofxVec3f d = ofxVec3f(0, h, 0);
 	ofxQuad(a, b, c, d);
 	
 }

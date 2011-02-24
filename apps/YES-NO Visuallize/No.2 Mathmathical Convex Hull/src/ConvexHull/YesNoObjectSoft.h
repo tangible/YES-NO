@@ -51,7 +51,7 @@ public:
 	void update();
 	void draw();
 	void debugDraw();
-	vector<float> changeColBySMSRecievedFace(int & z);
+	vector<float> changeColBySMSRecievedFace(int z);
 	vector<int> sortFaceByDistance(btSoftBody::tFaceArray& faces, int faceID);
 	ofxVec3f getFaceCentroid(btSoftBody::tFaceArray& faces, int faceID);	
 	float getFaceDistanceBetween(btSoftBody::tFaceArray& faces, int face1ID, int face2ID);
@@ -63,7 +63,7 @@ public:
 	
 	void addSMS(int faceID);
 	void addSMSCompleted(int & z);
-	void blowUp();
+	void blowUp(float pinchFaceFactor);
 	void shrink();
 	void pinchAndSpreadNode();
 	void expandFace(int faceIdx);
@@ -78,6 +78,8 @@ public:
 	ofxBullet*	bullet;
 	MySoftBody*	yesORno;
 	ofxColorPicker col;	
+	float defaultColAng;
+	float previousColAng;
 	
 	static const int YES = 0;
 	static const int NO = 0;

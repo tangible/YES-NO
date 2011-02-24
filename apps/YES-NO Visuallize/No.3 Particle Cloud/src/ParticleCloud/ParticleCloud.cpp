@@ -22,7 +22,8 @@ void ParticleCloud::setup(int _fps, AdminPanel* ap, ofxCamera* cam) {
 	yes.setup(bullet, ap, Obj::YES, numObjs);
 	no.setup(bullet, ap, Obj::NO, numObjs);
 	
-	flock.setup(2, ofGetWidth()+400, ofGetHeight()-200, 500, -800, 10, numObjs); 
+//	flock.setup(2, ofGetWidth()+400, ofGetHeight()-200, 500, -800, 10, numObjs); 
+	flock.setup(2, ofGetScreenWidth()+400, ofGetScreenHeight()-200, 500, -800, 10, numObjs); 	
 	
 }
 

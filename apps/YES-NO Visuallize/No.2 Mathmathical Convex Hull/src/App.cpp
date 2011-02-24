@@ -11,8 +11,8 @@ void App::setup(){
 	ofSetDataPathRoot("../Resources/");
 	ofBackground(0,0,0);
 		
-	//cam.position(ofGetWidth()/2, ofGetWidth()/2, 700);
-	cam.setup(this, 1000);
+	cam.position(ofGetWidth()/2, ofGetWidth()/2, 1000);
+	//cam.setup(this, 1000);
 	adminPanel.setup();
 	sText.setup();	
 	convexHull.setup(fps, &adminPanel, &cam);
@@ -27,6 +27,7 @@ void App::setup(){
 	
 	qImage.changeImgQImg("qimg3.png");
 	prevOrbit = 2;
+	camOrbitAmt = 4.5;
 }
 
 //--------------------------------------------------------------
@@ -62,14 +63,20 @@ void App::update(){
 //--------------------------------------------------------------
 void App::draw(){
 	
+	glDisable(GL_DEPTH_TEST);
+	glDisable(GL_LIGHTING);
+	glDisableClientState(GL_COLOR_ARRAY);
+	ofEnableAlphaBlending();
+	ofEnableSmoothing();	
+	bg.draw(ofGetScreenWidth()/2-bg.getWidth()/2, 
+			ofGetScreenHeight()/2-bg.getHeight()/2);	
+	qImage.draw();
+	glEnable(GL_DEPTH_TEST);	
+	glEnable(GL_LIGHTING);
+	sText.draw(upInfo);
 	
-//	bg.draw(ofGetWidth()/2-bg.getWidth()/2, 
-//			ofGetHeight()/2-bg.getHeight()/2);		
-//	qImage.draw();
-//	sText.draw(upInfo);
-	
-//	cam.place();
-	cam.draw();
+	cam.place();
+	//cam.draw();
 	ofPushMatrix();
 //	ofTranslate(0, 0, -300);
 	convexHull.draw();	
@@ -78,6 +85,7 @@ void App::draw(){
 	
 	adminPanel.draw();	
 	ofSetColor(255, 255, 255);	
+	
 }
 
 //--------------------------------------------------------------
@@ -118,20 +126,6 @@ void App::onClearQImg(int& i) {
 void App::onSMSMsgRecieved(UpdateInfo& _upInfo) {
 	upInfo = _upInfo;
 	smsQue.push_back(_upInfo);
-//	sText.onSMSReceivedUpdate(upInfo.sms.YesOrNo, upInfo);
-//	convexHull.feedSMS(upInfo);
-//	
-//	if (prevOrbit != upInfo.sms.YesOrNo) {
-//		float oamt = 0.0;
-//		if (upInfo.sms.YesOrNo == 0) {
-//			oamt = -camOrbitAmt;
-//		}else {
-//			oamt = camOrbitAmt;
-//		}
-//		if (prevOrbit != 2) oamt *= 2;
-//		camOrbitTween.setParameters(camOrbitEasing, ofxTween::easeIn, oamt, 0.0, 400, 0);
-//	}
-//	prevOrbit = upInfo.sms.YesOrNo;
 }
 
 //--------------------------------------------------------------
