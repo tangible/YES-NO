@@ -137,6 +137,7 @@ void StateText::draw(UpdateInfo upInfo, ofxVec3f centroidYes, ofxVec3f centroidN
 void StateText::draw(UpdateInfo upInfo) {
 	
 	glDisable(GL_LIGHTING);
+	ofEnableSmoothing();
 
 	if (yesSizeTween.isCompleted()) {
 		yesSizeTween.setParameters(easingcirc, ofxTween::easeIn, yesSizeTween.getTarget(0), yesSize, 100, 0);
@@ -155,13 +156,13 @@ void StateText::draw(UpdateInfo upInfo) {
 	ofSetColor(255, 255, 255);	
 	ofTranslate(left, bottom-heiYesNum, 0);
 	ofScale(sizeYes*0.3, sizeYes*0.3, 0);	
-	font.drawStringAsShapes(yes, 0, 0);
+	dfont.drawString(yes, 0, 0);
 	ofPopMatrix();
 	ofPushMatrix();
 	ofSetColor(255, 255, 255);
 	ofTranslate(left+numOffset, bottom, 0);
 	ofScale(sizeYes, sizeYes, 0);	
-	font.drawStringAsShapes(yesNum, 0, 0);
+	dfont.drawString(yesNum, 0, 0);
 	ofPopMatrix();
 	
 	float sizeNo = noSizeTween.update();
@@ -173,13 +174,13 @@ void StateText::draw(UpdateInfo upInfo) {
 	ofSetColor(255, 255, 255);
 	ofTranslate(left, bottom-heiNoNum, 0);
 	ofScale(sizeNo*0.3, sizeNo*0.3, 0);
-	font.drawStringAsShapes(no, 0, 0);
+	dfont.drawString(no, 0, 0);
 	ofPopMatrix();
 	ofPushMatrix();
 	ofSetColor(255, 255, 255);
 	ofTranslate(left+numOffset, bottom, 0);
 	ofScale(sizeNo, sizeNo, 0);
-	font.drawStringAsShapes(noNum, 0, 0);
+	dfont.drawString(noNum, 0, 0);
 	ofPopMatrix();
 	
 	glEnable(GL_LIGHTING);

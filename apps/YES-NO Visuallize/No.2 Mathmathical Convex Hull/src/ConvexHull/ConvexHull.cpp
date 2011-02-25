@@ -95,18 +95,20 @@ void ConvexHull::draw() {
 
 void ConvexHull::scaleYes(int & z) {
 	
+	float sd = scaleDiffMax;
 	int yesdiff = updateInfo.numDiffYes;
-	float diff = ofClamp(yesdiff, -scaleDiffMax, scaleDiffMax);
-	diff = ofMap(diff, -scaleDiffMax, scaleDiffMax, minScale, maxScale);
+	float diff = ofClamp(yesdiff, -sd, sd);
+	diff = ofMap(diff, -sd, sd, minScale, maxScale);
 	yesScaleTween.setParameters(scaleEasing, ofxTween::easeIn, currYesScale, diff, scaleDurTime, 0);
 	
 }
 
 void ConvexHull::scaleNo(int & z) {
 	
+	float sd = scaleDiffMax;
 	int nodiff = updateInfo.numDiffNo;
-	float diff = ofClamp(nodiff, -scaleDiffMax, scaleDiffMax);
-	diff = ofMap(diff, -scaleDiffMax, scaleDiffMax, minScale, maxScale);
+	float diff = ofClamp(nodiff, -sd, sd);
+	diff = ofMap(diff, -sd, sd, minScale, maxScale);
 	noScaleTween.setParameters(scaleEasing, ofxTween::easeIn, currNOScale, diff, scaleDurTime, 0);
 	
 }

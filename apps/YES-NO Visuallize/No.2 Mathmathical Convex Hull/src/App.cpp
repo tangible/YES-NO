@@ -88,16 +88,15 @@ void App::draw(){
 	bg.draw(ofGetScreenWidth()/2-bg.getWidth()/2, 
 			ofGetScreenHeight()/2-bg.getHeight()/2);	
 	qImage.draw();
+
+	glDisable(GL_CULL_FACE);
+	sText.draw(upInfo);	
 	glEnable(GL_DEPTH_TEST);	
 	glEnable(GL_LIGHTING);
-	sText.draw(upInfo);
 	
 	cam.place();
 	//cam.draw();
-	ofPushMatrix();
-//	ofTranslate(0, 0, -300);
 	convexHull.draw();	
-	ofPopMatrix();
 	
 	
 	adminPanel.draw();	

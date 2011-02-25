@@ -135,12 +135,12 @@ void YesNoObjectSoft::draw() {
 		ofxVec3f an = a-cen;
 		ofxVec3f bn = b-cen;
 		ofxVec3f cn = c-cen;
-		a += an/2;
-		b += bn/2;
-		c += cn/2;
-		//		a -= an/2;
-		//		b -= bn/2;
-		//		c -= cn/2;		
+//		a += an/2;
+//		b += bn/2;
+//		c += cn/2;
+//		a -= an/2;
+//		b -= bn/2;
+//		c -= cn/2;		
 		ofxQuad(fa, fb, b, a);
 		ofxQuad(fb, fc, c, b);
 		ofxQuad(fc, fa, a, c);
@@ -396,7 +396,7 @@ void YesNoObjectSoft::addSMSCompleted(int & z) {
 	as->node1 = faces[faceID].m_n[1];
 	as->node2 = faces[faceID].m_n[2];
 	float minl = ofMap(resolusion, minRes, maxRes, 10, 40);
-	float maxl = ofMap(resolusion, minRes, maxRes, 10, 60);
+	float maxl = ofMap(resolusion, minRes, maxRes, 10, 70);
 	as->length = ofRandom(minl, maxl);
 	as->faceID = faceID;
 	as->angle = ofRandomuf();
@@ -404,6 +404,10 @@ void YesNoObjectSoft::addSMSCompleted(int & z) {
 	
 	ofAddListener(as->tw.end_E, this, &YesNoObjectSoft::notifyFinishAllUpdating);
 	addedSMSs.push_back(as);
+	
+	int i = 0;
+	ofNotifyEvent(notifyScaleYesEvent, i);
+	ofNotifyEvent(notifyScaleNoEvent, i);	
 	
 }
 
@@ -469,8 +473,6 @@ void YesNoObjectSoft::shrink() {
 
 void YesNoObjectSoft::notifyFinishAllUpdating(int & z) {
 	
-	int i = 0;
 	ofNotifyEvent(onFinishAllUpdating, YesOrNo);
-	ofNotifyEvent(notifyScaleYesEvent, i);
-	ofNotifyEvent(notifyScaleNoEvent, i);
+
 }

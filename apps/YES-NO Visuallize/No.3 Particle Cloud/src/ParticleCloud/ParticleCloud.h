@@ -16,6 +16,7 @@
 #include "YesNoObj.h"
 #include "Flock3D.h"
 #include "HTTPSMSClient.h"
+#include "ofxTween.h"
 
 class ParticleCloud {
 
@@ -31,6 +32,17 @@ private:
 	ofxBullet* bullet;
 	AdminPanel* adminPanel;
 	ofxColorPicker colPick;
+	UpdateInfo updateInfo;
+	
+	ofxTween yesScaleTween;
+	ofxTween noScaleTween;
+	ofxEasingElastic scaleEasing;	
+	float currYesScale;
+	float currNOScale;	
+	static const float minScale = 1.0;
+	static const float maxScale = 1.5;	
+	static const float scaleDiffMax = 7;
+	static const float scaleDurTime = 1000;	
 
 	// yes/no obj
 	YesNoObj yes;

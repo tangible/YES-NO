@@ -24,7 +24,7 @@ void YesNoObj::setup(ofxBullet* bl, Flock3D* f, AdminPanel* ap, int _YesOrNo, in
 	for (int i = 0; i < numObjs; i++) {
 		float size = ofRandom(minParticleSize, maxParticleSize);
 		float cAng = ofRandom(baseMin, baseMax);
-		ofxVec3f rdmPos = ofxVec3f(ofGetWidth()/2+ofRandom(500, 200), ofGetHeight()/2+ofRandom(-200, 200), ofRandom(-500, 0));
+		ofxVec3f rdmPos = ofxVec3f(ofGetScreenWidth()/2+ofRandom(500, 200), ofGetScreenHeight()/2+ofRandom(-200, 200), ofRandom(-500, 0));
 		Obj obj;
 		
 		float mass = ofMap(size, minParticleSize, maxParticleSize, minParticleMass, maxParticleMass);
@@ -34,7 +34,7 @@ void YesNoObj::setup(ofxBullet* bl, Flock3D* f, AdminPanel* ap, int _YesOrNo, in
 		obj.setup(YesOrNo, bullet, rdmPos, 11, mass, force, tangent);
 		obj.size = size;
 		obj.colAngle = cAng;
-		obj.setForcePoint(ofxVec3f(ofGetWidth()/2, ofGetHeight()/2, 0));
+		obj.setForcePoint(ofxVec3f(ofGetScreenWidth()/2, ofGetScreenHeight()/2, 0));
 		objs.push_back(obj);
 		
 	}
@@ -131,8 +131,8 @@ void YesNoObj::addSMSObj(int size) {
 	bool up = (ofRandomf() > 0) ? true : false;
 	bool left = (ofRandomf() > 0) ? true : false;
 	bool far = (ofRandomf() > 0) ? true : false;
-	ofxVec3f rdmPos = ofxVec3f(ofRandom((left)?0:ofGetWidth(), (left)?0:ofGetWidth()),
-							   ofRandom((up)?0:ofGetHeight(), (left)?0:ofGetHeight()),
+	ofxVec3f rdmPos = ofxVec3f(ofRandom((left)?0:ofGetScreenWidth(), (left)?0:ofGetScreenWidth()),
+							   ofRandom((up)?0:ofGetScreenHeight(), (left)?0:ofGetScreenHeight()),
 							   -700);
 	
 	
@@ -140,7 +140,7 @@ void YesNoObj::addSMSObj(int size) {
 	obj.setup(0, bullet, rdmPos, 35, 350, 14500, 19000);
 	obj.size = size;
 	obj.colAngle = cAng;
-	obj.setForcePoint(ofxVec3f(ofGetWidth()/2, ofGetHeight()/2, 0));
+	obj.setForcePoint(ofxVec3f(ofGetScreenWidth()/2, ofGetScreenHeight()/2, 0));
 	addedObjs.push_back(obj);	
 	
 }
@@ -174,7 +174,7 @@ void YesNoObj::changeParticleObjNum(ofxBullet* bullet, int numPart) {
 			obj.setup(YesOrNo, bullet, rdmPos, 11, mass, force, tangent);
 			obj.size = size;
 			obj.colAngle = cAng;
-			obj.setForcePoint(ofxVec3f(ofGetWidth()/2, ofGetHeight()/2, 0));
+			obj.setForcePoint(ofxVec3f(ofGetScreenWidth()/2, ofGetScreenHeight()/2, 0));
 			objs.push_back(obj);
 		}	
 	}

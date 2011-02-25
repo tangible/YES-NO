@@ -33,8 +33,8 @@ void AdminPanel::setup() {
 	gui.addTitle("DoF Setting").setNewColumn(true);
 	gui.addSlider("bias", bias, 0.0, 1.0);	
 	gui.addSlider("focus", focus, 0.0, 2.0);
-	gui.addSlider("aspectratiox", aspectratiox, 0.0, ofGetWidth());
-	gui.addSlider("aspectratioy", aspectratioy, 0.0, ofGetHeight());
+	gui.addSlider("aspectratiox", aspectratiox, 0.0, ofGetScreenWidth());
+	gui.addSlider("aspectratioy", aspectratioy, 0.0, ofGetScreenHeight());
 	gui.addSlider("blurclamp", blurclamp, 0.0, 1.0);	
 	
 	gui.addTitle("OBJ Setting").setNewColumn(true);
@@ -136,7 +136,7 @@ void AdminPanel::restoreDefault() {
 	
 	bias = 0.087;	
 	focus = 0.8242;
-	aspectratiox = ofGetWidth();
+	aspectratiox = ofGetScreenWidth();
 	aspectratioy = ofGetHeight();	
 	blurclamp = 0.0253910;
 	

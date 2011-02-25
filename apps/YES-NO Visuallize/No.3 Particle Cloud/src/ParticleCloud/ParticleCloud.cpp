@@ -20,11 +20,14 @@ void ParticleCloud::setup(int _fps, AdminPanel* ap, ofxCamera* cam) {
 	
 	int numObjs = minParticleNum;
 
-	flockYes.setup(1, ofGetWidth()/2-200, ofGetHeight()-300, 300, 150, 10, numObjs); 
-	flockNo.setup(1, ofGetWidth()/2-200, ofGetHeight()-300, 300, 150, 10, numObjs); 	
+	flockYes.setup(1, ofGetScreenWidth()/2-200, ofGetScreenHeight()-300, 300, 150, 10, numObjs); 
+	flockNo.setup(1, ofGetScreenWidth()/2-200, ofGetScreenHeight()-300, 300, 150, 10, numObjs); 	
 	
 	yes.setup(bullet, &flockYes, ap, Obj::YES, numObjs);
 	no.setup(bullet, &flockNo, ap, Obj::NO, numObjs);
+	
+	yesScaleTween.setParameters(scaleEasing, ofxTween::easeIn, 1.0, 1.0, 0, 0);
+	noScaleTween.setParameters(scaleEasing, ofxTween::easeIn, 1.0, 1.0, 0, 0);	
 	
 }
 
@@ -41,7 +44,16 @@ void ParticleCloud::update() {
 		no.update();		
 		no.computeMovement();
 		no.computeCloudShape();
-		
+	
+//		int nodiff = updateInfo.numDiffNo;
+//		float diff = ofClamp(nodiff, -scaleDiffMax, scaleDiffMax);
+//		diff = ofMap(diff, -scaleDiffMax, scaleDiffMax, minScale, maxScale);
+//		noScaleTween.setParameters(scaleEasing, ofxTween::easeIn, currNOScale, diff, scaleDurTime, 0);		
+//		
+//		int yesdiff = updateInfo.numDiffYes;
+//		diff = ofClamp(yesdiff, -scaleDiffMax, scaleDiffMax);
+//		diff = ofMap(diff, -scaleDiffMax, scaleDiffMax, minScale, maxScale);
+//		yesScaleTween.setParameters(scaleEasing, ofxTween::easeIn, currYesScale, diff, scaleDurTime, 0);		
 	}
 	
 }
@@ -53,13 +65,21 @@ void ParticleCloud::draw() {
 	ofPushMatrix();
 	ofTranslate(200, 150, 0);
 
+//	float yScale = yesScaleTween.update();
+//	currYesScale = yScale;		
+//	ofScale(yScale, yScale, yScale);	
+	
 	yes.draw();
 //	yes.drawFlock();
 	
 	ofPopMatrix();
 	ofPushMatrix();
-	ofTranslate(ofGetWidth()/2, 150, 0);
+	ofTranslate(ofGetScreenWidth()/2, 150, 0);
 
+//	float nScale = noScaleTween.update();
+//	currNOScale = nScale;		
+//	ofScale(nScale, nScale, nScale);	
+	
 	no.draw();	
 //	no.drawFlock();
 	
@@ -80,7 +100,7 @@ void ParticleCloud::debugKeyPress(int key) {
 
 void ParticleCloud::feedSMS(UpdateInfo upInfo) {
 
-	
+	updateInfo = upInfo;
 	int yesdiff = upInfo.numDiffYes;
 	float ydiff = ofClamp(yesdiff, 0, particleNumDiffMax);
 	ydiff = ofMap(ydiff, 0, particleNumDiffMax, minParticleNum, maxParticleNum);
