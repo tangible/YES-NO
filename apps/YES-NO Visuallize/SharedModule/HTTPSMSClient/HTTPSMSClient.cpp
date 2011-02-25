@@ -148,6 +148,8 @@ UpdateInfo HTTPSMSClient::calcUpdateInfo() {
 	upInfo.numTotalNo = totalNo;
 	upInfo.numYes = thisTimeYes;
 	upInfo.numNo = thisTimeNo;
+	upInfo.numDiffYes = totalYes-totalNo;
+	upInfo.numDiffNo = totalNo-totalYes;
 	upInfo.requesttime = reqestTime;
 	
 //	cout << "thisTimeYes recieved = " + ofToString(upInfo.numYes) << endl;	

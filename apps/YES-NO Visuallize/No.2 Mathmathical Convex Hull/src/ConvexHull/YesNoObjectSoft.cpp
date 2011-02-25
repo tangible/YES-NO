@@ -35,8 +35,6 @@ void YesNoObjectSoft::setup(int _yesOrNo, ofxBullet* _bullet, ofxVec3f _forcePoi
 	prevFaceAngle = 0;
 	previousColAng = 0.0;
 	
-	curScale = minScale;
-	
 	cout << "faces size = " + ofToString(yesORno->getSoftBody()->m_faces.size()) << endl;
 
 }
@@ -59,7 +57,7 @@ void YesNoObjectSoft::update() {
 	if (ofGetFrameNum() % (int)ofRandom(200, 1000) == 0) {
 		blowUp(ofRandom(50, 100));
 	}
-		
+	
 }
 
 void YesNoObjectSoft::draw() {
@@ -121,17 +119,43 @@ void YesNoObjectSoft::draw() {
 		float cb = currColorPointer[cfid+2];
 		float ca = currColorPointer[cfid+3];
 		glColor4f(cr, cg, cb, ca);
-		
+
 		ofxVec3f fa = ofxBulletStaticUtil::btVec3ToOfxVec3(faces[as->faceID].m_n[0]->m_x);
 		ofxVec3f fb = ofxBulletStaticUtil::btVec3ToOfxVec3(faces[as->faceID].m_n[1]->m_x);
 		ofxVec3f fc = ofxBulletStaticUtil::btVec3ToOfxVec3(faces[as->faceID].m_n[2]->m_x);
-		ofxVec3f cen = getFaceCentroid(faces, fid);
+		ofxVec3f a = as->getA();
+		ofxVec3f b = as->getB();
+		ofxVec3f c = as->getC();
 		ofxVec3f norm = as->getNorm();		
 		norm *= as->tw.update();
-		cen += norm;
-		ofxTriangleShape(fb, cen, fa);
-		ofxTriangleShape(fc, cen, fb);
-		ofxTriangleShape(fa, cen, fc);
+		a += norm;
+		b += norm;
+		c += norm;
+		ofxVec3f cen = getFaceCentroid(faces, fid);
+		ofxVec3f an = a-cen;
+		ofxVec3f bn = b-cen;
+		ofxVec3f cn = c-cen;
+		a += an/2;
+		b += bn/2;
+		c += cn/2;
+		//		a -= an/2;
+		//		b -= bn/2;
+		//		c -= cn/2;		
+		ofxQuad(fa, fb, b, a);
+		ofxQuad(fb, fc, c, b);
+		ofxQuad(fc, fa, a, c);
+		ofxTriangleShape(a, b, c);		
+		
+//		ofxVec3f fa = ofxBulletStaticUtil::btVec3ToOfxVec3(faces[as->faceID].m_n[0]->m_x);
+//		ofxVec3f fb = ofxBulletStaticUtil::btVec3ToOfxVec3(faces[as->faceID].m_n[1]->m_x);
+//		ofxVec3f fc = ofxBulletStaticUtil::btVec3ToOfxVec3(faces[as->faceID].m_n[2]->m_x);
+//		ofxVec3f cen = getFaceCentroid(faces, fid);
+//		ofxVec3f norm = as->getNorm();		
+//		norm *= as->tw.update();
+//		cen += norm;
+//		ofxTriangleShape(fb, cen, fa);
+//		ofxTriangleShape(fc, cen, fb);
+//		ofxTriangleShape(fa, cen, fc);
 		
 		ofSetColor(255, 255, 255);
 	}
@@ -371,19 +395,12 @@ void YesNoObjectSoft::addSMSCompleted(int & z) {
 	as->node0 = faces[faceID].m_n[0];
 	as->node1 = faces[faceID].m_n[1];
 	as->node2 = faces[faceID].m_n[2];
-	float minl = ofMap(resolusion, minRes, maxRes, 10, 99);
-	float maxl = ofMap(resolusion, minRes, maxRes, 100, 150);
+	float minl = ofMap(resolusion, minRes, maxRes, 10, 40);
+	float maxl = ofMap(resolusion, minRes, maxRes, 10, 60);
 	as->length = ofRandom(minl, maxl);
 	as->faceID = faceID;
 	as->angle = ofRandomuf();
 	as->tw.setParameters(as->ea, ofxTween::easeIn, 0.0, as->length, 800, 0);
-	
-	float ratioScale = ofMap(ratioSMS, 0.0, 1.0, minScale, maxRatioScale);
-	float numScale = ofMap(numSMS, 0, maxSMSNum, minScale, maxNumScale);
-	float tmpScale = ratioScale*numScale;
-	float destScale = ofMap(tmpScale, minScale*minScale, maxRatioScale*maxNumScale, minScale*minScale, maxScale);
-	scaleTween.setParameters(scaleEasing, ofxTween::easeIn, curScale, destScale, 1000, 0);
-	ofAddListener(scaleTween.end_E, this, &YesNoObjectSoft::setCurrentScale);
 	
 	ofAddListener(as->tw.end_E, this, &YesNoObjectSoft::notifyFinishAllUpdating);
 	addedSMSs.push_back(as);
@@ -450,24 +467,10 @@ void YesNoObjectSoft::shrink() {
 	}	
 }
 
-float YesNoObjectSoft::getScale() {
-	
-	if (scaleTween.isRunning()) {
-		return scaleTween.update();
-	}else {
-		return curScale;
-	}
-	
-}
-
-void YesNoObjectSoft::setCurrentScale(int & z) {
-
-	curScale = scaleTween.getTarget(0);
-	
-}
-
 void YesNoObjectSoft::notifyFinishAllUpdating(int & z) {
 	
+	int i = 0;
 	ofNotifyEvent(onFinishAllUpdating, YesOrNo);
-	
+	ofNotifyEvent(notifyScaleYesEvent, i);
+	ofNotifyEvent(notifyScaleNoEvent, i);
 }

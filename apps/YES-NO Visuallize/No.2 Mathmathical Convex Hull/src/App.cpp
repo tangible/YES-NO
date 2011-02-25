@@ -24,6 +24,8 @@ void App::setup(){
 	ofAddListener(adminPanel.onFileDialogueQImg, this, &App::onFileChangeQImg);	
 	ofAddListener(adminPanel.onClearQImg, this, &App::onClearQImg);		
 	ofAddListener(httpClient.onSMSRecieved, this, &App::onSMSMsgRecieved);	
+	ofAddListener(convexHull.yesSoft.onFinishAllUpdating, this, &App::resotoreCamOrbit);	
+	ofAddListener(convexHull.noSoft.onFinishAllUpdating, this, &App::resotoreCamOrbit);
 	
 	qImage.changeImgQImg("qimg3.png");
 	prevOrbit = 2;
@@ -54,9 +56,24 @@ void App::update(){
 				oamt = camOrbitAmt;
 			}
 			if (prevOrbit != 2) oamt *= 2;
-			camOrbitTween.setParameters(camOrbitEasing, ofxTween::easeIn, oamt, 0.0, 600, 0);
+			camOrbitTween.setParameters(camOrbitEasing, ofxTween::easeInOut, oamt, 0.0, 600, 0);
+			
 		}
 		prevOrbit = upInfo.sms.YesOrNo;	
+	}
+}
+
+void App::resotoreCamOrbit(int & z) {
+	
+	if (smsQue.size() == 0) {
+		float oamt = 0.0;
+		if (prevOrbit == 0) { // yes
+			oamt = camOrbitAmt;
+		}else if (prevOrbit == 1) { // no
+			oamt = -camOrbitAmt;
+		}
+		camOrbitTween.setParameters(camOrbitEasing, ofxTween::easeInOut, oamt, 0.0, 600, 0);
+		prevOrbit = 2;	
 	}
 }
 

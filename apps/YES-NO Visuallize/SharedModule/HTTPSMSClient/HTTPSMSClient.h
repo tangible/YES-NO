@@ -32,6 +32,8 @@ public:
 	int numTotalNo;
 	int numYes;
 	int numNo;
+	int numDiffYes;
+	int numDiffNo;
 	smsMsg sms;
 	string requesttime;
 };

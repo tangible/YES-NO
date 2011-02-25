@@ -28,8 +28,18 @@ void ConvexHull::setup(int _fps, AdminPanel* _adminPanel, ofxCamera* _cam) {
 	
 	isYesUpdating = false;
 	isNoUpdating = false;
+	
 	ofAddListener(yesSoft.onFinishAllUpdating, this, &ConvexHull::onFinishAllUpdating);
 	ofAddListener(noSoft.onFinishAllUpdating, this, &ConvexHull::onFinishAllUpdating);	
+	ofAddListener(yesSoft.notifyScaleYesEvent, this, &ConvexHull::scaleYes);
+	ofAddListener(noSoft.notifyScaleYesEvent, this, &ConvexHull::scaleYes);	
+	ofAddListener(yesSoft.notifyScaleNoEvent, this, &ConvexHull::scaleNo);
+	ofAddListener(noSoft.notifyScaleNoEvent, this, &ConvexHull::scaleNo);		
+	
+	currYesScale = 1.0;
+	currNOScale = 1.0;
+	yesScaleTween.setParameters(scaleEasing, ofxTween::easeIn, currYesScale, currYesScale, 0, 0);
+	noScaleTween.setParameters(scaleEasing, ofxTween::easeIn, currNOScale, currNOScale, 0, 0);	
 }
 
 void ConvexHull::update() {
@@ -55,16 +65,20 @@ void ConvexHull::draw() {
 	ofPushMatrix();
 	ofTranslate(yesPoint.x, yesPoint.y, yesPoint.z);
 	yesSoft.updateRotateion();
-	float yesscale = yesSoft.getScale();
-	ofScale(yesscale, yesscale, yesscale);
+
+	float yScale = yesScaleTween.update();
+	currYesScale = yScale;	
+	ofScale(yScale, yScale, yScale);
 	yesSoft.draw();
 	ofPopMatrix();
 	
 	ofPushMatrix();
 	ofTranslate(noPoint.x, noPoint.y, noPoint.z);	
 	noSoft.updateRotateion();	
-	float noscale = noSoft.getScale();
-	ofScale(noscale, noscale, noscale);
+	
+	float nScale = noScaleTween.update();
+	currNOScale = nScale;	
+	ofScale(nScale, nScale, nScale);
 	noSoft.draw();
 	ofPopMatrix();
 	
@@ -76,6 +90,24 @@ void ConvexHull::draw() {
 		IncomingSMS *sms = insmsNo[i];
 		sms->debugDraw();
 	}
+	
+}
+
+void ConvexHull::scaleYes(int & z) {
+	
+	int yesdiff = updateInfo.numDiffYes;
+	float diff = ofClamp(yesdiff, -scaleDiffMax, scaleDiffMax);
+	diff = ofMap(diff, -scaleDiffMax, scaleDiffMax, minScale, maxScale);
+	yesScaleTween.setParameters(scaleEasing, ofxTween::easeIn, currYesScale, diff, scaleDurTime, 0);
+	
+}
+
+void ConvexHull::scaleNo(int & z) {
+	
+	int nodiff = updateInfo.numDiffNo;
+	float diff = ofClamp(nodiff, -scaleDiffMax, scaleDiffMax);
+	diff = ofMap(diff, -scaleDiffMax, scaleDiffMax, minScale, maxScale);
+	noScaleTween.setParameters(scaleEasing, ofxTween::easeIn, currNOScale, diff, scaleDurTime, 0);
 	
 }
 
@@ -140,6 +172,7 @@ void  ConvexHull::onSmsCompleted(SmsInfo& smsInfo) {
 				insmsYes.erase(insmsYes.begin()+i);
 			}
 		}
+		yesSoft.updateInfo = updateInfo;
 	}else if (NO == smsInfo.YesOrNo) {
 		for (int i = 0; i < insmsNo.size(); i++) {
 			int faceID = smsInfo.faceID;
@@ -150,6 +183,7 @@ void  ConvexHull::onSmsCompleted(SmsInfo& smsInfo) {
 				insmsNo.erase(insmsNo.begin()+i);
 			}
 		}
+		noSoft.updateInfo = updateInfo;
 	}
 		
 	

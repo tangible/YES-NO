@@ -29,6 +29,7 @@ public:
 	void onFileChangeQImg(FileDef& fd);	
 	void onClearQImg(int& i);	
 	void onSMSMsgRecieved(UpdateInfo& _upInfo);	
+	void resotoreCamOrbit(int & z);
 
 	AdminPanel		adminPanel;
 	ConvexHull		convexHull;

@@ -14,6 +14,7 @@
 #include "ofxColorPicker.h"
 #include "ofxTween.h"
 #include "ofxTimer.h"
+#include "HTTPSMSClient.h"
 
 class addedSMS {
 	
@@ -73,10 +74,13 @@ public:
 	void clear();
 	
 	int incomingSMSFaceID;	
+	UpdateInfo updateInfo;
 	int numSMS;
 	float ratioSMS;
 	
 	ofEvent<int> onFinishAllUpdating;
+	ofEvent<int> notifyScaleYesEvent;	
+	ofEvent<int> notifyScaleNoEvent;	
 	void notifyFinishAllUpdating(int & z);
 	
 	ofxBullet*	bullet;
@@ -112,13 +116,12 @@ public:
 	float prevFaceAngle;
 	
 	static const float maxNumScale = 2.0;
-	static const float maxRatioScale = 2.0;
-	static const float minScale = 0.8;
-	static const float maxScale = 2.0;
-	float curScale;
-	ofxTween scaleTween;
-	ofxEasingBounce scaleEasing;
-	void setCurrentScale(int & z);
-	float getScale();
+	static const float maxRatioScale = 6.0;
+
+//	float curScale;
+//	ofxTween scaleTween;
+//	ofxEasingBounce scaleEasing;
+//	void setCurrentScale(int & z);
+//	float getScale();
 	
 };

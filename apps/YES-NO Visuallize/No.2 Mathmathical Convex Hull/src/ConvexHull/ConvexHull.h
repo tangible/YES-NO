@@ -30,6 +30,9 @@ public:
 	float feedSMS(UpdateInfo upInfo);
 	void setupGLStuff();
 	
+	void scaleYes(int & z);
+	void scaleNo(int & z);
+	
 	int						fps;
 	ofxBullet*				bullet;
 	ofxCamera*				cam;	
@@ -53,5 +56,15 @@ public:
 	vector<IncomingSMS*>	insmsNo;
 	void onSmsReached(SmsInfo& smsInfo);
 	void onSmsCompleted(SmsInfo& smsInfo);
+	
+	ofxTween yesScaleTween;
+	ofxTween noScaleTween;
+	ofxEasingElastic scaleEasing;
+	float currYesScale;
+	float currNOScale;
+	static const float minScale = 0.2;
+	static const float maxScale = 2.0;	
+	static const float scaleDiffMax = 7;
+	static const float scaleDurTime = 1000;
 	
 };

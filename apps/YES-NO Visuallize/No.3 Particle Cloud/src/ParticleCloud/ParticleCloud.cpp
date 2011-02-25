@@ -159,10 +159,8 @@ void ParticleCloud::feedSMS(UpdateInfo upInfo) {
 	}
 	
 	if (Obj::YES == upInfo.sms.YesOrNo) {
-		float size = ofMap(upInfo.ratioTotalYes, 0.0, 1.0, ParticleCloud::minSizeObjSize, ParticleCloud::maxSizeObjSize);
 		yes.addSMSObj(60);
 	}else if (Obj::NO == upInfo.sms.YesOrNo) {
-		float size = ofMap(upInfo.ratioTotalYes, 0.0, 1.0, ParticleCloud::minSizeObjSize, ParticleCloud::maxSizeObjSize);		
 		no.addSMSObj(60);
 	}
 

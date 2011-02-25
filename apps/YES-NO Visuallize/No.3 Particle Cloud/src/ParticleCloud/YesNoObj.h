@@ -20,6 +20,7 @@ class YesNoObj {
 public:
 	void setup(ofxBullet* bl, AdminPanel* ap, int _YesOrNo, int _numObjs);
 	void update();
+	void updateColor();
 	void draw();
 	void computeCloudShape(Flock3D f);
 	void computeMovement(Flock3D f);
@@ -39,6 +40,7 @@ public:
 private:
 	void drawObjs();
 	void drawAddedObjs();
+	void sortByDistanceFromSMSObj();
 	
 	ofxBullet* bullet;
 	AdminPanel* adminPanel;
@@ -51,6 +53,8 @@ private:
 	// objs fields
 	int numObjs;
 	vector<Obj> objs;
+	vector<int> sortedObjIdxByDistanceFromSMS;
 	vector<Obj> addedObjs;	
+	vector<int> sortedAddedObjIdxByDistanceFromSMS;	
 	
 };

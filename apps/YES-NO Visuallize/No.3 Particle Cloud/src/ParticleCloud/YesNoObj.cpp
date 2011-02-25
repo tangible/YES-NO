@@ -55,6 +55,25 @@ void YesNoObj::update() {
 		}
 	}
 	
+	updateColor();
+}
+
+void YesNoObj::updateColor() {
+
+	sortByDistanceFromSMSObj();
+	
+	float colAngle = addedObjs[addedObjs.size()-1].colAngle;
+	float step = 0.001;
+	for (int i = 0; i < sortedObjIdxByDistanceFromSMS.size(); i++) {
+		int idx = sortedObjIdxByDistanceFromSMS[i];
+		objs[idx].colAngle = colAngle+step*i;
+	}	
+
+	for (int i = 0; i < sortedAddedObjIdxByDistanceFromSMS.size(); i++) {
+		int idx = sortedAddedObjIdxByDistanceFromSMS[i];
+		addedObjs[idx].colAngle = colAngle+step*i;
+	}		
+	
 }
 
 void YesNoObj::draw() {
@@ -255,3 +274,83 @@ void YesNoObj::drawAddedObjs() {
 	ofSetColor(255, 255, 255);	
 	
 }
+
+void YesNoObj::sortByDistanceFromSMSObj() {
+
+	map<float, int, greater<float> > distances;
+	ofxVec3f newSMSPos = addedObjs[addedObjs.size()-1].getObjPos();
+	for (int i = 0; i < addedObjs.size(); i++) {
+		ofxVec3f cmpPos = addedObjs[i].getObjPos();
+		float dist = newSMSPos.distance(cmpPos);
+		distances.insert(map<float, int, greater<float> >::value_type(dist, i));
+	}
+	sortedAddedObjIdxByDistanceFromSMS.clear();
+	map<float, int, greater<float> >::iterator it = distances.begin();
+	while (it != distances.end()) {
+		sortedAddedObjIdxByDistanceFromSMS.push_back((*it).second);
+		++it;
+	}	
+	
+	distances.clear();
+	for (int i = 0; i < objs.size(); i++) {
+		ofxVec3f cmpPos = objs[i].getObjPos();
+		float dist = newSMSPos.distance(cmpPos);
+		distances.insert(map<float, int, greater<float> >::value_type(dist, i));
+	}
+	sortedObjIdxByDistanceFromSMS.clear();
+	it = distances.begin();
+	while (it != distances.end()) {
+		sortedObjIdxByDistanceFromSMS.push_back((*it).second);
+		++it;
+	}		
+	
+	
+//	map<float, Obj, greater<float> > distances;
+//	ofxVec3f newSMSPos = addedObjs[addedObjs.size()-1].getObjPos();
+//	for (int i = 0; i < addedObjs.size(); i++) {
+//		ofxVec3f cmpPos = addedObjs[i].getObjPos();
+//		float dist = newSMSPos.distance(cmpPos);
+//		distances.insert(map<float, Obj, greater<float> >::value_type(dist, addedObjs[i]));
+//	}
+//	for (int i = 0; i < objs.size(); i++) {
+//		ofxVec3f cmpPos = objs[i].getObjPos();
+//		float dist = newSMSPos.distance(cmpPos);
+//		distances.insert(map<float, Obj, greater<float> >::value_type(dist, objs[i]));
+//	}
+//	
+//	vector<Obj> sortedObj;
+//	map<float, Obj, greater<float> >::iterator it = distances.begin();
+//	while (it != distances.end()) {
+//		sortedObj.push_back((*it).second);
+//		++it;
+//	}
+//	
+//	return sortedObj;	
+	
+//	map<float, int, greater<float> > distances;
+//	ofxVec3f newSMSPos = addedObjs[addedObjs.size()-1].getObjPos();
+//	for (int i = 0; i < addedObjs.size(); i++) {
+//		ofxVec3f cmpPos = addedObjs[i].getObjPos();
+//		float dist = newSMSPos.distance(cmpPos);
+//		distances.insert(map<float, int, greater<float> >::value_type(dist, i));
+//	}
+//	for (int i = 0; i < objs.size(); i++) {
+//		ofxVec3f cmpPos = objs[i].getObjPos();
+//		float dist = newSMSPos.distance(cmpPos);
+//		distances.insert(map<float, int, greater<float> >::value_type(dist, i));
+//	}
+//	
+//	vector<int> sortedObjIdx;
+//	map<float, int, greater<float> >::iterator it = distances.begin();
+//	while (it != distances.end()) {
+//		sortedObjIdx.push_back((*it).second);
+//		++it;
+//	}
+//	
+//	return sortedObjIdx;
+}
+
+
+
+
+
