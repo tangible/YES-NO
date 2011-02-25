@@ -124,9 +124,9 @@ void AdminPanel::openFileDialogueChangeQImg(string ID) {
 
 void AdminPanel::restoreDefault() {
 
+	aoCap = 0.664;	
 	camerarangex = 6113.28;
 	camerarangey = 4121.09;
-	aoCap = 0.304;
 	aoMultiplier = 351.562;
 	depthTolerance = 0.0004730;
 	aorange = 0.385156;
@@ -134,11 +134,11 @@ void AdminPanel::restoreDefault() {
 	aoDivision = 12.5;
 	baseColSubdivision = 0.896;
 	
-	focus = 0.761;
+	bias = 0.087;	
+	focus = 0.8242;
 	aspectratiox = ofGetWidth();
 	aspectratioy = ofGetHeight();	
 	blurclamp = 0.0253910;
-	bias = 0.0019;
 	
 	colScale = 1.0;
 	colRadius = 0.746;

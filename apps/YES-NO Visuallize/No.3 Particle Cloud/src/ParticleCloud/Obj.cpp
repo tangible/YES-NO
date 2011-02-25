@@ -9,18 +9,22 @@
 
 #include "Obj.h"
 
-void Obj::setup(ofxBullet* bullet, ofxVec3f pos, int radius, int mass, 
+void Obj::setup(int yesOrNo, ofxBullet* bullet, ofxVec3f pos, int radius, int mass, 
 				float _forceVecFactor,
 				float _tangentVecFactor) {
 
 	forceVecFactor = _forceVecFactor;
+	tangentVecFactor = _tangentVecFactor;
 	
-	body = bullet->createSphere(pos,
-								radius, 
-								mass, 
-								ofxVec4f(ofRandom(0.5, 0.5), ofRandom(0.5, 0.5), ofRandom(0.5, 0.5), 0.7), 
-								DYNAMIC_BODY);	
-
+	if (yesOrNo == 0) {
+		body = bullet->createSphere(pos,
+									radius, 
+									mass);
+	}else {
+		body = bullet->createBox(pos,
+									ofxVec3f(radius,radius,radius), 
+									mass);
+	}
 }
 
 void Obj::movetoForcePoint(int impulseFactor) {
@@ -37,7 +41,7 @@ void Obj::movetoForcePoint(int impulseFactor) {
 	force *= maxVal * forceVecFactor;
 	tangentVec = force.crossed(crossVec);
 	tangentVec.normalize();
-	tangentVec *= maxVal*100;
+	tangentVec *= maxVal*tangentVecFactor;
 	force += tangentVec;
 	btVector3 btImpulse(force.x, force.y, force.z);
 	body->getRigidBody()->applyCentralImpulse(btImpulse);

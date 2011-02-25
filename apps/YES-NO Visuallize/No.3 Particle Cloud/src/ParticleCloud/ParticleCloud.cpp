@@ -20,8 +20,8 @@ void ParticleCloud::setup(int _fps, AdminPanel* ap, ofxCamera* cam) {
 	
 	int numObjs = minParticleNum;
 
-	flockYes.setup(1, ofGetWidth()/2, ofGetHeight()-200, 500, -800, 10, numObjs); 
-	flockNo.setup(1, ofGetWidth()/2, ofGetHeight()-200, 500, -800, 10, numObjs); 	
+	flockYes.setup(1, ofGetWidth()/2-200, ofGetHeight()-300, 300, 150, 10, numObjs); 
+	flockNo.setup(1, ofGetWidth()/2-200, ofGetHeight()-300, 300, 150, 10, numObjs); 	
 	
 	yes.setup(bullet, &flockYes, ap, Obj::YES, numObjs);
 	no.setup(bullet, &flockNo, ap, Obj::NO, numObjs);
@@ -48,46 +48,61 @@ void ParticleCloud::update() {
 
 void ParticleCloud::draw() {
 	
+	ofEnableSmoothing();
+	
 	ofPushMatrix();
+	ofTranslate(200, 150, 0);
 
 	yes.draw();
-	ofTranslate(ofGetWidth()/2, 0, 0);	
-	no.draw();
-	
 //	yes.drawFlock();
-//	ofTranslate(ofGetWidth()/2, 0, 0);
-//	no.drawFlock();
-	
-//	bullet->render();
 	
 	ofPopMatrix();
+	ofPushMatrix();
+	ofTranslate(ofGetWidth()/2, 150, 0);
+
+	no.draw();	
+//	no.drawFlock();
+	
+	ofPopMatrix();
+	
+//	bullet->render();	
 }
 
 void ParticleCloud::debugKeyPress(int key) {
 
 	if (key == 'y') 
-		yes.addSMSObj(60);
+		yes.addSMSObj(40);
 
 	if (key == 'n') 
-		no.addSMSObj(60);		
+		no.addSMSObj(40);		
 
 }
 
 void ParticleCloud::feedSMS(UpdateInfo upInfo) {
+
 	
-	float particleYesNum = ofMap(upInfo.ratioTotalYes, 0.0, 1.0, ParticleCloud::minParticleNum, ParticleCloud::maxParticleNum);
-	yes.getFlock()->changeTrailPointNum(0, 0, particleYesNum);
-	float particleNoNum = ofMap(upInfo.ratioTotalNo, 0.0, 1.0, ParticleCloud::minParticleNum, ParticleCloud::maxParticleNum);
-	no.getFlock()->changeTrailPointNum(0, 0, particleNoNum);
-	if (upInfo.numTotalYes > upInfo.numTotalNo) {
-		particleNoNum -= 20;
-//		particleYesNum += 20;
-	}else if (upInfo.numTotalYes < upInfo.numTotalNo) {
-		particleYesNum -= 20;			
-//		particleNoNum += 20;		
-	}	
-	yes.changeParticleObjNum(bullet, particleYesNum);	
-	no.changeParticleObjNum(bullet, particleNoNum);
+	int yesdiff = upInfo.numDiffYes;
+	float ydiff = ofClamp(yesdiff, 0, particleNumDiffMax);
+	ydiff = ofMap(ydiff, 0, particleNumDiffMax, minParticleNum, maxParticleNum);
+	int nodiff = upInfo.numDiffNo;
+	float ndiff = ofClamp(nodiff, 0, particleNumDiffMax);
+	ndiff = ofMap(ndiff, 0, particleNumDiffMax, minParticleNum, maxParticleNum);	
+	yes.getFlock()->changeTrailPointNum(0, 0, ydiff);
+	yes.changeParticleObjNum(bullet, ydiff);	
+	no.getFlock()->changeTrailPointNum(0, 0, ndiff);
+	no.changeParticleObjNum(bullet, ndiff);	
+	
+//	float particleYesNum = ofMap(upInfo.ratioTotalYes, 0.0, 1.0, ParticleCloud::minParticleNum, ParticleCloud::maxParticleNum);
+//	yes.getFlock()->changeTrailPointNum(0, 0, particleYesNum);
+//	float particleNoNum = ofMap(upInfo.ratioTotalNo, 0.0, 1.0, ParticleCloud::minParticleNum, ParticleCloud::maxParticleNum);
+//	no.getFlock()->changeTrailPointNum(0, 0, particleNoNum);
+//	if (upInfo.numTotalYes > upInfo.numTotalNo) {
+//		particleNoNum -= 20;
+//	}else if (upInfo.numTotalYes < upInfo.numTotalNo) {
+//		particleYesNum -= 20;					
+//	}	
+//	yes.changeParticleObjNum(bullet, particleYesNum);	
+//	no.changeParticleObjNum(bullet, particleNoNum);
 	
 	float sizeObjYesNum = ofMap(upInfo.ratioTotalYes, 0.0, 1.0, minSizeObjNum, maxSizeObjNum);
 	yes.changeSizeObjNum(bullet, sizeObjYesNum);
@@ -99,10 +114,10 @@ void ParticleCloud::feedSMS(UpdateInfo upInfo) {
 	float pObjNoSize = ofMap(upInfo.ratioTotalNo, 0.0, 1.0, 0.8, 1.4);
 	no.particleObjSize = pObjNoSize;	
 	if (upInfo.numTotalYes > upInfo.numTotalNo) {
-		yes.particleObjSize += 0.2;		
-		no.particleObjSize -= 0.2;		
+		yes.particleObjSize += 0.1;		
+		no.particleObjSize -= 0.1;		
 	}else if (upInfo.numTotalYes < upInfo.numTotalNo) {
-		yes.particleObjSize -= 0.2;				
+		yes.particleObjSize -= 0.1;				
 		no.particleObjSize += 0.1;
 	}
 	
@@ -150,10 +165,10 @@ void ParticleCloud::feedSMS(UpdateInfo upInfo) {
 	
 	if (Obj::YES == upInfo.sms.YesOrNo) {
 		float size = ofMap(upInfo.ratioTotalYes, 0.0, 1.0, ParticleCloud::minSizeObjSize, ParticleCloud::maxSizeObjSize);
-		yes.addSMSObj(60);
+		yes.addSMSObj(40);
 	}else if (Obj::NO == upInfo.sms.YesOrNo) {
 		float size = ofMap(upInfo.ratioTotalYes, 0.0, 1.0, ParticleCloud::minSizeObjSize, ParticleCloud::maxSizeObjSize);		
-		no.addSMSObj(60);
+		no.addSMSObj(40);
 	}
 
 }

@@ -53,6 +53,14 @@ private:
 	
 	// objs fields
 	int numObjs;
+	static const float minParticleSize = 10;
+	static const float maxParticleSize = 30;
+	static const float minParticleMass = 5;
+	static const float maxParticleMass = 10;
+	static const float minForce = 55;
+	static const float maxForce = 1000;
+	static const float minTangent = 100;
+	static const float maxTangent = 2000;
 	vector<Obj> objs;
 	vector<Obj> addedObjs;	
 	

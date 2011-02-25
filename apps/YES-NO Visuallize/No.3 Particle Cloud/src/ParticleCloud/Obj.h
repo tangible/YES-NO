@@ -16,7 +16,7 @@
 class Obj {
 
 public:
-	void setup(ofxBullet* bullet, ofxVec3f pos, int radius, int mass, 
+	void setup(int yesOrNo, ofxBullet* bullet, ofxVec3f pos, int radius, int mass, 
 			   float _forceVecFactor = 55,
 			   float _tangentVecFactor = 100);
 	void setForcePoint(ofxVec3f fp){forcePoint = fp;}
@@ -28,6 +28,8 @@ public:
 	
 	static const int YES = 0;
 	static const int NO = 1;	
+	static const float minParticleSize = 10;
+	static const float maxParticleSize = 30;	
 	
 	int size;
 	float colAngle;
@@ -37,6 +39,7 @@ public:
 
 	float positionalSizeFactor;
 	float forceVecFactor;
+	float tangentVecFactor;
 	
 private:
 	MyRigidBody* body;

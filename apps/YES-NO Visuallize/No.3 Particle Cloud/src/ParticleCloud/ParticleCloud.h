@@ -41,10 +41,11 @@ private:
 	Flock3D flockNo;	
 	
 	// internal param
+	static const float particleNumDiffMax = 15;
 	static const float minParticleNum = 50;
 	static const float maxParticleNum = 600;
 	static const float minSizeObjNum = 1;
-	static const float maxSizeObjNum = 20;
+	static const float maxSizeObjNum = 10;
 	static const float minSizeObjSize = 10;
 	static const float maxSizeObjSize = 60;
 	static const float minImpulseFactor = 20;

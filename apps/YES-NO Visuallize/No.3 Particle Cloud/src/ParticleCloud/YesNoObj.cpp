@@ -16,17 +16,22 @@ void YesNoObj::setup(ofxBullet* bl, Flock3D* f, AdminPanel* ap, int _YesOrNo, in
 	YesOrNo = _YesOrNo;
 	flock = f;
 	
-	baseMin = (YesOrNo == Obj::YES) ? 0.0 : 0.5;
-	baseMax = (YesOrNo == Obj::YES) ? 0.5 : 1.0;
+	baseMin = (YesOrNo == Obj::YES) ? -0.34 : -0.02;
+	baseMax = (YesOrNo == Obj::YES) ? -0.34 : -0.02;
 	boidID = (YesOrNo == Obj::YES) ? 0 : 0;
 	
 	numObjs = _numObjs;
 	for (int i = 0; i < numObjs; i++) {
-		float size = ofRandom(10, 20);
+		float size = ofRandom(minParticleSize, maxParticleSize);
 		float cAng = ofRandom(baseMin, baseMax);
 		ofxVec3f rdmPos = ofxVec3f(ofGetWidth()/2+ofRandom(500, 200), ofGetHeight()/2+ofRandom(-200, 200), ofRandom(-500, 0));
 		Obj obj;
-		obj.setup(bullet, rdmPos, 11, 1);
+		
+		float mass = ofMap(size, minParticleSize, maxParticleSize, minParticleMass, maxParticleMass);
+		float force = ofMap(size, minParticleSize, maxParticleSize, minForce, maxForce);
+		float tangent = ofMap(size, minParticleSize, maxParticleSize, minTangent, maxTangent);
+		
+		obj.setup(YesOrNo, bullet, rdmPos, 11, mass, force, tangent);
 		obj.size = size;
 		obj.colAngle = cAng;
 		obj.setForcePoint(ofxVec3f(ofGetWidth()/2, ofGetHeight()/2, 0));
@@ -35,7 +40,7 @@ void YesNoObj::setup(ofxBullet* bl, Flock3D* f, AdminPanel* ap, int _YesOrNo, in
 	}
 	
 	for (int i = 0; i < 1; i++) {
-		addSMSObj(60);
+		addSMSObj(40);
 	}
 	addedObjSize = 1.0;
 	particleObjSize = 1.0;
@@ -47,10 +52,10 @@ void YesNoObj::update() {
 	
 	if (adminPanel->TOGGLEMOTION) {
 		for (int i = 0; i < objs.size(); i++) {
-			objs[i].movetoForcePoint(impulseFactor);
+			objs[i].movetoForcePoint(0);
 		}
 		for (int i = 0; i < addedObjs.size(); i++) {
-			addedObjs[i].movetoForcePoint();
+			addedObjs[i].movetoForcePoint(0);
 		}
 	}
 	
@@ -87,7 +92,7 @@ void YesNoObj::computeCloudShape() {
 		ofxVec3f tmpVec = posFeed[i];
 		float dist = tmpVec.distance(tofVec);
 		float compare = (dist >= compDist) ? dist+0.1 : compDist;
-		float iplFactor = ofMap(dist, 0.0, compare, 1.0, 0.3);
+		float iplFactor = ofMap(dist, 0.0, compare, 1.0, 0.7);
 		ofxVec3f resVec = tmpVec.getInterpolated(tofVec, iplFactor);
 		objs[i].setForcePoint(resVec);
 		
@@ -132,7 +137,7 @@ void YesNoObj::addSMSObj(int size) {
 	
 	
 	Obj obj;
-	obj.setup(bullet, rdmPos, 26, 350, 14500, 19000);
+	obj.setup(0, bullet, rdmPos, 35, 350, 14500, 19000);
 	obj.size = size;
 	obj.colAngle = cAng;
 	obj.setForcePoint(ofxVec3f(ofGetWidth()/2, ofGetHeight()/2, 0));
@@ -152,11 +157,21 @@ void YesNoObj::changeParticleObjNum(ofxBullet* bullet, int numPart) {
 	}else {
 		int diff = numPart-objs.size();
 		for (int i = 0; i < diff; i++) {
-			float size = ofRandom(10, 20);
+			float size = ofRandom(minParticleSize, maxParticleSize);
 			float cAng = ofRandom(baseMin, baseMax);
-			ofxVec3f rdmPos = ofxVec3f(ofGetWidth()/2+ofRandom(500, 200), ofGetHeight()/2+ofRandom(-200, 200), ofRandom(-500, 0));
+			
+			vector<ofxVec3f> posFeed = flock->getTrailPoints(0, 0);
+			int p = (int)posFeed.size();
+			float threeOfFour = 0.6;
+			ofxVec3f tofVec = addedObjs[addedObjs.size()-1].getObjPos();
+			ofxVec3f rdmPos = ofxVec3f(tofVec.x+ofRandom(-400, 400), tofVec.y+ofRandom(-400, 400), tofVec.z+ofRandom(-400, 400));
+			
 			Obj obj;
-			obj.setup(bullet, rdmPos, 11, 1);
+			float mass = ofMap(size, minParticleSize, maxParticleSize, minParticleMass, maxParticleMass);
+			float force = ofMap(size, minParticleSize, maxParticleSize, minForce, maxForce);
+			float tangent = ofMap(size, minParticleSize, maxParticleSize, minTangent, maxTangent);			
+			
+			obj.setup(YesOrNo, bullet, rdmPos, 11, mass, force, tangent);
 			obj.size = size;
 			obj.colAngle = cAng;
 			obj.setForcePoint(ofxVec3f(ofGetWidth()/2, ofGetHeight()/2, 0));
@@ -186,14 +201,15 @@ void YesNoObj::drawObjs() {
 		Obj obj = objs[i];
 		float sizeBase = adminPanel->sizeBase;
 		float size = obj.size;
-		size += sizeBase;
-		size *= obj.positionalSizeFactor;
-		size *= particleObjSize;
 		ofxVec3f pos = obj.getObjPos();
 		float cAng = obj.colAngle;
-		obj.colp.setColorAngle(-cAng);//cAng);//0.32);
-		obj.colp.setColorScale(adminPanel->colScale);
-		obj.colp.setColorRadius(adminPanel->colRadius+colorRadius);
+		cAng += ofMap(size, minParticleSize, maxParticleSize, 0.2, 0.0);
+		float cScale = ofMap(size, minParticleSize, maxParticleSize, 0.25, 1.0);
+		float cRad = ofMap(size, minParticleSize, maxParticleSize, 1.0, 1.0);
+		
+		obj.colp.setColorAngle(cAng);//cAng);//0.32);
+		obj.colp.setColorScale(cScale);
+		obj.colp.setColorRadius(cRad);
 		obj.colp.update();
 		ofColor col = obj.colp.getColor();
 		ofSetColor(col.r, col.g, col.b);
@@ -202,11 +218,13 @@ void YesNoObj::drawObjs() {
 		float rAng; ofxVec3f axis;
 		qt.getRotate(rAng, axis);
 		
+		size *= particleObjSize;
+		
 		ofPushMatrix();
 		ofTranslate(pos.x, pos.y, pos.z);
 		ofRotate(ofRadToDeg(rAng), axis.x, axis.y, axis.z);
 		
-		(YesOrNo == Obj::YES) ? ofxSphere(0,0,0, size*1.225) : ofxBox(0,0,0, size*1.6);
+		(YesOrNo == Obj::YES) ? ofxSphere(0,0,0, size) : ofxBox(0,0,0, size*1.0);
 		
 		ofPopMatrix();
 		
@@ -222,14 +240,14 @@ void YesNoObj::drawAddedObjs() {
 		Obj obj = addedObjs[i];
 		float sizeBase = adminPanel->sizeBase;
 		float size = obj.size;
-		size += sizeBase;
-		size *= obj.positionalSizeFactor;
-		size *= addedObjSize;
+//		size += sizeBase;
+//		size *= obj.positionalSizeFactor;
+//		size *= addedObjSize;
 		ofxVec3f pos = obj.getObjPos();
 		float cAng = obj.colAngle;
-		obj.colp.setColorAngle(-cAng);//cAng);//0.32);
-		obj.colp.setColorScale(adminPanel->colScale);
-		obj.colp.setColorRadius(adminPanel->colRadius+colorRadius);
+		obj.colp.setColorAngle(cAng);//cAng);//0.32);
+		obj.colp.setColorScale(0.9);
+		obj.colp.setColorRadius(0.9);
 		obj.colp.update();
 		ofColor col = obj.colp.getColor();
 		ofSetColor(col.r, col.g, col.b);
