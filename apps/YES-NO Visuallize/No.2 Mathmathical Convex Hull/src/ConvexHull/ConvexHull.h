@@ -40,6 +40,7 @@ public:
 	bool					isYesUpdating;
 	bool					isNoUpdating;
 	void					onFinishAllUpdating(int & yesOrNo);
+	UpdateInfo				updateInfo;
 	
 	ofxVec3f				yesPoint;
 	int						currentYesLevel;

@@ -55,12 +55,16 @@ void ConvexHull::draw() {
 	ofPushMatrix();
 	ofTranslate(yesPoint.x, yesPoint.y, yesPoint.z);
 	yesSoft.updateRotateion();
+	float yesscale = yesSoft.getScale();
+	ofScale(yesscale, yesscale, yesscale);
 	yesSoft.draw();
 	ofPopMatrix();
 	
 	ofPushMatrix();
 	ofTranslate(noPoint.x, noPoint.y, noPoint.z);	
 	noSoft.updateRotateion();	
+	float noscale = noSoft.getScale();
+	ofScale(noscale, noscale, noscale);
 	noSoft.draw();
 	ofPopMatrix();
 	
@@ -77,6 +81,7 @@ void ConvexHull::draw() {
 
 float ConvexHull::feedSMS(UpdateInfo upInfo) {
 	
+	updateInfo = upInfo;
 	IncomingSMS *sms = new IncomingSMS();
 	if (upInfo.sms.YesOrNo == YES) {
 		int faceID = ofRandom(0, yesSoft.yesORno->getSoftBody()->m_faces.size());
@@ -114,10 +119,10 @@ float ConvexHull::feedSMS(UpdateInfo upInfo) {
 void ConvexHull::onSmsReached(SmsInfo& smsInfo) {
 
 	if (smsInfo.YesOrNo == YES) {
-		yesSoft.addSMS(smsInfo.faceID);
+		yesSoft.addSMS(smsInfo.faceID, updateInfo.numTotalYes, updateInfo.ratioTotalYes);
 		yesSoft.startFaceingToCam(cam, yesPoint+ofxVec3f(0, 300, -500));
 	}else if (smsInfo.YesOrNo == NO) {
-		noSoft.addSMS(smsInfo.faceID);
+		noSoft.addSMS(smsInfo.faceID, updateInfo.numTotalNo, updateInfo.ratioTotalNo);
 		noSoft.startFaceingToCam(cam, noPoint+ofxVec3f(0, 300, -500));				
 	}
 

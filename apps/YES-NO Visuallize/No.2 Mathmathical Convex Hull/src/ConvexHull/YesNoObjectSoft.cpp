@@ -34,6 +34,10 @@ void YesNoObjectSoft::setup(int _yesOrNo, ofxBullet* _bullet, ofxVec3f _forcePoi
 	currColorPointer = destColorPointer;
 	prevFaceAngle = 0;
 	previousColAng = 0.0;
+	
+	curScale = minScale;
+	
+	cout << "faces size = " + ofToString(yesORno->getSoftBody()->m_faces.size()) << endl;
 
 }
 
@@ -235,7 +239,7 @@ vector<float> YesNoObjectSoft::changeColBySMSRecievedFace(int z) {
 		btSoftBody::Node* compnode_0 = faces[faceIDVec[i]].m_n[0];
 		btSoftBody::Node* compnode_1 = faces[faceIDVec[i]].m_n[1];
 		btSoftBody::Node* compnode_2 = faces[faceIDVec[i]].m_n[2];		
-		
+
 		float scaleFactor = 0.0;
 		float radiusFactor = 0.0;
 		if (i < faceIDVec.size()/2) {
@@ -246,11 +250,28 @@ vector<float> YesNoObjectSoft::changeColBySMSRecievedFace(int z) {
 			radiusFactor = ofMap(i, 0, faceIDVec.size(), 0.699, 0.001);					
 		}
 		
-		float angleFactor = defaultColAng;
-		if (i > faceIDVec.size()/1.04) {
-			scaleFactor = ofMap(i, faceIDVec.size()/1.04, faceIDVec.size(), 0.55, 1.0);
-			radiusFactor = ofMap(i, faceIDVec.size()/1.04, faceIDVec.size(), 0.85, 1.0);
-		}
+		float angleFactor = defaultColAng+thisTimeAngle;
+		float factor = 4;
+		if (i > faceIDVec.size()/factor) {
+			scaleFactor = ofMap(i, faceIDVec.size()/factor, faceIDVec.size(), 0.1, 0.8);
+			radiusFactor = ofMap(i, faceIDVec.size()/factor, faceIDVec.size(), 0.1, 0.8);
+		}		
+		
+//		float scaleFactor = 0.0;
+//		float radiusFactor = 0.0;
+//		if (i < faceIDVec.size()/2) {
+//			scaleFactor = ofMap(i, 0, faceIDVec.size(), 0.001, 0.499);
+//			radiusFactor = ofMap(i, 0, faceIDVec.size(), 0.001, 0.699);
+//		}else {
+//			scaleFactor = ofMap(i, 0, faceIDVec.size(), 0.499, 0.001);
+//			radiusFactor = ofMap(i, 0, faceIDVec.size(), 0.699, 0.001);					
+//		}
+//		
+//		float angleFactor = defaultColAng;
+//		if (i > faceIDVec.size()/1.04) {
+//			scaleFactor = ofMap(i, faceIDVec.size()/1.04, faceIDVec.size(), 0.55, 1.0);
+//			radiusFactor = ofMap(i, faceIDVec.size()/1.04, faceIDVec.size(), 0.85, 1.0);
+//		}
 		
 		for (int j = 0; j < 3; j++) {
 			int idx = faceIDVec[i]*12+j*4;
@@ -319,9 +340,11 @@ ofxVec3f YesNoObjectSoft::getFaceNormal(btSoftBody::tFaceArray& faces, int faceI
 	
 }
 
-void YesNoObjectSoft::addSMS(int faceID) {
+void YesNoObjectSoft::addSMS(int faceID, int _numSMS, float _ratioSMS) {
 	
 	incomingSMSFaceID = faceID;
+	numSMS = _numSMS;
+	ratioSMS = _ratioSMS;
 	destColorPointer.clear();
 	int i =0;
 	changeColBySMSRecievedFace(i);
@@ -348,12 +371,20 @@ void YesNoObjectSoft::addSMSCompleted(int & z) {
 	as->node0 = faces[faceID].m_n[0];
 	as->node1 = faces[faceID].m_n[1];
 	as->node2 = faces[faceID].m_n[2];
-	float minl = ofMap(resolusion, minRes, maxRes, 10, 199);
-	float maxl = ofMap(resolusion, minRes, maxRes, 200, 350);
+	float minl = ofMap(resolusion, minRes, maxRes, 10, 99);
+	float maxl = ofMap(resolusion, minRes, maxRes, 100, 150);
 	as->length = ofRandom(minl, maxl);
 	as->faceID = faceID;
 	as->angle = ofRandomuf();
 	as->tw.setParameters(as->ea, ofxTween::easeIn, 0.0, as->length, 800, 0);
+	
+	float ratioScale = ofMap(ratioSMS, 0.0, 1.0, minScale, maxRatioScale);
+	float numScale = ofMap(numSMS, 0, maxSMSNum, minScale, maxNumScale);
+	float tmpScale = ratioScale*numScale;
+	float destScale = ofMap(tmpScale, minScale*minScale, maxRatioScale*maxNumScale, minScale*minScale, maxScale);
+	scaleTween.setParameters(scaleEasing, ofxTween::easeIn, curScale, destScale, 1000, 0);
+	ofAddListener(scaleTween.end_E, this, &YesNoObjectSoft::setCurrentScale);
+	
 	ofAddListener(as->tw.end_E, this, &YesNoObjectSoft::notifyFinishAllUpdating);
 	addedSMSs.push_back(as);
 	
@@ -417,6 +448,22 @@ void YesNoObjectSoft::shrink() {
 		if (node_1->m_im > 0) node_1->m_f += pinchFaceForce;
 		if (node_2->m_im > 0) node_2->m_f += pinchFaceForce;		
 	}	
+}
+
+float YesNoObjectSoft::getScale() {
+	
+	if (scaleTween.isRunning()) {
+		return scaleTween.update();
+	}else {
+		return curScale;
+	}
+	
+}
+
+void YesNoObjectSoft::setCurrentScale(int & z) {
+
+	curScale = scaleTween.getTarget(0);
+	
 }
 
 void YesNoObjectSoft::notifyFinishAllUpdating(int & z) {

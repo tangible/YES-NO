@@ -61,7 +61,7 @@ public:
 	void startFaceingToCam(ofxCamera* cam, ofxVec3f offset);
 	void updateRotateion();
 	
-	void addSMS(int faceID);
+	void addSMS(int faceID, int _numSMS, float _ratioSMS);
 	void addSMSCompleted(int & z);
 	void blowUp(float pinchFaceFactor);
 	void shrink();
@@ -71,6 +71,10 @@ public:
 	void pinchNode();
 	
 	void clear();
+	
+	int incomingSMSFaceID;	
+	int numSMS;
+	float ratioSMS;
 	
 	ofEvent<int> onFinishAllUpdating;
 	void notifyFinishAllUpdating(int & z);
@@ -87,11 +91,10 @@ public:
 	static const int maxRes = 5120;
 	static const int YNSOFTMINSIZELEV = 0;
 	static const int YNSOFTMAXSIZELEV = 20;	
+	static const int maxSMSNum = 5000;
 	int resolusion;	
 	ofxVec3f radius;
 	int sizeLevel;
-	
-	int incomingSMSFaceID;	
 	
 	vector<float> destColorPointer;
 	vector<float> currColorPointer;
@@ -107,5 +110,15 @@ public:
 	ofxEasingCubic facingEasing;
 	ofxVec3f prevFacingAxis;
 	float prevFaceAngle;
+	
+	static const float maxNumScale = 2.0;
+	static const float maxRatioScale = 2.0;
+	static const float minScale = 0.8;
+	static const float maxScale = 2.0;
+	float curScale;
+	ofxTween scaleTween;
+	ofxEasingBounce scaleEasing;
+	void setCurrentScale(int & z);
+	float getScale();
 	
 };

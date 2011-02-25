@@ -89,6 +89,7 @@ void App::draw(){
 }
 
 //--------------------------------------------------------------
+int scrnseq = 0;
 void App::keyPressed(int key){
 
 	if (key == 's') {
@@ -105,6 +106,9 @@ void App::keyPressed(int key){
 		for (int i = 0; i < 100; i++) {
 			httpClient.emulateSMS();
 		}
+	}else if (key == 'p') {
+		scrnseq++;
+		ofSaveScreen("/Users/alexbeim/Desktop/akiraTemporary/scrn"+ofToString(scrnseq)+".png");
 	}else {	
 		adminPanel.keyPressed(key);
 	}
