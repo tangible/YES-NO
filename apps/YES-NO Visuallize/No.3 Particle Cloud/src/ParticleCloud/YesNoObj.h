@@ -18,12 +18,11 @@
 class YesNoObj {
 
 public:
-	void setup(ofxBullet* bl, AdminPanel* ap, int _YesOrNo, int _numObjs);
+	void setup(ofxBullet* bl, Flock3D* f, AdminPanel* ap, int _YesOrNo, int _numObjs);
 	void update();
-	void updateColor();
 	void draw();
-	void computeCloudShape(Flock3D f);
-	void computeMovement(Flock3D f);
+	void computeCloudShape();
+	void computeMovement();
 	void addSMSObj(int size);
 	void changeParticleObjNum(ofxBullet* bullet, int numPart);
 	void changeSizeObjNum(ofxBullet* bullet, int numSize);
@@ -31,6 +30,8 @@ public:
 	int getBoidID() { return boidID; }
 	int getObjNum() { return (int)objs.size(); }
 	int getAddeObjNum() { return (int)addedObjs.size(); }
+	void drawFlock() { flock->draw(); }
+	Flock3D* getFlock() { return flock; }
 	
 	float particleObjSize;
 	float addedObjSize;
@@ -40,10 +41,10 @@ public:
 private:
 	void drawObjs();
 	void drawAddedObjs();
-	void sortByDistanceFromSMSObj();
 	
 	ofxBullet* bullet;
 	AdminPanel* adminPanel;
+	Flock3D* flock;	
 	
 	int YesOrNo;
 	float baseMin; // if yes => 0.0, no => 0.5
@@ -53,8 +54,6 @@ private:
 	// objs fields
 	int numObjs;
 	vector<Obj> objs;
-	vector<int> sortedObjIdxByDistanceFromSMS;
 	vector<Obj> addedObjs;	
-	vector<int> sortedAddedObjIdxByDistanceFromSMS;	
 	
 };

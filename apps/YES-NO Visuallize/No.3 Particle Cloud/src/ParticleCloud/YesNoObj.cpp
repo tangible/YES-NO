@@ -9,11 +9,12 @@
 
 #include "YesNoObj.h"
 
-void YesNoObj::setup(ofxBullet* bl, AdminPanel* ap, int _YesOrNo, int _numObjs) {
+void YesNoObj::setup(ofxBullet* bl, Flock3D* f, AdminPanel* ap, int _YesOrNo, int _numObjs) {
 	
 	bullet = bl;
 	adminPanel = ap;
 	YesOrNo = _YesOrNo;
+	flock = f;
 	
 	baseMin = (YesOrNo == Obj::YES) ? 0.0 : 0.5;
 	baseMax = (YesOrNo == Obj::YES) ? 0.5 : 1.0;
@@ -23,14 +24,12 @@ void YesNoObj::setup(ofxBullet* bl, AdminPanel* ap, int _YesOrNo, int _numObjs) 
 	for (int i = 0; i < numObjs; i++) {
 		float size = ofRandom(10, 20);
 		float cAng = ofRandom(baseMin, baseMax);
-//		ofxVec3f rdmPos = ofxVec3f(ofGetWidth()/2+ofRandom(500, 200), ofGetHeight()/2+ofRandom(-200, 200), ofRandom(-500, 0));
-		ofxVec3f rdmPos = ofxVec3f(ofGetScreenWidth()/2+ofRandom(500, 200), ofGetScreenHeight()/2+ofRandom(-200, 200), ofRandom(-500, 0));		
+		ofxVec3f rdmPos = ofxVec3f(ofGetWidth()/2+ofRandom(500, 200), ofGetHeight()/2+ofRandom(-200, 200), ofRandom(-500, 0));
 		Obj obj;
 		obj.setup(bullet, rdmPos, 11, 1);
 		obj.size = size;
 		obj.colAngle = cAng;
-//		obj.setForcePoint(ofxVec3f(ofGetWidth()/2, ofGetHeight()/2, 0));
-		obj.setForcePoint(ofxVec3f(ofGetScreenWidth()/2, ofGetScreenHeight()/2, 0));		
+		obj.setForcePoint(ofxVec3f(ofGetWidth()/2, ofGetHeight()/2, 0));
 		objs.push_back(obj);
 		
 	}
@@ -55,25 +54,7 @@ void YesNoObj::update() {
 		}
 	}
 	
-	updateColor();
-}
-
-void YesNoObj::updateColor() {
-
-	sortByDistanceFromSMSObj();
-	
-	float colAngle = addedObjs[addedObjs.size()-1].colAngle;
-	float step = 0.001;
-	for (int i = 0; i < sortedObjIdxByDistanceFromSMS.size(); i++) {
-		int idx = sortedObjIdxByDistanceFromSMS[i];
-		objs[idx].colAngle = colAngle+step*i;
-	}	
-
-	for (int i = 0; i < sortedAddedObjIdxByDistanceFromSMS.size(); i++) {
-		int idx = sortedAddedObjIdxByDistanceFromSMS[i];
-		addedObjs[idx].colAngle = colAngle+step*i;
-	}		
-	
+	flock->update(true);
 }
 
 void YesNoObj::draw() {
@@ -83,9 +64,10 @@ void YesNoObj::draw() {
 	
 }
 
-void YesNoObj::computeCloudShape(Flock3D f) {
+void YesNoObj::computeCloudShape() {
 	
-	vector<ofxVec3f> posFeed = f.getTrailPoints(YesOrNo, boidID);
+	vector<ofxVec3f> posFeed = flock->getTrailPoints(0, 0);
+	int p = (int)posFeed.size();
 	float threeOfFour = 0.6;
 	ofxVec3f tofVec = posFeed[ofMap(threeOfFour, 0.0, 1.0, 0, posFeed.size())];
 	
@@ -126,7 +108,7 @@ void YesNoObj::computeCloudShape(Flock3D f) {
 	}
 }
 
-void YesNoObj::computeMovement(Flock3D f) {
+void YesNoObj::computeMovement() {
 	
 //	BoidList* bl = f.flock1;
 //	vector<Boid*> boids = bl->boids;
@@ -144,20 +126,16 @@ void YesNoObj::addSMSObj(int size) {
 	bool up = (ofRandomf() > 0) ? true : false;
 	bool left = (ofRandomf() > 0) ? true : false;
 	bool far = (ofRandomf() > 0) ? true : false;
-//	ofxVec3f rdmPos = ofxVec3f(ofRandom((left)?0:ofGetWidth(), (left)?0:ofGetWidth()),
-//							   ofRandom((up)?0:ofGetHeight(), (left)?0:ofGetHeight()),
-//							   -700);
-	ofxVec3f rdmPos = ofxVec3f(ofRandom((left)?0:ofGetScreenWidth(), (left)?0:ofGetScreenWidth()),
-							   ofRandom((up)?0:ofGetScreenHeight(), (left)?0:ofGetScreenHeight()),
-							   -700);	
+	ofxVec3f rdmPos = ofxVec3f(ofRandom((left)?0:ofGetWidth(), (left)?0:ofGetWidth()),
+							   ofRandom((up)?0:ofGetHeight(), (left)?0:ofGetHeight()),
+							   -700);
 	
 	
 	Obj obj;
 	obj.setup(bullet, rdmPos, 26, 350, 14500, 19000);
 	obj.size = size;
 	obj.colAngle = cAng;
-//	obj.setForcePoint(ofxVec3f(ofGetWidth()/2, ofGetHeight()/2, 0));
-	obj.setForcePoint(ofxVec3f(ofGetScreenWidth()/2, ofGetScreenHeight()/2, 0));	
+	obj.setForcePoint(ofxVec3f(ofGetWidth()/2, ofGetHeight()/2, 0));
 	addedObjs.push_back(obj);	
 	
 }
@@ -176,14 +154,12 @@ void YesNoObj::changeParticleObjNum(ofxBullet* bullet, int numPart) {
 		for (int i = 0; i < diff; i++) {
 			float size = ofRandom(10, 20);
 			float cAng = ofRandom(baseMin, baseMax);
-//			ofxVec3f rdmPos = ofxVec3f(ofGetWidth()/2+ofRandom(500, 200), ofGetHeight()/2+ofRandom(-200, 200), ofRandom(-500, 0));
-			ofxVec3f rdmPos = ofxVec3f(ofGetScreenWidth()/2+ofRandom(500, 200), ofGetScreenHeight()/2+ofRandom(-200, 200), ofRandom(-500, 0));			
+			ofxVec3f rdmPos = ofxVec3f(ofGetWidth()/2+ofRandom(500, 200), ofGetHeight()/2+ofRandom(-200, 200), ofRandom(-500, 0));
 			Obj obj;
 			obj.setup(bullet, rdmPos, 11, 1);
 			obj.size = size;
 			obj.colAngle = cAng;
-//			obj.setForcePoint(ofxVec3f(ofGetWidth()/2, ofGetHeight()/2, 0));
-			obj.setForcePoint(ofxVec3f(ofGetScreenWidth()/2, ofGetScreenHeight()/2, 0));			
+			obj.setForcePoint(ofxVec3f(ofGetWidth()/2, ofGetHeight()/2, 0));
 			objs.push_back(obj);
 		}	
 	}
@@ -274,83 +250,3 @@ void YesNoObj::drawAddedObjs() {
 	ofSetColor(255, 255, 255);	
 	
 }
-
-void YesNoObj::sortByDistanceFromSMSObj() {
-
-	map<float, int, greater<float> > distances;
-	ofxVec3f newSMSPos = addedObjs[addedObjs.size()-1].getObjPos();
-	for (int i = 0; i < addedObjs.size(); i++) {
-		ofxVec3f cmpPos = addedObjs[i].getObjPos();
-		float dist = newSMSPos.distance(cmpPos);
-		distances.insert(map<float, int, greater<float> >::value_type(dist, i));
-	}
-	sortedAddedObjIdxByDistanceFromSMS.clear();
-	map<float, int, greater<float> >::iterator it = distances.begin();
-	while (it != distances.end()) {
-		sortedAddedObjIdxByDistanceFromSMS.push_back((*it).second);
-		++it;
-	}	
-	
-	distances.clear();
-	for (int i = 0; i < objs.size(); i++) {
-		ofxVec3f cmpPos = objs[i].getObjPos();
-		float dist = newSMSPos.distance(cmpPos);
-		distances.insert(map<float, int, greater<float> >::value_type(dist, i));
-	}
-	sortedObjIdxByDistanceFromSMS.clear();
-	it = distances.begin();
-	while (it != distances.end()) {
-		sortedObjIdxByDistanceFromSMS.push_back((*it).second);
-		++it;
-	}		
-	
-	
-//	map<float, Obj, greater<float> > distances;
-//	ofxVec3f newSMSPos = addedObjs[addedObjs.size()-1].getObjPos();
-//	for (int i = 0; i < addedObjs.size(); i++) {
-//		ofxVec3f cmpPos = addedObjs[i].getObjPos();
-//		float dist = newSMSPos.distance(cmpPos);
-//		distances.insert(map<float, Obj, greater<float> >::value_type(dist, addedObjs[i]));
-//	}
-//	for (int i = 0; i < objs.size(); i++) {
-//		ofxVec3f cmpPos = objs[i].getObjPos();
-//		float dist = newSMSPos.distance(cmpPos);
-//		distances.insert(map<float, Obj, greater<float> >::value_type(dist, objs[i]));
-//	}
-//	
-//	vector<Obj> sortedObj;
-//	map<float, Obj, greater<float> >::iterator it = distances.begin();
-//	while (it != distances.end()) {
-//		sortedObj.push_back((*it).second);
-//		++it;
-//	}
-//	
-//	return sortedObj;	
-	
-//	map<float, int, greater<float> > distances;
-//	ofxVec3f newSMSPos = addedObjs[addedObjs.size()-1].getObjPos();
-//	for (int i = 0; i < addedObjs.size(); i++) {
-//		ofxVec3f cmpPos = addedObjs[i].getObjPos();
-//		float dist = newSMSPos.distance(cmpPos);
-//		distances.insert(map<float, int, greater<float> >::value_type(dist, i));
-//	}
-//	for (int i = 0; i < objs.size(); i++) {
-//		ofxVec3f cmpPos = objs[i].getObjPos();
-//		float dist = newSMSPos.distance(cmpPos);
-//		distances.insert(map<float, int, greater<float> >::value_type(dist, i));
-//	}
-//	
-//	vector<int> sortedObjIdx;
-//	map<float, int, greater<float> >::iterator it = distances.begin();
-//	while (it != distances.end()) {
-//		sortedObjIdx.push_back((*it).second);
-//		++it;
-//	}
-//	
-//	return sortedObjIdx;
-}
-
-
-
-
-

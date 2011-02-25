@@ -19,11 +19,12 @@ void ParticleCloud::setup(int _fps, AdminPanel* ap, ofxCamera* cam) {
 	adminPanel = ap;
 	
 	int numObjs = minParticleNum;
-	yes.setup(bullet, ap, Obj::YES, numObjs);
-	no.setup(bullet, ap, Obj::NO, numObjs);
+
+	flockYes.setup(1, ofGetWidth()/2, ofGetHeight()-200, 500, -800, 10, numObjs); 
+	flockNo.setup(1, ofGetWidth()/2, ofGetHeight()-200, 500, -800, 10, numObjs); 	
 	
-//	flock.setup(2, ofGetWidth()+400, ofGetHeight()-200, 500, -800, 10, numObjs); 
-	flock.setup(2, ofGetScreenWidth()+400, ofGetScreenHeight()-200, 500, -800, 10, numObjs); 	
+	yes.setup(bullet, &flockYes, ap, Obj::YES, numObjs);
+	no.setup(bullet, &flockNo, ap, Obj::NO, numObjs);
 	
 }
 
@@ -32,43 +33,32 @@ void ParticleCloud::update() {
 	if (adminPanel->TOGGLEMOTION) {
 		
 		bullet->stepPhysicsSimulation(fps);
-		flock.update(true);
+
+		yes.update();		
+		yes.computeMovement();
+		yes.computeCloudShape();
 		
-		yes.computeMovement(flock);
-		yes.computeCloudShape(flock);
-		yes.update();
+		no.update();		
+		no.computeMovement();
+		no.computeCloudShape();
 		
-		no.computeMovement(flock);
-		no.computeCloudShape(flock);
-		no.update();
 	}
 	
 }
 
 void ParticleCloud::draw() {
 	
-	
 	ofPushMatrix();
-	ofTranslate(-200, 100, 0);
-	
+
 	yes.draw();
+	ofTranslate(ofGetWidth()/2, 0, 0);	
 	no.draw();
 	
-//	flock.draw();
-//	bullet->render();
+//	yes.drawFlock();
+//	ofTranslate(ofGetWidth()/2, 0, 0);
+//	no.drawFlock();
 	
-//	ofSetColor(255, 255, 255);
-//	for (int i = 0; i < flock.flocks.size(); i++) {
-//		for (int j = 0; j < flock.flocks[i]->boids.size(); j++) {
-//			for (int k = 0; k < flock.flocks[i]->boids[j]->poss.size(); k++) {
-//				ofxPoint(flock.flocks[i]->boids[j]->poss[k].x,
-//						 flock.flocks[i]->boids[j]->poss[k].y,
-//						 flock.flocks[i]->boids[j]->poss[k].z);
-//			}
-//			
-//		}
-//	}
-		
+//	bullet->render();
 	
 	ofPopMatrix();
 }
@@ -86,9 +76,9 @@ void ParticleCloud::debugKeyPress(int key) {
 void ParticleCloud::feedSMS(UpdateInfo upInfo) {
 	
 	float particleYesNum = ofMap(upInfo.ratioTotalYes, 0.0, 1.0, ParticleCloud::minParticleNum, ParticleCloud::maxParticleNum);
-	flock.changeTrailPointNum(Obj::YES, yes.getBoidID(), particleYesNum);
+	yes.getFlock()->changeTrailPointNum(0, 0, particleYesNum);
 	float particleNoNum = ofMap(upInfo.ratioTotalNo, 0.0, 1.0, ParticleCloud::minParticleNum, ParticleCloud::maxParticleNum);
-	flock.changeTrailPointNum(Obj::NO, no.getBoidID(), particleNoNum);
+	no.getFlock()->changeTrailPointNum(0, 0, particleNoNum);
 	if (upInfo.numTotalYes > upInfo.numTotalNo) {
 		particleNoNum -= 20;
 //		particleYesNum += 20;
@@ -148,19 +138,21 @@ void ParticleCloud::feedSMS(UpdateInfo upInfo) {
 	
 	
 	if (upInfo.numTotalYes > upInfo.numTotalNo) {
-		flock.setBoidSpeed(Obj::YES, yes.getBoidID(), maxBoidSpeed);
-		flock.setBoidSpeed(Obj::NO, no.getBoidID(), minBoidSpeed);
+		yes.getFlock()->setBoidSpeed(0, 0, maxBoidSpeed);
+		no.getFlock()->setBoidSpeed(0, 0, minBoidSpeed);
 	}else if (upInfo.numTotalYes < upInfo.numTotalNo) {
-		flock.setBoidSpeed(Obj::YES, yes.getBoidID(), minBoidSpeed);		
-		flock.setBoidSpeed(Obj::NO, no.getBoidID(), maxBoidSpeed);
+		yes.getFlock()->setBoidSpeed(0, 0, minBoidSpeed);		
+		no.getFlock()->setBoidSpeed(0, 0, maxBoidSpeed);
 	}else {
-		flock.setBoidSpeed(Obj::YES, yes.getBoidID(), normaBoidSpeed);		
-		flock.setBoidSpeed(Obj::NO, no.getBoidID(), normaBoidSpeed);
+		yes.getFlock()->setBoidSpeed(0, 0, normaBoidSpeed);		
+		no.getFlock()->setBoidSpeed(0, 0, normaBoidSpeed);
 	}
 	
 	if (Obj::YES == upInfo.sms.YesOrNo) {
+		float size = ofMap(upInfo.ratioTotalYes, 0.0, 1.0, ParticleCloud::minSizeObjSize, ParticleCloud::maxSizeObjSize);
 		yes.addSMSObj(60);
 	}else if (Obj::NO == upInfo.sms.YesOrNo) {
+		float size = ofMap(upInfo.ratioTotalYes, 0.0, 1.0, ParticleCloud::minSizeObjSize, ParticleCloud::maxSizeObjSize);		
 		no.addSMSObj(60);
 	}
 

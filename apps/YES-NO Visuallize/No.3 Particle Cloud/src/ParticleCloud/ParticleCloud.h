@@ -37,7 +37,8 @@ private:
 	YesNoObj no;
 	
 	// trails
-	Flock3D flock;
+	Flock3D flockYes;
+	Flock3D flockNo;	
 	
 	// internal param
 	static const float minParticleNum = 50;

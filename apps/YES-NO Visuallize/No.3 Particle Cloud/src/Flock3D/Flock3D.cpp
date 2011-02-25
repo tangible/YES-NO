@@ -60,12 +60,13 @@ void Flock3D::draw() {
 
 vector<ofxVec3f> Flock3D::getTrailPoints(int YesOrNo, int flockIdx) {
 	
-	if (YesOrNo == BoidList::YES) {
-		return flocks[BoidList::YES]->getTrailPoints(flockIdx);
-	}else {
-		return flocks[BoidList::NO]->getTrailPoints(flockIdx);
-	}
-
+//	if (YesOrNo == BoidList::YES) {
+//		return flocks[BoidList::YES]->getTrailPoints(flockIdx);
+//	}else {
+//		return flocks[BoidList::NO]->getTrailPoints(flockIdx);
+//	}
+	
+	return flocks[YesOrNo]->getTrailPoints(flockIdx);
 
 }
 

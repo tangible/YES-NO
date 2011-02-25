@@ -278,7 +278,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>10</integer>
+									<integer>13</integer>
 									<integer>9</integer>
 									<integer>5</integer>
 									<integer>0</integer>
@@ -304,7 +304,7 @@
 							<real>241</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>298 128 1055 665 0 0 1440 878 </string>
+						<string>-12 198 1055 665 0 0 1440 878 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -322,7 +322,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>ConvexHull.h</string>
+								<string>YesNoObjectSoft.cpp</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -330,11 +330,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>ConvexHull.h</string>
+										<string>YesNoObjectSoft.cpp</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>31847C91131769D100A30005</string>
+										<string>31847EF11317A26200A30005</string>
 										<key>history</key>
 										<array>
 											<string>31C69677129646AA007F71A7</string>
@@ -370,7 +370,6 @@
 											<string>31C157FE130CA4E6005CCED9</string>
 											<string>31C157FF130CA4E6005CCED9</string>
 											<string>31E810C6130CFFA40053787E</string>
-											<string>31E811D5130DE5800053787E</string>
 											<string>31E811D6130DE5800053787E</string>
 											<string>31E81544130DF7C80053787E</string>
 											<string>31E81546130DF7C80053787E</string>
@@ -390,19 +389,15 @@
 											<string>31A4E2E61315F35900B4C038</string>
 											<string>31A4E3B5131604D900B4C038</string>
 											<string>31847AC1131735E200A30005</string>
-											<string>31847AC4131735E200A30005</string>
 											<string>31847AC8131735E200A30005</string>
-											<string>31847B161317481000A30005</string>
-											<string>31847B601317512B00A30005</string>
-											<string>31847B611317512B00A30005</string>
 											<string>31847B891317587F00A30005</string>
 											<string>31847C0D1317606000A30005</string>
 											<string>31847C141317610400A30005</string>
 											<string>31847C161317610400A30005</string>
 											<string>31847C6C1317659B00A30005</string>
-											<string>31847C74131765E600A30005</string>
-											<string>31847C8E131766F400A30005</string>
-											<string>31847C88131766D300A30005</string>
+											<string>31847EEF1317A26200A30005</string>
+											<string>31847EF01317A26200A30005</string>
+											<string>31847D3A13177B1A00A30005</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -416,7 +411,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {792, 619}}</string>
 								<key>RubberWindowFrame</key>
-								<string>298 128 1055 665 0 0 1440 878 </string>
+								<string>-12 198 1055 665 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -436,7 +431,7 @@
 								<key>Frame</key>
 								<string>{{0, 624}, {792, 0}}</string>
 								<key>RubberWindowFrame</key>
-								<string>298 128 1055 665 0 0 1440 878 </string>
+								<string>-12 198 1055 665 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
@@ -609,7 +604,7 @@
 		<string>/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/YES-NO Visuallize/No.2 Mathmathical Convex Hull/No.2 Mathmathical Convex Hull.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>298 128 1055 665 0 0 1440 878 </string>
+	<string>-12 198 1055 665 0 0 1440 878 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
