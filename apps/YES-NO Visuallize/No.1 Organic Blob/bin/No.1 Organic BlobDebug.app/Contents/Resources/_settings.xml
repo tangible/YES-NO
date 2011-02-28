@@ -37,7 +37,7 @@
     </SliderInt_Shadow_Pos_X>
     <SliderInt_Shadow_Pos_Y>
         <name>Shadow Pos Y</name>
-        <value>-328</value>
+        <value>-140</value>
     </SliderInt_Shadow_Pos_Y>
     <SliderFloat_Shadow_RotDegree>
         <name>Shadow RotDegree</name>
@@ -61,11 +61,11 @@
     </SliderFloat_Light_Pos_X>
     <SliderFloat_Light_Pos_Y>
         <name>Light Pos Y</name>
-        <value>-10.000000</value>
+        <value>628.000000</value>
     </SliderFloat_Light_Pos_Y>
     <SliderFloat_Light_Pos_Z>
         <name>Light Pos Z</name>
-        <value>-379.000000</value>
+        <value>-480.000000</value>
     </SliderFloat_Light_Pos_Z>
     <SliderFloat_Blob_Tex&Col_Mix_Ratio>
         <name>Blob Tex&amp;Col Mix Ratio</name>

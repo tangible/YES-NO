@@ -12,14 +12,18 @@
 
 void AdminPanel::setup(){
 	
-	gui.addTitle("Motion Setting");
-	gui.addSlider("Motion Tick PerSec", PHYSICSTICKFPS, 10, 100);
-	gui.addToggle("Toggle Motion", TOGGLEMOTION);
-	gui.addTitle("Graphics Setting").setNewColumn(true);
+//	gui.addTitle("Motion Setting");
+//	gui.addSlider("Motion Tick PerSec", PHYSICSTICKFPS, 10, 100);
+//	gui.addToggle("Toggle Motion", TOGGLEMOTION);
+
+	gui.addTitle("Image Setting");
 	gui.addButton("Change BG", CHANGEBGBTN);
+	gui.addButton("Clear BG", clearBG);	
 	gui.addButton("Change Question Img", CHANGEQIMGBTN);
-	gui.addButton("Change Blob Tex", CHANGEBLOBTEXBTN);
-	gui.addButton("Restore Default", RESTORDEFBTN);
+	gui.addButton("Clear Question Img", clearQImg);			
+//	gui.addButton("Change Blob Tex", CHANGEBLOBTEXBTN);
+	
+	gui.addTitle("Graphic Setting").setNewColumn(true);	
 	gui.addSlider("Shadow Intensity", SHADOWINTENSITY, 0.0, 1.0);
 	gui.addSlider("Shadow Scale", SHADOWSCALE, 0, 20);
 	gui.addSlider("Shadow Pos X", SHADOWPOSX, -1000, 1000);
@@ -28,12 +32,12 @@ void AdminPanel::setup(){
 	gui.addToggle("Shadow Rot X", SHADOWROTX);
 	gui.addToggle("Shadow Rot Y", SHADOWROTY);
 	gui.addToggle("Shadow Rot Z", SHADOWROTZ);
-	gui.addSlider("Light Pos X", LIGHTX, -1000.0, 1000.0).setNewColumn(true);
+	gui.addSlider("Light Pos X", LIGHTX, -1000.0, 1000.0);
 	gui.addSlider("Light Pos Y", LIGHTY, -1000.0, 1000.0);
 	gui.addSlider("Light Pos Z", LIGHTZ, -1000.0, 1000.0);	
 	gui.addSlider("Blob Tex&Col Mix Ratio", TEXCOLMIXRATIO, 0.0, 1.0);
 	gui.addSlider("Blob Transparency", BLOBTRANSPARENCY, 0.0, 1.0);
-	gui.addColorPicker("Blob Base Color", BLOBBASECOL).setNewColumn(true);
+	gui.addColorPicker("Blob Base Color", BLOBBASECOL);
 //	gui.addColorPicker("Blob Material Ambient", BLOBMATERIALAMBIENT);
 //	gui.addColorPicker("Blob Material Diffuse", BLOBMATERIALDIFFUSE);
 	gui.addColorPicker("Blob Material Specular", BLOBMATERIALSPECULAR);
@@ -42,8 +46,10 @@ void AdminPanel::setup(){
 	gui.addColorPicker("Light Diffuse", LIGHTDIFFUSE);
 	gui.addColorPicker("Light Specular", LIGHTSPECULAR);	
 	
-	gui.addTitle("Debug Param");
-	gui.addToggle("DRAWDEBUG", DRAWDEBUG);
+	gui.addButton("Restore Default", RESTORDEFBTN);
+	
+//	gui.addTitle("Debug Param");
+//	gui.addToggle("DRAWDEBUG", DRAWDEBUG);
 	
 //	gui.loadFromXML();
 //	gui.show();
@@ -65,6 +71,14 @@ void AdminPanel::update(){
 		openFileDialogueBlobTex("BlobTex");
 	}else if (RESTORDEFBTN) {
 		restoreDefault();
+	}else if (clearBG) {
+		clearBG = false;
+		int i = 1;
+		ofNotifyEvent(onClearBG, i);
+	}else if (clearQImg) {
+		clearQImg = false;
+		int i = 1;
+		ofNotifyEvent(onClearQImg, i);
 	}
 	
 }
@@ -84,6 +98,22 @@ void AdminPanel::toggle(){
 		glutSetCursor(GLUT_CURSOR_INHERIT);
 	}else {
 		glutSetCursor(GLUT_CURSOR_NONE);
+	}	
+	
+}
+
+void AdminPanel::keyPressed(int key){
+	
+	if(key>='0' && key<='9') {
+		gui.setPage(key - '0');
+		gui.show();
+	} else {
+		switch(key) {
+			case ' ': gui.toggleDraw(); break;
+			case '[': gui.prevPage(); break;
+			case ']': gui.nextPage(); break;
+			case 'p': gui.nextPageWithBlank(); break;
+		}
 	}	
 	
 }
@@ -127,20 +157,22 @@ void AdminPanel::restoreDefault() {
 	PHYSICSTICKFPS = 25;
 	TOGGLEMOTION = true;
 	CHANGEBGBTN = false;
+	clearBG = false;
 	CHANGEQIMGBTN = false;
+	clearQImg = false;	
 	CHANGEBLOBTEXBTN = false;
 	RESTORDEFBTN = false;
 	SHADOWINTENSITY = 0.88;
 	SHADOWSCALE = 10;
 	SHADOWPOSX = -140;
-	SHADOWPOSY = -328;
+	SHADOWPOSY = -140;
 	SHADOWROTDEG = 60.0;
 	SHADOWROTX = false;
 	SHADOWROTY = false;
 	SHADOWROTZ = false;
 	LIGHTX = 0.0;
-	LIGHTY = -10.0;
-	LIGHTZ = -379.0;
+	LIGHTY = 628.0;
+	LIGHTZ = -480.0;
 	TEXCOLMIXRATIO = 0.13;
 	BLOBTRANSPARENCY = 0.83;
 	BLOBBASECOL[0] = 0.5;

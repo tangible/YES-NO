@@ -19,16 +19,16 @@
 #include "MetaBallChunk.h"
 #include "Metaballs.h"
 #include "Marchingcubes.h"
-#include "Flock.h"
 #include "QuestionImage.h"
-#include "StateText.h"
-#include "Ray.h"
 #include "ofxTuioClient.h"
+#include "ofxColorPicker.h"
+#include "IncomingSMS.h"
+#include "StateText.h"
 
 class BlobManager {
 
 public:
-	void setup(int _fps, AdminPanel* _admin, QuestionImage* _qImage, StateText* _sText, ofxCamera* cam);
+	void setup(int _fps, AdminPanel* _admin, ofxCamera* cam, QuestionImage* _qImage, StateText* _sText);
 	void update();
 	void draw();
 	
@@ -37,13 +37,12 @@ public:
 	
 	// file change events
 	void changeImgBG(string path);
+	void onClearBG(int& i);
 	void changeImgBlobTex(string path);	
 	void recieveSMS(UpdateInfo upInfo);	
 	
 	// sms events
 	UpdateInfo upInfo;
-	vector<Ray*>  rays;
-	vector<Flock*> flocks; // this is sms
 	MetaBallChunk* smsYes;
 	vector<MyRigidBody*> smsYesBody;
 	MetaBallChunk* smsNo;
@@ -55,11 +54,14 @@ public:
 	void onBallGetSMSrep(int& chunkID);
 	void onBallGetSMSrepComplete(int& chunkID);
 	
+	
+	static const int		YES = 0;
+	static const int		NO = 1;
+	
 	AdminPanel*				admin;
+	ofxTuioClient			myTuio;
 	QuestionImage*			qImage;
 	StateText*				sText;
-	
-	ofxTuioClient			myTuio;
 	
 	int						fps;
 	ofxShader				shader;
@@ -80,12 +82,22 @@ public:
 	int						randomImpulsSMSRecievedYes;
 	int						randomImpulsSMSRecievedNo;
 	vector<MetaBallChunk*>  mBallChunks;
+	vector<IncomingSMS*>		inSMSs;
+	ofxColorPicker			chunkCol;
+	float					yesColAng;
+	float					noColAng;	
 	ofxVec3f				centroidYes;
 	ofxVec3f				centroidNo;	
 	int						nMetaBalls;
 	
 	ofPoint					boundsAvg;
 	float					boundsScaling;
+	
+	float					yesDiff; // 0.0-1.0
+	float					noDiff; // 0.0-1.0
+	static const float		minScale = 0.0;
+	static const float		maxScale = 1.0;	
+	static const float		scaleDiffMax = 7;	
 	
 	float*					screenDepth;   
 	int						nScreenPixels;  

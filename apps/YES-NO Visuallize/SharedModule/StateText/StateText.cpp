@@ -69,7 +69,7 @@ void StateText::draw(UpdateInfo upInfo, ofxVec3f centroidYes, ofxVec3f centroidN
 	float sizeYes = yesSizeTween.update();
 	float sizeStr = font.stringWidth(yes+ofToString(upInfo.numTotalYes))*yesSize;
 	float strHeight = font.stringHeight(yes)*yesSize;
-	if (centroidYes.y < ofGetHeight()/2-200) {
+	if (centroidYes.y < ofGetScreenHeight()/2-200) {
 		centroidYes.y += yoff;
 		strHeight *= -1;
 	}else {
@@ -77,7 +77,7 @@ void StateText::draw(UpdateInfo upInfo, ofxVec3f centroidYes, ofxVec3f centroidN
 		strHeight *= 0;
 		strHeight += 5;
 	}
-	if (centroidYes.x < ofGetWidth()/2) {
+	if (centroidYes.x < ofGetScreenWidth()/2) {
 		centroidYes.x += xoff-sizeStr/2;
 	}else {
 		centroidYes.x -= xoff+sizeStr/2;
@@ -104,7 +104,7 @@ void StateText::draw(UpdateInfo upInfo, ofxVec3f centroidYes, ofxVec3f centroidN
 	float sizeNo = noSizeTween.update();
 	sizeStr = font.stringWidth(no+ofToString(upInfo.numTotalNo))*noSize;
 	strHeight = font.stringHeight(no)*sizeNo;
-	if (centroidNo.y < ofGetHeight()/2-200) {
+	if (centroidNo.y < ofGetScreenHeight()/2-200) {
 		centroidNo.y += yoff;
 		strHeight *= -1;
 	}else {
@@ -112,7 +112,7 @@ void StateText::draw(UpdateInfo upInfo, ofxVec3f centroidYes, ofxVec3f centroidN
 		strHeight *= 0;
 		strHeight += 5;		
 	}	
-	if (centroidNo.x < ofGetWidth()/2) {
+	if (centroidNo.x < ofGetScreenWidth()/2) {
 		centroidNo.x += xoff-sizeStr/2;
 	}else {
 		centroidNo.x -= xoff+sizeStr/2;
@@ -149,7 +149,7 @@ void StateText::draw(UpdateInfo upInfo) {
 	float sizeYes = yesSizeTween.update();	
 	float widYesNum = font.stringWidth(yesNum);
 	float heiYesNum = font.getLineHeight()*sizeYes*0.8;
-	float bottom = ofGetHeight()-50;
+	float bottom = ofGetScreenHeight()-50;
 	float left = 30;
 	float numOffset = -32*sizeYes;
 	ofPushMatrix();
@@ -168,7 +168,7 @@ void StateText::draw(UpdateInfo upInfo) {
 	float sizeNo = noSizeTween.update();
 	float widNoNum = font.stringWidth(noNum)*sizeNo+60;
 	float heiNoNum = font.getLineHeight()*sizeNo*0.8;
-	left = ofGetWidth()-widNoNum;
+	left = ofGetScreenWidth()-widNoNum;
 	numOffset = -32*sizeNo;
 	ofPushMatrix();
 	ofSetColor(255, 255, 255);

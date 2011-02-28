@@ -45,15 +45,6 @@ void ParticleCloud::update() {
 		no.computeMovement();
 		no.computeCloudShape();
 	
-//		int nodiff = updateInfo.numDiffNo;
-//		float diff = ofClamp(nodiff, -scaleDiffMax, scaleDiffMax);
-//		diff = ofMap(diff, -scaleDiffMax, scaleDiffMax, minScale, maxScale);
-//		noScaleTween.setParameters(scaleEasing, ofxTween::easeIn, currNOScale, diff, scaleDurTime, 0);		
-//		
-//		int yesdiff = updateInfo.numDiffYes;
-//		diff = ofClamp(yesdiff, -scaleDiffMax, scaleDiffMax);
-//		diff = ofMap(diff, -scaleDiffMax, scaleDiffMax, minScale, maxScale);
-//		yesScaleTween.setParameters(scaleEasing, ofxTween::easeIn, currYesScale, diff, scaleDurTime, 0);		
 	}
 	
 }
@@ -62,27 +53,16 @@ void ParticleCloud::draw() {
 	
 	ofEnableSmoothing();
 	
+		setupGLStuff();
+	
 	ofPushMatrix();
 	ofTranslate(200, 150, 0);
-
-//	float yScale = yesScaleTween.update();
-//	currYesScale = yScale;		
-//	ofScale(yScale, yScale, yScale);	
-	
 	yes.draw();
-//	yes.drawFlock();
-	
 	ofPopMatrix();
+	
 	ofPushMatrix();
 	ofTranslate(ofGetScreenWidth()/2, 150, 0);
-
-//	float nScale = noScaleTween.update();
-//	currNOScale = nScale;		
-//	ofScale(nScale, nScale, nScale);	
-	
 	no.draw();	
-//	no.drawFlock();
-	
 	ofPopMatrix();
 	
 //	bullet->render();	
@@ -158,18 +138,18 @@ void ParticleCloud::feedSMS(UpdateInfo upInfo) {
 	float impulseFNo = ofMap(upInfo.ratioTotalNo, 0.0, 1.0, minImpulseFactor, maxImpulseFactor);
 	no.impulseFactor = impulseFNo;
 	
-	float yesColRadius = ofMap(upInfo.ratioTotalYes, 0.0, 1.0, -0.1, 0.2); 
-	yes.colorRadius = yesColRadius;
-	float noColRadius = ofMap(upInfo.ratioTotalNo, 0.0, 1.0, -0.1, 0.2); 
-	no.colorRadius = noColRadius;
-	if (upInfo.numTotalYes > upInfo.numTotalNo) {
-		yes.colorRadius =  0.1;					
-	}else if (upInfo.numTotalYes < upInfo.numTotalNo) {			
-		no.colorRadius =  0.1;
-	}else {
-		yes.colorRadius =  0.0;				
-		no.colorRadius =  0.0;		
-	}
+//	float yesColRadius = ofMap(upInfo.ratioTotalYes, 0.0, 1.0, -0.1, 0.2); 
+//	yes.colorRadius = yesColRadius;
+//	float noColRadius = ofMap(upInfo.ratioTotalNo, 0.0, 1.0, -0.1, 0.2); 
+//	no.colorRadius = noColRadius;
+//	if (upInfo.numTotalYes > upInfo.numTotalNo) {
+//		yes.colorRadius =  0.1;					
+//	}else if (upInfo.numTotalYes < upInfo.numTotalNo) {			
+//		no.colorRadius =  0.1;
+//	}else {
+//		yes.colorRadius =  0.0;				
+//		no.colorRadius =  0.0;		
+//	}
 	
 	
 	if (upInfo.numTotalYes > upInfo.numTotalNo) {
@@ -191,4 +171,39 @@ void ParticleCloud::feedSMS(UpdateInfo upInfo) {
 		no.addSMSObj(40);
 	}
 
+}
+
+
+void ParticleCloud::setupGLStuff(){
+	
+    glEnable(GL_POLYGON_SMOOTH);
+    glEnable(GL_LIGHTING);
+    glEnable(GL_LIGHT0);
+    glEnable(GL_DEPTH_TEST);
+    glEnable(GL_NORMALIZE);
+    glEnable(GL_COLOR_MATERIAL);
+	
+//    glDisable(GL_BLEND);
+//    glPolygonMode(GL_BACK, GL_FILL );
+//    glEnable(GL_CULL_FACE);
+//    glCullFace(GL_FRONT);
+    glShadeModel(GL_SMOOTH);
+	
+    //glColor3f(admin->BASECOL[0], admin->BASECOL[1], admin->BASECOL[2]);
+    GLfloat on[]  = {1.0};
+    GLfloat off[] = {0.0};
+    glLightModelfv( GL_LIGHT_MODEL_TWO_SIDE, on);
+	
+    GLfloat shininess[] = {adminPanel->MATERIALSHINENESS};
+    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, adminPanel->MATERIALAMBIENT);
+    glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, adminPanel->MATERIALDIFFUSE);
+    glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, adminPanel->MATERIALSPECULAR);
+    glMaterialfv(GL_FRONT_AND_BACK, GL_SHININESS, shininess);
+	
+	GLfloat lightPosition[] = {adminPanel->LIGHTX, adminPanel->LIGHTY, adminPanel->LIGHTZ, 0.0f};
+	glLightfv(GL_LIGHT0, GL_POSITION, lightPosition);
+    glLightfv(GL_LIGHT0, GL_DIFFUSE, adminPanel->LIGHTDIFFUSE);
+    glLightfv(GL_LIGHT0, GL_SPECULAR, adminPanel->LIGHTSPECULAR);
+    glLightfv(GL_LIGHT0, GL_AMBIENT, adminPanel->LIGHTAMBIENT);	
+	
 }

@@ -28,6 +28,9 @@ public:
 	void feedSMS(UpdateInfo upInfo);
 	
 private:	
+	
+	void setupGLStuff();
+	
 	int fps;
 	ofxBullet* bullet;
 	AdminPanel* adminPanel;
@@ -53,9 +56,9 @@ private:
 	Flock3D flockNo;	
 	
 	// internal param
-	static const float particleNumDiffMax = 15;
-	static const float minParticleNum = 50;
-	static const float maxParticleNum = 600;
+	static const float particleNumDiffMax = 7;
+	static const float minParticleNum = 40;
+	static const float maxParticleNum = 700;
 	static const float minSizeObjNum = 1;
 	static const float maxSizeObjNum = 10;
 	static const float minSizeObjSize = 10;

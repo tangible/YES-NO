@@ -1,28 +1,20 @@
 <controls>
-    <SliderInt_Motion_Tick_PerSec>
-        <name>Motion Tick PerSec</name>
-        <value>25</value>
-    </SliderInt_Motion_Tick_PerSec>
-    <Toggle_Toggle_Motion>
-        <name>Toggle Motion</name>
-        <value>1</value>
-    </Toggle_Toggle_Motion>
     <Button_Change_BG>
         <name>Change BG</name>
         <value>0</value>
     </Button_Change_BG>
+    <Button_Clear_BG>
+        <name>Clear BG</name>
+        <value>0</value>
+    </Button_Clear_BG>
     <Button_Change_Question_Img>
         <name>Change Question Img</name>
         <value>0</value>
     </Button_Change_Question_Img>
-    <Button_Change_Blob_Tex>
-        <name>Change Blob Tex</name>
+    <Button_Clear_Question_Img>
+        <name>Clear Question Img</name>
         <value>0</value>
-    </Button_Change_Blob_Tex>
-    <Button_Restore_Default>
-        <name>Restore Default</name>
-        <value>0</value>
-    </Button_Restore_Default>
+    </Button_Clear_Question_Img>
     <SliderFloat_Shadow_Intensity>
         <name>Shadow Intensity</name>
         <value>0.880000</value>
@@ -37,7 +29,7 @@
     </SliderInt_Shadow_Pos_X>
     <SliderInt_Shadow_Pos_Y>
         <name>Shadow Pos Y</name>
-        <value>-328</value>
+        <value>-140</value>
     </SliderInt_Shadow_Pos_Y>
     <SliderFloat_Shadow_RotDegree>
         <name>Shadow RotDegree</name>
@@ -61,11 +53,11 @@
     </SliderFloat_Light_Pos_X>
     <SliderFloat_Light_Pos_Y>
         <name>Light Pos Y</name>
-        <value>-10.000000</value>
+        <value>628.000000</value>
     </SliderFloat_Light_Pos_Y>
     <SliderFloat_Light_Pos_Z>
         <name>Light Pos Z</name>
-        <value>-379.000000</value>
+        <value>-480.000000</value>
     </SliderFloat_Light_Pos_Z>
     <SliderFloat_Blob_Tex&Col_Mix_Ratio>
         <name>Blob Tex&amp;Col Mix Ratio</name>
@@ -114,8 +106,8 @@
         <values_2>1.000000</values_2>
         <values_3>1.000000</values_3>
     </ColorPicker_Light_Specular>
-    <Toggle_DRAWDEBUG>
-        <name>DRAWDEBUG</name>
+    <Button_Restore_Default>
+        <name>Restore Default</name>
         <value>0</value>
-    </Toggle_DRAWDEBUG>
+    </Button_Restore_Default>
 </controls>

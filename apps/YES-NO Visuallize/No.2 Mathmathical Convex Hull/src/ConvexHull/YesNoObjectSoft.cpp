@@ -20,7 +20,7 @@ void YesNoObjectSoft::setup(int _yesOrNo, ofxBullet* _bullet, ofxVec3f _forcePoi
 	ofxVec3f center(forcePoint);
 	radius = scale;
 	radius *= 2.5;
-	resolusion = 6000;//ofMap(sizeLevel, YNSOFTMINSIZELEV, YNSOFTMAXSIZELEV, minRes, maxRes);
+	resolusion = ofMap(sizeLevel, YNSOFTMINSIZELEV, YNSOFTMAXSIZELEV, minRes, maxRes);
 	yesORno = bullet->createEllipsoid(gravity, center, radius, resolusion);	
 	
 	col.setColorRadius(1.0);
@@ -280,22 +280,6 @@ vector<float> YesNoObjectSoft::changeColBySMSRecievedFace(int z) {
 			scaleFactor = ofMap(i, faceIDVec.size()/factor, faceIDVec.size(), 0.1, 0.8);
 			radiusFactor = ofMap(i, faceIDVec.size()/factor, faceIDVec.size(), 0.1, 0.8);
 		}		
-		
-//		float scaleFactor = 0.0;
-//		float radiusFactor = 0.0;
-//		if (i < faceIDVec.size()/2) {
-//			scaleFactor = ofMap(i, 0, faceIDVec.size(), 0.001, 0.499);
-//			radiusFactor = ofMap(i, 0, faceIDVec.size(), 0.001, 0.699);
-//		}else {
-//			scaleFactor = ofMap(i, 0, faceIDVec.size(), 0.499, 0.001);
-//			radiusFactor = ofMap(i, 0, faceIDVec.size(), 0.699, 0.001);					
-//		}
-//		
-//		float angleFactor = defaultColAng;
-//		if (i > faceIDVec.size()/1.04) {
-//			scaleFactor = ofMap(i, faceIDVec.size()/1.04, faceIDVec.size(), 0.55, 1.0);
-//			radiusFactor = ofMap(i, faceIDVec.size()/1.04, faceIDVec.size(), 0.85, 1.0);
-//		}
 		
 		for (int j = 0; j < 3; j++) {
 			int idx = faceIDVec[i]*12+j*4;

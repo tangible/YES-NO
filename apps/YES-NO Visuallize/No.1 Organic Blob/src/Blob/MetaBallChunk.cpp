@@ -8,18 +8,18 @@
  */
 
 #include "MetaBallChunk.h"
-int gridSize = 120;
-float baseBallSize = 0.10;
-float maxBallSize = 1.00;
+int gridSize = 150;
+float baseBallSize = 0.1;
+float maxBallSize = 0.9;
 
-float baseZ = -200;
+float baseZ = 0;
 MetaBallChunk::MetaBallChunk(int points, int _chunkID) {
 	
 	chunkCurrPos = ofxVec3f(0.0, 0.0, 0.0);
 	if (_chunkID == 0) {
-		chunkDestPos = ofxVec3f(400.0, 0.0, baseZ);
+		chunkDestPos = ofxVec3f(-400.0, 0.0, baseZ);
 	}else if (_chunkID == 1) {
-		chunkDestPos = ofxVec3f(-400.0, 0.0, baseZ);		
+		chunkDestPos = ofxVec3f(400.0, 0.0, baseZ);		
 	}
 	deceleration = ofRandom(0.98, 0.99);
 	sizeBase = baseBallSize;
@@ -48,15 +48,15 @@ MetaBallChunk::MetaBallChunk(int points, int _chunkID) {
 		ballPoints[i].set(0.0,0.0,0.0);
 		ballPointsPrev[i].set(0.0,0.0,0.0);
 		ballPointsPrev2[i].set(0.0,0.0,0.0);
-		ballSizes[i] = 1.0;
+		ballSizes[i] = baseBallSize;
 	}
 	m_pMetaballs = new CMetaballs(nPoints);
 	m_pMetaballs->SetGridSize(gridSize);
 	chunkID = _chunkID;	
 	
 	ballSizeTween.setParameters(1,easingback,ofxTween::easeOut,sizeBase,sizeBase,0,0);
-	ballPosTweenX.setParameters(easingcirc, ofxTween::easeIn, 0, -ofGetWidth()/2, 0, 0);
-	ballPosTweenY.setParameters(easingcirc, ofxTween::easeIn, 0, -ofGetHeight()/2, 0, 0);	
+	ballPosTweenX.setParameters(easingcirc, ofxTween::easeIn, 0, -ofGetScreenWidth()/2, 0, 0);
+	ballPosTweenY.setParameters(easingcirc, ofxTween::easeIn, 0, -ofGetScreenHeight()/2, 0, 0);	
 	ballPosTweenZ.setParameters(easingcirc, ofxTween::easeIn, 0, 0, 0, 0);		
 }
 
@@ -73,9 +73,9 @@ void MetaBallChunk::updateChunkBasePos() {
 		chunkCurrPos.y += ampy - tmpampy;
 		chunkCurrPos.z += ampz - tmpampz;
 	}else {
-		chunkDestPos = ofxVec3f(ofRandom(-750, 750), 
-								ofRandom(-350, 350), 
-								ofRandom(baseZ-100, baseZ+200));
+		chunkDestPos = ofxVec3f((chunkID == 0) ? -400.0 : 400.0, 
+								ofRandom(-50, 50), 
+								ofRandom(-100, 100));								
 //								baseZ);
 		deceleration = ofRandom(0.97, 0.99);
 		
@@ -147,7 +147,7 @@ void MetaBallChunk::onSMSRecievedChangeCol(float thisTime, float total, ofColor 
 void MetaBallChunk::onSMSRecievedChangeMetaballSize(float thisTime, float total) {
 	
 	// size
-	sizeBase = ofMap(total, 0.0, 1.0, baseBallSize, maxBallSize);
+	sizeBase = ofMap(thisTime, 0.0, 1.0, baseBallSize, maxBallSize);
 	float mapForSize = ofMap(thisTime, 0.0, 1.0, sizeBase, sizeBase*2);
 	float mapForSizeDur = ofMap(thisTime, 0.0, 1.0, 100, 100);
 	ballSizeTween.setParameters(easingbounce,ofxTween::easeInOut,
@@ -159,7 +159,7 @@ void MetaBallChunk::onSMSRecievedChangeMetaballSize(float thisTime, float total)
 void MetaBallChunk::updateForSMS(ofxVec3f centroid, ofPoint boundsAvg, float boundsScaling) {
 	
 	// base pos
-	ofxVec3f curPos = ofxVec3f(ofGetWidth()/2-centroid.x, ofGetHeight()/2-centroid.y, centroid.z);
+	ofxVec3f curPos = ofxVec3f(ofGetScreenWidth()/2-centroid.x, ofGetScreenHeight()/2-centroid.y, centroid.z);
 	curPos = -curPos;
 	float degree = ofGetFrameNum()*10;
 	float radian = (degree/180)*PI;
@@ -182,7 +182,7 @@ void MetaBallChunk::updateForSMS(ofxVec3f centroid, ofPoint boundsAvg, float bou
 
 void MetaBallChunk::drawForSMS(ofxVec3f centroid, ofPoint boundsAvg, float boundsScaling) {
 
-	ofxVec3f curPos = ofxVec3f(ofGetWidth()/2-centroid.x, ofGetHeight()/2-centroid.y, centroid.z);
+	ofxVec3f curPos = ofxVec3f(ofGetScreenWidth()/2-centroid.x, ofGetScreenHeight()/2-centroid.y, centroid.z);
 	chunkCurrPos = -curPos;	
 	
 	ofxVec4f basecol = chunkCurrCol;

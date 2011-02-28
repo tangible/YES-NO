@@ -36,9 +36,9 @@ public:
 	HTTPSMSClient	httpClient;
 	StateText		sText;
 	QuestionImage	qImage;
+	UpdateInfo		upInfo;		
 	
 	ofImage bg;
-	UpdateInfo upInfo;	
 	vector<UpdateInfo> smsQue;
 	
 	//ofxEasyCam		cam;

@@ -14,6 +14,7 @@
 #include "ofxVectorMath.h"
 #include "ofxTween.h"
 #include "HTTPSMSClient.h"
+#include "ofxColorPicker.h"
 
 
 class MetaBallChunk {

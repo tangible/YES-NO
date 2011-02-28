@@ -8,41 +8,23 @@
  */
 
 #include "BlobManager.h"
-int baseSphereSize = 30;
-int maxSphereSize = 150;
-void BlobManager::setup(int _fps, AdminPanel* _admin, QuestionImage* _qImage, StateText* _sText, ofxCamera* cam) {
-	
-	for (int i = 0; i < 2; i++) {
-		Ray* r = new Ray();
-		if (i == 0) r->setup(centroidYes);
-		if (i == 1) r->setup(centroidNo);
-		rays.push_back(r);
-	}	
+int baseSphereSize = 10;
+int maxSphereSize = 125;
+void BlobManager::setup(int _fps, AdminPanel* _admin, ofxCamera* cam, QuestionImage* _qImage, StateText* _sText) {
 	
 	fps = _fps;
 	admin = _admin;
 	qImage = _qImage;
 	sText = _sText;
+	
 	shader.setup("glsl");
 	ofDisableArbTex();	
-	
-	// init sms
-	for (int i = 0; i < 2; i++) {
-		Flock* f = new Flock();
-		f->flockID = i;
-		flocks.push_back(f);
-
-	}		
 	
 	// init metaball and voxels
 	bullet = new ofxBullet();
 	bullet->initPhysics(ofxVec3f(0, 0, 0), false);	
 
-//	bullet->enableRayCastingMouseInteraction(cam);
-//	myTuio.connect(3333);
-
-	
-    nMetaBalls = 10;	
+	nMetaBalls = 18;	
 	int numChunk = 2;
 	for (int i = 0; i < numChunk; i++) {
 		// zero = YES, one = NO.
@@ -55,9 +37,9 @@ void BlobManager::setup(int _fps, AdminPanel* _admin, QuestionImage* _qImage, St
 			
 			ofxVec3f rdmPos;
 			if (i == 0) {
-				rdmPos = ofxVec3f(ofGetWidth()/2+ofRandom(500, 200), ofGetHeight()/2+ofRandom(-200, 200), ofRandom(-500, 0));
+				rdmPos = ofxVec3f(ofGetScreenWidth()/2+ofRandom(500, 200), ofGetScreenHeight()/2+ofRandom(-200, 200), ofRandom(-500, 0));
 			} else {
-				rdmPos = ofxVec3f(ofGetWidth()/2+ofRandom(-500, -200), ofGetHeight()/2+ofRandom(-200, 200), ofRandom(-500, 0));				
+				rdmPos = ofxVec3f(ofGetScreenWidth()/2+ofRandom(-500, -200), ofGetScreenHeight()/2+ofRandom(-200, 200), ofRandom(-500, 0));				
 			}
 
 			baseSizes.push_back(baseSphereSize);
@@ -76,8 +58,8 @@ void BlobManager::setup(int _fps, AdminPanel* _admin, QuestionImage* _qImage, St
     boundsScaling = 1.0 / 1020.0f;	
 	
 	// settings for shadow
-	screenW = ofGetWidth();
-	screenH = ofGetHeight();
+	screenW = ofGetScreenWidth();
+	screenH = ofGetScreenHeight();
 	nScreenPixels = screenW * screenH;
 	shadowDivX = 8;
 	shadowDivY = 8;
@@ -99,14 +81,14 @@ void BlobManager::setup(int _fps, AdminPanel* _admin, QuestionImage* _qImage, St
 	shadowCvImage.allocate(shadowW, shadowH);	
 	
 	// load imgs for texture
-	bg.loadImage("vancityWBBlur.jpg");
-	blobTex.loadImage("sky.jpeg");
+//	bg.loadImage("vancityWBBlur.jpg");
+//	blobTex.loadImage("sky.jpeg");
 	glActiveTexture(GL_TEXTURE1);
 	texSlot = 1;
-	glBindTexture(GL_TEXTURE_2D, blobTex.getTextureReference().getTextureData().textureID);	
+	//glBindTexture(GL_TEXTURE_2D, blobTex.getTextureReference().getTextureData().textureID);	
 	glActiveTexture(GL_TEXTURE0);		
 	
-	bgCenter = ofxVec3f(ofGetWidth()/2-bg.getWidth()/2, ofGetHeight()/2-bg.getHeight()/2, 0);
+	bgCenter = ofxVec3f(ofGetScreenWidth()/2-bg.getWidth()/2, ofGetScreenHeight()/2-bg.getHeight()/2, 0);
 	
 	// move bg
 	bgXTween.setParameters(easingback, ofxTween::easeOut, 0, 0, 0, 0);
@@ -127,9 +109,10 @@ void BlobManager::setup(int _fps, AdminPanel* _admin, QuestionImage* _qImage, St
 	upInfo.numYes = 0;
 	upInfo.numNo = 0;
 	upInfo.requesttime = "";
+	yesDiff = 0.0;
+	noDiff = 0.0;
 	
-	ofAddListener(flocks[0]->onBallGetSMSrepEvent, this, &BlobManager::onBallGetSMSrep);
-	ofAddListener(flocks[1]->onBallGetSMSrepEvent, this, &BlobManager::onBallGetSMSrep);	
+	ofAddListener(admin->onClearBG, this, &BlobManager::onClearBG);		
 	
 }
 
@@ -146,19 +129,14 @@ void BlobManager::update() {
 	
 	// update metaball point locations
 	if (admin->TOGGLEMOTION) {
-		
-		for (int i = 0; i < flocks.size(); i++) {
-			Flock* f = flocks[i];
-			int flockID = f->flockID;
-			if (flockID == 0) {
-				f->z = centroidYes.z;
-				f->update(centroidYes.x, centroidYes.y, centroidYes.z);
-			}else if (flockID == 1) {
-				f->z = centroidNo.z;				
-				f->update(centroidNo.x, centroidNo.y, centroidNo.z);
+
+		for (int i = 0; i < inSMSs.size(); i++) {
+			if (inSMSs[i]->chunkID == 0) {
+				inSMSs[i]->update(centroidYes);
+			}else if (inSMSs[i]->chunkID == 1) {
+				inSMSs[i]->update(centroidNo);
 			}
 		}
-
 		
 		bullet->stepPhysicsSimulation(admin->PHYSICSTICKFPS);	
 		
@@ -216,11 +194,12 @@ void BlobManager::update() {
 				MyRigidBody* sph = spheres[j];
 				
 				force.set(-sph->getBodyPos() + 
-						  ofxVec3f(ofGetWidth()/2 + mChunk->chunkCurrPos.x, ofGetHeight()/2 + mChunk->chunkCurrPos.y, mChunk->chunkCurrPos.z));
-				force *= maxVal * 40;
+						  ofxVec3f(ofGetScreenWidth()/2 + mChunk->chunkCurrPos.x, ofGetScreenHeight()/2 + mChunk->chunkCurrPos.y, mChunk->chunkCurrPos.z));
+//				float fFactor = (i==YES) ? ofMap(yesDiff, 0.0, 1.0, 40, 30) : ofMap(noDiff, 0.0, 1.0, 40, 30); // min=10,max=60
+				force *= maxVal * 27;
 				tangentVec = force.crossed(crossVec);
 				tangentVec.normalize();
-				tangentVec *= maxVal*100;
+				tangentVec *= maxVal * 40;
 				force += tangentVec;
 				btVector3 btImpulse(force.x, force.y, force.z);
 				sph->getRigidBody()->applyCentralImpulse(btImpulse);
@@ -229,17 +208,17 @@ void BlobManager::update() {
 				impulse.set(ofRandomf(), ofRandomf(), ofRandomf());
 				
 				if (i == 0 && randomImpulsSMSRecievedYes != 0) {
-					impulse *= 1100 + randomImpulsSMSRecievedYes;
+					impulse *= 500 + randomImpulsSMSRecievedYes;
 				}else if (i == 1 && randomImpulsSMSRecievedNo != 0) {
-					impulse *= 1100 + randomImpulsSMSRecievedNo;
+					impulse *= 500 + randomImpulsSMSRecievedNo;
 				}else {
-					impulse *= 80;
+					impulse *= (i==YES) ? ofMap(yesDiff, 0.0, 1.0, 30, 190) : ofMap(noDiff, 0.0, 1.0, 30, 190); // 80;
 				}
 
 				btImpulse = btVector3(impulse.x, impulse.y, impulse.z);
 				sph->getRigidBody()->applyCentralImpulse(btImpulse);
 				
-				ofxVec3f pos = sph->getBodyPos()-ofxVec3f(ofGetWidth()/2, ofGetHeight()/2, -400);
+				ofxVec3f pos = sph->getBodyPos()-ofxVec3f(ofGetScreenWidth()/2, ofGetScreenHeight()/2, -400);
 				float bx = (pos.x - boundsAvg.x) * boundsScaling;
 				float by = (pos.y - boundsAvg.y) * boundsScaling;
 				float bz = (pos.z - boundsAvg.z) * boundsScaling;
@@ -263,42 +242,53 @@ void BlobManager::draw() {
 		// draw BG, qimage and statetext
 		glDisable(GL_LIGHTING);
 		glColor3f(1.0, 1.0, 1.0);
-		if (!isVidBG) {
-			bg.draw(ofGetWidth()/2-bg.getWidth()/2+bgXTween.update(), 
-					ofGetHeight()/2-bg.getHeight()/2+200+bgYTween.update());
-		}else {
-			bgPlayer.draw(0, 0, ofGetWidth(), ofGetHeight());
-		}
+		bg.draw(ofGetScreenWidth()/2-bg.getWidth()/2+bgXTween.update(), 
+				ofGetScreenHeight()/2-bg.getHeight()/2+200+bgYTween.update());
 		
-		qImage->draw();
-
-		glEnable(GL_LIGHTING);	
+		ofPushMatrix();
+		ofSetupScreen();		
+		glDisable(GL_DEPTH_TEST);
+		ofEnableSmoothing(); 	
+		ofEnableAlphaBlending();
+		ofSetColor(255, 255, 255);
+		qImage->draw();	
+		glDisable(GL_CULL_FACE);	
+		ofEnableSmoothing(); 	
+		sText->draw(upInfo);
+		glEnable(GL_LIGHTING);
+		glEnable(GL_CULL_FACE);
+		glEnable(GL_DEPTH_TEST);
+		ofPopMatrix();
+		ofDisableAlphaBlending();
 		
 		setupGLStuff();		
 		
 		ofEnableAlphaBlending();		
 			
-			// draw metaball
-			ofPushMatrix();
-			float w = ofGetWidth();
-			float h = ofGetHeight();
-			float sz = 0.75*min(w,h);
-			ofTranslate(w/2, h/2, 0);
-			ofScale(sz,sz,sz);
-
-			for (int i = 0; i < mBallChunks.size(); i++) {
-				ofxVec4f basecol = mBallChunks[i]->chunkCurrCol;
-				glColor3f(basecol.x, basecol.y, basecol.z);
-//				shader.begin();
-//				shader.setUniform1i("tex", texSlot);
-//				shader.setUniform1f("tex_col_mixRatio", admin->TEXCOLMIXRATIO);
-//				shader.setUniform1f("blob_transparency", admin->BLOBTRANSPARENCY);				
-				mBallChunks[i]->m_pMetaballs->Render();
-//				shader.end();			
-
-			}
+		for (int i = 0; i < inSMSs.size(); i++) {
+			ofxVec3f pos = inSMSs[i]->body->getBodyPos();
+			ofColor col = inSMSs[i]->actualCol;
+			ofSetColor(col.r, col.g, col.b);
+			float size = inSMSs[i]->size;
+			ofxSphere(pos.x, pos.y, pos.z, size);
+		}			
 		
-			ofPopMatrix();		
+		// draw metaball
+		ofPushMatrix();
+		float w = ofGetScreenWidth();
+		float h = ofGetScreenHeight();
+		float sz = 0.75*min(w,h);
+		ofTranslate(w/2, h/2, 0);
+		ofScale(sz,sz,sz);
+		for (int i = 0; i < mBallChunks.size(); i++) {
+			ofEnableSmoothing(); 	
+			ofxVec4f basecol = mBallChunks[i]->chunkCurrCol;
+			glColor3f(basecol.x, basecol.y, basecol.z);				
+			mBallChunks[i]->m_pMetaballs->Render();
+		}
+		ofPopMatrix();		
+		
+		
 		
 		ofDisableAlphaBlending();
 
@@ -321,8 +311,10 @@ void BlobManager::draw() {
 
 	}
 	
+	
 	// draw shadow
-    bool bDrawDropShadow = true;
+//	ofEnableAlphaBlending();
+    bool bDrawDropShadow = false;
     if (bDrawDropShadow){
         glPushAttrib(GL_ALL_ATTRIB_BITS);
         glColor4f(0, 0.002, 0.005, admin->SHADOWINTENSITY);
@@ -364,31 +356,11 @@ void BlobManager::draw() {
 		
         glPopAttrib();
     }
+	
+
+	
 	glDisable(GL_DEPTH_TEST);
 	
-	
-	glDisable(GL_CULL_FACE);
-	glDisable(GL_LIGHTING);
-	sText->draw(upInfo, centroidYes, centroidNo);
-	glDisable(GL_LIGHTING);
-	
-	
-//    std::list<TuioCursor*> cursorList = myTuio.client->getTuioCursors();
-//	std::list<TuioCursor*>::iterator tit;
-//	myTuio.client->lockCursorList();
-//	for (tit=cursorList.begin(); tit != cursorList.end(); tit++) {
-//		TuioCursor * cur = (*tit);
-//		//if(tcur!=0){
-//		//TuioCursor cur = *tcur;
-//		glColor3f(0.0,0.0,0.0);
-//		ofEllipse(cur->getX(), cur->getY(), 50.0, 50.0);
-//		string str = "SessionId: "+ofToString((int)(cur->getSessionID()));
-//		ofDrawBitmapString(str, cur->getX()-10.0, cur->getY()+25.0);
-//		str = "CursorId: "+ofToString((int)(cur->getCursorID()));
-//		ofDrawBitmapString(str, cur->getX()-10.0, cur->getY()+40.0);
-//		//}
-//	}
-//	myTuio.client->unlockCursorList();	
 }
 
 void BlobManager::setupGLStuff(){
@@ -406,7 +378,6 @@ void BlobManager::setupGLStuff(){
     glCullFace(GL_FRONT);
     glShadeModel(GL_SMOOTH);
 	
-    //glColor3f(admin->BLOBBASECOL[0], admin->BLOBBASECOL[1], admin->BLOBBASECOL[2]);
     GLfloat on[]  = {1.0};
     GLfloat off[] = {0.0};
     glLightModelfv( GL_LIGHT_MODEL_TWO_SIDE, on);
@@ -447,10 +418,10 @@ void BlobManager::changeImgBlobTex(string path) {
 	bool isImg = blobTex.loadImage(path);
 	
 	if (isImg) {
-		blobTex.resize(ofGetWidth(), ofGetHeight());
+		blobTex.resize(ofGetScreenWidth(), ofGetScreenHeight());
 		glActiveTexture(GL_TEXTURE1);
 		texSlot = 1;
-		glBindTexture(GL_TEXTURE_2D, blobTex.getTextureReference().getTextureData().textureID);	
+		//glBindTexture(GL_TEXTURE_2D, blobTex.getTextureReference().getTextureData().textureID);	
 		glActiveTexture(GL_TEXTURE0);			
 		
 		isVidBlobTex = false;
@@ -464,7 +435,7 @@ void BlobManager::changeImgBlobTex(string path) {
 		
 		glActiveTexture(GL_TEXTURE1);
 		texSlot = 1;
-		glBindTexture(GL_TEXTURE_2D, blobTexPlayer.getTextureReference().getTextureData().textureID);	
+		//glBindTexture(GL_TEXTURE_2D, blobTexPlayer.getTextureReference().getTextureData().textureID);	
 		glActiveTexture(GL_TEXTURE0);		
 	}
 }
@@ -538,69 +509,79 @@ void BlobManager::onSMSRecievedImpulseForSphere(int _chunkID) {
 	factBN = (factBN<=0.1)?0.1:factBN;	
 	
 	int baseImpulse = 50;
-	float inpulseDivY = thisSizeY/ratioYes;
-	float inpulseDivN = thisSizeN/ratioNo;
-	
+
 	if (0 == _chunkID) {
-		randomImpulsSMSRecievedYes = ofMap(ratioYes, 0.0, 1.0, baseImpulse, inpulseDivY);
+		randomImpulsSMSRecievedYes = ofMap(yesDiff, 0.0, 1.0, baseImpulse, 150);
 	}else if (1 == _chunkID) {
-		randomImpulsSMSRecievedNo = ofMap(ratioNo, 0.0, 1.0, baseImpulse, inpulseDivN);
+		randomImpulsSMSRecievedNo = ofMap(noDiff, 0.0, 1.0, baseImpulse, 150);
 	}
 	
 }
 
 void BlobManager::onBallGetSMSrep(int& chunkID) {
 	
+	cout << "got event, chunkID=" + ofToString(chunkID) << endl;
+	ofRemoveListener(inSMSs[inSMSs.size()-1]->onBallGetSMSrepEvent, this, &BlobManager::onBallGetSMSrep);
+    delete inSMSs[inSMSs.size()-1];
+	inSMSs.pop_back();
+	
 	float totalRatioYes = upInfo.ratioTotalYes;
 	float totalRatioNo = upInfo.ratioTotalNo;
 	float ratioYes = upInfo.ratioThisTimeYes;
 	float ratioNo = upInfo.ratioThisTimeNo;
 	
-	ofColor testcol;
-	testcol.r = ofRandom(0.0, 1.0);
-	testcol.g = ofRandom(0.0, 1.0);
-	testcol.b = ofRandom(0.0, 1.0);
+	float sd = scaleDiffMax;
+	int yesdiff = upInfo.numDiffYes;
+	float diffForYes = ofClamp(yesdiff, -sd, sd);
+	yesDiff = ofMap(diffForYes, -sd, sd, 0.0, 1.0);	
+	diffForYes = ofMap(diffForYes, -sd, sd, minScale, maxScale);		
+	mBallChunks[0]->onSMSRecievedChangeMetaballSize(diffForYes, totalRatioYes);	
+	sd = scaleDiffMax;
+	int nodiff = upInfo.numDiffNo;
+	float diffForNo = ofClamp(nodiff, -sd, sd);
+	noDiff = ofMap(diffForNo, -sd, sd, 0.0, 1.0);
+	diffForNo = ofMap(diffForNo, -sd, sd, minScale, maxScale);		
+	mBallChunks[1]->onSMSRecievedChangeMetaballSize(diffForNo, totalRatioNo);
+	
+	if (upInfo.numTotalYes != 0) 
+		onSMSRecievedChangeSphereSize(0, diffForYes, diffForNo);
+	if (upInfo.numTotalNo != 0) 	
+		onSMSRecievedChangeSphereSize(1, diffForYes, diffForNo);
+	
+
+	float rdmCol = ofRandomuf();
+	yesColAng = rdmCol;
+	chunkCol.setColorScale(1.0);
+	chunkCol.setColorRadius(1.0);	
+	chunkCol.setColorAngle(rdmCol);
+	chunkCol.update();
+	ofColor yesCol = chunkCol.getColor();
+	yesCol.r = yesCol.r/255.0; 	yesCol.g = yesCol.g/255.0; 	yesCol.b = yesCol.b/255.0;
+	noColAng = rdmCol+0.5;
+	chunkCol.setColorScale(1.0);
+	chunkCol.setColorRadius(1.0);	
+	chunkCol.setColorAngle(rdmCol+0.5);
+	chunkCol.update();
+	ofColor noCol = chunkCol.getColor();
+	noCol.r = noCol.r/255.0; noCol.g = noCol.g/255.0; noCol.b = noCol.b/255.0;
 	
 	if (chunkID == 0) {
-		mBallChunks[0]->onSMSRecievedChangeCol(ratioYes, totalRatioYes, testcol);
-		mBallChunks[0]->onSMSRecievedChangeMetaballSize(ratioYes, totalRatioYes);	
 		onSMSRecievedImpulseForSphere(0);
-		sText->onSMSReceivedUpdate(0, upInfo);
-		onSMSRecievedChangeSphereSize(0, totalRatioYes, totalRatioNo);		
-		
-	}else if (chunkID == 1) {
-		mBallChunks[1]->onSMSRecievedChangeCol(ratioNo, totalRatioNo, testcol);	
-		mBallChunks[1]->onSMSRecievedChangeMetaballSize(ratioNo, totalRatioNo);		
-		onSMSRecievedImpulseForSphere(1);
-		sText->onSMSReceivedUpdate(1, upInfo);
-		onSMSRecievedChangeSphereSize(1, totalRatioYes, totalRatioNo);		
-		
+		mBallChunks[0]->onSMSRecievedChangeCol(0, totalRatioYes, yesCol);
+	}else {
+		onSMSRecievedImpulseForSphere(1);		
+		mBallChunks[1]->onSMSRecievedChangeCol(0, totalRatioNo, noCol);	
 	}
 }
 
 void BlobManager::onBallGetSMSrepComplete(int& _chunkID) {
 	
-	float totalRatioYes = upInfo.ratioTotalYes;
-	float totalRatioNo = upInfo.ratioTotalNo;
-	float ratioYes = upInfo.ratioThisTimeYes;
-	float ratioNo = upInfo.ratioThisTimeNo;	
-	float factAY = 1.0-totalRatioYes;
-	float factAN = 1.0-totalRatioNo;
-	float factBY = 1.0-ratioYes;
-	float factBN = 1.0-ratioNo;
-	factAY = (factAY<=0.1)?0.1:factAY;
-	factBY = (factBY<=0.1)?0.1:factBY;
-	factAN = (factAN<=0.1)?0.1:factAN;
-	factBN = (factBN<=0.1)?0.1:factBN;	
-	
 	int baseImpulse = 50;
-	float inpulseDivY = thisSizeY/factAY+thisSizeY/factBY;
-	float inpulseDivN = thisSizeN/factAN+thisSizeN/factBN;
-	
+	int maxImpulse = 300;
 	if (0 == _chunkID) {
-		randomImpulsSMSRecievedYes = ofMap(ratioYes, 0.0, 1.0, baseImpulse, inpulseDivY);
+		randomImpulsSMSRecievedYes = ofMap(yesDiff, 0.0, 1.0, baseImpulse, maxImpulse);		
 	}else if (1 == _chunkID) {
-		randomImpulsSMSRecievedNo = ofMap(ratioNo, 0.0, 1.0, baseImpulse, inpulseDivN);
+		randomImpulsSMSRecievedNo = ofMap(noDiff, 0.0, 1.0, baseImpulse, maxImpulse);		
 	}
 	
 }
@@ -614,16 +595,24 @@ void BlobManager::recieveSMS(UpdateInfo _upInfo) {
 	int no = ratioNo*10;
 	
 	for (int i = 0; i < 2; i++) {
-		Flock* f = flocks[i];
 		if (i == 0 && upInfo.numYes != 0) {
-			f->addBoid(80+ofRandomuf()*20, 4+ofRandomuf()*10);
+			IncomingSMS* sms = new IncomingSMS();
+			sms->setup(bullet, 0, yesColAng);
+			ofAddListener(sms->onBallGetSMSrepEvent, this, &BlobManager::onBallGetSMSrep);			
+			inSMSs.push_back(sms);
 		}else if (i == 1 && upInfo.numNo != 0) {
-			f->addBoid(80+ofRandomuf()*20, 4+ofRandomuf()*10);
+			IncomingSMS* sms = new IncomingSMS();
+			sms->setup(bullet, 1, noColAng);
+			ofAddListener(sms->onBallGetSMSrepEvent, this, &BlobManager::onBallGetSMSrep);			
+			inSMSs.push_back(sms);			
 		}
-	}		
+	}	
+	
 }
 
-
+void BlobManager::onClearBG(int& i) {
+	bg.clear();
+}
 
 
 

@@ -202,11 +202,6 @@
 /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/YES-NO Visuallize/No.1 Organic Blob/build/No.1 Organic Blob.build/Debug/No.1 Organic Blob.build/Objects-normal/i386/ofxEasingQuint.o
 /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/YES-NO Visuallize/No.1 Organic Blob/build/No.1 Organic Blob.build/Debug/No.1 Organic Blob.build/Objects-normal/i386/ofxEasingSine.o
 /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/YES-NO Visuallize/No.1 Organic Blob/build/No.1 Organic Blob.build/Debug/No.1 Organic Blob.build/Objects-normal/i386/ofxTween.o
-/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/YES-NO Visuallize/No.1 Organic Blob/build/No.1 Organic Blob.build/Debug/No.1 Organic Blob.build/Objects-normal/i386/Boid.o
-/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/YES-NO Visuallize/No.1 Organic Blob/build/No.1 Organic Blob.build/Debug/No.1 Organic Blob.build/Objects-normal/i386/Flock.o
-/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/YES-NO Visuallize/No.1 Organic Blob/build/No.1 Organic Blob.build/Debug/No.1 Organic Blob.build/Objects-normal/i386/StateText.o
-/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/YES-NO Visuallize/No.1 Organic Blob/build/No.1 Organic Blob.build/Debug/No.1 Organic Blob.build/Objects-normal/i386/QuestionImage.o
-/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/YES-NO Visuallize/No.1 Organic Blob/build/No.1 Organic Blob.build/Debug/No.1 Organic Blob.build/Objects-normal/i386/Ray.o
 /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/YES-NO Visuallize/No.1 Organic Blob/build/No.1 Organic Blob.build/Debug/No.1 Organic Blob.build/Objects-normal/i386/ofxOscBundle.o
 /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/YES-NO Visuallize/No.1 Organic Blob/build/No.1 Organic Blob.build/Debug/No.1 Organic Blob.build/Objects-normal/i386/ofxOscMessage.o
 /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/YES-NO Visuallize/No.1 Organic Blob/build/No.1 Organic Blob.build/Debug/No.1 Organic Blob.build/Objects-normal/i386/ofxOscReceiver.o
@@ -233,3 +228,7 @@
 /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/YES-NO Visuallize/No.1 Organic Blob/build/No.1 Organic Blob.build/Debug/No.1 Organic Blob.build/Objects-normal/i386/ofxTuioClient.o
 /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/YES-NO Visuallize/No.1 Organic Blob/build/No.1 Organic Blob.build/Debug/No.1 Organic Blob.build/Objects-normal/i386/ofxTuioServer.o
 /Users/makira/Project/20110321.VancouverMusium/oF0062/apps/YES-NO Visuallize/No.1 Organic Blob/build/No.1 Organic Blob.build/Debug/No.1 Organic Blob.build/Objects-normal/i386/HTTPSMSClient.o
+/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/YES-NO Visuallize/No.1 Organic Blob/build/No.1 Organic Blob.build/Debug/No.1 Organic Blob.build/Objects-normal/i386/StateText.o
+/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/YES-NO Visuallize/No.1 Organic Blob/build/No.1 Organic Blob.build/Debug/No.1 Organic Blob.build/Objects-normal/i386/QuestionImage.o
+/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/YES-NO Visuallize/No.1 Organic Blob/build/No.1 Organic Blob.build/Debug/No.1 Organic Blob.build/Objects-normal/i386/ofxColorPicker.o
+/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/YES-NO Visuallize/No.1 Organic Blob/build/No.1 Organic Blob.build/Debug/No.1 Organic Blob.build/Objects-normal/i386/IncomingSMS.o

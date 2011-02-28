@@ -12,14 +12,14 @@
 
 void AdminPanel::setup(){
 	
-	gui.addTitle("Img Setting");
+	gui.addTitle("Image Setting");
 	gui.addButton("Change BG", changeBG);
 	gui.addButton("Clear BG", clearBG);
-	gui.addColorPicker("Obj Edge Color", BGColor);
 	gui.addButton("Change Question Img", changeQImg);
 	gui.addButton("Clear Question Img", clearQImg);		
+//	gui.addColorPicker("Obj Edge Color", BGColor);	
 	
-	gui.addTitle("Setting").setNewColumn(true);
+	gui.addTitle("Graphic Setting").setNewColumn(true);
 	gui.addSlider("Light Pos X", LIGHTX, -2000.0, 2000.0);
 	gui.addSlider("Light Pos Y", LIGHTY, -2000.0, 2000.0);
 	gui.addSlider("Light Pos Z", LIGHTZ, -2000.0, 2000.0);		

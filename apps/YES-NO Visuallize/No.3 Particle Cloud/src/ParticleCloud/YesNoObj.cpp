@@ -133,11 +133,11 @@ void YesNoObj::addSMSObj(int size) {
 	bool far = (ofRandomf() > 0) ? true : false;
 	ofxVec3f rdmPos = ofxVec3f(ofRandom((left)?0:ofGetScreenWidth(), (left)?0:ofGetScreenWidth()),
 							   ofRandom((up)?0:ofGetScreenHeight(), (left)?0:ofGetScreenHeight()),
-							   -700);
+							   1300);
 	
 	
 	Obj obj;
-	obj.setup(0, bullet, rdmPos, 35, 350, 14500, 19000);
+	obj.setup(0, bullet, rdmPos, 55, 350, 24500, 19000);
 	obj.size = size;
 	obj.colAngle = cAng;
 	obj.setForcePoint(ofxVec3f(ofGetScreenWidth()/2, ofGetScreenHeight()/2, 0));
@@ -164,7 +164,14 @@ void YesNoObj::changeParticleObjNum(ofxBullet* bullet, int numPart) {
 			int p = (int)posFeed.size();
 			float threeOfFour = 0.6;
 			ofxVec3f tofVec = addedObjs[addedObjs.size()-1].getObjPos();
-			ofxVec3f rdmPos = ofxVec3f(tofVec.x+ofRandom(-400, 400), tofVec.y+ofRandom(-400, 400), tofVec.z+ofRandom(-400, 400));
+//			ofxVec3f rdmPos = ofxVec3f(tofVec.x+ofRandom(-400, 400), tofVec.y+ofRandom(-400, 400), tofVec.z+ofRandom(-400, 400));
+			
+			bool up = (ofRandomf() > 0) ? true : false;
+			bool left = (ofRandomf() > 0) ? true : false;
+			bool far = (ofRandomf() > 0) ? true : false;			
+			ofxVec3f rdmPos = ofxVec3f(ofRandom((left)?0:ofGetScreenWidth(), (left)?0:ofGetScreenWidth()),
+									   ofRandom((up)?0:ofGetScreenHeight(), (left)?0:ofGetScreenHeight()),
+									   2300);			
 			
 			Obj obj;
 			float mass = ofMap(size, minParticleSize, maxParticleSize, minParticleMass, maxParticleMass);

@@ -4,26 +4,29 @@
 void App::setup(){
 	
 	ofSetFrameRate(FPS);
-	ofBackground(255,255,255);
+	ofBackground(0,0,0);
 	ofSetDataPathRoot("../Resources/");
 
 	adminPanel.setup();
 	qImage.setup();
-	stateText.setup();
-	blobMgr.setup(FPS, &adminPanel, &qImage, &stateText, &camera);
+	sText.setup();
+	blobMgr.setup(FPS, &adminPanel, &camera, &qImage, &sText);
 	httpClient.setup();
 	
 	ofAddListener(adminPanel.onFileDialogueBG, this, &App::onFileChangeBG);
 	ofAddListener(adminPanel.onFileDialogueQImg, this, &App::onFileChangeQImg);	
 	ofAddListener(adminPanel.onFileDialogueBlobTex, this, &App::onFileChangeBlobTex);	
 	ofAddListener(httpClient.onSMSRecieved, this, &App::onSMSMsgRecieved);
+	ofAddListener(adminPanel.onClearQImg, this, &App::onClearQImg);		
 	
-	camera.position(ofGetWidth()/2, ofGetHeight()/2, 700);
-	cameraXTween.setParameters(easingback, ofxTween::easeOut, ofGetWidth()/2, ofGetWidth()/2, 0, 0);
-	eyeXTween.setParameters(easingback, ofxTween::easeOut, ofGetWidth()/2, ofGetWidth()/2, 0, 0);
-	cameraYTween.setParameters(easingback, ofxTween::easeOut, ofGetHeight()/2, ofGetHeight()/2, 0, 0);
-	eyeYTween.setParameters(easingback, ofxTween::easeOut, ofGetHeight()/2, ofGetHeight()/2, 0, 0);
+	camera.position(ofGetScreenWidth()/2, ofGetScreenHeight()/2, 1060);
+	cameraXTween.setParameters(easingback, ofxTween::easeOut, ofGetScreenWidth()/2, ofGetScreenWidth()/2, 0, 0);
+	eyeXTween.setParameters(easingback, ofxTween::easeOut, ofGetScreenWidth()/2, ofGetScreenWidth()/2, 0, 0);
+	cameraYTween.setParameters(easingback, ofxTween::easeOut, ofGetScreenHeight()/2, ofGetScreenHeight()/2, 0, 0);
+	eyeYTween.setParameters(easingback, ofxTween::easeOut, ofGetScreenHeight()/2, ofGetScreenHeight()/2, 0, 0);
 	cameraZTween.setParameters(easingback, ofxTween::easeOut, 700, 700, 0, 0);
+	
+	qImage.changeImgQImg("qimg3.png");
 	
 }
 
@@ -32,11 +35,11 @@ void App::update(){
 	
 	blobMgr.update();
 	adminPanel.update();
-	httpClient.update();	
+	httpClient.update();
 	
-	jitterAndZoomScene();
-	camera.position(cameraXTween.update(), cameraYTween.update(), cameraZTween.update());
-	camera.eye(eyeXTween.update(), eyeYTween.update(), 0);
+//	jitterAndZoomScene();
+//	camera.position(cameraXTween.update(), cameraYTween.update(), cameraZTween.update());
+//	camera.eye(eyeXTween.update(), eyeYTween.update(), 0);
 }
 
 //--------------------------------------------------------------
@@ -56,13 +59,13 @@ void App::draw(){
 void App::jitterAndZoomScene() {
 	
 	if (cameraXTween.isCompleted()) {
-		float x = ofGetWidth()/2+ofRandom(-3, 3);
+		float x = ofGetScreenWidth()/2+ofRandom(-3, 3);
 		float dur = ofRandom(2000, 3000);
 		float delay = 0.0;//ofRandom(200, 1000);
 		cameraXTween.setParameters(easingelastic, ofxTween::easeInOut, camera.getPosition().x, x, dur, delay);
 		eyeXTween.setParameters(easingelastic, ofxTween::easeInOut, camera.getPosition().x, x, dur, delay);
 
-		float y = ofGetHeight()/2+ofRandom(-3, 3);
+		float y = ofGetScreenHeight()/2+ofRandom(-3, 3);
 		delay = 0.0;//ofRandom(200, 1000);		
 		cameraYTween.setParameters(easingelastic, ofxTween::easeInOut, camera.getPosition().y, y, dur, delay);
 		eyeYTween.setParameters(easingelastic, ofxTween::easeInOut, camera.getPosition().y, y, dur, delay);
@@ -82,32 +85,45 @@ void App::jitterAndZoomScene() {
 void App::onFileChangeBG(FileDef& fd) {
 	blobMgr.changeImgBG(fd.path);
 }
-
-//--------------------------------------------------------------
 void App::onFileChangeQImg(FileDef& fd) {
 	qImage.changeImgQImg(fd.path);	
 }
-
-//--------------------------------------------------------------
 void App::onFileChangeBlobTex(FileDef& fd) {
 	blobMgr.changeImgBlobTex(fd.path);
 }
-
-//--------------------------------------------------------------
-void App::onSMSMsgRecieved(UpdateInfo& upInfo) {
+void App::onSMSMsgRecieved(UpdateInfo& _upInfo) {
+	upInfo = _upInfo;
+	sText.onSMSReceivedUpdate(upInfo.sms.YesOrNo, upInfo);
 	blobMgr.recieveSMS(upInfo);
+}
+void App::onClearQImg(int& i) {
+	qImage.clear();
 }
 
 //--------------------------------------------------------------
-void App::keyPressed  (int key){
-	switch(key) {
-		case ' ': 
-			adminPanel.toggle(); 
-			break;
-		case 's': 
-			httpClient.sendRequest();
-			break;	
-	}		
+int scrnseq = 0;
+void App::keyPressed(int key){
+	
+	if (key == 's') {
+		httpClient.emulateSMS();
+	}else if (key == '1') {
+		for (int i = 0; i < 10; i++) {
+			httpClient.emulateSMS();
+		}
+	}else if (key == '5') {
+		for (int i = 0; i < 50; i++) {
+			httpClient.emulateSMS();
+		}
+	}else if (key == '0') {
+		for (int i = 0; i < 100; i++) {
+			httpClient.emulateSMS();
+		}
+	}else if (key == 'p') {
+		scrnseq++;
+		ofSaveScreen("/Users/alexbeim/Desktop/akiraTemporary/scrn"+ofToString(scrnseq)+".png");
+	}else {	
+		adminPanel.keyPressed(key);
+	}
 }
 
 //--------------------------------------------------------------

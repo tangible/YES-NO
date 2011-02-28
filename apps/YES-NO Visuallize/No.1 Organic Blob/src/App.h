@@ -31,14 +31,16 @@ public:
 	void onFileChangeBG(FileDef& fd);
 	void onFileChangeQImg(FileDef& fd);
 	void onFileChangeBlobTex(FileDef& fd);	
-	void onSMSMsgRecieved(UpdateInfo& upInfo);
+	void onSMSMsgRecieved(UpdateInfo& _upInfo);
+	void onClearQImg(int& i);
 	void jitterAndZoomScene();
 
 	BlobManager		blobMgr;
 	AdminPanel		adminPanel;
 	HTTPSMSClient	httpClient;	
 	QuestionImage	qImage;
-	StateText		stateText;
+	StateText		sText;
+	UpdateInfo		upInfo;
 	
 	ofxCamera		camera;
 	ofxTween		cameraXTween;
