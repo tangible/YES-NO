@@ -15,6 +15,20 @@
 #include "ofxTween.h"
 #include "ofxTimer.h"
 #include "HTTPSMSClient.h"
+#include "ofxVCGLib.h"
+
+static float verts[24] = {
+	
+	(-106.7201920), (154.0109253), (-65.5737534),
+	(122.8457947), (178.0053253), (27.6124306),
+	(5.0930414), (16.9040928), (-152.4526672),
+	(-193.7199860), (-31.0964642), (-114.1005859),
+	(-262.1704407), (67.5808640), (104.2402115),
+	(196.7726746), (-28.3008862), (158.6202545),
+	(-117.9212341), (-143.9787903), (61.4517021),
+	(124.9667053), (-139.3863831), (-20.1715240)
+	
+};
 
 class addedSMS {
 	
@@ -28,7 +42,17 @@ public:
 	float angle;
 	ofxTween tw;
 	ofxEasingCirc ea;
-
+	ofEvent<int> endSpikeGlow;
+	
+	addedSMS() {
+		ofAddListener(tw.end_E, this, &addedSMS::notifyEndSpikeGlow);
+	}
+	
+	inline void notifyEndSpikeGlow(int & z) {
+		int i = 0;
+		ofNotifyEvent(endSpikeGlow, i);
+	}
+	
 	ofxVec3f getA() {
 		return ofxBulletStaticUtil::btVec3ToOfxVec3(node0->m_x);
 	}
@@ -85,13 +109,14 @@ public:
 	
 	ofxBullet*	bullet;
 	MySoftBody*	yesORno;
+	ofxVCGLib vcgMesh;
 	ofxColorPicker col;	
 	float defaultColAng;
 	float previousColAng;
 	
 	static const int YES = 0;
 	static const int NO = 0;
-	static const int minRes = 16;
+	static const int minRes = 5;
 	static const int maxRes = 5120;
 	static const int YNSOFTMINSIZELEV = 0;
 	static const int YNSOFTMAXSIZELEV = 20;	
@@ -106,6 +131,7 @@ public:
 	ofxEasingCirc easing;
 	
 	vector<addedSMS*> addedSMSs;
+	void onEndSpikeGlow(int & z);
 	
 	int			YesOrNo;
 	ofxVec3f	forcePoint;

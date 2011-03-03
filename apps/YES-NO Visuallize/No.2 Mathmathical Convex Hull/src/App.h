@@ -41,8 +41,8 @@ public:
 	ofImage bg;
 	vector<UpdateInfo> smsQue;
 	
-	//ofxEasyCam		cam;
-	ofxCamera		cam;
+	ofxEasyCam		cam;
+	//ofxCamera		cam;
 	ofxTween		camOrbitTween;
 //	ofxEasingQuad	camOrbitEasing;
 	ofxEasingSine	camOrbitEasing;	

@@ -1,7 +1,7 @@
 TopenFrameworks
 v7
 r0
-t320204633.031109
+t320833688.370097
 cCheck dependencies
 cCompileC build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofAppGlutWindow.o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/app/ofAppGlutWindow.cpp normal i386 c++ com.apple.compilers.gcc.4_2
 cCompileC build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofAppRunner.o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/app/ofAppRunner.cpp normal i386 c++ com.apple.compilers.gcc.4_2
@@ -806,157 +806,157 @@ i<sstream>
 i<CoreAudio/AudioHardware.h>
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx//openFrameworks.a
-t1296439500
+t1298761494
 s6938096
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx//openFrameworksDebug.a
-t1298511832
+t1299140888
 s6414272
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofAppGlutWindow.o
-t1298511832
+t1299140879
 s762656
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofAppRunner.o
-t1298511832
+t1299140880
 s951748
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofArduino.o
-t1298511816
+t1299140878
 s978460
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofBitmapFont.o
-t1298511818
+t1299140879
 s80264
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofGraphics.o
-t1298511821
+t1299140882
 s454748
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofImage.o
-t1298511822
+t1299140882
 s383176
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofMath.o
-t1298511827
+t1299140886
 s388296
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofQtUtils.o
-t1298511829
+t1299140886
 s61496
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofSerial.o
-t1298511816
+t1299140877
 s355224
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofSoundPlayer.o
-t1298511824
+t1299140884
 s73460
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofSoundStream.o
-t1298511825
+t1299140885
 s509024
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofTexture.o
-t1298511822
+t1299140882
 s361816
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofTrueTypeFont.o
-t1298511825
+t1299140883
 s216212
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofUtils.o
-t1298511828
+t1299140886
 s431644
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofVideoGrabber.o
-t1298511830
+t1299140887
 s115160
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofVideoPlayer.o
-t1298511831
+t1299140888
 s115208
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofxThread.o
-t1298511832
+t1299140887
 s53908
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/openFrameworksDebug.LinkFileList
-c000000004D65B7BE0000000000000C41
-t1298511806
+c000000004D6F510A0000000000000C41
+t1299140874
 s3137
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Release/openFrameworks.build/Objects-normal/i386/ofAppGlutWindow.o
-t1296439490
+t1298761493
 s801652
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Release/openFrameworks.build/Objects-normal/i386/ofAppRunner.o
-t1296439495
+t1298761494
 s1088832
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Release/openFrameworks.build/Objects-normal/i386/ofArduino.o
-t1296439486
+t1298761482
 s1046484
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Release/openFrameworks.build/Objects-normal/i386/ofBitmapFont.o
-t1296439486
+t1298761467
 s80280
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Release/openFrameworks.build/Objects-normal/i386/ofGraphics.o
-t1296439489
+t1298761472
 s481372
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Release/openFrameworks.build/Objects-normal/i386/ofImage.o
-t1296439489
+t1298761474
 s404928
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Release/openFrameworks.build/Objects-normal/i386/ofMath.o
-t1296439497
+t1298761484
 s400740
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Release/openFrameworks.build/Objects-normal/i386/ofQtUtils.o
-t1296439498
+t1298761486
 s62832
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Release/openFrameworks.build/Objects-normal/i386/ofSerial.o
-t1296439484
+t1298761465
 s368472
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Release/openFrameworks.build/Objects-normal/i386/ofSoundPlayer.o
-t1296439492
+t1298761482
 s85300
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Release/openFrameworks.build/Objects-normal/i386/ofSoundStream.o
-t1296439495
+t1298761484
 s518184
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Release/openFrameworks.build/Objects-normal/i386/ofTexture.o
-t1296439493
+t1298761477
 s366124
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Release/openFrameworks.build/Objects-normal/i386/ofTrueTypeFont.o
-t1296439495
+t1298761480
 s358384
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Release/openFrameworks.build/Objects-normal/i386/ofUtils.o
-t1296439499
+t1298761487
 s486260
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Release/openFrameworks.build/Objects-normal/i386/ofVideoGrabber.o
-t1296439498
+t1298761488
 s126896
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Release/openFrameworks.build/Objects-normal/i386/ofVideoPlayer.o
-t1296439499
+t1298761489
 s125428
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Release/openFrameworks.build/Objects-normal/i386/ofxThread.o
-t1296439499
+t1298761490
 s56256
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Release/openFrameworks.build/Objects-normal/i386/openFrameworks.LinkFileList
-c000000004D4618B60000000000000C63
-t1296439478
+c000000004D6986E80000000000000C63
+t1298761448
 s3171
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/poco/include/Poco/AbstractDelegate.h
@@ -1401,11 +1401,11 @@ s9690
 
 CCheck dependencies
 r0
-lSLF07#2@18"Check dependencies320204606#320204606#0(0"0(0#1#0"8629895744#0"0#
+lSLF07#2@18"Check dependencies320833674#320833674#0(0"0(0#1#0"8613652160#0"0#
 
 CCompileC build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofAppGlutWindow.o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/app/ofAppGlutWindow.cpp normal i386 c++ com.apple.compilers.gcc.4_2
-s320204606.590724
-e320204632.203676
+s320833674.524593
+e320833679.919737
 r1
 xCompileC
 xbuild/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofAppGlutWindow.o
@@ -1415,11 +1415,11 @@ xi386
 xc++
 xcom.apple.compilers.gcc.4_2
 oi686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done
-lSLF07#2@149"Compile /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/app/ofAppGlutWindow.cpp320204606#320204632#0(92"i686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done0(0#0#141"/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/app/ofAppGlutWindow.cpp8606287040#1574"    cd /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -ftree-vectorize -msse3 -mssse3 -Wno-deprecated-declarations -Wno-invalid-offsetof -gdwarf-2 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/openFrameworksDebug.hmap -F/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx/include -I../../../../libs/freetype/include -I../../../../libs/freetype/include/freetype2 -I../../../../libs/poco/include -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources/i386 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources -D__MACOSX_CORE__ -lpthread -c /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/app/ofAppGlutWindow.cpp -o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofAppGlutWindow.o0#
+lSLF07#2@149"Compile /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/app/ofAppGlutWindow.cpp320833674#320833679#0(92"i686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done0(0#0#141"/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/app/ofAppGlutWindow.cpp8606010848#1574"    cd /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -ftree-vectorize -msse3 -mssse3 -Wno-deprecated-declarations -Wno-invalid-offsetof -gdwarf-2 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/openFrameworksDebug.hmap -F/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx/include -I../../../../libs/freetype/include -I../../../../libs/freetype/include/freetype2 -I../../../../libs/poco/include -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources/i386 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources -D__MACOSX_CORE__ -lpthread -c /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/app/ofAppGlutWindow.cpp -o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofAppGlutWindow.o0#
 
 CCompileC build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofAppRunner.o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/app/ofAppRunner.cpp normal i386 c++ com.apple.compilers.gcc.4_2
-s320204606.592029
-e320204632.736548
+s320833674.525593
+e320833680.815266
 r1
 xCompileC
 xbuild/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofAppRunner.o
@@ -1429,11 +1429,11 @@ xi386
 xc++
 xcom.apple.compilers.gcc.4_2
 oi686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done
-lSLF07#2@145"Compile /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/app/ofAppRunner.cpp320204606#320204632#0(92"i686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done0(0#0#137"/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/app/ofAppRunner.cpp8620999744#1566"    cd /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -ftree-vectorize -msse3 -mssse3 -Wno-deprecated-declarations -Wno-invalid-offsetof -gdwarf-2 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/openFrameworksDebug.hmap -F/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx/include -I../../../../libs/freetype/include -I../../../../libs/freetype/include/freetype2 -I../../../../libs/poco/include -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources/i386 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources -D__MACOSX_CORE__ -lpthread -c /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/app/ofAppRunner.cpp -o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofAppRunner.o0#
+lSLF07#2@145"Compile /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/app/ofAppRunner.cpp320833674#320833680#0(92"i686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done0(0#0#137"/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/app/ofAppRunner.cpp8601421920#1566"    cd /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -ftree-vectorize -msse3 -mssse3 -Wno-deprecated-declarations -Wno-invalid-offsetof -gdwarf-2 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/openFrameworksDebug.hmap -F/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx/include -I../../../../libs/freetype/include -I../../../../libs/freetype/include/freetype2 -I../../../../libs/poco/include -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources/i386 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources -D__MACOSX_CORE__ -lpthread -c /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/app/ofAppRunner.cpp -o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofAppRunner.o0#
 
 CCompileC build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofArduino.o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/communication/ofArduino.cpp normal i386 c++ com.apple.compilers.gcc.4_2
-s320204606.593191
-e320204617.289810
+s320833674.526695
+e320833678.807643
 r1
 xCompileC
 xbuild/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofArduino.o
@@ -1443,11 +1443,11 @@ xi386
 xc++
 xcom.apple.compilers.gcc.4_2
 oi686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done
-lSLF07#2@153"Compile /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/communication/ofArduino.cpp320204606#320204617#0(92"i686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done0(0#0#145"/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/communication/ofArduino.cpp8618162912#1572"    cd /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -ftree-vectorize -msse3 -mssse3 -Wno-deprecated-declarations -Wno-invalid-offsetof -gdwarf-2 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/openFrameworksDebug.hmap -F/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx/include -I../../../../libs/freetype/include -I../../../../libs/freetype/include/freetype2 -I../../../../libs/poco/include -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources/i386 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources -D__MACOSX_CORE__ -lpthread -c /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/communication/ofArduino.cpp -o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofArduino.o0#
+lSLF07#2@153"Compile /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/communication/ofArduino.cpp320833674#320833678#0(92"i686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done0(0#0#145"/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/communication/ofArduino.cpp8603097376#1572"    cd /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -ftree-vectorize -msse3 -mssse3 -Wno-deprecated-declarations -Wno-invalid-offsetof -gdwarf-2 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/openFrameworksDebug.hmap -F/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx/include -I../../../../libs/freetype/include -I../../../../libs/freetype/include/freetype2 -I../../../../libs/poco/include -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources/i386 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources -D__MACOSX_CORE__ -lpthread -c /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/communication/ofArduino.cpp -o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofArduino.o0#
 
 CCompileC build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofBitmapFont.o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/graphics/ofBitmapFont.cpp normal i386 c++ com.apple.compilers.gcc.4_2
-s320204616.831100
-e320204618.234296
+s320833677.982356
+e320833679.701785
 r1
 xCompileC
 xbuild/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofBitmapFont.o
@@ -1457,11 +1457,11 @@ xi386
 xc++
 xcom.apple.compilers.gcc.4_2
 oi686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done
-lSLF07#2@151"Compile /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/graphics/ofBitmapFont.cpp320204616#320204618#0(92"i686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done0(0#0#143"/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/graphics/ofBitmapFont.cpp8650213504#1573"    cd /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -ftree-vectorize -msse3 -mssse3 -Wno-deprecated-declarations -Wno-invalid-offsetof -gdwarf-2 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/openFrameworksDebug.hmap -F/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx/include -I../../../../libs/freetype/include -I../../../../libs/freetype/include/freetype2 -I../../../../libs/poco/include -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources/i386 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources -D__MACOSX_CORE__ -lpthread -c /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/graphics/ofBitmapFont.cpp -o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofBitmapFont.o0#
+lSLF07#2@151"Compile /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/graphics/ofBitmapFont.cpp320833677#320833679#0(92"i686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done0(0#0#143"/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/graphics/ofBitmapFont.cpp8611596864#1573"    cd /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -ftree-vectorize -msse3 -mssse3 -Wno-deprecated-declarations -Wno-invalid-offsetof -gdwarf-2 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/openFrameworksDebug.hmap -F/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx/include -I../../../../libs/freetype/include -I../../../../libs/freetype/include/freetype2 -I../../../../libs/poco/include -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources/i386 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources -D__MACOSX_CORE__ -lpthread -c /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/graphics/ofBitmapFont.cpp -o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofBitmapFont.o0#
 
 CCompileC build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofGraphics.o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/graphics/ofGraphics.cpp normal i386 c++ com.apple.compilers.gcc.4_2
-s320204617.289980
-e320204621.159356
+s320833678.807940
+e320833682.406415
 r1
 xCompileC
 xbuild/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofGraphics.o
@@ -1471,11 +1471,11 @@ xi386
 xc++
 xcom.apple.compilers.gcc.4_2
 oi686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done
-lSLF07#2@149"Compile /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/graphics/ofGraphics.cpp320204617#320204621#0(92"i686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done0(0#0#141"/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/graphics/ofGraphics.cpp8632063648#1569"    cd /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -ftree-vectorize -msse3 -mssse3 -Wno-deprecated-declarations -Wno-invalid-offsetof -gdwarf-2 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/openFrameworksDebug.hmap -F/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx/include -I../../../../libs/freetype/include -I../../../../libs/freetype/include/freetype2 -I../../../../libs/poco/include -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources/i386 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources -D__MACOSX_CORE__ -lpthread -c /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/graphics/ofGraphics.cpp -o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofGraphics.o0#
+lSLF07#2@149"Compile /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/graphics/ofGraphics.cpp320833678#320833682#0(92"i686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done0(0#0#141"/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/graphics/ofGraphics.cpp8630219616#1569"    cd /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -ftree-vectorize -msse3 -mssse3 -Wno-deprecated-declarations -Wno-invalid-offsetof -gdwarf-2 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/openFrameworksDebug.hmap -F/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx/include -I../../../../libs/freetype/include -I../../../../libs/freetype/include/freetype2 -I../../../../libs/poco/include -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources/i386 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources -D__MACOSX_CORE__ -lpthread -c /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/graphics/ofGraphics.cpp -o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofGraphics.o0#
 
 CCompileC build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofImage.o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/graphics/ofImage.cpp normal i386 c++ com.apple.compilers.gcc.4_2
-s320204618.234417
-e320204622.704731
+s320833679.702034
+e320833682.840491
 r1
 xCompileC
 xbuild/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofImage.o
@@ -1485,11 +1485,11 @@ xi386
 xc++
 xcom.apple.compilers.gcc.4_2
 oi686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done
-lSLF07#2@146"Compile /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/graphics/ofImage.cpp320204618#320204622#0(92"i686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done0(0#0#138"/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/graphics/ofImage.cpp8618615904#1563"    cd /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -ftree-vectorize -msse3 -mssse3 -Wno-deprecated-declarations -Wno-invalid-offsetof -gdwarf-2 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/openFrameworksDebug.hmap -F/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx/include -I../../../../libs/freetype/include -I../../../../libs/freetype/include/freetype2 -I../../../../libs/poco/include -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources/i386 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources -D__MACOSX_CORE__ -lpthread -c /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/graphics/ofImage.cpp -o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofImage.o0#
+lSLF07#2@146"Compile /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/graphics/ofImage.cpp320833679#320833682#0(92"i686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done0(0#0#138"/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/graphics/ofImage.cpp8629903104#1563"    cd /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -ftree-vectorize -msse3 -mssse3 -Wno-deprecated-declarations -Wno-invalid-offsetof -gdwarf-2 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/openFrameworksDebug.hmap -F/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx/include -I../../../../libs/freetype/include -I../../../../libs/freetype/include/freetype2 -I../../../../libs/poco/include -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources/i386 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources -D__MACOSX_CORE__ -lpthread -c /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/graphics/ofImage.cpp -o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofImage.o0#
 
 CCompileC build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofMath.o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/utils/ofMath.cpp normal i386 c++ com.apple.compilers.gcc.4_2
-s320204625.186030
-e320204627.840730
+s320833683.017342
+e320833686.233260
 r1
 xCompileC
 xbuild/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofMath.o
@@ -1499,11 +1499,11 @@ xi386
 xc++
 xcom.apple.compilers.gcc.4_2
 oi686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done
-lSLF07#2@142"Compile /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/utils/ofMath.cpp320204625#320204627#0(92"i686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done0(0#0#134"/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/utils/ofMath.cpp8617867360#1558"    cd /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -ftree-vectorize -msse3 -mssse3 -Wno-deprecated-declarations -Wno-invalid-offsetof -gdwarf-2 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/openFrameworksDebug.hmap -F/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx/include -I../../../../libs/freetype/include -I../../../../libs/freetype/include/freetype2 -I../../../../libs/poco/include -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources/i386 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources -D__MACOSX_CORE__ -lpthread -c /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/utils/ofMath.cpp -o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofMath.o0#
+lSLF07#2@142"Compile /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/utils/ofMath.cpp320833683#320833686#0(92"i686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done0(0#0#134"/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/utils/ofMath.cpp8630919200#1558"    cd /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -ftree-vectorize -msse3 -mssse3 -Wno-deprecated-declarations -Wno-invalid-offsetof -gdwarf-2 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/openFrameworksDebug.hmap -F/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx/include -I../../../../libs/freetype/include -I../../../../libs/freetype/include/freetype2 -I../../../../libs/poco/include -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources/i386 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources -D__MACOSX_CORE__ -lpthread -c /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/utils/ofMath.cpp -o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofMath.o0#
 
 CCompileC build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofQtUtils.o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/video/ofQtUtils.cpp normal i386 c++ com.apple.compilers.gcc.4_2
-s320204627.840911
-e320204629.435154
+s320833684.202422
+e320833686.444445
 r1
 xCompileC
 xbuild/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofQtUtils.o
@@ -1513,11 +1513,11 @@ xi386
 xc++
 xcom.apple.compilers.gcc.4_2
 oi686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done
-lSLF07#2@145"Compile /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/video/ofQtUtils.cpp320204627#320204629#0(92"i686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done0(0#0#137"/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/video/ofQtUtils.cpp8613625760#1564"    cd /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -ftree-vectorize -msse3 -mssse3 -Wno-deprecated-declarations -Wno-invalid-offsetof -gdwarf-2 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/openFrameworksDebug.hmap -F/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx/include -I../../../../libs/freetype/include -I../../../../libs/freetype/include/freetype2 -I../../../../libs/poco/include -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources/i386 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources -D__MACOSX_CORE__ -lpthread -c /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/video/ofQtUtils.cpp -o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofQtUtils.o0#
+lSLF07#2@145"Compile /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/video/ofQtUtils.cpp320833684#320833686#0(92"i686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done0(0#0#137"/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/video/ofQtUtils.cpp8590278912#1564"    cd /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -ftree-vectorize -msse3 -mssse3 -Wno-deprecated-declarations -Wno-invalid-offsetof -gdwarf-2 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/openFrameworksDebug.hmap -F/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx/include -I../../../../libs/freetype/include -I../../../../libs/freetype/include/freetype2 -I../../../../libs/poco/include -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources/i386 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources -D__MACOSX_CORE__ -lpthread -c /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/video/ofQtUtils.cpp -o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofQtUtils.o0#
 
 CCompileC build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofSerial.o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/communication/ofSerial.cpp normal i386 c++ com.apple.compilers.gcc.4_2
-s320204606.595861
-e320204616.830909
+s320833674.528913
+e320833677.982156
 r1
 xCompileC
 xbuild/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofSerial.o
@@ -1527,11 +1527,11 @@ xi386
 xc++
 xcom.apple.compilers.gcc.4_2
 oi686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done
-lSLF07#2@152"Compile /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/communication/ofSerial.cpp320204606#320204616#0(92"i686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done0(0#0#144"/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/communication/ofSerial.cpp8615393024#1570"    cd /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -ftree-vectorize -msse3 -mssse3 -Wno-deprecated-declarations -Wno-invalid-offsetof -gdwarf-2 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/openFrameworksDebug.hmap -F/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx/include -I../../../../libs/freetype/include -I../../../../libs/freetype/include/freetype2 -I../../../../libs/poco/include -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources/i386 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources -D__MACOSX_CORE__ -lpthread -c /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/communication/ofSerial.cpp -o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofSerial.o0#
+lSLF07#2@152"Compile /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/communication/ofSerial.cpp320833674#320833678#0(92"i686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done0(0#0#144"/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/communication/ofSerial.cpp8621923904#1570"    cd /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -ftree-vectorize -msse3 -mssse3 -Wno-deprecated-declarations -Wno-invalid-offsetof -gdwarf-2 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/openFrameworksDebug.hmap -F/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx/include -I../../../../libs/freetype/include -I../../../../libs/freetype/include/freetype2 -I../../../../libs/poco/include -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources/i386 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources -D__MACOSX_CORE__ -lpthread -c /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/communication/ofSerial.cpp -o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofSerial.o0#
 
 CCompileC build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofSoundPlayer.o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/sound/ofSoundPlayer.cpp normal i386 c++ com.apple.compilers.gcc.4_2
-s320204623.003564
-e320204624.140548
+s320833682.406665
+e320833684.202149
 r1
 xCompileC
 xbuild/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofSoundPlayer.o
@@ -1541,11 +1541,11 @@ xi386
 xc++
 xcom.apple.compilers.gcc.4_2
 oi686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done
-lSLF07#2@149"Compile /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/sound/ofSoundPlayer.cpp320204623#320204624#0(92"i686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done0(0#0#141"/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/sound/ofSoundPlayer.cpp8618934432#1572"    cd /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -ftree-vectorize -msse3 -mssse3 -Wno-deprecated-declarations -Wno-invalid-offsetof -gdwarf-2 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/openFrameworksDebug.hmap -F/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx/include -I../../../../libs/freetype/include -I../../../../libs/freetype/include/freetype2 -I../../../../libs/poco/include -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources/i386 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources -D__MACOSX_CORE__ -lpthread -c /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/sound/ofSoundPlayer.cpp -o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofSoundPlayer.o0#
+lSLF07#2@149"Compile /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/sound/ofSoundPlayer.cpp320833682#320833684#0(92"i686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done0(0#0#141"/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/sound/ofSoundPlayer.cpp8630019264#1572"    cd /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -ftree-vectorize -msse3 -mssse3 -Wno-deprecated-declarations -Wno-invalid-offsetof -gdwarf-2 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/openFrameworksDebug.hmap -F/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx/include -I../../../../libs/freetype/include -I../../../../libs/freetype/include/freetype2 -I../../../../libs/poco/include -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources/i386 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources -D__MACOSX_CORE__ -lpthread -c /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/sound/ofSoundPlayer.cpp -o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofSoundPlayer.o0#
 
 CCompileC build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofSoundStream.o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/sound/ofSoundStream.cpp normal i386 c++ com.apple.compilers.gcc.4_2
-s320204624.140639
-e320204626.315652
+s320833682.840621
+e320833685.436983
 r1
 xCompileC
 xbuild/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofSoundStream.o
@@ -1555,11 +1555,11 @@ xi386
 xc++
 xcom.apple.compilers.gcc.4_2
 oi686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done
-lSLF07#2@149"Compile /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/sound/ofSoundStream.cpp320204624#320204626#0(92"i686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done0(0#0#141"/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/sound/ofSoundStream.cpp8640734720#1572"    cd /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -ftree-vectorize -msse3 -mssse3 -Wno-deprecated-declarations -Wno-invalid-offsetof -gdwarf-2 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/openFrameworksDebug.hmap -F/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx/include -I../../../../libs/freetype/include -I../../../../libs/freetype/include/freetype2 -I../../../../libs/poco/include -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources/i386 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources -D__MACOSX_CORE__ -lpthread -c /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/sound/ofSoundStream.cpp -o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofSoundStream.o0#
+lSLF07#2@149"Compile /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/sound/ofSoundStream.cpp320833682#320833685#0(92"i686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done0(0#0#141"/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/sound/ofSoundStream.cpp8598541120#1572"    cd /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -ftree-vectorize -msse3 -mssse3 -Wno-deprecated-declarations -Wno-invalid-offsetof -gdwarf-2 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/openFrameworksDebug.hmap -F/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx/include -I../../../../libs/freetype/include -I../../../../libs/freetype/include/freetype2 -I../../../../libs/poco/include -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources/i386 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources -D__MACOSX_CORE__ -lpthread -c /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/sound/ofSoundStream.cpp -o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofSoundStream.o0#
 
 CCompileC build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofTexture.o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/graphics/ofTexture.cpp normal i386 c++ com.apple.compilers.gcc.4_2
-s320204621.159530
-e320204623.003423
+s320833679.919874
+e320833683.017197
 r1
 xCompileC
 xbuild/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofTexture.o
@@ -1569,11 +1569,11 @@ xi386
 xc++
 xcom.apple.compilers.gcc.4_2
 oi686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done
-lSLF07#2@148"Compile /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/graphics/ofTexture.cpp320204621#320204623#0(92"i686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done0(0#0#140"/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/graphics/ofTexture.cpp8614004672#1567"    cd /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -ftree-vectorize -msse3 -mssse3 -Wno-deprecated-declarations -Wno-invalid-offsetof -gdwarf-2 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/openFrameworksDebug.hmap -F/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx/include -I../../../../libs/freetype/include -I../../../../libs/freetype/include/freetype2 -I../../../../libs/poco/include -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources/i386 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources -D__MACOSX_CORE__ -lpthread -c /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/graphics/ofTexture.cpp -o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofTexture.o0#
+lSLF07#2@148"Compile /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/graphics/ofTexture.cpp320833679#320833683#0(92"i686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done0(0#0#140"/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/graphics/ofTexture.cpp8619865120#1567"    cd /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -ftree-vectorize -msse3 -mssse3 -Wno-deprecated-declarations -Wno-invalid-offsetof -gdwarf-2 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/openFrameworksDebug.hmap -F/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx/include -I../../../../libs/freetype/include -I../../../../libs/freetype/include/freetype2 -I../../../../libs/poco/include -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources/i386 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources -D__MACOSX_CORE__ -lpthread -c /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/graphics/ofTexture.cpp -o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofTexture.o0#
 
 CCompileC build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofTrueTypeFont.o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/graphics/ofTrueTypeFont.cpp normal i386 c++ com.apple.compilers.gcc.4_2
-s320204622.704946
-e320204625.185859
+s320833680.815400
+e320833683.593518
 r1
 xCompileC
 xbuild/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofTrueTypeFont.o
@@ -1583,11 +1583,11 @@ xi386
 xc++
 xcom.apple.compilers.gcc.4_2
 oi686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done
-lSLF07#2@153"Compile /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/graphics/ofTrueTypeFont.cpp320204622#320204625#0(92"i686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done0(0#0#145"/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/graphics/ofTrueTypeFont.cpp8639655680#1577"    cd /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -ftree-vectorize -msse3 -mssse3 -Wno-deprecated-declarations -Wno-invalid-offsetof -gdwarf-2 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/openFrameworksDebug.hmap -F/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx/include -I../../../../libs/freetype/include -I../../../../libs/freetype/include/freetype2 -I../../../../libs/poco/include -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources/i386 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources -D__MACOSX_CORE__ -lpthread -c /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/graphics/ofTrueTypeFont.cpp -o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofTrueTypeFont.o0#
+lSLF07#2@153"Compile /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/graphics/ofTrueTypeFont.cpp320833680#320833683#0(92"i686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done0(0#0#145"/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/graphics/ofTrueTypeFont.cpp8631606336#1577"    cd /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -ftree-vectorize -msse3 -mssse3 -Wno-deprecated-declarations -Wno-invalid-offsetof -gdwarf-2 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/openFrameworksDebug.hmap -F/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx/include -I../../../../libs/freetype/include -I../../../../libs/freetype/include/freetype2 -I../../../../libs/poco/include -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources/i386 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources -D__MACOSX_CORE__ -lpthread -c /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/graphics/ofTrueTypeFont.cpp -o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofTrueTypeFont.o0#
 
 CCompileC build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofUtils.o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/utils/ofUtils.cpp normal i386 c++ com.apple.compilers.gcc.4_2
-s320204626.315749
-e320204628.974660
+s320833683.593665
+e320833686.912299
 r1
 xCompileC
 xbuild/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofUtils.o
@@ -1597,11 +1597,11 @@ xi386
 xc++
 xcom.apple.compilers.gcc.4_2
 oi686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done
-lSLF07#2@143"Compile /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/utils/ofUtils.cpp320204626#320204628#0(92"i686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done0(0#0#135"/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/utils/ofUtils.cpp8631545120#1560"    cd /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -ftree-vectorize -msse3 -mssse3 -Wno-deprecated-declarations -Wno-invalid-offsetof -gdwarf-2 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/openFrameworksDebug.hmap -F/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx/include -I../../../../libs/freetype/include -I../../../../libs/freetype/include/freetype2 -I../../../../libs/poco/include -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources/i386 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources -D__MACOSX_CORE__ -lpthread -c /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/utils/ofUtils.cpp -o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofUtils.o0#
+lSLF07#2@143"Compile /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/utils/ofUtils.cpp320833683#320833686#0(92"i686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done0(0#0#135"/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/utils/ofUtils.cpp8631280896#1560"    cd /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -ftree-vectorize -msse3 -mssse3 -Wno-deprecated-declarations -Wno-invalid-offsetof -gdwarf-2 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/openFrameworksDebug.hmap -F/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx/include -I../../../../libs/freetype/include -I../../../../libs/freetype/include/freetype2 -I../../../../libs/poco/include -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources/i386 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources -D__MACOSX_CORE__ -lpthread -c /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/utils/ofUtils.cpp -o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofUtils.o0#
 
 CCompileC build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofVideoGrabber.o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/video/ofVideoGrabber.cpp normal i386 c++ com.apple.compilers.gcc.4_2
-s320204628.974782
-e320204630.822671
+s320833685.437118
+e320833687.840660
 r1
 xCompileC
 xbuild/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofVideoGrabber.o
@@ -1611,11 +1611,11 @@ xi386
 xc++
 xcom.apple.compilers.gcc.4_2
 oi686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done
-lSLF07#2@150"Compile /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/video/ofVideoGrabber.cpp320204628#320204630#0(92"i686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done0(0#0#142"/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/video/ofVideoGrabber.cpp8649651200#1574"    cd /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -ftree-vectorize -msse3 -mssse3 -Wno-deprecated-declarations -Wno-invalid-offsetof -gdwarf-2 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/openFrameworksDebug.hmap -F/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx/include -I../../../../libs/freetype/include -I../../../../libs/freetype/include/freetype2 -I../../../../libs/poco/include -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources/i386 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources -D__MACOSX_CORE__ -lpthread -c /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/video/ofVideoGrabber.cpp -o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofVideoGrabber.o0#
+lSLF07#2@150"Compile /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/video/ofVideoGrabber.cpp320833685#320833687#0(92"i686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done0(0#0#142"/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/video/ofVideoGrabber.cpp8631390528#1574"    cd /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -ftree-vectorize -msse3 -mssse3 -Wno-deprecated-declarations -Wno-invalid-offsetof -gdwarf-2 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/openFrameworksDebug.hmap -F/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx/include -I../../../../libs/freetype/include -I../../../../libs/freetype/include/freetype2 -I../../../../libs/poco/include -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources/i386 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources -D__MACOSX_CORE__ -lpthread -c /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/video/ofVideoGrabber.cpp -o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofVideoGrabber.o0#
 
 CCompileC build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofVideoPlayer.o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/video/ofVideoPlayer.cpp normal i386 c++ com.apple.compilers.gcc.4_2
-s320204629.435361
-e320204631.476667
+s320833686.233508
+e320833688.268855
 r1
 xCompileC
 xbuild/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofVideoPlayer.o
@@ -1625,11 +1625,11 @@ xi386
 xc++
 xcom.apple.compilers.gcc.4_2
 oi686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done
-lSLF07#2@149"Compile /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/video/ofVideoPlayer.cpp320204629#320204631#0(92"i686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done0(0#0#141"/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/video/ofVideoPlayer.cpp8617780576#1572"    cd /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -ftree-vectorize -msse3 -mssse3 -Wno-deprecated-declarations -Wno-invalid-offsetof -gdwarf-2 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/openFrameworksDebug.hmap -F/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx/include -I../../../../libs/freetype/include -I../../../../libs/freetype/include/freetype2 -I../../../../libs/poco/include -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources/i386 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources -D__MACOSX_CORE__ -lpthread -c /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/video/ofVideoPlayer.cpp -o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofVideoPlayer.o0#
+lSLF07#2@149"Compile /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/video/ofVideoPlayer.cpp320833686#320833688#0(92"i686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done0(0#0#141"/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/video/ofVideoPlayer.cpp8631529664#1572"    cd /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -ftree-vectorize -msse3 -mssse3 -Wno-deprecated-declarations -Wno-invalid-offsetof -gdwarf-2 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/openFrameworksDebug.hmap -F/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx/include -I../../../../libs/freetype/include -I../../../../libs/freetype/include/freetype2 -I../../../../libs/poco/include -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources/i386 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources -D__MACOSX_CORE__ -lpthread -c /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/video/ofVideoPlayer.cpp -o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofVideoPlayer.o0#
 
 CCompileC build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofxThread.o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/utils/ofxThread.cpp normal i386 c++ com.apple.compilers.gcc.4_2
-s320204630.822810
-e320204632.093573
+s320833686.444588
+e320833687.804545
 r1
 xCompileC
 xbuild/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofxThread.o
@@ -1639,7 +1639,7 @@ xi386
 xc++
 xcom.apple.compilers.gcc.4_2
 oi686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done
-lSLF07#2@145"Compile /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/utils/ofxThread.cpp320204630#320204632#0(92"i686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done0(0#0#137"/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/utils/ofxThread.cpp8637767072#1564"    cd /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -ftree-vectorize -msse3 -mssse3 -Wno-deprecated-declarations -Wno-invalid-offsetof -gdwarf-2 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/openFrameworksDebug.hmap -F/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx/include -I../../../../libs/freetype/include -I../../../../libs/freetype/include/freetype2 -I../../../../libs/poco/include -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources/i386 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources -D__MACOSX_CORE__ -lpthread -c /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/utils/ofxThread.cpp -o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofxThread.o0#
+lSLF07#2@145"Compile /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/utils/ofxThread.cpp320833686#320833687#0(92"i686-apple-darwin10-gcc-4.2.1: -lpthread: linker input file unused because linking not done0(0#0#137"/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/utils/ofxThread.cpp8630883552#1564"    cd /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -ftree-vectorize -msse3 -mssse3 -Wno-deprecated-declarations -Wno-invalid-offsetof -gdwarf-2 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/openFrameworksDebug.hmap -F/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx/include -I../../../../libs/freetype/include -I../../../../libs/freetype/include/freetype2 -I../../../../libs/poco/include -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources/i386 -I/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/DerivedSources -D__MACOSX_CORE__ -lpthread -c /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/utils/ofxThread.cpp -o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofxThread.o0#
 
 CCompileC build/openFrameworksLib.build/Release/openFrameworks.build/Objects-normal/i386/ofAppGlutWindow.o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/app/ofAppGlutWindow.cpp normal i386 c++ com.apple.compilers.gcc.4_2
 s318132278.597856
@@ -1890,12 +1890,12 @@ xi386
 lSLF07#2@51"Libtool ../../lib/osx//openFrameworks.a normal i386318132299#318132300#0(0"0(0#0#0"8677717568#820"    cd /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx    /Developer/usr/bin/libtool -static -arch_only i386 -L/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx -filelist /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Release/openFrameworks.build/Objects-normal/i386/openFrameworks.LinkFileList -framework AGL -framework ApplicationServices -framework AudioToolbox -framework Carbon -framework CoreAudio -framework CoreFoundation -framework CoreServices -framework GLUT -framework OpenGL -framework QuickTime -o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx//openFrameworks.a0#
 
 CLibtool /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx//openFrameworksDebug.a normal i386
-s320204632.736653
-e320204633.030992
+s320833688.268937
+e320833688.370039
 r1
 xLibtool
 x/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx//openFrameworksDebug.a
 xnormal
 xi386
-lSLF07#2@56"Libtool ../../lib/osx//openFrameworksDebug.a normal i386320204632#320204633#0(0"0(0#0#0"8617260160#828"    cd /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx    /Developer/usr/bin/libtool -static -arch_only i386 -L/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx -filelist /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/openFrameworksDebug.LinkFileList -framework AGL -framework ApplicationServices -framework AudioToolbox -framework Carbon -framework CoreAudio -framework CoreFoundation -framework CoreServices -framework GLUT -framework OpenGL -framework QuickTime -o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx//openFrameworksDebug.a0#
+lSLF07#2@56"Libtool ../../lib/osx//openFrameworksDebug.a normal i386320833688#320833688#0(0"0(0#0#0"8630790240#828"    cd /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx    /Developer/usr/bin/libtool -static -arch_only i386 -L/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx -filelist /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/openFrameworksDebug.LinkFileList -framework AGL -framework ApplicationServices -framework AudioToolbox -framework Carbon -framework CoreAudio -framework CoreFoundation -framework CoreServices -framework GLUT -framework OpenGL -framework QuickTime -o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx//openFrameworksDebug.a0#
 

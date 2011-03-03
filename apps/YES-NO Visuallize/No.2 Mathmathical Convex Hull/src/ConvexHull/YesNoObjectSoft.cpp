@@ -19,8 +19,9 @@ void YesNoObjectSoft::setup(int _yesOrNo, ofxBullet* _bullet, ofxVec3f _forcePoi
 	ofxVec3f gravity(0, 0, 0);
 	ofxVec3f center(forcePoint);
 	radius = scale;
-	radius *= 2.5;
+	//radius *= 2.5;
 	resolusion = ofMap(sizeLevel, YNSOFTMINSIZELEV, YNSOFTMAXSIZELEV, minRes, maxRes);
+	
 	yesORno = bullet->createEllipsoid(gravity, center, radius, resolusion);	
 	
 	col.setColorRadius(1.0);
@@ -48,15 +49,15 @@ void YesNoObjectSoft::update() {
 	
 	updateColorPointer();
 	
-	btVector3 f = btVector3(0.0, 0.0, 0.0);
-	f.setX(ofSignedNoise(ofGetElapsedTimef())*ofRandom(10, 38));
-	f.setY(ofSignedNoise(ofGetElapsedTimef())*ofRandom(10, 38));
-	f.setZ(ofSignedNoise(ofGetElapsedTimef())*ofRandom(10, 38));	
-	yesORno->getSoftBody()->addForce(f);	
-	
-	if (ofGetFrameNum() % (int)ofRandom(200, 1000) == 0) {
-		blowUp(ofRandom(50, 100));
-	}
+//	btVector3 f = btVector3(0.0, 0.0, 0.0);
+//	f.setX(ofSignedNoise(ofGetElapsedTimef())*ofRandom(10, 38));
+//	f.setY(ofSignedNoise(ofGetElapsedTimef())*ofRandom(10, 38));
+//	f.setZ(ofSignedNoise(ofGetElapsedTimef())*ofRandom(10, 38));	
+//	yesORno->getSoftBody()->addForce(f);	
+//	
+//	if (ofGetFrameNum() % (int)ofRandom(200, 1000) == 0) {
+//		blowUp(ofRandom(50, 100));
+//	}
 	
 }
 
@@ -131,10 +132,10 @@ void YesNoObjectSoft::draw() {
 		a += norm;
 		b += norm;
 		c += norm;
-		ofxVec3f cen = getFaceCentroid(faces, fid);
-		ofxVec3f an = a-cen;
-		ofxVec3f bn = b-cen;
-		ofxVec3f cn = c-cen;
+//		ofxVec3f cen = getFaceCentroid(faces, fid);
+//		ofxVec3f an = a-cen;
+//		ofxVec3f bn = b-cen;
+//		ofxVec3f cn = c-cen;
 //		a += an/2;
 //		b += bn/2;
 //		c += cn/2;
@@ -387,6 +388,7 @@ void YesNoObjectSoft::addSMSCompleted(int & z) {
 	as->tw.setParameters(as->ea, ofxTween::easeIn, 0.0, as->length, 800, 0);
 	
 	ofAddListener(as->tw.end_E, this, &YesNoObjectSoft::notifyFinishAllUpdating);
+	ofAddListener(as->endSpikeGlow, this, &YesNoObjectSoft::onEndSpikeGlow);
 	addedSMSs.push_back(as);
 	
 	int i = 0;
@@ -458,5 +460,149 @@ void YesNoObjectSoft::shrink() {
 void YesNoObjectSoft::notifyFinishAllUpdating(int & z) {
 	
 	ofNotifyEvent(onFinishAllUpdating, YesOrNo);
+
+}
+
+void YesNoObjectSoft::onEndSpikeGlow(int & z) {
+	
+	vector<ofxVec3f> vertices;
+	btSoftBody::tFaceArray& faces = yesORno->getSoftBody()->m_faces;
+	for (int i = 0; i < faces.size(); i++) {
+		btSoftBody::Node* node_0 = faces[i].m_n[0];
+		btSoftBody::Node* node_1 = faces[i].m_n[1];
+		btSoftBody::Node* node_2 = faces[i].m_n[2];	
+		float x0 = node_0->m_x.getX();
+		float y0 = node_0->m_x.getY();
+		float z0 = node_0->m_x.getZ();
+		float x1 = node_1->m_x.getX();
+		float y1 = node_1->m_x.getY();
+		float z1 = node_1->m_x.getZ();
+		float x2 = node_2->m_x.getX();
+		float y2 = node_2->m_x.getY();
+		float z2 = node_2->m_x.getZ();	
+		ofxVec3f v0(x0,y0,z0);
+		ofxVec3f v1(x1,y1,z1);
+		ofxVec3f v2(x2,y2,z2);
+		
+//		cout << ofToString(x0)+" "+ofToString(y0)+" "+ofToString(z0) << endl;
+//		cout << ofToString(x1)+" "+ofToString(y1)+" "+ofToString(z1) << endl;
+//		cout << ofToString(x2)+" "+ofToString(y2)+" "+ofToString(z2) << endl;
+		
+		vertices.push_back(v0);
+		vertices.push_back(v1);
+		vertices.push_back(v2);
+	}
+	cout << " " << endl;
+	
+	// remove overlapping vertices
+	// get pvoting ball radius 
+	vector<ofxVec3f> tmpVertices = vertices;
+	for (int i = 0; i < vertices.size(); i++) {
+		ofxVec3f v = vertices[i];
+		int cnt = 0;
+		for (int j = 0; j < tmpVertices.size(); j++) {
+			ofxVec3f jv = tmpVertices[j];
+			if (v == jv) {
+				if (cnt > 0) {
+					tmpVertices.erase(tmpVertices.begin()+j);
+				}
+				cnt++;					
+			}
+		}
+	}
+	
+	ofxVec3f a = addedSMSs[addedSMSs.size()-1]->getA();
+	ofxVec3f b = addedSMSs[addedSMSs.size()-1]->getB();
+	ofxVec3f c = addedSMSs[addedSMSs.size()-1]->getC();
+	ofxVec3f norm = addedSMSs[addedSMSs.size()-1]->getNorm();		
+	norm *= addedSMSs[addedSMSs.size()-1]->tw.getTarget(0);
+	a += norm;
+	b += norm;
+	c += norm;	
+	tmpVertices.push_back(a);
+	tmpVertices.push_back(b);
+	tmpVertices.push_back(c);
+	addedSMSs.pop_back();
+	
+	float distAvg = 0.0;
+	int numD = 0;
+	ofxVec3f prevVert;
+	vector<float> cleanVertices;	
+	for (int i = 0; i < tmpVertices.size(); i++) {
+		ofxVec3f v = tmpVertices[i]/4.5;
+		cleanVertices.push_back(v.x);
+		cleanVertices.push_back(v.y);
+		cleanVertices.push_back(v.z);
+		
+		if (i == 0) {
+			prevVert = v;
+		}else {
+			distAvg += v.distance(prevVert);
+			numD++;
+		}
+	}
+	distAvg /= tmpVertices.size()-1;
+	distAvg *= 3.0;
+	
+	
+	vector<float> verts; 
+	vector<int> faceIndices; 
+	int numFace = 0; 
+	while (faceIndices.size() == 0) {
+		cout << "face size = " + ofToString((int)faceIndices.size()) << endl;
+		vcgMesh.reconstructFacePointCloud(cleanVertices, distAvg*ofRandom(0.9, 1.1));	
+		verts = vcgMesh.getVertices();
+		faceIndices = vcgMesh.getFaceIndices();
+		numFace = vcgMesh.getFaceNum();
+	}
+	cout << "how many faces? = " + ofToString((int)faceIndices.size()) << endl;
+	
+	for (int i = 0; i < faceIndices.size()/3; i++) {
+		int a = faceIndices[i*3];
+		int b = faceIndices[i*3+1];
+		int c = faceIndices[i*3+2];
+		string ax = ofToString(verts[a]);
+		string ay = ofToString(verts[a+1]);
+		string az = ofToString(verts[a+2]);
+		string bx = ofToString(verts[b]);
+		string by = ofToString(verts[b+1]);
+		string bz = ofToString(verts[b+2]);
+		string cx = ofToString(verts[c]);
+		string cy = ofToString(verts[c+1]);
+		string cz = ofToString(verts[c+2]);
+		cout << ofToString(i)+" faceA = ("+ax+"), ("+ay+"), ("+az+")" << endl;
+		cout << ofToString(i)+" faceB = ("+bx+"), ("+by+"), ("+bz+")" << endl;
+		cout << ofToString(i)+" faceC = ("+cx+"), ("+cy+"), ("+cz+")" << endl;		
+	}
+		
+	yesORno->remove(bullet->getSoftDynamicsWorld());
+	delete yesORno;
+	yesORno = bullet->createSoftTriMesh(ofxVec3f(0, 0, 0), &verts[0], &faceIndices[0], numFace);
+	
+	
+//	vector<float> input;
+//	for (int i = 0; i < 24; i++) {
+//		float p = verts[i];
+//		cout << ofToString(p) << endl;
+//		input.push_back(p);
+//	}	
+//	vcgMesh.reconstructFacePointCloud(input);
+//	vector<float> verts = vcgMesh.getVertices();
+//	vector<int> faceIndices = vcgMesh.getFaceIndices();
+//	int numFace = vcgMesh.getFaceNum();	
+//	yesORno = bullet->createSoftTriMesh(ofxVec3f(0, 0, 0), &verts[0], &faceIndices[0], numFace);		
+	
+//	int fnum = 100*3;
+//	vector<float> pCloud;
+//	for (int i = 0; i < fnum; i++) {
+//		float p = ofRandom(0, 100);//ofRandomf();//
+//		pCloud.push_back(p);
+//	}
+//	vcgMesh.reconstructFacePointCloud(pCloud);
+//	
+//	vector<float> verts = vcgMesh.getVertices();
+//	vector<int> faceIndices = vcgMesh.getFaceIndices();
+//	int numFace = vcgMesh.getFaceNum();
+//	yesORno = bullet->createSoftTriMesh(ofxVec3f(0, 0, 0), &verts[0], &faceIndices[0], numFace);		
 
 }

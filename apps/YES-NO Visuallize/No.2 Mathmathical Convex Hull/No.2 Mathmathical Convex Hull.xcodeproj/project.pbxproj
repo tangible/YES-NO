@@ -25,6 +25,7 @@
 		310C99771303EC7F006EF72F /* ofxSimpleGuiPage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 310C99641303EC7F006EF72F /* ofxSimpleGuiPage.cpp */; };
 		310C99781303EC7F006EF72F /* ofxSimpleGuiToo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 310C99661303EC7F006EF72F /* ofxSimpleGuiToo.cpp */; };
 		310C99811303ECE1006EF72F /* AdminPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 310C99801303ECE1006EF72F /* AdminPanel.cpp */; };
+		311AD3C0131ED33D00485387 /* ofxVCGLib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 311AD3BD131ED33D00485387 /* ofxVCGLib.cpp */; };
 		3124125313149008009EF2D9 /* qimg3.png in Resources */ = {isa = PBXBuildFile; fileRef = 3124124E13149008009EF2D9 /* qimg3.png */; };
 		3124125413149008009EF2D9 /* QuestionImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3124124F13149008009EF2D9 /* QuestionImage.cpp */; };
 		3124125D13149042009EF2D9 /* Helvetica.dfont in Resources */ = {isa = PBXBuildFile; fileRef = 3124125B13149042009EF2D9 /* Helvetica.dfont */; };
@@ -319,6 +320,9 @@
 		310C99671303EC7F006EF72F /* ofxSimpleGuiToo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSimpleGuiToo.h; sourceTree = "<group>"; };
 		310C997F1303ECE1006EF72F /* AdminPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdminPanel.h; sourceTree = "<group>"; };
 		310C99801303ECE1006EF72F /* AdminPanel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AdminPanel.cpp; sourceTree = "<group>"; };
+		311AD3BD131ED33D00485387 /* ofxVCGLib.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxVCGLib.cpp; sourceTree = "<group>"; };
+		311AD3BE131ED33D00485387 /* ofxVCGLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxVCGLib.h; sourceTree = "<group>"; };
+		311AD3BF131ED33D00485387 /* BunnyMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BunnyMesh.h; sourceTree = "<group>"; };
 		3124124E13149008009EF2D9 /* qimg3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qimg3.png; sourceTree = "<group>"; };
 		3124124F13149008009EF2D9 /* QuestionImage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = QuestionImage.cpp; sourceTree = "<group>"; };
 		3124125013149008009EF2D9 /* QuestionImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionImage.h; sourceTree = "<group>"; };
@@ -797,7 +801,7 @@
 		E45BE9770E8CC7DD009D7055 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = /System/Library/Frameworks/CoreServices.framework; sourceTree = "<absolute>"; };
 		E45BE9790E8CC7DD009D7055 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
 		E45BE97A0E8CC7DD009D7055 /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = /System/Library/Frameworks/QuickTime.framework; sourceTree = "<absolute>"; };
-		E4B69B5B0A3A1756003C02F2 /* No.2 Mathmathical Convex Hull.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "No.2 Mathmathical Convex Hull.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4B69B5B0A3A1756003C02F2 /* No.2 Mathmathical Convex HullDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "No.2 Mathmathical Convex HullDebug.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4B69E1D0A3A1BDC003C02F2 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
 		E4B69E1E0A3A1BDC003C02F2 /* App.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = App.cpp; sourceTree = "<group>"; };
 		E4B69E1F0A3A1BDC003C02F2 /* App.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = App.h; sourceTree = "<group>"; };
@@ -946,6 +950,17 @@
 			);
 			path = AdminPanel;
 			sourceTree = "<group>";
+		};
+		311AD3BC131ED33D00485387 /* ofxVCGLib */ = {
+			isa = PBXGroup;
+			children = (
+				311AD3BD131ED33D00485387 /* ofxVCGLib.cpp */,
+				311AD3BE131ED33D00485387 /* ofxVCGLib.h */,
+				311AD3BF131ED33D00485387 /* BunnyMesh.h */,
+			);
+			name = ofxVCGLib;
+			path = ../../../addons/ofxVCGLib;
+			sourceTree = SOURCE_ROOT;
 		};
 		3124124A13149008009EF2D9 /* QuestionImage */ = {
 			isa = PBXGroup;
@@ -1845,6 +1860,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				311AD3BC131ED33D00485387 /* ofxVCGLib */,
 				3124128B131493EA009EF2D9 /* ofxFileDialogOSX */,
 				3196663E13078BB700C55161 /* ofxTween */,
 				312485DA1305F58E0076BAB7 /* ofxEasyCam */,
@@ -2042,7 +2058,7 @@
 			isa = PBXGroup;
 			children = (
 				318E688812F604D30097A0A9 /* Resources */,
-				E4B69B5B0A3A1756003C02F2 /* No.2 Mathmathical Convex Hull.app */,
+				E4B69B5B0A3A1756003C02F2 /* No.2 Mathmathical Convex HullDebug.app */,
 				E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */,
 				E4B69E1C0A3A1BDC003C02F2 /* src */,
 				E4C2422310CC54B6004149E2 /* openFrameworks */,
@@ -2170,7 +2186,7 @@
 			);
 			name = "No.2 Mathmathical Convex Hull";
 			productName = myOFApp;
-			productReference = E4B69B5B0A3A1756003C02F2 /* No.2 Mathmathical Convex Hull.app */;
+			productReference = E4B69B5B0A3A1756003C02F2 /* No.2 Mathmathical Convex HullDebug.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -2450,6 +2466,7 @@
 				31CD7B2513091B42006DA41E /* StateText.cpp in Sources */,
 				3124125413149008009EF2D9 /* QuestionImage.cpp in Sources */,
 				3124128F131493EA009EF2D9 /* ofxFileDialogOSX.cpp in Sources */,
+				311AD3C0131ED33D00485387 /* ofxVCGLib.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2585,7 +2602,7 @@
 					"-lpthread",
 				);
 				OTHER_LDFLAGS = "";
-				USER_HEADER_SEARCH_PATHS = "../../../addons/ofxBulletPhysics/libs/src2.75/**";
+				USER_HEADER_SEARCH_PATHS = "../../../addons/ofxBulletPhysics/libs/src2.75/** ../../../addons/ofxVCGLib/vcglib/";
 			};
 			name = Debug;
 		};
@@ -2622,7 +2639,7 @@
 					"-lpthread",
 				);
 				OTHER_LDFLAGS = "";
-				USER_HEADER_SEARCH_PATHS = "../../../addons/ofxBulletPhysics/libs/src2.75/**";
+				USER_HEADER_SEARCH_PATHS = "../../../addons/ofxBulletPhysics/libs/src2.75/** ../../../addons/ofxVCGLib/vcglib/";
 			};
 			name = Release;
 		};

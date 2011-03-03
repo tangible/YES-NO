@@ -23,9 +23,9 @@ public:
 	MySoftBody(btBroadphaseInterface* m_broadphase,
 			   btCollisionDispatcher* m_dispatcher,
 			   btVector3 gravity);
-	~MySoftBody() {
-		delete psb;
-	};
+	~MySoftBody(){};
+	
+	void remove(btSoftRigidDynamicsWorld* m_dynamicsWorld);
 	
 	void createRopeShape(btVector3 from, btVector3 len,
 					int res, int fixed,

@@ -11,7 +11,6 @@
 
 #include "ofMain.h"
 #include "ofxBullet.h"
-#include "YesNoObject.h"
 #include "YesNoObjectSoft.h"
 #include "AdminPanel.h"
 #include "IncomingSMS.h"
@@ -38,8 +37,8 @@ public:
 	ofxCamera*				cam;	
 	AdminPanel*				admin;
 	
-	YesNoObject				yes;
-	YesNoObject				no;
+	YesNoObjectSoft			yesSoft;
+	YesNoObjectSoft			noSoft;	
 	bool					isYesUpdating;
 	bool					isNoUpdating;
 	void					onFinishAllUpdating(int & yesOrNo);
@@ -47,10 +46,8 @@ public:
 	
 	ofxVec3f				yesPoint;
 	int						currentYesLevel;
-	YesNoObjectSoft			yesSoft;
 	ofxVec3f				noPoint;
 	int						currentNoLevel;
-	YesNoObjectSoft			noSoft;
 	
 	vector<IncomingSMS*>	insmsYes;
 	vector<IncomingSMS*>	insmsNo;

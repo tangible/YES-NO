@@ -21,9 +21,9 @@ void ConvexHull::setup(int _fps, AdminPanel* _adminPanel, ofxCamera* _cam) {
 	yesPoint = ofxVec3f(ofGetWidth()/2-400, ofGetHeight()-370, -200);
 	noPoint = ofxVec3f(ofGetWidth()/2+400, ofGetHeight()-370, -200); 
 	
-	currentYesLevel = 2;
+	currentYesLevel = 0;
 	yesSoft.setup(YES, bullet, ofxVec3f(0,0,0), ofxVec3f(130, 70, 70), currentYesLevel);
-	currentNoLevel = 20;
+	currentNoLevel = 0;
 	noSoft.setup(NO, bullet, ofxVec3f(0,0,0), ofxVec3f(120, 60, 80), currentNoLevel);
 	
 	isYesUpdating = false;
@@ -68,7 +68,7 @@ void ConvexHull::draw() {
 
 	float yScale = yesScaleTween.update();
 	currYesScale = yScale;	
-	ofScale(yScale, yScale, yScale);
+	//ofScale(yScale, yScale, yScale);	
 	yesSoft.draw();
 	ofPopMatrix();
 	
@@ -78,7 +78,7 @@ void ConvexHull::draw() {
 	
 	float nScale = noScaleTween.update();
 	currNOScale = nScale;	
-	ofScale(nScale, nScale, nScale);
+	//ofScale(nScale, nScale, nScale);
 	noSoft.draw();
 	ofPopMatrix();
 	

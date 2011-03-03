@@ -56,6 +56,12 @@ MySoftBody::MySoftBody(btBroadphaseInterface* m_broadphase,
 
 }
 
+void MySoftBody::remove(btSoftRigidDynamicsWorld* m_dynamicsWorld) {
+	
+	m_dynamicsWorld->removeSoftBody(psb);
+	
+}
+
 btSoftBody * MySoftBody::getSoftBody(){
 	return psb;
 }	
@@ -191,34 +197,44 @@ void MySoftBody::createConvexHullShape(const btVector3* vertices, int nVerts) {
 void MySoftBody::createTriMeshShape(const btScalar* vertices, const int* triangles, int ntriangles) {
 	
 	psb = btSoftBodyHelpers::CreateFromTriMesh(softBodyWI, vertices, triangles, ntriangles);
+
+	btSoftBody::Material*	pm=psb->appendMaterial();
+	pm->m_kLST				=	0.5;
+//	pm->m_flags				-=	btSoftBody::fMaterial::DebugDraw;
+	psb->generateBendingConstraints(2,pm);
+	psb->m_cfg.piterations	=	2;
+	psb->m_cfg.kDF			=	0.5;
+	psb->randomizeConstraints();
+	psb->scale(btVector3(6,6,6));
+	psb->setTotalMass(100,true);		
 	
-	psb->m_materials[0]->m_kLST   =   0.1;
-	psb->m_materials[0]->m_kAST   =   0.1; // Area/Angular stiffness coefficient [0,1]
-	psb->m_materials[0]->m_kVST   =   0.1; // Volume stiffness coefficient [0,1]	
-	
-	// 粘り気
-	psb->m_cfg.kDP            =   0.1;//0.001; 
-	// 地面との間で巻き込まれたのが回復する力
-	psb->m_cfg.kDG			  =   0;
-	// わからない。何かへの抵抗。
-	psb->m_cfg.kLF			  =   0;
-	// ???
-	psb->m_cfg.kDF            =   1;//1;
-	// 元に戻る力、弾力
-	psb->m_cfg.kPR            =   3200;//2500;
-	// ぐちゃぐちゃになる度。中身の量。元に戻らない度。
-	psb->m_cfg.kVC            =   0;//2500;
-	// 地面と滑るかどうか
-	psb->m_cfg.kDF            =   1;//1;
-	// ???
-	psb->m_cfg.kMT            =   0;//1;	
-	// ???
-	psb->m_cfg.kCHR            =   1;//1;	
-	// ???
-	psb->m_cfg.kSHR            =   1;//1;
-	
-	psb->setTotalMass(20,true);
-	psb->setPose( false, false );	
+//	psb->m_materials[0]->m_kLST   =   0.1;
+//	psb->m_materials[0]->m_kAST   =   0.1; // Area/Angular stiffness coefficient [0,1]
+//	psb->m_materials[0]->m_kVST   =   0.1; // Volume stiffness coefficient [0,1]	
+//	
+//	// 粘り気
+//	psb->m_cfg.kDP            =   0.1;//0.001; 
+//	// 地面との間で巻き込まれたのが回復する力
+//	psb->m_cfg.kDG			  =   0;
+//	// わからない。何かへの抵抗。
+//	psb->m_cfg.kLF			  =   0;
+//	// ???
+//	psb->m_cfg.kDF            =   1;//1;
+//	// 元に戻る力、弾力
+//	psb->m_cfg.kPR            =   9200;//2500;
+//	// ぐちゃぐちゃになる度。中身の量。元に戻らない度。
+//	psb->m_cfg.kVC            =   0;//2500;
+//	// 地面と滑るかどうか
+//	psb->m_cfg.kDF            =   1;//1;
+//	// ???
+//	psb->m_cfg.kMT            =   0;//1;	
+//	// ???
+//	psb->m_cfg.kCHR            =   1;//1;	
+//	// ???
+//	psb->m_cfg.kSHR            =   1;//1;
+//	
+//	psb->setTotalMass(20,true);
+//	psb->setPose( false, false );	
 	
 }
 
