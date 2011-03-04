@@ -176,6 +176,7 @@
 		311AD187131ED17900485387 /* ofxVCGLib.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxVCGLib.cpp; sourceTree = "<group>"; };
 		311AD188131ED17900485387 /* ofxVCGLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxVCGLib.h; sourceTree = "<group>"; };
 		318E688C12F604E90097A0A9 /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = icon.icns; path = bin/data/icon.icns; sourceTree = "<group>"; };
+		319BCAAB1320691900BE563E /* ofxVCGPivot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxVCGPivot.h; sourceTree = "<group>"; };
 		31BBC125131F868900573404 /* cmesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cmesh.h; sourceTree = "<group>"; };
 		E45BE0390E8CC647009D7055 /* FreeImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FreeImage.h; path = ../../../libs/freeimage/include/FreeImage.h; sourceTree = SOURCE_ROOT; };
 		E45BE03F0E8CC650009D7055 /* fmod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = fmod.h; path = ../../../libs/fmodex/include/fmod.h; sourceTree = SOURCE_ROOT; };
@@ -435,6 +436,7 @@
 			children = (
 				311AD187131ED17900485387 /* ofxVCGLib.cpp */,
 				311AD188131ED17900485387 /* ofxVCGLib.h */,
+				319BCAAB1320691900BE563E /* ofxVCGPivot.h */,
 				31BBC125131F868900573404 /* cmesh.h */,
 				311AD186131ED17900485387 /* BunnyMesh.h */,
 			);

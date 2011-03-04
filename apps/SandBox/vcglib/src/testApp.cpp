@@ -6,7 +6,7 @@ void testApp::setup(){
 	
 	cam.setup(this, 760);
 	
-	vcglib = new ofxVCGLib();
+//	vcglib = new ofxVCGLib();
 	reconstruct(300.0, 0.2, M_PI/2);
 
 	gui.addTitle("VCG Setting");
@@ -30,10 +30,14 @@ void testApp::reconstruct(float radius, float clustering, float _angle) {
 		float p = verts[i];
 		input.push_back(p);
 	}
-	vcglib->reconstructFacePointCloud(input, radius, clustering, _angle);
 	
-	float colFactor = 1.0/vcglib->m.face.size();
-	for (int i = 0; i < vcglib->m.face.size(); i++) {
+	vcglib.reconstructFacePointCloud(input, radius, clustering, _angle);
+//	vcgpiv = new ofxVCGPivot<CMesh>(vcglib.m, radius, clustering, _angle);
+//	vcglib.reconstructFaceBunny();
+//	vcgpiv = new ofxVCGPivot<CMesh>(vcglib.m, vcglib.getRadius(), vcglib.getClustering(), vcglib.getAngle());	
+	
+	float colFactor = 1.0/vcglib.m.face.size();
+	for (int i = 0; i < vcglib.m.face.size(); i++) {
 		colp.setColorScale(1.0);
 		colp.setColorRadius(1.0);
 		colp.setColorAngle(colFactor*i);
@@ -58,20 +62,20 @@ void testApp::draw(){
 	
 	cam.draw();
 	
-	int test = vcglib->m.face.size();
+	int test = vcglib.m.face.size();
 	
 	ofPushMatrix();
 	ofTranslate(ofGetWidth()/2, ofGetHeight()/2, 0);
-	//ofScale(150, 150, 150);
+//	ofScale(150, 150, 150);
 	
 	ofSetColor(0, 0, 0);
-	for (int i = 0; i < vcglib->m.vert.size(); i++) {
-		ofxPoint(vcglib->m.vert[i].P()[0], vcglib->m.vert[i].P()[1], vcglib->m.vert[i].P()[2]);
+	for (int i = 0; i < vcglib.m.vert.size(); i++) {
+		ofxPoint(vcglib.m.vert[i].P()[0], vcglib.m.vert[i].P()[1], vcglib.m.vert[i].P()[2]);
 	}
 	
-	for (int i = 0; i < vcglib->m.face.size(); i++) {
+	for (int i = 0; i < vcglib.m.face.size(); i++) {
 //		ofSetColor(cols[i].r, cols[i].g, cols[i].b);
-		CFace &face = vcglib->m.face[i];	
+		CFace &face = vcglib.m.face[i];	
 		CVertex *v[3];		
 		v[0] = face.V(0);
 		v[1] = face.V(1);
@@ -86,14 +90,14 @@ void testApp::draw(){
 		float y2 = v[2]->P()[1];
 		float z2 = v[2]->P()[2];		
 //		float x0 = ->P()[0];
-//		float y0 = vcglib->m.face[i].V(0)->P()[1];
-//		float z0 = vcglib->m.face[i].V(0)->P()[2];		
-//		float x1 = vcglib->m.face[i].V(1)->P()[0];
-//		float y1 = vcglib->m.face[i].V(1)->P()[1];
-//		float z1 = vcglib->m.face[i].V(1)->P()[2];		
-//		float x2 = vcglib->m.face[i].V(2)->P()[0];
-//		float y2 = vcglib->m.face[i].V(2)->P()[1];
-//		float z2 = vcglib->m.face[i].V(2)->P()[2];		
+//		float y0 = vcglib.m.face[i].V(0)->P()[1];
+//		float z0 = vcglib.m.face[i].V(0)->P()[2];		
+//		float x1 = vcglib.m.face[i].V(1)->P()[0];
+//		float y1 = vcglib.m.face[i].V(1)->P()[1];
+//		float z1 = vcglib.m.face[i].V(1)->P()[2];		
+//		float x2 = vcglib.m.face[i].V(2)->P()[0];
+//		float y2 = vcglib.m.face[i].V(2)->P()[1];
+//		float z2 = vcglib.m.face[i].V(2)->P()[2];		
 		ofxVec3f v0(x0, y0, z0);
 		ofxVec3f v1(x1, y1, z1);
 		ofxVec3f v2(x2, y2, z2);
@@ -109,7 +113,7 @@ void testApp::draw(){
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
 
-	int i = vcglib->addFace();
+	int i = vcglib.pivot->addFace();
 	cout << ofToString(i) << endl;
 	
 }

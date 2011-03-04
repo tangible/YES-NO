@@ -7,7 +7,8 @@
 #include "ofxEasyCam.h"
 #include "ofxColorPicker.h"
 #include "ofxVCGLib.h"
-
+//#include "ofxVCGPivot.h"
+#include "cmesh.h"
 
 static float verts[8*3] = {
 	
@@ -80,7 +81,8 @@ public:
 	ofxEasyCam cam;
 	ofxColorPicker colp;	
 	
-	ofxVCGLib* vcglib;
+	ofxVCGLib vcglib;
+//	ofxVCGPivot<CMesh> *vcgpiv;
 	vector<ofColor> cols;
 	
 	
