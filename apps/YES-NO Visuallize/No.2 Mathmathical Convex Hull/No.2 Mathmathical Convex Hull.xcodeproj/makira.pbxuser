@@ -803,17 +803,17 @@
 	};
 	3124890A130605800076BAB7 /* YesNoObjectSoft.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {767, 2262}}";
-			sepNavSelRange = "{3507, 0}";
-			sepNavVisRange = "{2558, 1214}";
+			sepNavIntBoundsRect = "{{0, 0}, {767, 2236}}";
+			sepNavSelRange = "{3494, 0}";
+			sepNavVisRange = "{2558, 1217}";
 			sepNavWindowFrame = "{{85, 67}, {689, 811}}";
 		};
 	};
 	3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {964, 10374}}";
-			sepNavSelRange = "{8369, 0}";
-			sepNavVisRange = "{7851, 1829}";
+			sepNavIntBoundsRect = "{{0, 0}, {964, 10023}}";
+			sepNavSelRange = "{10339, 0}";
+			sepNavVisRange = "{0, 1507}";
 			sepNavWindowFrame = "{{27, 67}, {689, 811}}";
 		};
 	};
@@ -2065,7 +2065,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 181";
 		rLen = 0;
-		rLoc = 4544;
+		rLoc = 4137;
 		rType = 0;
 		vrLen = 1243;
 		vrLoc = 5445;
@@ -2125,7 +2125,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 73";
 		rLen = 34;
-		rLoc = 1999;
+		rLoc = 1993;
 		rType = 0;
 		vrLen = 1402;
 		vrLoc = 1352;
@@ -2135,7 +2135,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 91";
 		rLen = 0;
-		rLoc = 3201;
+		rLoc = 2794;
 		rType = 0;
 		vrLen = 1344;
 		vrLoc = 1631;
@@ -2175,7 +2175,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 84";
 		rLen = 0;
-		rLoc = 2505;
+		rLoc = 2237;
 		rType = 0;
 		vrLen = 1348;
 		vrLoc = 1926;
@@ -2215,7 +2215,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 95";
 		rLen = 0;
-		rLoc = 3201;
+		rLoc = 2794;
 		rType = 0;
 		vrLen = 1358;
 		vrLoc = 2027;
@@ -2255,7 +2255,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 95";
 		rLen = 0;
-		rLoc = 3201;
+		rLoc = 2794;
 		rType = 0;
 		vrLen = 1397;
 		vrLoc = 2034;
@@ -2295,7 +2295,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 98";
 		rLen = 0;
-		rLoc = 3201;
+		rLoc = 2794;
 		rType = 0;
 		vrLen = 1423;
 		vrLoc = 2039;
@@ -2335,7 +2335,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 98";
 		rLen = 0;
-		rLoc = 3201;
+		rLoc = 2794;
 		rType = 0;
 		vrLen = 1363;
 		vrLoc = 2193;
@@ -2375,7 +2375,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 98";
 		rLen = 0;
-		rLoc = 3201;
+		rLoc = 2794;
 		rType = 0;
 		vrLen = 1448;
 		vrLoc = 2196;
@@ -2415,7 +2415,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 84";
 		rLen = 0;
-		rLoc = 2508;
+		rLoc = 2240;
 		rType = 0;
 		vrLen = 1273;
 		vrLoc = 1811;
@@ -2454,8 +2454,8 @@
 		isa = PBXTextBookmark;
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 95";
-		rLen = 135;
-		rLoc = 3066;
+		rLen = 1;
+		rLoc = 2793;
 		rType = 0;
 		vrLen = 1227;
 		vrLoc = 1923;
@@ -2555,7 +2555,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 335";
 		rLen = 0;
-		rLoc = 12773;
+		rLoc = 11935;
 		rType = 0;
 		vrLen = 1241;
 		vrLoc = 10119;
@@ -2595,7 +2595,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 192";
 		rLen = 0;
-		rLoc = 4544;
+		rLoc = 4137;
 		rType = 0;
 		vrLen = 1165;
 		vrLoc = 5604;
@@ -2635,7 +2635,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 341";
 		rLen = 0;
-		rLoc = 12775;
+		rLoc = 11937;
 		rType = 0;
 		vrLen = 1053;
 		vrLoc = 10107;
@@ -2675,7 +2675,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 341";
 		rLen = 0;
-		rLoc = 12775;
+		rLoc = 11937;
 		rType = 0;
 		vrLen = 1053;
 		vrLoc = 10107;
@@ -3215,7 +3215,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 341";
 		rLen = 0;
-		rLoc = 12775;
+		rLoc = 11937;
 		rType = 0;
 		vrLen = 1020;
 		vrLoc = 10140;
@@ -3225,7 +3225,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 395";
 		rLen = 0;
-		rLoc = 14924;
+		rLoc = 14086;
 		rType = 0;
 		vrLen = 1187;
 		vrLoc = 11951;
@@ -3275,7 +3275,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 395";
 		rLen = 0;
-		rLoc = 14924;
+		rLoc = 14086;
 		rType = 0;
 		vrLen = 1301;
 		vrLoc = 11840;
@@ -3285,7 +3285,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 394";
 		rLen = 0;
-		rLoc = 14924;
+		rLoc = 14086;
 		rType = 0;
 		vrLen = 1332;
 		vrLoc = 11840;
@@ -3325,7 +3325,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 397";
 		rLen = 455;
-		rLoc = 15227;
+		rLoc = 14389;
 		rType = 0;
 		vrLen = 909;
 		vrLoc = 14754;
@@ -3365,7 +3365,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 498";
 		rLen = 0;
-		rLoc = 15227;
+		rLoc = 14389;
 		rType = 0;
 		vrLen = 902;
 		vrLoc = 14557;
@@ -3405,7 +3405,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 494";
 		rLen = 0;
-		rLoc = 15227;
+		rLoc = 14389;
 		rType = 0;
 		vrLen = 861;
 		vrLoc = 14602;
@@ -3445,7 +3445,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 394";
 		rLen = 0;
-		rLoc = 14924;
+		rLoc = 14086;
 		rType = 0;
 		vrLen = 1093;
 		vrLoc = 12332;
@@ -3485,7 +3485,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 494";
 		rLen = 0;
-		rLoc = 15227;
+		rLoc = 14389;
 		rType = 0;
 		vrLen = 857;
 		vrLoc = 14598;
@@ -3525,7 +3525,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 496";
 		rLen = 0;
-		rLoc = 15227;
+		rLoc = 14389;
 		rType = 0;
 		vrLen = 926;
 		vrLoc = 14527;
@@ -3575,7 +3575,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 496";
 		rLen = 0;
-		rLoc = 15227;
+		rLoc = 14389;
 		rType = 0;
 		vrLen = 928;
 		vrLoc = 14527;
@@ -3585,7 +3585,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 494";
 		rLen = 0;
-		rLoc = 15227;
+		rLoc = 14389;
 		rType = 0;
 		vrLen = 906;
 		vrLoc = 14553;
@@ -3635,7 +3635,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 494";
 		rLen = 0;
-		rLoc = 15227;
+		rLoc = 14389;
 		rType = 0;
 		vrLen = 926;
 		vrLoc = 14527;
@@ -3645,7 +3645,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 495";
 		rLen = 0;
-		rLoc = 15227;
+		rLoc = 14389;
 		rType = 0;
 		vrLen = 857;
 		vrLoc = 14598;
@@ -3742,7 +3742,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 495";
 		rLen = 0;
-		rLoc = 15227;
+		rLoc = 14389;
 		rType = 0;
 		vrLen = 926;
 		vrLoc = 14527;
@@ -3752,7 +3752,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 494";
 		rLen = 0;
-		rLoc = 15227;
+		rLoc = 14389;
 		rType = 0;
 		vrLen = 930;
 		vrLoc = 14425;
@@ -3812,7 +3812,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 494";
 		rLen = 0;
-		rLoc = 15227;
+		rLoc = 14389;
 		rType = 0;
 		vrLen = 932;
 		vrLoc = 14527;
@@ -3822,7 +3822,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 496";
 		rLen = 0;
-		rLoc = 15227;
+		rLoc = 14389;
 		rType = 0;
 		vrLen = 967;
 		vrLoc = 14503;
@@ -3872,7 +3872,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 494";
 		rLen = 0;
-		rLoc = 15227;
+		rLoc = 14389;
 		rType = 0;
 		vrLen = 859;
 		vrLoc = 14598;
@@ -3922,7 +3922,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 494";
 		rLen = 0;
-		rLoc = 15227;
+		rLoc = 14389;
 		rType = 0;
 		vrLen = 857;
 		vrLoc = 14598;
@@ -3972,7 +3972,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 494";
 		rLen = 0;
-		rLoc = 15227;
+		rLoc = 14389;
 		rType = 0;
 		vrLen = 857;
 		vrLoc = 14598;
@@ -4049,7 +4049,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 102";
 		rLen = 23;
-		rLoc = 3210;
+		rLoc = 2803;
 		rType = 0;
 		vrLen = 1607;
 		vrLoc = 3929;
@@ -4059,7 +4059,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 102";
 		rLen = 23;
-		rLoc = 3210;
+		rLoc = 2803;
 		rType = 0;
 		vrLen = 1564;
 		vrLoc = 3972;
@@ -4109,7 +4109,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 394";
 		rLen = 40;
-		rLoc = 14882;
+		rLoc = 14044;
 		rType = 0;
 		vrLen = 1468;
 		vrLoc = 4409;
@@ -4119,7 +4119,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 394";
 		rLen = 40;
-		rLoc = 14882;
+		rLoc = 14044;
 		rType = 0;
 		vrLen = 1376;
 		vrLoc = 4501;
@@ -4169,7 +4169,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 145";
 		rLen = 0;
-		rLoc = 4544;
+		rLoc = 4137;
 		rType = 0;
 		vrLen = 1351;
 		vrLoc = 4607;
@@ -4219,7 +4219,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 145";
 		rLen = 0;
-		rLoc = 4544;
+		rLoc = 4137;
 		rType = 0;
 		vrLen = 1413;
 		vrLoc = 4607;
@@ -4273,7 +4273,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 494";
 		rLen = 0;
-		rLoc = 15227;
+		rLoc = 14389;
 		rType = 0;
 		vrLen = 993;
 		vrLoc = 14356;
@@ -4283,7 +4283,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 174";
 		rLen = 0;
-		rLoc = 4544;
+		rLoc = 4137;
 		rType = 0;
 		vrLen = 1156;
 		vrLoc = 4887;
@@ -4343,7 +4343,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 174";
 		rLen = 0;
-		rLoc = 4544;
+		rLoc = 4137;
 		rType = 0;
 		vrLen = 1156;
 		vrLoc = 4887;
@@ -4510,7 +4510,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 174";
 		rLen = 0;
-		rLoc = 4544;
+		rLoc = 4137;
 		rType = 0;
 		vrLen = 1229;
 		vrLoc = 4663;
@@ -4570,7 +4570,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 174";
 		rLen = 0;
-		rLoc = 4544;
+		rLoc = 4137;
 		rType = 0;
 		vrLen = 1285;
 		vrLoc = 4663;
@@ -4634,7 +4634,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 174";
 		rLen = 0;
-		rLoc = 4544;
+		rLoc = 4137;
 		rType = 0;
 		vrLen = 1262;
 		vrLoc = 4719;
@@ -4754,7 +4754,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 174";
 		rLen = 0;
-		rLoc = 4544;
+		rLoc = 4137;
 		rType = 0;
 		vrLen = 1182;
 		vrLoc = 4799;
@@ -4764,7 +4764,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 174";
 		rLen = 0;
-		rLoc = 4544;
+		rLoc = 4137;
 		rType = 0;
 		vrLen = 952;
 		vrLoc = 14619;
@@ -4834,7 +4834,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 400";
 		rLen = 0;
-		rLoc = 14924;
+		rLoc = 14086;
 		rType = 0;
 		vrLen = 962;
 		vrLoc = 14478;
@@ -4904,7 +4904,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 403";
 		rLen = 455;
-		rLoc = 15227;
+		rLoc = 14389;
 		rType = 0;
 		vrLen = 911;
 		vrLoc = 14868;
@@ -4974,7 +4974,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 403";
 		rLen = 0;
-		rLoc = 15227;
+		rLoc = 14389;
 		rType = 0;
 		vrLen = 932;
 		vrLoc = 14590;
@@ -5044,7 +5044,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 503";
 		rLen = 280;
-		rLoc = 15401;
+		rLoc = 14563;
 		rType = 0;
 		vrLen = 908;
 		vrLoc = 14611;
@@ -5114,7 +5114,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 501";
 		rLen = 16;
-		rLoc = 15280;
+		rLoc = 14442;
 		rType = 0;
 		vrLen = 932;
 		vrLoc = 14615;
@@ -5194,7 +5194,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 501";
 		rLen = 16;
-		rLoc = 15280;
+		rLoc = 14442;
 		rType = 0;
 		vrLen = 932;
 		vrLoc = 14615;
@@ -5204,7 +5204,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 154";
 		rLen = 0;
-		rLoc = 4544;
+		rLoc = 4137;
 		rType = 0;
 		vrLen = 1296;
 		vrLoc = 4501;
@@ -5274,7 +5274,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 154";
 		rLen = 0;
-		rLoc = 4544;
+		rLoc = 4137;
 		rType = 0;
 		vrLen = 1434;
 		vrLoc = 8120;
@@ -5440,7 +5440,7 @@
 		isa = PBXTextBookmark;
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		rLen = 0;
-		rLoc = 200;
+		rLoc = 189;
 		rType = 1;
 	};
 	3143287B13248DA00044FEAC /* PBXTextBookmark */ = {
@@ -5448,7 +5448,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 154";
 		rLen = 0;
-		rLoc = 4544;
+		rLoc = 4137;
 		rType = 0;
 		vrLen = 1496;
 		vrLoc = 4058;
@@ -5518,7 +5518,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 154";
 		rLen = 0;
-		rLoc = 4544;
+		rLoc = 4137;
 		rType = 0;
 		vrLen = 1453;
 		vrLoc = 4144;
@@ -5588,7 +5588,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 154";
 		rLen = 0;
-		rLoc = 4544;
+		rLoc = 4137;
 		rType = 0;
 		vrLen = 1486;
 		vrLoc = 4144;
@@ -5658,7 +5658,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 154";
 		rLen = 0;
-		rLoc = 4544;
+		rLoc = 4137;
 		rType = 0;
 		vrLen = 1388;
 		vrLoc = 4275;
@@ -5728,7 +5728,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 154";
 		rLen = 0;
-		rLoc = 4544;
+		rLoc = 4137;
 		rType = 0;
 		vrLen = 1388;
 		vrLoc = 4275;
@@ -5798,7 +5798,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 154";
 		rLen = 0;
-		rLoc = 4544;
+		rLoc = 4137;
 		rType = 0;
 		vrLen = 1454;
 		vrLoc = 4275;
@@ -5868,7 +5868,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 154";
 		rLen = 0;
-		rLoc = 4544;
+		rLoc = 4137;
 		rType = 0;
 		vrLen = 1400;
 		vrLoc = 4362;
@@ -5938,7 +5938,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 154";
 		rLen = 0;
-		rLoc = 4544;
+		rLoc = 4137;
 		rType = 0;
 		vrLen = 1400;
 		vrLoc = 4362;
@@ -6038,7 +6038,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 384";
 		rLen = 0;
-		rLoc = 14436;
+		rLoc = 13598;
 		rType = 0;
 		vrLen = 1489;
 		vrLoc = 11281;
@@ -6048,7 +6048,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 396";
 		rLen = 23;
-		rLoc = 14727;
+		rLoc = 13889;
 		rType = 0;
 		vrLen = 1449;
 		vrLoc = 11445;
@@ -6128,7 +6128,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 356";
 		rLen = 15;
-		rLoc = 12973;
+		rLoc = 12135;
 		rType = 0;
 		vrLen = 1700;
 		vrLoc = 10905;
@@ -6248,7 +6248,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 334";
 		rLen = 73;
-		rLoc = 12601;
+		rLoc = 11763;
 		rType = 0;
 		vrLen = 1049;
 		vrLoc = 10143;
@@ -6338,7 +6338,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 334";
 		rLen = 73;
-		rLoc = 12601;
+		rLoc = 11763;
 		rType = 0;
 		vrLen = 1049;
 		vrLoc = 10143;
@@ -6527,15 +6527,15 @@
 		isa = PBXTextBookmark;
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		rLen = 1;
-		rLoc = 402;
+		rLoc = 378;
 		rType = 1;
 	};
 	31432914132494380044FEAC /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 50";
-		rLen = 4;
-		rLoc = 1413;
+		rLen = 0;
+		rLoc = 1502;
 		rType = 0;
 		vrLen = 1295;
 		vrLoc = 739;
@@ -6604,8 +6604,8 @@
 		isa = PBXTextBookmark;
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 50";
-		rLen = 4;
-		rLoc = 1413;
+		rLen = 0;
+		rLoc = 1502;
 		rType = 0;
 		vrLen = 1134;
 		vrLoc = 900;
@@ -6711,8 +6711,8 @@
 		isa = PBXTextBookmark;
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 50";
-		rLen = 4;
-		rLoc = 1413;
+		rLen = 0;
+		rLoc = 1502;
 		rType = 0;
 		vrLen = 1323;
 		vrLoc = 823;
@@ -6722,7 +6722,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 380";
 		rLen = 0;
-		rLoc = 14400;
+		rLoc = 13562;
 		rType = 0;
 		vrLen = 1494;
 		vrLoc = 11209;
@@ -6792,7 +6792,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 380";
 		rLen = 0;
-		rLoc = 14400;
+		rLoc = 13562;
 		rType = 0;
 		vrLen = 1427;
 		vrLoc = 11276;
@@ -7239,7 +7239,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 514";
 		rLen = 39;
-		rLoc = 15688;
+		rLoc = 14850;
 		rType = 0;
 		vrLen = 1094;
 		vrLoc = 14781;
@@ -7338,7 +7338,7 @@
 		isa = PBXTextBookmark;
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		rLen = 1;
-		rLoc = 481;
+		rLoc = 457;
 		rType = 1;
 	};
 	3143297F132497C30044FEAC /* PBXTextBookmark */ = {
@@ -7346,7 +7346,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 502";
 		rLen = 0;
-		rLoc = 15748;
+		rLoc = 14910;
 		rType = 0;
 		vrLen = 1024;
 		vrLoc = 14808;
@@ -7426,7 +7426,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 404";
 		rLen = 0;
-		rLoc = 14928;
+		rLoc = 14090;
 		rType = 0;
 		vrLen = 1120;
 		vrLoc = 12400;
@@ -7436,7 +7436,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 412";
 		rLen = 0;
-		rLoc = 15227;
+		rLoc = 14389;
 		rType = 0;
 		vrLen = 1083;
 		vrLoc = 12440;
@@ -7506,7 +7506,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 416";
 		rLen = 17;
-		rLoc = 15316;
+		rLoc = 14478;
 		rType = 0;
 		vrLen = 1121;
 		vrLoc = 12482;
@@ -7993,7 +7993,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 410";
 		rLen = 0;
-		rLoc = 15227;
+		rLoc = 14389;
 		rType = 0;
 		vrLen = 1126;
 		vrLoc = 14326;
@@ -8003,7 +8003,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 489";
 		rLen = 0;
-		rLoc = 15748;
+		rLoc = 14910;
 		rType = 0;
 		vrLen = 965;
 		vrLoc = 14987;
@@ -8073,7 +8073,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 489";
 		rLen = 0;
-		rLoc = 15748;
+		rLoc = 14910;
 		rType = 0;
 		vrLen = 984;
 		vrLoc = 14987;
@@ -8483,7 +8483,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 406";
 		rLen = 0;
-		rLoc = 15227;
+		rLoc = 14389;
 		rType = 0;
 		vrLen = 1132;
 		vrLoc = 12288;
@@ -8583,7 +8583,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 406";
 		rLen = 0;
-		rLoc = 15227;
+		rLoc = 14389;
 		rType = 0;
 		vrLen = 1097;
 		vrLoc = 12288;
@@ -8763,7 +8763,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 406";
 		rLen = 0;
-		rLoc = 15227;
+		rLoc = 14389;
 		rType = 0;
 		vrLen = 1056;
 		vrLoc = 12288;
@@ -8773,7 +8773,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 498";
 		rLen = 0;
-		rLoc = 15748;
+		rLoc = 14910;
 		rType = 0;
 		vrLen = 1058;
 		vrLoc = 14760;
@@ -8843,7 +8843,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 499";
 		rLen = 0;
-		rLoc = 15748;
+		rLoc = 14910;
 		rType = 0;
 		vrLen = 1067;
 		vrLoc = 14760;
@@ -8944,7 +8944,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 499";
 		rLen = 0;
-		rLoc = 15748;
+		rLoc = 14910;
 		rType = 0;
 		vrLen = 1029;
 		vrLoc = 14600;
@@ -9054,7 +9054,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 499";
 		rLen = 0;
-		rLoc = 15748;
+		rLoc = 14910;
 		rType = 0;
 		vrLen = 1029;
 		vrLoc = 14600;
@@ -9414,7 +9414,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 250";
 		rLen = 17;
-		rLoc = 9999;
+		rLoc = 9312;
 		rType = 0;
 		vrLen = 1757;
 		vrLoc = 7352;
@@ -9484,7 +9484,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 250";
 		rLen = 17;
-		rLoc = 9999;
+		rLoc = 9312;
 		rType = 0;
 		vrLen = 1720;
 		vrLoc = 7172;
@@ -9654,7 +9654,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 250";
 		rLen = 17;
-		rLoc = 9999;
+		rLoc = 9312;
 		rType = 0;
 		vrLen = 1720;
 		vrLoc = 7172;
@@ -9664,7 +9664,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 380";
 		rLen = 0;
-		rLoc = 14400;
+		rLoc = 13562;
 		rType = 0;
 		vrLen = 1434;
 		vrLoc = 11379;
@@ -9714,7 +9714,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 380";
 		rLen = 0;
-		rLoc = 14400;
+		rLoc = 13562;
 		rType = 0;
 		vrLen = 1319;
 		vrLoc = 11573;
@@ -9764,7 +9764,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 380";
 		rLen = 0;
-		rLoc = 14400;
+		rLoc = 13562;
 		rType = 0;
 		vrLen = 1295;
 		vrLoc = 11654;
@@ -9814,7 +9814,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 380";
 		rLen = 0;
-		rLoc = 14400;
+		rLoc = 13562;
 		rType = 0;
 		vrLen = 1342;
 		vrLoc = 11669;
@@ -9864,7 +9864,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 380";
 		rLen = 0;
-		rLoc = 14400;
+		rLoc = 13562;
 		rType = 0;
 		vrLen = 1365;
 		vrLoc = 11701;
@@ -10124,7 +10124,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 380";
 		rLen = 0;
-		rLoc = 14400;
+		rLoc = 13562;
 		rType = 0;
 		vrLen = 1365;
 		vrLoc = 11701;
@@ -10413,7 +10413,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 521";
 		rLen = 0;
-		rLoc = 24173;
+		rLoc = 23335;
 		rType = 0;
 		vrLen = 1226;
 		vrLoc = 14852;
@@ -10443,7 +10443,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 380";
 		rLen = 0;
-		rLoc = 14400;
+		rLoc = 13562;
 		rType = 0;
 		vrLen = 1365;
 		vrLoc = 11701;
@@ -10453,7 +10453,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 521";
 		rLen = 0;
-		rLoc = 24173;
+		rLoc = 23335;
 		rType = 0;
 		vrLen = 1196;
 		vrLoc = 14882;
@@ -10513,7 +10513,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 513";
 		rLen = 11;
-		rLoc = 23788;
+		rLoc = 22950;
 		rType = 0;
 		vrLen = 1152;
 		vrLoc = 15154;
@@ -10523,7 +10523,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 517";
 		rLen = 0;
-		rLoc = 23931;
+		rLoc = 23093;
 		rType = 0;
 		vrLen = 1005;
 		vrLoc = 15195;
@@ -10573,7 +10573,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 517";
 		rLen = 0;
-		rLoc = 23931;
+		rLoc = 23093;
 		rType = 0;
 		vrLen = 1018;
 		vrLoc = 15217;
@@ -10663,7 +10663,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 548";
 		rLen = 0;
-		rLoc = 23646;
+		rLoc = 22808;
 		rType = 0;
 		vrLen = 1421;
 		vrLoc = 15750;
@@ -10713,7 +10713,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 410";
 		rLen = 0;
-		rLoc = 15227;
+		rLoc = 14389;
 		rType = 0;
 		vrLen = 1351;
 		vrLoc = 12287;
@@ -10763,7 +10763,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 410";
 		rLen = 0;
-		rLoc = 15227;
+		rLoc = 14389;
 		rType = 0;
 		vrLen = 1428;
 		vrLoc = 12102;
@@ -10813,7 +10813,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 410";
 		rLen = 0;
-		rLoc = 15227;
+		rLoc = 14389;
 		rType = 0;
 		vrLen = 1142;
 		vrLoc = 16243;
@@ -10823,7 +10823,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 410";
 		rLen = 0;
-		rLoc = 15227;
+		rLoc = 14389;
 		rType = 0;
 		vrLen = 1205;
 		vrLoc = 16213;
@@ -10883,7 +10883,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 545";
 		rLen = 0;
-		rLoc = 21903;
+		rLoc = 21065;
 		rType = 0;
 		vrLen = 1394;
 		vrLoc = 16152;
@@ -10933,7 +10933,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 545";
 		rLen = 0;
-		rLoc = 21903;
+		rLoc = 21065;
 		rType = 0;
 		vrLen = 1394;
 		vrLoc = 16152;
@@ -11023,7 +11023,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 545";
 		rLen = 0;
-		rLoc = 21903;
+		rLoc = 21065;
 		rType = 0;
 		vrLen = 1128;
 		vrLoc = 17222;
@@ -11033,7 +11033,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 545";
 		rLen = 0;
-		rLoc = 21903;
+		rLoc = 21065;
 		rType = 0;
 		vrLen = 1054;
 		vrLoc = 17296;
@@ -11083,7 +11083,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 530";
 		rLen = 0;
-		rLoc = 20687;
+		rLoc = 19849;
 		rType = 0;
 		vrLen = 1304;
 		vrLoc = 14385;
@@ -11093,7 +11093,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 530";
 		rLen = 0;
-		rLoc = 20687;
+		rLoc = 19849;
 		rType = 0;
 		vrLen = 2504;
 		vrLoc = 15154;
@@ -11143,7 +11143,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 530";
 		rLen = 0;
-		rLoc = 20687;
+		rLoc = 19849;
 		rType = 0;
 		vrLen = 2504;
 		vrLoc = 15154;
@@ -11510,7 +11510,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 530";
 		rLen = 0;
-		rLoc = 20687;
+		rLoc = 19849;
 		rType = 0;
 		vrLen = 1338;
 		vrLoc = 15151;
@@ -11520,7 +11520,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 535";
 		rLen = 0;
-		rLoc = 21903;
+		rLoc = 21065;
 		rType = 0;
 		vrLen = 1479;
 		vrLoc = 16746;
@@ -11590,7 +11590,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 535";
 		rLen = 0;
-		rLoc = 21903;
+		rLoc = 21065;
 		rType = 0;
 		vrLen = 1479;
 		vrLoc = 16746;
@@ -11600,7 +11600,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 584";
 		rLen = 0;
-		rLoc = 21903;
+		rLoc = 21065;
 		rType = 0;
 		vrLen = 1413;
 		vrLoc = 16712;
@@ -11650,7 +11650,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 410";
 		rLen = 0;
-		rLoc = 15227;
+		rLoc = 14389;
 		rType = 0;
 		vrLen = 1656;
 		vrLoc = 11669;
@@ -11700,7 +11700,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 599";
 		rLen = 0;
-		rLoc = 23945;
+		rLoc = 23107;
 		rType = 0;
 		vrLen = 1433;
 		vrLoc = 17129;
@@ -11750,7 +11750,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 537";
 		rLen = 0;
-		rLoc = 21903;
+		rLoc = 21065;
 		rType = 0;
 		vrLen = 1475;
 		vrLoc = 16149;
@@ -11810,7 +11810,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 537";
 		rLen = 0;
-		rLoc = 21903;
+		rLoc = 21065;
 		rType = 0;
 		vrLen = 1475;
 		vrLoc = 16149;
@@ -11820,7 +11820,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 590";
 		rLen = 0;
-		rLoc = 21903;
+		rLoc = 21065;
 		rType = 0;
 		vrLen = 1381;
 		vrLoc = 16877;
@@ -11880,7 +11880,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 590";
 		rLen = 0;
-		rLoc = 21903;
+		rLoc = 21065;
 		rType = 0;
 		vrLen = 1401;
 		vrLoc = 16870;
@@ -11890,7 +11890,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 601";
 		rLen = 0;
-		rLoc = 23945;
+		rLoc = 23107;
 		rType = 0;
 		vrLen = 1404;
 		vrLoc = 17223;
@@ -11940,7 +11940,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 602";
 		rLen = 0;
-		rLoc = 23945;
+		rLoc = 23107;
 		rType = 0;
 		vrLen = 1252;
 		vrLoc = 17570;
@@ -12000,7 +12000,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 602";
 		rLen = 0;
-		rLoc = 23945;
+		rLoc = 23107;
 		rType = 0;
 		vrLen = 1252;
 		vrLoc = 17570;
@@ -12010,7 +12010,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 513";
 		rLen = 0;
-		rLoc = 19274;
+		rLoc = 18436;
 		rType = 0;
 		vrLen = 1330;
 		vrLoc = 15047;
@@ -12060,7 +12060,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 515";
 		rLen = 0;
-		rLoc = 19277;
+		rLoc = 18439;
 		rType = 0;
 		vrLen = 1423;
 		vrLoc = 15432;
@@ -12110,7 +12110,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 541";
 		rLen = 0;
-		rLoc = 21296;
+		rLoc = 20458;
 		rType = 0;
 		vrLen = 1473;
 		vrLoc = 15644;
@@ -12160,7 +12160,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 596";
 		rLen = 0;
-		rLoc = 21903;
+		rLoc = 21065;
 		rType = 0;
 		vrLen = 1446;
 		vrLoc = 17450;
@@ -12210,7 +12210,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 585";
 		rLen = 0;
-		rLoc = 21903;
+		rLoc = 21065;
 		rType = 0;
 		vrLen = 1456;
 		vrLoc = 16354;
@@ -12270,7 +12270,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 585";
 		rLen = 0;
-		rLoc = 21903;
+		rLoc = 21065;
 		rType = 0;
 		vrLen = 1456;
 		vrLoc = 16354;
@@ -12280,7 +12280,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 531";
 		rLen = 0;
-		rLoc = 20687;
+		rLoc = 19849;
 		rType = 0;
 		vrLen = 1408;
 		vrLoc = 15628;
@@ -12330,7 +12330,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 612";
 		rLen = 0;
-		rLoc = 23945;
+		rLoc = 23107;
 		rType = 0;
 		vrLen = 1481;
 		vrLoc = 17505;
@@ -12380,7 +12380,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 518";
 		rLen = 666;
-		rLoc = 20687;
+		rLoc = 19849;
 		rType = 0;
 		vrLen = 1504;
 		vrLoc = 15311;
@@ -12430,7 +12430,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 542";
 		rLen = 1741;
-		rLoc = 21903;
+		rLoc = 21065;
 		rType = 0;
 		vrLen = 1418;
 		vrLoc = 16833;
@@ -12530,7 +12530,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 542";
 		rLen = 1741;
-		rLoc = 21903;
+		rLoc = 21065;
 		rType = 0;
 		vrLen = 1387;
 		vrLoc = 16833;
@@ -12540,7 +12540,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 598";
 		rLen = 0;
-		rLoc = 23644;
+		rLoc = 22806;
 		rType = 0;
 		vrLen = 1435;
 		vrLoc = 17415;
@@ -12590,7 +12590,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 264";
 		rLen = 0;
-		rLoc = 10723;
+		rLoc = 10036;
 		rType = 0;
 		vrLen = 2038;
 		vrLoc = 6937;
@@ -12640,7 +12640,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 322";
 		rLen = 0;
-		rLoc = 12526;
+		rLoc = 11688;
 		rType = 0;
 		vrLen = 1393;
 		vrLoc = 9623;
@@ -12690,7 +12690,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 252";
 		rLen = 16;
-		rLoc = 10107;
+		rLoc = 9420;
 		rType = 0;
 		vrLen = 1426;
 		vrLoc = 9141;
@@ -12740,7 +12740,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 604";
 		rLen = 0;
-		rLoc = 23644;
+		rLoc = 22806;
 		rType = 0;
 		vrLen = 1461;
 		vrLoc = 17415;
@@ -12790,7 +12790,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 610";
 		rLen = 0;
-		rLoc = 23644;
+		rLoc = 22806;
 		rType = 0;
 		vrLen = 1447;
 		vrLoc = 17435;
@@ -12840,7 +12840,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 601";
 		rLen = 0;
-		rLoc = 23644;
+		rLoc = 22806;
 		rType = 0;
 		vrLen = 1479;
 		vrLoc = 17596;
@@ -12890,7 +12890,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 116";
 		rLen = 0;
-		rLoc = 3434;
+		rLoc = 3027;
 		rType = 0;
 		vrLen = 2093;
 		vrLoc = 2886;
@@ -12940,7 +12940,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 108";
 		rLen = 0;
-		rLoc = 3434;
+		rLoc = 3027;
 		rType = 0;
 		vrLen = 2144;
 		vrLoc = 2919;
@@ -12990,7 +12990,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 120";
 		rLen = 0;
-		rLoc = 4520;
+		rLoc = 4113;
 		rType = 0;
 		vrLen = 1777;
 		vrLoc = 2640;
@@ -13050,7 +13050,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 105";
 		rLen = 7;
-		rLoc = 3358;
+		rLoc = 2951;
 		rType = 0;
 		vrLen = 1872;
 		vrLoc = 2725;
@@ -13060,7 +13060,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 120";
 		rLen = 0;
-		rLoc = 3434;
+		rLoc = 3027;
 		rType = 0;
 		vrLen = 1809;
 		vrLoc = 2751;
@@ -13130,7 +13130,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 129";
 		rLen = 0;
-		rLoc = 3434;
+		rLoc = 3027;
 		rType = 0;
 		vrLen = 2194;
 		vrLoc = 2919;
@@ -13140,7 +13140,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 134";
 		rLen = 0;
-		rLoc = 3434;
+		rLoc = 3027;
 		rType = 0;
 		vrLen = 1836;
 		vrLoc = 2812;
@@ -13220,7 +13220,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 641";
 		rLen = 0;
-		rLoc = 23644;
+		rLoc = 22806;
 		rType = 0;
 		vrLen = 1488;
 		vrLoc = 18768;
@@ -13230,7 +13230,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 641";
 		rLen = 0;
-		rLoc = 23644;
+		rLoc = 22806;
 		rType = 0;
 		vrLen = 1418;
 		vrLoc = 14150;
@@ -13270,7 +13270,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 641";
 		rLen = 0;
-		rLoc = 23644;
+		rLoc = 22806;
 		rType = 0;
 		vrLen = 1418;
 		vrLoc = 14150;
@@ -13280,7 +13280,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 641";
 		rLen = 0;
-		rLoc = 23644;
+		rLoc = 22806;
 		rType = 0;
 		vrLen = 1418;
 		vrLoc = 14150;
@@ -13320,7 +13320,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 138";
 		rLen = 1897;
-		rLoc = 4544;
+		rLoc = 4137;
 		rType = 0;
 		vrLen = 1612;
 		vrLoc = 11133;
@@ -13390,7 +13390,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 138";
 		rLen = 1897;
-		rLoc = 4544;
+		rLoc = 4137;
 		rType = 0;
 		vrLen = 1533;
 		vrLoc = 11133;
@@ -13400,7 +13400,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 521";
 		rLen = 0;
-		rLoc = 15748;
+		rLoc = 14910;
 		rType = 0;
 		vrLen = 1299;
 		vrLoc = 15540;
@@ -13420,7 +13420,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 495";
 		rLen = 0;
-		rLoc = 15748;
+		rLoc = 14910;
 		rType = 0;
 		vrLen = 1455;
 		vrLoc = 14711;
@@ -13460,7 +13460,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 495";
 		rLen = 0;
-		rLoc = 15748;
+		rLoc = 14910;
 		rType = 0;
 		vrLen = 1397;
 		vrLoc = 14769;
@@ -13470,7 +13470,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 647";
 		rLen = 0;
-		rLoc = 23642;
+		rLoc = 22804;
 		rType = 0;
 		vrLen = 1376;
 		vrLoc = 19211;
@@ -13480,7 +13480,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 647";
 		rLen = 0;
-		rLoc = 23642;
+		rLoc = 22804;
 		rType = 0;
 		vrLen = 1427;
 		vrLoc = 19211;
@@ -13520,7 +13520,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 647";
 		rLen = 0;
-		rLoc = 23642;
+		rLoc = 22804;
 		rType = 0;
 		vrLen = 1398;
 		vrLoc = 19211;
@@ -13530,7 +13530,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 625";
 		rLen = 0;
-		rLoc = 23642;
+		rLoc = 22804;
 		rType = 0;
 		vrLen = 1450;
 		vrLoc = 20305;
@@ -13540,7 +13540,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 625";
 		rLen = 0;
-		rLoc = 23642;
+		rLoc = 22804;
 		rType = 0;
 		vrLen = 1529;
 		vrLoc = 20305;
@@ -13580,7 +13580,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 625";
 		rLen = 0;
-		rLoc = 23642;
+		rLoc = 22804;
 		rType = 0;
 		vrLen = 1526;
 		vrLoc = 20305;
@@ -13590,7 +13590,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 536";
 		rLen = 0;
-		rLoc = 15748;
+		rLoc = 14910;
 		rType = 0;
 		vrLen = 1402;
 		vrLoc = 15931;
@@ -13610,7 +13610,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 536";
 		rLen = 0;
-		rLoc = 15748;
+		rLoc = 14910;
 		rType = 0;
 		vrLen = 1450;
 		vrLoc = 15888;
@@ -13620,7 +13620,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 521";
 		rLen = 0;
-		rLoc = 15748;
+		rLoc = 14910;
 		rType = 0;
 		vrLen = 1375;
 		vrLoc = 15981;
@@ -13640,7 +13640,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 521";
 		rLen = 0;
-		rLoc = 15748;
+		rLoc = 14910;
 		rType = 0;
 		vrLen = 1341;
 		vrLoc = 16024;
@@ -13650,7 +13650,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 625";
 		rLen = 0;
-		rLoc = 23642;
+		rLoc = 22804;
 		rType = 0;
 		vrLen = 1322;
 		vrLoc = 18412;
@@ -13660,7 +13660,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 696";
 		rLen = 0;
-		rLoc = 23644;
+		rLoc = 22806;
 		rType = 0;
 		vrLen = 1462;
 		vrLoc = 20389;
@@ -13670,7 +13670,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 696";
 		rLen = 0;
-		rLoc = 23644;
+		rLoc = 22806;
 		rType = 0;
 		vrLen = 1489;
 		vrLoc = 20449;
@@ -13680,7 +13680,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 636";
 		rLen = 0;
-		rLoc = 23642;
+		rLoc = 22804;
 		rType = 0;
 		vrLen = 1275;
 		vrLoc = 18432;
@@ -13690,7 +13690,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 584";
 		rLen = 0;
-		rLoc = 21562;
+		rLoc = 20724;
 		rType = 0;
 		vrLen = 1461;
 		vrLoc = 16714;
@@ -13700,7 +13700,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 546";
 		rLen = 0;
-		rLoc = 19545;
+		rLoc = 18707;
 		rType = 0;
 		vrLen = 1553;
 		vrLoc = 16398;
@@ -13710,7 +13710,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 544";
 		rLen = 10;
-		rLoc = 19224;
+		rLoc = 18386;
 		rType = 0;
 		vrLen = 1466;
 		vrLoc = 16227;
@@ -13720,7 +13720,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 653";
 		rLen = 0;
-		rLoc = 23642;
+		rLoc = 22804;
 		rType = 0;
 		vrLen = 1524;
 		vrLoc = 19537;
@@ -13730,7 +13730,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 658";
 		rLen = 0;
-		rLoc = 23642;
+		rLoc = 22804;
 		rType = 0;
 		vrLen = 1528;
 		vrLoc = 19562;
@@ -13740,7 +13740,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 679";
 		rLen = 0;
-		rLoc = 23642;
+		rLoc = 22804;
 		rType = 0;
 		vrLen = 1373;
 		vrLoc = 20220;
@@ -13750,7 +13750,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 646";
 		rLen = 0;
-		rLoc = 23642;
+		rLoc = 22804;
 		rType = 0;
 		vrLen = 1507;
 		vrLoc = 19804;
@@ -13760,7 +13760,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 646";
 		rLen = 0;
-		rLoc = 23642;
+		rLoc = 22804;
 		rType = 0;
 		vrLen = 1563;
 		vrLoc = 19804;
@@ -13800,7 +13800,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 646";
 		rLen = 0;
-		rLoc = 23642;
+		rLoc = 22804;
 		rType = 0;
 		vrLen = 1543;
 		vrLoc = 19804;
@@ -13810,7 +13810,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 640";
 		rLen = 0;
-		rLoc = 23642;
+		rLoc = 22804;
 		rType = 0;
 		vrLen = 1580;
 		vrLoc = 19351;
@@ -13820,7 +13820,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 648";
 		rLen = 0;
-		rLoc = 23642;
+		rLoc = 22804;
 		rType = 0;
 		vrLen = 1665;
 		vrLoc = 19590;
@@ -13844,7 +13844,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 648";
 		rLen = 0;
-		rLoc = 23642;
+		rLoc = 22804;
 		rType = 0;
 		vrLen = 1301;
 		vrLoc = 15340;
@@ -13981,7 +13981,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 648";
 		rLen = 0;
-		rLoc = 23642;
+		rLoc = 22804;
 		rType = 0;
 		vrLen = 1276;
 		vrLoc = 15365;
@@ -13991,7 +13991,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 659";
 		rLen = 0;
-		rLoc = 23642;
+		rLoc = 22804;
 		rType = 0;
 		vrLen = 1611;
 		vrLoc = 19295;
@@ -14031,7 +14031,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 659";
 		rLen = 0;
-		rLoc = 23642;
+		rLoc = 22804;
 		rType = 0;
 		vrLen = 1516;
 		vrLoc = 19271;
@@ -14041,7 +14041,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 645";
 		rLen = 0;
-		rLoc = 23642;
+		rLoc = 22804;
 		rType = 0;
 		vrLen = 1793;
 		vrLoc = 19545;
@@ -14071,7 +14071,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 512";
 		rLen = 0;
-		rLoc = 15748;
+		rLoc = 14910;
 		rType = 0;
 		vrLen = 1458;
 		vrLoc = 15807;
@@ -14101,7 +14101,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 512";
 		rLen = 0;
-		rLoc = 15748;
+		rLoc = 14910;
 		rType = 0;
 		vrLen = 1458;
 		vrLoc = 15811;
@@ -14131,7 +14131,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 640";
 		rLen = 0;
-		rLoc = 23642;
+		rLoc = 22804;
 		rType = 0;
 		vrLen = 1477;
 		vrLoc = 18402;
@@ -14171,7 +14171,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 640";
 		rLen = 0;
-		rLoc = 23642;
+		rLoc = 22804;
 		rType = 0;
 		vrLen = 1417;
 		vrLoc = 18467;
@@ -14181,7 +14181,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 540";
 		rLen = 0;
-		rLoc = 19211;
+		rLoc = 18373;
 		rType = 0;
 		vrLen = 1568;
 		vrLoc = 16020;
@@ -14221,7 +14221,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 540";
 		rLen = 0;
-		rLoc = 19211;
+		rLoc = 18373;
 		rType = 0;
 		vrLen = 1637;
 		vrLoc = 15953;
@@ -14231,7 +14231,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 722";
 		rLen = 0;
-		rLoc = 23644;
+		rLoc = 22806;
 		rType = 0;
 		vrLen = 1559;
 		vrLoc = 21420;
@@ -14261,7 +14261,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 585";
 		rLen = 0;
-		rLoc = 22014;
+		rLoc = 21176;
 		rType = 0;
 		vrLen = 1729;
 		vrLoc = 17699;
@@ -14291,7 +14291,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 647";
 		rLen = 10;
-		rLoc = 23364;
+		rLoc = 22526;
 		rType = 0;
 		vrLen = 1580;
 		vrLoc = 19281;
@@ -14331,7 +14331,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 647";
 		rLen = 10;
-		rLoc = 23364;
+		rLoc = 22526;
 		rType = 0;
 		vrLen = 1580;
 		vrLoc = 19281;
@@ -14341,7 +14341,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 635";
 		rLen = 0;
-		rLoc = 23200;
+		rLoc = 22362;
 		rType = 0;
 		vrLen = 1378;
 		vrLoc = 18711;
@@ -14371,7 +14371,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 606";
 		rLen = 7;
-		rLoc = 22327;
+		rLoc = 21489;
 		rType = 0;
 		vrLen = 1576;
 		vrLoc = 18049;
@@ -14411,7 +14411,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 606";
 		rLen = 7;
-		rLoc = 22327;
+		rLoc = 21489;
 		rType = 0;
 		vrLen = 1576;
 		vrLoc = 18049;
@@ -14421,7 +14421,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 606";
 		rLen = 889;
-		rLoc = 22311;
+		rLoc = 21473;
 		rType = 0;
 		vrLen = 1420;
 		vrLoc = 18526;
@@ -14451,7 +14451,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 568";
 		rLen = 0;
-		rLoc = 21152;
+		rLoc = 20314;
 		rType = 0;
 		vrLen = 1654;
 		vrLoc = 16846;
@@ -14481,7 +14481,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 575";
 		rLen = 0;
-		rLoc = 21209;
+		rLoc = 20371;
 		rType = 0;
 		vrLen = 1667;
 		vrLoc = 17123;
@@ -14511,7 +14511,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 574";
 		rLen = 0;
-		rLoc = 21209;
+		rLoc = 20371;
 		rType = 0;
 		vrLen = 1611;
 		vrLoc = 17154;
@@ -14541,7 +14541,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 580";
 		rLen = 10;
-		rLoc = 21280;
+		rLoc = 20442;
 		rType = 0;
 		vrLen = 1582;
 		vrLoc = 17292;
@@ -14571,7 +14571,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 644";
 		rLen = 0;
-		rLoc = 23235;
+		rLoc = 22397;
 		rType = 0;
 		vrLen = 1375;
 		vrLoc = 18577;
@@ -14611,7 +14611,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 644";
 		rLen = 0;
-		rLoc = 23235;
+		rLoc = 22397;
 		rType = 0;
 		vrLen = 1375;
 		vrLoc = 18577;
@@ -14621,7 +14621,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 644";
 		rLen = 0;
-		rLoc = 23235;
+		rLoc = 22397;
 		rType = 0;
 		vrLen = 1364;
 		vrLoc = 18627;
@@ -14651,7 +14651,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 644";
 		rLen = 0;
-		rLoc = 23235;
+		rLoc = 22397;
 		rType = 0;
 		vrLen = 1413;
 		vrLoc = 18685;
@@ -14681,7 +14681,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 644";
 		rLen = 0;
-		rLoc = 23235;
+		rLoc = 22397;
 		rType = 0;
 		vrLen = 1466;
 		vrLoc = 18715;
@@ -14751,7 +14751,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 644";
 		rLen = 0;
-		rLoc = 23235;
+		rLoc = 22397;
 		rType = 0;
 		vrLen = 1451;
 		vrLoc = 18730;
@@ -14761,7 +14761,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 671";
 		rLen = 0;
-		rLoc = 23642;
+		rLoc = 22804;
 		rType = 0;
 		vrLen = 1673;
 		vrLoc = 20063;
@@ -14811,7 +14811,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 671";
 		rLen = 0;
-		rLoc = 23642;
+		rLoc = 22804;
 		rType = 0;
 		vrLen = 1787;
 		vrLoc = 19979;
@@ -14861,7 +14861,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 671";
 		rLen = 0;
-		rLoc = 23642;
+		rLoc = 22804;
 		rType = 0;
 		vrLen = 1668;
 		vrLoc = 20098;
@@ -14871,7 +14871,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 725";
 		rLen = 0;
-		rLoc = 23642;
+		rLoc = 22804;
 		rType = 0;
 		vrLen = 1747;
 		vrLoc = 21110;
@@ -14911,7 +14911,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 725";
 		rLen = 0;
-		rLoc = 23642;
+		rLoc = 22804;
 		rType = 0;
 		vrLen = 1747;
 		vrLoc = 21110;
@@ -14921,7 +14921,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 693";
 		rLen = 0;
-		rLoc = 23642;
+		rLoc = 22804;
 		rType = 0;
 		vrLen = 1824;
 		vrLoc = 20427;
@@ -14951,7 +14951,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 493";
 		rLen = 0;
-		rLoc = 15748;
+		rLoc = 14910;
 		rType = 0;
 		vrLen = 1453;
 		vrLoc = 14863;
@@ -14981,7 +14981,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 477";
 		rLen = 0;
-		rLoc = 15748;
+		rLoc = 14910;
 		rType = 0;
 		vrLen = 1464;
 		vrLoc = 14349;
@@ -15021,7 +15021,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 477";
 		rLen = 0;
-		rLoc = 15748;
+		rLoc = 14910;
 		rType = 0;
 		vrLen = 1456;
 		vrLoc = 14346;
@@ -15031,7 +15031,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 477";
 		rLen = 0;
-		rLoc = 15748;
+		rLoc = 14910;
 		rType = 0;
 		vrLen = 1459;
 		vrLoc = 14348;
@@ -15061,7 +15061,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 477";
 		rLen = 0;
-		rLoc = 15748;
+		rLoc = 14910;
 		rType = 0;
 		vrLen = 1459;
 		vrLoc = 14348;
@@ -15241,7 +15241,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 477";
 		rLen = 0;
-		rLoc = 15748;
+		rLoc = 14910;
 		rType = 0;
 		vrLen = 1465;
 		vrLoc = 14346;
@@ -15251,7 +15251,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 532";
 		rLen = 0;
-		rLoc = 15748;
+		rLoc = 14910;
 		rType = 0;
 		vrLen = 1450;
 		vrLoc = 15858;
@@ -15281,7 +15281,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 517";
 		rLen = 0;
-		rLoc = 15748;
+		rLoc = 14910;
 		rType = 0;
 		vrLen = 1422;
 		vrLoc = 15948;
@@ -15311,7 +15311,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 540";
 		rLen = 0;
-		rLoc = 19172;
+		rLoc = 18334;
 		rType = 0;
 		vrLen = 1496;
 		vrLoc = 16108;
@@ -15351,7 +15351,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 539";
 		rLen = 0;
-		rLoc = 19172;
+		rLoc = 18334;
 		rType = 0;
 		vrLen = 1526;
 		vrLoc = 16065;
@@ -15361,7 +15361,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 529";
 		rLen = 0;
-		rLoc = 15748;
+		rLoc = 14910;
 		rType = 0;
 		vrLen = 1422;
 		vrLoc = 15948;
@@ -15391,7 +15391,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 529";
 		rLen = 0;
-		rLoc = 15748;
+		rLoc = 14910;
 		rType = 0;
 		vrLen = 1500;
 		vrLoc = 15948;
@@ -15451,7 +15451,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 529";
 		rLen = 0;
-		rLoc = 15748;
+		rLoc = 14910;
 		rType = 0;
 		vrLen = 1500;
 		vrLoc = 15948;
@@ -15461,7 +15461,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 532";
 		rLen = 0;
-		rLoc = 15748;
+		rLoc = 14910;
 		rType = 0;
 		vrLen = 1464;
 		vrLoc = 15951;
@@ -15491,7 +15491,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 494";
 		rLen = 0;
-		rLoc = 15748;
+		rLoc = 14910;
 		rType = 0;
 		vrLen = 1280;
 		vrLoc = 15095;
@@ -15521,7 +15521,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 494";
 		rLen = 0;
-		rLoc = 15748;
+		rLoc = 14910;
 		rType = 0;
 		vrLen = 1554;
 		vrLoc = 13887;
@@ -15531,7 +15531,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 532";
 		rLen = 0;
-		rLoc = 15748;
+		rLoc = 14910;
 		rType = 0;
 		vrLen = 1361;
 		vrLoc = 15816;
@@ -15561,7 +15561,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 532";
 		rLen = 0;
-		rLoc = 15748;
+		rLoc = 14910;
 		rType = 0;
 		vrLen = 1385;
 		vrLoc = 15823;
@@ -15601,7 +15601,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 532";
 		rLen = 0;
-		rLoc = 15748;
+		rLoc = 14910;
 		rType = 0;
 		vrLen = 1325;
 		vrLoc = 15773;
@@ -15611,7 +15611,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 530";
 		rLen = 198;
-		rLoc = 18974;
+		rLoc = 18136;
 		rType = 0;
 		vrLen = 1261;
 		vrLoc = 15803;
@@ -15641,7 +15641,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 521";
 		rLen = 0;
-		rLoc = 15748;
+		rLoc = 14910;
 		rType = 0;
 		vrLen = 1477;
 		vrLoc = 15835;
@@ -15671,7 +15671,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 494";
 		rLen = 0;
-		rLoc = 15748;
+		rLoc = 14910;
 		rType = 0;
 		vrLen = 1407;
 		vrLoc = 14451;
@@ -15721,7 +15721,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 494";
 		rLen = 0;
-		rLoc = 15748;
+		rLoc = 14910;
 		rType = 0;
 		vrLen = 1461;
 		vrLoc = 14492;
@@ -15731,7 +15731,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 693";
 		rLen = 0;
-		rLoc = 23642;
+		rLoc = 22804;
 		rType = 0;
 		vrLen = 1744;
 		vrLoc = 21326;
@@ -15761,7 +15761,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 478";
 		rLen = 0;
-		rLoc = 15748;
+		rLoc = 14910;
 		rType = 0;
 		vrLen = 1469;
 		vrLoc = 14391;
@@ -15791,7 +15791,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 478";
 		rLen = 0;
-		rLoc = 15748;
+		rLoc = 14910;
 		rType = 0;
 		vrLen = 1520;
 		vrLoc = 14391;
@@ -15921,7 +15921,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 444";
 		rLen = 17;
-		rLoc = 15316;
+		rLoc = 14478;
 		rType = 0;
 		vrLen = 1458;
 		vrLoc = 13572;
@@ -16074,7 +16074,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 448";
 		rLen = 0;
-		rLoc = 15611;
+		rLoc = 14773;
 		rType = 0;
 		vrLen = 1502;
 		vrLoc = 13572;
@@ -16104,7 +16104,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 448";
 		rLen = 0;
-		rLoc = 15611;
+		rLoc = 14773;
 		rType = 0;
 		vrLen = 1584;
 		vrLoc = 13572;
@@ -16134,7 +16134,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 448";
 		rLen = 0;
-		rLoc = 15611;
+		rLoc = 14773;
 		rType = 0;
 		vrLen = 1580;
 		vrLoc = 13576;
@@ -16164,7 +16164,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 448";
 		rLen = 0;
-		rLoc = 15611;
+		rLoc = 14773;
 		rType = 0;
 		vrLen = 1579;
 		vrLoc = 13634;
@@ -16194,7 +16194,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 448";
 		rLen = 0;
-		rLoc = 15611;
+		rLoc = 14773;
 		rType = 0;
 		vrLen = 1605;
 		vrLoc = 13636;
@@ -16224,7 +16224,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 448";
 		rLen = 0;
-		rLoc = 15611;
+		rLoc = 14773;
 		rType = 0;
 		vrLen = 1662;
 		vrLoc = 13636;
@@ -16293,7 +16293,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 102";
 		rLen = 23;
-		rLoc = 3210;
+		rLoc = 2803;
 		rType = 0;
 		vrLen = 2058;
 		vrLoc = 3699;
@@ -16303,7 +16303,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 564";
 		rLen = 0;
-		rLoc = 18757;
+		rLoc = 17919;
 		rType = 0;
 		vrLen = 1482;
 		vrLoc = 17101;
@@ -16350,7 +16350,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 166";
 		rLen = 0;
-		rLoc = 5739;
+		rLoc = 5332;
 		rType = 0;
 		vrLen = 1978;
 		vrLoc = 3975;
@@ -16390,7 +16390,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 169";
 		rLen = 0;
-		rLoc = 5834;
+		rLoc = 5427;
 		rType = 0;
 		vrLen = 1855;
 		vrLoc = 3795;
@@ -16430,7 +16430,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 171";
 		rLen = 0;
-		rLoc = 5781;
+		rLoc = 5374;
 		rType = 0;
 		vrLen = 1741;
 		vrLoc = 3941;
@@ -16470,7 +16470,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 583";
 		rLen = 0;
-		rLoc = 19080;
+		rLoc = 18242;
 		rType = 0;
 		vrLen = 1358;
 		vrLoc = 17068;
@@ -16510,7 +16510,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 583";
 		rLen = 0;
-		rLoc = 19080;
+		rLoc = 18242;
 		rType = 0;
 		vrLen = 1376;
 		vrLoc = 16844;
@@ -16620,7 +16620,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 583";
 		rLen = 0;
-		rLoc = 19080;
+		rLoc = 18242;
 		rType = 0;
 		vrLen = 1376;
 		vrLoc = 16844;
@@ -16630,7 +16630,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 598";
 		rLen = 0;
-		rLoc = 19174;
+		rLoc = 18336;
 		rType = 0;
 		vrLen = 1534;
 		vrLoc = 18155;
@@ -16680,7 +16680,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 598";
 		rLen = 0;
-		rLoc = 19174;
+		rLoc = 18336;
 		rType = 0;
 		vrLen = 1537;
 		vrLoc = 18171;
@@ -16720,7 +16720,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 598";
 		rLen = 0;
-		rLoc = 19174;
+		rLoc = 18336;
 		rType = 0;
 		vrLen = 1608;
 		vrLoc = 18175;
@@ -16760,7 +16760,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 598";
 		rLen = 0;
-		rLoc = 19174;
+		rLoc = 18336;
 		rType = 0;
 		vrLen = 1624;
 		vrLoc = 18180;
@@ -16810,7 +16810,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 599";
 		rLen = 0;
-		rLoc = 19174;
+		rLoc = 18336;
 		rType = 0;
 		vrLen = 1517;
 		vrLoc = 18067;
@@ -16860,7 +16860,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 599";
 		rLen = 0;
-		rLoc = 19174;
+		rLoc = 18336;
 		rType = 0;
 		vrLen = 1517;
 		vrLoc = 18067;
@@ -16900,7 +16900,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 601";
 		rLen = 0;
-		rLoc = 19174;
+		rLoc = 18336;
 		rType = 0;
 		vrLen = 1603;
 		vrLoc = 18178;
@@ -16940,7 +16940,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 601";
 		rLen = 0;
-		rLoc = 19174;
+		rLoc = 18336;
 		rType = 0;
 		vrLen = 1621;
 		vrLoc = 18180;
@@ -16980,7 +16980,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 601";
 		rLen = 0;
-		rLoc = 19174;
+		rLoc = 18336;
 		rType = 0;
 		vrLen = 1557;
 		vrLoc = 18256;
@@ -17020,7 +17020,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 601";
 		rLen = 0;
-		rLoc = 19174;
+		rLoc = 18336;
 		rType = 0;
 		vrLen = 1501;
 		vrLoc = 18335;
@@ -17060,7 +17060,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 602";
 		rLen = 0;
-		rLoc = 19174;
+		rLoc = 18336;
 		rType = 0;
 		vrLen = 1519;
 		vrLoc = 18341;
@@ -17100,7 +17100,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 602";
 		rLen = 0;
-		rLoc = 19174;
+		rLoc = 18336;
 		rType = 0;
 		vrLen = 1501;
 		vrLoc = 18335;
@@ -17140,7 +17140,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 602";
 		rLen = 0;
-		rLoc = 19174;
+		rLoc = 18336;
 		rType = 0;
 		vrLen = 1501;
 		vrLoc = 18335;
@@ -17180,7 +17180,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 604";
 		rLen = 0;
-		rLoc = 19174;
+		rLoc = 18336;
 		rType = 0;
 		vrLen = 1528;
 		vrLoc = 18397;
@@ -17220,7 +17220,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 607";
 		rLen = 0;
-		rLoc = 19174;
+		rLoc = 18336;
 		rType = 0;
 		vrLen = 1596;
 		vrLoc = 18335;
@@ -17260,7 +17260,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 607";
 		rLen = 0;
-		rLoc = 19174;
+		rLoc = 18336;
 		rType = 0;
 		vrLen = 1584;
 		vrLoc = 18367;
@@ -17300,7 +17300,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 607";
 		rLen = 0;
-		rLoc = 19174;
+		rLoc = 18336;
 		rType = 0;
 		vrLen = 1479;
 		vrLoc = 18450;
@@ -17340,7 +17340,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 607";
 		rLen = 0;
-		rLoc = 19174;
+		rLoc = 18336;
 		rType = 0;
 		vrLen = 1499;
 		vrLoc = 18510;
@@ -17380,7 +17380,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 607";
 		rLen = 0;
-		rLoc = 19174;
+		rLoc = 18336;
 		rType = 0;
 		vrLen = 1539;
 		vrLoc = 18590;
@@ -17420,7 +17420,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 607";
 		rLen = 0;
-		rLoc = 19174;
+		rLoc = 18336;
 		rType = 0;
 		vrLen = 1493;
 		vrLoc = 18543;
@@ -17460,7 +17460,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 602";
 		rLen = 0;
-		rLoc = 19174;
+		rLoc = 18336;
 		rType = 0;
 		vrLen = 1525;
 		vrLoc = 18573;
@@ -17500,7 +17500,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 589";
 		rLen = 0;
-		rLoc = 19174;
+		rLoc = 18336;
 		rType = 0;
 		vrLen = 1685;
 		vrLoc = 18509;
@@ -17540,7 +17540,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 589";
 		rLen = 0;
-		rLoc = 19174;
+		rLoc = 18336;
 		rType = 0;
 		vrLen = 1532;
 		vrLoc = 18667;
@@ -17580,7 +17580,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 589";
 		rLen = 0;
-		rLoc = 19174;
+		rLoc = 18336;
 		rType = 0;
 		vrLen = 1593;
 		vrLoc = 19069;
@@ -17620,7 +17620,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 589";
 		rLen = 0;
-		rLoc = 19174;
+		rLoc = 18336;
 		rType = 0;
 		vrLen = 1688;
 		vrLoc = 19081;
@@ -17670,7 +17670,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 589";
 		rLen = 0;
-		rLoc = 19174;
+		rLoc = 18336;
 		rType = 0;
 		vrLen = 1548;
 		vrLoc = 19221;
@@ -17717,7 +17717,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 589";
 		rLen = 0;
-		rLoc = 19174;
+		rLoc = 18336;
 		rType = 0;
 		vrLen = 1556;
 		vrLoc = 19275;
@@ -17767,7 +17767,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 583";
 		rLen = 0;
-		rLoc = 19080;
+		rLoc = 18242;
 		rType = 0;
 		vrLen = 1530;
 		vrLoc = 17482;
@@ -17822,7 +17822,7 @@
 		vrLen = 669;
 		vrLoc = 23855;
 	};
-	3143313D1325F7C30044FEAC /* YesNoObjectSoft.cpp:178 */ = {
+	3143313D1325F7C30044FEAC /* YesNoObjectSoft.cpp:167 */ = {
 		isa = PBXFileBreakpoint;
 		actions = (
 		);
@@ -17834,7 +17834,7 @@
 		functionName = "YesNoObjectSoft::draw()";
 		hitCount = 0;
 		ignoreCount = 0;
-		lineNumber = 178;
+		lineNumber = 167;
 		location = "No.2 Mathmathical Convex HullDebug";
 		modificationTime = 321256018.905646;
 		originalNumberOfMultipleMatches = 1;
@@ -17845,7 +17845,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 102";
 		rLen = 23;
-		rLoc = 3210;
+		rLoc = 2803;
 		rType = 0;
 		vrLen = 2002;
 		vrLoc = 4285;
@@ -17855,7 +17855,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 102";
 		rLen = 23;
-		rLoc = 3210;
+		rLoc = 2803;
 		rType = 0;
 		vrLen = 1915;
 		vrLoc = 4372;
@@ -17895,7 +17895,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 102";
 		rLen = 23;
-		rLoc = 3210;
+		rLoc = 2803;
 		rType = 0;
 		vrLen = 1901;
 		vrLoc = 4464;
@@ -17935,7 +17935,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 179";
 		rLen = 0;
-		rLoc = 6048;
+		rLoc = 5641;
 		rType = 0;
 		vrLen = 1796;
 		vrLoc = 3941;
@@ -17970,7 +17970,7 @@
 		vrLen = 1313;
 		vrLoc = 23147;
 	};
-	314331551325F86B0044FEAC /* YesNoObjectSoft.cpp:169 */ = {
+	314331551325F86B0044FEAC /* YesNoObjectSoft.cpp:158 */ = {
 		isa = PBXFileBreakpoint;
 		actions = (
 		);
@@ -17982,13 +17982,13 @@
 		functionName = "YesNoObjectSoft::draw()";
 		hitCount = 0;
 		ignoreCount = 0;
-		lineNumber = 169;
+		lineNumber = 158;
 		location = "No.2 Mathmathical Convex HullDebug";
 		modificationTime = 321256017.831235;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
-	314331571325F89F0044FEAC /* YesNoObjectSoft.cpp:185 */ = {
+	314331571325F89F0044FEAC /* YesNoObjectSoft.cpp:174 */ = {
 		isa = PBXFileBreakpoint;
 		actions = (
 		);
@@ -18000,7 +18000,7 @@
 		functionName = "YesNoObjectSoft::draw()";
 		hitCount = 1;
 		ignoreCount = 0;
-		lineNumber = 185;
+		lineNumber = 174;
 		location = "No.2 Mathmathical Convex HullDebug";
 		modificationTime = 321256020.858216;
 		originalNumberOfMultipleMatches = 1;
@@ -18011,7 +18011,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 179";
 		rLen = 0;
-		rLoc = 6048;
+		rLoc = 5641;
 		rType = 0;
 		vrLen = 1796;
 		vrLoc = 3941;
@@ -18021,7 +18021,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 179";
 		rLen = 0;
-		rLoc = 6048;
+		rLoc = 5641;
 		rType = 0;
 		vrLen = 1796;
 		vrLoc = 3941;
@@ -18071,7 +18071,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 179";
 		rLen = 0;
-		rLoc = 6048;
+		rLoc = 5641;
 		rType = 0;
 		vrLen = 1928;
 		vrLoc = 4027;
@@ -18221,7 +18221,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 179";
 		rLen = 0;
-		rLoc = 6048;
+		rLoc = 5641;
 		rType = 0;
 		vrLen = 1856;
 		vrLoc = 4099;
@@ -18231,7 +18231,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 179";
 		rLen = 0;
-		rLoc = 6048;
+		rLoc = 5641;
 		rType = 0;
 		vrLen = 1901;
 		vrLoc = 4464;
@@ -18281,7 +18281,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 179";
 		rLen = 0;
-		rLoc = 6048;
+		rLoc = 5641;
 		rType = 0;
 		vrLen = 1971;
 		vrLoc = 4464;
@@ -18381,7 +18381,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 179";
 		rLen = 0;
-		rLoc = 6048;
+		rLoc = 5641;
 		rType = 0;
 		vrLen = 1924;
 		vrLoc = 4511;
@@ -18391,7 +18391,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 547";
 		rLen = 0;
-		rLoc = 18118;
+		rLoc = 17280;
 		rType = 0;
 		vrLen = 1421;
 		vrLoc = 16920;
@@ -18471,7 +18471,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 547";
 		rLen = 0;
-		rLoc = 18118;
+		rLoc = 17280;
 		rType = 0;
 		vrLen = 1501;
 		vrLoc = 16920;
@@ -18481,7 +18481,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 418";
 		rLen = 0;
-		rLoc = 14400;
+		rLoc = 13562;
 		rType = 0;
 		vrLen = 1752;
 		vrLoc = 12139;
@@ -18531,7 +18531,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 418";
 		rLen = 0;
-		rLoc = 14400;
+		rLoc = 13562;
 		rType = 0;
 		vrLen = 1752;
 		vrLoc = 12139;
@@ -18541,7 +18541,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 390";
 		rLen = 0;
-		rLoc = 12945;
+		rLoc = 12107;
 		rType = 0;
 		vrLen = 1280;
 		vrLoc = 11241;
@@ -18581,7 +18581,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 418";
 		rLen = 0;
-		rLoc = 14399;
+		rLoc = 13561;
 		rType = 0;
 		vrLen = 1712;
 		vrLoc = 12248;
@@ -18641,7 +18641,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 418";
 		rLen = 0;
-		rLoc = 14399;
+		rLoc = 13561;
 		rType = 0;
 		vrLen = 1714;
 		vrLoc = 12248;
@@ -18741,7 +18741,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 737";
 		rLen = 0;
-		rLoc = 23644;
+		rLoc = 22806;
 		rType = 0;
 		vrLen = 1359;
 		vrLoc = 22092;
@@ -18781,7 +18781,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 424";
 		rLen = 0;
-		rLoc = 14619;
+		rLoc = 13781;
 		rType = 0;
 		vrLen = 1855;
 		vrLoc = 12096;
@@ -18851,7 +18851,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 424";
 		rLen = 0;
-		rLoc = 14619;
+		rLoc = 13781;
 		rType = 0;
 		vrLen = 1796;
 		vrLoc = 12175;
@@ -18861,7 +18861,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 74";
 		rLen = 0;
-		rLoc = 2344;
+		rLoc = 2190;
 		rType = 0;
 		vrLen = 1398;
 		vrLoc = 1499;
@@ -18905,7 +18905,7 @@
 		fRef = 3124890A130605800076BAB7 /* YesNoObjectSoft.h */;
 		name = "YesNoObjectSoft.h: 155";
 		rLen = 0;
-		rLoc = 3507;
+		rLoc = 3406;
 		rType = 0;
 		vrLen = 1214;
 		vrLoc = 2558;
@@ -18915,7 +18915,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 279";
 		rLen = 0;
-		rLoc = 9171;
+		rLoc = 8476;
 		rType = 0;
 		vrLen = 1643;
 		vrLoc = 7496;
@@ -18925,7 +18925,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 75";
 		rLen = 0;
-		rLoc = 2109;
+		rLoc = 2103;
 		rType = 0;
 		vrLen = 1574;
 		vrLoc = 1255;
@@ -18955,7 +18955,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 77";
 		rLen = 0;
-		rLoc = 2318;
+		rLoc = 2162;
 		rType = 0;
 		vrLen = 1571;
 		vrLoc = 1343;
@@ -18985,7 +18985,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 77";
 		rLen = 0;
-		rLoc = 2317;
+		rLoc = 2161;
 		rType = 0;
 		vrLen = 1531;
 		vrLoc = 1386;
@@ -19015,7 +19015,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 79";
 		rLen = 0;
-		rLoc = 2142;
+		rLoc = 2133;
 		rType = 0;
 		vrLen = 1624;
 		vrLoc = 1408;
@@ -19045,7 +19045,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 292";
 		rLen = 0;
-		rLoc = 9348;
+		rLoc = 8478;
 		rType = 0;
 		vrLen = 2306;
 		vrLoc = 8431;
@@ -19075,7 +19075,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 295";
 		rLen = 0;
-		rLoc = 9554;
+		rLoc = 8867;
 		rType = 0;
 		vrLen = 2316;
 		vrLoc = 8289;
@@ -19105,7 +19105,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 78";
 		rLen = 0;
-		rLoc = 2142;
+		rLoc = 2133;
 		rType = 0;
 		vrLen = 1569;
 		vrLoc = 1632;
@@ -19135,7 +19135,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 287";
 		rLen = 0;
-		rLoc = 9169;
+		rLoc = 8474;
 		rType = 0;
 		vrLen = 1468;
 		vrLoc = 1766;
@@ -19165,7 +19165,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 82";
 		rLen = 0;
-		rLoc = 2311;
+		rLoc = 2155;
 		rType = 0;
 		vrLen = 1486;
 		vrLoc = 1878;
@@ -19195,7 +19195,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 287";
 		rLen = 0;
-		rLoc = 9163;
+		rLoc = 8468;
 		rType = 0;
 		vrLen = 2089;
 		vrLoc = 8141;
@@ -19225,7 +19225,7 @@
 		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
 		name = "YesNoObjectSoft.cpp: 268";
 		rLen = 0;
-		rLoc = 8369;
+		rLoc = 8097;
 		rType = 0;
 		vrLen = 1829;
 		vrLoc = 7851;
@@ -19249,6 +19249,826 @@
 		rType = 0;
 		vrLen = 1476;
 		vrLoc = 8315;
+	};
+	314332381326138A0044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
+		name = "YesNoObjectSoft.cpp: 268";
+		rLen = 0;
+		rLoc = 8154;
+		rType = 0;
+		vrLen = 2114;
+		vrLoc = 7857;
+	};
+	314332391326138A0044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 31AE87A51301DE290087065A /* ofxQuaternion.h */;
+		name = "ofxQuaternion.h: 318";
+		rLen = 71;
+		rLoc = 8838;
+		rType = 0;
+		vrLen = 1080;
+		vrLoc = 275;
+	};
+	3143323A1326138A0044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 31AE87571301DE280087065A /* btSoftBody.cpp */;
+		name = "btSoftBody.cpp: 291";
+		rLen = 11;
+		rLoc = 7527;
+		rType = 0;
+		vrLen = 1437;
+		vrLoc = 8359;
+	};
+	3143323E132614310044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 31AE87A71301DE290087065A /* ofxVec3f.h */;
+		name = "ofxVec3f.h: 878";
+		rLen = 41;
+		rLoc = 22003;
+		rType = 0;
+		vrLen = 1082;
+		vrLoc = 21966;
+	};
+	3143323F132614310044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
+		name = "YesNoObjectSoft.cpp: 265";
+		rLen = 9;
+		rLoc = 7956;
+		rType = 0;
+		vrLen = 2159;
+		vrLoc = 7857;
+	};
+	31433240132614310044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
+		name = "YesNoObjectSoft.cpp: 267";
+		rLen = 0;
+		rLoc = 8056;
+		rType = 0;
+		vrLen = 2157;
+		vrLoc = 7859;
+	};
+	31433241132614310044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 31AE87A51301DE290087065A /* ofxQuaternion.h */;
+		name = "ofxQuaternion.h: 318";
+		rLen = 71;
+		rLoc = 8838;
+		rType = 0;
+		vrLen = 1080;
+		vrLoc = 275;
+	};
+	31433242132614310044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 31AE87571301DE280087065A /* btSoftBody.cpp */;
+		name = "btSoftBody.cpp: 291";
+		rLen = 11;
+		rLoc = 7527;
+		rType = 0;
+		vrLen = 1495;
+		vrLoc = 8388;
+	};
+	314332461326145A0044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
+		name = "YesNoObjectSoft.cpp: 266";
+		rLen = 41;
+		rLoc = 7972;
+		rType = 0;
+		vrLen = 2255;
+		vrLoc = 7862;
+	};
+	314332471326145A0044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 31AE87A51301DE290087065A /* ofxQuaternion.h */;
+		name = "ofxQuaternion.h: 318";
+		rLen = 71;
+		rLoc = 8838;
+		rType = 0;
+		vrLen = 1080;
+		vrLoc = 275;
+	};
+	314332481326145A0044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 31AE87571301DE280087065A /* btSoftBody.cpp */;
+		name = "btSoftBody.cpp: 291";
+		rLen = 11;
+		rLoc = 7527;
+		rType = 0;
+		vrLen = 1475;
+		vrLoc = 8411;
+	};
+	3143324C132614FA0044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
+		name = "YesNoObjectSoft.cpp: 51";
+		rLen = 0;
+		rLoc = 1502;
+		rType = 0;
+		vrLen = 1591;
+		vrLoc = 3;
+	};
+	3143324D132614FA0044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 31AE87A51301DE290087065A /* ofxQuaternion.h */;
+		name = "ofxQuaternion.h: 318";
+		rLen = 71;
+		rLoc = 8838;
+		rType = 0;
+		vrLen = 1080;
+		vrLoc = 275;
+	};
+	3143324E132614FA0044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 31AE87571301DE280087065A /* btSoftBody.cpp */;
+		name = "btSoftBody.cpp: 291";
+		rLen = 11;
+		rLoc = 7527;
+		rType = 0;
+		vrLen = 1470;
+		vrLoc = 8481;
+	};
+	31433252132615900044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
+		name = "YesNoObjectSoft.cpp: 268";
+		rLen = 0;
+		rLoc = 7932;
+		rType = 0;
+		vrLen = 1961;
+		vrLoc = 7820;
+	};
+	31433253132615900044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 31AE87A51301DE290087065A /* ofxQuaternion.h */;
+		name = "ofxQuaternion.h: 318";
+		rLen = 71;
+		rLoc = 8838;
+		rType = 0;
+		vrLen = 1080;
+		vrLoc = 275;
+	};
+	31433254132615900044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 31AE87571301DE280087065A /* btSoftBody.cpp */;
+		name = "btSoftBody.cpp: 291";
+		rLen = 11;
+		rLoc = 7527;
+		rType = 0;
+		vrLen = 1416;
+		vrLoc = 8541;
+	};
+	31433258132615AD0044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
+		name = "YesNoObjectSoft.cpp: 266";
+		rLen = 0;
+		rLoc = 7821;
+		rType = 0;
+		vrLen = 1965;
+		vrLoc = 7855;
+	};
+	31433259132615AD0044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 31AE87A51301DE290087065A /* ofxQuaternion.h */;
+		name = "ofxQuaternion.h: 318";
+		rLen = 71;
+		rLoc = 8838;
+		rType = 0;
+		vrLen = 1080;
+		vrLoc = 275;
+	};
+	3143325A132615AD0044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 31AE87571301DE280087065A /* btSoftBody.cpp */;
+		name = "btSoftBody.cpp: 291";
+		rLen = 11;
+		rLoc = 7527;
+		rType = 0;
+		vrLen = 1403;
+		vrLoc = 8650;
+	};
+	3143325E132616360044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
+		name = "YesNoObjectSoft.cpp: 268";
+		rLen = 0;
+		rLoc = 7850;
+		rType = 0;
+		vrLen = 2013;
+		vrLoc = 7910;
+	};
+	3143325F132616360044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 31AE87A51301DE290087065A /* ofxQuaternion.h */;
+		name = "ofxQuaternion.h: 318";
+		rLen = 71;
+		rLoc = 8838;
+		rType = 0;
+		vrLen = 1080;
+		vrLoc = 275;
+	};
+	31433260132616360044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 31AE87571301DE280087065A /* btSoftBody.cpp */;
+		name = "btSoftBody.cpp: 291";
+		rLen = 11;
+		rLoc = 7527;
+		rType = 0;
+		vrLen = 1445;
+		vrLoc = 8673;
+	};
+	314332641326165A0044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
+		name = "YesNoObjectSoft.cpp: 265";
+		rLen = 0;
+		rLoc = 7758;
+		rType = 0;
+		vrLen = 2076;
+		vrLoc = 7946;
+	};
+	314332651326165A0044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 31AE87A51301DE290087065A /* ofxQuaternion.h */;
+		name = "ofxQuaternion.h: 318";
+		rLen = 71;
+		rLoc = 8838;
+		rType = 0;
+		vrLen = 1080;
+		vrLoc = 275;
+	};
+	314332661326165A0044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 31AE87571301DE280087065A /* btSoftBody.cpp */;
+		name = "btSoftBody.cpp: 291";
+		rLen = 11;
+		rLoc = 7527;
+		rType = 0;
+		vrLen = 1494;
+		vrLoc = 8678;
+	};
+	3143326A132616860044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
+		name = "YesNoObjectSoft.cpp: 266";
+		rLen = 0;
+		rLoc = 7793;
+		rType = 0;
+		vrLen = 2100;
+		vrLoc = 7952;
+	};
+	3143326B132616860044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 31AE87A51301DE290087065A /* ofxQuaternion.h */;
+		name = "ofxQuaternion.h: 318";
+		rLen = 71;
+		rLoc = 8838;
+		rType = 0;
+		vrLen = 1080;
+		vrLoc = 275;
+	};
+	3143326C132616860044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 31AE87571301DE280087065A /* btSoftBody.cpp */;
+		name = "btSoftBody.cpp: 291";
+		rLen = 11;
+		rLoc = 7527;
+		rType = 0;
+		vrLen = 1537;
+		vrLoc = 8785;
+	};
+	31433270132616EA0044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
+		name = "YesNoObjectSoft.cpp: 272";
+		rLen = 0;
+		rLoc = 8053;
+		rType = 0;
+		vrLen = 2188;
+		vrLoc = 7956;
+	};
+	31433271132616EA0044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 31AE87A51301DE290087065A /* ofxQuaternion.h */;
+		name = "ofxQuaternion.h: 318";
+		rLen = 71;
+		rLoc = 8838;
+		rType = 0;
+		vrLen = 1080;
+		vrLoc = 275;
+	};
+	31433272132616EA0044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 31AE87571301DE280087065A /* btSoftBody.cpp */;
+		name = "btSoftBody.cpp: 291";
+		rLen = 11;
+		rLoc = 7527;
+		rType = 0;
+		vrLen = 1543;
+		vrLoc = 8831;
+	};
+	314332761326170D0044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
+		name = "YesNoObjectSoft.cpp: 275";
+		rLen = 0;
+		rLoc = 8151;
+		rType = 0;
+		vrLen = 2206;
+		vrLoc = 8032;
+	};
+	314332771326170D0044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 31AE87A51301DE290087065A /* ofxQuaternion.h */;
+		name = "ofxQuaternion.h: 318";
+		rLen = 71;
+		rLoc = 8838;
+		rType = 0;
+		vrLen = 1080;
+		vrLoc = 275;
+	};
+	314332781326170D0044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 31AE87571301DE280087065A /* btSoftBody.cpp */;
+		name = "btSoftBody.cpp: 291";
+		rLen = 11;
+		rLoc = 7527;
+		rType = 0;
+		vrLen = 1511;
+		vrLoc = 8928;
+	};
+	3143327C132617250044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
+		name = "YesNoObjectSoft.cpp: 272";
+		rLen = 42;
+		rLoc = 8014;
+		rType = 0;
+		vrLen = 2249;
+		vrLoc = 8034;
+	};
+	3143327D132617250044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 31AE87A51301DE290087065A /* ofxQuaternion.h */;
+		name = "ofxQuaternion.h: 318";
+		rLen = 71;
+		rLoc = 8838;
+		rType = 0;
+		vrLen = 1080;
+		vrLoc = 275;
+	};
+	3143327E132617250044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 31AE87571301DE280087065A /* btSoftBody.cpp */;
+		name = "btSoftBody.cpp: 291";
+		rLen = 11;
+		rLoc = 7527;
+		rType = 0;
+		vrLen = 1532;
+		vrLoc = 8933;
+	};
+	31433282132617690044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
+		name = "YesNoObjectSoft.cpp: 269";
+		rLen = 0;
+		rLoc = 7898;
+		rType = 0;
+		vrLen = 2228;
+		vrLoc = 8156;
+	};
+	31433283132617690044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 31AE87A51301DE290087065A /* ofxQuaternion.h */;
+		name = "ofxQuaternion.h: 318";
+		rLen = 71;
+		rLoc = 8838;
+		rType = 0;
+		vrLen = 1080;
+		vrLoc = 275;
+	};
+	31433284132617690044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 31AE87571301DE280087065A /* btSoftBody.cpp */;
+		name = "btSoftBody.cpp: 291";
+		rLen = 11;
+		rLoc = 7527;
+		rType = 0;
+		vrLen = 1484;
+		vrLoc = 8986;
+	};
+	31433288132617890044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
+		name = "YesNoObjectSoft.cpp: 266";
+		rLen = 0;
+		rLoc = 7793;
+		rType = 0;
+		vrLen = 2316;
+		vrLoc = 8204;
+	};
+	31433289132617890044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 31AE87A51301DE290087065A /* ofxQuaternion.h */;
+		name = "ofxQuaternion.h: 318";
+		rLen = 71;
+		rLoc = 8838;
+		rType = 0;
+		vrLen = 1080;
+		vrLoc = 275;
+	};
+	3143328A132617890044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 31AE87571301DE280087065A /* btSoftBody.cpp */;
+		name = "btSoftBody.cpp: 291";
+		rLen = 11;
+		rLoc = 7527;
+		rType = 0;
+		vrLen = 1559;
+		vrLoc = 8992;
+	};
+	3143328E132617A60044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
+		name = "YesNoObjectSoft.cpp: 276";
+		rLen = 0;
+		rLoc = 8116;
+		rType = 0;
+		vrLen = 2345;
+		vrLoc = 8260;
+	};
+	3143328F132617A60044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 31AE87A51301DE290087065A /* ofxQuaternion.h */;
+		name = "ofxQuaternion.h: 318";
+		rLen = 71;
+		rLoc = 8838;
+		rType = 0;
+		vrLen = 1080;
+		vrLoc = 275;
+	};
+	31433290132617A60044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 31AE87571301DE280087065A /* btSoftBody.cpp */;
+		name = "btSoftBody.cpp: 291";
+		rLen = 11;
+		rLoc = 7527;
+		rType = 0;
+		vrLen = 1567;
+		vrLoc = 9035;
+	};
+	31433294132617CF0044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
+		name = "YesNoObjectSoft.cpp: 268";
+		rLen = 0;
+		rLoc = 7850;
+		rType = 0;
+		vrLen = 2156;
+		vrLoc = 7956;
+	};
+	31433295132617CF0044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 31AE87A51301DE290087065A /* ofxQuaternion.h */;
+		name = "ofxQuaternion.h: 318";
+		rLen = 71;
+		rLoc = 8838;
+		rType = 0;
+		vrLen = 1080;
+		vrLoc = 275;
+	};
+	31433296132617CF0044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 31AE87571301DE280087065A /* btSoftBody.cpp */;
+		name = "btSoftBody.cpp: 291";
+		rLen = 11;
+		rLoc = 7527;
+		rType = 0;
+		vrLen = 1549;
+		vrLoc = 9056;
+	};
+	3143329A132617EA0044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
+		name = "YesNoObjectSoft.cpp: 276";
+		rLen = 0;
+		rLoc = 8116;
+		rType = 0;
+		vrLen = 2154;
+		vrLoc = 8032;
+	};
+	3143329B132617EA0044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 31AE87A51301DE290087065A /* ofxQuaternion.h */;
+		name = "ofxQuaternion.h: 318";
+		rLen = 71;
+		rLoc = 8838;
+		rType = 0;
+		vrLen = 1080;
+		vrLoc = 275;
+	};
+	3143329C132617EA0044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 31AE87571301DE280087065A /* btSoftBody.cpp */;
+		name = "btSoftBody.cpp: 291";
+		rLen = 11;
+		rLoc = 7527;
+		rType = 0;
+		vrLen = 1448;
+		vrLoc = 9163;
+	};
+	314332A0132618410044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
+		name = "YesNoObjectSoft.cpp: 272";
+		rLen = 0;
+		rLoc = 7972;
+		rType = 0;
+		vrLen = 2181;
+		vrLoc = 8104;
+	};
+	314332A1132618410044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 31AE87A51301DE290087065A /* ofxQuaternion.h */;
+		name = "ofxQuaternion.h: 318";
+		rLen = 71;
+		rLoc = 8838;
+		rType = 0;
+		vrLen = 1080;
+		vrLoc = 275;
+	};
+	314332A2132618410044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 31AE87571301DE280087065A /* btSoftBody.cpp */;
+		name = "btSoftBody.cpp: 291";
+		rLen = 11;
+		rLoc = 7527;
+		rType = 0;
+		vrLen = 1506;
+		vrLoc = 9192;
+	};
+	314332A6132618740044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
+		name = "YesNoObjectSoft.cpp: 265";
+		rLen = 0;
+		rLoc = 7758;
+		rType = 0;
+		vrLen = 2184;
+		vrLoc = 8202;
+	};
+	314332A7132618740044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 31AE87A51301DE290087065A /* ofxQuaternion.h */;
+		name = "ofxQuaternion.h: 318";
+		rLen = 71;
+		rLoc = 8838;
+		rType = 0;
+		vrLen = 1080;
+		vrLoc = 275;
+	};
+	314332A8132618740044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 31AE87571301DE280087065A /* btSoftBody.cpp */;
+		name = "btSoftBody.cpp: 291";
+		rLen = 11;
+		rLoc = 7527;
+		rType = 0;
+		vrLen = 1566;
+		vrLoc = 9198;
+	};
+	314332AC1326189A0044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
+		name = "YesNoObjectSoft.cpp: 276";
+		rLen = 0;
+		rLoc = 8116;
+		rType = 0;
+		vrLen = 2210;
+		vrLoc = 8204;
+	};
+	314332AD1326189A0044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 31AE87A51301DE290087065A /* ofxQuaternion.h */;
+		name = "ofxQuaternion.h: 318";
+		rLen = 71;
+		rLoc = 8838;
+		rType = 0;
+		vrLen = 1080;
+		vrLoc = 275;
+	};
+	314332AE1326189A0044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 31AE87571301DE280087065A /* btSoftBody.cpp */;
+		name = "btSoftBody.cpp: 291";
+		rLen = 11;
+		rLoc = 7527;
+		rType = 0;
+		vrLen = 1476;
+		vrLoc = 9290;
+	};
+	314332B2132618B70044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
+		name = "YesNoObjectSoft.cpp: 273";
+		rLen = 0;
+		rLoc = 8014;
+		rType = 0;
+		vrLen = 2345;
+		vrLoc = 8260;
+	};
+	314332B3132618B70044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 31AE87A51301DE290087065A /* ofxQuaternion.h */;
+		name = "ofxQuaternion.h: 318";
+		rLen = 71;
+		rLoc = 8838;
+		rType = 0;
+		vrLen = 1080;
+		vrLoc = 275;
+	};
+	314332B4132618B70044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 31AE87571301DE280087065A /* btSoftBody.cpp */;
+		name = "btSoftBody.cpp: 291";
+		rLen = 11;
+		rLoc = 7527;
+		rType = 0;
+		vrLen = 1465;
+		vrLoc = 9358;
+	};
+	314332B81326190B0044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
+		name = "YesNoObjectSoft.cpp: 269";
+		rLen = 0;
+		rLoc = 7898;
+		rType = 0;
+		vrLen = 2154;
+		vrLoc = 8032;
+	};
+	314332B91326190B0044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 31AE87A51301DE290087065A /* ofxQuaternion.h */;
+		name = "ofxQuaternion.h: 318";
+		rLen = 71;
+		rLoc = 8838;
+		rType = 0;
+		vrLen = 1080;
+		vrLoc = 275;
+	};
+	314332BA1326190B0044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 31AE87571301DE280087065A /* btSoftBody.cpp */;
+		name = "btSoftBody.cpp: 291";
+		rLen = 11;
+		rLoc = 7527;
+		rType = 0;
+		vrLen = 1475;
+		vrLoc = 9412;
+	};
+	314332BE132619300044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
+		name = "YesNoObjectSoft.cpp: 266";
+		rLen = 0;
+		rLoc = 7793;
+		rType = 0;
+		vrLen = 2181;
+		vrLoc = 8104;
+	};
+	314332BF132619300044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 31AE87A51301DE290087065A /* ofxQuaternion.h */;
+		name = "ofxQuaternion.h: 318";
+		rLen = 71;
+		rLoc = 8838;
+		rType = 0;
+		vrLen = 1080;
+		vrLoc = 275;
+	};
+	314332C0132619300044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 31AE87571301DE280087065A /* btSoftBody.cpp */;
+		name = "btSoftBody.cpp: 291";
+		rLen = 11;
+		rLoc = 7527;
+		rType = 0;
+		vrLen = 1344;
+		vrLoc = 9548;
+	};
+	314332C2132619B30044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3124890A130605800076BAB7 /* YesNoObjectSoft.h */;
+		name = "YesNoObjectSoft.h: 155";
+		rLen = 0;
+		rLoc = 3494;
+		rType = 0;
+		vrLen = 1217;
+		vrLoc = 2558;
+	};
+	314332C3132619B30044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
+		name = "YesNoObjectSoft.cpp: 270";
+		rLen = 0;
+		rLoc = 7968;
+		rType = 0;
+		vrLen = 1978;
+		vrLoc = 7541;
+	};
+	314332C4132619B30044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
+		name = "YesNoObjectSoft.cpp: 270";
+		rLen = 0;
+		rLoc = 7968;
+		rType = 0;
+		vrLen = 1978;
+		vrLoc = 7541;
+	};
+	314332C5132619B30044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 31AE87A51301DE290087065A /* ofxQuaternion.h */;
+		name = "ofxQuaternion.h: 318";
+		rLen = 71;
+		rLoc = 8838;
+		rType = 0;
+		vrLen = 1099;
+		vrLoc = 275;
+	};
+	314332C6132619B30044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 31AE87571301DE280087065A /* btSoftBody.cpp */;
+		name = "btSoftBody.cpp: 291";
+		rLen = 11;
+		rLoc = 7527;
+		rType = 0;
+		vrLen = 1410;
+		vrLoc = 9548;
+	};
+	314332CB132619E30044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
+		name = "YesNoObjectSoft.cpp: 275";
+		rLen = 0;
+		rLoc = 8154;
+		rType = 0;
+		vrLen = 2216;
+		vrLoc = 7956;
+	};
+	314332CC132619E30044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 31AE87A51301DE290087065A /* ofxQuaternion.h */;
+		name = "ofxQuaternion.h: 318";
+		rLen = 71;
+		rLoc = 8838;
+		rType = 0;
+		vrLen = 1080;
+		vrLoc = 275;
+	};
+	314332CD132619E30044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 31AE87571301DE280087065A /* btSoftBody.cpp */;
+		name = "btSoftBody.cpp: 291";
+		rLen = 11;
+		rLoc = 7527;
+		rType = 0;
+		vrLen = 1358;
+		vrLoc = 9600;
+	};
+	314332CF13261A2E0044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */;
+		name = "YesNoObjectSoft.cpp: 311";
+		rLen = 0;
+		rLoc = 10339;
+		rType = 0;
+		vrLen = 1507;
+		vrLoc = 0;
+	};
+	314332D013261A2E0044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 31AE87A51301DE290087065A /* ofxQuaternion.h */;
+		name = "ofxQuaternion.h: 318";
+		rLen = 71;
+		rLoc = 8838;
+		rType = 0;
+		vrLen = 1099;
+		vrLoc = 275;
+	};
+	314332D113261A2E0044FEAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 31AE87571301DE280087065A /* btSoftBody.cpp */;
+		name = "btSoftBody.cpp: 291";
+		rLen = 11;
+		rLoc = 7527;
+		rType = 0;
+		vrLen = 1361;
+		vrLoc = 9600;
 	};
 	3168AFDF1302610D006B852A /* stl_vector.h */ = {
 		isa = PBXFileReference;
@@ -19608,9 +20428,9 @@
 	};
 	31AE87571301DE280087065A /* btSoftBody.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {782, 38051}}";
+			sepNavIntBoundsRect = "{{0, 0}, {782, 37973}}";
 			sepNavSelRange = "{7527, 11}";
-			sepNavVisRange = "{8315, 1476}";
+			sepNavVisRange = "{9600, 1361}";
 			sepNavWindowFrame = "{{709, 107}, {643, 771}}";
 		};
 	};
@@ -19768,7 +20588,7 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {761, 4342}}";
 			sepNavSelRange = "{8838, 71}";
-			sepNavVisRange = "{275, 1080}";
+			sepNavVisRange = "{275, 1099}";
 			sepNavWindowFrame = "{{38, 75}, {743, 777}}";
 		};
 	};
@@ -19781,9 +20601,9 @@
 	};
 	31AE87A71301DE290087065A /* ofxVec3f.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {731, 14196}}";
-			sepNavSelRange = "{88, 34}";
-			sepNavVisRange = "{0, 1030}";
+			sepNavIntBoundsRect = "{{0, 0}, {767, 14118}}";
+			sepNavSelRange = "{22003, 41}";
+			sepNavVisRange = "{21966, 1082}";
 			sepNavWindowFrame = "{{15, 96}, {743, 777}}";
 		};
 	};
@@ -20051,9 +20871,9 @@
 			E4B69B5A0A3A1756003C02F2 /* No.2 Mathmathical Convex Hull */,
 		);
 		breakpoints = (
-			3143313D1325F7C30044FEAC /* YesNoObjectSoft.cpp:178 */,
-			314331551325F86B0044FEAC /* YesNoObjectSoft.cpp:169 */,
-			314331571325F89F0044FEAC /* YesNoObjectSoft.cpp:185 */,
+			3143313D1325F7C30044FEAC /* YesNoObjectSoft.cpp:167 */,
+			314331551325F86B0044FEAC /* YesNoObjectSoft.cpp:158 */,
+			314331571325F89F0044FEAC /* YesNoObjectSoft.cpp:174 */,
 		);
 		codeSenseManager = 31C6963112963DFE007F71A7 /* Code sense */;
 		executables = (
@@ -22068,6 +22888,88 @@
 			31433232132612930044FEAC /* PBXTextBookmark */ = 31433232132612930044FEAC /* PBXTextBookmark */;
 			31433233132612930044FEAC /* PBXTextBookmark */ = 31433233132612930044FEAC /* PBXTextBookmark */;
 			31433234132612930044FEAC /* PBXTextBookmark */ = 31433234132612930044FEAC /* PBXTextBookmark */;
+			314332381326138A0044FEAC /* PBXTextBookmark */ = 314332381326138A0044FEAC /* PBXTextBookmark */;
+			314332391326138A0044FEAC /* PBXTextBookmark */ = 314332391326138A0044FEAC /* PBXTextBookmark */;
+			3143323A1326138A0044FEAC /* PBXTextBookmark */ = 3143323A1326138A0044FEAC /* PBXTextBookmark */;
+			3143323E132614310044FEAC /* PBXTextBookmark */ = 3143323E132614310044FEAC /* PBXTextBookmark */;
+			3143323F132614310044FEAC /* PBXTextBookmark */ = 3143323F132614310044FEAC /* PBXTextBookmark */;
+			31433240132614310044FEAC /* PBXTextBookmark */ = 31433240132614310044FEAC /* PBXTextBookmark */;
+			31433241132614310044FEAC /* PBXTextBookmark */ = 31433241132614310044FEAC /* PBXTextBookmark */;
+			31433242132614310044FEAC /* PBXTextBookmark */ = 31433242132614310044FEAC /* PBXTextBookmark */;
+			314332461326145A0044FEAC /* PBXTextBookmark */ = 314332461326145A0044FEAC /* PBXTextBookmark */;
+			314332471326145A0044FEAC /* PBXTextBookmark */ = 314332471326145A0044FEAC /* PBXTextBookmark */;
+			314332481326145A0044FEAC /* PBXTextBookmark */ = 314332481326145A0044FEAC /* PBXTextBookmark */;
+			3143324C132614FA0044FEAC /* PBXTextBookmark */ = 3143324C132614FA0044FEAC /* PBXTextBookmark */;
+			3143324D132614FA0044FEAC /* PBXTextBookmark */ = 3143324D132614FA0044FEAC /* PBXTextBookmark */;
+			3143324E132614FA0044FEAC /* PBXTextBookmark */ = 3143324E132614FA0044FEAC /* PBXTextBookmark */;
+			31433252132615900044FEAC /* PBXTextBookmark */ = 31433252132615900044FEAC /* PBXTextBookmark */;
+			31433253132615900044FEAC /* PBXTextBookmark */ = 31433253132615900044FEAC /* PBXTextBookmark */;
+			31433254132615900044FEAC /* PBXTextBookmark */ = 31433254132615900044FEAC /* PBXTextBookmark */;
+			31433258132615AD0044FEAC /* PBXTextBookmark */ = 31433258132615AD0044FEAC /* PBXTextBookmark */;
+			31433259132615AD0044FEAC /* PBXTextBookmark */ = 31433259132615AD0044FEAC /* PBXTextBookmark */;
+			3143325A132615AD0044FEAC /* PBXTextBookmark */ = 3143325A132615AD0044FEAC /* PBXTextBookmark */;
+			3143325E132616360044FEAC /* PBXTextBookmark */ = 3143325E132616360044FEAC /* PBXTextBookmark */;
+			3143325F132616360044FEAC /* PBXTextBookmark */ = 3143325F132616360044FEAC /* PBXTextBookmark */;
+			31433260132616360044FEAC /* PBXTextBookmark */ = 31433260132616360044FEAC /* PBXTextBookmark */;
+			314332641326165A0044FEAC /* PBXTextBookmark */ = 314332641326165A0044FEAC /* PBXTextBookmark */;
+			314332651326165A0044FEAC /* PBXTextBookmark */ = 314332651326165A0044FEAC /* PBXTextBookmark */;
+			314332661326165A0044FEAC /* PBXTextBookmark */ = 314332661326165A0044FEAC /* PBXTextBookmark */;
+			3143326A132616860044FEAC /* PBXTextBookmark */ = 3143326A132616860044FEAC /* PBXTextBookmark */;
+			3143326B132616860044FEAC /* PBXTextBookmark */ = 3143326B132616860044FEAC /* PBXTextBookmark */;
+			3143326C132616860044FEAC /* PBXTextBookmark */ = 3143326C132616860044FEAC /* PBXTextBookmark */;
+			31433270132616EA0044FEAC /* PBXTextBookmark */ = 31433270132616EA0044FEAC /* PBXTextBookmark */;
+			31433271132616EA0044FEAC /* PBXTextBookmark */ = 31433271132616EA0044FEAC /* PBXTextBookmark */;
+			31433272132616EA0044FEAC /* PBXTextBookmark */ = 31433272132616EA0044FEAC /* PBXTextBookmark */;
+			314332761326170D0044FEAC /* PBXTextBookmark */ = 314332761326170D0044FEAC /* PBXTextBookmark */;
+			314332771326170D0044FEAC /* PBXTextBookmark */ = 314332771326170D0044FEAC /* PBXTextBookmark */;
+			314332781326170D0044FEAC /* PBXTextBookmark */ = 314332781326170D0044FEAC /* PBXTextBookmark */;
+			3143327C132617250044FEAC /* PBXTextBookmark */ = 3143327C132617250044FEAC /* PBXTextBookmark */;
+			3143327D132617250044FEAC /* PBXTextBookmark */ = 3143327D132617250044FEAC /* PBXTextBookmark */;
+			3143327E132617250044FEAC /* PBXTextBookmark */ = 3143327E132617250044FEAC /* PBXTextBookmark */;
+			31433282132617690044FEAC /* PBXTextBookmark */ = 31433282132617690044FEAC /* PBXTextBookmark */;
+			31433283132617690044FEAC /* PBXTextBookmark */ = 31433283132617690044FEAC /* PBXTextBookmark */;
+			31433284132617690044FEAC /* PBXTextBookmark */ = 31433284132617690044FEAC /* PBXTextBookmark */;
+			31433288132617890044FEAC /* PBXTextBookmark */ = 31433288132617890044FEAC /* PBXTextBookmark */;
+			31433289132617890044FEAC /* PBXTextBookmark */ = 31433289132617890044FEAC /* PBXTextBookmark */;
+			3143328A132617890044FEAC /* PBXTextBookmark */ = 3143328A132617890044FEAC /* PBXTextBookmark */;
+			3143328E132617A60044FEAC /* PBXTextBookmark */ = 3143328E132617A60044FEAC /* PBXTextBookmark */;
+			3143328F132617A60044FEAC /* PBXTextBookmark */ = 3143328F132617A60044FEAC /* PBXTextBookmark */;
+			31433290132617A60044FEAC /* PBXTextBookmark */ = 31433290132617A60044FEAC /* PBXTextBookmark */;
+			31433294132617CF0044FEAC /* PBXTextBookmark */ = 31433294132617CF0044FEAC /* PBXTextBookmark */;
+			31433295132617CF0044FEAC /* PBXTextBookmark */ = 31433295132617CF0044FEAC /* PBXTextBookmark */;
+			31433296132617CF0044FEAC /* PBXTextBookmark */ = 31433296132617CF0044FEAC /* PBXTextBookmark */;
+			3143329A132617EA0044FEAC /* PBXTextBookmark */ = 3143329A132617EA0044FEAC /* PBXTextBookmark */;
+			3143329B132617EA0044FEAC /* PBXTextBookmark */ = 3143329B132617EA0044FEAC /* PBXTextBookmark */;
+			3143329C132617EA0044FEAC /* PBXTextBookmark */ = 3143329C132617EA0044FEAC /* PBXTextBookmark */;
+			314332A0132618410044FEAC /* PBXTextBookmark */ = 314332A0132618410044FEAC /* PBXTextBookmark */;
+			314332A1132618410044FEAC /* PBXTextBookmark */ = 314332A1132618410044FEAC /* PBXTextBookmark */;
+			314332A2132618410044FEAC /* PBXTextBookmark */ = 314332A2132618410044FEAC /* PBXTextBookmark */;
+			314332A6132618740044FEAC /* PBXTextBookmark */ = 314332A6132618740044FEAC /* PBXTextBookmark */;
+			314332A7132618740044FEAC /* PBXTextBookmark */ = 314332A7132618740044FEAC /* PBXTextBookmark */;
+			314332A8132618740044FEAC /* PBXTextBookmark */ = 314332A8132618740044FEAC /* PBXTextBookmark */;
+			314332AC1326189A0044FEAC /* PBXTextBookmark */ = 314332AC1326189A0044FEAC /* PBXTextBookmark */;
+			314332AD1326189A0044FEAC /* PBXTextBookmark */ = 314332AD1326189A0044FEAC /* PBXTextBookmark */;
+			314332AE1326189A0044FEAC /* PBXTextBookmark */ = 314332AE1326189A0044FEAC /* PBXTextBookmark */;
+			314332B2132618B70044FEAC /* PBXTextBookmark */ = 314332B2132618B70044FEAC /* PBXTextBookmark */;
+			314332B3132618B70044FEAC /* PBXTextBookmark */ = 314332B3132618B70044FEAC /* PBXTextBookmark */;
+			314332B4132618B70044FEAC /* PBXTextBookmark */ = 314332B4132618B70044FEAC /* PBXTextBookmark */;
+			314332B81326190B0044FEAC /* PBXTextBookmark */ = 314332B81326190B0044FEAC /* PBXTextBookmark */;
+			314332B91326190B0044FEAC /* PBXTextBookmark */ = 314332B91326190B0044FEAC /* PBXTextBookmark */;
+			314332BA1326190B0044FEAC /* PBXTextBookmark */ = 314332BA1326190B0044FEAC /* PBXTextBookmark */;
+			314332BE132619300044FEAC /* PBXTextBookmark */ = 314332BE132619300044FEAC /* PBXTextBookmark */;
+			314332BF132619300044FEAC /* PBXTextBookmark */ = 314332BF132619300044FEAC /* PBXTextBookmark */;
+			314332C0132619300044FEAC /* PBXTextBookmark */ = 314332C0132619300044FEAC /* PBXTextBookmark */;
+			314332C2132619B30044FEAC /* PBXTextBookmark */ = 314332C2132619B30044FEAC /* PBXTextBookmark */;
+			314332C3132619B30044FEAC /* PBXTextBookmark */ = 314332C3132619B30044FEAC /* PBXTextBookmark */;
+			314332C4132619B30044FEAC /* PBXTextBookmark */ = 314332C4132619B30044FEAC /* PBXTextBookmark */;
+			314332C5132619B30044FEAC /* PBXTextBookmark */ = 314332C5132619B30044FEAC /* PBXTextBookmark */;
+			314332C6132619B30044FEAC /* PBXTextBookmark */ = 314332C6132619B30044FEAC /* PBXTextBookmark */;
+			314332CB132619E30044FEAC /* PBXTextBookmark */ = 314332CB132619E30044FEAC /* PBXTextBookmark */;
+			314332CC132619E30044FEAC /* PBXTextBookmark */ = 314332CC132619E30044FEAC /* PBXTextBookmark */;
+			314332CD132619E30044FEAC /* PBXTextBookmark */ = 314332CD132619E30044FEAC /* PBXTextBookmark */;
+			314332CF13261A2E0044FEAC /* PBXTextBookmark */ = 314332CF13261A2E0044FEAC /* PBXTextBookmark */;
+			314332D013261A2E0044FEAC /* PBXTextBookmark */ = 314332D013261A2E0044FEAC /* PBXTextBookmark */;
+			314332D113261A2E0044FEAC /* PBXTextBookmark */ = 314332D113261A2E0044FEAC /* PBXTextBookmark */;
 			3168B0D4130273CE006B852A = 3168B0D4130273CE006B852A /* PBXTextBookmark */;
 			3168D1D61301FEB50036D28A = 3168D1D61301FEB50036D28A /* PBXTextBookmark */;
 			31847C141317610400A30005 = 31847C141317610400A30005 /* PBXTextBookmark */;

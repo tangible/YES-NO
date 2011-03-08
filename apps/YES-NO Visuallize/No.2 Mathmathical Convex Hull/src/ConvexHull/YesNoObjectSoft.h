@@ -147,14 +147,12 @@ public:
 	ofxVec3f	forcePoint;
 	ofxVec3f	objCentroid;
 	
-	ofxTween facingTween;
-	ofxEasingCubic facingEasing;
-	ofxVec3f prevFacingAxis;
-	float prevFaceAngle;
 	ofxTween quatTween;
 	ofxEasingCirc quatEasing;
 	ofxQuaternion from;
 	ofxQuaternion to;
+	ofxVec3f prevFacingAxis;
+	float prevFaceAngle;	
 	
 	ofxTween translationTween;
 	ofxEasingLinear translationEasing;

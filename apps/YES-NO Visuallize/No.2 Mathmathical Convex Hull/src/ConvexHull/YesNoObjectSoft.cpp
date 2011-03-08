@@ -47,7 +47,8 @@ void YesNoObjectSoft::setup(int _yesOrNo, ofxBullet* _bullet, ofxVec3f _forcePoi
 	previousColAng = 0.0;
 	suddenMotion = true;
 	
-//	cout << "faces size = " + ofToString(yesORno->getSoftBody()->m_faces.size()) << endl;
+	prevFacingAxis = ofxVec3f(0.5635459, -0.7932258, -0.2306707);
+	prevFaceAngle = 115.9340439;
 	
 }
 
@@ -56,11 +57,11 @@ void YesNoObjectSoft::update() {
 	updateColorPointer();
 	
 	if (suddenMotion) {	
-		//		btVector3 f = btVector3(0.0, 0.0, 0.0);
-		//		f.setX(ofSignedNoise(ofGetElapsedTimef())*ofRandom(10, 38));
-		//		f.setY(ofSignedNoise(ofGetElapsedTimef())*ofRandom(10, 38));
-		//		f.setZ(ofSignedNoise(ofGetElapsedTimef())*ofRandom(10, 38));	
-		//		yesORno->getSoftBody()->addForce(f);	
+//		btVector3 f = btVector3(0.0, 0.0, 0.0);
+//		f.setX(ofSignedNoise(ofGetElapsedTimef())*ofRandom(10, 38));
+//		f.setY(ofSignedNoise(ofGetElapsedTimef())*ofRandom(10, 38));
+//		f.setZ(ofSignedNoise(ofGetElapsedTimef())*ofRandom(10, 38));	
+//		yesORno->getSoftBody()->addForce(f);	
 		
 		if (ofGetFrameNum() % (int)ofRandom(20, 100) == 0) {	
 			yesORno->blowUp(ofRandom(5000, 10000));		
@@ -74,13 +75,8 @@ void YesNoObjectSoft::updateRotateion() {
 	from.slerp(quatTween.update(), from, to);
 	ofxVec3f axis; float angle;
 	from.getRotate(angle, axis);
-	
-//	cout << "angle = "+ofToString(angle) << endl;
-//	cout << "axis = "+ofToString(axis.x)+" "+ofToString(axis.y)+" "+ofToString(axis.z) << endl;
-	
-	
 	glRotatef(ofRadToDeg(angle), axis.x, axis.y, axis.z);
-//	glRotatef(facingTween.update(), facingTween.getTarget(1), facingTween.getTarget(2), facingTween.getTarget(3));
+	
 }
 
 void YesNoObjectSoft::updateTranslation() {	
@@ -99,13 +95,6 @@ void YesNoObjectSoft::updateTranslation() {
 	float y = translationTween.getTarget(1);
 	float z = translationTween.getTarget(2);	
 	ofTranslate(-x, -y, -z);
-	
-	
-
-//		ofxVec3f spos = smsPosition;
-//		ofSetColor(255, 0, 0);
-//		ofxSphere(spos.x, spos.y, spos.z, 10);
-//		ofSetColor(255, 255, 255);
 
 }
 
@@ -260,36 +249,26 @@ void YesNoObjectSoft::startFaceingToCam(ofxCamera* cam, ofxVec3f offset) {
 	ofxVec3f center = objCentroid;
 	ofxVec3f tar = camPos;
 	ofxVec3f normal = tar - center;
+//	ofxVec3f normal = center - tar;	
 	normal.normalize();
-	ofxVec3f forward = faceCentroid - objCentroid;
-	forward.normalize();
-	ofxVec3f axis = forward.crossed(normal);
+//	ofxVec3f forward = faceCentroid - objCentroid;
+	ofxVec3f forward = objCentroid - faceCentroid;	
+	forward.normalize();	
+//	ofxVec3f axis = forward.crossed(normal);
+	ofxVec3f axis = normal.crossed(forward);	
 	axis.normalize();
-	float angle = forward.angle(normal);	
-	
-	ofxVec3f right = axis.crossed(normal);
-	right.normalize();
-	right *= 450;
-	
-	ofxVec3f da = axis;
-	da *= 450;
-	
-	float prev = prevFaceAngle;
-	facingTween.setParameters(facingEasing, ofxTween::easeInOut, prevFaceAngle, angle, 2000, 0);
-	facingTween.addValue(prevFacingAxis.x, axis.x);
-	facingTween.addValue(prevFacingAxis.y, axis.y);
-	facingTween.addValue(prevFacingAxis.z, axis.z);	
-	ofAddListener(facingTween.end_E, this, &YesNoObjectSoft::addSMSCompleted);
+//	float angle = forward.angle(normal);
+	float angle = normal.angle(forward);	
 	
 	quatTween.setParameters(quatEasing, ofxTween::easeInOut, 0.0, 1.0, 2000, 0);
 	ofAddListener(quatTween.end_E, this, &YesNoObjectSoft::addSMSCompleted);
 	from = ofxQuaternion(prevFacingAxis.x, prevFacingAxis.y, prevFacingAxis.z, ofDegToRad(prevFaceAngle));
 	to = ofxQuaternion(axis.x, axis.y, axis.z, ofDegToRad(angle));
 
-	cout << "prev angle = "+ofToString(prevFaceAngle) << endl;
-	cout << "prev axis = "+ofToString(prevFacingAxis.x)+" "+ofToString(prevFacingAxis.y)+" "+ofToString(prevFacingAxis.z) << endl;		
-	cout << "angle = "+ofToString(angle) << endl;
-	cout << "axis = "+ofToString(axis.x)+" "+ofToString(axis.y)+" "+ofToString(axis.z) << endl;	
+//	cout << "prev angle = "+ofToString(prevFaceAngle) << endl;
+//	cout << "prev axis = "+ofToString(prevFacingAxis.x)+" "+ofToString(prevFacingAxis.y)+" "+ofToString(prevFacingAxis.z) << endl;		
+//	cout << "angle = "+ofToString(angle) << endl;
+//	cout << "axis = "+ofToString(axis.x)+" "+ofToString(axis.y)+" "+ofToString(axis.z) << endl;	
 	
 	prevFaceAngle = angle;
 	prevFacingAxis = axis;		
@@ -330,9 +309,6 @@ vector<float> YesNoObjectSoft::changeColBySMSRecievedFace(int z) {
 	int faceID = incomingSMSFaceID;
 	btSoftBody::tFaceArray& faces = yesORno->getSoftBody()->m_faces;
 	vector<int> faceIDVec = yesORno->sortFaceByPosition(smsPosition);	
-	
-//	cout << "faces size() = " + ofToString((int)faces.size()) << endl;
-//	cout << "faceIDVec size() = " + ofToString((int)faceIDVec.size()) << endl;	
 	
 	vector<float> colPtrRtn;
 	for (int i = 0; i < faces.size()*3*4; i++) {
