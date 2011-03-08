@@ -9,7 +9,7 @@ void App::setup(){
 	ofEnableAlphaBlending();
 	ofEnableSmoothing();
 	ofSetDataPathRoot("../Resources/");
-	ofBackground(0,0,0);
+	ofBackground(100, 100, 100);
 		
 	cam.position(ofGetWidth()/2, ofGetWidth()/2, 1000);
 	//cam.setup(this, 1000);
@@ -94,8 +94,8 @@ void App::draw(){
 	glEnable(GL_DEPTH_TEST);	
 	glEnable(GL_LIGHTING);
 	
-	cam.place();
-	//cam.draw();
+	//cam.place();
+	cam.draw();
 	convexHull.draw();	
 	
 	
@@ -125,6 +125,19 @@ void App::keyPressed(int key){
 	}else if (key == 'p') {
 		scrnseq++;
 		ofSaveScreen("/Users/alexbeim/Desktop/akiraTemporary/scrn"+ofToString(scrnseq)+".png");
+	}else if (key == 'y') {
+		int z = 0;
+		for (int i = 0; i < 1; i++) {
+			ofxVec3f cen = convexHull.yesSoft.yesORno->getBodyCentroid();
+			vector<int> sortedFaces = convexHull.yesSoft.yesORno->sortFaceByPosition(cen);
+//			int faceID = sortedFaces[sortedFaces.size()-1];
+//			convexHull.yesSoft.addSMS(faceID, 1, 1);			
+			int faceID = sortedFaces[ofRandom(0, sortedFaces.size()-1*0.3)];
+			convexHull.yesSoft.addSMS(faceID, 1, 1);
+			convexHull.yesSoft.addSMSCompleted(i);
+		}
+	}else if (key == 'n') {
+		
 	}else {	
 		adminPanel.keyPressed(key);
 	}

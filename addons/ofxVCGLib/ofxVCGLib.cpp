@@ -55,20 +55,49 @@ void ofxVCGLib::reconstructFacePointCloud(vector<float> point_cloud,
 		mv.P() = Point3f(x,y,z);
 		m.vert.push_back(mv);
 		m.vn++;
-//		cout << ofToString(x)+" "+ofToString(y)+" "+ofToString(z) << endl;
+		cout << ofToString(x)+" "+ofToString(y)+" "+ofToString(z) << endl;
 	}
-//	cout << "point cloud size = " + ofToString((int)point_cloud.size()) << endl;
-//	cout << "total vertices = " + ofToString(m.vn) << endl;
+	cout << "point cloud size = " + ofToString((int)point_cloud.size()) << endl;
+	cout << "total vertices = " + ofToString(m.vn) << endl;
 	
 	vcg::tri::UpdateBounding<CMesh>::Box(m);
 	vcg::tri::UpdateNormals<CMesh>::PerFace(m);	
-	tri::BallPivoting<CMesh> legacyPivot(m, _radius, _clustering, _angle); 	
-	legacyPivot.BuildMesh();
-	pivot = new tri::ofxVCGPivot<CMesh>(m, _radius, _clustering, _angle);
+	legacyPivot = NULL;
+	if (legacyPivot) delete legacyPivot;
+	legacyPivot = new tri::BallPivoting<CMesh>(m, _radius, _clustering, _angle); 	
+	legacyPivot->BuildMesh();	
+	//NormalExtrapolation<vector<CVertex> >::ExtrapolateNormals(m.vert.begin(), m.vert.end(), 2);	
 	
+	//pivot = new tri::ofxVCGPivot<CMesh>(m, _radius, _clustering, _angle);
 	
+	int test = 9;
 }
 
+bool ofxVCGLib::addFace() {
+
+
+	for(int i =0; i < 100; i++) {
+//		for (int j = 0; j < m.vert.size(); j++) {
+//			m.vert[j].ClearFlags();
+//		}		
+		//if(!pivot->seed()) cout << "seed fail!" << endl;
+		cout << "trying add face : " + ofToString(i) << endl;
+        if(1 == pivot->addFace()) return false;
+	}
+	
+//	legacyPivot->last_seed = -1;
+//	for (int j = 0; j < m.vert.size(); j++) {
+//		m.vert[j].ClearFlags();
+//	}	
+//	while(1) {
+//		for(int i = 0; i < 512; i++) {
+//			if(!legacyPivot->front.size() && !legacyPivot->SeedFace()) return false;
+//			legacyPivot->AddFace();
+//			cout << "add face manually!!!!!!!!" << endl;
+//		}
+//    }	
+//	return true;
+}
 
 vector<float> ofxVCGLib::getVertices() {
 	

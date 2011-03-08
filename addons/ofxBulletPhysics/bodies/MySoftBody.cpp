@@ -57,8 +57,9 @@ MySoftBody::MySoftBody(btBroadphaseInterface* m_broadphase,
 }
 
 void MySoftBody::remove(btSoftRigidDynamicsWorld* m_dynamicsWorld) {
-	
+		
 	m_dynamicsWorld->removeSoftBody(psb);
+	delete psb;	
 	
 }
 
@@ -198,43 +199,43 @@ void MySoftBody::createTriMeshShape(const btScalar* vertices, const int* triangl
 	
 	psb = btSoftBodyHelpers::CreateFromTriMesh(softBodyWI, vertices, triangles, ntriangles);
 
-	btSoftBody::Material*	pm=psb->appendMaterial();
-	pm->m_kLST				=	0.5;
-//	pm->m_flags				-=	btSoftBody::fMaterial::DebugDraw;
-	psb->generateBendingConstraints(2,pm);
-	psb->m_cfg.piterations	=	2;
-	psb->m_cfg.kDF			=	0.5;
-	psb->randomizeConstraints();
-	psb->scale(btVector3(6,6,6));
-	psb->setTotalMass(100,true);		
+	psb->m_materials[0]->m_kLST   =   0.99;
+	psb->m_materials[0]->m_kAST   =   0.99; // Area/Angular stiffness coefficient [0,1]
+	psb->m_materials[0]->m_kVST   =   0.99; // Volume stiffness coefficient [0,1]	
 	
-//	psb->m_materials[0]->m_kLST   =   0.1;
-//	psb->m_materials[0]->m_kAST   =   0.1; // Area/Angular stiffness coefficient [0,1]
-//	psb->m_materials[0]->m_kVST   =   0.1; // Volume stiffness coefficient [0,1]	
-//	
-//	// 粘り気
-//	psb->m_cfg.kDP            =   0.1;//0.001; 
-//	// 地面との間で巻き込まれたのが回復する力
-//	psb->m_cfg.kDG			  =   0;
-//	// わからない。何かへの抵抗。
-//	psb->m_cfg.kLF			  =   0;
-//	// ???
-//	psb->m_cfg.kDF            =   1;//1;
-//	// 元に戻る力、弾力
-//	psb->m_cfg.kPR            =   9200;//2500;
-//	// ぐちゃぐちゃになる度。中身の量。元に戻らない度。
-//	psb->m_cfg.kVC            =   0;//2500;
-//	// 地面と滑るかどうか
-//	psb->m_cfg.kDF            =   1;//1;
-//	// ???
-//	psb->m_cfg.kMT            =   0;//1;	
-//	// ???
-//	psb->m_cfg.kCHR            =   1;//1;	
-//	// ???
-//	psb->m_cfg.kSHR            =   1;//1;
-//	
-//	psb->setTotalMass(20,true);
-//	psb->setPose( false, false );	
+	// 粘り気
+	psb->m_cfg.kDP            =   0.1;//0.001; 
+	// 地面との間で巻き込まれたのが回復する力
+	psb->m_cfg.kDG			  =   0;
+	// わからない。何かへの抵抗。
+	psb->m_cfg.kLF			  =   0;
+	// ???
+	psb->m_cfg.kDF            =   1;//1;
+	// 元に戻る力、弾力
+	psb->m_cfg.kPR            =   70050;//2500;
+	// ぐちゃぐちゃになる度。中身の量。元に戻らない度。
+	psb->m_cfg.kVC            =   0;//2500;
+	// 地面と滑るかどうか
+	psb->m_cfg.kDF            =   1;//1;
+	// ???
+	psb->m_cfg.kMT            =   0;//1;	
+	// ???
+	psb->m_cfg.kCHR            =   1;//1;	
+	// ???
+	psb->m_cfg.kSHR            =   1;//1;
+	
+	psb->setTotalMass(20,true);
+	psb->setPose( false, false );		
+	
+//	btSoftBody::Material*	pm=psb->appendMaterial();
+//	pm->m_kLST				=	0.5;
+////	pm->m_flags				-=	btSoftBody::fMaterial::DebugDraw;
+//	psb->generateBendingConstraints(2,pm);
+//	psb->m_cfg.piterations	=	2;
+//	psb->m_cfg.kDF			=	0.5;
+//	psb->randomizeConstraints();
+//	psb->scale(btVector3(6,6,6));
+//	psb->setTotalMass(100,true);		
 	
 }
 
@@ -321,4 +322,174 @@ ofxVec3f MySoftBody::getBodyCentroid() {
 		z += nodes[i].m_x.getZ();
 	}
 	return ofxVec3f(x/nodes.size(), y/nodes.size(), z/nodes.size());
+}
+
+vector<ofxVec3f> MySoftBody::getAllFacesAsVerts() {
+	
+	vector<ofxVec3f> rtn;
+	btSoftBody::tFaceArray& faces(psb->m_faces);
+	for (int i = 0; i < faces.size(); i++) {
+		ofxVec3f a = ofxBulletStaticUtil::btVec3ToOfxVec3(faces[i].m_n[0]->m_x);
+		ofxVec3f b = ofxBulletStaticUtil::btVec3ToOfxVec3(faces[i].m_n[1]->m_x);
+		ofxVec3f c = ofxBulletStaticUtil::btVec3ToOfxVec3(faces[i].m_n[2]->m_x);
+		rtn.push_back(a);
+		rtn.push_back(b);
+		rtn.push_back(c);
+	}
+	return rtn;
+	
+}
+
+vector<ofxVec3f> MySoftBody::getFaceAsVerts(int faceIdx) {
+	
+	vector<ofxVec3f> rtn;
+	btSoftBody::tFaceArray& faces(psb->m_faces);
+	ofxVec3f a = ofxBulletStaticUtil::btVec3ToOfxVec3(faces[faceIdx].m_n[0]->m_x);
+	ofxVec3f b = ofxBulletStaticUtil::btVec3ToOfxVec3(faces[faceIdx].m_n[1]->m_x);
+	ofxVec3f c = ofxBulletStaticUtil::btVec3ToOfxVec3(faces[faceIdx].m_n[2]->m_x);
+	rtn.push_back(a);
+	rtn.push_back(b);
+	rtn.push_back(c);
+	return rtn;	
+	
+}
+
+ofxVec3f MySoftBody::getFaceNormal(int faceIdx) {
+	
+	btSoftBody::tFaceArray& faces(psb->m_faces);
+	btVector3 btNormal = faces[faceIdx].m_normal;
+	return ofxVec3f(btNormal.getX(), btNormal.getY(), btNormal.getZ());
+	
+}
+
+float MySoftBody::getFaceDistanceBetween(int face1Idx, int face2Idx) {
+	
+	btSoftBody::tFaceArray& faces(psb->m_faces);
+	ofxVec3f face1Centroid = getFaceCentroid(face1Idx);
+	ofxVec3f face2Centroid = getFaceCentroid(face2Idx);
+	return face1Centroid.distance(face2Centroid);
+	
+}
+
+ofxVec3f MySoftBody::getFaceCentroid(int faceIdx) {
+	
+	btSoftBody::tFaceArray& faces(psb->m_faces);
+	
+	btSoftBody::Node* node_0 = faces[faceIdx].m_n[0];
+	btSoftBody::Node* node_1 = faces[faceIdx].m_n[1];
+	btSoftBody::Node* node_2 = faces[faceIdx].m_n[2];		
+	
+	return ofxVec3f((node_0->m_x.getX()+node_1->m_x.getX()+node_2->m_x.getX())/3,
+					(node_0->m_x.getY()+node_1->m_x.getY()+node_2->m_x.getY())/3,
+					(node_0->m_x.getZ()+node_1->m_x.getZ()+node_2->m_x.getZ())/3);
+	
+}
+
+vector<int> MySoftBody::sortFaceByDistance(int faceIdx) {
+	
+	btSoftBody::tFaceArray& faces(psb->m_faces);	
+	
+	map<float, int, greater<float> > faceSize;
+	ofxVec3f tgtCentroid = getFaceCentroid(faceIdx);
+	for (int i = 0; i < faces.size(); i++) {
+		ofxVec3f compCentroid1 = getFaceCentroid(i);
+		float d1 = tgtCentroid.distance(compCentroid1);
+		faceSize.insert(map<float, int, greater<float> >::value_type(d1, i));
+	}
+	
+	vector<int> faceIDVec;
+	map<float, int, greater<float> >::iterator it = faceSize.begin();
+	while (it != faceSize.end()) {
+		faceIDVec.push_back((*it).second);
+		++it;
+	}	
+	
+	return faceIDVec;
+}
+
+vector<int> MySoftBody::sortFaceByPosition(ofxVec3f pos) {
+	
+	btSoftBody::tFaceArray& faces(psb->m_faces);
+	
+	// get the face distances from pos
+	map<float, int, greater<float> > distSort;
+	for (int i = 0; i < faces.size(); i++) {
+		ofxVec3f cen = getFaceCentroid(i);
+		float dist = cen.distance(pos);
+		distSort.insert(map<float, int, greater<float> >::value_type(dist, i));
+	}
+	
+	// sort dist desc
+	vector<int> faceIDVec;
+	map<float, int, greater<float> >::iterator it = distSort.begin();
+	while (it != distSort.end()) {
+		faceIDVec.push_back((*it).second);
+		++it;
+	}	
+	
+	return faceIDVec;
+	
+}
+
+
+void MySoftBody::pinchFace(int faceIdx, float force) {
+	
+	// get face and nodes
+	btSoftBody::tFaceArray& faces(psb->m_faces);
+	btSoftBody::Node* node_0 = faces[faceIdx].m_n[0];
+	btSoftBody::Node* node_1 = faces[faceIdx].m_n[1];
+	btSoftBody::Node* node_2 = faces[faceIdx].m_n[2];
+	
+	// pinch face
+	int pinchFaceFactor = force;
+	btVector3 normal = faces[faceIdx].m_normal;
+	btVector3 pinchFaceForce = normal*pinchFaceFactor;
+	
+	if (node_0->m_im > 0) node_0->m_f += pinchFaceForce;
+	if (node_1->m_im > 0) node_1->m_f += pinchFaceForce;
+	if (node_2->m_im > 0) node_2->m_f += pinchFaceForce;	
+	
+}
+
+void MySoftBody::blowUp(float force) {
+	
+	// get face and nodes
+	btSoftBody::tFaceArray& faces(psb->m_faces);
+	int fSize = faces.size();
+	
+	for (int i = 0; i < fSize; i++) {
+		
+		btVector3 normal = faces[i].m_normal;
+		btVector3 pinchFaceForce = normal*force;
+		
+		btSoftBody::Node* node_0 = faces[i].m_n[0];
+		btSoftBody::Node* node_1 = faces[i].m_n[1];
+		btSoftBody::Node* node_2 = faces[i].m_n[2];	
+		if (node_0->m_im > 0) node_0->m_f += pinchFaceForce;
+		if (node_1->m_im > 0) node_1->m_f += pinchFaceForce;
+		if (node_2->m_im > 0) node_2->m_f += pinchFaceForce;	
+		
+	}	
+}
+
+void MySoftBody::shrink(float force) {
+	
+	// get face and nodes
+	btSoftBody::tFaceArray& faces(psb->m_faces);
+	int fSize = faces.size();
+	
+	for (int i = 0; i < fSize; i++) {
+		
+		btSoftBody::Node* node_0 = faces[i].m_n[0];
+		btSoftBody::Node* node_1 = faces[i].m_n[1];
+		btSoftBody::Node* node_2 = faces[i].m_n[2];	
+		
+		// pinch face
+		btVector3 normal = -faces[i].m_normal;
+		btVector3 pinchFaceForce = normal*force;
+		
+		if (node_0->m_im > 0) node_0->m_f += pinchFaceForce;
+		if (node_1->m_im > 0) node_1->m_f += pinchFaceForce;
+		if (node_2->m_im > 0) node_2->m_f += pinchFaceForce;		
+	}	
 }

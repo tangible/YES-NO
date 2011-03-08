@@ -15,6 +15,8 @@ subject to the following restrictions:
 ///btSoftBody implementation by Nathanael Presson
 
 #include "btSoftBodyInternals.h"
+#include <iostream>
+#include <sstream>
 
 //
 btSoftBody::btSoftBody(btSoftBodyWorldInfo*	worldInfo,int node_count,  const btVector3* x,  const btScalar* m)
@@ -284,12 +286,18 @@ void			btSoftBody::appendFace(int model,Material* mat)
 //
 void			btSoftBody::appendFace(int node0,int node1,int node2,Material* mat)
 {
-	if (node0==node1)
+	if (node0==node1) {
+		std::cout << "node0==node1" << std::endl;
 		return;
-	if (node1==node2)
+	}
+	if (node1==node2) {
+		std::cout << "node1==node2" << std::endl;		
 		return;
-	if (node2==node0)
+	}
+	if (node2==node0) {
+		std::cout << "node2==node0" << std::endl;		
 		return;
+	}
 
 	appendFace(-1,mat);
 	Face&	f=m_faces[m_faces.size()-1];

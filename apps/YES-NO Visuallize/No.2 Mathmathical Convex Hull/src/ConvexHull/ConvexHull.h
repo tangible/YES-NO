@@ -51,6 +51,8 @@ public:
 	
 	vector<IncomingSMS*>	insmsYes;
 	vector<IncomingSMS*>	insmsNo;
+	vector<int>				yesFaceIdx;
+	vector<int>				noFaceIdx;
 	void onSmsReached(SmsInfo& smsInfo);
 	void onSmsCompleted(SmsInfo& smsInfo);
 	

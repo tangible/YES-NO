@@ -22,7 +22,7 @@
 #include "vcglib/vcg/complex/trimesh/update/flag.h"
 #include "vcglib/vcg/complex/trimesh/create/ball_pivoting.h"
 //#include "vcglib/vcg/space/box3.h"
-//#include "vcglib/vcg/space/normal_extrapolation.h"
+#include "vcglib/vcg/space/normal_extrapolation.h"
 
 #include "cmesh.h"
 #include "ofxVCGPivot.h"
@@ -46,7 +46,7 @@ public:
 								   float _radius = 0, 
 								   float _clustering = 0.2,
 								   float _angle = M_PI/2);
-	
+	bool addFace();
 
 	float getRadius() { return radius; }
 	float getClustering() { return clustering; }
@@ -58,6 +58,7 @@ public:
 	
 	CMesh m;	
 	ofxVCGPivot<CMesh> *pivot;	
+	BallPivoting<CMesh> *legacyPivot;
 	
 	float radius;
 	float clustering;

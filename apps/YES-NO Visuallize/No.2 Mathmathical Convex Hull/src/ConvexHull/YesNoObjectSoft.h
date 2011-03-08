@@ -41,11 +41,21 @@ public:
 	btSoftBody::Node* node2;	
 	float angle;
 	ofxTween tw;
-	ofxEasingCirc ea;
+	ofxEasingElastic ea;
 	ofEvent<int> endSpikeGlow;
 	
 	addedSMS() {
 		ofAddListener(tw.end_E, this, &addedSMS::notifyEndSpikeGlow);
+		btnormal = NULL;
+		node0 = NULL;
+		node1 = NULL;
+		node2 = NULL;
+	}
+	~addedSMS() {
+//		if (btnormal != NULL) delete btnormal;
+//		if (node0 != NULL) delete node0;
+//		if (node1 != NULL) delete node1;
+//		if (node2 != NULL) delete node2;
 	}
 	
 	inline void notifyEndSpikeGlow(int & z) {
@@ -76,24 +86,14 @@ public:
 	void update();
 	void draw();
 	void debugDraw();
-	vector<float> changeColBySMSRecievedFace(int z);
-	vector<int> sortFaceByDistance(btSoftBody::tFaceArray& faces, int faceID);
-	ofxVec3f getFaceCentroid(btSoftBody::tFaceArray& faces, int faceID);	
-	float getFaceDistanceBetween(btSoftBody::tFaceArray& faces, int face1ID, int face2ID);
-	ofxVec3f getFaceNormal(btSoftBody::tFaceArray& faces, int face1ID);
-	ofxVec3f getObjCentroid(btSoftBody::tFaceArray& faces);
+	vector<float> changeColBySMSRecievedFace(int z);	
 	void updateColorPointer();
 	void startFaceingToCam(ofxCamera* cam, ofxVec3f offset);
 	void updateRotateion();
+	void updateTranslation();
 	
 	void addSMS(int faceID, int _numSMS, float _ratioSMS);
 	void addSMSCompleted(int & z);
-	void blowUp(float pinchFaceFactor);
-	void shrink();
-	void pinchAndSpreadNode();
-	void expandFace(int faceIdx);
-	void pinchFace(int face);
-	void pinchNode();
 	
 	void clear();
 	
@@ -113,6 +113,7 @@ public:
 	ofxColorPicker col;	
 	float defaultColAng;
 	float previousColAng;
+	bool suddenMotion;
 	
 	static const int YES = 0;
 	static const int NO = 0;
@@ -124,6 +125,8 @@ public:
 	int resolusion;	
 	ofxVec3f radius;
 	int sizeLevel;
+	float height;
+	float edgeLen;
 	
 	vector<float> destColorPointer;
 	vector<float> currColorPointer;
@@ -131,15 +134,30 @@ public:
 	ofxEasingCirc easing;
 	
 	vector<addedSMS*> addedSMSs;
+	vector<ofxVec3f> addedSMSFaces;
+	ofxVec3f smsPosition;	
+	vector<int> faceIndices;
+	vector<float> floatVertices;
+	int numFace;
 	void onEndSpikeGlow(int & z);
+	void fillMeshInput();
+	vector<ofxVec3f> smsBaseFace; //debug
 	
 	int			YesOrNo;
 	ofxVec3f	forcePoint;
+	ofxVec3f	objCentroid;
 	
 	ofxTween facingTween;
 	ofxEasingCubic facingEasing;
 	ofxVec3f prevFacingAxis;
 	float prevFaceAngle;
+	ofxTween quatTween;
+	ofxEasingCirc quatEasing;
+	ofxQuaternion from;
+	ofxQuaternion to;
+	
+	ofxTween translationTween;
+	ofxEasingLinear translationEasing;
 	
 	static const float maxNumScale = 2.0;
 	static const float maxRatioScale = 6.0;

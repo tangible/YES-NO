@@ -156,6 +156,7 @@ protected:
     }
   }   
   
+public:
   bool SeedFace() {
     int v[3];
     bool success = Seed(v[0], v[1], v[2]);

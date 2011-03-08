@@ -538,7 +538,7 @@ MySoftBody* ofxBullet::createSoftTriMesh(ofxVec3f gravity, const btScalar* verti
 	
 	msb->createTriMeshShape(vertices, triangles, ntriangles);
 	
-	mySoftVec.push_back(msb);
+	//mySoftVec.push_back(msb);
 	getSoftDynamicsWorld()->addSoftBody(msb->getSoftBody());
 	
 	return msb;

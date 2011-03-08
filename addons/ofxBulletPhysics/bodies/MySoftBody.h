@@ -16,6 +16,7 @@
 #include "BulletCollision/CollisionShapes/btShapeHull.h"
 #include "ofxVectorMath.h"
 #include "ofx3DUtils.h"
+#include "ofxBulletStaticUtil.h"
 
 class MySoftBody {
 
@@ -40,11 +41,21 @@ public:
 	void render();
 	void update();
 	
-	ofxVec3f getBodyCentroid();
-	
 	btSoftBody* getSoftBody();
 	void setSoftBody(btSoftBody* _psb);
+	ofxVec3f getBodyCentroid();	
+	vector<ofxVec3f> getAllFacesAsVerts();
+	vector<ofxVec3f> getFaceAsVerts(int faceIdx);
+	ofxVec3f getFaceNormal(int faceIdx);
+	float getFaceDistanceBetween(int face1Idx, int face2Idx);
+	ofxVec3f getFaceCentroid(int faceIdx);
+	vector<int> sortFaceByDistance(int faceIdx);
+	vector<int> sortFaceByPosition(ofxVec3f pos);
 	btSoftBodyWorldInfo getSoftWI();
+	
+	void pinchFace(int faceIdx, float force);
+	void blowUp(float force);
+	void shrink(float force);
 	
 	int ballSize;	
 	// edge ball position

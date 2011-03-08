@@ -17,14 +17,15 @@ void ConvexHull::setup(int _fps, AdminPanel* _adminPanel, ofxCamera* _cam) {
 	
 	bullet = new ofxBullet();
 	bullet->initPhysics(ofxVec3f(0, -10, 0));	
+	//bullet->enableRayCastingMouseInteraction(_cam);
 	
 	yesPoint = ofxVec3f(ofGetWidth()/2-400, ofGetHeight()-370, -200);
 	noPoint = ofxVec3f(ofGetWidth()/2+400, ofGetHeight()-370, -200); 
 	
 	currentYesLevel = 0;
-	yesSoft.setup(YES, bullet, ofxVec3f(0,0,0), ofxVec3f(130, 70, 70), currentYesLevel);
+	yesSoft.setup(YES, bullet, ofxVec3f(0,0,0), ofxVec3f(100, 100, 100), currentYesLevel);
 	currentNoLevel = 0;
-	noSoft.setup(NO, bullet, ofxVec3f(0,0,0), ofxVec3f(120, 60, 80), currentNoLevel);
+	noSoft.setup(NO, bullet, ofxVec3f(0,0,0), ofxVec3f(100, 100, 100), currentNoLevel);
 	
 	isYesUpdating = false;
 	isNoUpdating = false;
@@ -64,23 +65,19 @@ void ConvexHull::draw() {
 	
 	ofPushMatrix();
 	ofTranslate(yesPoint.x, yesPoint.y, yesPoint.z);
-	yesSoft.updateRotateion();
-
-	float yScale = yesScaleTween.update();
-	currYesScale = yScale;	
-	//ofScale(yScale, yScale, yScale);	
+	yesSoft.updateRotateion();	
+	yesSoft.updateTranslation();
 	yesSoft.draw();
 	ofPopMatrix();
+	
 	
 	ofPushMatrix();
 	ofTranslate(noPoint.x, noPoint.y, noPoint.z);	
 	noSoft.updateRotateion();	
-	
-	float nScale = noScaleTween.update();
-	currNOScale = nScale;	
-	//ofScale(nScale, nScale, nScale);
+	noSoft.updateTranslation();
 	noSoft.draw();
 	ofPopMatrix();
+	
 	
 	for (int i = 0; i < insmsYes.size(); i++) {
 		IncomingSMS *sms = insmsYes[i];
@@ -118,28 +115,21 @@ float ConvexHull::feedSMS(UpdateInfo upInfo) {
 	updateInfo = upInfo;
 	IncomingSMS *sms = new IncomingSMS();
 	if (upInfo.sms.YesOrNo == YES) {
-		int faceID = ofRandom(0, yesSoft.yesORno->getSoftBody()->m_faces.size());
-		for (int i = 0; i < yesSoft.addedSMSs.size(); i++) {
-			int fid = yesSoft.addedSMSs[i]->faceID;
-			if (i != fid) {
-				break;
-			}else {
-				faceID = ofRandom(0, yesSoft.yesORno->getSoftBody()->m_faces.size());
-			}
-		}
+		
+		ofxVec3f cen = yesSoft.yesORno->getBodyCentroid();
+		vector<int> sortedFaces = yesSoft.yesORno->sortFaceByPosition(cen);
+		int faceID = sortedFaces[ofRandom(0, sortedFaces.size()-1*0.3)];//ofRandom(sortedFaces.size()-1, sortedFaces.size()*0.7)];//sortedFaces.size()-1];//ofRandom(0, sortedFaces.size()/3)];
+
 		sms->setup(YES, yesSoft.yesORno->getSoftBody()->m_faces, faceID);
 		insmsYes.push_back(sms);
 		isYesUpdating = true;
 	}else if (upInfo.sms.YesOrNo == NO) {
-		int faceID = ofRandom(0, noSoft.yesORno->getSoftBody()->m_faces.size());
-		for (int i = 0; i < noSoft.addedSMSs.size(); i++) {
-			int fid = noSoft.addedSMSs[i]->faceID;
-			if (i != fid) {
-				break;
-			}else {
-				faceID = ofRandom(0, noSoft.yesORno->getSoftBody()->m_faces.size());
-			}
-		}
+
+		ofxVec3f cen = noSoft.yesORno->getBodyCentroid();
+		vector<int> sortedFaces = noSoft.yesORno->sortFaceByPosition(cen);
+		int faceID = sortedFaces[ofRandom(0, sortedFaces.size()-1*0.3)];//sortedFaces.size()-1];//ofRandom(0, sortedFaces.size()/3)];		
+
+
 		sms->setup(NO, noSoft.yesORno->getSoftBody()->m_faces, faceID);
 		insmsNo.push_back(sms);		
 		isNoUpdating = true;

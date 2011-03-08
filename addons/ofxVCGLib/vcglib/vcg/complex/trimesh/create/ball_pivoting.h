@@ -329,9 +329,9 @@ template <class MESH> class BallPivoting: public AdvancingFront<MESH> {
     Mark(candidate);
     return id;
   }
-  
+
+  int last_seed;     //used for new seeds when front is empty	
  private:
-  int last_seed;     //used for new seeds when front is empty
   int usedBit;       //use to detect if a vertex has been already processed.
   Point3x baricenter;//used for the first seed.
   

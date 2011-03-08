@@ -10,7 +10,7 @@
 #include "YesNoObjectSoft.h"
 
 void YesNoObjectSoft::setup(int _yesOrNo, ofxBullet* _bullet, ofxVec3f _forcePoint, ofxVec3f scale, int _sizeLevel) {
-
+	
 	YesOrNo = _yesOrNo;
 	bullet = _bullet;
 	forcePoint = _forcePoint;
@@ -22,43 +22,91 @@ void YesNoObjectSoft::setup(int _yesOrNo, ofxBullet* _bullet, ofxVec3f _forcePoi
 	//radius *= 2.5;
 	resolusion = ofMap(sizeLevel, YNSOFTMINSIZELEV, YNSOFTMAXSIZELEV, minRes, maxRes);
 	
-	yesORno = bullet->createEllipsoid(gravity, center, radius, resolusion);	
+	float size = 50;
+	float verts[12] =  {size,size,size, -size,-size,size, -size,size,-size, size,-size,-size};
+	int faces[12] = {0,2,1, 1,3,0, 2,3,1, 0,3,2};
+	yesORno = bullet->createSoftTriMesh(ofxVec3f(0, 0, 0), &verts[0], &faces[0], 4);		
+	float dist = ofxVec3f(size,size,size).distance(ofxVec3f(-size,-size,size));
+	edgeLen = dist;
+	height = sqrt(6)/3*dist;
+	float x = (size-size-size+size)/4;
+	float y = (size-size+size-size)/4;
+	float z = (size+size-size-size)/4;
+	smsPosition = ofxVec3f(x,y,z);
 	
 	col.setColorRadius(1.0);
 	col.setColorScale(0.1);
 	col.setColorAngle((_yesOrNo == YES) ? -0.34 : -0.02);
 	defaultColAng = col.getColorAngle();
-
+	
 	incomingSMSFaceID = 0;
 	changeColBySMSRecievedFace(incomingSMSFaceID);
-
+	
 	currColorPointer = destColorPointer;
 	prevFaceAngle = 0;
 	previousColAng = 0.0;
+	suddenMotion = true;
 	
-	cout << "faces size = " + ofToString(yesORno->getSoftBody()->m_faces.size()) << endl;
-
-}
-
-void YesNoObjectSoft::clear() {
-	addedSMSs.clear();
-	//delete yesORno;
+//	cout << "faces size = " + ofToString(yesORno->getSoftBody()->m_faces.size()) << endl;
+	
 }
 
 void YesNoObjectSoft::update() {
 	
 	updateColorPointer();
 	
-//	btVector3 f = btVector3(0.0, 0.0, 0.0);
-//	f.setX(ofSignedNoise(ofGetElapsedTimef())*ofRandom(10, 38));
-//	f.setY(ofSignedNoise(ofGetElapsedTimef())*ofRandom(10, 38));
-//	f.setZ(ofSignedNoise(ofGetElapsedTimef())*ofRandom(10, 38));	
-//	yesORno->getSoftBody()->addForce(f);	
-//	
-//	if (ofGetFrameNum() % (int)ofRandom(200, 1000) == 0) {
-//		blowUp(ofRandom(50, 100));
-//	}
+	if (suddenMotion) {	
+		//		btVector3 f = btVector3(0.0, 0.0, 0.0);
+		//		f.setX(ofSignedNoise(ofGetElapsedTimef())*ofRandom(10, 38));
+		//		f.setY(ofSignedNoise(ofGetElapsedTimef())*ofRandom(10, 38));
+		//		f.setZ(ofSignedNoise(ofGetElapsedTimef())*ofRandom(10, 38));	
+		//		yesORno->getSoftBody()->addForce(f);	
+		
+		if (ofGetFrameNum() % (int)ofRandom(20, 100) == 0) {	
+			yesORno->blowUp(ofRandom(5000, 10000));		
+		}
+	}
 	
+}
+
+void YesNoObjectSoft::updateRotateion() {
+	
+	from.slerp(quatTween.update(), from, to);
+	ofxVec3f axis; float angle;
+	from.getRotate(angle, axis);
+	
+//	cout << "angle = "+ofToString(angle) << endl;
+//	cout << "axis = "+ofToString(axis.x)+" "+ofToString(axis.y)+" "+ofToString(axis.z) << endl;
+	
+	
+	glRotatef(ofRadToDeg(angle), axis.x, axis.y, axis.z);
+//	glRotatef(facingTween.update(), facingTween.getTarget(1), facingTween.getTarget(2), facingTween.getTarget(3));
+}
+
+void YesNoObjectSoft::updateTranslation() {	
+	
+	ofxVec3f cen = yesORno->getBodyCentroid();
+	objCentroid = cen;	
+	if (translationTween.isCompleted()) {
+		float x = translationTween.getTarget(0);
+		float y = translationTween.getTarget(1);
+		float z = translationTween.getTarget(2);
+		translationTween.setParameters(translationEasing, ofxTween::easeIn, x, cen.x, 1000, 0);
+		translationTween.addValue(y, cen.y);
+		translationTween.addValue(z, cen.z);
+	}
+	float x = translationTween.update();
+	float y = translationTween.getTarget(1);
+	float z = translationTween.getTarget(2);	
+	ofTranslate(-x, -y, -z);
+	
+	
+
+//		ofxVec3f spos = smsPosition;
+//		ofSetColor(255, 0, 0);
+//		ofxSphere(spos.x, spos.y, spos.z, 10);
+//		ofSetColor(255, 255, 255);
+
 }
 
 void YesNoObjectSoft::draw() {
@@ -67,6 +115,37 @@ void YesNoObjectSoft::draw() {
 	btSoftBody::tLinkArray& links(yesORno->getSoftBody()->m_links);
 	btSoftBody::tFaceArray& faces(yesORno->getSoftBody()->m_faces);
 
+//	ofEnableAlphaBlending();
+//	glColor4f(1.0, 1.0, 1.0, 0.4);
+//	for(int i = 0; i < faces.size(); i++) {
+//		btSoftBody::Node* node_0 = faces[i].m_n[0];
+//		btSoftBody::Node* node_1 = faces[i].m_n[1];
+//		btSoftBody::Node* node_2 = faces[i].m_n[2];		
+//		ofxTriangleShape(
+//		node_0->m_x.getX(), node_0->m_x.getY(), node_0->m_x.getZ(),
+//		node_1->m_x.getX(), node_1->m_x.getY(), node_1->m_x.getZ(),		
+//		node_2->m_x.getX(), node_2->m_x.getY(), node_2->m_x.getZ()
+//						 );		
+//	}
+//	ofSetLineWidth(3);
+//	glColor4f(0.0, 0.0, 0.0, 0.4);
+//	for(int i = 0; i < links.size(); i++) {
+//		btSoftBody::Node* node_0 = links[i].m_n[0];
+//		btSoftBody::Node* node_1 = links[i].m_n[1];
+//		ofxLine(node_0->m_x.getX(), node_0->m_x.getY(), node_0->m_x.getZ(), 
+//				node_1->m_x.getX(), node_1->m_x.getY(), node_1->m_x.getZ());
+//	}	
+//	glColor4f(1.0, 0.0, 0.0, 1.0);
+//	for (int i = 0; i < smsBaseFace.size()/3; i++) {
+//		ofxVec3f a = smsBaseFace[i*3];
+//		ofxVec3f b = smsBaseFace[i*3+1];
+//		ofxVec3f c = smsBaseFace[i*3+2];	
+//		ofxTriangleShape(a, b, c);
+//	}
+//	ofDisableAlphaBlending();
+		
+		
+	int numNan = 0;
 	vector<float> faceVertexPtr;
 	vector<float> faceNormalPtr;
 	for(int i = 0; i < faces.size(); i++) {
@@ -93,8 +172,15 @@ void YesNoObjectSoft::draw() {
 		faceNormalPtr.push_back(normal1.getZ());
 		faceNormalPtr.push_back(normal2.getX());
 		faceNormalPtr.push_back(normal2.getY());
-		faceNormalPtr.push_back(normal2.getZ());		
+		faceNormalPtr.push_back(normal2.getZ());	
+		
+		if (isnan(node_0->m_x.getX())) {
+			numNan++;
+		}else {
+			numNan--;
+		}
 	}		
+	//cout << "NaN = "+ofToString(numNan) << endl;
 	
 	glEnableClientState(GL_VERTEX_ARRAY);		
 	glEnableClientState(GL_NORMAL_ARRAY);
@@ -109,7 +195,7 @@ void YesNoObjectSoft::draw() {
 	glDisableClientState(GL_NORMAL_ARRAY);
 	glDisableClientState(GL_TEXTURE_COORD_ARRAY);	
 	glDisableClientState(GL_COLOR_ARRAY);	
-	
+
 	for (int i = 0; i < addedSMSs.size(); i++) {
 		addedSMS *as = addedSMSs[i];
 		
@@ -119,59 +205,55 @@ void YesNoObjectSoft::draw() {
 		float cg = currColorPointer[cfid+1];
 		float cb = currColorPointer[cfid+2];
 		float ca = currColorPointer[cfid+3];
-		glColor4f(cr, cg, cb, ca);
-
-		ofxVec3f fa = ofxBulletStaticUtil::btVec3ToOfxVec3(faces[as->faceID].m_n[0]->m_x);
-		ofxVec3f fb = ofxBulletStaticUtil::btVec3ToOfxVec3(faces[as->faceID].m_n[1]->m_x);
-		ofxVec3f fc = ofxBulletStaticUtil::btVec3ToOfxVec3(faces[as->faceID].m_n[2]->m_x);
-		ofxVec3f a = as->getA();
-		ofxVec3f b = as->getB();
-		ofxVec3f c = as->getC();
-		ofxVec3f norm = as->getNorm();		
-		norm *= as->tw.update();
-		a += norm;
-		b += norm;
-		c += norm;
-//		ofxVec3f cen = getFaceCentroid(faces, fid);
-//		ofxVec3f an = a-cen;
-//		ofxVec3f bn = b-cen;
-//		ofxVec3f cn = c-cen;
-//		a += an/2;
-//		b += bn/2;
-//		c += cn/2;
-//		a -= an/2;
-//		b -= bn/2;
-//		c -= cn/2;		
-		ofxQuad(fa, fb, b, a);
-		ofxQuad(fb, fc, c, b);
-		ofxQuad(fc, fa, a, c);
-		ofxTriangleShape(a, b, c);		
+		glColor4f(cr, cg, cb, ca);		
 		
-//		ofxVec3f fa = ofxBulletStaticUtil::btVec3ToOfxVec3(faces[as->faceID].m_n[0]->m_x);
-//		ofxVec3f fb = ofxBulletStaticUtil::btVec3ToOfxVec3(faces[as->faceID].m_n[1]->m_x);
-//		ofxVec3f fc = ofxBulletStaticUtil::btVec3ToOfxVec3(faces[as->faceID].m_n[2]->m_x);
-//		ofxVec3f cen = getFaceCentroid(faces, fid);
-//		ofxVec3f norm = as->getNorm();		
-//		norm *= as->tw.update();
-//		cen += norm;
-//		ofxTriangleShape(fb, cen, fa);
-//		ofxTriangleShape(fc, cen, fb);
-//		ofxTriangleShape(fa, cen, fc);
+		vector<ofxVec3f> face = yesORno->getFaceAsVerts(fid);
+		ofxVec3f fa = face[0];
+		ofxVec3f fb = face[1];
+		ofxVec3f fc = face[2];
+		ofxVec3f cen = yesORno->getFaceCentroid(fid);
+		ofxVec3f norm = yesORno->getFaceNormal(fid);	
+		float factor = 0.0;
+		if (as->tw.isCompleted()) {
+			factor = as->tw.getTarget(0);
+		}else {
+			factor = as->tw.update();
+		}
+		norm *= factor;
+		cen += norm;
+		ofxTriangleShape(fb, cen, fa);
+		ofxTriangleShape(fc, cen, fb);
+		ofxTriangleShape(fa, cen, fc);
 		
 		ofSetColor(255, 255, 255);
+		
+		// store sms faces for pyly gen
+		ofxVec3f normc = yesORno->getFaceNormal(fid);
+		normc *= height;
+		ofxVec3f cenc = yesORno->getFaceCentroid(fid);
+		cenc += normc;
+		addedSMSFaces.clear();
+		addedSMSFaces.push_back(fb);
+		addedSMSFaces.push_back(cenc);
+		addedSMSFaces.push_back(fa);
+		addedSMSFaces.push_back(fc);
+		addedSMSFaces.push_back(cenc);
+		addedSMSFaces.push_back(fb);
+		addedSMSFaces.push_back(fa);
+		addedSMSFaces.push_back(cenc);
+		addedSMSFaces.push_back(fc);	
+		
+		// store sms position for color change		
+		int i =0;
+		changeColBySMSRecievedFace(i);			
+		
 	}
 	
 }
 
-void YesNoObjectSoft::debugDraw() {
-
-	yesORno->render();
-
-}
-
 void YesNoObjectSoft::startFaceingToCam(ofxCamera* cam, ofxVec3f offset) {
-
-	ofxVec3f faceCentroid = getFaceCentroid(yesORno->getSoftBody()->m_faces, incomingSMSFaceID);
+	
+	ofxVec3f faceCentroid = yesORno->getFaceCentroid(incomingSMSFaceID);
 	ofxVec3f objCentroid = yesORno->getBodyCentroid();
 	ofxVec3f camPos = cam->getPosition()-offset;
 	
@@ -198,15 +280,19 @@ void YesNoObjectSoft::startFaceingToCam(ofxCamera* cam, ofxVec3f offset) {
 	facingTween.addValue(prevFacingAxis.y, axis.y);
 	facingTween.addValue(prevFacingAxis.z, axis.z);	
 	ofAddListener(facingTween.end_E, this, &YesNoObjectSoft::addSMSCompleted);
-	prevFaceAngle = angle;
-	prevFacingAxis = axis;	
 	
-}
+	quatTween.setParameters(quatEasing, ofxTween::easeInOut, 0.0, 1.0, 2000, 0);
+	ofAddListener(quatTween.end_E, this, &YesNoObjectSoft::addSMSCompleted);
+	from = ofxQuaternion(prevFacingAxis.x, prevFacingAxis.y, prevFacingAxis.z, ofDegToRad(prevFaceAngle));
+	to = ofxQuaternion(axis.x, axis.y, axis.z, ofDegToRad(angle));
 
-void YesNoObjectSoft::updateRotateion() {
-
-	glRotatef(facingTween.update(), facingTween.getTarget(1), facingTween.getTarget(2), facingTween.getTarget(3));
-
+	cout << "prev angle = "+ofToString(prevFaceAngle) << endl;
+	cout << "prev axis = "+ofToString(prevFacingAxis.x)+" "+ofToString(prevFacingAxis.y)+" "+ofToString(prevFacingAxis.z) << endl;		
+	cout << "angle = "+ofToString(angle) << endl;
+	cout << "axis = "+ofToString(axis.x)+" "+ofToString(axis.y)+" "+ofToString(axis.z) << endl;	
+	
+	prevFaceAngle = angle;
+	prevFacingAxis = axis;		
 }
 
 void YesNoObjectSoft::updateColorPointer() {
@@ -214,9 +300,9 @@ void YesNoObjectSoft::updateColorPointer() {
 	if (colorPointerTween.isRunning() && !colorPointerTween.isCompleted()) {
 		btSoftBody::tFaceArray& faces = yesORno->getSoftBody()->m_faces;
 		
-		vector<int> sortedFace = sortFaceByDistance(faces, incomingSMSFaceID);
+		vector<int> sortedFace = yesORno->sortFaceByPosition(smsPosition);		
 		int farestID = sortedFace[0];
-		float farestDist = getFaceDistanceBetween(faces, incomingSMSFaceID, farestID);
+		float farestDist = yesORno->getFaceDistanceBetween(sortedFace[sortedFace.size()-1], farestID);		
 		
 		vector<float> tmpHolder;
 		float factor = colorPointerTween.update();		
@@ -225,7 +311,7 @@ void YesNoObjectSoft::updateColorPointer() {
 			float destinationColor = destColorPointer[i];
 			float colorDiff = currentColor-destinationColor;
 			int curFaceID = i/(4*3);
-			float faceDistBWSMSandCur = getFaceDistanceBetween(faces, incomingSMSFaceID, curFaceID);
+			float faceDistBWSMSandCur = yesORno->getFaceDistanceBetween(sortedFace[sortedFace.size()-1], curFaceID);
 			float mappedDiff = ofMap(faceDistBWSMSandCur, 0.0, farestDist, 0.0, colorDiff);
 			float mappedDist = ofMap(faceDistBWSMSandCur, 0.0, farestDist, destinationColor+mappedDiff, currentColor);
 			float col = ofMap(factor, 0.0, 100.0, currentColor, mappedDist);			
@@ -233,16 +319,20 @@ void YesNoObjectSoft::updateColorPointer() {
 		}
 		currColorPointer.clear();	
 		currColorPointer = tmpHolder;
+		currColorPointer = destColorPointer;
 		tmpHolder.clear();
 	}
 	
 }
 
 vector<float> YesNoObjectSoft::changeColBySMSRecievedFace(int z) {
-
+	
 	int faceID = incomingSMSFaceID;
 	btSoftBody::tFaceArray& faces = yesORno->getSoftBody()->m_faces;
-	vector<int> faceIDVec = sortFaceByDistance(faces, faceID);
+	vector<int> faceIDVec = yesORno->sortFaceByPosition(smsPosition);	
+	
+//	cout << "faces size() = " + ofToString((int)faces.size()) << endl;
+//	cout << "faceIDVec size() = " + ofToString((int)faceIDVec.size()) << endl;	
 	
 	vector<float> colPtrRtn;
 	for (int i = 0; i < faces.size()*3*4; i++) {
@@ -250,8 +340,6 @@ vector<float> YesNoObjectSoft::changeColBySMSRecievedFace(int z) {
 	}
 	float * colPtr = &colPtrRtn[0];
 	
-	int facesSize = faces.size();
-	int faceIDVecSize = faceIDVec.size();
 	float thisTimeFactor = 0.05;
 	if (previousColAng >= 0.25) {
 		previousColAng = -0.25;
@@ -259,12 +347,9 @@ vector<float> YesNoObjectSoft::changeColBySMSRecievedFace(int z) {
 		previousColAng += thisTimeFactor;
 	}	
 	float thisTimeAngle = previousColAng;
-
-	for (int i = 0; i < faceIDVec.size(); i++) {
-		btSoftBody::Node* compnode_0 = faces[faceIDVec[i]].m_n[0];
-		btSoftBody::Node* compnode_1 = faces[faceIDVec[i]].m_n[1];
-		btSoftBody::Node* compnode_2 = faces[faceIDVec[i]].m_n[2];		
-
+	
+	for (int i = 0; i < faceIDVec.size(); i++) {		
+		
 		float scaleFactor = 0.0;
 		float radiusFactor = 0.0;
 		if (i < faceIDVec.size()/2) {
@@ -292,60 +377,13 @@ vector<float> YesNoObjectSoft::changeColBySMSRecievedFace(int z) {
 			colPtr[idx] = tgtc.r/255.0;
 			colPtr[idx+1] = tgtc.g/255.0;
 			colPtr[idx+2] = tgtc.b/255.0;
-			colPtr[idx+3] = 1.0;					
-		}		
+			colPtr[idx+3] = 0.2;					
+		}
+		
 	}
-
+	
 	destColorPointer = colPtrRtn;
 	return colPtrRtn;	
-
-}
-
-vector<int> YesNoObjectSoft::sortFaceByDistance(btSoftBody::tFaceArray& faces, int faceID) {
-	
-	
-	map<float, int, greater<float> > faceSize;
-	ofxVec3f tgtCentroid = getFaceCentroid(faces, faceID);
-	for (int i = 0; i < faces.size(); i++) {
-		ofxVec3f compCentroid1 = getFaceCentroid(faces, i);
-		float d1 = tgtCentroid.distance(compCentroid1);
-		faceSize.insert(map<float, int, greater<float> >::value_type(d1, i));
-	}
-	
-	vector<int> faceIDVec;
-	map<float, int, greater<float> >::iterator it = faceSize.begin();
-	while (it != faceSize.end()) {
-		faceIDVec.push_back((*it).second);
-		++it;
-	}	
-	
-	return faceIDVec;
-}
-
-ofxVec3f YesNoObjectSoft::getFaceCentroid(btSoftBody::tFaceArray& faces, int faceID) {
-	
-	btSoftBody::Node* node_0 = faces[faceID].m_n[0];
-	btSoftBody::Node* node_1 = faces[faceID].m_n[1];
-	btSoftBody::Node* node_2 = faces[faceID].m_n[2];		
-	
-	return ofxVec3f((node_0->m_x.getX()+node_1->m_x.getX()+node_2->m_x.getX())/3,
-					(node_0->m_x.getY()+node_1->m_x.getY()+node_2->m_x.getY())/3,
-					(node_0->m_x.getZ()+node_1->m_x.getZ()+node_2->m_x.getZ())/3);
-	
-}
-
-float YesNoObjectSoft::getFaceDistanceBetween(btSoftBody::tFaceArray& faces, int face1ID, int face2ID) {
-	
-	ofxVec3f face1Centroid = getFaceCentroid(faces, face1ID);
-	ofxVec3f face2Centroid = getFaceCentroid(faces, face2ID);
-	return face1Centroid.distance(face2Centroid);
-	
-}
-
-ofxVec3f YesNoObjectSoft::getFaceNormal(btSoftBody::tFaceArray& faces, int faceID) {
-	
-	btVector3 btNormal = faces[faceID].m_normal;
-	return ofxVec3f(btNormal.getX(), btNormal.getY(), btNormal.getZ());
 	
 }
 
@@ -355,16 +393,28 @@ void YesNoObjectSoft::addSMS(int faceID, int _numSMS, float _ratioSMS) {
 	numSMS = _numSMS;
 	ratioSMS = _ratioSMS;
 	destColorPointer.clear();
-	int i =0;
-	changeColBySMSRecievedFace(i);
+	
+	btSoftBody::tFaceArray& faces(yesORno->getSoftBody()->m_faces);
+	int max = faces.size();
 	colorPointerTween.setParameters(easing, ofxTween::easeIn, 0, 100, 2000, 1500);
-
+	
 }
 
 void YesNoObjectSoft::addSMSCompleted(int & z) {
 	
+	suddenMotion = false;	
+	
+	// store sms position for color change		
+	ofxVec3f normc = yesORno->getFaceNormal(incomingSMSFaceID);
+	normc *= height;
+	ofxVec3f cenc = yesORno->getFaceCentroid(incomingSMSFaceID);
+	cenc += normc;
+	smsPosition = ofxVec3f(cenc.x, cenc.y, cenc.z);
+	int i =0;
+	changeColBySMSRecievedFace(i);		
+	
 	int faceID = incomingSMSFaceID;
-	pinchFace(incomingSMSFaceID);
+	yesORno->pinchFace(incomingSMSFaceID, ofMap(resolusion, minRes, maxRes, 67000, 27700));
 	
 	btSoftBody::tFaceArray& faces(yesORno->getSoftBody()->m_faces);
 	
@@ -380,229 +430,365 @@ void YesNoObjectSoft::addSMSCompleted(int & z) {
 	as->node0 = faces[faceID].m_n[0];
 	as->node1 = faces[faceID].m_n[1];
 	as->node2 = faces[faceID].m_n[2];
-	float minl = ofMap(resolusion, minRes, maxRes, 10, 40);
-	float maxl = ofMap(resolusion, minRes, maxRes, 10, 70);
-	as->length = ofRandom(minl, maxl);
+	float minl = ofMap(resolusion, minRes, maxRes, 140, 70);
+	float maxl = ofMap(resolusion, minRes, maxRes, 160, 120);
+	as->length = height;//sqrt(6)/2*(a.distance(b));//sqrt(6)*100/3;//ofRandom(minl, maxl);
 	as->faceID = faceID;
 	as->angle = ofRandomuf();
-	as->tw.setParameters(as->ea, ofxTween::easeIn, 0.0, as->length, 800, 0);
+	as->tw.setParameters(as->ea, ofxTween::easeOut, 0.0, as->length, 800, 0);
+	as->tw.id = ofGetFrameNum();
 	
 	ofAddListener(as->tw.end_E, this, &YesNoObjectSoft::notifyFinishAllUpdating);
 	ofAddListener(as->endSpikeGlow, this, &YesNoObjectSoft::onEndSpikeGlow);
 	addedSMSs.push_back(as);
 	
-	int i = 0;
 	ofNotifyEvent(notifyScaleYesEvent, i);
 	ofNotifyEvent(notifyScaleNoEvent, i);	
 	
 }
 
-void YesNoObjectSoft::pinchFace(int faceIdx) {
-	// get face and nodes
-	btSoftBody::tFaceArray& faces(yesORno->getSoftBody()->m_faces);
-	btSoftBody::Node* node_0 = faces[faceIdx].m_n[0];
-	btSoftBody::Node* node_1 = faces[faceIdx].m_n[1];
-	btSoftBody::Node* node_2 = faces[faceIdx].m_n[2];
-	
-	// pinch face
-	int pinchFaceFactor = ofMap(resolusion, minRes, maxRes, 67000, 27700);
-	btVector3 normal = faces[faceIdx].m_normal;
-	btVector3 pinchFaceForce = normal*pinchFaceFactor;
-	
-	if (node_0->m_im > 0) node_0->m_f += pinchFaceForce;
-	if (node_1->m_im > 0) node_1->m_f += pinchFaceForce;
-	if (node_2->m_im > 0) node_2->m_f += pinchFaceForce;	
-	
-}
-
-void YesNoObjectSoft::blowUp(float pinchFaceFactor) {
-	// get face and nodes
-	btSoftBody::tFaceArray& faces(yesORno->getSoftBody()->m_faces);
-	int fSize = faces.size();
-	
-	for (int i = 0; i < fSize; i++) {
-		
-		btVector3 normal = faces[i].m_normal;
-		btVector3 pinchFaceForce = normal*pinchFaceFactor;
-		
-		btSoftBody::Node* node_0 = faces[i].m_n[0];
-		btSoftBody::Node* node_1 = faces[i].m_n[1];
-		btSoftBody::Node* node_2 = faces[i].m_n[2];	
-		if (node_0->m_im > 0) node_0->m_f += pinchFaceForce;
-		if (node_1->m_im > 0) node_1->m_f += pinchFaceForce;
-		if (node_2->m_im > 0) node_2->m_f += pinchFaceForce;	
-		
-	}	
-}
-
-void YesNoObjectSoft::shrink() {
-	// get face and nodes
-	btSoftBody::tFaceArray& faces(yesORno->getSoftBody()->m_faces);
-	int fSize = faces.size();
-	int pinchFaceFactor = ofMap(resolusion, minRes, maxRes, 800, 80);
-	
-	for (int i = 0; i < fSize; i++) {
-		
-		btSoftBody::Node* node_0 = faces[i].m_n[0];
-		btSoftBody::Node* node_1 = faces[i].m_n[1];
-		btSoftBody::Node* node_2 = faces[i].m_n[2];	
-		
-		// pinch face
-		btVector3 normal = -faces[i].m_normal;
-		btVector3 pinchFaceForce = normal*pinchFaceFactor;
-		
-		if (node_0->m_im > 0) node_0->m_f += pinchFaceForce;
-		if (node_1->m_im > 0) node_1->m_f += pinchFaceForce;
-		if (node_2->m_im > 0) node_2->m_f += pinchFaceForce;		
-	}	
-}
-
 void YesNoObjectSoft::notifyFinishAllUpdating(int & z) {
 	
+	delete addedSMSs[addedSMSs.size()-1];
+	addedSMSs.clear();	
+	
 	ofNotifyEvent(onFinishAllUpdating, YesOrNo);
-
+	
 }
 
 void YesNoObjectSoft::onEndSpikeGlow(int & z) {
 	
-	vector<ofxVec3f> vertices;
-	btSoftBody::tFaceArray& faces = yesORno->getSoftBody()->m_faces;
-	for (int i = 0; i < faces.size(); i++) {
-		btSoftBody::Node* node_0 = faces[i].m_n[0];
-		btSoftBody::Node* node_1 = faces[i].m_n[1];
-		btSoftBody::Node* node_2 = faces[i].m_n[2];	
-		float x0 = node_0->m_x.getX();
-		float y0 = node_0->m_x.getY();
-		float z0 = node_0->m_x.getZ();
-		float x1 = node_1->m_x.getX();
-		float y1 = node_1->m_x.getY();
-		float z1 = node_1->m_x.getZ();
-		float x2 = node_2->m_x.getX();
-		float y2 = node_2->m_x.getY();
-		float z2 = node_2->m_x.getZ();	
-		ofxVec3f v0(x0,y0,z0);
-		ofxVec3f v1(x1,y1,z1);
-		ofxVec3f v2(x2,y2,z2);
-		
-//		cout << ofToString(x0)+" "+ofToString(y0)+" "+ofToString(z0) << endl;
-//		cout << ofToString(x1)+" "+ofToString(y1)+" "+ofToString(z1) << endl;
-//		cout << ofToString(x2)+" "+ofToString(y2)+" "+ofToString(z2) << endl;
-		
-		vertices.push_back(v0);
-		vertices.push_back(v1);
-		vertices.push_back(v2);
-	}
-	cout << " " << endl;
+	fillMeshInput();
 	
-	// remove overlapping vertices
-	// get pvoting ball radius 
-	vector<ofxVec3f> tmpVertices = vertices;
-	for (int i = 0; i < vertices.size(); i++) {
-		ofxVec3f v = vertices[i];
+	cout << "-----------------------------------------------" << endl;
+	cout << "floatVertices size = " + ofToString((int)floatVertices.size()) << endl;
+	cout << "faceIndices size = " + ofToString((int)faceIndices.size()) << endl;
+	cout << "numFace = " + ofToString(numFace) << endl;
+	
+	yesORno->remove(bullet->getSoftDynamicsWorld());
+	delete yesORno;
+	yesORno = bullet->createSoftTriMesh(ofxVec3f(0, 0, 0), &floatVertices[0], &faceIndices[0], numFace);		
+	
+	cout << "-----------------------------------------------" << endl;
+	btSoftBody::tFaceArray& faces(yesORno->getSoftBody()->m_faces);
+	cout << "generated face size = " + ofToString((int)faces.size()) << endl;
+	cout << " " << endl;	
+	
+	addedSMSFaces.clear();
+	suddenMotion = true;
+		
+}
+
+void YesNoObjectSoft::fillMeshInput() {
+	
+	vector<ofxVec3f> rawFacesAsVerts = yesORno->getAllFacesAsVerts();
+	
+	// remove base face under incomingSMS
+	vector< vector<ofxVec3f> > faces;
+	for (int i = 0; i < rawFacesAsVerts.size()/3; i++) {
+		ofxVec3f v0 = rawFacesAsVerts[i*3];
+		ofxVec3f v1 = rawFacesAsVerts[i*3+1];
+		ofxVec3f v2 = rawFacesAsVerts[i*3+2];
+		vector<ofxVec3f> face;
+		face.push_back(v0);
+		face.push_back(v1);
+		face.push_back(v2);
+		faces.push_back(face);
+	}
+	vector<ofxVec3f> baseFace = yesORno->getFaceAsVerts(incomingSMSFaceID);
+	for (int i = 0; i < faces.size(); i++) {
+		vector<ofxVec3f> compFace = faces[i];
+		ofxVec3f a = compFace[0];
+		ofxVec3f ca = compFace[1];
+		ofxVec3f b = compFace[2];
+		ofxVec3f cb = baseFace[0];
+		ofxVec3f c = baseFace[1];
+		ofxVec3f cc = baseFace[2];
+		if (a == ca && b == cb && c == cc) {
+			faces.erase(faces.begin()+i);
+		}else if (a == ca) {
+			if (b == cb && c == cc) {
+				faces.erase(faces.begin()+i);
+			}else if (b == cc && c == cb) {
+				faces.erase(faces.begin()+i);		
+			}
+		}else if (b == ca) {
+			if (a == cb && c == cc) {
+				faces.erase(faces.begin()+i);
+			}else if (a == cc && c == cb) {
+				faces.erase(faces.begin()+i);
+			}
+		}else if (c == ca) {
+			if (a == cb && b == cc) {
+				faces.erase(faces.begin()+i);
+			}else if (a == cc && b == cb) {
+				faces.erase(faces.begin()+i);				
+			}
+		}		
+	}
+	
+	// convert array geometory
+	rawFacesAsVerts.clear();
+	for (int i = 0; i < faces.size(); i++) {
+		vector<ofxVec3f> face = faces[i];
+		ofxVec3f v0 = face[0];
+		ofxVec3f v1 = face[1];
+		ofxVec3f v2 = face[2];
+		rawFacesAsVerts.push_back(v0);
+		rawFacesAsVerts.push_back(v1);
+		rawFacesAsVerts.push_back(v2);
+	}
+	
+	// merge baseFace and addedSMSFaces verts to keep hull as one body
+	for (int i = 0; i < addedSMSFaces.size(); i++) {
+		ofxVec3f asfV = addedSMSFaces[i];
+		for (int j = 0; j < baseFace.size(); j++) {
+			ofxVec3f bfV = baseFace[j];
+			if (10 > asfV.distance(bfV)) {
+				addedSMSFaces[i] = bfV;
+				break;
+			}
+		}
+	}	
+	
+	// add incoming SMS faces to body verts
+	for (int i = 0; i < addedSMSFaces.size(); i++) {
+		rawFacesAsVerts.push_back(addedSMSFaces[i]);
+	}
+	
+	// remove duplicated verts
+	vector<ofxVec3f> vertices = rawFacesAsVerts;
+	for (int i = 0; i < rawFacesAsVerts.size(); i++) {
+		ofxVec3f v = rawFacesAsVerts[i];
 		int cnt = 0;
-		for (int j = 0; j < tmpVertices.size(); j++) {
-			ofxVec3f jv = tmpVertices[j];
-			if (v == jv) {
+		for (int j = 0; j < vertices.size(); j++) {
+			ofxVec3f jv = vertices[j];
+			if (v == jv) {// || edgeLen*0.4 > v.distance(jv)) {
 				if (cnt > 0) {
-					tmpVertices.erase(tmpVertices.begin()+j);
+					vertices.erase(vertices.begin()+j);
 				}
 				cnt++;					
 			}
 		}
-	}
+	}	
 	
-	ofxVec3f a = addedSMSs[addedSMSs.size()-1]->getA();
-	ofxVec3f b = addedSMSs[addedSMSs.size()-1]->getB();
-	ofxVec3f c = addedSMSs[addedSMSs.size()-1]->getC();
-	ofxVec3f norm = addedSMSs[addedSMSs.size()-1]->getNorm();		
-	norm *= addedSMSs[addedSMSs.size()-1]->tw.getTarget(0);
-	a += norm;
-	b += norm;
-	c += norm;	
-	tmpVertices.push_back(a);
-	tmpVertices.push_back(b);
-	tmpVertices.push_back(c);
-	addedSMSs.pop_back();
+	// raw faces
+	vector<int> rawFaceIndices;
+	for (int i = 0; i < rawFacesAsVerts.size(); i++) {
+		ofxVec3f tgt = rawFacesAsVerts[i];
+		for (int j = 0; j < vertices.size(); j++) {
+			ofxVec3f comp = vertices[j];
+			if (tgt == comp) {
+				rawFaceIndices.push_back(j);
+				break;
+			}
+		}
+	}	
+//	cout << "----raw faces "+ofToString((int)rawFaceIndices.size()/3)+" -----" << endl;	
+	for (int i = 0; i < rawFaceIndices.size()/3; i++) {
+		int v0 = rawFaceIndices[i*3];
+		int v1 = rawFaceIndices[i*3+1];
+		int v2 = rawFaceIndices[i*3+2];
+//		cout << ofToString(v0)+" "+ofToString(v1)+" "+ofToString(v2) << endl;	
+	}	
 	
-	float distAvg = 0.0;
-	int numD = 0;
-	ofxVec3f prevVert;
-	vector<float> cleanVertices;	
-	for (int i = 0; i < tmpVertices.size(); i++) {
-		ofxVec3f v = tmpVertices[i]/4.5;
-		cleanVertices.push_back(v.x);
-		cleanVertices.push_back(v.y);
-		cleanVertices.push_back(v.z);
-		
-		if (i == 0) {
-			prevVert = v;
-		}else {
-			distAvg += v.distance(prevVert);
-			numD++;
+	
+	// create face indices
+	faceIndices.clear();
+	for (int i = 0; i < rawFacesAsVerts.size(); i++) {
+		ofxVec3f tgt = rawFacesAsVerts[i];
+		for (int j = 0; j < vertices.size(); j++) {
+			ofxVec3f comp = vertices[j];
+			if (tgt == comp || edgeLen*0.4 > tgt.distance(comp)) {
+				faceIndices.push_back(j);
+				break;
+			}
 		}
 	}
-	distAvg /= tmpVertices.size()-1;
-	distAvg *= 3.0;
 	
 	
-	vector<float> verts; 
-	vector<int> faceIndices; 
-	int numFace = 0; 
-	while (faceIndices.size() == 0) {
-		cout << "face size = " + ofToString((int)faceIndices.size()) << endl;
-		vcgMesh.reconstructFacePointCloud(cleanVertices, distAvg*ofRandom(0.9, 1.1));	
-		verts = vcgMesh.getVertices();
-		faceIndices = vcgMesh.getFaceIndices();
-		numFace = vcgMesh.getFaceNum();
+	int fff = faceIndices.size();
+//	cout << "----extra face before remove duplication "+ofToString(fff%3)+" ----" << endl;
+	for (int i = 0; i < fff%3; i++) {
+		int idx = faceIndices[faceIndices.size()-i-1];
+//		cout << ofToString(idx)+" ";
 	}
-	cout << "how many faces? = " + ofToString((int)faceIndices.size()) << endl;
+//	cout << " " << endl;	
+	for (int i = 0; i < fff%3; i++) {
+		faceIndices.pop_back();
+	}	
 	
+//	cout << "----face before remove sequencial loop "+ofToString((int)faceIndices.size()/3)+" -----" << endl;	
+	for (int i = 0; i < faceIndices.size()/3; i++) {
+		int v0 = faceIndices[i*3];
+		int v1 = faceIndices[i*3+1];
+		int v2 = faceIndices[i*3+2];
+//		cout << ofToString(v0)+" "+ofToString(v1)+" "+ofToString(v2) << endl;	
+	}	
+	
+	// remove sequencial loop face
+	vector<int> clearFaceIndice = faceIndices;
+	int cnt = 0;	
+	for (int i = 0; i < faceIndices.size()/3; i++) {
+		int v0 = faceIndices[i*3];
+		int v1 = faceIndices[i*3+1];
+		int v2 = faceIndices[i*3+2];
+		if (v0 == v1 || v1 == v2 || v2 == v0) {
+			clearFaceIndice.erase(clearFaceIndice.begin()+i*3-cnt, clearFaceIndice.begin()+i*3+3-cnt);
+//			cout << "remove seq faces" << endl;
+			cnt+=3;
+		}
+	}
+	faceIndices.clear();
+	faceIndices = clearFaceIndice;	
+	
+//	cout << "----face before remove duplicated face "+ofToString((int)faceIndices.size()/3)+" -----" << endl;	
+	for (int i = 0; i < faceIndices.size()/3; i++) {
+		int v0 = faceIndices[i*3];
+		int v1 = faceIndices[i*3+1];
+		int v2 = faceIndices[i*3+2];
+//		cout << ofToString(v0)+" "+ofToString(v1)+" "+ofToString(v2) << endl;	
+	}		
+	
+	// remove duplicated faces
+	vector<int> cleanFaces = faceIndices;
 	for (int i = 0; i < faceIndices.size()/3; i++) {
 		int a = faceIndices[i*3];
 		int b = faceIndices[i*3+1];
 		int c = faceIndices[i*3+2];
-		string ax = ofToString(verts[a]);
-		string ay = ofToString(verts[a+1]);
-		string az = ofToString(verts[a+2]);
-		string bx = ofToString(verts[b]);
-		string by = ofToString(verts[b+1]);
-		string bz = ofToString(verts[b+2]);
-		string cx = ofToString(verts[c]);
-		string cy = ofToString(verts[c+1]);
-		string cz = ofToString(verts[c+2]);
-		cout << ofToString(i)+" faceA = ("+ax+"), ("+ay+"), ("+az+")" << endl;
-		cout << ofToString(i)+" faceB = ("+bx+"), ("+by+"), ("+bz+")" << endl;
-		cout << ofToString(i)+" faceC = ("+cx+"), ("+cy+"), ("+cz+")" << endl;		
+		int cnt = 0;
+		for (int j = 0; j < cleanFaces.size()/3; j++) {
+			int ca = cleanFaces[j*3];
+			int cb = cleanFaces[j*3+1];
+			int cc = cleanFaces[j*3+2];			
+			if (a == ca && b == cb && c == cc) {
+				if (cnt > 0) {
+					cleanFaces.erase(cleanFaces.begin()+j*3, cleanFaces.begin()+j*3+3);
+				}
+				cnt++;				
+			}
+		}
+	}
+	faceIndices.clear();
+	faceIndices = cleanFaces;
+	fff = faceIndices.size();
+//	cout << "----extra face after remove duplication "+ofToString(fff%3)+" ----" << endl;	
+	for (int i = 0; i < fff%3; i++) {
+		int idx = faceIndices[faceIndices.size()-i-1];
+//		cout << ofToString(idx)+" ";
+	}
+//	cout << " " << endl;	
+	for (int i = 0; i < fff%3; i++) {
+		faceIndices.pop_back();
+	}
+	
+//	cout << "----face before remove geometorical identity "+ofToString((int)faceIndices.size()/3)+" -----" << endl;	
+	for (int i = 0; i < faceIndices.size()/3; i++) {
+		int v0 = faceIndices[i*3];
+		int v1 = faceIndices[i*3+1];
+		int v2 = faceIndices[i*3+2];
+//		cout << ofToString(v0)+" "+ofToString(v1)+" "+ofToString(v2) << endl;	
+	}	
+	
+	// merge faces which share same geometory
+	for (int i = 0; i < faceIndices.size()/3; i++) {
+		int a = faceIndices[i*3];
+		int b = faceIndices[i*3+1];
+		int c = faceIndices[i*3+2];
+		int cnt = 0;
+		for (int j = 0; j < cleanFaces.size()/3; j++) {
+			int ca = cleanFaces[j*3];
+			int cb = cleanFaces[j*3+1];
+			int cc = cleanFaces[j*3+2];			
+			if (a == ca) {
+				if (b == cb && c == cc) {
+					if (cnt > 0) {
+						cleanFaces.erase(cleanFaces.begin()+j*3, cleanFaces.begin()+j*3+3);
+					}
+					cnt++;						
+				}else if (b == cc && c == cb) {
+					if (cnt > 0) {
+						cleanFaces.erase(cleanFaces.begin()+j*3, cleanFaces.begin()+j*3+3);
+					}
+					cnt++;						
+				}
+			}else if (b == ca) {
+				if (a == cb && c == cc) {
+					if (cnt > 0) {
+						cleanFaces.erase(cleanFaces.begin()+j*3, cleanFaces.begin()+j*3+3);
+					}
+					cnt++;					
+				}else if (a == cc && c == cb) {
+					if (cnt > 0) {
+						cleanFaces.erase(cleanFaces.begin()+j*3, cleanFaces.begin()+j*3+3);
+					}
+					cnt++;	
+				}
+			}else if (c == ca) {
+				if (a == cb && b == cc) {
+					if (cnt > 0) {
+						cleanFaces.erase(cleanFaces.begin()+j*3, cleanFaces.begin()+j*3+3);
+					}
+					cnt++;					
+				}else if (a == cc && b == cb) {
+					if (cnt > 0) {
+						cleanFaces.erase(cleanFaces.begin()+j*3, cleanFaces.begin()+j*3+3);
+					}
+					cnt++;					
+				}
+			}
+		}
+	}
+	faceIndices.clear();
+	faceIndices = cleanFaces;	
+	smsBaseFace = baseFace;	
+	
+	fff = faceIndices.size();
+//	cout << "----extra face after merge geometory "+ofToString(fff%3)+" ----" << endl;
+	for (int i = 0; i < fff%3; i++) {
+		int idx = faceIndices[faceIndices.size()-i-1];
+//		cout << ofToString(idx)+" ";
+	}
+//	cout << " " << endl;
+	for (int i = 0; i < fff%3; i++) {
+		faceIndices.pop_back();
+	}	
+	
+	
+//	cout << "----face "+ofToString((int)faceIndices.size()/3)+" -----" << endl;	
+	for (int i = 0; i < faceIndices.size()/3; i++) {
+		int v0 = faceIndices[i*3];
+		int v1 = faceIndices[i*3+1];
+		int v2 = faceIndices[i*3+2];
+//		cout << ofToString(v0)+" "+ofToString(v1)+" "+ofToString(v2) << endl;	
+	}
+//	cout << "----verts "+ofToString((int)vertices.size())+" ----" << endl;
+	for (int i = 0; i < vertices.size(); i++) {
+		ofxVec3f v = vertices[i];
+//		cout << ofToString(v.x)+" "+ofToString(v.y)+" "+ofToString(v.z) << endl;	
 	}
 		
-	yesORno->remove(bullet->getSoftDynamicsWorld());
-	delete yesORno;
-	yesORno = bullet->createSoftTriMesh(ofxVec3f(0, 0, 0), &verts[0], &faceIndices[0], numFace);
 	
+	// create float array vertices
+	floatVertices.clear();
+	for (int i = 0; i < vertices.size(); i++) {
+		ofxVec3f v = vertices[i];
+		floatVertices.push_back(v.x);
+		floatVertices.push_back(v.y);
+		floatVertices.push_back(v.z);
+	}
+		
+	numFace = faceIndices.size()/3;
 	
-//	vector<float> input;
-//	for (int i = 0; i < 24; i++) {
-//		float p = verts[i];
-//		cout << ofToString(p) << endl;
-//		input.push_back(p);
-//	}	
-//	vcgMesh.reconstructFacePointCloud(input);
-//	vector<float> verts = vcgMesh.getVertices();
-//	vector<int> faceIndices = vcgMesh.getFaceIndices();
-//	int numFace = vcgMesh.getFaceNum();	
-//	yesORno = bullet->createSoftTriMesh(ofxVec3f(0, 0, 0), &verts[0], &faceIndices[0], numFace);		
-	
-//	int fnum = 100*3;
-//	vector<float> pCloud;
-//	for (int i = 0; i < fnum; i++) {
-//		float p = ofRandom(0, 100);//ofRandomf();//
-//		pCloud.push_back(p);
-//	}
-//	vcgMesh.reconstructFacePointCloud(pCloud);
-//	
-//	vector<float> verts = vcgMesh.getVertices();
-//	vector<int> faceIndices = vcgMesh.getFaceIndices();
-//	int numFace = vcgMesh.getFaceNum();
-//	yesORno = bullet->createSoftTriMesh(ofxVec3f(0, 0, 0), &verts[0], &faceIndices[0], numFace);		
+}
 
+void YesNoObjectSoft::clear() {
+	addedSMSs.clear();
+	//delete yesORno;
+}
+
+void YesNoObjectSoft::debugDraw() {
+	
+	yesORno->render();
+	
 }

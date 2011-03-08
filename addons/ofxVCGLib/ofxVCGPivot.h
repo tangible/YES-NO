@@ -89,7 +89,6 @@ namespace vcg {
 			 for a sphere that touches 3 and contains none.
 			 Use the center of the box to get a sphere inside (or outside) the model 
 			 You may be unlucky... */
-			
 			bool seed(bool outside = true, int start = -1) {         
 				//pick a random point (well...)
 				if(start == -1) start = rand()%mesh.vert.size();
@@ -97,10 +96,12 @@ namespace vcg {
 				//get a sphere of neighbours
 				vector<int> targets;
 				vector<float> dists;
+				cout << "2*radius = "+ofToString(2*radius) << endl;
 				int n = getInSphere(mesh.vert[start].P(), 2*radius, targets, dists);
 				if(n < 3) { 
 					//bad luck. we should call seed again (assuming random pick) up to
 					//some maximum tries. im lazy.
+					cout << "n < 3" << endl;
 					return false;
 				}
 				int v0, v1, v2;
@@ -150,8 +151,10 @@ namespace vcg {
 					}
 				}
 				
-				if(!found)  //see bad luck above
+				if(!found) { //see bad luck above
+					cout << "see bad luck above" << endl;
 					return false;
+				}
 				
 				assert(!front.size());
 				//TODO: should i check the Hinges too?
@@ -191,8 +194,15 @@ namespace vcg {
 			int addFace() {
 				//We try to seed again
 				if(!mesh.face.size()) {
-					for(int i = 0; i < 100; i++) 
-						if(seed()) return 1;
+					for(int i = 0; i < 100; i++) {
+						if(seed()) {
+							cout << "seed()" << endl;
+							return 1;
+						}else {
+							cout << "fail seed" << endl;
+						}
+					}
+					cout << "!mesh.face.size()" << endl;
 					return -1;
 				}
 				
@@ -201,10 +211,14 @@ namespace vcg {
 					//find a non D, V, B point and try to seed if failed D it.
 					for(int i = 0; i < mesh.vert.size();i ++) {
 						CVertex &v = mesh.vert[i];
-						if(v.IsD() || v.IsV() || v.IsB()) continue;
+						if(v.IsD() || v.IsV() || v.IsB()) {
+							cout << "v.IsD() || v.IsV() || v.IsB()" << endl;
+							continue;
+						}
 						if(seed(true, i)) return 1;
 						v.SetD();
 					}
+					cout << "!froddddnt.size()" << endl;
 					return -1;
 				}
 				
@@ -235,6 +249,7 @@ namespace vcg {
 					front.erase(e.next);        
 					front.erase(ei);    
 					
+					cout << "0 &&next.next == e.previous" << endl;
 					return 1;
 				}
 				
@@ -248,6 +263,7 @@ namespace vcg {
 				//or we are trying to connect to the inside of the mesh. BAD.
 				if(!success || mesh.vert[v2].IsV()) {
 					killHinge(ei);
+					cout << "!success || mesh.vert[v2].IsV()" << endl;
 					return 0;
 				} 
 				
@@ -261,6 +277,7 @@ namespace vcg {
 					
 					if(!checkHinge(v0, v2) || !checkHinge(v2, v1)) {                      
 						killHinge(ei);
+						cout << "!checkHinge(v0, v2) || !checkHinge(v2, v1)" << endl;
 						return 0;
 					}
 					
@@ -342,6 +359,7 @@ namespace vcg {
 						if(v1 == (*right).v0 || v0 == (*left).v1) {
 							//            cout << "Bad join.\n";
 							killHinge(ei);
+							cout << "v1 == (*right).v0 || v0 == (*left).v1" << endl;
 							return 0;
 						}
 						
@@ -395,6 +413,7 @@ namespace vcg {
 					moveBack(ei);
 				}
 				addFace(v0, v2, v1);
+				cout << "finish addFace()" << endl;
 				return 1;
 			}        
 			

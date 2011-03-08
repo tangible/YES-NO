@@ -19,6 +19,8 @@ subject to the following restrictions:
 #include <string.h>
 #include "btSoftBodyHelpers.h"
 #include "LinearMath/btConvexHull.h"
+#include <iostream>
+#include <sstream>
 
 //
 static void				drawVertex(	btIDebugDraw* idraw,
@@ -818,7 +820,9 @@ btSoftBody*		btSoftBodyHelpers::CreateFromTriMesh(btSoftBodyWorldInfo& worldInfo
 {
 	int		maxidx=0;
 	int i,j,ni;
-
+	std::stringstream sstr;
+	std::cout << "-----------------------------------------------" << std::endl;
+	
 	for(i=0,ni=ntriangles*3;i<ni;++i)
 	{
 		maxidx=btMax(triangles[i],maxidx);
@@ -832,6 +836,12 @@ btSoftBody*		btSoftBodyHelpers::CreateFromTriMesh(btSoftBodyWorldInfo& worldInfo
 	{
 		vtx[j]=btVector3(vertices[i],vertices[i+1],vertices[i+2]);
 	}
+	sstr << maxidx*3;
+	std::cout << "vts = " + sstr.str() << std::endl;	
+	sstr.str("");
+	
+	int linknum = 0;
+	int facenum = 0;
 	btSoftBody*		psb=new btSoftBody(&worldInfo,vtx.size(),&vtx[0],0);
 	for( i=0,ni=ntriangles*3;i<ni;i+=3)
 	{
@@ -844,12 +854,21 @@ btSoftBody*		btSoftBodyHelpers::CreateFromTriMesh(btSoftBodyWorldInfo& worldInfo
 				chks[IDX(idx[j],idx[k])]=true;
 				chks[IDX(idx[k],idx[j])]=true;
 				psb->appendLink(idx[j],idx[k]);
+				linknum++;
 			}
 		}
 #undef IDX
 		psb->appendFace(idx[0],idx[1],idx[2]);
+		facenum++;
 	}
 	psb->randomizeConstraints();
+	sstr << linknum;
+	std::cout << "link = " + sstr.str() << std::endl;	
+	sstr.str("");	
+	sstr << facenum;
+	std::cout << "face = " + sstr.str() << std::endl;			
+	sstr.str("");	
+	
 	return(psb);
 }
 
