@@ -33,6 +33,7 @@ public:
 	ofEvent<int> onClearBG;
 	ofEvent<FileDef> onFileDialogueQImg;
 	ofEvent<int> onClearQImg;
+	ofEvent<int> onRestoreAllSMSAnswer;	
 	
 	// SSAO
 	float camerarangex;
@@ -81,5 +82,8 @@ public:
 	float	AMBIENTINTENSITY;
 	float	DEFFUSEINTENSITY;
 	float	SPECULARINTENSITY;	
+	
+	bool debugWithFakeSMS;
+	bool restoreAllSMSAnswer;	
 
 };

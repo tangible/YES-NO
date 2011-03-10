@@ -31,6 +31,9 @@ public:
 	void onFileChangeQImg(FileDef& fd);	
 	void onClearQImg(int& i);	
 	void onSMSMsgRecieved(UpdateInfo& _upInfo);
+	bool bAlreadyRestoreAllAnswer;
+	void onRestoreAllSMSAnswer(int& i);
+	
 	
 	AdminPanel adminPanel;
 	ParticleCloud pCloud;

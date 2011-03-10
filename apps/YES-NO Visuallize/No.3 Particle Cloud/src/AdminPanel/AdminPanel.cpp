@@ -19,6 +19,10 @@ void AdminPanel::setup() {
 	gui.addButton("Change Question Img", changeQImg);
 	gui.addButton("Clear Question Img", clearQImg);	
 	
+	gui.addTitle("SMS Setting");
+	gui.addToggle("debug with fake SMS", debugWithFakeSMS);
+	gui.addButton("get all SMS (1time & irreversible!)", restoreAllSMSAnswer);	
+	
 	gui.addTitle("SSAO Setting").setNewColumn(true);
 	gui.addSlider("aoCap", aoCap, 0.0, 2.0);	
 	gui.addSlider("camerarangex", camerarangex, 0, 10000);
@@ -30,7 +34,7 @@ void AdminPanel::setup() {
 	gui.addSlider("aoDivision", aoDivision, 0, 30);
 	gui.addSlider("baseColSubdivision", baseColSubdivision, 0.000, 1.000);
 	
-	gui.addTitle("DoF Setting").setNewColumn(true);
+	gui.addTitle("DoF Setting");
 	gui.addSlider("bias", bias, 0.0, 1.0);	
 	gui.addSlider("focus", focus, 0.0, 2.0);
 	gui.addSlider("aspectratiox", aspectratiox, 0.0, ofGetScreenWidth());
@@ -44,7 +48,7 @@ void AdminPanel::setup() {
 //	gui.addSlider("colAngle", colAngle, -1.0, 1.0);
 //	gui.addSlider("sizeBase", sizeBase, -100, 100);
 	
-	gui.addTitle("Graphic Setting").setNewColumn(true);
+	gui.addTitle("Graphic Setting");
 	gui.addSlider("Light Pos X", LIGHTX, -2000.0, 2000.0);
 	gui.addSlider("Light Pos Y", LIGHTY, -2000.0, 2000.0);
 	gui.addSlider("Light Pos Z", LIGHTZ, -2000.0, 2000.0);		
@@ -52,7 +56,7 @@ void AdminPanel::setup() {
 	gui.addColorPicker("Material Diffuse", MATERIALDIFFUSE);
 	gui.addColorPicker("Material Specular", MATERIALSPECULAR);
 	gui.addSlider("Material Shineness", MATERIALSHINENESS, 0.0, 50.0);	
-	gui.addColorPicker("Light Ambient", LIGHTAMBIENT).setNewColumn(true);
+	gui.addColorPicker("Light Ambient", LIGHTAMBIENT);
 	gui.addColorPicker("Light Diffuse", LIGHTDIFFUSE);
 	gui.addColorPicker("Light Specular", LIGHTSPECULAR);	
 	gui.addSlider("AmbientIntensity", AMBIENTINTENSITY, 0.0, 100.0);
@@ -86,6 +90,10 @@ void AdminPanel::update(){
 		clearQImg = false;
 		int i = 1;
 		ofNotifyEvent(onClearQImg, i);
+	}else if (restoreAllSMSAnswer) {
+		restoreAllSMSAnswer = false;
+		int i = 1;
+		ofNotifyEvent(onRestoreAllSMSAnswer, i);
 	}
 	
 }
@@ -138,7 +146,7 @@ void AdminPanel::openFileDialogueChangeQImg(string ID) {
 
 void AdminPanel::restoreDefault() {
 
-	aoCap = 0.664;	
+	aoCap = 0.2;	
 	camerarangex = 6113.28;
 	camerarangey = 4121.09;
 	aoMultiplier = 351.562;
@@ -199,5 +207,8 @@ void AdminPanel::restoreDefault() {
 	LIGHTSPECULAR[1] = 0.01;
 	LIGHTSPECULAR[2] = 0.01;
 	LIGHTSPECULAR[3] = 1.0;		
+	
+	debugWithFakeSMS = false;
+	restoreAllSMSAnswer = false;	
 
 }

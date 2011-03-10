@@ -23,6 +23,10 @@ void AdminPanel::setup(){
 	gui.addButton("Clear Question Img", clearQImg);			
 //	gui.addButton("Change Blob Tex", CHANGEBLOBTEXBTN);
 	
+	gui.addTitle("SMS Setting").setNewColumn(true);
+	gui.addToggle("debug with fake SMS", debugWithFakeSMS);
+	gui.addButton("get all SMS (1time & irreversible!)", restoreAllSMSAnswer);
+	
 	gui.addTitle("Graphic Setting").setNewColumn(true);	
 	gui.addSlider("Shadow Intensity", SHADOWINTENSITY, 0.0, 1.0);
 	gui.addSlider("Shadow Scale", SHADOWSCALE, 0, 20);
@@ -79,6 +83,10 @@ void AdminPanel::update(){
 		clearQImg = false;
 		int i = 1;
 		ofNotifyEvent(onClearQImg, i);
+	}else if (restoreAllSMSAnswer) {
+		restoreAllSMSAnswer = false;
+		int i = 1;
+		ofNotifyEvent(onRestoreAllSMSAnswer, i);
 	}
 	
 }
@@ -206,5 +214,8 @@ void AdminPanel::restoreDefault() {
 	LIGHTSPECULAR[3] = 1.0;	
 	
 	DRAWDEBUG = false;
+	
+	debugWithFakeSMS = false;
+	restoreAllSMSAnswer = false;	
 
 }

@@ -15,6 +15,14 @@
         <name>Clear Question Img</name>
         <value>0</value>
     </Button_Clear_Question_Img>
+    <Toggle_debug_with_fake_SMS>
+        <name>debug with fake SMS</name>
+        <value>0</value>
+    </Toggle_debug_with_fake_SMS>
+    <Button_get_all_SMS_(1time_&_irreversible!)>
+        <name>get all SMS (1time &amp; irreversible!)</name>
+        <value>0</value>
+    </Button_get_all_SMS_(1time_&_irreversible!)>
     <SliderFloat_Shadow_Intensity>
         <name>Shadow Intensity</name>
         <value>0.880000</value>

@@ -18,6 +18,8 @@ void App::setup(){
 	ofAddListener(adminPanel.onFileDialogueBlobTex, this, &App::onFileChangeBlobTex);	
 	ofAddListener(httpClient.onSMSRecieved, this, &App::onSMSMsgRecieved);
 	ofAddListener(adminPanel.onClearQImg, this, &App::onClearQImg);		
+	ofAddListener(adminPanel.onRestoreAllSMSAnswer, this, &App::onRestoreAllSMSAnswer);	
+	bAlreadyRestoreAllAnswer = false;	
 	
 	camera.position(ofGetScreenWidth()/2, ofGetScreenHeight()/2, 1060);
 	cameraXTween.setParameters(easingback, ofxTween::easeOut, ofGetScreenWidth()/2, ofGetScreenWidth()/2, 0, 0);
@@ -35,7 +37,7 @@ void App::update(){
 	
 	blobMgr.update();
 	adminPanel.update();
-	httpClient.update();
+	httpClient.update(adminPanel.debugWithFakeSMS);
 	
 //	jitterAndZoomScene();
 //	camera.position(cameraXTween.update(), cameraYTween.update(), cameraZTween.update());
@@ -98,6 +100,11 @@ void App::onSMSMsgRecieved(UpdateInfo& _upInfo) {
 }
 void App::onClearQImg(int& i) {
 	qImage.clear();
+}
+void App::onRestoreAllSMSAnswer(int& i) {
+	if (!bAlreadyRestoreAllAnswer)
+		httpClient.sendRequestToServer(true);
+	bAlreadyRestoreAllAnswer = true;
 }
 
 //--------------------------------------------------------------

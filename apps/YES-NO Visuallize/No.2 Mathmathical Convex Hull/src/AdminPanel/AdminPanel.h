@@ -33,6 +33,7 @@ public:
 	ofEvent<int> onClearBG;
 	ofEvent<FileDef> onFileDialogueQImg;
 	ofEvent<int> onClearQImg;	
+	ofEvent<int> onRestoreAllSMSAnswer;		
 
 	bool	RESTORDEFBTN;
 	float	LIGHTX;
@@ -57,4 +58,8 @@ public:
 	float BGColor[4];
 	bool changeQImg;
 	bool clearQImg;	
+	
+	bool debugWithFakeSMS;
+	bool restoreAllSMSAnswer;
+	
 };

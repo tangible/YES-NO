@@ -33,6 +33,8 @@ public:
 	void onFileChangeBlobTex(FileDef& fd);	
 	void onSMSMsgRecieved(UpdateInfo& _upInfo);
 	void onClearQImg(int& i);
+	bool bAlreadyRestoreAllAnswer;	
+	void onRestoreAllSMSAnswer(int& i);	
 	void jitterAndZoomScene();
 
 	BlobManager		blobMgr;

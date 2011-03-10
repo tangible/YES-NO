@@ -170,7 +170,9 @@ void YesNoObjectSoft::draw() {
 		}
 	}		
 	//cout << "NaN = "+ofToString(numNan) << endl;
-	
+
+	ofEnableSmoothing();
+	glEnable(GL_LINE_SMOOTH);
 	glEnableClientState(GL_VERTEX_ARRAY);		
 	glEnableClientState(GL_NORMAL_ARRAY);
 	glEnableClientState(GL_TEXTURE_COORD_ARRAY);	
@@ -260,7 +262,7 @@ void YesNoObjectSoft::startFaceingToCam(ofxCamera* cam, ofxVec3f offset) {
 //	float angle = forward.angle(normal);
 	float angle = normal.angle(forward);	
 	
-	quatTween.setParameters(quatEasing, ofxTween::easeInOut, 0.0, 1.0, 2000, 0);
+	quatTween.setParameters(quatEasing, ofxTween::easeIn, 0.0, 1.0, 950, 0);
 	ofAddListener(quatTween.end_E, this, &YesNoObjectSoft::addSMSCompleted);
 	from = ofxQuaternion(prevFacingAxis.x, prevFacingAxis.y, prevFacingAxis.z, ofDegToRad(prevFaceAngle));
 	to = ofxQuaternion(axis.x, axis.y, axis.z, ofDegToRad(angle));
@@ -575,7 +577,7 @@ void YesNoObjectSoft::fillMeshInput() {
 		ofxVec3f tgt = rawFacesAsVerts[i];
 		for (int j = 0; j < vertices.size(); j++) {
 			ofxVec3f comp = vertices[j];
-			if (tgt == comp || edgeLen*0.4 > tgt.distance(comp)) {
+			if (tgt == comp || edgeLen*0.6 > tgt.distance(comp)) {
 				faceIndices.push_back(j);
 				break;
 			}

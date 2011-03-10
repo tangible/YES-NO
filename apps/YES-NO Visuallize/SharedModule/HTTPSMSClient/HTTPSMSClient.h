@@ -42,14 +42,48 @@ class HTTPSMSClient {
 
 public:
 	void setup();
-	void update();
+	void update(bool _bDebug = false);
+	
+	
+	
+	//--for real server interaction
+	void sendRequestToServer(bool bAll = false, bool _bDebug = false);
+	void getSMSAnswersFromServer(ofxHttpResponse & response);
+	void debugCreateFakeSMSResult(ofxHttpResponse & response);
+	void doSequentialNotificationToApps();
+	UpdateInfo calcUpdateInfoForRealEnv();
+	void createFakeSMS(); // test method
+	void createFakeSMS10(); // test method
+	void createFakeSMS100(); // test method	
+	void startCreateSequentialFakeSMS(); // test method		
+	int fakeSMSNum;
+	int fakeLastTime;
+	int fakeInterval;
+	bool bDebug;
+	//
+	
+	
+	//--for local emulation
 	void sendRequest();
-	void getResponse(ofxHttpResponse & response);
 	void emulateSMS();
+	//
+	
+	
+	int				numSMSs;
+	static const int tenSec = 10000;
+	int				interval;
+	int				lastTime;
+	vector<smsMsg> smss;
+	int				totalSMSs;
+	int				totalYes;
+	int				totalNo;
+	
+	
 	vector<smsMsg> totalYess;
 	vector<smsMsg> totalNos;
 	vector<smsMsg> thisTimeYess;
 	vector<smsMsg> thisTimeNos;
+	vector<string> smsServerRecievedTimes;
 	string reqestTime;
 	string recieveTime;
 	
@@ -59,15 +93,18 @@ public:
 	static const int NO = 1;
 	
 private:
+	void getResponse(ofxHttpResponse & response);
+	UpdateInfo calcUpdateInfo();	
 	string str_replace(const string &source,
 					   const string &pattern,
 					   const string &placement);	
-	UpdateInfo calcUpdateInfo();
 	
-	ofxHttpUtils	httpUtils;
+	ofxHttpUtils	realHttpUtils;
+	ofxHttpUtils	makeFakeSMSHttpUtils;
+	ofxHttpUtils	testHttpUtils;
 	string			responseStr;
 	string			action_url;	
-	TimedCounter*	counter;
+	TimedCounter*	requestCounter;
 	ofxXmlSettings	xml;
 	
 	float test;

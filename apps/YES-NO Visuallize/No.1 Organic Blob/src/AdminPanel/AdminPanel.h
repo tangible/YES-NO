@@ -35,7 +35,8 @@ public:
 	ofEvent<int> onClearBG;
 	ofEvent<FileDef> onFileDialogueQImg;
 	ofEvent<int> onClearQImg;	
-	ofEvent<FileDef> onFileDialogueBlobTex; 	
+	ofEvent<FileDef> onFileDialogueBlobTex; 
+	ofEvent<int> onRestoreAllSMSAnswer;	
 	
 	int		PHYSICSTICKFPS;
 	bool	TOGGLEMOTION;
@@ -70,5 +71,8 @@ public:
 	int		TESTX;
 	int		TESTY;
 	bool	DRAWDEBUG;
+	
+	bool debugWithFakeSMS;
+	bool restoreAllSMSAnswer;	
 	
 };

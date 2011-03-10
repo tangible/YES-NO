@@ -351,7 +351,7 @@
 		activeExec = 0;
 	};
 	E4B69B4C0A3A1720003C02F2 /* Project object */ = {
-		activeBuildConfigurationName = Debug;
+		activeBuildConfigurationName = Release;
 		activeTarget = E4B27C1410CBEB8E00536013 /* openFrameworks */;
 		addToTargets = (
 			E4B27C1410CBEB8E00536013 /* openFrameworks */,

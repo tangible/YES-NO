@@ -23,9 +23,11 @@ void App::setup(){
 	ofAddListener(adminPanel.onClearBG, this, &App::onClearBG);	
 	ofAddListener(adminPanel.onFileDialogueQImg, this, &App::onFileChangeQImg);	
 	ofAddListener(adminPanel.onClearQImg, this, &App::onClearQImg);		
+	ofAddListener(adminPanel.onRestoreAllSMSAnswer, this, &App::onRestoreAllSMSAnswer);
 	ofAddListener(httpClient.onSMSRecieved, this, &App::onSMSMsgRecieved);	
 	ofAddListener(convexHull.yesSoft.onFinishAllUpdating, this, &App::resotoreCamOrbit);	
 	ofAddListener(convexHull.noSoft.onFinishAllUpdating, this, &App::resotoreCamOrbit);
+	bAlreadyRestoreAllAnswer = false;	
 	
 	qImage.changeImgQImg("qimg3.png");
 	prevOrbit = 2;
@@ -37,6 +39,7 @@ void App::update(){
 	
 	adminPanel.update();
 	convexHull.update();
+	httpClient.update(adminPanel.debugWithFakeSMS);
 	
 	cam.orbitAround(cam.getEye(), ofxVec3f(0,1,0), camOrbitTween.update());
 	
@@ -138,6 +141,10 @@ void App::keyPressed(int key){
 		}
 	}else if (key == 'n') {
 		
+	}else if (key == 'r') {
+		httpClient.sendRequestToServer(false, true);
+	}else if (key == 'f') {
+		httpClient.createFakeSMS();
 	}else {	
 		adminPanel.keyPressed(key);
 	}
@@ -159,6 +166,11 @@ void App::onClearQImg(int& i) {
 void App::onSMSMsgRecieved(UpdateInfo& _upInfo) {
 	upInfo = _upInfo;
 	smsQue.push_back(_upInfo);
+}
+void App::onRestoreAllSMSAnswer(int& i) {
+	if (!bAlreadyRestoreAllAnswer)
+		httpClient.sendRequestToServer(true);
+	bAlreadyRestoreAllAnswer = true;
 }
 
 //--------------------------------------------------------------

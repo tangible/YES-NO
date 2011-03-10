@@ -19,6 +19,10 @@ void AdminPanel::setup(){
 	gui.addButton("Clear Question Img", clearQImg);		
 //	gui.addColorPicker("Obj Edge Color", BGColor);	
 	
+	gui.addTitle("SMS Setting").setNewColumn(true);
+	gui.addToggle("debug with fake SMS", debugWithFakeSMS);
+	gui.addButton("get all SMS (1time & irreversible!)", restoreAllSMSAnswer);
+	
 	gui.addTitle("Graphic Setting").setNewColumn(true);
 	gui.addSlider("Light Pos X", LIGHTX, -2000.0, 2000.0);
 	gui.addSlider("Light Pos Y", LIGHTY, -2000.0, 2000.0);
@@ -36,8 +40,9 @@ void AdminPanel::setup(){
 	gui.addSlider("SpecularIntensity", SPECULARINTENSITY, 0.0, 100.0);
 	gui.addSlider("Roughness", ROUGHNESS, 0.0, 1.0);
 	gui.addSlider("Sharpness", SHARPNESS, 0.0, 1.0);
-	
+		
 	gui.addButton("Restore Default", RESTORDEFBTN).setNewColumn(true);
+
 	
 	gui.loadFromXML();
 //	gui.show();	
@@ -64,6 +69,10 @@ void AdminPanel::update(){
 		clearQImg = false;
 		int i = 1;
 		ofNotifyEvent(onClearQImg, i);
+	}else if (restoreAllSMSAnswer) {
+		restoreAllSMSAnswer = false;
+		int i = 1;
+		ofNotifyEvent(onRestoreAllSMSAnswer, i);
 	}
 	
 }
@@ -153,5 +162,8 @@ void AdminPanel::restoreDefault() {
 	BGColor[3] = 1.0;	
 	changeQImg = false;
 	clearQImg = false;	
+	
+	debugWithFakeSMS = false;
+	restoreAllSMSAnswer = false;
 	
 }

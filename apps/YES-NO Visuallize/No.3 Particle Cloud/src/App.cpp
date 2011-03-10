@@ -35,6 +35,8 @@ void App::setup(){
 	ofAddListener(adminPanel.onFileDialogueQImg, this, &App::onFileChangeQImg);	
 	ofAddListener(adminPanel.onClearQImg, this, &App::onClearQImg);		
 	ofAddListener(httpClient.onSMSRecieved, this, &App::onSMSMsgRecieved);	
+	ofAddListener(adminPanel.onRestoreAllSMSAnswer, this, &App::onRestoreAllSMSAnswer);	
+	bAlreadyRestoreAllAnswer = false;
 	
 	qImage.changeImgQImg("qimg3.png");
 
@@ -44,6 +46,7 @@ void App::setup(){
 void App::update(){
 	
 	adminPanel.update();
+	httpClient.update(adminPanel.debugWithFakeSMS);	
 	pCloud.update();
 
 	cam.place();
@@ -173,7 +176,11 @@ void App::onSMSMsgRecieved(UpdateInfo& _upInfo) {
 	sText.onSMSReceivedUpdate(upInfo.sms.YesOrNo, upInfo);
 	pCloud.feedSMS(upInfo);
 }
-
+void App::onRestoreAllSMSAnswer(int& i) {
+	if (!bAlreadyRestoreAllAnswer)
+		httpClient.sendRequestToServer(true);
+	bAlreadyRestoreAllAnswer = true;
+}
 
 //--------------------------------------------------------------
 void App::keyReleased(int key){}

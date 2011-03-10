@@ -11,54 +11,266 @@
 
 void HTTPSMSClient::setup(){
 
-	action_url = "http://localhost:8888/getSMS.of";
-	ofAddListener(httpUtils.newResponseEvent, this, &HTTPSMSClient::getResponse);
-	httpUtils.start();
+	ofAddListener(testHttpUtils.newResponseEvent, this, &HTTPSMSClient::getResponse);
+	testHttpUtils.start();
 	
-	counter = new TimedCounter(10);
-	counter->startCount();	
+	ofAddListener(realHttpUtils.newResponseEvent, this, &HTTPSMSClient::getSMSAnswersFromServer);
+	realHttpUtils.start();
+	
+	ofAddListener(makeFakeSMSHttpUtils.newResponseEvent, this, &HTTPSMSClient::debugCreateFakeSMSResult);
+	makeFakeSMSHttpUtils.start();
+	
+	requestCounter = new TimedCounter(10);
+	requestCounter->startCount();	
 
+	numSMSs = 0;
+	interval = 0;
+	lastTime = 0;
+	totalSMSs = 0;
+	totalYes = 0;	
+	totalNo = 0;	
+	fakeSMSNum = 0;
+	fakeInterval = 0;
+	
 };
 
-void HTTPSMSClient::update(){
+void HTTPSMSClient::update(bool _bDebug){
 
-	if(counter->isCounting()){
-		counter->update();
-		if (counter->isCountComplete()) {
-			sendRequest();
-			counter->startCount();
+	if(requestCounter->isCounting()){
+		requestCounter->update();
+		if (requestCounter->isCountComplete()) {
+			sendRequestToServer(false, _bDebug);
+			requestCounter->startCount();
 		}
 	}
-
+	
+	doSequentialNotificationToApps();
+	
+	if (bDebug) startCreateSequentialFakeSMS();
 };
 
-void HTTPSMSClient::sendRequest(){
 
+void HTTPSMSClient::sendRequestToServer(bool bAll, bool _bDebug) {
+	
+	bDebug = _bDebug;
+	
 	ofxHttpForm form;
-	form.action = action_url;
-	form.method = OFX_HTTP_POST;
+	form.action = "http://hub.tangibleinteraction.com/api/entries?api_key=8ff2812eacf66449e6008425e2ae5a3a0d18cb22d089e4d5c6933c2c298aa678";
+	string installation = "&installation_id=";
+	string installation_id = "855181531";
+	form.action += installation;
+	form.action += installation_id;
 	
-	time_t t;
-	time(&t);
-	char gmttime[256];
-	strftime(gmttime, 255, "%Y¥/%m¥/%d¥/%H¥/%I¥/%S", gmtime(&t));
-	string timestr = gmttime;
-	timestr = str_replace(timestr, "¥", "");			
-	reqestTime = timestr;
+	// add time param to url
+	if (!bAll) {
+		time_t current;
+		time(&current);
+		char gmttime[256];
+		strftime(gmttime, 255, "%Y¥-%m-%d¥ %H¥:%M¥:%S", gmtime(&current));
+		string currentStr = gmttime;
+		currentStr = str_replace(currentStr, "¥", "");		
+		cout << currentStr << endl;
+		time_t tenSecPast = current - 9;
+		strftime(gmttime, 255, "%Y¥-%m-%d¥ %H¥:%M¥:%S", gmtime(&tenSecPast));
+		string pastStr = gmttime;
+		pastStr = str_replace(pastStr, "¥", "");			
+		cout << pastStr << endl;
+		
+		string start_date = "&start_date=" + pastStr;
+		string end_date = "&end_date=" + currentStr;
+		form.action += start_date;
+		form.action += end_date;
+	}
 	
-	form.addFormField("time", timestr);
-	httpUtils.addForm(form);	
+	if (bDebug) {
+		fakeSMSNum = ofRandom(1, 10);
+		fakeLastTime = ofGetElapsedTimeMillis();
+		fakeInterval = tenSec/fakeSMSNum;
+	}
+	
+	cout << form.action << endl;
+	realHttpUtils.addForm(form);
+	
+}
 
-};
+void HTTPSMSClient::getSMSAnswersFromServer(ofxHttpResponse & response) {
+
+	responseStr.clear();
+	xml.clear();
+	xml.loadFromBuffer(response.responseBody);	
+	
+	// debug block
+	{
+//		string test;
+//		xml.copyXmlToString(test);
+//		cout << test << endl;
+	}	
+	
+	xml.pushTag("entries");
+	int numTag = xml.getNumTags("entry");
+	
+	int numYes = 0;
+	int numNo = 0;
+	
+	for (int i = 0; i < numTag; i++) {
+		xml.pushTag("entry", i);
+		string ans = xml.getValue("answer", "error");
+		string time = xml.getValue("time", "error");			
+		
+		responseStr += " "+ans+" "+time+" ";
+		
+		smsMsg sms;
+		sms.answer = ans;
+		sms.time = time;
+		
+		if ("Yes" == sms.answer) {
+			sms.YesOrNo = 0;
+			numYes++;
+		}else {
+			sms.YesOrNo = 1;
+			numNo++;
+		}
+		
+		smss.push_back(sms);
+		
+		xml.popTag();		
+	}
+	xml.popTag();	
+	
+//	cout << "num yes = "+ofToString(numYes) << endl;
+//	cout << "num no = "+ofToString(numNo) << endl;
+	
+	numSMSs = numTag;
+	if (numSMSs == 0) {
+		interval = -100;
+	}else {
+		interval = tenSec/numSMSs;
+	}
+	lastTime = ofGetElapsedTimeMillis();
+	cout << "recieve answer @ " + ofToString(lastTime) << endl;
+	
+}
+
+void HTTPSMSClient::doSequentialNotificationToApps() {
+	
+	if (smss.size() > 0) {
+		int curTime = ofGetElapsedTimeMillis();
+		//cout << "curTime : " + ofToString(curTime) << endl;
+		if (curTime > lastTime+interval) {
+			
+			UpdateInfo upInfo = calcUpdateInfoForRealEnv();
+			ofNotifyEvent(onSMSRecieved, upInfo);			
+			
+			//numSMSs--;
+			lastTime += interval;			
+		}
+	}
+	
+}
+
+void HTTPSMSClient::startCreateSequentialFakeSMS() {
+	
+	if (fakeSMSNum > 0) {
+		int curTime = ofGetElapsedTimeMillis();
+		if (curTime > fakeLastTime+fakeInterval) {
+			createFakeSMS();
+			fakeLastTime += fakeInterval;
+			fakeSMSNum--;
+		}
+	}
+	
+}
+
+UpdateInfo HTTPSMSClient::calcUpdateInfoForRealEnv() {
+	
+	
+	cout << "sms size = "+ofToString((int)smss.size()) << endl;	
+	
+	smsMsg sms = smss[smss.size()-1];
+	smss.pop_back();
+	UpdateInfo upInfo;
+	
+	int thisYesOrNo = sms.YesOrNo;
+	totalSMSs++;
+	if (0 == thisYesOrNo) {
+		cout << "yes!!" << endl;
+		totalYes++;
+	}else {
+		cout << "no!!" << endl;
+		totalNo++;
+	}
+//	cout << "totalYes = "+ofToString(totalYes) << endl;
+//	cout << "totalNo = "+ofToString(totalNo) << endl;	
+	
+	float rtotalYes = totalYes;
+	float rtotalNo = totalNo;
+	float rthisTimeYes = (thisYesOrNo==0)?1:0;
+	float rthisTimeNo = (thisYesOrNo==1)?1:0;
+	
+	float rtotalSMS = totalSMSs;
+	float rtotalSMSThisTime = 1;
+	float raTotalYes = (totalYes<=0)?0.0:rtotalYes/rtotalSMS;
+	float raTotalNo = (totalNo<=0)?0.0:rtotalNo/rtotalSMS;
+	float raThisTimeYes = (rthisTimeYes<=0)?0.0:rthisTimeYes/rtotalSMSThisTime;
+	float raThisTimeNo = (rthisTimeNo<=0)?0.0:rthisTimeNo/rtotalSMSThisTime;
+	
+	upInfo.sms = sms;
+	
+	upInfo.ratioTotalYes = raTotalYes;
+	upInfo.ratioTotalNo = raTotalNo;
+	upInfo.ratioThisTimeYes = raThisTimeYes;
+	upInfo.ratioThisTimeNo = raThisTimeNo;
+	upInfo.numTotalYes = rtotalYes;
+	upInfo.numTotalNo = rtotalNo;
+	upInfo.numYes = rthisTimeYes;
+	upInfo.numNo = rthisTimeNo;
+	upInfo.numDiffYes = rtotalYes-rtotalNo;
+	upInfo.numDiffNo = rtotalNo-rtotalYes;
+	upInfo.requesttime = reqestTime;
+	
+	//	cout << "thisTimeYes recieved = " + ofToString(upInfo.numYes) << endl;	
+	//	cout << "totalYes recieved = " + ofToString(upInfo.numTotalYes) << endl;
+	
+	return upInfo;	
+	
+}
+
+void HTTPSMSClient::createFakeSMS() {
+	
+	ofxHttpForm form;
+	string url = "http://hub.tangibleinteraction.com/api/anveo?";
+	string message = "message=";
+	
+	string answer = "Yes";
+	if (0.0 < ofRandomf()) {
+		answer = "No";
+	}
+		
+	string otherParams = "&installation_id=855181531&api_key=8ff2812eacf66449e6008425e2ae5a3a0d18cb22d089e4d5c6933c2c298aa678&from=%2B17789977224&phonenumber=16044841954&test=true";
+
+	form.action = url+message+answer+otherParams;
+	
+//	cout << "action url = " << endl;
+//	cout << form.action << endl;
+	
+	makeFakeSMSHttpUtils.addForm(form);	
+	
+}
+
+void HTTPSMSClient::debugCreateFakeSMSResult(ofxHttpResponse & response) {
+	
+	cout << "create SMS result :: "+response.responseBody << endl;
+	
+}
 
 void HTTPSMSClient::getResponse(ofxHttpResponse & response){
-
+	
 	responseStr.clear();
 	
 	time_t t;
 	time(&t);
 	char gmttime[256];
-	strftime(gmttime, 255, "%Y¥/%m¥/%d¥/%H¥/%I¥/%S", gmtime(&t));
+	strftime(gmttime, 255, "%Y¥-%m-%d¥%H¥:%I¥:%S", gmtime(&t));
 	string timestr = gmttime;
 	timestr = str_replace(timestr, "¥", "");		
 	recieveTime = timestr;
@@ -70,18 +282,18 @@ void HTTPSMSClient::getResponse(ofxHttpResponse & response){
 	xml.loadFromBuffer(response.responseBody);
 	
 	// debug block
-//	{
-//		string test;
-//		xml.copyXmlToString(test);
-//		cout << test << endl;
-//		
-//		xml.pushTag("TangibleHUBYesNoResponce");
-//		xml.pushTag("SMSs");
-//		int tansmss = xml.getNumTags("SMS");
-//		cout << "TangibleHUBYesNoResponce:SMSs:SMS = " + ofToString(tansmss) << endl;
-//		xml.popTag();
-//		xml.popTag();
-//	}
+	//	{
+	//		string test;
+	//		xml.copyXmlToString(test);
+	//		cout << test << endl;
+	//		
+	//		xml.pushTag("TangibleHUBYesNoResponce");
+	//		xml.pushTag("SMSs");
+	//		int tansmss = xml.getNumTags("SMS");
+	//		cout << "TangibleHUBYesNoResponce:SMSs:SMS = " + ofToString(tansmss) << endl;
+	//		xml.popTag();
+	//		xml.popTag();
+	//	}
 	
 	xml.pushTag("TangibleHUBYesNoResponce");
 	xml.pushTag("SMSs");
@@ -108,7 +320,7 @@ void HTTPSMSClient::getResponse(ofxHttpResponse & response){
 	}
 	xml.popTag();
 	xml.popTag();	
-
+	
 	UpdateInfo upInfo = calcUpdateInfo();
 	ofNotifyEvent(onSMSRecieved, upInfo);
 	
@@ -152,12 +364,35 @@ UpdateInfo HTTPSMSClient::calcUpdateInfo() {
 	upInfo.numDiffNo = totalNo-totalYes;
 	upInfo.requesttime = reqestTime;
 	
-//	cout << "thisTimeYes recieved = " + ofToString(upInfo.numYes) << endl;	
-//	cout << "totalYes recieved = " + ofToString(upInfo.numTotalYes) << endl;
+	//	cout << "thisTimeYes recieved = " + ofToString(upInfo.numYes) << endl;	
+	//	cout << "totalYes recieved = " + ofToString(upInfo.numTotalYes) << endl;
 	
 	return upInfo;
 	
 }
+
+
+
+
+
+void HTTPSMSClient::sendRequest(){
+
+	ofxHttpForm form;
+	form.action = "http://localhost:8888/getSMS.of";
+	form.method = OFX_HTTP_POST;
+	
+	time_t t;
+	time(&t);
+	char gmttime[256];
+	strftime(gmttime, 255, "%Y¥-%m-%d¥%H¥:%I¥:%S", gmtime(&t));
+	string timestr = gmttime;
+	timestr = str_replace(timestr, "¥", "");			
+	reqestTime = timestr;
+	
+	form.addFormField("time", timestr);
+	testHttpUtils.addForm(form);	
+
+};
 
 void HTTPSMSClient::emulateSMS() {
 	
@@ -169,7 +404,7 @@ void HTTPSMSClient::emulateSMS() {
 	time_t t;
 	time(&t);
 	char gmttime[256];
-	strftime(gmttime, 255, "%Y¥/%m¥/%d¥/%H¥/%I¥/%S", gmtime(&t));
+	strftime(gmttime, 255, "%Y¥-%m-%d¥%H¥:%I¥:%S", gmtime(&t));
 	string timestr = gmttime;
 	timestr = str_replace(timestr, "¥", "");		
 	
@@ -194,6 +429,8 @@ void HTTPSMSClient::emulateSMS() {
 	getResponse(response);
 	
 }
+
+
 
 string HTTPSMSClient::str_replace(const string &source,
 							   const string &pattern,
