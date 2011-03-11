@@ -23,6 +23,8 @@ void ParticleCloud::setup(int _fps, AdminPanel* ap, ofxCamera* cam) {
 	flockYes.setup(1, ofGetScreenWidth()/2-200, ofGetScreenHeight()-300, 300, 150, 10, numObjs); 
 	flockNo.setup(1, ofGetScreenWidth()/2-200, ofGetScreenHeight()-300, 300, 150, 10, numObjs); 	
 	
+	vcon.createSphericalVertice();	
+	
 	yes.setup(bullet, &flockYes, ap, Obj::YES, numObjs);
 	no.setup(bullet, &flockNo, ap, Obj::NO, numObjs);
 	
@@ -31,8 +33,6 @@ void ParticleCloud::setup(int _fps, AdminPanel* ap, ofxCamera* cam) {
 	
 	yesScaleTween.setParameters(scaleEasing, ofxTween::easeIn, 1.0, 1.0, 0, 0);
 	noScaleTween.setParameters(scaleEasing, ofxTween::easeIn, 1.0, 1.0, 0, 0);	
-	
-	vcon.createSphericalVertice();
 	
 }
 
@@ -61,7 +61,7 @@ void ParticleCloud::draw() {
 	setupGLStuff();
 	
 	ofPushMatrix();
-	ofTranslate(200, 150, 0);
+//	ofTranslate(200, 150, 0);
 	yes.draw();
 //	ofSetColor(255, 255, 255);
 //	vector<ofxVec3f> verts = vcon.getVerts();
@@ -75,7 +75,7 @@ void ParticleCloud::draw() {
 	ofPopMatrix();
 	
 	ofPushMatrix();
-	ofTranslate(ofGetScreenWidth()/2, 150, 0);
+//	ofTranslate(ofGetScreenWidth()/2, 150, 0);
 	no.draw();	
 	ofPopMatrix();
 	
@@ -102,9 +102,9 @@ void ParticleCloud::feedSMS(UpdateInfo upInfo) {
 	float ndiff = ofClamp(nodiff, 0, particleNumDiffMax);
 	ndiff = ofMap(ndiff, 0, particleNumDiffMax, minParticleNum, maxParticleNum);	
 	yes.getFlock()->changeTrailPointNum(0, 0, ydiff);
-	yes.changeParticleObjNum(bullet, ydiff);	
+	//yes.changeParticleObjNum(bullet, ydiff);	
 	no.getFlock()->changeTrailPointNum(0, 0, ndiff);
-	no.changeParticleObjNum(bullet, ndiff);	
+	//no.changeParticleObjNum(bullet, ndiff);	
 	
 //	float particleYesNum = ofMap(upInfo.ratioTotalYes, 0.0, 1.0, ParticleCloud::minParticleNum, ParticleCloud::maxParticleNum);
 //	yes.getFlock()->changeTrailPointNum(0, 0, particleYesNum);

@@ -86,7 +86,8 @@ void YesNoObj::computeCloudShape() {
 	}
 	
 	// make obj more cloudy
-	for (int i = 0; i < posFeed.size(); i++) {
+	ofxVec3f pos;
+	for (int i = 0; i < objs.size(); i++) {
 		
 		// pos
 		ofxVec3f tmpVec = posFeed[i];
@@ -94,7 +95,16 @@ void YesNoObj::computeCloudShape() {
 		float compare = (dist >= compDist) ? dist+0.1 : compDist;
 		float iplFactor = ofMap(dist, 0.0, compare, 1.0, 0.7);
 		ofxVec3f resVec = tmpVec.getInterpolated(tofVec, iplFactor);
-		objs[i].setForcePoint(resVec);
+		
+		
+		if (YesOrNo == 0) {
+			pos = ofxVec3f(ofGetScreenWidth()/3, ofGetScreenHeight()/2, 0);
+		}else if (YesOrNo == 1) {
+			pos = ofxVec3f(ofGetScreenWidth()-ofGetScreenWidth()/3, ofGetScreenHeight()/2, 0);
+		}
+		objs[i].setForcePoint(pos);
+		
+//		objs[i].setForcePoint(resVec);
 		
 		// size
 		float tmpSize = objs[i].size;
@@ -106,7 +116,7 @@ void YesNoObj::computeCloudShape() {
 	for (int i = 0; i < addedObjs.size(); i++) {
 		
 		// pos
-		addedObjs[i].setForcePoint(tofVec);
+		addedObjs[i].setForcePoint(pos);
 		
 		// size
 		addedObjs[i].positionalSizeFactor = 0.7;

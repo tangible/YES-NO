@@ -92,30 +92,14 @@ void App::draw(){
 	
 	//cam.draw();
 	
+	ofEnableSmoothing();
+	ofEnableAlphaBlending();
 	bg.draw(ofGetScreenWidth()/2-bg.getWidth()/2, 
 			ofGetScreenHeight()/2-bg.getHeight()/2);	
-	qImage.draw();	
+	qImage.draw();		
 	sText.draw(upInfo);
-
-//	glDisable(GL_LIGHTING);
-//	glColor3f(1.0, 1.0, 1.0);
-//	bg.draw(ofGetScreenWidth()/2-bg.getWidth()/2, 
-//			ofGetScreenHeight()/2-bg.getHeight()/2);	
-//	ofPushMatrix();
-//	ofSetupScreen();		
-//	glDisable(GL_DEPTH_TEST);
-//	ofEnableSmoothing(); 	
-//	ofEnableAlphaBlending();
-//	ofSetColor(255, 255, 255);
-//	qImage.draw();	
-//	glDisable(GL_CULL_FACE);	
-//	ofEnableSmoothing(); 	
-//	sText.draw(upInfo);
-//	glEnable(GL_LIGHTING);
-//	glEnable(GL_DEPTH_TEST);
-//	ofPopMatrix();	
-//	ofDisableAlphaBlending();	
 	
+	ofEnableAlphaBlending();
 	int colorTexSlot = 4;
 	colorFBO.beforeDraw(colorTexSlot);	
 	int depthTexSlot = 5;
