@@ -55,6 +55,8 @@ void StateText::onSMSReceivedUpdate(int yesORno, UpdateInfo upInfo) {
 
 void StateText::draw(UpdateInfo upInfo, ofxVec3f centroidYes, ofxVec3f centroidNo) {
 	
+	ofEnableSmoothing();
+	
 	if (yesSizeTween.isCompleted()) {
 		yesSizeTween.setParameters(easingcirc, ofxTween::easeIn, yesSizeTween.getTarget(0), yesSize, 100, 0);
 	}
@@ -155,8 +157,11 @@ void StateText::draw(UpdateInfo upInfo) {
 	ofPushMatrix();
 	ofSetColor(255, 255, 255);	
 	ofTranslate(left, bottom-heiYesNum, 0);
-	ofScale(sizeYes*0.3, sizeYes*0.3, 0);	
+	ofEnableSmoothing();	
+	ofScale(sizeYes*0.3, sizeYes*0.3, 0);
+	ofEnableAlphaBlending(); 
 	dfont.drawString(yes, 0, 0);
+	ofDisableAlphaBlending(); 
 	ofPopMatrix();
 	ofPushMatrix();
 	ofSetColor(255, 255, 255);
@@ -173,8 +178,11 @@ void StateText::draw(UpdateInfo upInfo) {
 	ofPushMatrix();
 	ofSetColor(255, 255, 255);
 	ofTranslate(left, bottom-heiNoNum, 0);
+	ofEnableSmoothing();	
 	ofScale(sizeNo*0.3, sizeNo*0.3, 0);
+	ofEnableAlphaBlending(); 
 	dfont.drawString(no, 0, 0);
+	ofDisableAlphaBlending(); 
 	ofPopMatrix();
 	ofPushMatrix();
 	ofSetColor(255, 255, 255);

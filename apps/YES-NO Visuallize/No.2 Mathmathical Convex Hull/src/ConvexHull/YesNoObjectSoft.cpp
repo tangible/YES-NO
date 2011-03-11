@@ -35,7 +35,7 @@ void YesNoObjectSoft::setup(int _yesOrNo, ofxBullet* _bullet, ofxVec3f _forcePoi
 	smsPosition = ofxVec3f(x,y,z);
 	
 	col.setColorRadius(1.0);
-	col.setColorScale(0.1);
+	col.setColorScale(0.2);
 	col.setColorAngle((_yesOrNo == YES) ? -0.34 : -0.02);
 	defaultColAng = col.getColorAngle();
 	
@@ -49,6 +49,8 @@ void YesNoObjectSoft::setup(int _yesOrNo, ofxBullet* _bullet, ofxVec3f _forcePoi
 	
 	prevFacingAxis = ofxVec3f(0.5635459, -0.7932258, -0.2306707);
 	prevFaceAngle = 115.9340439;
+	
+	sound.loadSound((YesOrNo==0)?"key_omin_a.aif":"A_kick.aif");
 	
 }
 
@@ -82,6 +84,14 @@ void YesNoObjectSoft::updateRotateion() {
 void YesNoObjectSoft::updateTranslation() {	
 	
 	ofxVec3f cen = yesORno->getBodyCentroid();
+	if (isnan(cen.x) || isnan(cen.y) || isnan(cen.z)) {
+		float x = translationTween.getTarget(0);
+		float y = translationTween.getTarget(1);
+		float z = translationTween.getTarget(2);	
+		ofTranslate(-x, -y, -z);	
+		return;
+	}
+	
 	objCentroid = cen;	
 	if (translationTween.isCompleted()) {
 		float x = translationTween.getTarget(0);
@@ -94,7 +104,7 @@ void YesNoObjectSoft::updateTranslation() {
 	float x = translationTween.update();
 	float y = translationTween.getTarget(1);
 	float z = translationTween.getTarget(2);	
-	ofTranslate(-x, -y, -z);
+	ofTranslate(-x, -y, -z);	
 
 }
 
@@ -163,13 +173,7 @@ void YesNoObjectSoft::draw() {
 		faceNormalPtr.push_back(normal2.getY());
 		faceNormalPtr.push_back(normal2.getZ());	
 		
-		if (isnan(node_0->m_x.getX())) {
-			numNan++;
-		}else {
-			numNan--;
-		}
 	}		
-	//cout << "NaN = "+ofToString(numNan) << endl;
 
 	ofEnableSmoothing();
 	glEnable(GL_LINE_SMOOTH);
@@ -274,6 +278,8 @@ void YesNoObjectSoft::startFaceingToCam(ofxCamera* cam, ofxVec3f offset) {
 	
 	prevFaceAngle = angle;
 	prevFacingAxis = axis;		
+	
+	ofNotifyEvent(notifyStartCamOrbit, YesOrNo);
 }
 
 void YesNoObjectSoft::updateColorPointer() {
@@ -331,10 +337,10 @@ vector<float> YesNoObjectSoft::changeColBySMSRecievedFace(int z) {
 		float scaleFactor = 0.0;
 		float radiusFactor = 0.0;
 		if (i < faceIDVec.size()/2) {
-			scaleFactor = ofMap(i, 0, faceIDVec.size(), 0.001, 0.499);
+			scaleFactor = ofMap(i, 0, faceIDVec.size(), 0.1, 0.499);
 			radiusFactor = ofMap(i, 0, faceIDVec.size(), 0.001, 0.699);
 		}else {
-			scaleFactor = ofMap(i, 0, faceIDVec.size(), 0.499, 0.001);
+			scaleFactor = ofMap(i, 0, faceIDVec.size(), 0.499, 0.1);
 			radiusFactor = ofMap(i, 0, faceIDVec.size(), 0.699, 0.001);					
 		}
 		
@@ -421,7 +427,9 @@ void YesNoObjectSoft::addSMSCompleted(int & z) {
 	addedSMSs.push_back(as);
 	
 	ofNotifyEvent(notifyScaleYesEvent, i);
-	ofNotifyEvent(notifyScaleNoEvent, i);	
+	ofNotifyEvent(notifyScaleNoEvent, i);
+	
+	sound.play();
 	
 }
 
@@ -450,6 +458,18 @@ void YesNoObjectSoft::onEndSpikeGlow(int & z) {
 	cout << "-----------------------------------------------" << endl;
 	btSoftBody::tFaceArray& faces(yesORno->getSoftBody()->m_faces);
 	cout << "generated face size = " + ofToString((int)faces.size()) << endl;
+	cout << "generated verts size = " + ofToString((int)faces.size()*3) << endl;
+//	for(int i = 0; i < faces.size(); i++) {
+//		btSoftBody::Node* node_0 = faces[i].m_n[0];
+//		btSoftBody::Node* node_1 = faces[i].m_n[1];
+//		btSoftBody::Node* node_2 = faces[i].m_n[2];
+//		ofxVec3f a = ofxVec3f(node_0->m_x.getX(), node_0->m_x.getY(), node_0->m_x.getZ());
+//		ofxVec3f b = ofxVec3f(node_1->m_x.getX(), node_1->m_x.getY(), node_1->m_x.getZ());		
+//		ofxVec3f c = ofxVec3f(node_2->m_x.getX(), node_2->m_x.getY(), node_2->m_x.getZ());
+//		cout << "a = "+ofToString(a.x)+" "+ofToString(a.y)+" "+ofToString(a.z) << endl;
+//		cout << "b = "+ofToString(b.x)+" "+ofToString(b.y)+" "+ofToString(b.z) << endl;
+//		cout << "c = "+ofToString(c.x)+" "+ofToString(c.y)+" "+ofToString(c.z) << endl;		
+//	}
 	cout << " " << endl;	
 	
 	addedSMSFaces.clear();

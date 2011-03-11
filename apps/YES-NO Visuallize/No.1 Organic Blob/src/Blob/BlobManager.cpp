@@ -9,7 +9,7 @@
 
 #include "BlobManager.h"
 int baseSphereSize = 10;
-int maxSphereSize = 125;
+int maxSphereSize = 95;//125;
 void BlobManager::setup(int _fps, AdminPanel* _admin, ofxCamera* cam, QuestionImage* _qImage, StateText* _sText) {
 	
 	fps = _fps;
@@ -112,7 +112,25 @@ void BlobManager::setup(int _fps, AdminPanel* _admin, ofxCamera* cam, QuestionIm
 	yesDiff = 0.0;
 	noDiff = 0.0;
 	
-	ofAddListener(admin->onClearBG, this, &BlobManager::onClearBG);		
+	ofAddListener(admin->onClearBG, this, &BlobManager::onClearBG);	
+	
+	soundYes.loadSound("key_omin_a.aif");
+	soundNo.loadSound("A_kick.aif");
+	soundYes.setMultiPlay(true);
+	soundNo.setMultiPlay(true);
+	
+	//prevColAngle = ofRandomuf();
+	ofColor iniYCol;
+	iniYCol.r = 0.0; iniYCol.g = 0.5; iniYCol.b = 0.5;
+	chunkCol.setColor(iniYCol);
+	chunkCol.update();
+	nextYesColAngle = chunkCol.getColorAngle()+0.08;
+	prevColAngle = chunkCol.getColorAngle();
+	ofColor iniNCol;
+	iniNCol.r = 0.5; iniNCol.g = 0.0; iniNCol.b = 0.0;
+	chunkCol.setColor(iniNCol);
+	chunkCol.update();
+	nextNoColAngle = chunkCol.getColorAngle()+0.08;
 	
 }
 
@@ -193,9 +211,12 @@ void BlobManager::update() {
 				// apply force
 				MyRigidBody* sph = spheres[j];
 				
-				force.set(-sph->getBodyPos() + 
-						  ofxVec3f(ofGetScreenWidth()/2 + mChunk->chunkCurrPos.x, ofGetScreenHeight()/2 + mChunk->chunkCurrPos.y, mChunk->chunkCurrPos.z));
-//				float fFactor = (i==YES) ? ofMap(yesDiff, 0.0, 1.0, 40, 30) : ofMap(noDiff, 0.0, 1.0, 40, 30); // min=10,max=60
+				ofxVec3f ofForce = -sph->getBodyPos()+ofxVec3f(ofGetScreenWidth()/2 + mChunk->chunkCurrPos.x, ofGetScreenHeight()/2 + mChunk->chunkCurrPos.y, mChunk->chunkCurrPos.z);
+//				if (0 == ofGetFrameNum()/ofRandom(100, 200)) {
+//					ofForce += ofxVec3f(ofGetScreenWidth()/2, ofGetScreenHeight()/2, 0);
+//				}
+				force.set(ofForce);
+
 				force *= maxVal * 27;
 				tangentVec = force.crossed(crossVec);
 				tangentVec.normalize();
@@ -212,7 +233,25 @@ void BlobManager::update() {
 				}else if (i == 1 && randomImpulsSMSRecievedNo != 0) {
 					impulse *= 500 + randomImpulsSMSRecievedNo;
 				}else {
-					impulse *= (i==YES) ? ofMap(yesDiff, 0.0, 1.0, 30, 190) : ofMap(noDiff, 0.0, 1.0, 30, 190); // 80;
+					int minImpulse = 20;
+					int maxImpulse = 120;//80;
+					int maxSMSnum = 5000;		
+					float maxImpulseParam = 1.0*maxSMSnum;
+					if (i == 0) {
+						float total = upInfo.numTotalYes;
+						total = ofClamp(total, 0, maxSMSnum);
+						float tmpImpulse = yesDiff*total;
+						float impulseY = ofMap(tmpImpulse, 0.0, maxImpulseParam, minImpulse, maxImpulse);
+						//cout << "impulse Yes = "+ofToString(impulseY) << endl;
+						impulse *= impulseY;
+					}else if (i == 1) {
+						float total = upInfo.numTotalNo;
+						total = ofClamp(total, 0, maxSMSnum);				
+						float tmpImpulse = noDiff*total;				
+						float impulseN = ofMap(tmpImpulse, 0.0, maxImpulseParam, minImpulse, maxImpulse);
+						//cout << "impulse No = "+ofToString(impulseN) << endl;						
+						impulse *= impulseN;
+					}					
 				}
 
 				btImpulse = btVector3(impulse.x, impulse.y, impulse.z);
@@ -471,12 +510,22 @@ void BlobManager::onSMSRecievedChangeSphereSize(int _chunkID, float totalRatioYe
 				ofxVec3f pos = sph->getBodyPos();
 				float baseSize = baseSizes[j];
 				
+				int maxSMSnum = 5000;
+				float maxSizeParam = 1.0*maxSMSnum;					
 				float radius = 0.0;
-				if (i == 0) {
-					thisSizeY = ofMap(totalRatioYes, 0.0, 1.0, baseSphereSize, maxSphereSize);
+				if (_chunkID == 0) {
+					float total = upInfo.numTotalYes;
+					total = ofClamp(total, 0, maxSMSnum);
+					float tmpSize = yesDiff*total;
+					thisSizeY = ofMap(tmpSize, 0.0, maxSizeParam, baseSphereSize, maxSphereSize);
+					//cout << "radius Yes = "+ofToString(thisSizeY) << endl;
 					radius = thisSizeY;
-				}else if (i == 1) {
-					thisSizeN = ofMap(totalRatioNo, 0.0, 1.0, baseSphereSize, maxSphereSize);				
+				}else if (_chunkID == 1) {
+					float total = upInfo.numTotalNo;
+					total = ofClamp(total, 0, maxSMSnum);				
+					float tmpSize = noDiff*total;				
+					thisSizeN = ofMap(tmpSize, 0.0, maxSizeParam, baseSphereSize, maxSphereSize);				
+					//cout << "radius No = "+ofToString(thisSizeN) << endl;					
 					radius = thisSizeN;
 				}
 				
@@ -519,8 +568,8 @@ void BlobManager::onSMSRecievedImpulseForSphere(int _chunkID) {
 }
 
 void BlobManager::onBallGetSMSrep(int& chunkID) {
-	
 	cout << "got event, chunkID=" + ofToString(chunkID) << endl;
+	int preservedChunkID = chunkID;
 	ofRemoveListener(inSMSs[inSMSs.size()-1]->onBallGetSMSrepEvent, this, &BlobManager::onBallGetSMSrep);
     delete inSMSs[inSMSs.size()-1];
 	inSMSs.pop_back();
@@ -529,19 +578,22 @@ void BlobManager::onBallGetSMSrep(int& chunkID) {
 	float totalRatioNo = upInfo.ratioTotalNo;
 	float ratioYes = upInfo.ratioThisTimeYes;
 	float ratioNo = upInfo.ratioThisTimeNo;
+	float totalYes = upInfo.numTotalYes;
+	float totalNo = upInfo.numTotalNo;
 	
 	float sd = scaleDiffMax;
-	int yesdiff = upInfo.numDiffYes;
-	float diffForYes = ofClamp(yesdiff, -sd, sd);
-	yesDiff = ofMap(diffForYes, -sd, sd, 0.0, 1.0);	
-	diffForYes = ofMap(diffForYes, -sd, sd, minScale, maxScale);		
-	mBallChunks[0]->onSMSRecievedChangeMetaballSize(diffForYes, totalRatioYes);	
+	float diffForYes = ofClamp(upInfo.numDiffYes, -sd, sd);
+	yesDiff = ofMap(diffForYes, -sd, sd, 0.1, 1.0);	
+	diffForYes = ofMap(diffForYes, -sd, sd, minScale, maxScale);	
+	if (preservedChunkID == 0 || totalYes < totalNo) 
+		mBallChunks[0]->onSMSRecievedChangeMetaballSize(preservedChunkID, yesDiff, totalYes);
+	
 	sd = scaleDiffMax;
-	int nodiff = upInfo.numDiffNo;
-	float diffForNo = ofClamp(nodiff, -sd, sd);
-	noDiff = ofMap(diffForNo, -sd, sd, 0.0, 1.0);
+	float diffForNo = ofClamp(upInfo.numDiffNo, -sd, sd);
+	noDiff = ofMap(diffForNo, -sd, sd, 0.1, 1.0);
 	diffForNo = ofMap(diffForNo, -sd, sd, minScale, maxScale);		
-	mBallChunks[1]->onSMSRecievedChangeMetaballSize(diffForNo, totalRatioNo);
+	if (preservedChunkID == 1 || totalNo < totalYes) 	
+		mBallChunks[1]->onSMSRecievedChangeMetaballSize(preservedChunkID, noDiff, totalNo);
 	
 	if (upInfo.numTotalYes != 0) 
 		onSMSRecievedChangeSphereSize(0, diffForYes, diffForNo);
@@ -549,42 +601,47 @@ void BlobManager::onBallGetSMSrep(int& chunkID) {
 		onSMSRecievedChangeSphereSize(1, diffForYes, diffForNo);
 	
 
-	float rdmCol = ofRandomuf();
-	yesColAng = rdmCol;
+	prevColAngle += 0.08;
 	chunkCol.setColorScale(1.0);
 	chunkCol.setColorRadius(1.0);	
-	chunkCol.setColorAngle(rdmCol);
+	chunkCol.setColorAngle(prevColAngle);
 	chunkCol.update();
+	nextYesColAngle = prevColAngle+0.08;
 	ofColor yesCol = chunkCol.getColor();
 	yesCol.r = yesCol.r/255.0; 	yesCol.g = yesCol.g/255.0; 	yesCol.b = yesCol.b/255.0;
-	noColAng = rdmCol+0.5;
 	chunkCol.setColorScale(1.0);
 	chunkCol.setColorRadius(1.0);	
-	chunkCol.setColorAngle(rdmCol+0.5);
+	chunkCol.setColorAngle(prevColAngle+0.5);
+	nextNoColAngle = nextYesColAngle+0.5;
 	chunkCol.update();
 	ofColor noCol = chunkCol.getColor();
 	noCol.r = noCol.r/255.0; noCol.g = noCol.g/255.0; noCol.b = noCol.b/255.0;
+
+	mBallChunks[0]->onSMSRecievedChangeCol(preservedChunkID, 0, totalRatioYes, yesCol);
+	mBallChunks[1]->onSMSRecievedChangeCol(preservedChunkID, 0, totalRatioNo, noCol);	
 	
-	if (chunkID == 0) {
+	if (preservedChunkID == 0) {
 		onSMSRecievedImpulseForSphere(0);
-		mBallChunks[0]->onSMSRecievedChangeCol(0, totalRatioYes, yesCol);
-	}else {
+
+		soundYes.play();
+	}else if(preservedChunkID == 1) {
 		onSMSRecievedImpulseForSphere(1);		
-		mBallChunks[1]->onSMSRecievedChangeCol(0, totalRatioNo, noCol);	
+		
+		soundNo.play();
 	}
 }
 
-void BlobManager::onBallGetSMSrepComplete(int& _chunkID) {
-	
-	int baseImpulse = 50;
-	int maxImpulse = 300;
-	if (0 == _chunkID) {
-		randomImpulsSMSRecievedYes = ofMap(yesDiff, 0.0, 1.0, baseImpulse, maxImpulse);		
-	}else if (1 == _chunkID) {
-		randomImpulsSMSRecievedNo = ofMap(noDiff, 0.0, 1.0, baseImpulse, maxImpulse);		
-	}
-	
-}
+//void BlobManager::onBallGetSMSrepComplete(int& _chunkID) {
+//	
+//	int baseImpulse = 50;
+//	int maxImpulse = 300;
+//	if (0 == _chunkID) {
+//		randomImpulsSMSRecievedYes = ofMap(yesDiff, 0.0, 1.0, baseImpulse, maxImpulse);		
+//	}else if (1 == _chunkID) {
+//		randomImpulsSMSRecievedNo = ofMap(noDiff, 0.0, 1.0, baseImpulse, maxImpulse);		
+//	}
+//	
+//}
 
 void BlobManager::recieveSMS(UpdateInfo _upInfo) {
 
@@ -597,12 +654,12 @@ void BlobManager::recieveSMS(UpdateInfo _upInfo) {
 	for (int i = 0; i < 2; i++) {
 		if (i == 0 && upInfo.numYes != 0) {
 			IncomingSMS* sms = new IncomingSMS();
-			sms->setup(bullet, 0, yesColAng);
-			ofAddListener(sms->onBallGetSMSrepEvent, this, &BlobManager::onBallGetSMSrep);			
+			sms->setup(bullet, 0, nextYesColAngle);
+			ofAddListener(sms->onBallGetSMSrepEvent, this, &BlobManager::onBallGetSMSrep);
 			inSMSs.push_back(sms);
 		}else if (i == 1 && upInfo.numNo != 0) {
 			IncomingSMS* sms = new IncomingSMS();
-			sms->setup(bullet, 1, noColAng);
+			sms->setup(bullet, 1, nextNoColAngle);
 			ofAddListener(sms->onBallGetSMSrepEvent, this, &BlobManager::onBallGetSMSrep);			
 			inSMSs.push_back(sms);			
 		}

@@ -19,7 +19,7 @@ void IncomingSMS::setup(ofxBullet* _bullet, int _chunkID, float colAng) {
 //	ofxVec3f rdmPos = ofxVec3f(ofRandom((left)?0:ofGetScreenWidth()*2, (left)?-ofGetScreenWidth():ofGetScreenWidth()),
 //							   ofRandom((up)?0:ofGetScreenHeight()*2, (left)?-ofGetScreenHeight():ofGetScreenHeight()),
 //							   1300);
-	ofxVec3f rdmPos = ofxVec3f(ofRandom(-300, 300),
+	ofxVec3f rdmPos = ofxVec3f(ofRandom(0, ofGetScreenWidth()),
 							   ofRandom(-300, 300),
 							   1300);
 	
@@ -32,7 +32,7 @@ void IncomingSMS::setup(ofxBullet* _bullet, int _chunkID, float colAng) {
 	
 	color.setColorScale(1.0);
 	color.setColorRadius(1.0);
-	color.setColorAngle(colAng+0.5); // opposite side of color circle
+	color.setColorAngle(colAng); // opposite side of color circle
 	color.update();
 	actualCol = color.getColor();
 	

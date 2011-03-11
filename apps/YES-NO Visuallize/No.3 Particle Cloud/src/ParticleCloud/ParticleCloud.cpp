@@ -26,8 +26,13 @@ void ParticleCloud::setup(int _fps, AdminPanel* ap, ofxCamera* cam) {
 	yes.setup(bullet, &flockYes, ap, Obj::YES, numObjs);
 	no.setup(bullet, &flockNo, ap, Obj::NO, numObjs);
 	
+	soundYes.loadSound("key_omin_a.aif");
+	soundNo.loadSound("A_kick.aif");	
+	
 	yesScaleTween.setParameters(scaleEasing, ofxTween::easeIn, 1.0, 1.0, 0, 0);
 	noScaleTween.setParameters(scaleEasing, ofxTween::easeIn, 1.0, 1.0, 0, 0);	
+	
+	vcon.createSphericalVertice();
 	
 }
 
@@ -53,11 +58,20 @@ void ParticleCloud::draw() {
 	
 	ofEnableSmoothing();
 	
-		setupGLStuff();
+	setupGLStuff();
 	
 	ofPushMatrix();
 	ofTranslate(200, 150, 0);
 	yes.draw();
+//	ofSetColor(255, 255, 255);
+//	vector<ofxVec3f> verts = vcon.getVerts();
+//	for (int i = 0; i < verts.size(); i++) {
+//		ofxVec3f v = verts[i];
+//		ofPushMatrix();
+//		ofTranslate(v.x, v.y, v.z);
+//		ofCircle(0, 0, 10);
+//		ofPopMatrix();
+//	}
 	ofPopMatrix();
 	
 	ofPushMatrix();
@@ -166,9 +180,11 @@ void ParticleCloud::feedSMS(UpdateInfo upInfo) {
 	if (Obj::YES == upInfo.sms.YesOrNo) {
 		float size = ofMap(upInfo.ratioTotalYes, 0.0, 1.0, ParticleCloud::minSizeObjSize, ParticleCloud::maxSizeObjSize);
 		yes.addSMSObj(40);
+		soundYes.play();
 	}else if (Obj::NO == upInfo.sms.YesOrNo) {
 		float size = ofMap(upInfo.ratioTotalYes, 0.0, 1.0, ParticleCloud::minSizeObjSize, ParticleCloud::maxSizeObjSize);		
 		no.addSMSObj(40);
+		soundNo.play();
 	}
 
 }

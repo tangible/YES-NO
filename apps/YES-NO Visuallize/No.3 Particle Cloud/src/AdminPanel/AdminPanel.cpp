@@ -20,6 +20,7 @@ void AdminPanel::setup() {
 	gui.addButton("Clear Question Img", clearQImg);	
 	
 	gui.addTitle("SMS Setting");
+	gui.addButton("load setting", loadSetting);
 	gui.addToggle("debug with fake SMS", debugWithFakeSMS);
 	gui.addButton("get all SMS (1time & irreversible!)", restoreAllSMSAnswer);	
 	
@@ -34,12 +35,12 @@ void AdminPanel::setup() {
 	gui.addSlider("aoDivision", aoDivision, 0, 30);
 	gui.addSlider("baseColSubdivision", baseColSubdivision, 0.000, 1.000);
 	
-	gui.addTitle("DoF Setting");
-	gui.addSlider("bias", bias, 0.0, 1.0);	
-	gui.addSlider("focus", focus, 0.0, 2.0);
-	gui.addSlider("aspectratiox", aspectratiox, 0.0, ofGetScreenWidth());
-	gui.addSlider("aspectratioy", aspectratioy, 0.0, ofGetScreenHeight());
-	gui.addSlider("blurclamp", blurclamp, 0.0, 1.0);	
+//	gui.addTitle("DoF Setting");
+//	gui.addSlider("bias", bias, 0.0, 1.0);	
+//	gui.addSlider("focus", focus, 0.0, 2.0);
+//	gui.addSlider("aspectratiox", aspectratiox, 0.0, ofGetScreenWidth());
+//	gui.addSlider("aspectratioy", aspectratioy, 0.0, ofGetScreenHeight());
+//	gui.addSlider("blurclamp", blurclamp, 0.0, 1.0);	
 	
 //	gui.addTitle("OBJ Setting").setNewColumn(true);
 //	gui.addToggle("Toggle Simu", TOGGLEMOTION);	
@@ -94,6 +95,9 @@ void AdminPanel::update(){
 		restoreAllSMSAnswer = false;
 		int i = 1;
 		ofNotifyEvent(onRestoreAllSMSAnswer, i);
+	}else if (loadSetting) {
+		loadSetting = false;
+		openFileDialogueSetting("setting");
 	}
 	
 }
@@ -141,6 +145,20 @@ void AdminPanel::openFileDialogueChangeQImg(string ID) {
 	fi.ID = ID;
 	fi.path = path;
 	ofNotifyEvent(onFileDialogueQImg, fi);	
+	
+}
+
+void AdminPanel::openFileDialogueSetting(string ID) {
+	
+	string path;
+	ofxFileDialogOSX::openFile(path);
+	settingXML.loadFile(path);
+	settingXML.pushTag("setting");
+	phone_questionID = settingXML.getValue("question_id__phone_number", "question_0");
+	kioskPhoneNum_asFrom = settingXML.getValue("kiosk_id__phone_number", "999999");
+	cout << "phone_questionID = "+phone_questionID << endl;
+	cout << "kioskPhoneNum_asFrom = "+kioskPhoneNum_asFrom << endl;
+	settingXML.popTag();
 	
 }
 
@@ -210,5 +228,6 @@ void AdminPanel::restoreDefault() {
 	
 	debugWithFakeSMS = false;
 	restoreAllSMSAnswer = false;	
+	loadSetting = false;
 
 }

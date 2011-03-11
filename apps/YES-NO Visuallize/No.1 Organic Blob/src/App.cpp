@@ -6,12 +6,13 @@ void App::setup(){
 	ofSetFrameRate(FPS);
 	ofBackground(0,0,0);
 	ofSetDataPathRoot("../Resources/");
+	ofSetVerticalSync(true);
 
 	adminPanel.setup();
 	qImage.setup();
 	sText.setup();
 	blobMgr.setup(FPS, &adminPanel, &camera, &qImage, &sText);
-	httpClient.setup();
+	httpClient.setup(&adminPanel);
 	
 	ofAddListener(adminPanel.onFileDialogueBG, this, &App::onFileChangeBG);
 	ofAddListener(adminPanel.onFileDialogueQImg, this, &App::onFileChangeQImg);	
@@ -125,9 +126,21 @@ void App::keyPressed(int key){
 		for (int i = 0; i < 100; i++) {
 			httpClient.emulateSMS();
 		}
+	}else if (key == 'y') {
+		httpClient.emulateSMS(0);
+	}else if (key == 'u') {
+		for (int i = 0; i < 10; i++) {
+			httpClient.emulateSMS(0);
+		}
+	}else if (key == 'i') {
+		for (int i = 0; i < 100; i++) {		
+			httpClient.emulateSMS(0);	
+		}
 	}else if (key == 'p') {
 		scrnseq++;
 		ofSaveScreen("/Users/alexbeim/Desktop/akiraTemporary/scrn"+ofToString(scrnseq)+".png");
+	}else if (key == 'f') {
+		httpClient.createFakeSMS();
 	}else {	
 		adminPanel.keyPressed(key);
 	}

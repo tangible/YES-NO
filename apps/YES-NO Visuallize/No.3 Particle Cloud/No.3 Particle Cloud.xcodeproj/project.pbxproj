@@ -9,11 +9,14 @@
 /* Begin PBXBuildFile section */
 		312411BC1314716C009EF2D9 /* Helvetica.dfont in Resources */ = {isa = PBXBuildFile; fileRef = 312411BB1314716C009EF2D9 /* Helvetica.dfont */; };
 		312411C01314727E009EF2D9 /* qimg3.png in Resources */ = {isa = PBXBuildFile; fileRef = 312411BF1314727E009EF2D9 /* qimg3.png */; };
+		3138C90F1328B2840046EF5D /* A_kick.aif in Resources */ = {isa = PBXBuildFile; fileRef = 3138C90D1328B2840046EF5D /* A_kick.aif */; };
+		3138C9101328B2840046EF5D /* key_omin_a.aif in Resources */ = {isa = PBXBuildFile; fileRef = 3138C90E1328B2840046EF5D /* key_omin_a.aif */; };
 		318E688E12F604F90097A0A9 /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 318E688C12F604E90097A0A9 /* icon.icns */; };
 		31B5E31B130F576B00388627 /* Boid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31B5E315130F576B00388627 /* Boid.cpp */; };
 		31B5E31C130F576B00388627 /* BoidList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31B5E317130F576B00388627 /* BoidList.cpp */; };
 		31B5E31D130F576B00388627 /* Flock3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31B5E319130F576B00388627 /* Flock3D.cpp */; };
 		31B5E8F41310C04C00388627 /* ofxColorPicker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31B5E8F21310C04C00388627 /* ofxColorPicker.cpp */; };
+		31C2DA2B1328A249005C6A85 /* VerticeContainer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31C2DA2A1328A249005C6A85 /* VerticeContainer.cpp */; };
 		31DED79B1311E056007CC1D3 /* StateText.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31DED7991311E056007CC1D3 /* StateText.cpp */; };
 		31DED7AA1311E06E007CC1D3 /* HTTPSMSClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31DED7A81311E06E007CC1D3 /* HTTPSMSClient.cpp */; };
 		31DED8071311E92D007CC1D3 /* ofxHttpUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31DED7CA1311E92D007CC1D3 /* ofxHttpUtils.cpp */; };
@@ -238,7 +241,7 @@
 		E45BE9840E8CC7DD009D7055 /* QuickTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE97A0E8CC7DD009D7055 /* QuickTime.framework */; };
 		E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1D0A3A1BDC003C02F2 /* main.cpp */; };
 		E4B69E210A3A1BDC003C02F2 /* App.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1E0A3A1BDC003C02F2 /* App.cpp */; };
-		E4C2422B10CC554B004149E2 /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2421E10CC549C004149E2 /* openFrameworksDebug.a */; };
+		E4C2422B10CC554B004149E2 /* openFrameworks.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2421E10CC549C004149E2 /* openFrameworks.a */; };
 		E4C2424710CC5A17004149E2 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424410CC5A17004149E2 /* AppKit.framework */; };
 		E4C2424810CC5A17004149E2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424510CC5A17004149E2 /* Cocoa.framework */; };
 		E4C2424910CC5A17004149E2 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424610CC5A17004149E2 /* IOKit.framework */; };
@@ -297,6 +300,8 @@
 		312411BB1314716C009EF2D9 /* Helvetica.dfont */ = {isa = PBXFileReference; lastKnownFileType = file; path = Helvetica.dfont; sourceTree = "<group>"; };
 		312411BF1314727E009EF2D9 /* qimg3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qimg3.png; sourceTree = "<group>"; };
 		312CFBD3130F2E010010A5FB /* ofxEasyCam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxEasyCam.h; sourceTree = "<group>"; };
+		3138C90D1328B2840046EF5D /* A_kick.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = A_kick.aif; sourceTree = "<group>"; };
+		3138C90E1328B2840046EF5D /* key_omin_a.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = key_omin_a.aif; sourceTree = "<group>"; };
 		318E688C12F604E90097A0A9 /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = icon.icns; path = bin/data/icon.icns; sourceTree = "<group>"; };
 		31B5E315130F576B00388627 /* Boid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Boid.cpp; sourceTree = "<group>"; };
 		31B5E316130F576B00388627 /* Boid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Boid.h; sourceTree = "<group>"; };
@@ -306,6 +311,8 @@
 		31B5E31A130F576B00388627 /* Flock3D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flock3D.h; sourceTree = "<group>"; };
 		31B5E8F21310C04C00388627 /* ofxColorPicker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxColorPicker.cpp; sourceTree = "<group>"; };
 		31B5E8F31310C04C00388627 /* ofxColorPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxColorPicker.h; sourceTree = "<group>"; };
+		31C2DA291328A249005C6A85 /* VerticeContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerticeContainer.h; sourceTree = "<group>"; };
+		31C2DA2A1328A249005C6A85 /* VerticeContainer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VerticeContainer.cpp; sourceTree = "<group>"; };
 		31DED7991311E056007CC1D3 /* StateText.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StateText.cpp; sourceTree = "<group>"; };
 		31DED79A1311E056007CC1D3 /* StateText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StateText.h; sourceTree = "<group>"; };
 		31DED7A81311E06E007CC1D3 /* HTTPSMSClient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HTTPSMSClient.cpp; sourceTree = "<group>"; };
@@ -863,7 +870,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E4C2422B10CC554B004149E2 /* openFrameworksDebug.a in Frameworks */,
+				E4C2422B10CC554B004149E2 /* openFrameworks.a in Frameworks */,
 				E45BE0AA0E8CC67C009D7055 /* GLee.a in Frameworks */,
 				E45BE2E40E8CC69C009D7055 /* rtAudio.a in Frameworks */,
 				E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */,
@@ -900,6 +907,16 @@
 			);
 			name = ofxEasyCam;
 			path = ../../../addons/ofxEasyCam;
+			sourceTree = SOURCE_ROOT;
+		};
+		3138C90C1328B2840046EF5D /* sounds */ = {
+			isa = PBXGroup;
+			children = (
+				3138C90D1328B2840046EF5D /* A_kick.aif */,
+				3138C90E1328B2840046EF5D /* key_omin_a.aif */,
+			);
+			name = sounds;
+			path = bin/data/sounds;
 			sourceTree = SOURCE_ROOT;
 		};
 		318E688812F604D30097A0A9 /* Resources */ = {
@@ -1736,6 +1753,8 @@
 				31E8170A130E23290053787E /* YesNoObj.cpp */,
 				31E81749130E287F0053787E /* Obj.h */,
 				31E8174A130E287F0053787E /* Obj.cpp */,
+				31C2DA291328A249005C6A85 /* VerticeContainer.h */,
+				31C2DA2A1328A249005C6A85 /* VerticeContainer.cpp */,
 			);
 			path = ParticleCloud;
 			sourceTree = "<group>";
@@ -2188,6 +2207,7 @@
 				31DED7A71311E06E007CC1D3 /* HTTPSMSClient */,
 				31E814F7130DF41C0053787E /* AdminPanel */,
 				31E81514130DF6F60053787E /* shaders */,
+				3138C90C1328B2840046EF5D /* sounds */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -2195,7 +2215,7 @@
 		E4C2421710CC549C004149E2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E4C2421E10CC549C004149E2 /* openFrameworksDebug.a */,
+				E4C2421E10CC549C004149E2 /* openFrameworks.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2331,10 +2351,10 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		E4C2421E10CC549C004149E2 /* openFrameworksDebug.a */ = {
+		E4C2421E10CC549C004149E2 /* openFrameworks.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = openFrameworksDebug.a;
+			path = openFrameworks.a;
 			remoteRef = E4C2421D10CC549C004149E2 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
@@ -2345,6 +2365,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3138C90F1328B2840046EF5D /* A_kick.aif in Resources */,
+				3138C9101328B2840046EF5D /* key_omin_a.aif in Resources */,
 				312411C01314727E009EF2D9 /* qimg3.png in Resources */,
 				31F4FEE6131336060082B942 /* Verdana Bold.ttf in Resources */,
 				31E8151D130DF7000053787E /* dof.frag in Resources */,
@@ -2591,6 +2613,7 @@
 				31DED8441311E967007CC1D3 /* TimedCounter.cpp in Sources */,
 				31DED89513121C6C007CC1D3 /* ofxFileDialogOSX.cpp in Sources */,
 				31F4000B1313414D0082B942 /* QuestionImage.cpp in Sources */,
+				31C2DA2B1328A249005C6A85 /* VerticeContainer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

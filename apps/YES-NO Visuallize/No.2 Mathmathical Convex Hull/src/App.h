@@ -32,6 +32,7 @@ public:
 	bool bAlreadyRestoreAllAnswer;	
 	void onRestoreAllSMSAnswer(int& i);
 	void resotoreCamOrbit(int & z);
+	void camOrbit(int & z);
 
 	AdminPanel		adminPanel;
 	ConvexHull		convexHull;

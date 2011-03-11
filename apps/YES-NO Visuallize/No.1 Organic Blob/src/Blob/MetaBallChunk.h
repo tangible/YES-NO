@@ -28,8 +28,8 @@ public:
 	void minimizeOne();
 	
 	// sms events
-	void onSMSRecievedChangeCol(float thisTime, float total, ofColor col);
-	void onSMSRecievedChangeMetaballSize(float thisTime, float total);	
+	void onSMSRecievedChangeCol(int _yesORno, float thisTime, float total, ofColor col);
+	void onSMSRecievedChangeMetaballSize(int _yesORno, float thisTime, float total);	
 	void updateForSMS(ofxVec3f centroid, ofPoint boundsAvg, float boundsScaling);
 	void drawForSMS(ofxVec3f centroid, ofPoint boundsAvg, float boundsScaling);
 	ofxTween ballPosTweenX;

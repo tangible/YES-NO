@@ -1,28 +1,32 @@
 <controls>
-    <SliderInt_Motion_Tick_PerSec>
-        <name>Motion Tick PerSec</name>
-        <value>25</value>
-    </SliderInt_Motion_Tick_PerSec>
-    <Toggle_Toggle_Motion>
-        <name>Toggle Motion</name>
-        <value>1</value>
-    </Toggle_Toggle_Motion>
     <Button_Change_BG>
         <name>Change BG</name>
         <value>0</value>
     </Button_Change_BG>
+    <Button_Clear_BG>
+        <name>Clear BG</name>
+        <value>0</value>
+    </Button_Clear_BG>
     <Button_Change_Question_Img>
         <name>Change Question Img</name>
         <value>0</value>
     </Button_Change_Question_Img>
-    <Button_Change_Blob_Tex>
-        <name>Change Blob Tex</name>
+    <Button_Clear_Question_Img>
+        <name>Clear Question Img</name>
         <value>0</value>
-    </Button_Change_Blob_Tex>
-    <Button_Restore_Default>
-        <name>Restore Default</name>
+    </Button_Clear_Question_Img>
+    <Button_load_setting>
+        <name>load setting</name>
         <value>0</value>
-    </Button_Restore_Default>
+    </Button_load_setting>
+    <Toggle_debug_with_fake_SMS>
+        <name>debug with fake SMS</name>
+        <value>0</value>
+    </Toggle_debug_with_fake_SMS>
+    <Button_get_all_SMS_(1time_&_irreversible!)>
+        <name>get all SMS (1time &amp; irreversible!)</name>
+        <value>0</value>
+    </Button_get_all_SMS_(1time_&_irreversible!)>
     <SliderFloat_Shadow_Intensity>
         <name>Shadow Intensity</name>
         <value>0.880000</value>
@@ -114,8 +118,8 @@
         <values_2>1.000000</values_2>
         <values_3>1.000000</values_3>
     </ColorPicker_Light_Specular>
-    <Toggle_DRAWDEBUG>
-        <name>DRAWDEBUG</name>
+    <Button_Restore_Default>
+        <name>Restore Default</name>
         <value>0</value>
-    </Toggle_DRAWDEBUG>
+    </Button_Restore_Default>
 </controls>

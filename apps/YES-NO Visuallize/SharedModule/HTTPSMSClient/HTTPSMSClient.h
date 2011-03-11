@@ -14,6 +14,7 @@
 #include "ofxHttpUtils.h"
 #include "ofxTimer.h"
 #include "ofxXmlSettings.h"
+#include "AdminPanel.h"
 
 class smsMsg {
 public:
@@ -41,10 +42,10 @@ public:
 class HTTPSMSClient {
 
 public:
-	void setup();
+	void setup(AdminPanel* _adminPanel);
 	void update(bool _bDebug = false);
 	
-	
+	AdminPanel* adminPanel;
 	
 	//--for real server interaction
 	void sendRequestToServer(bool bAll = false, bool _bDebug = false);
@@ -65,7 +66,7 @@ public:
 	
 	//--for local emulation
 	void sendRequest();
-	void emulateSMS();
+	void emulateSMS(int yna = 3);
 	//
 	
 	

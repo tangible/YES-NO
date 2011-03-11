@@ -9,7 +9,7 @@ void App::setup(){
 	ofEnableAlphaBlending();
 	ofEnableSmoothing();
 	ofSetDataPathRoot("../Resources/");
-	ofBackground(100, 100, 100);
+	ofBackground(0,0,0);
 		
 	cam.position(ofGetWidth()/2, ofGetWidth()/2, 1000);
 	//cam.setup(this, 1000);
@@ -17,7 +17,7 @@ void App::setup(){
 	sText.setup();	
 	convexHull.setup(fps, &adminPanel, &cam);
 	qImage.setup();
-	httpClient.setup();
+	httpClient.setup(&adminPanel);
 	
 	ofAddListener(adminPanel.onFileDialogueBG, this, &App::onFileChangeBG);	
 	ofAddListener(adminPanel.onClearBG, this, &App::onClearBG);	
@@ -27,6 +27,8 @@ void App::setup(){
 	ofAddListener(httpClient.onSMSRecieved, this, &App::onSMSMsgRecieved);	
 	ofAddListener(convexHull.yesSoft.onFinishAllUpdating, this, &App::resotoreCamOrbit);	
 	ofAddListener(convexHull.noSoft.onFinishAllUpdating, this, &App::resotoreCamOrbit);
+	ofAddListener(convexHull.yesSoft.notifyStartCamOrbit, this, &App::camOrbit);
+	ofAddListener(convexHull.noSoft.notifyStartCamOrbit, this, &App::camOrbit);	
 	bAlreadyRestoreAllAnswer = false;	
 	
 	qImage.changeImgQImg("qimg3.png");
@@ -45,25 +47,43 @@ void App::update(){
 	
 	if (!convexHull.isYesUpdating && !convexHull.isNoUpdating && smsQue.size() > 0) {
 		
-		UpdateInfo upInfo = smsQue[0];
+		upInfo = smsQue[0];
 		smsQue.erase(smsQue.begin());
 		
 		sText.onSMSReceivedUpdate(upInfo.sms.YesOrNo, upInfo);
 		convexHull.feedSMS(upInfo);
 		
-		if (prevOrbit != upInfo.sms.YesOrNo) {
-			float oamt = 0.0;
-			if (upInfo.sms.YesOrNo == 0) {
-				oamt = -camOrbitAmt;
-			}else {
-				oamt = camOrbitAmt;
-			}
-			if (prevOrbit != 2) oamt *= 2;
-			camOrbitTween.setParameters(camOrbitEasing, ofxTween::easeInOut, oamt, 0.0, 600, 0);
-			
-		}
-		prevOrbit = upInfo.sms.YesOrNo;	
+//		if (prevOrbit != upInfo.sms.YesOrNo) {
+//			float oamt = 0.0;
+//			if (upInfo.sms.YesOrNo == 0) {
+//				oamt = -camOrbitAmt;
+//			}else {
+//				oamt = camOrbitAmt;
+//			}
+//			if (prevOrbit != 2) oamt *= 2;
+//			camOrbitTween.setParameters(camOrbitEasing, ofxTween::easeInOut, oamt, 0.0, 600, 0);
+//			
+//		}
+//		prevOrbit = upInfo.sms.YesOrNo;	
 	}
+}
+
+void App::camOrbit(int & z) {
+	
+	
+	if (prevOrbit != upInfo.sms.YesOrNo) {
+		float oamt = 0.0;
+		if (upInfo.sms.YesOrNo == 0) {
+			oamt = -camOrbitAmt;
+		}else {
+			oamt = camOrbitAmt;
+		}
+		if (prevOrbit != 2) oamt *= 2;
+		camOrbitTween.setParameters(camOrbitEasing, ofxTween::easeInOut, oamt, 0.0, 600, 0);
+		
+	}
+	prevOrbit = upInfo.sms.YesOrNo;		
+	
 }
 
 void App::resotoreCamOrbit(int & z) {

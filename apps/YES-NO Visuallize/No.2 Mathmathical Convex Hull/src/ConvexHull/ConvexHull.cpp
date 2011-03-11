@@ -41,6 +41,7 @@ void ConvexHull::setup(int _fps, AdminPanel* _adminPanel, ofxCamera* _cam) {
 	currNOScale = 1.0;
 	yesScaleTween.setParameters(scaleEasing, ofxTween::easeIn, currYesScale, currYesScale, 0, 0);
 	noScaleTween.setParameters(scaleEasing, ofxTween::easeIn, currNOScale, currNOScale, 0, 0);	
+	
 }
 
 void ConvexHull::update() {
@@ -119,17 +120,15 @@ float ConvexHull::feedSMS(UpdateInfo upInfo) {
 		ofxVec3f cen = yesSoft.yesORno->getBodyCentroid();
 		vector<int> sortedFaces = yesSoft.yesORno->sortFaceByPosition(cen);
 		int faceID = sortedFaces[ofRandom(0, sortedFaces.size()-1*0.3)];//ofRandom(sortedFaces.size()-1, sortedFaces.size()*0.7)];//sortedFaces.size()-1];//ofRandom(0, sortedFaces.size()/3)];
-
 		sms->setup(YES, yesSoft.yesORno->getSoftBody()->m_faces, faceID);
 		insmsYes.push_back(sms);
 		isYesUpdating = true;
+		
 	}else if (upInfo.sms.YesOrNo == NO) {
 
 		ofxVec3f cen = noSoft.yesORno->getBodyCentroid();
 		vector<int> sortedFaces = noSoft.yesORno->sortFaceByPosition(cen);
 		int faceID = sortedFaces[ofRandom(0, sortedFaces.size()-1*0.3)];//sortedFaces.size()-1];//ofRandom(0, sortedFaces.size()/3)];		
-
-
 		sms->setup(NO, noSoft.yesORno->getSoftBody()->m_faces, faceID);
 		insmsNo.push_back(sms);		
 		isNoUpdating = true;
@@ -165,6 +164,7 @@ void  ConvexHull::onSmsCompleted(SmsInfo& smsInfo) {
 			}
 		}
 		yesSoft.updateInfo = updateInfo;
+		
 	}else if (NO == smsInfo.YesOrNo) {
 		for (int i = 0; i < insmsNo.size(); i++) {
 			int faceID = smsInfo.faceID;

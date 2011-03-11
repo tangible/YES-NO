@@ -11,6 +11,7 @@
 
 #include "ofMain.h"
 #include "ofxFileDialogOSX.h"
+#include "ofxXmlSettings.h"
 
 class FileDef {
 public:
@@ -28,6 +29,7 @@ public:
 	void restoreDefault();	
 	void openFileDialogueBG(string ID);
 	void openFileDialogueChangeQImg(string ID);
+	void openFileDialogueSetting(string ID);	
 	
 	ofEvent<FileDef> onFileDialogueBG; 
 	ofEvent<int> onClearBG;
@@ -85,5 +87,12 @@ public:
 	
 	bool debugWithFakeSMS;
 	bool restoreAllSMSAnswer;	
+	bool loadSetting;
+	
+	
+	// settings
+	ofxXmlSettings settingXML;
+	string phone_questionID;
+	string kioskPhoneNum_asFrom;	
 
 };

@@ -97,6 +97,8 @@ public:
 	
 	void clear();
 	
+	ofSoundPlayer			sound;	
+	
 	int incomingSMSFaceID;	
 	UpdateInfo updateInfo;
 	int numSMS;
@@ -106,6 +108,7 @@ public:
 	ofEvent<int> notifyScaleYesEvent;	
 	ofEvent<int> notifyScaleNoEvent;	
 	void notifyFinishAllUpdating(int & z);
+	ofEvent<int> notifyStartCamOrbit;
 	
 	ofxBullet*	bullet;
 	MySoftBody*	yesORno;

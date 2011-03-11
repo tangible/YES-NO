@@ -17,6 +17,7 @@
 #include "Flock3D.h"
 #include "HTTPSMSClient.h"
 #include "ofxTween.h"
+#include "VerticeContainer.h"
 
 class ParticleCloud {
 
@@ -50,6 +51,13 @@ private:
 	// yes/no obj
 	YesNoObj yes;
 	YesNoObj no;
+	
+	// sounds
+	ofSoundPlayer			soundYes;
+	ofSoundPlayer			soundNo;	
+	
+	// verts
+	VerticeContainer vcon;
 	
 	// trails
 	Flock3D flockYes;

@@ -9,7 +9,9 @@
 
 #include "HTTPSMSClient.h"
 
-void HTTPSMSClient::setup(){
+void HTTPSMSClient::setup(AdminPanel* _adminPanel){
+	
+	adminPanel = _adminPanel;
 
 	ofAddListener(testHttpUtils.newResponseEvent, this, &HTTPSMSClient::getResponse);
 	testHttpUtils.start();
@@ -238,20 +240,25 @@ UpdateInfo HTTPSMSClient::calcUpdateInfoForRealEnv() {
 void HTTPSMSClient::createFakeSMS() {
 	
 	ofxHttpForm form;
-	string url = "http://hub.tangibleinteraction.com/api/anveo?";
-	string message = "message=";
+	string url = "http://hub.tangibleinteraction.com/api/anveo";
 	
+	string from = "?from=";
+	string from_value = adminPanel->kioskPhoneNum_asFrom;
+	string question_id = "&question_id=";
+	string question_id_value = adminPanel->phone_questionID;
+	
+	string message = "&message=";
 	string answer = "Yes";
 	if (0.0 < ofRandomf()) {
 		answer = "No";
 	}
 		
-	string otherParams = "&installation_id=855181531&api_key=8ff2812eacf66449e6008425e2ae5a3a0d18cb22d089e4d5c6933c2c298aa678&from=%2B17789977224&phonenumber=16044841954&test=true";
+	string otherParams = "&api_key=8ff2812eacf66449e6008425e2ae5a3a0d18cb22d089e4d5c6933c2c298aa678&installation_id=855181531&test=true";
 
-	form.action = url+message+answer+otherParams;
+	form.action = url+from+from_value+question_id+question_id_value+message+answer+otherParams;
 	
-//	cout << "action url = " << endl;
-//	cout << form.action << endl;
+	cout << "action url = " << endl;
+	cout << form.action << endl;
 	
 	makeFakeSMSHttpUtils.addForm(form);	
 	
@@ -260,6 +267,124 @@ void HTTPSMSClient::createFakeSMS() {
 void HTTPSMSClient::debugCreateFakeSMSResult(ofxHttpResponse & response) {
 	
 	cout << "create SMS result :: "+response.responseBody << endl;
+	
+}
+
+
+
+
+
+
+
+void HTTPSMSClient::sendRequest(){
+
+	ofxHttpForm form;
+	form.action = "http://localhost:8888/getSMS.of";
+	form.method = OFX_HTTP_POST;
+	
+	time_t t;
+	time(&t);
+	char gmttime[256];
+	strftime(gmttime, 255, "%Y¥-%m-%d¥%H¥:%I¥:%S", gmtime(&t));
+	string timestr = gmttime;
+	timestr = str_replace(timestr, "¥", "");			
+	reqestTime = timestr;
+	
+	form.addFormField("time", timestr);
+	testHttpUtils.addForm(form);	
+
+};
+
+void HTTPSMSClient::emulateSMS(int yna) { // 0 = yes, 1 = no, other = random
+	
+	ofxHttpResponse response;
+
+	string res = "";
+	string start = "<TangibleHUBYesNoResponce><SMSs>";
+	
+	time_t t;
+	time(&t);
+	char gmttime[256];
+	strftime(gmttime, 255, "%Y¥-%m-%d¥%H¥:%I¥:%S", gmtime(&t));
+	string timestr = gmttime;
+	timestr = str_replace(timestr, "¥", "");		
+	
+	string yes = "<SMS><Answer>YES</Answer><Time>" + timestr + "</Time></SMS>";
+	string no = "<SMS><Answer>NO</Answer><Time>" + timestr + "</Time></SMS>";
+	string contents = "";
+	int thisreq = 1;//ofRandom(1, 20);
+	for (int i = 0; i < thisreq; i++) {
+		
+		
+		if (yna == 0) {
+			test = 0;
+			contents += yes;
+		}else if (yna == 1) {
+			test = 1;
+			contents += no;
+		}else {
+			float rdm = ofRandomf();
+			if (rdm < 0) {
+				test = 0;
+				contents += yes;
+			}else {
+				test = 1;
+				contents += no;
+			}
+		}
+
+	}
+	
+	string end = "</SMSs></TangibleHUBYesNoResponce>";
+	res = start+contents+end;
+	
+	response.responseBody = res;
+	getResponse(response);
+	
+}
+	
+UpdateInfo HTTPSMSClient::calcUpdateInfo() {
+	
+	UpdateInfo upInfo;
+	
+	float totalYes = totalYess.size();
+	float totalNo = totalNos.size();
+	float thisTimeYes = thisTimeYess.size();
+	float thisTimeNo = thisTimeNos.size();
+	
+	float totalSMS = totalYes+totalNo;
+	float totalSMSThisTime = thisTimeYes+thisTimeNo;
+	float raTotalYes = (totalYes<=0)?0.0:totalYes/totalSMS;
+	float raTotalNo = (totalNo<=0)?0.0:totalNo/totalSMS;
+	float raThisTimeYes = (thisTimeYes<=0)?0.0:thisTimeYes/totalSMSThisTime;
+	float raThisTimeNo = (thisTimeNo<=0)?0.0:thisTimeNo/totalSMSThisTime;
+	
+	smsMsg sms;
+	if (test == 0) {
+		sms.YesOrNo = HTTPSMSClient::YES;
+		sms.answer = "YES";
+	}else {
+		sms.YesOrNo = HTTPSMSClient::NO;
+		sms.answer = "NO";
+	}
+	upInfo.sms = sms;
+	
+	upInfo.ratioTotalYes = raTotalYes;
+	upInfo.ratioTotalNo = raTotalNo;
+	upInfo.ratioThisTimeYes = raThisTimeYes;
+	upInfo.ratioThisTimeNo = raThisTimeNo;
+	upInfo.numTotalYes = totalYes;
+	upInfo.numTotalNo = totalNo;
+	upInfo.numYes = thisTimeYes;
+	upInfo.numNo = thisTimeNo;
+	upInfo.numDiffYes = totalYes-totalNo;
+	upInfo.numDiffNo = totalNo-totalYes;
+	upInfo.requesttime = reqestTime;
+	
+	//	cout << "thisTimeYes recieved = " + ofToString(upInfo.numYes) << endl;	
+	//	cout << "totalYes recieved = " + ofToString(upInfo.numTotalYes) << endl;
+	
+	return upInfo;
 	
 }
 
@@ -325,112 +450,6 @@ void HTTPSMSClient::getResponse(ofxHttpResponse & response){
 	ofNotifyEvent(onSMSRecieved, upInfo);
 	
 };
-
-UpdateInfo HTTPSMSClient::calcUpdateInfo() {
-	
-	UpdateInfo upInfo;
-	
-	float totalYes = totalYess.size();
-	float totalNo = totalNos.size();
-	float thisTimeYes = thisTimeYess.size();
-	float thisTimeNo = thisTimeNos.size();
-	
-	float totalSMS = totalYes+totalNo;
-	float totalSMSThisTime = thisTimeYes+thisTimeNo;
-	float raTotalYes = (totalYes<=0)?0.0:totalYes/totalSMS;
-	float raTotalNo = (totalNo<=0)?0.0:totalNo/totalSMS;
-	float raThisTimeYes = (thisTimeYes<=0)?0.0:thisTimeYes/totalSMSThisTime;
-	float raThisTimeNo = (thisTimeNo<=0)?0.0:thisTimeNo/totalSMSThisTime;
-	
-	smsMsg sms;
-	if (test < 0) {
-		sms.YesOrNo = HTTPSMSClient::YES;
-		sms.answer = "YES";
-	}else {
-		sms.YesOrNo = HTTPSMSClient::NO;
-		sms.answer = "NO";
-	}
-	upInfo.sms = sms;
-	
-	upInfo.ratioTotalYes = raTotalYes;
-	upInfo.ratioTotalNo = raTotalNo;
-	upInfo.ratioThisTimeYes = raThisTimeYes;
-	upInfo.ratioThisTimeNo = raThisTimeNo;
-	upInfo.numTotalYes = totalYes;
-	upInfo.numTotalNo = totalNo;
-	upInfo.numYes = thisTimeYes;
-	upInfo.numNo = thisTimeNo;
-	upInfo.numDiffYes = totalYes-totalNo;
-	upInfo.numDiffNo = totalNo-totalYes;
-	upInfo.requesttime = reqestTime;
-	
-	//	cout << "thisTimeYes recieved = " + ofToString(upInfo.numYes) << endl;	
-	//	cout << "totalYes recieved = " + ofToString(upInfo.numTotalYes) << endl;
-	
-	return upInfo;
-	
-}
-
-
-
-
-
-void HTTPSMSClient::sendRequest(){
-
-	ofxHttpForm form;
-	form.action = "http://localhost:8888/getSMS.of";
-	form.method = OFX_HTTP_POST;
-	
-	time_t t;
-	time(&t);
-	char gmttime[256];
-	strftime(gmttime, 255, "%Y¥-%m-%d¥%H¥:%I¥:%S", gmtime(&t));
-	string timestr = gmttime;
-	timestr = str_replace(timestr, "¥", "");			
-	reqestTime = timestr;
-	
-	form.addFormField("time", timestr);
-	testHttpUtils.addForm(form);	
-
-};
-
-void HTTPSMSClient::emulateSMS() {
-	
-	ofxHttpResponse response;
-
-	string res = "";
-	string start = "<TangibleHUBYesNoResponce><SMSs>";
-	
-	time_t t;
-	time(&t);
-	char gmttime[256];
-	strftime(gmttime, 255, "%Y¥-%m-%d¥%H¥:%I¥:%S", gmtime(&t));
-	string timestr = gmttime;
-	timestr = str_replace(timestr, "¥", "");		
-	
-	string yes = "<SMS><Answer>YES</Answer><Time>" + timestr + "</Time></SMS>";
-	string no = "<SMS><Answer>NO</Answer><Time>" + timestr + "</Time></SMS>";
-	string contents = "";
-	int thisreq = 1;//ofRandom(1, 20);
-	for (int i = 0; i < thisreq; i++) {
-		
-		test = ofRandomf();
-		if (test < 0) {
-			contents += yes;
-		}else {
-			contents += no;
-		}
-	}
-	
-	string end = "</SMSs></TangibleHUBYesNoResponce>";
-	res = start+contents+end;
-	
-	response.responseBody = res;
-	getResponse(response);
-	
-}
-
-
 
 string HTTPSMSClient::str_replace(const string &source,
 							   const string &pattern,

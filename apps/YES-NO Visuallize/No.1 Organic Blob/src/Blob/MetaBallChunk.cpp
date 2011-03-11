@@ -8,7 +8,7 @@
  */
 
 #include "MetaBallChunk.h"
-int gridSize = 150;
+int gridSize = 160;
 float baseBallSize = 0.1;
 float maxBallSize = 0.9;
 
@@ -54,7 +54,7 @@ MetaBallChunk::MetaBallChunk(int points, int _chunkID) {
 	m_pMetaballs->SetGridSize(gridSize);
 	chunkID = _chunkID;	
 	
-	ballSizeTween.setParameters(1,easingback,ofxTween::easeOut,sizeBase,sizeBase,0,0);
+	ballSizeTween.setParameters(easingback, ofxTween::easeOut,sizeBase,sizeBase,0,0);
 	ballPosTweenX.setParameters(easingcirc, ofxTween::easeIn, 0, -ofGetScreenWidth()/2, 0, 0);
 	ballPosTweenY.setParameters(easingcirc, ofxTween::easeIn, 0, -ofGetScreenHeight()/2, 0, 0);	
 	ballPosTweenZ.setParameters(easingcirc, ofxTween::easeIn, 0, 0, 0, 0);		
@@ -134,21 +134,41 @@ void MetaBallChunk::minimizeOne() {
 
 }
 
-void MetaBallChunk::onSMSRecievedChangeCol(float thisTime, float total, ofColor col) {
+void MetaBallChunk::onSMSRecievedChangeCol(int _yesORno, float thisTime, float total, ofColor col) {
 
 	// color
 	chunkColChangeVal = ofMap(thisTime, 0.0, 1.0, 0.0001, 1.0);
-	chunkColChangeTime = ofMap(thisTime, 0.0, 1.0, 1.0, 4.0); 
+	if (chunkID == _yesORno) {
+		chunkColChangeTime = ofMap(thisTime, 0.0, 1.0, 1.0, 4.0); 
+	}else {
+		chunkColChangeTime = 0;
+	}
 	chunkBaseCol = col;
 	chunkColChanged = 0;
 
 }
 
-void MetaBallChunk::onSMSRecievedChangeMetaballSize(float thisTime, float total) {
+void MetaBallChunk::onSMSRecievedChangeMetaballSize(int _yesORno, float thisTime, float total) {
+	int maxSMSnum = 5000;
+	total = ofClamp(total, 0, maxSMSnum);
+	float tmpSize = thisTime*total;
+	float maxSizeParam = 1.0*maxSMSnum;
+	sizeBase = ofMap(tmpSize, 0.0, maxSizeParam, baseBallSize, maxBallSize);
 	
-	// size
-	sizeBase = ofMap(thisTime, 0.0, 1.0, baseBallSize, maxBallSize);
-	float mapForSize = ofMap(thisTime, 0.0, 1.0, sizeBase, sizeBase*2);
+	float diffFactor = ofMap(thisTime, 0.0, 1.0, 0.5, 1.5);
+	sizeBase *= diffFactor;
+	
+	cout << "thisTime = " + ofToString(thisTime) << endl;
+	cout << "maxSizeParam = "+ofToString(maxSizeParam) << endl;
+	string yn = (chunkID==0)?"YES":"NO";
+	cout << "sizeBase "+yn+" = "+ofToString(sizeBase) << endl;
+//	sizeBase = ofMap(thisTime, 0.0, 1.0, baseBallSize, maxBallSize);
+	
+	float mapForSize = ofMap(thisTime, 0.0, 1.0, sizeBase, sizeBase);
+	if (chunkID == _yesORno) {
+		mapForSize = ofMap(thisTime, 0.0, 1.0, sizeBase, sizeBase*2);
+	}
+		
 	float mapForSizeDur = ofMap(thisTime, 0.0, 1.0, 100, 100);
 	ballSizeTween.setParameters(easingbounce,ofxTween::easeInOut,
 								sizeBase,mapForSize,

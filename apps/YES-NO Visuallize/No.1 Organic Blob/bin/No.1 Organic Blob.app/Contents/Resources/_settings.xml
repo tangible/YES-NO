@@ -15,6 +15,10 @@
         <name>Clear Question Img</name>
         <value>0</value>
     </Button_Clear_Question_Img>
+    <Button_load_setting>
+        <name>load setting</name>
+        <value>0</value>
+    </Button_load_setting>
     <Toggle_debug_with_fake_SMS>
         <name>debug with fake SMS</name>
         <value>0</value>

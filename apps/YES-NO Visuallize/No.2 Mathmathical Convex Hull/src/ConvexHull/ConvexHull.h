@@ -38,7 +38,7 @@ public:
 	AdminPanel*				admin;
 	
 	YesNoObjectSoft			yesSoft;
-	YesNoObjectSoft			noSoft;	
+	YesNoObjectSoft			noSoft;		
 	bool					isYesUpdating;
 	bool					isNoUpdating;
 	void					onFinishAllUpdating(int & yesOrNo);

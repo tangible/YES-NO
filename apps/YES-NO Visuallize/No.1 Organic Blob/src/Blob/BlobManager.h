@@ -82,13 +82,17 @@ public:
 	int						randomImpulsSMSRecievedYes;
 	int						randomImpulsSMSRecievedNo;
 	vector<MetaBallChunk*>  mBallChunks;
+	ofSoundPlayer			soundYes;
+	ofSoundPlayer			soundNo;
 	vector<IncomingSMS*>		inSMSs;
 	ofxColorPicker			chunkCol;
-	float					yesColAng;
-	float					noColAng;	
 	ofxVec3f				centroidYes;
 	ofxVec3f				centroidNo;	
 	int						nMetaBalls;
+	
+	float					prevColAngle;
+	float					nextYesColAngle;
+	float					nextNoColAngle;
 	
 	ofPoint					boundsAvg;
 	float					boundsScaling;
