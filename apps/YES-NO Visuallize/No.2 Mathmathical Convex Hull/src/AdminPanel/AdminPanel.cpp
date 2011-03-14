@@ -132,8 +132,8 @@ void AdminPanel::openFileDialogueSetting(string ID) {
 	ofxFileDialogOSX::openFile(path);
 	settingXML.loadFile(path);
 	settingXML.pushTag("setting");
-	phone_questionID = settingXML.getValue("question_id__phone_number", "question_0");
-	kioskPhoneNum_asFrom = settingXML.getValue("kiosk_id__phone_number", "999999");
+	phone_questionID = settingXML.getValue("phonenumber", "16048005302");
+	kioskPhoneNum_asFrom = settingXML.getValue("from", "kiosk_1");
 	cout << "phone_questionID = "+phone_questionID << endl;
 	cout << "kioskPhoneNum_asFrom = "+kioskPhoneNum_asFrom << endl;
 	settingXML.popTag();

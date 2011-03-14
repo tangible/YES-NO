@@ -154,8 +154,8 @@ void AdminPanel::openFileDialogueSetting(string ID) {
 	ofxFileDialogOSX::openFile(path);
 	settingXML.loadFile(path);
 	settingXML.pushTag("setting");
-	phone_questionID = settingXML.getValue("question_id__phone_number", "question_0");
-	kioskPhoneNum_asFrom = settingXML.getValue("kiosk_id__phone_number", "999999");
+	phone_questionID = settingXML.getValue("phonenumber", "16048005302");
+	kioskPhoneNum_asFrom = settingXML.getValue("from", "kiosk_1");
 	cout << "phone_questionID = "+phone_questionID << endl;
 	cout << "kioskPhoneNum_asFrom = "+kioskPhoneNum_asFrom << endl;
 	settingXML.popTag();
@@ -164,7 +164,7 @@ void AdminPanel::openFileDialogueSetting(string ID) {
 
 void AdminPanel::restoreDefault() {
 
-	aoCap = 0.2;	
+	aoCap = 0.02;	
 	camerarangex = 6113.28;
 	camerarangey = 4121.09;
 	aoMultiplier = 351.562;
@@ -198,21 +198,21 @@ void AdminPanel::restoreDefault() {
 	clearQImg = false;
 	
 	LIGHTX = 0.0;
-	LIGHTY = 777.0;
-	LIGHTZ = -746.0;	
-	MATERIALAMBIENT[0] = 0.61;
-	MATERIALAMBIENT[1] = 0.61;
-	MATERIALAMBIENT[2] = 0.61;
+	LIGHTY = -625.0;
+	LIGHTZ = 746.0;	
+	MATERIALAMBIENT[0] = 0.95;
+	MATERIALAMBIENT[1] = 0.95;
+	MATERIALAMBIENT[2] = 0.95;
 	MATERIALAMBIENT[3] = 1.0;	
-	MATERIALDIFFUSE[0] = 0.4;
-	MATERIALDIFFUSE[1] = 0.4;
-	MATERIALDIFFUSE[2] = 0.4;
+	MATERIALDIFFUSE[0] = 0.95;
+	MATERIALDIFFUSE[1] = 0.95;
+	MATERIALDIFFUSE[2] = 0.95;
 	MATERIALDIFFUSE[3] = 1.0;	
-	MATERIALSPECULAR[0] = 0.594597;
-	MATERIALSPECULAR[1] = 0.594597;
-	MATERIALSPECULAR[2] = 0.594597;
+	MATERIALSPECULAR[0] = 0.83;
+	MATERIALSPECULAR[1] = 0.83;
+	MATERIALSPECULAR[2] = 0.83;
 	MATERIALSPECULAR[3] = 1.0;		
-	MATERIALSHINENESS = 0.6;
+	MATERIALSHINENESS = 24.0;
 	LIGHTAMBIENT[0] = 1.0;
 	LIGHTAMBIENT[1] = 1.0;
 	LIGHTAMBIENT[2] = 1.0;
@@ -221,9 +221,9 @@ void AdminPanel::restoreDefault() {
 	LIGHTDIFFUSE[1] = 1.0;
 	LIGHTDIFFUSE[2] = 1.0;
 	LIGHTDIFFUSE[3] = 1.0;	
-	LIGHTSPECULAR[0] = 0.01;
-	LIGHTSPECULAR[1] = 0.01;
-	LIGHTSPECULAR[2] = 0.01;
+	LIGHTSPECULAR[0] = 0.54;
+	LIGHTSPECULAR[1] = 0.54;
+	LIGHTSPECULAR[2] = 0.54;
 	LIGHTSPECULAR[3] = 1.0;		
 	
 	debugWithFakeSMS = false;

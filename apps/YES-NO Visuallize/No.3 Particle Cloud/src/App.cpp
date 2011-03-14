@@ -1,6 +1,6 @@
 #include "App.h"
 
-static const int fps = 40;
+static const int fps = 25;
 
 //--------------------------------------------------------------
 void App::setup(){
@@ -49,18 +49,18 @@ void App::update(){
 	adminPanel.update();
 	httpClient.update(adminPanel.debugWithFakeSMS);	
 	pCloud.update();
-
+	
 	cam.place();
 	
 	ofBackground(adminPanel.BGColor[0]*255, adminPanel.BGColor[1]*255, adminPanel.BGColor[2]*255);
 	
-	depthFBO.beforeUpdate();
-	pCloud.draw();
-	depthFBO.afterUpdate();
-	
-	colorFBO.beforeUpdate();
-	pCloud.draw();
-	colorFBO.afterUpdate();			
+//	depthFBO.beforeUpdate();
+//	pCloud.draw();
+//	depthFBO.afterUpdate();
+//	
+//	colorFBO.beforeUpdate();
+//	pCloud.draw();
+//	colorFBO.afterUpdate();			
 	
 //	int colorTexSlot = 4;
 //	colorFBO.beforeDraw(colorTexSlot);	
@@ -91,35 +91,44 @@ void App::update(){
 void App::draw(){
 	
 	//cam.draw();
-	
+	glDisable(GL_DEPTH_TEST);
 	ofEnableSmoothing();
 	ofEnableAlphaBlending();
 	bg.draw(ofGetScreenWidth()/2-bg.getWidth()/2, 
 			ofGetScreenHeight()/2-bg.getHeight()/2);	
-	qImage.draw();		
-	sText.draw(upInfo);
-	
+	ofEnableSmoothing();
 	ofEnableAlphaBlending();
-	int colorTexSlot = 4;
-	colorFBO.beforeDraw(colorTexSlot);	
-	int depthTexSlot = 5;
-	depthFBO.beforeDraw(depthTexSlot);
-	ssaoShader.begin();
-	ssaoShader.setUniform1i("texture0", depthTexSlot);
-	ssaoShader.setUniform1i("texture1", colorTexSlot);
-	ssaoShader.setUniform2f("screensize", ofGetScreenWidth(), ofGetScreenHeight());
-	ssaoShader.setUniform2f("camerarange", adminPanel.camerarangex, adminPanel.camerarangey);
-	ssaoShader.setUniform1f("aoCap", adminPanel.aoCap);
-	ssaoShader.setUniform1f("aoMultiplier", adminPanel.aoMultiplier);
-	ssaoShader.setUniform1f("depthTolerance", adminPanel.depthTolerance);
-	ssaoShader.setUniform1f("aorange", adminPanel.aorange);
-	ssaoShader.setUniform1f("readDepthVal", adminPanel.readDepthVal);
-	ssaoShader.setUniform1f("aoDivision", adminPanel.aoDivision);
-	ssaoShader.setUniform1f("baseColSubdivision", adminPanel.baseColSubdivision);
-	drawFullScreenQuad(ofGetScreenWidth(), ofGetScreenHeight());
-	ssaoShader.end();
-	depthFBO.afterDraw();
-	colorFBO.afterDraw();		
+	qImage.draw();		
+	ofEnableSmoothing();
+	ofEnableAlphaBlending();	
+	sText.draw(upInfo);
+	glEnable(GL_DEPTH_TEST);
+	
+	ofEnableSmoothing();
+	ofEnableAlphaBlending();
+	pCloud.draw();	
+	
+//	ofEnableAlphaBlending();
+//	int colorTexSlot = 4;
+//	colorFBO.beforeDraw(colorTexSlot);	
+//	int depthTexSlot = 5;
+//	depthFBO.beforeDraw(depthTexSlot);
+//	ssaoShader.begin();
+//	ssaoShader.setUniform1i("texture0", depthTexSlot);
+//	ssaoShader.setUniform1i("texture1", colorTexSlot);
+//	ssaoShader.setUniform2f("screensize", ofGetScreenWidth(), ofGetScreenHeight());
+//	ssaoShader.setUniform2f("camerarange", adminPanel.camerarangex, adminPanel.camerarangey);
+//	ssaoShader.setUniform1f("aoCap", adminPanel.aoCap);
+//	ssaoShader.setUniform1f("aoMultiplier", adminPanel.aoMultiplier);
+//	ssaoShader.setUniform1f("depthTolerance", adminPanel.depthTolerance);
+//	ssaoShader.setUniform1f("aorange", adminPanel.aorange);
+//	ssaoShader.setUniform1f("readDepthVal", adminPanel.readDepthVal);
+//	ssaoShader.setUniform1f("aoDivision", adminPanel.aoDivision);
+//	ssaoShader.setUniform1f("baseColSubdivision", adminPanel.baseColSubdivision);
+//	drawFullScreenQuad(ofGetScreenWidth(), ofGetScreenHeight());
+//	ssaoShader.end();
+//	depthFBO.afterDraw();
+//	colorFBO.afterDraw();		
 	
 //	int ssaoTexSlot = 6;
 //	colorFBO.beforeDraw(ssaoTexSlot);
@@ -175,6 +184,16 @@ void App::keyPressed(int key){
 	}else if (key == '0') {
 		for (int i = 0; i < 100; i++) {
 			httpClient.emulateSMS();
+		}
+	}else if (key == 'y') {
+		httpClient.emulateSMS(0);
+	}else if (key == 'u') {
+		for (int i = 0; i < 10; i++) {
+			httpClient.emulateSMS(0);
+		}
+	}else if (key == 'i') {
+		for (int i = 0; i < 100; i++) {		
+			httpClient.emulateSMS(0);	
 		}
 	}else {
 		adminPanel.keyPressed(key);	

@@ -12,8 +12,10 @@
 
 class VerticeContainer {
 public:
-	vector<ofxVec3f> vertices;
+	vector<ofxVec3f> cloudVerts;
+	vector<ofxVec3f> sphVertices;
+	void createCloud(int totalVerts);
 	void createSphericalVertice(int resolution = 30, float size = 100);
-	vector<ofxVec3f> getVerts() {return vertices;};
+	vector<ofxVec3f> getVerts() {return sphVertices;};
 
 };

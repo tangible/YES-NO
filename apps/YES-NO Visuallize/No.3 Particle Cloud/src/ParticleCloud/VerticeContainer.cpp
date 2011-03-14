@@ -9,6 +9,20 @@
 
 #include "VerticeContainer.h"
 
+void VerticeContainer::createCloud(int totalVerts) {
+	
+//	int resolusion = 10;
+//	for (int i = 0; i < totalVerts/resolusion; i++) {
+//		createSphericalVertice(resolusion);
+//		vector<ofxVec3f> sph = sphVertices;
+//		ofxVec3f offset;
+//		offset.x = ofRandom(<#float val0#>, <#float val1#>)
+//		for (int j = 0; j < sph.size(); j++) {
+//			ofxVec3f v = sph[j];
+			
+	
+}
+
 void VerticeContainer::createSphericalVertice(int resolution, float size) {
 
 	float theta,nextTheta, phi, x, y, z;
@@ -22,13 +36,13 @@ void VerticeContainer::createSphericalVertice(int resolution, float size) {
 			z = cos(phi);
 			ofxVec3f a(x,y,z);
 			a *= size;
-			vertices.push_back(a);
+			sphVertices.push_back(a);
 			x = cos(nextTheta) * sin(phi);
 			y = sin(nextTheta) * sin(phi);
 			z = cos(phi);
 			ofxVec3f b(x,y,z);
 			b *= size;
-			vertices.push_back(b);			
+			sphVertices.push_back(b);			
 		}
 	}	
 

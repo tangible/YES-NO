@@ -9,10 +9,11 @@
 
 #include "Obj.h"
 
-void Obj::setup(int yesOrNo, ofxBullet* bullet, ofxVec3f pos, int radius, int mass, 
+void Obj::setup(int yesOrNo, ofxBullet* _bullet, ofxVec3f pos, int radius, int mass, 
 				float _forceVecFactor,
 				float _tangentVecFactor) {
 
+	bullet = _bullet;
 	forceVecFactor = _forceVecFactor;
 	tangentVecFactor = _tangentVecFactor;
 	
@@ -27,7 +28,7 @@ void Obj::setup(int yesOrNo, ofxBullet* bullet, ofxVec3f pos, int radius, int ma
 	}
 }
 
-void Obj::movetoForcePoint(int impulseFactor) {
+void Obj::movetoForcePoint(int impulseFactor, bool bSMS) {
 
 	float maxVal = 0.01;
 	ofxVec3f force;
@@ -46,11 +47,32 @@ void Obj::movetoForcePoint(int impulseFactor) {
 	btVector3 btImpulse(force.x, force.y, force.z);
 	body->getRigidBody()->applyCentralImpulse(btImpulse);
 	
-	ofxVec3f impulse;
-	impulse.set(ofRandomf(), ofRandomf(), ofRandomf());
-	impulse *= impulseFactor;
+//	ofxVec3f impulse;
+//	impulse.set(ofRandomf(), ofRandomf(), ofRandomf());
+//	impulse *= impulseFactor;
+//	
+//	btImpulse = btVector3(impulse.x, impulse.y, impulse.z);
+//	body->getRigidBody()->applyCentralImpulse(btImpulse);	
 	
-	btImpulse = btVector3(impulse.x, impulse.y, impulse.z);
-	body->getRigidBody()->applyCentralImpulse(btImpulse);	
+	if (bSMS) {
+		int numManifolds = bullet->getWorld()->getDispatcher()->getNumManifolds();
+		for (int i = 0; i < numManifolds; i++) {
+			btPersistentManifold* contactManifold =  bullet->getWorld()->getDispatcher()->getManifoldByIndexInternal(i);
+			btCollisionObject* obA = static_cast<btCollisionObject*>(contactManifold->getBody0());
+			btCollisionObject* obB = static_cast<btCollisionObject*>(contactManifold->getBody1());
+
+			if (obA == body->getRigidBody() || obB == body->getRigidBody()) {
+				int z = 0;
+				ofNotifyEvent(notifyCollideSMS, z);
+			}
+
+		}			
+	}
+	
+	if (colorTween.isCompleted()) {
+		prevColAngle = colAngle;
+		prevColScale = colScale;
+		prevColRadius = colRadius;
+	}
 
 }

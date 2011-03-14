@@ -244,18 +244,23 @@ void HTTPSMSClient::createFakeSMS() {
 	
 	string from = "?from=";
 	string from_value = adminPanel->kioskPhoneNum_asFrom;
-	string question_id = "&question_id=";
-	string question_id_value = adminPanel->phone_questionID;
+	string phonenumber = "&phonenumber=";
+	string phonenumber_value = adminPanel->phone_questionID;
 	
 	string message = "&message=";
-	string answer = "Yes";
+	string message_value = "Yes";
 	if (0.0 < ofRandomf()) {
-		answer = "No";
+		message_value = "No";
 	}
 		
 	string otherParams = "&api_key=8ff2812eacf66449e6008425e2ae5a3a0d18cb22d089e4d5c6933c2c298aa678&installation_id=855181531&test=true";
 
-	form.action = url+from+from_value+question_id+question_id_value+message+answer+otherParams;
+	form.action = 
+	url+
+	from+from_value+
+	phonenumber+phonenumber_value+
+	message+message_value+
+	otherParams;
 	
 	cout << "action url = " << endl;
 	cout << form.action << endl;

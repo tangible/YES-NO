@@ -12,15 +12,18 @@
 #include "ofMain.h"
 #include "ofxBullet.h"
 #include "ofxColorPicker.h"
+#include "ofxTween.h"
 
 class Obj {
 
 public:
-	void setup(int yesOrNo, ofxBullet* bullet, ofxVec3f pos, int radius, int mass, 
+	void setup(int yesOrNo, ofxBullet* _bullet, ofxVec3f pos, int radius, int mass, 
 			   float _forceVecFactor = 55,
 			   float _tangentVecFactor = 100);
 	void setForcePoint(ofxVec3f fp){forcePoint = fp;}
-	void movetoForcePoint(int impulseFactor = 40);
+	void movetoForcePoint(int impulseFactor = 40, bool bSMS = false);
+	
+	ofEvent<int> notifyCollideSMS;
 	
 	MyRigidBody* getBody(){return body;}
 	ofxVec3f getObjPos(){return body->getBodyPos();}
@@ -35,6 +38,11 @@ public:
 	float colAngle;
 	float colScale;
 	float colRadius;
+	float prevColAngle;
+	float prevColScale;
+	float prevColRadius;	
+	ofxTween colorTween;
+	ofxEasingSine colorTweenEasing;
 	ofxColorPicker colp;
 
 	float positionalSizeFactor;
@@ -42,6 +50,7 @@ public:
 	float tangentVecFactor;
 	
 private:
+	ofxBullet* bullet;
 	MyRigidBody* body;
 	ofxVec3f forcePoint;
 	

@@ -68,7 +68,7 @@ private:
 	static const float minParticleNum = 40;
 	static const float maxParticleNum = 700;
 	static const float minSizeObjNum = 1;
-	static const float maxSizeObjNum = 10;
+	static const float maxSizeObjNum = 400;
 	static const float minSizeObjSize = 10;
 	static const float maxSizeObjSize = 60;
 	static const float minImpulseFactor = 20;
