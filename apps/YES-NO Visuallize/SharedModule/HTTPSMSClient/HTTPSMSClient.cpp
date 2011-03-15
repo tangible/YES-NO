@@ -103,9 +103,9 @@ void HTTPSMSClient::getSMSAnswersFromServer(ofxHttpResponse & response) {
 	
 	// debug block
 	{
-//		string test;
-//		xml.copyXmlToString(test);
-//		cout << test << endl;
+		string test;
+		xml.copyXmlToString(test);
+		cout << test << endl;
 	}	
 	
 	xml.pushTag("entries");
@@ -116,24 +116,27 @@ void HTTPSMSClient::getSMSAnswersFromServer(ofxHttpResponse & response) {
 	
 	for (int i = 0; i < numTag; i++) {
 		xml.pushTag("entry", i);
+		string from = xml.getValue("from", "error");
+		string question_id = xml.getValue("question_id", "error");
 		string ans = xml.getValue("answer", "error");
 		string time = xml.getValue("time", "error");			
 		
-		responseStr += " "+ans+" "+time+" ";
-		
-		smsMsg sms;
-		sms.answer = ans;
-		sms.time = time;
-		
-		if ("Yes" == sms.answer) {
-			sms.YesOrNo = 0;
-			numYes++;
-		}else {
-			sms.YesOrNo = 1;
-			numNo++;
+		// if we get the entry which bind to this App
+		if (question_id == adminPanel->phone_questionID) {		
+			smsMsg sms;
+			sms.answer = ans;
+			sms.time = time;
+			
+			if (caseInsCompare("Yes", sms.answer)) {
+				sms.YesOrNo = 0;
+				numYes++;
+			}else {
+				sms.YesOrNo = 1;
+				numNo++;
+			}
+			
+			smss.push_back(sms);
 		}
-		
-		smss.push_back(sms);
 		
 		xml.popTag();		
 	}
@@ -473,4 +476,12 @@ string HTTPSMSClient::str_replace(const string &source,
     result.append(source, pos_before, source.size() - pos_before);
     return result;
 
-};	
+}
+
+inline bool caseInsCharCompareN(char a, char b) {
+	return(toupper(a) == toupper(b));
+}
+bool HTTPSMSClient::caseInsCompare(const string& s1, const string& s2) {
+	return((s1.size( ) == s2.size( )) &&
+		   equal(s1.begin( ), s1.end( ), s2.begin( ), caseInsCharCompareN));
+}

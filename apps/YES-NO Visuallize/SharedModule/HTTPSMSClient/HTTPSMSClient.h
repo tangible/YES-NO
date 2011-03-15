@@ -99,6 +99,7 @@ private:
 	string str_replace(const string &source,
 					   const string &pattern,
 					   const string &placement);	
+	bool caseInsCompare(const string& s1, const string& s2);
 	
 	ofxHttpUtils	realHttpUtils;
 	ofxHttpUtils	makeFakeSMSHttpUtils;

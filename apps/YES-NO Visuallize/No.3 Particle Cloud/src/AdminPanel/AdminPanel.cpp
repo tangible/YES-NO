@@ -24,16 +24,16 @@ void AdminPanel::setup() {
 	gui.addToggle("debug with fake SMS", debugWithFakeSMS);
 	gui.addButton("get all SMS (1time & irreversible!)", restoreAllSMSAnswer);	
 	
-	gui.addTitle("SSAO Setting").setNewColumn(true);
-	gui.addSlider("aoCap", aoCap, 0.0, 2.0);	
-	gui.addSlider("camerarangex", camerarangex, 0, 10000);
-	gui.addSlider("camerarangey", camerarangey, 0, 10000);
-	gui.addSlider("aoMultiplier", aoMultiplier, 0.0, 20000.0);
-	gui.addSlider("depthTolerance", depthTolerance, 0.000, 0.002);
-	gui.addSlider("aorange", aorange, 0.0, 2.0);
-	gui.addSlider("readDepthVal", readDepthVal, 0.0, 20.0);
-	gui.addSlider("aoDivision", aoDivision, 0, 30);
-	gui.addSlider("baseColSubdivision", baseColSubdivision, 0.000, 1.000);
+//	gui.addTitle("SSAO Setting").setNewColumn(true);
+//	gui.addSlider("aoCap", aoCap, 0.0, 2.0);	
+//	gui.addSlider("camerarangex", camerarangex, 0, 10000);
+//	gui.addSlider("camerarangey", camerarangey, 0, 10000);
+//	gui.addSlider("aoMultiplier", aoMultiplier, 0.0, 20000.0);
+//	gui.addSlider("depthTolerance", depthTolerance, 0.000, 0.002);
+//	gui.addSlider("aorange", aorange, 0.0, 2.0);
+//	gui.addSlider("readDepthVal", readDepthVal, 0.0, 20.0);
+//	gui.addSlider("aoDivision", aoDivision, 0, 30);
+//	gui.addSlider("baseColSubdivision", baseColSubdivision, 0.000, 1.000);
 	
 //	gui.addTitle("DoF Setting");
 //	gui.addSlider("bias", bias, 0.0, 1.0);	
@@ -49,7 +49,7 @@ void AdminPanel::setup() {
 //	gui.addSlider("colAngle", colAngle, -1.0, 1.0);
 //	gui.addSlider("sizeBase", sizeBase, -100, 100);
 	
-	gui.addTitle("Graphic Setting");
+	gui.addTitle("Graphic Setting").setNewColumn(true);
 	gui.addSlider("Light Pos X", LIGHTX, -2000.0, 2000.0);
 	gui.addSlider("Light Pos Y", LIGHTY, -2000.0, 2000.0);
 	gui.addSlider("Light Pos Z", LIGHTZ, -2000.0, 2000.0);		
@@ -91,6 +91,12 @@ void AdminPanel::update(){
 		clearQImg = false;
 		int i = 1;
 		ofNotifyEvent(onClearQImg, i);
+	}else if (restoreAllSMSAnswer && (phone_questionID == "" || kioskPhoneNum_asFrom == "")) {
+		loadSetting = false;
+		openFileDialogueSetting("setting");	
+		restoreAllSMSAnswer = false;
+		int i = 1;
+		ofNotifyEvent(onRestoreAllSMSAnswer, i);	
 	}else if (restoreAllSMSAnswer) {
 		restoreAllSMSAnswer = false;
 		int i = 1;
@@ -98,6 +104,9 @@ void AdminPanel::update(){
 	}else if (loadSetting) {
 		loadSetting = false;
 		openFileDialogueSetting("setting");
+	}else if (debugWithFakeSMS && (phone_questionID == "" || kioskPhoneNum_asFrom == "")) {
+		loadSetting = false;
+		openFileDialogueSetting("setting");		
 	}
 	
 }
@@ -230,4 +239,6 @@ void AdminPanel::restoreDefault() {
 	restoreAllSMSAnswer = false;	
 	loadSetting = false;
 
+	phone_questionID = "";
+	kioskPhoneNum_asFrom = "";	
 }

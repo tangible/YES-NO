@@ -84,6 +84,12 @@ void AdminPanel::update(){
 		clearQImg = false;
 		int i = 1;
 		ofNotifyEvent(onClearQImg, i);
+	}else if (restoreAllSMSAnswer && (phone_questionID == "" || kioskPhoneNum_asFrom == "")) {
+		loadSetting = false;
+		openFileDialogueSetting("setting");	
+		restoreAllSMSAnswer = false;
+		int i = 1;
+		ofNotifyEvent(onRestoreAllSMSAnswer, i);		
 	}else if (restoreAllSMSAnswer) {
 		restoreAllSMSAnswer = false;
 		int i = 1;
@@ -91,7 +97,11 @@ void AdminPanel::update(){
 	}else if (loadSetting) {
 		loadSetting = false;
 		openFileDialogueSetting("setting");
+	}else if (debugWithFakeSMS && (phone_questionID == "" || kioskPhoneNum_asFrom == "")) {
+		loadSetting = false;
+		openFileDialogueSetting("setting");		
 	}
+	
 	
 }
 
@@ -237,4 +247,6 @@ void AdminPanel::restoreDefault() {
 	restoreAllSMSAnswer = false;	
 	loadSetting = false;
 
+	phone_questionID = "";
+	kioskPhoneNum_asFrom = "";
 }
