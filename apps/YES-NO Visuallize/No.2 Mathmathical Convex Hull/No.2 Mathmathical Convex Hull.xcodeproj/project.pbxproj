@@ -28,13 +28,15 @@
 		311AD3C0131ED33D00485387 /* ofxVCGLib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 311AD3BD131ED33D00485387 /* ofxVCGLib.cpp */; };
 		3124125313149008009EF2D9 /* qimg3.png in Resources */ = {isa = PBXBuildFile; fileRef = 3124124E13149008009EF2D9 /* qimg3.png */; };
 		3124125413149008009EF2D9 /* QuestionImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3124124F13149008009EF2D9 /* QuestionImage.cpp */; };
-		3124125D13149042009EF2D9 /* Helvetica.dfont in Resources */ = {isa = PBXBuildFile; fileRef = 3124125B13149042009EF2D9 /* Helvetica.dfont */; };
 		3124125E13149042009EF2D9 /* Verdana Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3124125C13149042009EF2D9 /* Verdana Bold.ttf */; };
 		3124128F131493EA009EF2D9 /* ofxFileDialogOSX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3124128D131493EA009EF2D9 /* ofxFileDialogOSX.cpp */; };
 		3124805D1304FDF00076BAB7 /* IncomingSMS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3124805C1304FDF00076BAB7 /* IncomingSMS.cpp */; };
 		3124890C130605800076BAB7 /* YesNoObjectSoft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */; };
+		3174E676133078AC0029E21A /* HelveticaBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3174E675133078AC0029E21A /* HelveticaBold.ttf */; };
 		31826D891328B55100BB3DD2 /* A_kick.aif in Resources */ = {isa = PBXBuildFile; fileRef = 31826D871328B55100BB3DD2 /* A_kick.aif */; };
 		31826D8A1328B55100BB3DD2 /* key_omin_a.aif in Resources */ = {isa = PBXBuildFile; fileRef = 31826D881328B55100BB3DD2 /* key_omin_a.aif */; };
+		318BDFEF132F23F600E818E9 /* XMLSetting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 318BDFEE132F23F600E818E9 /* XMLSetting.cpp */; };
+		318BE00D132F26C200E818E9 /* AppSpecificSetting.xml in Resources */ = {isa = PBXBuildFile; fileRef = 318BE00C132F26C200E818E9 /* AppSpecificSetting.xml */; };
 		318E688E12F604F90097A0A9 /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 318E688C12F604E90097A0A9 /* icon.icns */; };
 		3196667B13078BB700C55161 /* easing_terms_of_use.html in Resources */ = {isa = PBXBuildFile; fileRef = 3196665613078BB700C55161 /* easing_terms_of_use.html */; };
 		3196667C13078BB700C55161 /* ofxEasing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3196665713078BB700C55161 /* ofxEasing.cpp */; };
@@ -328,7 +330,6 @@
 		3124124E13149008009EF2D9 /* qimg3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qimg3.png; sourceTree = "<group>"; };
 		3124124F13149008009EF2D9 /* QuestionImage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = QuestionImage.cpp; sourceTree = "<group>"; };
 		3124125013149008009EF2D9 /* QuestionImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionImage.h; sourceTree = "<group>"; };
-		3124125B13149042009EF2D9 /* Helvetica.dfont */ = {isa = PBXFileReference; lastKnownFileType = file; path = Helvetica.dfont; sourceTree = "<group>"; };
 		3124125C13149042009EF2D9 /* Verdana Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Verdana Bold.ttf"; sourceTree = "<group>"; };
 		3124128D131493EA009EF2D9 /* ofxFileDialogOSX.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxFileDialogOSX.cpp; sourceTree = "<group>"; };
 		3124128E131493EA009EF2D9 /* ofxFileDialogOSX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxFileDialogOSX.h; sourceTree = "<group>"; };
@@ -337,8 +338,12 @@
 		312485DB1305F58E0076BAB7 /* ofxEasyCam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxEasyCam.h; sourceTree = "<group>"; };
 		3124890A130605800076BAB7 /* YesNoObjectSoft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YesNoObjectSoft.h; sourceTree = "<group>"; };
 		3124890B130605800076BAB7 /* YesNoObjectSoft.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = YesNoObjectSoft.cpp; sourceTree = "<group>"; };
+		3174E675133078AC0029E21A /* HelveticaBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HelveticaBold.ttf; sourceTree = "<group>"; };
 		31826D871328B55100BB3DD2 /* A_kick.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = A_kick.aif; sourceTree = "<group>"; };
 		31826D881328B55100BB3DD2 /* key_omin_a.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = key_omin_a.aif; sourceTree = "<group>"; };
+		318BDFED132F23F600E818E9 /* XMLSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLSetting.h; sourceTree = "<group>"; };
+		318BDFEE132F23F600E818E9 /* XMLSetting.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = XMLSetting.cpp; sourceTree = "<group>"; };
+		318BE00C132F26C200E818E9 /* AppSpecificSetting.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = AppSpecificSetting.xml; sourceTree = "<group>"; };
 		318E688C12F604E90097A0A9 /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = icon.icns; path = bin/data/icon.icns; sourceTree = "<group>"; };
 		3196665613078BB700C55161 /* easing_terms_of_use.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = easing_terms_of_use.html; sourceTree = "<group>"; };
 		3196665713078BB700C55161 /* ofxEasing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxEasing.cpp; sourceTree = "<group>"; };
@@ -805,7 +810,7 @@
 		E45BE9770E8CC7DD009D7055 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = /System/Library/Frameworks/CoreServices.framework; sourceTree = "<absolute>"; };
 		E45BE9790E8CC7DD009D7055 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
 		E45BE97A0E8CC7DD009D7055 /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = /System/Library/Frameworks/QuickTime.framework; sourceTree = "<absolute>"; };
-		E4B69B5B0A3A1756003C02F2 /* No.2 Mathmathical Convex Hull.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "No.2 Mathmathical Convex Hull.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4B69B5B0A3A1756003C02F2 /* No.2 Mathmathical Convex HullDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "No.2 Mathmathical Convex HullDebug.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4B69E1D0A3A1BDC003C02F2 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
 		E4B69E1E0A3A1BDC003C02F2 /* App.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = App.cpp; sourceTree = "<group>"; };
 		E4B69E1F0A3A1BDC003C02F2 /* App.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = App.h; sourceTree = "<group>"; };
@@ -988,7 +993,7 @@
 		3124125A13149042009EF2D9 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
-				3124125B13149042009EF2D9 /* Helvetica.dfont */,
+				3174E675133078AC0029E21A /* HelveticaBold.ttf */,
 				3124125C13149042009EF2D9 /* Verdana Bold.ttf */,
 			);
 			path = fonts;
@@ -1029,6 +1034,25 @@
 			);
 			name = sounds;
 			path = bin/data/sounds;
+			sourceTree = SOURCE_ROOT;
+		};
+		318BDFEC132F23F600E818E9 /* XMLSetting */ = {
+			isa = PBXGroup;
+			children = (
+				318BDFED132F23F600E818E9 /* XMLSetting.h */,
+				318BDFEE132F23F600E818E9 /* XMLSetting.cpp */,
+			);
+			name = XMLSetting;
+			path = ../SharedModule/XMLSetting;
+			sourceTree = SOURCE_ROOT;
+		};
+		318BE00B132F26C200E818E9 /* xml */ = {
+			isa = PBXGroup;
+			children = (
+				318BE00C132F26C200E818E9 /* AppSpecificSetting.xml */,
+			);
+			name = xml;
+			path = bin/data/xml;
 			sourceTree = SOURCE_ROOT;
 		};
 		318E688812F604D30097A0A9 /* Resources */ = {
@@ -2072,7 +2096,7 @@
 			isa = PBXGroup;
 			children = (
 				318E688812F604D30097A0A9 /* Resources */,
-				E4B69B5B0A3A1756003C02F2 /* No.2 Mathmathical Convex Hull.app */,
+				E4B69B5B0A3A1756003C02F2 /* No.2 Mathmathical Convex HullDebug.app */,
 				E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */,
 				E4B69E1C0A3A1BDC003C02F2 /* src */,
 				E4C2422310CC54B6004149E2 /* openFrameworks */,
@@ -2089,6 +2113,8 @@
 				E4B69E1F0A3A1BDC003C02F2 /* App.h */,
 				31AE88781301DF990087065A /* ConvexHull */,
 				310C997E1303ECDA006EF72F /* AdminPanel */,
+				318BDFEC132F23F600E818E9 /* XMLSetting */,
+				318BE00B132F26C200E818E9 /* xml */,
 				31CD7B2213091B42006DA41E /* StateText */,
 				3124124A13149008009EF2D9 /* QuestionImage */,
 				31AE81BC130137470087065A /* HTTPSMSClient */,
@@ -2201,7 +2227,7 @@
 			);
 			name = "No.2 Mathmathical Convex Hull";
 			productName = myOFApp;
-			productReference = E4B69B5B0A3A1756003C02F2 /* No.2 Mathmathical Convex Hull.app */;
+			productReference = E4B69B5B0A3A1756003C02F2 /* No.2 Mathmathical Convex HullDebug.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -2250,9 +2276,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3174E676133078AC0029E21A /* HelveticaBold.ttf in Resources */,
+				318BE00D132F26C200E818E9 /* AppSpecificSetting.xml in Resources */,
 				31826D8A1328B55100BB3DD2 /* key_omin_a.aif in Resources */,
 				31826D891328B55100BB3DD2 /* A_kick.aif in Resources */,
-				3124125D13149042009EF2D9 /* Helvetica.dfont in Resources */,
 				3124125E13149042009EF2D9 /* Verdana Bold.ttf in Resources */,
 				3124125313149008009EF2D9 /* qimg3.png in Resources */,
 				318E688E12F604F90097A0A9 /* icon.icns in Resources */,
@@ -2484,6 +2511,7 @@
 				3124125413149008009EF2D9 /* QuestionImage.cpp in Sources */,
 				3124128F131493EA009EF2D9 /* ofxFileDialogOSX.cpp in Sources */,
 				311AD3C0131ED33D00485387 /* ofxVCGLib.cpp in Sources */,
+				318BDFEF132F23F600E818E9 /* XMLSetting.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

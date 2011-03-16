@@ -29,8 +29,13 @@ void App::setup(){
 	eyeYTween.setParameters(easingback, ofxTween::easeOut, ofGetScreenHeight()/2, ofGetScreenHeight()/2, 0, 0);
 	cameraZTween.setParameters(easingback, ofxTween::easeOut, 700, 700, 0, 0);
 	
-	qImage.changeImgQImg("qimg3.png");
+	//qImage.changeImgQImg("qimg3.png");
 	
+	bool bCheckSetting = adminPanel.checkSetting();
+	if (bCheckSetting) {
+		int i = 1;
+		ofNotifyEvent(adminPanel.onRestoreAllSMSAnswer, i);	
+	}
 }
 
 //--------------------------------------------------------------
@@ -141,6 +146,18 @@ void App::keyPressed(int key){
 		ofSaveScreen("/Users/alexbeim/Desktop/akiraTemporary/scrn"+ofToString(scrnseq)+".png");
 	}else if (key == 'f') {
 		httpClient.createFakeSMS();
+	}else if (key == 'x') {
+		float rnd = ofRandomf();		
+		cout << "save to xml file = "+ofToString(rnd) << endl;
+		xmlSetting.saveToXMLFile("tag", "value"+ofToString(rnd));
+	}else if (key == 'z') {
+		cout << "extract from file" << endl;
+		string rtn = xmlSetting.getValueByTag("tag", "error");
+		cout << "returned = "+rtn << endl;
+	}else if (key == 'l') {
+		sText.setup();
+		//blobMgr.reset();
+		blobMgr.setup(FPS, &adminPanel, &camera, &qImage, &sText);		
 	}else {	
 		adminPanel.keyPressed(key);
 	}

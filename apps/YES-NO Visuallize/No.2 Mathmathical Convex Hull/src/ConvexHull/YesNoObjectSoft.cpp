@@ -113,36 +113,6 @@ void YesNoObjectSoft::draw() {
 	btSoftBody::tNodeArray& nodes(yesORno->getSoftBody()->m_nodes);
 	btSoftBody::tLinkArray& links(yesORno->getSoftBody()->m_links);
 	btSoftBody::tFaceArray& faces(yesORno->getSoftBody()->m_faces);
-
-//	ofEnableAlphaBlending();
-//	glColor4f(1.0, 1.0, 1.0, 0.4);
-//	for(int i = 0; i < faces.size(); i++) {
-//		btSoftBody::Node* node_0 = faces[i].m_n[0];
-//		btSoftBody::Node* node_1 = faces[i].m_n[1];
-//		btSoftBody::Node* node_2 = faces[i].m_n[2];		
-//		ofxTriangleShape(
-//		node_0->m_x.getX(), node_0->m_x.getY(), node_0->m_x.getZ(),
-//		node_1->m_x.getX(), node_1->m_x.getY(), node_1->m_x.getZ(),		
-//		node_2->m_x.getX(), node_2->m_x.getY(), node_2->m_x.getZ()
-//						 );		
-//	}
-//	ofSetLineWidth(3);
-//	glColor4f(0.0, 0.0, 0.0, 0.4);
-//	for(int i = 0; i < links.size(); i++) {
-//		btSoftBody::Node* node_0 = links[i].m_n[0];
-//		btSoftBody::Node* node_1 = links[i].m_n[1];
-//		ofxLine(node_0->m_x.getX(), node_0->m_x.getY(), node_0->m_x.getZ(), 
-//				node_1->m_x.getX(), node_1->m_x.getY(), node_1->m_x.getZ());
-//	}	
-//	glColor4f(1.0, 0.0, 0.0, 1.0);
-//	for (int i = 0; i < smsBaseFace.size()/3; i++) {
-//		ofxVec3f a = smsBaseFace[i*3];
-//		ofxVec3f b = smsBaseFace[i*3+1];
-//		ofxVec3f c = smsBaseFace[i*3+2];	
-//		ofxTriangleShape(a, b, c);
-//	}
-//	ofDisableAlphaBlending();
-		
 		
 	int numNan = 0;
 	vector<float> faceVertexPtr;
@@ -361,10 +331,21 @@ vector<float> YesNoObjectSoft::changeColBySMSRecievedFace(int z) {
 			colPtr[idx] = tgtc.r/255.0;
 			colPtr[idx+1] = tgtc.g/255.0;
 			colPtr[idx+2] = tgtc.b/255.0;
-			colPtr[idx+3] = 0.2;					
+			colPtr[idx+3] = 0.2;	
+			
+			if (i == faceIDVec.size()-1 && j == 0) {
+				currentSpikeColor = tgtc;
+				currentSpikeColorFloat = angleFactor;
+			}
 		}
 		
 	}
+	
+	if (YesOrNo == 0) {
+		ofNotifyEvent(notifyUpdateStextColorYesEvent, YesOrNo);
+	}else {
+		ofNotifyEvent(notifyUpdateStextColorNoEvent, YesOrNo);
+	}		
 	
 	destColorPointer = colPtrRtn;
 	return colPtrRtn;	
@@ -439,6 +420,12 @@ void YesNoObjectSoft::notifyFinishAllUpdating(int & z) {
 	addedSMSs.clear();	
 	
 	ofNotifyEvent(onFinishAllUpdating, YesOrNo);
+	
+	if (YesOrNo == 0) {
+		ofNotifyEvent(notifyStartStextFadingYesEvent, YesOrNo);
+	}else {
+		ofNotifyEvent(notifyStartStextFadingNoEvent, YesOrNo);
+	}	
 	
 }
 

@@ -28,6 +28,14 @@ public:
 	void debugKeyPress(int key);
 	void feedSMS(UpdateInfo upInfo);
 	
+	// yes/no obj
+	YesNoObj yes;
+	YesNoObj no;	
+	
+	float getSMSColorYes() { return yes.getSMSColor(); }
+	float getSMSColorNo() { return no.getSMSColor(); }	
+	
+	
 private:	
 	
 	void setupGLStuff();
@@ -46,11 +54,7 @@ private:
 	static const float minScale = 1.0;
 	static const float maxScale = 1.5;	
 	static const float scaleDiffMax = 7;
-	static const float scaleDurTime = 1000;	
-
-	// yes/no obj
-	YesNoObj yes;
-	YesNoObj no;
+	static const float scaleDurTime = 1000;
 	
 	// sounds
 	ofSoundPlayer			soundYes;
@@ -67,8 +71,8 @@ private:
 	static const float particleNumDiffMax = 7;
 	static const float minParticleNum = 40;
 	static const float maxParticleNum = 700;
-	static const float minSizeObjNum = 1;
-	static const float maxSizeObjNum = 400;
+	static const float minSizeObjNumPc = 1;
+	static const float maxSizeObjNumPc = 400;
 	static const float minSizeObjSize = 10;
 	static const float maxSizeObjSize = 60;
 	static const float minImpulseFactor = 20;

@@ -61,6 +61,7 @@ void AdminPanel::update(){
 		openFileDialogueBG("BG");
 	}else if (clearBG) {
 		clearBG = false;
+		mySetting.removeTag("bg");		
 		int i = 1;
 		ofNotifyEvent(onClearBG, i);
 	}else if (changeQImg) {
@@ -68,6 +69,7 @@ void AdminPanel::update(){
 		openFileDialogueChangeQImg("QImg");
 	}else if (clearQImg) {
 		clearQImg = false;
+		mySetting.removeTag("qimg");		
 		int i = 1;
 		ofNotifyEvent(onClearQImg, i);
 	}else if (restoreAllSMSAnswer && (phone_questionID == "" || kioskPhoneNum_asFrom == "")) {
@@ -122,6 +124,8 @@ void AdminPanel::openFileDialogueBG(string ID) {
 	fi.path = path;
 	ofNotifyEvent(onFileDialogueBG, fi);
 	
+	mySetting.saveToXMLFile("bg", path);
+	
 }
 
 void AdminPanel::openFileDialogueChangeQImg(string ID) {
@@ -132,6 +136,8 @@ void AdminPanel::openFileDialogueChangeQImg(string ID) {
 	fi.ID = ID;
 	fi.path = path;
 	ofNotifyEvent(onFileDialogueQImg, fi);	
+	
+	mySetting.saveToXMLFile("qimg", path);
 	
 }
 
@@ -146,6 +152,54 @@ void AdminPanel::openFileDialogueSetting(string ID) {
 	cout << "phone_questionID = "+phone_questionID << endl;
 	cout << "kioskPhoneNum_asFrom = "+kioskPhoneNum_asFrom << endl;
 	settingXML.popTag();
+	
+	mySetting.saveToXMLFile("phonenumber", phone_questionID);
+	mySetting.saveToXMLFile("from", kioskPhoneNum_asFrom);
+	cout << "set to AppSpecificSetting.xml" << endl;
+	
+}
+
+bool AdminPanel::checkSetting() {
+	
+	cout << "checking AppSpecificSetting.xml....";
+	
+	bool bPhonnumber = mySetting.tagExists("phonenumber");
+	bool bFrom = mySetting.tagExists("from");
+	
+	if (bPhonnumber) {
+		phone_questionID = mySetting.getValueByTag("phonenumber", "error");
+		cout << "phone_questionID = "+phone_questionID;
+	}
+	if (bFrom) {
+		kioskPhoneNum_asFrom = mySetting.getValueByTag("from", "error");		
+		cout << " kioskPhoneNum_asFrom = "+kioskPhoneNum_asFrom;
+	}
+	
+	bool bg = mySetting.tagExists("bg");
+	bool qimg = mySetting.tagExists("qimg");
+	if (bg) {
+		string bgpath = mySetting.getValueByTag("bg", "error");
+		FileDef fi;
+		fi.ID = "bg";
+		fi.path = bgpath;
+		ofNotifyEvent(onFileDialogueBG, fi);
+	}
+	if (qimg) {
+		string qpath = mySetting.getValueByTag("qimg", "error");
+		FileDef fi;
+		fi.ID = "qimg";
+		fi.path = qpath;
+		ofNotifyEvent(onFileDialogueQImg, fi);		
+	}
+	
+	if ((phone_questionID != "error" && kioskPhoneNum_asFrom != "error") &&
+		(bPhonnumber && bFrom)) {
+		cout << " true!" << endl;
+		return true;
+	}else {
+		cout << " false!" << endl;		
+		return false;
+	}
 	
 }
 

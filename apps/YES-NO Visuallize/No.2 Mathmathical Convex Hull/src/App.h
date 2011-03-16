@@ -34,6 +34,13 @@ public:
 	void resotoreCamOrbit(int & z);
 	void camOrbit(int & z);
 
+//	void onNotifyUpdateStextColorYesEvent(int & z) { sText.updateColorYes(convexHull.getYesSpikeColor()); }
+//	void onNotifyUpdateStextColorNoEvent(int & z) { sText.updateColorNo(convexHull.getNoSpikeColor()); }
+	void onNotifyUpdateStextColorYesEvent(int & z) { sText.updateColorYes(convexHull.getYesSpikeColorFloat()); }
+	void onNotifyUpdateStextColorNoEvent(int & z) { sText.updateColorNo(convexHull.getNoSpikeColorFloat()); }	
+	void onNotifyStartStextFadingYesEvent(int & z) { sText.startFadeToDefaultColorYes(); };
+	void onNotifyStartStextFadingNoEvent(int & z) { sText.startFadeToDefaultColorNo(); };	
+	
 	AdminPanel		adminPanel;
 	ConvexHull		convexHull;
 	HTTPSMSClient	httpClient;

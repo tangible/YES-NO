@@ -10,6 +10,7 @@
 #include "HTTPSMSClient.h"
 #include "QuestionImage.h"
 #include "StateText.h"
+#include "XMLSetting.h"
 
 // No.1 Organic Blob
 class App : public ofBaseApp{
@@ -43,6 +44,7 @@ public:
 	QuestionImage	qImage;
 	StateText		sText;
 	UpdateInfo		upInfo;
+	XMLSetting		xmlSetting;
 	
 	ofxCamera		camera;
 	ofxTween		cameraXTween;

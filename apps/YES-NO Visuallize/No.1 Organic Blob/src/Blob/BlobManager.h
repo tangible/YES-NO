@@ -54,6 +54,15 @@ public:
 	void onBallGetSMSrep(int& chunkID);
 	void onBallGetSMSrepComplete(int& chunkID);
 	
+	void reset() {
+			
+		
+		for (int i = 0; i < mBallChunks.size(); i++) {
+			mBallChunks[i]->reset();
+			mBallChunks[i] = NULL;
+		}
+		
+	}
 	
 	static const int		YES = 0;
 	static const int		NO = 1;
@@ -62,6 +71,8 @@ public:
 	ofxTuioClient			myTuio;
 	QuestionImage*			qImage;
 	StateText*				sText;
+	float					sTextColYes;
+	float					sTextColNo;
 	
 	int						fps;
 	ofxShader				shader;
@@ -84,10 +95,12 @@ public:
 	vector<MetaBallChunk*>  mBallChunks;
 	ofSoundPlayer			soundYes;
 	ofSoundPlayer			soundNo;
-	vector<IncomingSMS*>		inSMSs;
+	vector<IncomingSMS*>	inSMSs;
 	ofxColorPicker			chunkCol;
 	ofxVec3f				centroidYes;
 	ofxVec3f				centroidNo;	
+	float					radiusYes;
+	float					radiusNo;
 	int						nMetaBalls;
 	
 	float					prevColAngle;

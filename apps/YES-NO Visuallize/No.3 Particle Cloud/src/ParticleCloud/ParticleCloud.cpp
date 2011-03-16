@@ -118,18 +118,18 @@ void ParticleCloud::feedSMS(UpdateInfo upInfo) {
 //	yes.changeParticleObjNum(bullet, particleYesNum);	
 //	no.changeParticleObjNum(bullet, particleNoNum);
 	
-	int minthresh = -maxSizeObjNum/5;
-	int maxthresh = maxSizeObjNum/5;
+	int minthresh = -400/5;
+	int maxthresh = 400/5;
 	int diffYes = ofClamp(upInfo.numDiffYes, minthresh, maxthresh);
 	int diffNo = ofClamp(upInfo.numDiffNo, minthresh, maxthresh);
-	float sizeObjYesNum = ofMap(diffYes, minthresh, maxthresh, maxSizeObjNum/6, maxSizeObjNum);
+	float sizeObjYesNum = ofMap(diffYes, minthresh, maxthresh, 400/6, 400);
 	yes.changeSizeObjNum(bullet, sizeObjYesNum);
-	float sizeObjNoNum = ofMap(diffNo, minthresh, maxthresh, maxSizeObjNum/6, maxSizeObjNum);
+	float sizeObjNoNum = ofMap(diffNo, minthresh, maxthresh, 400/6, 400);
 	no.changeSizeObjNum(bullet, sizeObjNoNum);	
 	
-//	float sizeObjYesNum = ofMap(upInfo.ratioTotalYes, 0.0, 1.0, minSizeObjNum, maxSizeObjNum);
+//	float sizeObjYesNum = ofMap(upInfo.ratioTotalYes, 0.0, 1.0, minSizeObjNum, 400);
 //	yes.changeSizeObjNum(bullet, sizeObjYesNum);
-//	float sizeObjNoNum = ofMap(upInfo.ratioTotalNo, 0.0, 1.0, minSizeObjNum, maxSizeObjNum);
+//	float sizeObjNoNum = ofMap(upInfo.ratioTotalNo, 0.0, 1.0, minSizeObjNum, 400);
 //	no.changeSizeObjNum(bullet, sizeObjNoNum);
 
 //	float pObjYesSize = ofMap(upInfo.ratioTotalYes, 0.0, 1.0, 0.8, 1.4);
@@ -186,6 +186,7 @@ void ParticleCloud::feedSMS(UpdateInfo upInfo) {
 		no.getFlock()->setBoidSpeed(0, 0, normaBoidSpeed);
 	}
 	
+	int z = 0;
 	if (Obj::YES == upInfo.sms.YesOrNo) {
 		float size = ofMap(upInfo.ratioTotalYes, 0.0, 1.0, ParticleCloud::minSizeObjSize, ParticleCloud::maxSizeObjSize);
 		yes.addSMSObj(ofRandom(30, 40));

@@ -47,7 +47,7 @@ void YesNoObj::setup(ofxBullet* bl, Flock3D* f, AdminPanel* ap, int _YesOrNo, in
 	addedObjSize = 1.0;
 	particleObjSize = 1.0;
 	impulseFactor = 20;
-	initialColAngle = ofRandom(baseMin, baseMax);
+	initialColAngle = (YesOrNo == 0)?0.0:0.5;//ofRandom(baseMin, baseMax);
 	
 }
 
@@ -66,7 +66,8 @@ void YesNoObj::update() {
 		}
 	}
 	
-	flock->update(true);
+//	flock->update(true);
+	
 }
 
 void YesNoObj::draw() {
@@ -78,48 +79,49 @@ void YesNoObj::draw() {
 
 void YesNoObj::computeCloudShape() {
 	
-	vector<ofxVec3f> posFeed = flock->getTrailPoints(0, 0);
-	int p = (int)posFeed.size();
-	float threeOfFour = 0.6;
-	ofxVec3f tofVec = posFeed[ofMap(threeOfFour, 0.0, 1.0, 0, posFeed.size())];
+//	vector<ofxVec3f> posFeed = flock->getTrailPoints(0, 0);
+//	int p = (int)posFeed.size();
+//	float threeOfFour = 0.6;
+//	ofxVec3f tofVec = posFeed[ofMap(threeOfFour, 0.0, 1.0, 0, posFeed.size())];
+//	
+//	float compDist = 0.0;
+//	for (int i = 0; i < posFeed.size(); i++) {
+//		ofxVec3f tmpVec = posFeed[i];
+//		float dist = tmpVec.distance(tofVec);
+//		if (dist > compDist) {
+//			compDist = dist;
+//		}
+//	}
+//	
+//	// make obj more cloudy
+//	ofxVec3f pos;
+//	for (int i = 0; i < objs.size(); i++) {
+//		
+//		// pos
+//		ofxVec3f tmpVec = posFeed[i];
+//		float dist = tmpVec.distance(tofVec);
+//		float compare = (dist >= compDist) ? dist+0.1 : compDist;
+//		float iplFactor = ofMap(dist, 0.0, compare, 1.0, 0.7);
+//		ofxVec3f resVec = tmpVec.getInterpolated(tofVec, iplFactor);
+//		
+//		
+//		if (YesOrNo == 0) {
+//			pos = ofxVec3f(ofGetScreenWidth()/3, ofGetScreenHeight()/2, 0);
+//		}else if (YesOrNo == 1) {
+//			pos = ofxVec3f(ofGetScreenWidth()-ofGetScreenWidth()/3, ofGetScreenHeight()/2, 0);
+//		}
+//		objs[i]->setForcePoint(pos);
+//		
+////		objs[i].setForcePoint(resVec);
+//		
+//		// size
+//		float tmpSize = objs[i]->size;
+//		float sizeFactor = ofMap(dist, 0.0, compare, 1.5, 1.0);
+//		objs[i]->positionalSizeFactor = sizeFactor;
+//		
+//	}
 	
-	float compDist = 0.0;
-	for (int i = 0; i < posFeed.size(); i++) {
-		ofxVec3f tmpVec = posFeed[i];
-		float dist = tmpVec.distance(tofVec);
-		if (dist > compDist) {
-			compDist = dist;
-		}
-	}
-	
-	// make obj more cloudy
 	ofxVec3f pos;
-	for (int i = 0; i < objs.size(); i++) {
-		
-		// pos
-		ofxVec3f tmpVec = posFeed[i];
-		float dist = tmpVec.distance(tofVec);
-		float compare = (dist >= compDist) ? dist+0.1 : compDist;
-		float iplFactor = ofMap(dist, 0.0, compare, 1.0, 0.7);
-		ofxVec3f resVec = tmpVec.getInterpolated(tofVec, iplFactor);
-		
-		
-		if (YesOrNo == 0) {
-			pos = ofxVec3f(ofGetScreenWidth()/3, ofGetScreenHeight()/2, 0);
-		}else if (YesOrNo == 1) {
-			pos = ofxVec3f(ofGetScreenWidth()-ofGetScreenWidth()/3, ofGetScreenHeight()/2, 0);
-		}
-		objs[i]->setForcePoint(pos);
-		
-//		objs[i].setForcePoint(resVec);
-		
-		// size
-		float tmpSize = objs[i]->size;
-		float sizeFactor = ofMap(dist, 0.0, compare, 1.5, 1.0);
-		objs[i]->positionalSizeFactor = sizeFactor;
-		
-	}
-	
 	for (int i = 0; i < addedObjs.size(); i++) {
 		
 		if (YesOrNo == 0) {
@@ -146,10 +148,35 @@ void YesNoObj::computeMovement() {
 	
 }
 
+bool up = true;
 void YesNoObj::addSMSObj(int size, bool bInitial) {
 	
-//	float cAng = ofRandom(baseMin, baseMax);
-	initialColAngle += 0.01;
+	if (YesOrNo == 0) {
+		if (initialColAngle >= 0.5) {
+			up = false;
+		}
+		if (initialColAngle <= 0.0) {
+			up = true;
+		}
+		if (up) {
+			initialColAngle += 0.01;
+		}else if (!up) {
+			initialColAngle -= 0.01;
+		}
+	}else {
+		if (initialColAngle >= 1.0) {
+			up = false;
+		}
+		if (initialColAngle <= 0.5) {
+			up = true;
+		}
+		if (up) {
+			initialColAngle += 0.01;
+		}else if (!up) {
+			initialColAngle -= 0.01;
+		}		
+	}
+	
 	float cAng = initialColAngle;
 	
 	bool up = (ofRandomf() > 0) ? true : false;
@@ -196,7 +223,7 @@ void YesNoObj::addSMSObj(int size, bool bInitial) {
 //	}
 	
 	if (bInitial) {
-		obj->colAngle = ofRandom(baseMin, baseMax);
+		obj->colAngle = (YesOrNo == 0)?0.0:0.5;//ofRandom(baseMin, baseMax);
 	}else {
 		obj->colAngle = cAng;
 	}
@@ -205,6 +232,10 @@ void YesNoObj::addSMSObj(int size, bool bInitial) {
 	obj->setForcePoint(ofxVec3f(ofGetScreenWidth()/2, ofGetScreenHeight()/2, 0));
 	ofAddListener(obj->notifyCollideSMS, this, &YesNoObj::onNotifyCollideSMS);
 	addedObjs.push_back(obj);	
+	
+	if (addedObjs.size() <= 2) {
+		updateColorByDistance(addedObjs[addedObjs.size()-1]->getObjPos());
+	}	
 	
 }
 
@@ -393,18 +424,17 @@ void YesNoObj::updateColorByDistance(ofxVec3f smsPos) {
 
 	ofRemoveListener(addedObjs[addedObjs.size()-1]->notifyCollideSMS, this, &YesNoObj::onNotifyCollideSMS);
 	
-	float baseCol = addedObjs[addedObjs.size()-1]->colAngle;
-	float angleStep = 0.5/addedObjs.size();
+	float baseCol = addedObjs[0]->colAngle;
+	float angleStep = 0.25/addedObjs.size();
 	float angleAccum = 0.0;
 	vector<int> sortedVec = sortObjFromSMS(smsPos);
+	
 	for (int i = 0; i < sortedVec.size(); i++) {
-		
 		int idx = sortedVec[i];
 		float colAng = ofMap(i, 0, sortedVec.size(), 0.0, 1.0);
-		float colScl = ofMap(i, 0, sortedVec.size(), 0.2, 0.99);		
+		float colScl = ofMap(i, 0, sortedVec.size(), 0.9, 0.9);		
 		float colRad = ofMap(i, 0, sortedVec.size(), 0.98, 0.98);
 		
-		angleAccum += angleStep;		
 //		addedObjs[idx]->colAngle = initialColAngle+colAng;
 		addedObjs[idx]->colAngle = baseCol+angleAccum;		
 		addedObjs[idx]->colScale = colScl;
@@ -413,6 +443,16 @@ void YesNoObj::updateColorByDistance(ofxVec3f smsPos) {
 		addedObjs[idx]->colorTween.setParameters(addedObjs[idx]->colorTweenEasing, ofxTween::easeIn, addedObjs[idx]->prevColAngle, addedObjs[idx]->colAngle, 1000, 0);
 		addedObjs[idx]->colorTween.addValue(addedObjs[idx]->prevColScale, addedObjs[idx]->colScale);
 		addedObjs[idx]->colorTween.addValue(addedObjs[idx]->prevColRadius, addedObjs[idx]->colRadius);		
+		
+		angleAccum += angleStep;		
+	}
+	
+	if (YesOrNo == 0) {
+		ofNotifyEvent(notifyUpdateStextColorYesEvent, YesOrNo);		
+		ofNotifyEvent(notifyStartStextFadingYesEvent, YesOrNo);
+	}else {
+		ofNotifyEvent(notifyUpdateStextColorNoEvent, YesOrNo);				
+		ofNotifyEvent(notifyStartStextFadingNoEvent, YesOrNo);
 	}
 	
 }

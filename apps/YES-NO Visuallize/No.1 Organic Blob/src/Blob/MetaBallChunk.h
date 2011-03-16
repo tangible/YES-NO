@@ -36,6 +36,15 @@ public:
 	ofxTween ballPosTweenY;
 	ofxTween ballPosTweenZ;
 	
+	void reset() {
+		
+		delete m_pMetaballs;
+		delete ballPoints;
+		delete ballPointsPrev;
+		delete ballPointsPrev2;
+		delete ballSizes;
+		
+	}
 	
 	int						nPoints;
 	

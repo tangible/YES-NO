@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		312411BC1314716C009EF2D9 /* Helvetica.dfont in Resources */ = {isa = PBXBuildFile; fileRef = 312411BB1314716C009EF2D9 /* Helvetica.dfont */; };
 		312411C01314727E009EF2D9 /* qimg3.png in Resources */ = {isa = PBXBuildFile; fileRef = 312411BF1314727E009EF2D9 /* qimg3.png */; };
 		3138C90F1328B2840046EF5D /* A_kick.aif in Resources */ = {isa = PBXBuildFile; fileRef = 3138C90D1328B2840046EF5D /* A_kick.aif */; };
 		3138C9101328B2840046EF5D /* key_omin_a.aif in Resources */ = {isa = PBXBuildFile; fileRef = 3138C90E1328B2840046EF5D /* key_omin_a.aif */; };
+		3174E8001330866C0029E21A /* HelveticaBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3174E7FF1330866C0029E21A /* HelveticaBold.ttf */; };
+		318BE09C132F320A00E818E9 /* XMLSetting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 318BE09B132F320A00E818E9 /* XMLSetting.cpp */; };
+		318BE09F132F321A00E818E9 /* AppSpecificSetting.xml in Resources */ = {isa = PBXBuildFile; fileRef = 318BE09E132F321A00E818E9 /* AppSpecificSetting.xml */; };
 		318E688E12F604F90097A0A9 /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 318E688C12F604E90097A0A9 /* icon.icns */; };
 		31B5E31B130F576B00388627 /* Boid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31B5E315130F576B00388627 /* Boid.cpp */; };
 		31B5E31C130F576B00388627 /* BoidList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31B5E317130F576B00388627 /* BoidList.cpp */; };
@@ -241,7 +243,7 @@
 		E45BE9840E8CC7DD009D7055 /* QuickTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE97A0E8CC7DD009D7055 /* QuickTime.framework */; };
 		E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1D0A3A1BDC003C02F2 /* main.cpp */; };
 		E4B69E210A3A1BDC003C02F2 /* App.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1E0A3A1BDC003C02F2 /* App.cpp */; };
-		E4C2422B10CC554B004149E2 /* openFrameworks.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2421E10CC549C004149E2 /* openFrameworks.a */; };
+		E4C2422B10CC554B004149E2 /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2421E10CC549C004149E2 /* openFrameworksDebug.a */; };
 		E4C2424710CC5A17004149E2 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424410CC5A17004149E2 /* AppKit.framework */; };
 		E4C2424810CC5A17004149E2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424510CC5A17004149E2 /* Cocoa.framework */; };
 		E4C2424910CC5A17004149E2 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424610CC5A17004149E2 /* IOKit.framework */; };
@@ -297,11 +299,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		312411BB1314716C009EF2D9 /* Helvetica.dfont */ = {isa = PBXFileReference; lastKnownFileType = file; path = Helvetica.dfont; sourceTree = "<group>"; };
 		312411BF1314727E009EF2D9 /* qimg3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qimg3.png; sourceTree = "<group>"; };
 		312CFBD3130F2E010010A5FB /* ofxEasyCam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxEasyCam.h; sourceTree = "<group>"; };
 		3138C90D1328B2840046EF5D /* A_kick.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = A_kick.aif; sourceTree = "<group>"; };
 		3138C90E1328B2840046EF5D /* key_omin_a.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = key_omin_a.aif; sourceTree = "<group>"; };
+		3174E7FF1330866C0029E21A /* HelveticaBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HelveticaBold.ttf; sourceTree = "<group>"; };
+		318BE09A132F320A00E818E9 /* XMLSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLSetting.h; sourceTree = "<group>"; };
+		318BE09B132F320A00E818E9 /* XMLSetting.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = XMLSetting.cpp; sourceTree = "<group>"; };
+		318BE09E132F321A00E818E9 /* AppSpecificSetting.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = AppSpecificSetting.xml; sourceTree = "<group>"; };
 		318E688C12F604E90097A0A9 /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = icon.icns; path = bin/data/icon.icns; sourceTree = "<group>"; };
 		31B5E315130F576B00388627 /* Boid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Boid.cpp; sourceTree = "<group>"; };
 		31B5E316130F576B00388627 /* Boid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Boid.h; sourceTree = "<group>"; };
@@ -870,7 +875,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E4C2422B10CC554B004149E2 /* openFrameworks.a in Frameworks */,
+				E4C2422B10CC554B004149E2 /* openFrameworksDebug.a in Frameworks */,
 				E45BE0AA0E8CC67C009D7055 /* GLee.a in Frameworks */,
 				E45BE2E40E8CC69C009D7055 /* rtAudio.a in Frameworks */,
 				E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */,
@@ -917,6 +922,25 @@
 			);
 			name = sounds;
 			path = bin/data/sounds;
+			sourceTree = SOURCE_ROOT;
+		};
+		318BE099132F320A00E818E9 /* XMLSetting */ = {
+			isa = PBXGroup;
+			children = (
+				318BE09A132F320A00E818E9 /* XMLSetting.h */,
+				318BE09B132F320A00E818E9 /* XMLSetting.cpp */,
+			);
+			name = XMLSetting;
+			path = ../SharedModule/XMLSetting;
+			sourceTree = SOURCE_ROOT;
+		};
+		318BE09D132F321A00E818E9 /* xml */ = {
+			isa = PBXGroup;
+			children = (
+				318BE09E132F321A00E818E9 /* AppSpecificSetting.xml */,
+			);
+			name = xml;
+			path = bin/data/xml;
 			sourceTree = SOURCE_ROOT;
 		};
 		318E688812F604D30097A0A9 /* Resources */ = {
@@ -1977,8 +2001,8 @@
 		31F4FEE4131336060082B942 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
+				3174E7FF1330866C0029E21A /* HelveticaBold.ttf */,
 				31F4FEE5131336060082B942 /* Verdana Bold.ttf */,
-				312411BB1314716C009EF2D9 /* Helvetica.dfont */,
 			);
 			path = fonts;
 			sourceTree = "<group>";
@@ -2206,6 +2230,8 @@
 				31F400081313414D0082B942 /* QuestionImage */,
 				31DED7A71311E06E007CC1D3 /* HTTPSMSClient */,
 				31E814F7130DF41C0053787E /* AdminPanel */,
+				318BE099132F320A00E818E9 /* XMLSetting */,
+				318BE09D132F321A00E818E9 /* xml */,
 				31E81514130DF6F60053787E /* shaders */,
 				3138C90C1328B2840046EF5D /* sounds */,
 			);
@@ -2215,7 +2241,7 @@
 		E4C2421710CC549C004149E2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E4C2421E10CC549C004149E2 /* openFrameworks.a */,
+				E4C2421E10CC549C004149E2 /* openFrameworksDebug.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2351,10 +2377,10 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		E4C2421E10CC549C004149E2 /* openFrameworks.a */ = {
+		E4C2421E10CC549C004149E2 /* openFrameworksDebug.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = openFrameworks.a;
+			path = openFrameworksDebug.a;
 			remoteRef = E4C2421D10CC549C004149E2 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
@@ -2365,6 +2391,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				318BE09F132F321A00E818E9 /* AppSpecificSetting.xml in Resources */,
 				3138C90F1328B2840046EF5D /* A_kick.aif in Resources */,
 				3138C9101328B2840046EF5D /* key_omin_a.aif in Resources */,
 				312411C01314727E009EF2D9 /* qimg3.png in Resources */,
@@ -2379,7 +2406,7 @@
 				31E81530130DF7260053787E /* showdepth.vert in Resources */,
 				318E688E12F604F90097A0A9 /* icon.icns in Resources */,
 				31DED8121311E92D007CC1D3 /* easing_terms_of_use.html in Resources */,
-				312411BC1314716C009EF2D9 /* Helvetica.dfont in Resources */,
+				3174E8001330866C0029E21A /* HelveticaBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2614,6 +2641,7 @@
 				31DED89513121C6C007CC1D3 /* ofxFileDialogOSX.cpp in Sources */,
 				31F4000B1313414D0082B942 /* QuestionImage.cpp in Sources */,
 				31C2DA2B1328A249005C6A85 /* VerticeContainer.cpp in Sources */,
+				318BE09C132F320A00E818E9 /* XMLSetting.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

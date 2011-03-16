@@ -32,16 +32,34 @@ public:
 	
 	void onNotifyCollideSMS(int & z);
 	
+	ofEvent<int> notifyUpdateStextColorYesEvent;
+	ofEvent<int> notifyUpdateStextColorNoEvent;	
+	ofEvent<int> notifyStartStextFadingYesEvent;
+	ofEvent<int> notifyStartStextFadingNoEvent;		
+	
 	int getBoidID() { return boidID; }
 	int getObjNum() { return (int)objs.size(); }
 	int getAddeObjNum() { return (int)addedObjs.size(); }
 	void drawFlock() { flock->draw(); }
 	Flock3D* getFlock() { return flock; }
 	
+	float getSMSColor() { return addedObjs[addedObjs.size()-1]->colAngle; };
+	
 	float particleObjSize;
 	float addedObjSize;
 	float impulseFactor;
 	float initialColAngle;
+	
+	static const float minSizeObjNum = 0;
+	static const float maxSizeObjNum = 400;
+	static const float minParticleSize = 10;
+	static const float maxParticleSize = 30;
+	static const float minParticleMass = 5;
+	static const float maxParticleMass = 10;
+	static const float minForce = 55;
+	static const float maxForce = 1000;
+	static const float minTangent = 100;
+	static const float maxTangent = 2000;	
 
 private:
 	void drawObjs();
@@ -58,16 +76,6 @@ private:
 	
 	// objs fields
 	int numObjs;
-	static const float minSizeObjNum = 0;
-	static const float maxSizeObjNum = 400;
-	static const float minParticleSize = 10;
-	static const float maxParticleSize = 30;
-	static const float minParticleMass = 5;
-	static const float maxParticleMass = 10;
-	static const float minForce = 55;
-	static const float maxForce = 1000;
-	static const float minTangent = 100;
-	static const float maxTangent = 2000;
 	vector<Obj*> objs;
 	vector<Obj*> addedObjs;	
 	

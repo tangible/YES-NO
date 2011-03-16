@@ -14,6 +14,7 @@
 #include "HTTPSMSClient.h"
 #include "ofxVectorMath.h"
 #include "ofx3DUtils.h"
+#include "ofxColorPicker.h"
 
 class StateText {
 
@@ -23,8 +24,32 @@ public:
 	void onSMSReceivedUpdate(int yesORno, UpdateInfo upInfo);
 	void draw(UpdateInfo upInfo, ofxVec3f centroidYes, ofxVec3f centroidNo);
 	void draw(UpdateInfo upInfo);
+	void drawWithNoScale(UpdateInfo upInfo, ofColor yesCol, ofColor noCol);	
+	void drawWithNoScale(UpdateInfo upInfo, float colAngYes, float colAngNo);
+	void drawWithNoScale(UpdateInfo upInfo);
+	void updateColor(ofColor yesCol, ofColor noCol);
+	void updateColor(float colAngYes = 1000.0, float colAngNo = 1000.0);
+	void updateColorYes(float colAngYes = 1000.0);
+	void updateColorNo(float colAngNo = 1000.0);
+	void updateColorYes(ofColor _yesCol);
+	void updateColorNo(ofColor _noCol);
+	void startFadeToDefaultColorYes(float dur = 2000);
+	void startFadeToDefaultColorNo(float dur = 2000);
+	string insertComma(string num);
 	
 	ofTrueTypeFont dfont;
+	
+	ofTrueTypeFont numberFont;
+	static const int numberFontSize = 100;
+	ofTrueTypeFont answerFont;
+	static const int answerFontSize = 30;
+	
+	ofxColorPicker colp;
+	ofColor	 curYesCol;
+	ofColor  curNoCol;
+	ofxTween yesColTween;
+	ofxTween noColTween;
+	ofxEasingCirc colTweenEasing;
 	
 	ofTrueTypeFont font;	
 	ofxTween yesXTween;
@@ -44,4 +69,5 @@ public:
 	string noNum;
 	float yesSize;
 	float noSize;
+	
 };

@@ -36,6 +36,15 @@ public:
 
 	void  SetGridSize(int nSize);
 	int   getNBalls();
+	
+	void reset() {
+		
+		delete m_pOpenVoxels;
+		delete m_pfGridEnergy;
+		delete m_pnGridPointStatus;
+		delete m_pnGridVoxelStatus;		
+
+	}
 
 protected:
 	float ComputeEnergy(float x, float y, float z);

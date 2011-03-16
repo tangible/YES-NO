@@ -38,8 +38,19 @@ void App::setup(){
 	ofAddListener(httpClient.onSMSRecieved, this, &App::onSMSMsgRecieved);	
 	ofAddListener(adminPanel.onRestoreAllSMSAnswer, this, &App::onRestoreAllSMSAnswer);	
 	bAlreadyRestoreAllAnswer = false;
+	ofAddListener(pCloud.yes.notifyUpdateStextColorYesEvent, this, &App::onNotifyUpdateStextColorYesEvent);
+	ofAddListener(pCloud.no.notifyUpdateStextColorNoEvent, this, &App::onNotifyUpdateStextColorNoEvent);
+	ofAddListener(pCloud.yes.notifyStartStextFadingYesEvent, this, &App::onNotifyStartStextFadingYesEvent);
+	ofAddListener(pCloud.no.notifyStartStextFadingNoEvent, this, &App::onNotifyStartStextFadingNoEvent);	
 	
-	qImage.changeImgQImg("qimg3.png");
+	//qImage.changeImgQImg("qimg3.png");
+	
+	bool bCheckSetting = adminPanel.checkSetting();
+	if (bCheckSetting) {
+		int i = 1;
+		ofNotifyEvent(adminPanel.onRestoreAllSMSAnswer, i);	
+	}	
+	
 
 }
 
@@ -101,7 +112,7 @@ void App::draw(){
 	qImage.draw();		
 	ofEnableSmoothing();
 	ofEnableAlphaBlending();	
-	sText.draw(upInfo);
+	sText.drawWithNoScale(upInfo);
 	glEnable(GL_DEPTH_TEST);
 	
 	ofEnableSmoothing();
@@ -154,7 +165,7 @@ void App::draw(){
 //	colorFBO.afterDraw();
 	
 	adminPanel.draw();
-
+	
 }
 
 //--------------------------------------------------------------

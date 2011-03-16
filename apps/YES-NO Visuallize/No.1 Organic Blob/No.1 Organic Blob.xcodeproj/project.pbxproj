@@ -47,12 +47,14 @@
 		313E6EC512DD108500883C18 /* ofxCvImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 313E6EBA12DD108500883C18 /* ofxCvImage.cpp */; };
 		313E6EC612DD108500883C18 /* ofxCvShortImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 313E6EBD12DD108500883C18 /* ofxCvShortImage.cpp */; };
 		3164318412E6B4A000B4F23D /* ofxShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3164318212E6B4A000B4F23D /* ofxShader.cpp */; };
+		3174E3DA133032FF0029E21A /* HelveticaBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3174E3D9133032FF0029E21A /* HelveticaBold.ttf */; };
 		318B44A212FA2AB700A50F14 /* glsl.frag in Resources */ = {isa = PBXBuildFile; fileRef = 31D3505712F66BA400D9D87A /* glsl.frag */; };
 		318B44A312FA2AB700A50F14 /* glsl.vert in Resources */ = {isa = PBXBuildFile; fileRef = 31D3505812F66BA400D9D87A /* glsl.vert */; };
+		318BDF02132EF84400E818E9 /* XMLSetting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 318BDF01132EF84400E818E9 /* XMLSetting.cpp */; };
+		318BDF19132EFC4100E818E9 /* AppSpecificSetting.xml in Resources */ = {isa = PBXBuildFile; fileRef = 318BDF18132EFC4100E818E9 /* AppSpecificSetting.xml */; };
 		31ACDD4412F8CEB600F95FC7 /* MetaBallChunk.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31ACDD4312F8CEB600F95FC7 /* MetaBallChunk.cpp */; };
 		31AE81B7130137170087065A /* HTTPSMSClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31AE81B5130137170087065A /* HTTPSMSClient.cpp */; };
 		31AFC8E413187F5D0050851D /* StateText.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31AFC8DF13187F5D0050851D /* StateText.cpp */; };
-		31AFC8E513187F5D0050851D /* Helvetica.dfont in Resources */ = {isa = PBXBuildFile; fileRef = 31AFC8E213187F5D0050851D /* Helvetica.dfont */; };
 		31AFC8E613187F5D0050851D /* Verdana Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 31AFC8E313187F5D0050851D /* Verdana Bold.ttf */; };
 		31AFC957131884360050851D /* QuestionImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31AFC953131884360050851D /* QuestionImage.cpp */; };
 		31AFC958131884360050851D /* qimg3.png in Resources */ = {isa = PBXBuildFile; fileRef = 31AFC956131884360050851D /* qimg3.png */; };
@@ -418,13 +420,16 @@
 		313E6EBF12DD108500883C18 /* ofxOpenCv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxOpenCv.h; sourceTree = "<group>"; };
 		3164318212E6B4A000B4F23D /* ofxShader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxShader.cpp; sourceTree = "<group>"; };
 		3164318312E6B4A000B4F23D /* ofxShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxShader.h; sourceTree = "<group>"; };
+		3174E3D9133032FF0029E21A /* HelveticaBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HelveticaBold.ttf; sourceTree = "<group>"; };
+		318BDF00132EF84400E818E9 /* XMLSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLSetting.h; sourceTree = "<group>"; };
+		318BDF01132EF84400E818E9 /* XMLSetting.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = XMLSetting.cpp; sourceTree = "<group>"; };
+		318BDF18132EFC4100E818E9 /* AppSpecificSetting.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = AppSpecificSetting.xml; sourceTree = "<group>"; };
 		31ACDD4212F8CEB600F95FC7 /* MetaBallChunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetaBallChunk.h; sourceTree = "<group>"; };
 		31ACDD4312F8CEB600F95FC7 /* MetaBallChunk.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MetaBallChunk.cpp; sourceTree = "<group>"; };
 		31AE81B5130137170087065A /* HTTPSMSClient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HTTPSMSClient.cpp; sourceTree = "<group>"; };
 		31AE81B6130137170087065A /* HTTPSMSClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPSMSClient.h; sourceTree = "<group>"; };
 		31AFC8DF13187F5D0050851D /* StateText.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StateText.cpp; sourceTree = "<group>"; };
 		31AFC8E013187F5D0050851D /* StateText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StateText.h; sourceTree = "<group>"; };
-		31AFC8E213187F5D0050851D /* Helvetica.dfont */ = {isa = PBXFileReference; lastKnownFileType = file; path = Helvetica.dfont; sourceTree = "<group>"; };
 		31AFC8E313187F5D0050851D /* Verdana Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Verdana Bold.ttf"; sourceTree = "<group>"; };
 		31AFC953131884360050851D /* QuestionImage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = QuestionImage.cpp; sourceTree = "<group>"; };
 		31AFC954131884360050851D /* QuestionImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionImage.h; sourceTree = "<group>"; };
@@ -950,7 +955,7 @@
 		E45BE9770E8CC7DD009D7055 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = /System/Library/Frameworks/CoreServices.framework; sourceTree = "<absolute>"; };
 		E45BE9790E8CC7DD009D7055 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
 		E45BE97A0E8CC7DD009D7055 /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = /System/Library/Frameworks/QuickTime.framework; sourceTree = "<absolute>"; };
-		E4B69B5B0A3A1756003C02F2 /* No.1 Organic Blob.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "No.1 Organic Blob.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4B69B5B0A3A1756003C02F2 /* No.1 Organic BlobDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "No.1 Organic BlobDebug.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.xml; path = "openFrameworks-Info.plist"; sourceTree = "<group>"; };
 		E4C2421610CC549C004149E2 /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E4C2424410CC5A17004149E2 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
@@ -1317,6 +1322,25 @@
 			path = src;
 			sourceTree = "<group>";
 		};
+		318BDEFF132EF7E600E818E9 /* XMLSetting */ = {
+			isa = PBXGroup;
+			children = (
+				318BDF00132EF84400E818E9 /* XMLSetting.h */,
+				318BDF01132EF84400E818E9 /* XMLSetting.cpp */,
+			);
+			name = XMLSetting;
+			path = ../SharedModule/XMLSetting;
+			sourceTree = SOURCE_ROOT;
+		};
+		318BDF17132EFC4100E818E9 /* xml */ = {
+			isa = PBXGroup;
+			children = (
+				318BDF18132EFC4100E818E9 /* AppSpecificSetting.xml */,
+			);
+			name = xml;
+			path = bin/data/xml;
+			sourceTree = SOURCE_ROOT;
+		};
 		31AE81B4130137170087065A /* HTTPSMSClient */ = {
 			isa = PBXGroup;
 			children = (
@@ -1341,7 +1365,7 @@
 		31AFC8E113187F5D0050851D /* fonts */ = {
 			isa = PBXGroup;
 			children = (
-				31AFC8E213187F5D0050851D /* Helvetica.dfont */,
+				3174E3D9133032FF0029E21A /* HelveticaBold.ttf */,
 				31AFC8E313187F5D0050851D /* Verdana Bold.ttf */,
 			);
 			path = fonts;
@@ -2490,7 +2514,7 @@
 		E4B69B4A0A3A1720003C02F2 = {
 			isa = PBXGroup;
 			children = (
-				E4B69B5B0A3A1756003C02F2 /* No.1 Organic Blob.app */,
+				E4B69B5B0A3A1756003C02F2 /* No.1 Organic BlobDebug.app */,
 				E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */,
 				311E58DF12F6453E0077A832 /* Resources */,
 				E4B69E1C0A3A1BDC003C02F2 /* src */,
@@ -2511,6 +2535,8 @@
 				311E590912F646240077A832 /* Blob */,
 				311E598812F64D630077A832 /* AdminPanel */,
 				31AE81B4130137170087065A /* HTTPSMSClient */,
+				318BDEFF132EF7E600E818E9 /* XMLSetting */,
+				318BDF17132EFC4100E818E9 /* xml */,
 				31D3505612F66BA400D9D87A /* shaders */,
 				3138C8E91328B0960046EF5D /* sounds */,
 			);
@@ -2621,7 +2647,7 @@
 			);
 			name = "No.1 Organic Blob";
 			productName = myOFApp;
-			productReference = E4B69B5B0A3A1756003C02F2 /* No.1 Organic Blob.app */;
+			productReference = E4B69B5B0A3A1756003C02F2 /* No.1 Organic BlobDebug.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -2670,13 +2696,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3174E3DA133032FF0029E21A /* HelveticaBold.ttf in Resources */,
+				318BDF19132EFC4100E818E9 /* AppSpecificSetting.xml in Resources */,
 				3138C8EC1328B0960046EF5D /* A_kick.aif in Resources */,
 				3138C8ED1328B0960046EF5D /* key_omin_a.aif in Resources */,
 				318B44A212FA2AB700A50F14 /* glsl.frag in Resources */,
 				318B44A312FA2AB700A50F14 /* glsl.vert in Resources */,
 				311E58E612F6456F0077A832 /* icon.icns in Resources */,
 				31F0A79312FA64540039634E /* easing_terms_of_use.html in Resources */,
-				31AFC8E513187F5D0050851D /* Helvetica.dfont in Resources */,
 				31AFC8E613187F5D0050851D /* Verdana Bold.ttf in Resources */,
 				31AFC958131884360050851D /* qimg3.png in Resources */,
 			);
@@ -2939,6 +2966,7 @@
 				31AFC957131884360050851D /* QuestionImage.cpp in Sources */,
 				31AFC991131888F70050851D /* ofxColorPicker.cpp in Sources */,
 				31AFCC641318BE670050851D /* IncomingSMS.cpp in Sources */,
+				318BDF02132EF84400E818E9 /* XMLSetting.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

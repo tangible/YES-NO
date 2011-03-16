@@ -98,6 +98,8 @@ public:
 	void clear();
 	
 	ofSoundPlayer			sound;	
+	ofColor					currentSpikeColor;
+	float					currentSpikeColorFloat;
 	
 	int incomingSMSFaceID;	
 	UpdateInfo updateInfo;
@@ -109,6 +111,10 @@ public:
 	ofEvent<int> notifyScaleNoEvent;	
 	void notifyFinishAllUpdating(int & z);
 	ofEvent<int> notifyStartCamOrbit;
+	ofEvent<int> notifyUpdateStextColorYesEvent;
+	ofEvent<int> notifyUpdateStextColorNoEvent;
+	ofEvent<int> notifyStartStextFadingYesEvent;
+	ofEvent<int> notifyStartStextFadingNoEvent;	
 	
 	ofxBullet*	bullet;
 	MySoftBody*	yesORno;

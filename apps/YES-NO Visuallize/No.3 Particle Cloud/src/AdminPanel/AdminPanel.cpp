@@ -15,11 +15,11 @@ void AdminPanel::setup() {
 	gui.addTitle("Img Setting");
 	gui.addButton("Change BG", changeBG);
 	gui.addButton("Clear BG", clearBG);
-	gui.addColorPicker("Obj Edge Color", BGColor);
+//	gui.addColorPicker("Obj Edge Color", BGColor);
 	gui.addButton("Change Question Img", changeQImg);
 	gui.addButton("Clear Question Img", clearQImg);	
 	
-	gui.addTitle("SMS Setting");
+	gui.addTitle("SMS Setting").setNewColumn(true);
 	gui.addButton("load setting", loadSetting);
 	gui.addToggle("debug with fake SMS", debugWithFakeSMS);
 	gui.addButton("get all SMS (1time & irreversible!)", restoreAllSMSAnswer);	
@@ -82,6 +82,7 @@ void AdminPanel::update(){
 		openFileDialogueBG("BG");
 	}else if (clearBG) {
 		clearBG = false;
+		mySetting.removeTag("bg");
 		int i = 1;
 		ofNotifyEvent(onClearBG, i);
 	}else if (changeQImg) {
@@ -89,6 +90,7 @@ void AdminPanel::update(){
 		openFileDialogueChangeQImg("QImg");
 	}else if (clearQImg) {
 		clearQImg = false;
+		mySetting.removeTag("qimg");
 		int i = 1;
 		ofNotifyEvent(onClearQImg, i);
 	}else if (restoreAllSMSAnswer && (phone_questionID == "" || kioskPhoneNum_asFrom == "")) {
@@ -144,6 +146,8 @@ void AdminPanel::openFileDialogueBG(string ID) {
 	fi.path = path;
 	ofNotifyEvent(onFileDialogueBG, fi);
 	
+	mySetting.saveToXMLFile("bg", path);
+	
 }
 
 void AdminPanel::openFileDialogueChangeQImg(string ID) {
@@ -154,21 +158,71 @@ void AdminPanel::openFileDialogueChangeQImg(string ID) {
 	fi.ID = ID;
 	fi.path = path;
 	ofNotifyEvent(onFileDialogueQImg, fi);	
+
+	mySetting.saveToXMLFile("qimg", path);
 	
 }
 
+// <phonenumber> is Anveo's vertual phone number. <from> is the number of SIM card on KIOSK which send SMS to the <phonenumber>
 void AdminPanel::openFileDialogueSetting(string ID) {
 	
 	string path;
 	ofxFileDialogOSX::openFile(path);
 	settingXML.loadFile(path);
 	settingXML.pushTag("setting");
-	phone_questionID = settingXML.getValue("phonenumber", "16048005302");
-	kioskPhoneNum_asFrom = settingXML.getValue("from", "kiosk_1");
+	phone_questionID = settingXML.getValue("phonenumber", "error");
+	kioskPhoneNum_asFrom = settingXML.getValue("from", "error");
 	cout << "phone_questionID = "+phone_questionID << endl;
 	cout << "kioskPhoneNum_asFrom = "+kioskPhoneNum_asFrom << endl;
 	settingXML.popTag();
 	
+	mySetting.saveToXMLFile("phonenumber", phone_questionID);
+	mySetting.saveToXMLFile("from", kioskPhoneNum_asFrom);
+	cout << "set to AppSpecificSetting.xml" << endl;
+	
+}
+
+bool AdminPanel::checkSetting() {
+	
+	cout << "checking AppSpecificSetting.xml....";
+	
+	bool bPhonnumber = mySetting.tagExists("phonenumber");
+	bool bFrom = mySetting.tagExists("from");
+	
+	if (bPhonnumber) {
+		phone_questionID = mySetting.getValueByTag("phonenumber", "error");
+		cout << "phone_questionID = "+phone_questionID;
+	}
+	if (bFrom) {
+		kioskPhoneNum_asFrom = mySetting.getValueByTag("from", "error");		
+		cout << " kioskPhoneNum_asFrom = "+kioskPhoneNum_asFrom;
+	}
+	
+	bool bg = mySetting.tagExists("bg");
+	bool qimg = mySetting.tagExists("qimg");
+	if (bg) {
+		string bgpath = mySetting.getValueByTag("bg", "error");
+		FileDef fi;
+		fi.ID = "bg";
+		fi.path = bgpath;
+		ofNotifyEvent(onFileDialogueBG, fi);
+	}
+	if (qimg) {
+		string qpath = mySetting.getValueByTag("qimg", "error");
+		FileDef fi;
+		fi.ID = "qimg";
+		fi.path = qpath;
+		ofNotifyEvent(onFileDialogueQImg, fi);		
+	}
+
+	if ((phone_questionID != "error" && kioskPhoneNum_asFrom != "error") &&
+		(bPhonnumber && bFrom)) {
+		cout << " true!" << endl;
+		return true;
+	}else {
+		cout << " false!" << endl;		
+		return false;
+	}	
 }
 
 void AdminPanel::restoreDefault() {
@@ -222,13 +276,13 @@ void AdminPanel::restoreDefault() {
 	MATERIALSPECULAR[2] = 0.83;
 	MATERIALSPECULAR[3] = 1.0;		
 	MATERIALSHINENESS = 24.0;
-	LIGHTAMBIENT[0] = 1.0;
-	LIGHTAMBIENT[1] = 1.0;
-	LIGHTAMBIENT[2] = 1.0;
+	LIGHTAMBIENT[0] = 0.48;
+	LIGHTAMBIENT[1] = 0.48;
+	LIGHTAMBIENT[2] = 0.48;
 	LIGHTAMBIENT[3] = 1.0;	
-	LIGHTDIFFUSE[0] = 1.0;
-	LIGHTDIFFUSE[1] = 1.0;
-	LIGHTDIFFUSE[2] = 1.0;
+	LIGHTDIFFUSE[0] = 0.48;
+	LIGHTDIFFUSE[1] = 0.48;
+	LIGHTDIFFUSE[2] = 0.48;
 	LIGHTDIFFUSE[3] = 1.0;	
 	LIGHTSPECULAR[0] = 0.54;
 	LIGHTSPECULAR[1] = 0.54;

@@ -19,8 +19,8 @@ void IncomingSMS::setup(ofxBullet* _bullet, int _chunkID, float colAng) {
 //	ofxVec3f rdmPos = ofxVec3f(ofRandom((left)?0:ofGetScreenWidth()*2, (left)?-ofGetScreenWidth():ofGetScreenWidth()),
 //							   ofRandom((up)?0:ofGetScreenHeight()*2, (left)?-ofGetScreenHeight():ofGetScreenHeight()),
 //							   1300);
-	ofxVec3f rdmPos = ofxVec3f(ofRandom(0, ofGetScreenWidth()),
-							   ofRandom(-300, 300),
+	ofxVec3f rdmPos = ofxVec3f(ofRandom(ofGetScreenWidth()/2-200, ofGetScreenWidth()/2+200),
+							   ofRandom(ofGetScreenHeight()/2-100, ofGetScreenHeight()/2+100),
 							   1300);
 	
 	
@@ -43,7 +43,7 @@ void IncomingSMS::setup(ofxBullet* _bullet, int _chunkID, float colAng) {
 }
 
 
-void IncomingSMS::update(ofxVec3f tgtPos) {
+void IncomingSMS::update(ofxVec3f tgtPos, float rad) {
 
 	ofPoint spherePos = body->getBodyPos();
 	float ampX = tgtPos.x - spherePos.x;
@@ -57,22 +57,20 @@ void IncomingSMS::update(ofxVec3f tgtPos) {
 	spherePos.z += ampZ - tmpAmpZ;	
 	body->translateBody(spherePos, body->rotDir, ofGetFrameNum());
 	
-	
+		
 //	int numManifolds = bullet->getWorld()->getDispatcher()->getNumManifolds();
-//	for (int i = 0; i<numManifolds-1; i++) {
+//	for (int i = 0; i < numManifolds; i++) {
 //		btPersistentManifold* contactManifold =  bullet->getWorld()->getDispatcher()->getManifoldByIndexInternal(i);
 //		btCollisionObject* obA = static_cast<btCollisionObject*>(contactManifold->getBody0());
 //		btCollisionObject* obB = static_cast<btCollisionObject*>(contactManifold->getBody1());
-//
-//		if (obA == body->getRigidBody()) {
-//			ofNotifyEvent(onBallGetSMSrepEvent, chunkID);
-//		}else if (obB == body->getRigidBody()) {
+//		
+//		if (obA == body->getRigidBody() || obB == body->getRigidBody()) {
 //			ofNotifyEvent(onBallGetSMSrepEvent, chunkID);
 //		}
-//
+//		
 //	}		
-	
-	if (100 > tgtPos.distance(spherePos)) {
+//	cout << "rad = "+ofToString(rad) << endl;
+	if (rad > tgtPos.distance(spherePos)) {
 		ofNotifyEvent(onBallGetSMSrepEvent, chunkID);
 	}
 	

@@ -130,7 +130,7 @@ void BlobManager::setup(int _fps, AdminPanel* _admin, ofxCamera* cam, QuestionIm
 	iniNCol.r = 0.5; iniNCol.g = 0.0; iniNCol.b = 0.0;
 	chunkCol.setColor(iniNCol);
 	chunkCol.update();
-	nextNoColAngle = chunkCol.getColorAngle()+0.08;
+	nextNoColAngle = nextYesColAngle+0.5;//chunkCol.getColorAngle()+0.08;
 	
 }
 
@@ -148,11 +148,29 @@ void BlobManager::update() {
 	// update metaball point locations
 	if (admin->TOGGLEMOTION) {
 
+		float minRad = 330;
+		float maxRad = 330;
+		float maxRadFactor = 1.2;
+		int maxSMSnum = 5000;
 		for (int i = 0; i < inSMSs.size(); i++) {
 			if (inSMSs[i]->chunkID == 0) {
-				inSMSs[i]->update(centroidYes);
+				float total = ofClamp(upInfo.numTotalYes, 0, maxSMSnum);
+				float tmpSize = yesDiff*total;
+				float maxSizeParam = 1.0*maxSMSnum;
+				float radBase = ofMap(tmpSize, 0.0, maxSizeParam, minRad, maxRad);
+				float diffFactor = ofMap(yesDiff, 0.0, 1.0, 0.5, maxRadFactor);
+				radBase *= diffFactor;				
+				
+				inSMSs[i]->update(centroidYes, radBase);
 			}else if (inSMSs[i]->chunkID == 1) {
-				inSMSs[i]->update(centroidNo);
+				float total = ofClamp(upInfo.numTotalNo, 0, maxSMSnum);
+				float tmpSize = noDiff*total;
+				float maxSizeParam = 1.0*maxSMSnum;
+				float radBase = ofMap(tmpSize, 0.0, maxSizeParam, minRad, maxRad);
+				float diffFactor = ofMap(noDiff, 0.0, 1.0, 0.5, maxRadFactor);
+				radBase *= diffFactor;					
+				
+				inSMSs[i]->update(centroidNo, radBase);
 			}
 		}
 		
@@ -188,6 +206,20 @@ void BlobManager::update() {
 			}
 		}
 		
+		// get radius
+//		for (int i = 0; i < sphrersForChunk.size(); i++) {
+//			float radAccum = 0.0;			
+//			vector<MyRigidBody*> spheres = sphrersForChunk[i];
+//			
+//			for (int j = 0; j < nMetaBalls; j++) {
+//				MyRigidBody* sph = spheres[j];
+//				ofxVec3f pos = sph->getBodyPos();
+//				float rad = pos.distance((i==0)?centroidYes:centroidNo);
+//				radAccum += rad;
+//			}
+//			radAccum /= nMetaBalls;
+//			(i==0)?radiusYes:radiusNo = radAccum;
+//		}
 		
 		float maxVal = 0.01;
 		ofxVec3f force;
@@ -281,8 +313,15 @@ void BlobManager::draw() {
 		// draw BG, qimage and statetext
 		glDisable(GL_LIGHTING);
 		glColor3f(1.0, 1.0, 1.0);
-		bg.draw(ofGetScreenWidth()/2-bg.getWidth()/2+bgXTween.update(), 
-				ofGetScreenHeight()/2-bg.getHeight()/2+200+bgYTween.update());
+		ofSetupScreen();
+
+		if (isVidBG) {
+			bgPlayer.draw(ofGetScreenWidth()/2-bgPlayer.getWidth()/2, 
+						  ofGetScreenHeight()/2-bgPlayer.getHeight()/2);
+		}else {
+			bg.draw(ofGetScreenWidth()/2-bg.getWidth()/2, 
+					ofGetScreenHeight()/2-bg.getHeight()/2);		
+		}
 		
 		ofPushMatrix();
 		ofSetupScreen();		
@@ -293,7 +332,14 @@ void BlobManager::draw() {
 		qImage->draw();	
 		glDisable(GL_CULL_FACE);	
 		ofEnableSmoothing(); 	
-		sText->draw(upInfo);
+//		sText->draw(upInfo);
+//		ofColor yCol;
+//		yCol.r = mBallChunks[0]->chunkCurrCol.x*255.0; yCol.g = mBallChunks[0]->chunkCurrCol.y*255.0; yCol.b = mBallChunks[0]->chunkCurrCol.z*255.0;
+//		ofColor nCol;
+//		nCol.r = mBallChunks[1]->chunkCurrCol.x*255.0; nCol.g = mBallChunks[1]->chunkCurrCol.y*255.0; nCol.b = mBallChunks[1]->chunkCurrCol.z*255.0;		
+//		sText->drawWithNoScale(upInfo, yCol, nCol);
+//		sText->drawWithNoScale(upInfo, sTextColYes, sTextColNo);
+		sText->drawWithNoScale(upInfo);
 		glEnable(GL_LIGHTING);
 		glEnable(GL_CULL_FACE);
 		glEnable(GL_DEPTH_TEST);
@@ -304,6 +350,10 @@ void BlobManager::draw() {
 		
 		ofEnableAlphaBlending();		
 			
+		ofxSetSphereResolution(60);
+		glDisable(GL_CULL_FACE);
+		GLfloat lightPosition[] = {admin->LIGHTX, -admin->LIGHTY, admin->LIGHTZ, 0.0f};
+		glLightfv(GL_LIGHT0, GL_POSITION, lightPosition);		
 		for (int i = 0; i < inSMSs.size(); i++) {
 			ofxVec3f pos = inSMSs[i]->body->getBodyPos();
 			ofColor col = inSMSs[i]->actualCol;
@@ -311,6 +361,9 @@ void BlobManager::draw() {
 			float size = inSMSs[i]->size;
 			ofxSphere(pos.x, pos.y, pos.z, size);
 		}			
+		glEnable(GL_CULL_FACE);
+		GLfloat lightPosition2[] = {admin->LIGHTX, admin->LIGHTY, admin->LIGHTZ, 0.0f};
+		glLightfv(GL_LIGHT0, GL_POSITION, lightPosition2);		
 		
 		// draw metaball
 		ofPushMatrix();
@@ -617,17 +670,17 @@ void BlobManager::onBallGetSMSrep(int& chunkID) {
 	ofColor noCol = chunkCol.getColor();
 	noCol.r = noCol.r/255.0; noCol.g = noCol.g/255.0; noCol.b = noCol.b/255.0;
 
-	mBallChunks[0]->onSMSRecievedChangeCol(preservedChunkID, 0, totalRatioYes, yesCol);
-	mBallChunks[1]->onSMSRecievedChangeCol(preservedChunkID, 0, totalRatioNo, noCol);	
 	
 	if (preservedChunkID == 0) {
 		onSMSRecievedImpulseForSphere(0);
-
+		mBallChunks[0]->onSMSRecievedChangeCol(preservedChunkID, 0, totalRatioYes, yesCol);
 		soundYes.play();
+		sText->startFadeToDefaultColorYes();
 	}else if(preservedChunkID == 1) {
 		onSMSRecievedImpulseForSphere(1);		
-		
+		mBallChunks[1]->onSMSRecievedChangeCol(preservedChunkID, 0, totalRatioNo, noCol);			
 		soundNo.play();
+		sText->startFadeToDefaultColorNo();		
 	}
 }
 
@@ -657,19 +710,26 @@ void BlobManager::recieveSMS(UpdateInfo _upInfo) {
 			sms->setup(bullet, 0, nextYesColAngle);
 			ofAddListener(sms->onBallGetSMSrepEvent, this, &BlobManager::onBallGetSMSrep);
 			inSMSs.push_back(sms);
+			sText->updateColorYes(nextYesColAngle);
 		}else if (i == 1 && upInfo.numNo != 0) {
 			IncomingSMS* sms = new IncomingSMS();
 			sms->setup(bullet, 1, nextNoColAngle);
 			ofAddListener(sms->onBallGetSMSrepEvent, this, &BlobManager::onBallGetSMSrep);			
 			inSMSs.push_back(sms);			
+			sText->updateColorNo(nextNoColAngle);			
 		}
 	}	
-	
+	//updateStextCol();
 }
 
 void BlobManager::onClearBG(int& i) {
-	bg.clear();
+	if (isVidBG) {
+		bgPlayer.stop();
+		bgPlayer.close();
+		
+		isVidBG = false;
+	}else {
+		bg.clear();
+	}
 }
-
-
 

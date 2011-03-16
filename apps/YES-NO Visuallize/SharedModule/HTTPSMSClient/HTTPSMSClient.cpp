@@ -63,6 +63,7 @@ void HTTPSMSClient::sendRequestToServer(bool bAll, bool _bDebug) {
 	form.action += installation;
 	form.action += installation_id;
 	
+	
 	// add time param to url
 	if (!bAll) {
 		time_t current;
@@ -122,7 +123,8 @@ void HTTPSMSClient::getSMSAnswersFromServer(ofxHttpResponse & response) {
 		string time = xml.getValue("time", "error");			
 		
 		// if we get the entry which bind to this App
-		if (question_id == adminPanel->phone_questionID) {		
+		cout << "question_id = "+question_id+" adminPanel->phone_questionID = "+adminPanel->phone_questionID << endl;
+		if ((question_id != "error") && question_id == adminPanel->phone_questionID) {		
 			smsMsg sms;
 			sms.answer = ans;
 			sms.time = time;

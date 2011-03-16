@@ -22,7 +22,7 @@ public:
 	~IncomingSMS() { body->remove(bullet->getWorld()); };
 	
 	void setup(ofxBullet* _bullet, int _chunkID, float colAng);
-	void update(ofxVec3f tgtPos);
+	void update(ofxVec3f tgtPos, float rad);
 	void draw();
 	
 	int chunkID;

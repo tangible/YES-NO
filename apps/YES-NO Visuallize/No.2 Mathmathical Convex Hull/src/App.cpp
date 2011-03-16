@@ -30,10 +30,21 @@ void App::setup(){
 	ofAddListener(convexHull.yesSoft.notifyStartCamOrbit, this, &App::camOrbit);
 	ofAddListener(convexHull.noSoft.notifyStartCamOrbit, this, &App::camOrbit);	
 	bAlreadyRestoreAllAnswer = false;	
+	ofAddListener(convexHull.yesSoft.notifyUpdateStextColorYesEvent, this, &App::onNotifyUpdateStextColorYesEvent);
+	ofAddListener(convexHull.noSoft.notifyUpdateStextColorNoEvent, this, &App::onNotifyUpdateStextColorNoEvent);
+	ofAddListener(convexHull.yesSoft.notifyStartStextFadingYesEvent, this, &App::onNotifyStartStextFadingYesEvent);
+	ofAddListener(convexHull.noSoft.notifyStartStextFadingNoEvent, this, &App::onNotifyStartStextFadingNoEvent);	
 	
-	qImage.changeImgQImg("qimg3.png");
+	//qImage.changeImgQImg("qimg3.png");
 	prevOrbit = 2;
 	camOrbitAmt = 4.5;
+	
+	bool bCheckSetting = adminPanel.checkSetting();
+	if (bCheckSetting) {
+		int i = 1;
+		ofNotifyEvent(adminPanel.onRestoreAllSMSAnswer, i);	
+	}	
+
 }
 
 //--------------------------------------------------------------
@@ -113,7 +124,7 @@ void App::draw(){
 	qImage.draw();
 
 	glDisable(GL_CULL_FACE);
-	sText.draw(upInfo);	
+	sText.drawWithNoScale(upInfo);	
 	glEnable(GL_DEPTH_TEST);	
 	glEnable(GL_LIGHTING);
 	

@@ -33,6 +33,13 @@ public:
 	void onSMSMsgRecieved(UpdateInfo& _upInfo);
 	bool bAlreadyRestoreAllAnswer;
 	void onRestoreAllSMSAnswer(int& i);
+
+	
+	void onNotifyUpdateStextColorYesEvent(int & z) { sText.updateColorYes(pCloud.getSMSColorYes()); }
+	void onNotifyUpdateStextColorNoEvent(int & z) { sText.updateColorNo(pCloud.getSMSColorNo()); }	
+	void onNotifyStartStextFadingYesEvent(int & z) { sText.startFadeToDefaultColorYes(); };
+	void onNotifyStartStextFadingNoEvent(int & z) { sText.startFadeToDefaultColorNo(); };	
+	
 	
 	
 	AdminPanel adminPanel;

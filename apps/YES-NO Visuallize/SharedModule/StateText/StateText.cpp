@@ -16,7 +16,10 @@ void StateText::setup() {
 	
 	font.loadFont("Verdana Bold.ttf", 200, true, true, true);
 	
-	dfont.loadFont("Helvetica.dfont", 200, true, true, true);
+	dfont.loadFont("HelveticaBold.ttf", 200, true, true, true);
+	
+	numberFont.loadFont("HelveticaBold.ttf", numberFontSize, true, true, true);
+	answerFont.loadFont("HelveticaBold.ttf", answerFontSize, true, true, true);
 	
 	yes = "yes";
 	no = "no";
@@ -36,16 +39,27 @@ void StateText::setup() {
 	noSize = 0.3;
 //	yesNum = "122";
 //	noNum = "560";
+	
+	
+	yesColTween.setParameters(colTweenEasing, ofxTween::easeIn, 255.0, 255.0, 1000, 0);
+	yesColTween.addValue(255.0, 255.0);
+	yesColTween.addValue(255.0, 255.0);
+	
+	noColTween.setParameters(colTweenEasing, ofxTween::easeIn, 255.0, 255.0, 1000, 0);
+	noColTween.addValue(255.0, 255.0);
+	noColTween.addValue(255.0, 255.0);	
 }
 
 void StateText::onSMSReceivedUpdate(int yesORno, UpdateInfo upInfo) {
 	
 	if (yesORno == 0) {
 		yesNum = ofToString(upInfo.numTotalYes);
+		yesNum = insertComma(yesNum);
 		yesSize = (upInfo.numTotalYes == 0)?0.3:ofMap(upInfo.ratioTotalYes, 0.0, 1.0, 0.1, 1.0);
 		yesSizeTween.setParameters(easingcirc, ofxTween::easeIn, yesSize, yesSize*1.5, 100, 0);			
 	}else {	
-		noNum = ofToString(upInfo.numTotalNo);		
+		noNum = ofToString(upInfo.numTotalNo);	
+		noNum = insertComma(noNum);
 		noSize = (upInfo.numTotalNo == 0)?0.3:ofMap(upInfo.ratioTotalNo, 0.0, 1.0, 0.1, 1.0);	
 		noSizeTween.setParameters(easingcirc, ofxTween::easeIn, noSize, noSize*1.5, 100, 0);	
 		
@@ -199,3 +213,240 @@ void StateText::draw(UpdateInfo upInfo) {
 //	ofPopMatrix();
 }
 
+void StateText::drawWithNoScale(UpdateInfo upInfo, float colAngYes, float colAngNo) {
+	
+	ofColor thisYesCol;
+	ofColor thisNoCol;
+	
+	if (colAngYes != 1000.0) {
+		colp.setColorAngle(colAngYes);
+		colp.setColorScale(1.0);
+		colp.setColorRadius(1.0);
+		colp.update();
+		thisYesCol = colp.getColor();
+	}else {
+		thisYesCol.r = 255.0; thisYesCol.g = 255.0; thisYesCol.b = 255.0;
+	}
+	
+	if (colAngNo != 1000.0) {
+		colp.setColorAngle(colAngNo);
+		colp.setColorScale(1.0);
+		colp.setColorRadius(1.0);
+		colp.update();
+		thisNoCol = colp.getColor();
+	}else {
+		thisNoCol.r = 255.0; thisNoCol.g = 255.0; thisNoCol.b = 255.0;
+	}	
+	
+	drawWithNoScale(upInfo, thisYesCol, thisNoCol);
+	
+}
+
+void StateText::drawWithNoScale(UpdateInfo upInfo) {
+	
+	ofColor _yesCol;
+	ofColor _noCol;
+	
+	_yesCol.r = yesColTween.update();
+	_yesCol.g = yesColTween.getTarget(1);
+	_yesCol.b = yesColTween.getTarget(2);
+	
+	_noCol.r = noColTween.update();
+	_noCol.g = noColTween.getTarget(1);
+	_noCol.b = noColTween.getTarget(2);
+	
+	drawWithNoScale(upInfo, _yesCol, _noCol);
+	
+}
+
+void StateText::drawWithNoScale(UpdateInfo upInfo, ofColor _yesCol, ofColor _noCol) {
+	
+	glDisable(GL_LIGHTING);
+	ofEnableSmoothing();
+	
+	float offsetBasis = 40;
+	
+	float heightAns = answerFont.getLineHeight();
+	float heightNum = numberFont.getLineHeight();
+	
+	float heightOffset = 25;
+	float leftOffset = 10;
+	
+	float bottom = offsetBasis+15;	
+	
+	float leftYes = offsetBasis;
+	
+	ofPushMatrix();
+	ofSetColor(255, 255, 255);	
+	ofTranslate(leftYes+leftOffset, ofGetScreenHeight()-bottom-heightNum+heightOffset, 0);
+	ofEnableSmoothing();	
+	ofEnableAlphaBlending(); 
+	answerFont.drawString(yes, 0, 0);
+	ofDisableAlphaBlending(); 
+	ofPopMatrix();
+	ofPushMatrix();
+	ofSetColor(_yesCol.r, _yesCol.g, _yesCol.b);
+	ofTranslate(leftYes, ofGetScreenHeight()-bottom, 0);
+	numberFont.drawString(yesNum, 0, 0);
+	ofPopMatrix();
+	
+	
+	float rightOffset = numberFont.stringWidth(noNum)+offsetBasis;
+	float leftNo = ofGetScreenWidth()-rightOffset;
+	ofPushMatrix();
+	ofSetColor(255, 255, 255);
+	ofTranslate(leftNo+leftOffset, ofGetScreenHeight()-bottom-heightNum+heightOffset, 0);
+	ofEnableSmoothing();	
+	ofEnableAlphaBlending(); 
+	answerFont.drawString(no, 0, 0);
+	ofDisableAlphaBlending(); 
+	ofPopMatrix();
+	ofPushMatrix();
+	ofSetColor(_noCol.r, _noCol.g, _noCol.b);
+	ofTranslate(leftNo, ofGetScreenHeight()-bottom, 0);
+	numberFont.drawString(noNum, 0, 0);
+	ofPopMatrix();
+
+	glEnable(GL_LIGHTING);	
+
+}
+
+string StateText::insertComma(string num) {
+	
+	string rtn = num;
+	int len = num.size();
+	if (len > 3) {
+		int commas = len/3;
+		int times = 0;
+		for (int i = 0; i < commas; i++) {
+			rtn.insert(i*3+times+1, ",");
+			times++;
+		}
+	}
+	return rtn;
+	
+}
+
+void StateText::updateColor(float colAngYes, float colAngNo) {
+	
+	ofColor thisYesCol;
+	ofColor thisNoCol;
+	
+	if (colAngYes != 1000.0) {
+		colp.setColorAngle(colAngYes);
+		colp.setColorScale(1.0);
+		colp.setColorRadius(1.0);
+		colp.update();
+		thisYesCol = colp.getColor();
+	}else {
+		thisYesCol.r = 255.0; thisYesCol.g = 255.0; thisYesCol.b = 255.0;
+	}
+	
+	if (colAngNo != 1000.0) {
+		colp.setColorAngle(colAngNo);
+		colp.setColorScale(1.0);
+		colp.setColorRadius(1.0);
+		colp.update();
+		thisNoCol = colp.getColor();
+	}else {
+		thisNoCol.r = 255.0; thisNoCol.g = 255.0; thisNoCol.b = 255.0;
+	}	
+	
+	updateColor(thisYesCol, thisNoCol);	
+	
+}
+
+void StateText::updateColor(ofColor yesCol, ofColor noCol) {
+	
+//	yesColTween.setParameters(colTweenEasing, ofxTween::easeIn, yesCol.r, 255.0, 2000, 0);
+//	yesColTween.addValue(yesCol.g, 255.0);
+//	yesColTween.addValue(yesCol.b, 255.0);
+//	
+//	noColTween.setParameters(colTweenEasing, ofxTween::easeIn, noCol.r, 255.0, 2000, 0);
+//	noColTween.addValue(noCol.g, 255.0);
+//	noColTween.addValue(noCol.b, 255.0);
+	
+	yesColTween.setParameters(colTweenEasing, ofxTween::easeIn, yesCol.r, yesCol.r, 0, 0);
+	yesColTween.addValue(yesCol.g, yesCol.g);
+	yesColTween.addValue(yesCol.b, yesCol.b);
+	
+	noColTween.setParameters(colTweenEasing, ofxTween::easeIn, noCol.r, noCol.r, 0, 0);
+	noColTween.addValue(noCol.g, noCol.g);
+	noColTween.addValue(noCol.b, noCol.b);	
+	
+	curYesCol = yesCol;
+	curNoCol = noCol;
+	
+}
+
+void StateText::startFadeToDefaultColorYes(float dur) {
+	
+	yesColTween.setParameters(colTweenEasing, ofxTween::easeIn, curYesCol.r, 255.0, dur, 0);
+	yesColTween.addValue(curYesCol.g, 255.0);
+	yesColTween.addValue(curYesCol.b, 255.0);	
+	
+}
+
+void StateText::startFadeToDefaultColorNo(float dur) {
+	
+	noColTween.setParameters(colTweenEasing, ofxTween::easeIn, curNoCol.r, 255.0, dur, 0);
+	noColTween.addValue(curNoCol.g, 255.0);
+	noColTween.addValue(curNoCol.b, 255.0);	
+	
+}
+
+void StateText::updateColorYes(float colAngYes) {
+	
+	ofColor thisYesCol;
+	ofColor thisNoCol;
+	
+	if (colAngYes != 1000.0) {
+		colp.setColorAngle(colAngYes);
+		colp.setColorScale(1.0);
+		colp.setColorRadius(1.0);
+		colp.update();
+		thisYesCol = colp.getColor();
+	}else {
+		thisYesCol.r = 255.0; thisYesCol.g = 255.0; thisYesCol.b = 255.0;
+	}
+	
+	thisNoCol.r = 255.0; thisNoCol.g = 255.0; thisNoCol.b = 255.0;
+	updateColor(thisYesCol, thisNoCol);
+
+}
+
+void StateText::updateColorNo(float colAngNo) {
+	
+	ofColor thisYesCol;
+	ofColor thisNoCol;
+	
+	if (colAngNo != 1000.0) {
+		colp.setColorAngle(colAngNo);
+		colp.setColorScale(1.0);
+		colp.setColorRadius(1.0);
+		colp.update();
+		thisNoCol = colp.getColor();
+	}else {
+		thisNoCol.r = 255.0; thisNoCol.g = 255.0; thisNoCol.b = 255.0;
+	}	
+	
+	thisYesCol.r = 255.0; thisYesCol.g = 255.0; thisYesCol.b = 255.0;
+	updateColor(thisYesCol, thisNoCol);	
+	
+}
+
+void StateText::updateColorYes(ofColor _yesCol) {
+	
+	ofColor thisNoCol;
+	thisNoCol.r = 255.0; thisNoCol.g = 255.0; thisNoCol.b = 255.0;
+	updateColor(_yesCol, thisNoCol);
+	
+}
+
+void StateText::updateColorNo(ofColor _noCol) {
+
+	ofColor thisYesCol;
+	thisYesCol.r = 255.0; thisYesCol.g = 255.0; thisYesCol.b = 255.0;
+	updateColor(thisYesCol, _noCol);
+
+}

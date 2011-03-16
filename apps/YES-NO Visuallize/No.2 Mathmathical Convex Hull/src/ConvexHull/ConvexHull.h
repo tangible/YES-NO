@@ -29,6 +29,11 @@ public:
 	float feedSMS(UpdateInfo upInfo);
 	void setupGLStuff();
 	
+	ofColor getYesSpikeColor() { return yesSoft.currentSpikeColor; }
+	ofColor getNoSpikeColor() { return noSoft.currentSpikeColor; }
+	float getYesSpikeColorFloat() { return yesSoft.currentSpikeColorFloat; }
+	float getNoSpikeColorFloat() { return noSoft.currentSpikeColorFloat; }
+	
 	void scaleYes(int & z);
 	void scaleNo(int & z);
 	
