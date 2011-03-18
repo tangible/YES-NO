@@ -12,6 +12,8 @@ int baseSphereSize = 10;
 int maxSphereSize = 95;//125;
 void BlobManager::setup(int _fps, AdminPanel* _admin, ofxCamera* cam, QuestionImage* _qImage, StateText* _sText) {
 	
+	bgPlayer = new ofVideoPlayer();	
+	
 	fps = _fps;
 	admin = _admin;
 	qImage = _qImage;
@@ -131,14 +133,14 @@ void BlobManager::setup(int _fps, AdminPanel* _admin, ofxCamera* cam, QuestionIm
 	chunkCol.setColor(iniNCol);
 	chunkCol.update();
 	nextNoColAngle = nextYesColAngle+0.5;//chunkCol.getColorAngle()+0.08;
-	
+
 }
 
 void BlobManager::update() {
 
 	if (isVidBG) {
-		bgPlayer.update();
-		if (bgPlayer.bLoaded && !bgPlayer.isFrameNew()) bgPlayer.play();			
+		bgPlayer->update();
+		if (bgPlayer->bLoaded && !bgPlayer->isFrameNew()) bgPlayer->play();			
 	}
 	if (isVidBlobTex) {
 		blobTexPlayer.update();
@@ -313,38 +315,40 @@ void BlobManager::draw() {
 		// draw BG, qimage and statetext
 		glDisable(GL_LIGHTING);
 		glColor3f(1.0, 1.0, 1.0);
+		
+		ofPushMatrix();
 		ofSetupScreen();
-
 		if (isVidBG) {
-			bgPlayer.draw(ofGetScreenWidth()/2-bgPlayer.getWidth()/2, 
-						  ofGetScreenHeight()/2-bgPlayer.getHeight()/2);
+			bgPlayer->draw(ofGetScreenWidth()/2-bgPlayer->getWidth()/2, 
+						  ofGetScreenHeight()/2-bgPlayer->getHeight()/2);
 		}else {
 			bg.draw(ofGetScreenWidth()/2-bg.getWidth()/2, 
 					ofGetScreenHeight()/2-bg.getHeight()/2);		
 		}
+		ofPopMatrix();
+		
 		
 		ofPushMatrix();
 		ofSetupScreen();		
 		glDisable(GL_DEPTH_TEST);
+		glDisable(GL_LIGHTING);		
 		ofEnableSmoothing(); 	
 		ofEnableAlphaBlending();
 		ofSetColor(255, 255, 255);
 		qImage->draw();	
 		glDisable(GL_CULL_FACE);	
 		ofEnableSmoothing(); 	
-//		sText->draw(upInfo);
-//		ofColor yCol;
-//		yCol.r = mBallChunks[0]->chunkCurrCol.x*255.0; yCol.g = mBallChunks[0]->chunkCurrCol.y*255.0; yCol.b = mBallChunks[0]->chunkCurrCol.z*255.0;
-//		ofColor nCol;
-//		nCol.r = mBallChunks[1]->chunkCurrCol.x*255.0; nCol.g = mBallChunks[1]->chunkCurrCol.y*255.0; nCol.b = mBallChunks[1]->chunkCurrCol.z*255.0;		
-//		sText->drawWithNoScale(upInfo, yCol, nCol);
-//		sText->drawWithNoScale(upInfo, sTextColYes, sTextColNo);
+		//		sText->draw(upInfo);
+		//		ofColor yCol;
+		//		yCol.r = mBallChunks[0]->chunkCurrCol.x*255.0; yCol.g = mBallChunks[0]->chunkCurrCol.y*255.0; yCol.b = mBallChunks[0]->chunkCurrCol.z*255.0;
+		//		ofColor nCol;
+		//		nCol.r = mBallChunks[1]->chunkCurrCol.x*255.0; nCol.g = mBallChunks[1]->chunkCurrCol.y*255.0; nCol.b = mBallChunks[1]->chunkCurrCol.z*255.0;		
+		//		sText->drawWithNoScale(upInfo, yCol, nCol);
+		//		sText->drawWithNoScale(upInfo, sTextColYes, sTextColNo);
 		sText->drawWithNoScale(upInfo);
-		glEnable(GL_LIGHTING);
-		glEnable(GL_CULL_FACE);
-		glEnable(GL_DEPTH_TEST);
 		ofPopMatrix();
-		ofDisableAlphaBlending();
+		ofDisableAlphaBlending();			
+		
 		
 		setupGLStuff();		
 		
@@ -380,9 +384,9 @@ void BlobManager::draw() {
 		}
 		ofPopMatrix();		
 		
-		
-		
 		ofDisableAlphaBlending();
+		
+	
 
 	// debug	
 	}else {
@@ -494,12 +498,20 @@ void BlobManager::changeImgBG(string path) {
 	
 	if (isImg) {			
 		isVidBG = false;
-		bgPlayer.stop();
-		bgPlayer.close();
+		bgPlayer->stop();
+		bgPlayer->close();
+		bgPlayer->stop();
+		bgPlayer->close();
+		delete bgPlayer;
+		bgPlayer = new ofVideoPlayer();		
 		
 	}else {
-		bgPlayer.loadMovie(path);
-		bgPlayer.play();		
+		bgPlayer->stop();
+		bgPlayer->close();
+		delete bgPlayer;
+		bgPlayer = new ofVideoPlayer();		
+		bgPlayer->loadMovie(path);
+		bgPlayer->play();		
 		isVidBG = true;
 			
 	}
@@ -724,10 +736,12 @@ void BlobManager::recieveSMS(UpdateInfo _upInfo) {
 
 void BlobManager::onClearBG(int& i) {
 	if (isVidBG) {
-		bgPlayer.stop();
-		bgPlayer.close();
-		
+		bgPlayer->stop();
+		bgPlayer->close();
+		delete bgPlayer;
+		bgPlayer = new ofVideoPlayer();
 		isVidBG = false;
+		bg.clear();
 	}else {
 		bg.clear();
 	}

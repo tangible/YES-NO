@@ -84,28 +84,35 @@ void YesNoObjectSoft::updateRotateion() {
 void YesNoObjectSoft::updateTranslation() {	
 	
 	ofxVec3f cen = yesORno->getBodyCentroid();
-	if (isnan(cen.x) || isnan(cen.y) || isnan(cen.z)) {
-		float x = translationTween.getTarget(0);
+	if ((isnan(cen.x) || isnan(cen.y) || isnan(cen.z)) ||
+		(isnan(objCentroid.x) || isnan(objCentroid.y) || isnan(objCentroid.z))) {
+//		cout << "cen NaN!!" << endl;
+		float x = preservedObjCentroid.x;
+		float y = preservedObjCentroid.y;
+		float z = preservedObjCentroid.z;	
+//		cout << ofToString(x)+" "+ofToString(y)+" "+ofToString(z) << endl;
+		ofTranslate(-x, -y, -z);	
+		
+		
+		//return;
+	}else {
+		objCentroid = cen;	
+		preservedObjCentroid = objCentroid;
+		if (translationTween.isCompleted()) {
+			float x = translationTween.getTarget(0);
+			float y = translationTween.getTarget(1);
+			float z = translationTween.getTarget(2);
+			translationTween.setParameters(translationEasing, ofxTween::easeIn, x, objCentroid.x, 1000, 0);
+			translationTween.addValue(y, objCentroid.y);
+			translationTween.addValue(z, objCentroid.z);
+//			cout << ofToString(x)+" "+ofToString(y)+" "+ofToString(z) << endl;
+		}
+		float x = translationTween.update();
 		float y = translationTween.getTarget(1);
 		float z = translationTween.getTarget(2);	
+//		cout << ofToString(x)+" "+ofToString(y)+" "+ofToString(z) << endl;
 		ofTranslate(-x, -y, -z);	
-		return;
 	}
-	
-	objCentroid = cen;	
-	if (translationTween.isCompleted()) {
-		float x = translationTween.getTarget(0);
-		float y = translationTween.getTarget(1);
-		float z = translationTween.getTarget(2);
-		translationTween.setParameters(translationEasing, ofxTween::easeIn, x, cen.x, 1000, 0);
-		translationTween.addValue(y, cen.y);
-		translationTween.addValue(z, cen.z);
-	}
-	float x = translationTween.update();
-	float y = translationTween.getTarget(1);
-	float z = translationTween.getTarget(2);	
-	ofTranslate(-x, -y, -z);	
-
 }
 
 void YesNoObjectSoft::draw() {
@@ -216,19 +223,101 @@ void YesNoObjectSoft::draw() {
 	
 }
 
+void YesNoObjectSoft::genShapeAtOnce(int numEvolve) {
+	
+	int start = ofGetElapsedTimeMillis();
+	int i = 0;
+	startThread();
+	while (i < numEvolve) {
+		int cur = ofGetElapsedTimeMillis();
+		if (start+200*i < cur) {
+			genShapeProgramatically();
+			i++;
+			cout << "did" << endl;
+		}
+	}
+	stopThread();
+}
+
+int YesNoObjectSoft::genShapeProgramatically() {
+	
+	suddenMotion = false;	
+	
+//	for (int i = 0; i < numEvolve; i++) {
+		
+		ofxVec3f cen = yesORno->getBodyCentroid();
+		vector<int> sortedFaces = yesORno->sortFaceByPosition(cen);
+		int fid = sortedFaces[ofRandom(0, sortedFaces.size()-1*0.3)];
+		incomingSMSFaceID = fid;	
+		
+		vector<ofxVec3f> face = yesORno->getFaceAsVerts(fid);
+		ofxVec3f fa = face[0];
+		ofxVec3f fb = face[1];
+		ofxVec3f fc = face[2];	
+		ofxVec3f normc = yesORno->getFaceNormal(fid);
+		normc *= height;
+		ofxVec3f cenc = yesORno->getFaceCentroid(fid);
+		cenc += normc;
+		smsPosition = ofxVec3f(cenc.x, cenc.y, cenc.z);			
+		addedSMSFaces.clear();
+		addedSMSFaces.push_back(fb);
+		addedSMSFaces.push_back(cenc);
+		addedSMSFaces.push_back(fa);
+		addedSMSFaces.push_back(fc);
+		addedSMSFaces.push_back(cenc);
+		addedSMSFaces.push_back(fb);
+		addedSMSFaces.push_back(fa);
+		addedSMSFaces.push_back(cenc);
+		addedSMSFaces.push_back(fc);	
+		
+			
+		
+		fillMeshInput();
+		
+		yesORno->remove(bullet->getSoftDynamicsWorld());
+		delete yesORno;
+		yesORno = bullet->createSoftTriMesh(ofxVec3f(0, 0, 0), &floatVertices[0], &faceIndices[0], numFace);		
+
+		addedSMSFaces.clear();
+		
+		objCentroid = yesORno->getBodyCentroid();
+
+//		cout << "#########################################" << endl;
+//		cout << "height = "+ofToString(height) << endl;
+//		cout << "sortedFaces.size() = " + ofToString((int)sortedFaces.size()) << endl;
+//		cout << "fid = " + ofToString(fid) << endl;
+//		cout << "smsPosition = " + ofToString(cenc.x)+" "+ofToString(cenc.y)+" "+ofToString(cenc.z) << endl;
+//		cout << " " << endl;
+		btSoftBody::tFaceArray& faces(yesORno->getSoftBody()->m_faces);
+		cout << "generated face size = " + ofToString((int)faces.size()) << endl;		
+
+//	}
+
+	colorPointerTween.setParameters(easing, ofxTween::easeIn, 0, 100, 1000, 0);
+	int i =0;
+	changeColBySMSRecievedFace(i);		
+	updateColorPointer();
+	
+	incomingSMSFaceID = 0;
+	return (int)faces.size();
+}
+
 void YesNoObjectSoft::startFaceingToCam(ofxCamera* cam, ofxVec3f offset) {
 	
 	ofxVec3f faceCentroid = yesORno->getFaceCentroid(incomingSMSFaceID);
-	ofxVec3f objCentroid = yesORno->getBodyCentroid();
+	ofxVec3f _objCentroid = yesORno->getBodyCentroid();
+	if (isnan(_objCentroid.x) || isnan(_objCentroid.y) || isnan(_objCentroid.z)) {
+		_objCentroid = preservedObjCentroid;
+	}
 	ofxVec3f camPos = cam->getPosition()-offset;
 	
-	ofxVec3f center = objCentroid;
+	ofxVec3f center = _objCentroid;
 	ofxVec3f tar = camPos;
 	ofxVec3f normal = tar - center;
 //	ofxVec3f normal = center - tar;	
 	normal.normalize();
 //	ofxVec3f forward = faceCentroid - objCentroid;
-	ofxVec3f forward = objCentroid - faceCentroid;	
+	ofxVec3f forward = _objCentroid - faceCentroid;	
 	forward.normalize();	
 //	ofxVec3f axis = forward.crossed(normal);
 	ofxVec3f axis = normal.crossed(forward);	

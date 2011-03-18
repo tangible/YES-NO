@@ -820,8 +820,8 @@ btSoftBody*		btSoftBodyHelpers::CreateFromTriMesh(btSoftBodyWorldInfo& worldInfo
 {
 	int		maxidx=0;
 	int i,j,ni;
-	std::stringstream sstr;
-	std::cout << "-----------------------------------------------" << std::endl;
+//	std::stringstream sstr;
+//	std::cout << "-----------------------------------------------" << std::endl;
 	
 	for(i=0,ni=ntriangles*3;i<ni;++i)
 	{
@@ -836,9 +836,9 @@ btSoftBody*		btSoftBodyHelpers::CreateFromTriMesh(btSoftBodyWorldInfo& worldInfo
 	{
 		vtx[j]=btVector3(vertices[i],vertices[i+1],vertices[i+2]);
 	}
-	sstr << maxidx*3;
-	std::cout << "vts = " + sstr.str() << std::endl;	
-	sstr.str("");
+//	sstr << maxidx*3;
+//	std::cout << "vts = " + sstr.str() << std::endl;	
+//	sstr.str("");
 	
 	int linknum = 0;
 	int facenum = 0;
@@ -862,12 +862,12 @@ btSoftBody*		btSoftBodyHelpers::CreateFromTriMesh(btSoftBodyWorldInfo& worldInfo
 		facenum++;
 	}
 	psb->randomizeConstraints();
-	sstr << linknum;
-	std::cout << "link = " + sstr.str() << std::endl;	
-	sstr.str("");	
-	sstr << facenum;
-	std::cout << "face = " + sstr.str() << std::endl;			
-	sstr.str("");	
+//	sstr << linknum;
+//	std::cout << "link = " + sstr.str() << std::endl;	
+//	sstr.str("");	
+//	sstr << facenum;
+//	std::cout << "face = " + sstr.str() << std::endl;			
+//	sstr.str("");	
 	
 	return(psb);
 }

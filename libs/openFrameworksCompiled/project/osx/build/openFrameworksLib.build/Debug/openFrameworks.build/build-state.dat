@@ -1,26 +1,8 @@
 TopenFrameworks
 v7
 r0
-t322011113.541616
+t322113040.524838
 cCheck dependencies
-cCompileC build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofAppGlutWindow.o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/app/ofAppGlutWindow.cpp normal i386 c++ com.apple.compilers.gcc.4_2
-cCompileC build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofAppRunner.o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/app/ofAppRunner.cpp normal i386 c++ com.apple.compilers.gcc.4_2
-cCompileC build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofArduino.o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/communication/ofArduino.cpp normal i386 c++ com.apple.compilers.gcc.4_2
-cCompileC build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofSerial.o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/communication/ofSerial.cpp normal i386 c++ com.apple.compilers.gcc.4_2
-cCompileC build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofBitmapFont.o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/graphics/ofBitmapFont.cpp normal i386 c++ com.apple.compilers.gcc.4_2
-cCompileC build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofGraphics.o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/graphics/ofGraphics.cpp normal i386 c++ com.apple.compilers.gcc.4_2
-cCompileC build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofImage.o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/graphics/ofImage.cpp normal i386 c++ com.apple.compilers.gcc.4_2
-cCompileC build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofTexture.o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/graphics/ofTexture.cpp normal i386 c++ com.apple.compilers.gcc.4_2
-cCompileC build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofTrueTypeFont.o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/graphics/ofTrueTypeFont.cpp normal i386 c++ com.apple.compilers.gcc.4_2
-cCompileC build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofSoundPlayer.o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/sound/ofSoundPlayer.cpp normal i386 c++ com.apple.compilers.gcc.4_2
-cCompileC build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofSoundStream.o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/sound/ofSoundStream.cpp normal i386 c++ com.apple.compilers.gcc.4_2
-cCompileC build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofMath.o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/utils/ofMath.cpp normal i386 c++ com.apple.compilers.gcc.4_2
-cCompileC build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofUtils.o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/utils/ofUtils.cpp normal i386 c++ com.apple.compilers.gcc.4_2
-cCompileC build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofQtUtils.o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/video/ofQtUtils.cpp normal i386 c++ com.apple.compilers.gcc.4_2
-cCompileC build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofVideoGrabber.o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/video/ofVideoGrabber.cpp normal i386 c++ com.apple.compilers.gcc.4_2
-cCompileC build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofVideoPlayer.o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/video/ofVideoPlayer.cpp normal i386 c++ com.apple.compilers.gcc.4_2
-cCompileC build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofxThread.o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/utils/ofxThread.cpp normal i386 c++ com.apple.compilers.gcc.4_2
-cLibtool /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx//openFrameworksDebug.a normal i386
 
 N/Developer/usr/lib/gcc/i686-apple-darwin10/4.2.1/include/float.h
 c000000004C238F150000000000001538
@@ -810,81 +792,81 @@ t1300181752
 s6938096
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../lib/osx//openFrameworksDebug.a
-t1300258130
-s6414272
+t2
+s0
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofAppGlutWindow.o
-t1300258123
-s762656
+t2
+s0
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofAppRunner.o
-t1300258124
-s951748
+t2
+s0
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofArduino.o
-t1300258119
-s978460
+t2
+s0
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofBitmapFont.o
-t1300258120
-s80264
+t2
+s0
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofGraphics.o
-t1300258122
-s454748
+t2
+s0
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofImage.o
-t1300258123
-s383176
+t2
+s0
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofMath.o
-t1300258128
-s388296
+t2
+s0
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofQtUtils.o
-t1300258128
-s61496
+t2
+s0
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofSerial.o
-t1300258119
-s355224
+t2
+s0
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofSoundPlayer.o
-t1300258125
-s73460
+t2
+s0
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofSoundStream.o
-t1300258126
-s509024
+t2
+s0
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofTexture.o
-t1300258126
-s361816
+t2
+s0
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofTrueTypeFont.o
-t1300258126
-s216212
+t2
+s0
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofUtils.o
-t1300258129
-s431644
+t2
+s0
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofVideoGrabber.o
-t1300258129
-s115160
+t2
+s0
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofVideoPlayer.o
-t1300258130
-s115208
+t2
+s0
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofxThread.o
-t1300258130
-s53908
+t2
+s0
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/openFrameworksDebug.LinkFileList
-c000000004D805D410000000000000C41
-t1300258113
-s3137
+c00000000000000000000000000000000
+t2
+s0
 
 N/Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/build/openFrameworksLib.build/Release/openFrameworks.build/Objects-normal/i386/ofAppGlutWindow.o
 t1300181742
@@ -1401,7 +1383,7 @@ s9690
 
 CCheck dependencies
 r0
-lSLF07#2@18"Check dependencies322011113#322011113#0(0"0(0#1#0"8657364544#0"0#
+lSLF07#2@18"Check dependencies322113035#322113040#0(0"0(0#1#0"29836824280170608#0"0#
 
 CCompileC build/openFrameworksLib.build/Debug/openFrameworks.build/Objects-normal/i386/ofAppGlutWindow.o /Users/makira/Project/20110321.VancouverMusium/oF0062/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/app/ofAppGlutWindow.cpp normal i386 c++ com.apple.compilers.gcc.4_2
 s320204606.590724

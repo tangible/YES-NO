@@ -77,7 +77,7 @@ public:
 	int						fps;
 	ofxShader				shader;
 	int						texSlot;	
-	ofVideoPlayer			bgPlayer;
+	ofVideoPlayer*			bgPlayer;
 	bool					isVidBG;
 	ofVideoPlayer			blobTexPlayer;
 	bool					isVidBlobTex;	

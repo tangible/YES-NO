@@ -26,8 +26,9 @@ public:
 	void mouseReleased(int x, int y, int button);
 	void windowResized(int w, int h);	
 	
-	void onFileChangeBG(FileDef& fd);	
+	void changeImgBG(string path);
 	void onClearBG(int& i);
+	void onFileChangeBG(FileDef& fd);	
 	void onFileChangeQImg(FileDef& fd);	
 	void onClearQImg(int& i);	
 	void onSMSMsgRecieved(UpdateInfo& _upInfo);
@@ -48,8 +49,10 @@ public:
 	StateText sText;
 	HTTPSMSClient httpClient;	
 	
-	ofImage bg;
-	UpdateInfo upInfo;
+	ofImage				bg;
+	ofVideoPlayer*		bgPlayer;	
+	bool				isVidBG;
+	UpdateInfo			upInfo;
 	
 	//ofxEasyCam cam;
 	ofxCamera cam;

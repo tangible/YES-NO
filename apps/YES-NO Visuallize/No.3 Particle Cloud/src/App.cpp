@@ -5,6 +5,8 @@ static const int fps = 25;
 //--------------------------------------------------------------
 void App::setup(){
 
+	bgPlayer = new ofVideoPlayer();	
+	
 	ofSetDataPathRoot("../Resources/");
 	ofDisableArbTex();
 	ofEnableAlphaBlending();
@@ -51,7 +53,6 @@ void App::setup(){
 		ofNotifyEvent(adminPanel.onRestoreAllSMSAnswer, i);	
 	}	
 	
-
 }
 
 //--------------------------------------------------------------
@@ -60,6 +61,11 @@ void App::update(){
 	adminPanel.update();
 	httpClient.update(adminPanel.debugWithFakeSMS);	
 	pCloud.update();
+	
+	if (isVidBG) {
+		bgPlayer->update();
+		if (bgPlayer->bLoaded && !bgPlayer->isFrameNew()) bgPlayer->play();			
+	}	
 	
 	cam.place();
 	
@@ -105,19 +111,36 @@ void App::draw(){
 	glDisable(GL_DEPTH_TEST);
 	ofEnableSmoothing();
 	ofEnableAlphaBlending();
-	bg.draw(ofGetScreenWidth()/2-bg.getWidth()/2, 
-			ofGetScreenHeight()/2-bg.getHeight()/2);	
-	ofEnableSmoothing();
+	if (isVidBG) {
+		bgPlayer->draw(ofGetScreenWidth()/2-bgPlayer->getWidth()/2, 
+					   ofGetScreenHeight()/2-bgPlayer->getHeight()/2);
+	}else {
+		bg.draw(ofGetScreenWidth()/2-bg.getWidth()/2, 
+				ofGetScreenHeight()/2-bg.getHeight()/2);		
+	}
+	
+	ofPushMatrix();
+	ofSetupScreen();
+	glDisable(GL_DEPTH_TEST);
+	glDisable(GL_LIGHTING);		
+	ofEnableSmoothing(); 	
 	ofEnableAlphaBlending();
-	qImage.draw();		
-	ofEnableSmoothing();
-	ofEnableAlphaBlending();	
-	sText.drawWithNoScale(upInfo);
+	ofSetColor(255, 255, 255);
+	qImage.draw();
+	glDisable(GL_CULL_FACE);	
+	ofEnableSmoothing(); 
+	sText.drawWithNoScale(upInfo);	
+	glEnable(GL_LIGHTING);
+	//	glEnable(GL_CULL_FACE);
 	glEnable(GL_DEPTH_TEST);
+	ofPopMatrix();
+	ofSetColor(255, 255, 255);			
 	
 	ofEnableSmoothing();
 	ofEnableAlphaBlending();
 	pCloud.draw();	
+	
+
 	
 //	ofEnableAlphaBlending();
 //	int colorTexSlot = 4;
@@ -214,10 +237,19 @@ void App::keyPressed(int key){
 
 //--------------------------------------------------------------
 void App::onFileChangeBG(FileDef& fd) {
-	bg.loadImage(fd.path);
+	changeImgBG(fd.path);
 }
 void App::onClearBG(int& i) {
-	bg.clear();
+	if (isVidBG) {
+		bgPlayer->stop();
+		bgPlayer->close();
+		delete bgPlayer;
+		bgPlayer = new ofVideoPlayer();
+		isVidBG = false;
+		bg.clear();
+	}else {
+		bg.clear();
+	}
 }
 void App::onFileChangeQImg(FileDef& fd) {
 	qImage.changeImgQImg(fd.path);
@@ -234,6 +266,32 @@ void App::onRestoreAllSMSAnswer(int& i) {
 	if (!bAlreadyRestoreAllAnswer)
 		httpClient.sendRequestToServer(true);
 	bAlreadyRestoreAllAnswer = true;
+}
+
+//--------------------------------------------------------------
+void App::changeImgBG(string path) {
+	
+	bool isImg = bg.loadImage(path);
+	
+	if (isImg) {			
+		isVidBG = false;
+		bgPlayer->stop();
+		bgPlayer->close();
+		bgPlayer->stop();
+		bgPlayer->close();
+		delete bgPlayer;
+		bgPlayer = new ofVideoPlayer();		
+		
+	}else {
+		bgPlayer->stop();
+		bgPlayer->close();
+		delete bgPlayer;
+		bgPlayer = new ofVideoPlayer();		
+		bgPlayer->loadMovie(path);
+		bgPlayer->play();		
+		isVidBG = true;
+		
+	}
 }
 
 //--------------------------------------------------------------

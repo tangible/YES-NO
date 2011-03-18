@@ -24,6 +24,7 @@ public:
 	void mouseReleased(int x, int y, int button);
 	void windowResized(int w, int h);
 	
+	void changeImgBG(string path);	
 	void onFileChangeBG(FileDef& fd);	
 	void onClearBG(int& i);
 	void onFileChangeQImg(FileDef& fd);	
@@ -48,11 +49,15 @@ public:
 	QuestionImage	qImage;
 	UpdateInfo		upInfo;		
 	
+	bool bgenY;
+	
 	ofImage bg;
+	ofVideoPlayer*		bgPlayer;	
+	bool				isVidBG;	
 	vector<UpdateInfo> smsQue;
 	
-	ofxEasyCam		cam;
-	//ofxCamera		cam;
+	//ofxEasyCam		cam;
+	ofxCamera		cam;
 	ofxTween		camOrbitTween;
 //	ofxEasingQuad	camOrbitEasing;
 	ofxEasingSine	camOrbitEasing;	

@@ -281,7 +281,7 @@ void StateText::drawWithNoScale(UpdateInfo upInfo, ofColor _yesCol, ofColor _noC
 	ofTranslate(leftYes+leftOffset, ofGetScreenHeight()-bottom-heightNum+heightOffset, 0);
 	ofEnableSmoothing();	
 	ofEnableAlphaBlending(); 
-	answerFont.drawString(yes, 0, 0);
+	//answerFont.drawString(yes, 0, 0);
 	ofDisableAlphaBlending(); 
 	ofPopMatrix();
 	ofPushMatrix();
@@ -298,7 +298,7 @@ void StateText::drawWithNoScale(UpdateInfo upInfo, ofColor _yesCol, ofColor _noC
 	ofTranslate(leftNo+leftOffset, ofGetScreenHeight()-bottom-heightNum+heightOffset, 0);
 	ofEnableSmoothing();	
 	ofEnableAlphaBlending(); 
-	answerFont.drawString(no, 0, 0);
+	//answerFont.drawString(no, 0, 0);
 	ofDisableAlphaBlending(); 
 	ofPopMatrix();
 	ofPushMatrix();

@@ -129,7 +129,8 @@ void HTTPSMSClient::getSMSAnswersFromServer(ofxHttpResponse & response) {
 			sms.answer = ans;
 			sms.time = time;
 			
-			if (caseInsCompare("Yes", sms.answer)) {
+			//if (caseInsCompare("Yes", sms.answer)) {
+			if ("0" == sms.answer) {
 				sms.YesOrNo = 0;
 				numYes++;
 			}else {
@@ -253,9 +254,9 @@ void HTTPSMSClient::createFakeSMS() {
 	string phonenumber_value = adminPanel->phone_questionID;
 	
 	string message = "&message=";
-	string message_value = "Yes";
+	string message_value = "1";
 	if (0.0 < ofRandomf()) {
-		message_value = "No";
+		message_value = "2";
 	}
 		
 	string otherParams = "&api_key=8ff2812eacf66449e6008425e2ae5a3a0d18cb22d089e4d5c6933c2c298aa678&installation_id=855181531&test=true";

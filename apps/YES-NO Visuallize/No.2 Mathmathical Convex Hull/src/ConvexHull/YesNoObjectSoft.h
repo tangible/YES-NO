@@ -78,7 +78,7 @@ public:
 };
 
 
-class YesNoObjectSoft {
+class YesNoObjectSoft  : public ofxThread{
 
 public:
 	
@@ -94,6 +94,9 @@ public:
 	
 	void addSMS(int faceID, int _numSMS, float _ratioSMS);
 	void addSMSCompleted(int & z);
+	
+	void genShapeAtOnce(int numEvolve);
+	int genShapeProgramatically();
 	
 	void clear();
 	
@@ -155,6 +158,7 @@ public:
 	int			YesOrNo;
 	ofxVec3f	forcePoint;
 	ofxVec3f	objCentroid;
+	ofxVec3f    preservedObjCentroid;
 	
 	ofxTween quatTween;
 	ofxEasingCirc quatEasing;

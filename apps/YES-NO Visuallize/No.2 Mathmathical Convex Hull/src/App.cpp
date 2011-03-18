@@ -5,6 +5,8 @@ const int fps = 40;
 //--------------------------------------------------------------
 void App::setup(){
 
+	bgPlayer = new ofVideoPlayer();		
+	
 	ofSetFrameRate(fps);
 	ofEnableAlphaBlending();
 	ofEnableSmoothing();
@@ -45,6 +47,7 @@ void App::setup(){
 		ofNotifyEvent(adminPanel.onRestoreAllSMSAnswer, i);	
 	}	
 
+	bgenY = false;
 }
 
 //--------------------------------------------------------------
@@ -53,6 +56,11 @@ void App::update(){
 	adminPanel.update();
 	convexHull.update();
 	httpClient.update(adminPanel.debugWithFakeSMS);
+	
+	if (isVidBG) {
+		bgPlayer->update();
+		if (bgPlayer->bLoaded && !bgPlayer->isFrameNew()) bgPlayer->play();			
+	}		
 	
 	cam.orbitAround(cam.getEye(), ofxVec3f(0,1,0), camOrbitTween.update());
 	
@@ -76,6 +84,14 @@ void App::update(){
 //			
 //		}
 //		prevOrbit = upInfo.sms.YesOrNo;	
+	}
+	
+	int tgtn = 5000;
+	if (bgenY) {
+		int num = convexHull.yesSoft.genShapeProgramatically();
+		if (tgtn <= num) {
+			bgenY = false;
+		}
 	}
 }
 
@@ -119,20 +135,36 @@ void App::draw(){
 	glDisableClientState(GL_COLOR_ARRAY);
 	ofEnableAlphaBlending();
 	ofEnableSmoothing();	
-	bg.draw(ofGetScreenWidth()/2-bg.getWidth()/2, 
-			ofGetScreenHeight()/2-bg.getHeight()/2);	
+	if (isVidBG) {
+		bgPlayer->draw(ofGetScreenWidth()/2-bgPlayer->getWidth()/2, 
+					   ofGetScreenHeight()/2-bgPlayer->getHeight()/2);
+	}else {
+		bg.draw(ofGetScreenWidth()/2-bg.getWidth()/2, 
+				ofGetScreenHeight()/2-bg.getHeight()/2);		
+	}
+	
+	
+	ofPushMatrix();
+	ofSetupScreen();
+	glDisable(GL_DEPTH_TEST);
+	glDisable(GL_LIGHTING);		
+	ofEnableSmoothing(); 	
+	ofEnableAlphaBlending();
+	ofSetColor(255, 255, 255);
 	qImage.draw();
-
-	glDisable(GL_CULL_FACE);
+	glDisable(GL_CULL_FACE);	
+	ofEnableSmoothing(); 
 	sText.drawWithNoScale(upInfo);	
-	glEnable(GL_DEPTH_TEST);	
 	glEnable(GL_LIGHTING);
+	glEnable(GL_CULL_FACE);
+	glEnable(GL_DEPTH_TEST);
+	ofPopMatrix();
 	
-	//cam.place();
-	cam.draw();
-	convexHull.draw();	
 	
-	
+	cam.place();
+	//cam.draw();
+	convexHull.draw();		
+
 	adminPanel.draw();	
 	ofSetColor(255, 255, 255);	
 	
@@ -140,6 +172,7 @@ void App::draw(){
 
 //--------------------------------------------------------------
 int scrnseq = 0;
+int atonceidx = 0;
 void App::keyPressed(int key){
 
 	if (key == 's') {
@@ -176,6 +209,11 @@ void App::keyPressed(int key){
 		httpClient.sendRequestToServer(false, true);
 	}else if (key == 'f') {
 		httpClient.createFakeSMS();
+	}else if (key == 'g') {
+//		convexHull.yesSoft.genShapeAtOnce(10);
+//		atonceidx++;
+		bgenY = true;
+		cout << "atonceidx = " + ofToString(atonceidx) << endl;
 	}else {	
 		adminPanel.keyPressed(key);
 	}
@@ -183,10 +221,19 @@ void App::keyPressed(int key){
 
 //--------------------------------------------------------------
 void App::onFileChangeBG(FileDef& fd) {
-	bg.loadImage(fd.path);
+	changeImgBG(fd.path);
 }
 void App::onClearBG(int& i) {
-	bg.clear();
+	if (isVidBG) {
+		bgPlayer->stop();
+		bgPlayer->close();
+		delete bgPlayer;
+		bgPlayer = new ofVideoPlayer();
+		isVidBG = false;
+		bg.clear();
+	}else {
+		bg.clear();
+	}
 }
 void App::onFileChangeQImg(FileDef& fd) {
 	qImage.changeImgQImg(fd.path);
@@ -202,6 +249,32 @@ void App::onRestoreAllSMSAnswer(int& i) {
 	if (!bAlreadyRestoreAllAnswer)
 		httpClient.sendRequestToServer(true);
 	bAlreadyRestoreAllAnswer = true;
+}
+
+//--------------------------------------------------------------
+void App::changeImgBG(string path) {
+	
+	bool isImg = bg.loadImage(path);
+	
+	if (isImg) {			
+		isVidBG = false;
+		bgPlayer->stop();
+		bgPlayer->close();
+		bgPlayer->stop();
+		bgPlayer->close();
+		delete bgPlayer;
+		bgPlayer = new ofVideoPlayer();		
+		
+	}else {
+		bgPlayer->stop();
+		bgPlayer->close();
+		delete bgPlayer;
+		bgPlayer = new ofVideoPlayer();		
+		bgPlayer->loadMovie(path);
+		bgPlayer->play();		
+		isVidBG = true;
+		
+	}
 }
 
 //--------------------------------------------------------------

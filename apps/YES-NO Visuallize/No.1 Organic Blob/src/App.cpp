@@ -23,6 +23,7 @@ void App::setup(){
 	bAlreadyRestoreAllAnswer = false;	
 	
 	camera.position(ofGetScreenWidth()/2, ofGetScreenHeight()/2, 1060);
+//	camera.position(ofGetScreenWidth()/2, ofGetScreenHeight()/2, 1160);	
 	cameraXTween.setParameters(easingback, ofxTween::easeOut, ofGetScreenWidth()/2, ofGetScreenWidth()/2, 0, 0);
 	eyeXTween.setParameters(easingback, ofxTween::easeOut, ofGetScreenWidth()/2, ofGetScreenWidth()/2, 0, 0);
 	cameraYTween.setParameters(easingback, ofxTween::easeOut, ofGetScreenHeight()/2, ofGetScreenHeight()/2, 0, 0);
