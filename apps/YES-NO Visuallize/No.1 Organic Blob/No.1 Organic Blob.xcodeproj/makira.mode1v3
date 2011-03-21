@@ -229,6 +229,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -314,14 +316,12 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>BlobManager.cpp</string>
+								<string>HTTPSMSClient.cpp</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -329,11 +329,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>BlobManager.cpp</string>
+										<string>HTTPSMSClient.cpp</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>3174EAD51332A7C30029E21A</string>
+										<string>31F460F313342B580090FE64</string>
 										<key>history</key>
 										<array>
 											<string>313E6EE312DD15D200883C18</string>
@@ -418,7 +418,8 @@
 											<string>3174E9A7133189B00029E21A</string>
 											<string>3174E9D5133194F60029E21A</string>
 											<string>3174EA4213319D400029E21A</string>
-											<string>3174EA751331C7F30029E21A</string>
+											<string>31F460F113342B580090FE64</string>
+											<string>31F460F213342B580090FE64</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -476,9 +477,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>3174EA8D133291F30029E21A</string>
+				<string>31F460E413342B3B0090FE64</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>3174EA8E133291F30029E21A</string>
+				<string>31F460E513342B3B0090FE64</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -616,11 +617,11 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>3174EA98133291F30029E21A</string>
-		<string>3174EA99133291F30029E21A</string>
+		<string>31F460EF13342B3B0090FE64</string>
+		<string>31F460F013342B3B0090FE64</string>
+		<string>1C78EAAD065D492600B07095</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>31C6967E129646AA007F71A7</string>
-		<string>1C78EAAD065D492600B07095</string>
 		<string>/Users/makira/Project/20110321.VancouverMusium/oF0062/apps/YES-NO Visuallize/No.1 Organic Blob/No.1 Organic Blob.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
@@ -701,7 +702,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>31C6967E129646AA007F71A7</string>
-				<string>3174EA8F133291F30029E21A</string>
+				<string>31F460E613342B3B0090FE64</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -823,13 +824,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>3174EA90133291F30029E21A</string>
+				<string>31F460E713342B3B0090FE64</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>3174EA91133291F30029E21A</string>
-				<string>3174EA92133291F30029E21A</string>
-				<string>3174EA93133291F30029E21A</string>
-				<string>3174EA94133291F30029E21A</string>
-				<string>3174EA95133291F30029E21A</string>
+				<string>31F460E813342B3B0090FE64</string>
+				<string>31F460E913342B3B0090FE64</string>
+				<string>31F460EA13342B3B0090FE64</string>
+				<string>31F460EB13342B3B0090FE64</string>
+				<string>31F460EC13342B3B0090FE64</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
@@ -956,8 +957,6 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -993,7 +992,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C78EAAD065D492600B07095</string>
-				<string>3174EA96133291F30029E21A</string>
+				<string>31F460ED13342B3B0090FE64</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>
@@ -1003,7 +1002,7 @@
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>Identifier</key>

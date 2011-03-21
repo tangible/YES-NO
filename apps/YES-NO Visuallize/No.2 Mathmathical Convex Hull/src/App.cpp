@@ -13,7 +13,7 @@ void App::setup(){
 	ofSetDataPathRoot("../Resources/");
 	ofBackground(0,0,0);
 		
-	cam.position(ofGetWidth()/2, ofGetWidth()/2, 1000);
+	cam.position(ofGetWidth()/2, ofGetWidth()/2-400, 1000);
 	//cam.setup(this, 1000);
 	adminPanel.setup();
 	sText.setup();	
@@ -27,6 +27,7 @@ void App::setup(){
 	ofAddListener(adminPanel.onClearQImg, this, &App::onClearQImg);		
 	ofAddListener(adminPanel.onRestoreAllSMSAnswer, this, &App::onRestoreAllSMSAnswer);
 	ofAddListener(httpClient.onSMSRecieved, this, &App::onSMSMsgRecieved);	
+	ofAddListener(httpClient.onAllSMSRecieved, this, &App::onAllSMSMsgRecieved);
 	ofAddListener(convexHull.yesSoft.onFinishAllUpdating, this, &App::resotoreCamOrbit);	
 	ofAddListener(convexHull.noSoft.onFinishAllUpdating, this, &App::resotoreCamOrbit);
 	ofAddListener(convexHull.yesSoft.notifyStartCamOrbit, this, &App::camOrbit);
@@ -37,63 +38,24 @@ void App::setup(){
 	ofAddListener(convexHull.yesSoft.notifyStartStextFadingYesEvent, this, &App::onNotifyStartStextFadingYesEvent);
 	ofAddListener(convexHull.noSoft.notifyStartStextFadingNoEvent, this, &App::onNotifyStartStextFadingNoEvent);	
 	
-	//qImage.changeImgQImg("qimg3.png");
 	prevOrbit = 2;
-	camOrbitAmt = 4.5;
+	camOrbitAmt = 6.5;
+	camOrbitDur = 600;
+//	camOrbitAxisY = ofxVec3f(-0.3,1.3,0);
+//	camOrbitAxisN = ofxVec3f(0.2,0.8,0);
+	camOrbitAxisY = ofxVec3f(0.0,1,0);
+	camOrbitAxisN = ofxVec3f(0.0,1,0);	
 	
-	bool bCheckSetting = adminPanel.checkSetting();
+	bCheckSetting = adminPanel.checkSetting();
 	if (bCheckSetting) {
-		int i = 1;
-		ofNotifyEvent(adminPanel.onRestoreAllSMSAnswer, i);	
-	}	
+		httpClient.sendRequestToServer(true, false, true);
+	}
+	processAllSMS = false;
 
-	bgenY = false;
+	generatedUpInfo.numTotalYes = 0;
+	generatedUpInfo.numTotalNo = 0;
 }
 
-//--------------------------------------------------------------
-void App::update(){
-	
-	adminPanel.update();
-	convexHull.update();
-	httpClient.update(adminPanel.debugWithFakeSMS);
-	
-	if (isVidBG) {
-		bgPlayer->update();
-		if (bgPlayer->bLoaded && !bgPlayer->isFrameNew()) bgPlayer->play();			
-	}		
-	
-	cam.orbitAround(cam.getEye(), ofxVec3f(0,1,0), camOrbitTween.update());
-	
-	if (!convexHull.isYesUpdating && !convexHull.isNoUpdating && smsQue.size() > 0) {
-		
-		upInfo = smsQue[0];
-		smsQue.erase(smsQue.begin());
-		
-		sText.onSMSReceivedUpdate(upInfo.sms.YesOrNo, upInfo);
-		convexHull.feedSMS(upInfo);
-		
-//		if (prevOrbit != upInfo.sms.YesOrNo) {
-//			float oamt = 0.0;
-//			if (upInfo.sms.YesOrNo == 0) {
-//				oamt = -camOrbitAmt;
-//			}else {
-//				oamt = camOrbitAmt;
-//			}
-//			if (prevOrbit != 2) oamt *= 2;
-//			camOrbitTween.setParameters(camOrbitEasing, ofxTween::easeInOut, oamt, 0.0, 600, 0);
-//			
-//		}
-//		prevOrbit = upInfo.sms.YesOrNo;	
-	}
-	
-	int tgtn = 5000;
-	if (bgenY) {
-		int num = convexHull.yesSoft.genShapeProgramatically();
-		if (tgtn <= num) {
-			bgenY = false;
-		}
-	}
-}
 
 void App::camOrbit(int & z) {
 	
@@ -102,11 +64,15 @@ void App::camOrbit(int & z) {
 		float oamt = 0.0;
 		if (upInfo.sms.YesOrNo == 0) {
 			oamt = -camOrbitAmt;
+			//camOrbitAxisY.x = ofRandom(-0.1, 0.0);
+			camOrbitAxis = camOrbitAxisY;
 		}else {
 			oamt = camOrbitAmt;
+			//camOrbitAxisN.x = ofRandom(0.0, 0.11);			
+			camOrbitAxis = camOrbitAxisN;			
 		}
 		if (prevOrbit != 2) oamt *= 2;
-		camOrbitTween.setParameters(camOrbitEasing, ofxTween::easeInOut, oamt, 0.0, 600, 0);
+		camOrbitTween.setParameters(camOrbitEasing, ofxTween::easeInOut, oamt, 0.0, camOrbitDur, 0);
 		
 	}
 	prevOrbit = upInfo.sms.YesOrNo;		
@@ -119,11 +85,69 @@ void App::resotoreCamOrbit(int & z) {
 		float oamt = 0.0;
 		if (prevOrbit == 0) { // yes
 			oamt = camOrbitAmt;
+			//camOrbitAxis = camOrbitAxisY;			
 		}else if (prevOrbit == 1) { // no
 			oamt = -camOrbitAmt;
+			//camOrbitAxis = camOrbitAxisN;			
 		}
-		camOrbitTween.setParameters(camOrbitEasing, ofxTween::easeInOut, oamt, 0.0, 600, 0);
+		camOrbitTween.setParameters(camOrbitEasing, ofxTween::easeInOut, oamt, 0.0, camOrbitDur, 0);
 		prevOrbit = 2;	
+	}
+}
+
+//--------------------------------------------------------------
+int done = 0;
+void App::update(){
+	
+	adminPanel.update();
+	convexHull.update();
+	httpClient.update(adminPanel.debugWithFakeSMS);
+	
+	if (isVidBG) {
+		bgPlayer->update();
+		if (bgPlayer->bLoaded && !bgPlayer->isFrameNew()) bgPlayer->play();			
+	}		
+	
+	cam.qorbitAround(cam.getEye(), camOrbitAxis, camOrbitTween.update());
+	
+	if (!convexHull.isYesUpdating && !convexHull.isNoUpdating && smsQue.size() > 0 && !bCheckSetting) {
+		
+		upInfo = smsQue[0];
+		smsQue.erase(smsQue.begin());
+		
+		sText.onSMSReceivedUpdate(upInfo.sms.YesOrNo, upInfo);
+		convexHull.feedSMS(upInfo);
+
+	}
+	
+	if (processAllSMS) {
+		upInfo = allSmsQue[0];
+		if (upInfo.sms.YesOrNo == 0 && genYesNum == 1) {
+			upInfo = allSmsQue[0];
+			allSmsQue.erase(allSmsQue.begin());
+			smsQue.push_back(upInfo);
+			genYesNum--;
+		}else if (upInfo.sms.YesOrNo == 1 && genNoNum == 1) {
+			upInfo = allSmsQue[0];
+			allSmsQue.erase(allSmsQue.begin());
+			smsQue.push_back(upInfo);
+			genNoNum--;
+		}else if (genNoNum == 0 && genYesNum == 0) {
+			processAllSMS = false;
+			bCheckSetting = false;
+		}else {
+			upInfo = allSmsQue[0];
+			allSmsQue.erase(allSmsQue.begin());
+			
+			sText.onSMSReceivedUpdate(upInfo.sms.YesOrNo, upInfo);
+			if (upInfo.sms.YesOrNo == 0) {
+				int num = convexHull.yesSoft.genShapeProgramatically();
+				genYesNum--;
+			}else {
+				int num = convexHull.noSoft.genShapeProgramatically();
+				genNoNum--;
+			}			
+		}
 	}
 }
 
@@ -143,7 +167,6 @@ void App::draw(){
 				ofGetScreenHeight()/2-bg.getHeight()/2);		
 	}
 	
-	
 	ofPushMatrix();
 	ofSetupScreen();
 	glDisable(GL_DEPTH_TEST);
@@ -160,19 +183,21 @@ void App::draw(){
 	glEnable(GL_DEPTH_TEST);
 	ofPopMatrix();
 	
-	
 	cam.place();
 	//cam.draw();
 	convexHull.draw();		
 
 	adminPanel.draw();	
 	ofSetColor(255, 255, 255);	
-	
+
+//	glDisable(GL_LIGHTING);		
+//	ofDrawBitmapString(ofToString(prevOrbit), 10, 20);
 }
 
 //--------------------------------------------------------------
 int scrnseq = 0;
 int atonceidx = 0;
+int atonceidxn = 0;
 void App::keyPressed(int key){
 
 	if (key == 's') {
@@ -196,9 +221,7 @@ void App::keyPressed(int key){
 		int z = 0;
 		for (int i = 0; i < 1; i++) {
 			ofxVec3f cen = convexHull.yesSoft.yesORno->getBodyCentroid();
-			vector<int> sortedFaces = convexHull.yesSoft.yesORno->sortFaceByPosition(cen);
-//			int faceID = sortedFaces[sortedFaces.size()-1];
-//			convexHull.yesSoft.addSMS(faceID, 1, 1);			
+			vector<int> sortedFaces = convexHull.yesSoft.yesORno->sortFaceByPosition(cen);	
 			int faceID = sortedFaces[ofRandom(0, sortedFaces.size()-1*0.3)];
 			convexHull.yesSoft.addSMS(faceID, 1, 1);
 			convexHull.yesSoft.addSMSCompleted(i);
@@ -210,10 +233,13 @@ void App::keyPressed(int key){
 	}else if (key == 'f') {
 		httpClient.createFakeSMS();
 	}else if (key == 'g') {
-//		convexHull.yesSoft.genShapeAtOnce(10);
-//		atonceidx++;
-		bgenY = true;
-		cout << "atonceidx = " + ofToString(atonceidx) << endl;
+		convexHull.yesSoft.genShapeProgramatically();
+		atonceidx++;
+		cout << "y="+ofToString(atonceidx) << endl;
+	}else if (key == 'h') {
+		convexHull.noSoft.genShapeProgramatically();		
+		atonceidxn++;		
+		cout << "n="+ofToString(atonceidxn) << endl;		
 	}else {	
 		adminPanel.keyPressed(key);
 	}
@@ -242,13 +268,32 @@ void App::onClearQImg(int& i) {
 	qImage.clear();
 }
 void App::onSMSMsgRecieved(UpdateInfo& _upInfo) {
-	upInfo = _upInfo;
-	smsQue.push_back(_upInfo);
+	upInfo = _upInfo;	
+	smsQue.push_back(upInfo);
 }
 void App::onRestoreAllSMSAnswer(int& i) {
-	if (!bAlreadyRestoreAllAnswer)
-		httpClient.sendRequestToServer(true);
-	bAlreadyRestoreAllAnswer = true;
+	if (!bAlreadyRestoreAllAnswer) {
+		bCheckSetting = true;
+		httpClient.sendRequestToServer(true, false, true);
+		processAllSMS = false;
+	}
+	bAlreadyRestoreAllAnswer = true;	
+}
+void App::onAllSMSMsgRecieved(vector<UpdateInfo>& _upInfos) {
+	
+	processAllSMS = true;
+	allSmsQue = _upInfos;
+	
+//	genYesNum
+	for (int i = 0; i < allSmsQue.size(); i++) {
+		upInfo = allSmsQue[i];
+		if (upInfo.sms.YesOrNo == 0) {
+			genYesNum++;
+		}else {
+			genNoNum++;
+		}
+	}
+	
 }
 
 //--------------------------------------------------------------

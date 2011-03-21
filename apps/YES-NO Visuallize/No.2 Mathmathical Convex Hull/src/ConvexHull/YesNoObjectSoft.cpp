@@ -22,7 +22,7 @@ void YesNoObjectSoft::setup(int _yesOrNo, ofxBullet* _bullet, ofxVec3f _forcePoi
 	//radius *= 2.5;
 	resolusion = ofMap(sizeLevel, YNSOFTMINSIZELEV, YNSOFTMAXSIZELEV, minRes, maxRes);
 	
-	float size = 50;
+	float size = 30;
 	float verts[12] =  {size,size,size, -size,-size,size, -size,size,-size, size,-size,-size};
 	int faces[12] = {0,2,1, 1,3,0, 2,3,1, 0,3,2};
 	yesORno = bullet->createSoftTriMesh(ofxVec3f(0, 0, 0), &verts[0], &faces[0], 4);		
@@ -66,7 +66,7 @@ void YesNoObjectSoft::update() {
 //		yesORno->getSoftBody()->addForce(f);	
 		
 		if (ofGetFrameNum() % (int)ofRandom(20, 100) == 0) {	
-			yesORno->blowUp(ofRandom(5000, 10000));		
+			yesORno->blowUp(ofRandom(500, 1000));		
 		}
 	}
 	
@@ -220,7 +220,12 @@ void YesNoObjectSoft::draw() {
 		changeColBySMSRecievedFace(i);			
 		
 	}
-	
+
+//	if (yesORno == 0) {
+//		ofSetColor(255, 255, 255);
+//		btSoftBody::tFaceArray& faces(yesORno->getSoftBody()->m_faces);
+//		ofDrawBitmapString(ofToString((int)faces.size()), 10, 20);
+//	}
 }
 
 void YesNoObjectSoft::genShapeAtOnce(int numEvolve) {
@@ -288,17 +293,18 @@ int YesNoObjectSoft::genShapeProgramatically() {
 //		cout << "fid = " + ofToString(fid) << endl;
 //		cout << "smsPosition = " + ofToString(cenc.x)+" "+ofToString(cenc.y)+" "+ofToString(cenc.z) << endl;
 //		cout << " " << endl;
-		btSoftBody::tFaceArray& faces(yesORno->getSoftBody()->m_faces);
-		cout << "generated face size = " + ofToString((int)faces.size()) << endl;		
+		
+		//cout << "generated face size = " + ofToString((int)faces.size()) << endl;		
 
 //	}
 
-	colorPointerTween.setParameters(easing, ofxTween::easeIn, 0, 100, 1000, 0);
-	int i =0;
-	changeColBySMSRecievedFace(i);		
-	updateColorPointer();
-	
-	incomingSMSFaceID = 0;
+//	colorPointerTween.setParameters(easing, ofxTween::easeIn, 0, 100, 1000, 0);
+//	int i =0;
+//	changeColBySMSRecievedFace(i);		
+//	updateColorPointer();
+//	
+//	incomingSMSFaceID = 0;
+	btSoftBody::tFaceArray& faces(yesORno->getSoftBody()->m_faces);
 	return (int)faces.size();
 }
 

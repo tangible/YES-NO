@@ -199,9 +199,9 @@ void MySoftBody::createTriMeshShape(const btScalar* vertices, const int* triangl
 	
 	psb = btSoftBodyHelpers::CreateFromTriMesh(softBodyWI, vertices, triangles, ntriangles);
 
-	psb->m_materials[0]->m_kLST   =   0.89;
-	psb->m_materials[0]->m_kAST   =   0.89; // Area/Angular stiffness coefficient [0,1]
-	psb->m_materials[0]->m_kVST   =   0.89; // Volume stiffness coefficient [0,1]	
+	psb->m_materials[0]->m_kLST   =   0.99;
+	psb->m_materials[0]->m_kAST   =   0.99; // Area/Angular stiffness coefficient [0,1]
+	psb->m_materials[0]->m_kVST   =   0.99; // Volume stiffness coefficient [0,1]	
 
 	
 	// 粘り気

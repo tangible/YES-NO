@@ -13,11 +13,13 @@ void HTTPSMSClient::setup(AdminPanel* _adminPanel){
 	
 	adminPanel = _adminPanel;
 
-	ofAddListener(testHttpUtils.newResponseEvent, this, &HTTPSMSClient::getResponse);
-	testHttpUtils.start();
+//	ofAddListener(testHttpUtils.newResponseEvent, this, &HTTPSMSClient::getResponse);
+//	testHttpUtils.start();
 	
 	ofAddListener(realHttpUtils.newResponseEvent, this, &HTTPSMSClient::getSMSAnswersFromServer);
 	realHttpUtils.start();
+	
+	ofAddListener(realAllHttpUtils.newResponseEvent, this, &HTTPSMSClient::getAllSMSAnswersFromServer);
 	
 	ofAddListener(makeFakeSMSHttpUtils.newResponseEvent, this, &HTTPSMSClient::debugCreateFakeSMSResult);
 	makeFakeSMSHttpUtils.start();
@@ -52,7 +54,7 @@ void HTTPSMSClient::update(bool _bDebug){
 };
 
 
-void HTTPSMSClient::sendRequestToServer(bool bAll, bool _bDebug) {
+void HTTPSMSClient::sendRequestToServer(bool bAll, bool _bDebug, bool _cHull) {
 	
 	bDebug = _bDebug;
 	
@@ -72,12 +74,12 @@ void HTTPSMSClient::sendRequestToServer(bool bAll, bool _bDebug) {
 		strftime(gmttime, 255, "%Y¥-%m-%d¥ %H¥:%M¥:%S", gmtime(&current));
 		string currentStr = gmttime;
 		currentStr = str_replace(currentStr, "¥", "");		
-		cout << currentStr << endl;
+		//cout << currentStr << endl;
 		time_t tenSecPast = current - 9;
 		strftime(gmttime, 255, "%Y¥-%m-%d¥ %H¥:%M¥:%S", gmtime(&tenSecPast));
 		string pastStr = gmttime;
 		pastStr = str_replace(pastStr, "¥", "");			
-		cout << pastStr << endl;
+		//cout << pastStr << endl;
 		
 		string start_date = "&start_date=" + pastStr;
 		string end_date = "&end_date=" + currentStr;
@@ -92,7 +94,12 @@ void HTTPSMSClient::sendRequestToServer(bool bAll, bool _bDebug) {
 	}
 	
 	cout << form.action << endl;
-	realHttpUtils.addForm(form);
+	if (_cHull) {
+		realAllHttpUtils.start();
+		realAllHttpUtils.addForm(form);
+	}else {
+		realHttpUtils.addForm(form);
+	}
 	
 }
 
@@ -106,7 +113,7 @@ void HTTPSMSClient::getSMSAnswersFromServer(ofxHttpResponse & response) {
 	{
 		string test;
 		xml.copyXmlToString(test);
-		cout << test << endl;
+		//cout << test << endl;
 	}	
 	
 	xml.pushTag("entries");
@@ -123,7 +130,7 @@ void HTTPSMSClient::getSMSAnswersFromServer(ofxHttpResponse & response) {
 		string time = xml.getValue("time", "error");			
 		
 		// if we get the entry which bind to this App
-		cout << "question_id = "+question_id+" adminPanel->phone_questionID = "+adminPanel->phone_questionID << endl;
+		//cout << "question_id = "+question_id+" adminPanel->phone_questionID = "+adminPanel->phone_questionID << endl;
 		if ((question_id != "error") && question_id == adminPanel->phone_questionID) {		
 			smsMsg sms;
 			sms.answer = ans;
@@ -157,6 +164,113 @@ void HTTPSMSClient::getSMSAnswersFromServer(ofxHttpResponse & response) {
 	lastTime = ofGetElapsedTimeMillis();
 	cout << "recieve answer @ " + ofToString(lastTime) << endl;
 	
+}
+
+void HTTPSMSClient::getAllSMSAnswersFromServer(ofxHttpResponse & response) {
+	
+	vector<smsMsg> allSMS;
+	responseStr.clear();
+	xml.clear();
+	xml.loadFromBuffer(response.responseBody);	
+	
+	// debug block
+	{
+		string test;
+		xml.copyXmlToString(test);
+		//cout << test << endl;
+	}	
+	
+	xml.pushTag("entries");
+	int numTag = xml.getNumTags("entry");
+	
+	int numYes = 0;
+	int numNo = 0;
+	
+	for (int i = 0; i < numTag; i++) {
+		xml.pushTag("entry", i);
+		string from = xml.getValue("from", "error");
+		string question_id = xml.getValue("question_id", "error");
+		string ans = xml.getValue("answer", "error");
+		string time = xml.getValue("time", "error");			
+		
+		// if we get the entry which bind to this App
+		//cout << "question_id = "+question_id+" adminPanel->phone_questionID = "+adminPanel->phone_questionID << endl;
+		if ((question_id != "error") && question_id == adminPanel->phone_questionID) {		
+			smsMsg sms;
+			sms.answer = ans;
+			sms.time = time;
+			
+			//if (caseInsCompare("Yes", sms.answer)) {
+			if ("0" == sms.answer) {
+				sms.YesOrNo = 0;
+				numYes++;
+			}else {
+				sms.YesOrNo = 1;
+				numNo++;
+			}
+			
+			allSMS.push_back(sms);
+		}
+		
+		xml.popTag();		
+	}
+	xml.popTag();		
+	
+	int asize = allSMS.size();
+	vector<UpdateInfo> allSMSUpInfo;
+	for (int i = 0; i < allSMS.size(); i++) {
+		//cout << "sms size = "+ofToString((int)smss.size()) << endl;	
+		
+//		smsMsg sms = allSMS[allSMS.size()-1];
+//		allSMS.pop_back();
+		smsMsg sms = allSMS[i];		
+		UpdateInfo upInfo;
+		
+		int thisYesOrNo = sms.YesOrNo;
+		totalSMSs++;
+		if (0 == thisYesOrNo) {
+			//cout << "yes!!" << endl;
+			totalYes++;
+		}else {
+			//cout << "no!!" << endl;
+			totalNo++;
+		}
+		//	cout << "totalYes = "+ofToString(totalYes) << endl;
+		//	cout << "totalNo = "+ofToString(totalNo) << endl;	
+		
+		float rtotalYes = totalYes;
+		float rtotalNo = totalNo;
+		float rthisTimeYes = (thisYesOrNo==0)?1:0;
+		float rthisTimeNo = (thisYesOrNo==1)?1:0;
+		
+		float rtotalSMS = totalSMSs;
+		float rtotalSMSThisTime = 1;
+		float raTotalYes = (totalYes<=0)?0.0:rtotalYes/rtotalSMS;
+		float raTotalNo = (totalNo<=0)?0.0:rtotalNo/rtotalSMS;
+		float raThisTimeYes = (rthisTimeYes<=0)?0.0:rthisTimeYes/rtotalSMSThisTime;
+		float raThisTimeNo = (rthisTimeNo<=0)?0.0:rthisTimeNo/rtotalSMSThisTime;
+		
+		upInfo.sms = sms;
+		
+		upInfo.ratioTotalYes = raTotalYes;
+		upInfo.ratioTotalNo = raTotalNo;
+		upInfo.ratioThisTimeYes = raThisTimeYes;
+		upInfo.ratioThisTimeNo = raThisTimeNo;
+		upInfo.numTotalYes = rtotalYes;
+		upInfo.numTotalNo = rtotalNo;
+		upInfo.numYes = rthisTimeYes;
+		upInfo.numNo = rthisTimeNo;
+		upInfo.numDiffYes = rtotalYes-rtotalNo;
+		upInfo.numDiffNo = rtotalNo-rtotalYes;
+		upInfo.requesttime = reqestTime;	
+		
+		allSMSUpInfo.push_back(upInfo);
+	}
+	
+	cout << "all totalYes = "+ofToString(totalYes)+ " totoalNo = "+ofToString(totalNo) << endl;
+	
+	ofNotifyEvent(onAllSMSRecieved, allSMSUpInfo);
+	realAllHttpUtils.stop();
 }
 
 void HTTPSMSClient::doSequentialNotificationToApps() {
@@ -201,10 +315,10 @@ UpdateInfo HTTPSMSClient::calcUpdateInfoForRealEnv() {
 	int thisYesOrNo = sms.YesOrNo;
 	totalSMSs++;
 	if (0 == thisYesOrNo) {
-		cout << "yes!!" << endl;
+//		cout << "yes!!" << endl;
 		totalYes++;
 	}else {
-		cout << "no!!" << endl;
+//		cout << "no!!" << endl;
 		totalNo++;
 	}
 //	cout << "totalYes = "+ofToString(totalYes) << endl;
@@ -238,6 +352,7 @@ UpdateInfo HTTPSMSClient::calcUpdateInfoForRealEnv() {
 	
 	//	cout << "thisTimeYes recieved = " + ofToString(upInfo.numYes) << endl;	
 	//	cout << "totalYes recieved = " + ofToString(upInfo.numTotalYes) << endl;
+	cout << "totalYes = "+ofToString(totalYes)+ " totoalNo = "+ofToString(totalNo) << endl;
 	
 	return upInfo;	
 	

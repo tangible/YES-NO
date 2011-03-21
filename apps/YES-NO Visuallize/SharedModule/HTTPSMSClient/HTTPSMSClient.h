@@ -48,8 +48,9 @@ public:
 	AdminPanel* adminPanel;
 	
 	//--for real server interaction
-	void sendRequestToServer(bool bAll = false, bool _bDebug = false);
+	void sendRequestToServer(bool bAll = false, bool _bDebug = false, bool _cHull = false);
 	void getSMSAnswersFromServer(ofxHttpResponse & response);
+	void getAllSMSAnswersFromServer(ofxHttpResponse & response);
 	void debugCreateFakeSMSResult(ofxHttpResponse & response);
 	void doSequentialNotificationToApps();
 	UpdateInfo calcUpdateInfoForRealEnv();
@@ -89,6 +90,7 @@ public:
 	string recieveTime;
 	
 	ofEvent<UpdateInfo> onSMSRecieved; 
+	ofEvent<vector<UpdateInfo> > onAllSMSRecieved;
 	
 	static const int YES = 0;
 	static const int NO = 1;
@@ -102,6 +104,7 @@ private:
 	bool caseInsCompare(const string& s1, const string& s2);
 	
 	ofxHttpUtils	realHttpUtils;
+	ofxHttpUtils	realAllHttpUtils;
 	ofxHttpUtils	makeFakeSMSHttpUtils;
 	ofxHttpUtils	testHttpUtils;
 	string			responseStr;

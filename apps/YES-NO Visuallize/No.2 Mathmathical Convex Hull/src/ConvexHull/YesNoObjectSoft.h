@@ -168,7 +168,7 @@ public:
 	float prevFaceAngle;	
 	
 	ofxTween translationTween;
-	ofxEasingLinear translationEasing;
+	ofxEasingCirc translationEasing;
 	
 	static const float maxNumScale = 2.0;
 	static const float maxRatioScale = 6.0;

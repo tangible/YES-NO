@@ -19,8 +19,8 @@ void ConvexHull::setup(int _fps, AdminPanel* _adminPanel, ofxCamera* _cam) {
 	bullet->initPhysics(ofxVec3f(0, -10, 0));	
 	//bullet->enableRayCastingMouseInteraction(_cam);
 	
-	yesPoint = ofxVec3f(ofGetWidth()/2-400, ofGetHeight()-370, -200);
-	noPoint = ofxVec3f(ofGetWidth()/2+400, ofGetHeight()-370, -200); 
+	yesPoint = ofxVec3f(ofGetScreenWidth()/2-500, ofGetScreenHeight()-370, -200);
+	noPoint = ofxVec3f(ofGetScreenWidth()/2+500, ofGetScreenHeight()-370, -200); 
 	
 	currentYesLevel = 0;
 	yesSoft.setup(YES, bullet, ofxVec3f(0,0,0), ofxVec3f(100, 100, 100), currentYesLevel);

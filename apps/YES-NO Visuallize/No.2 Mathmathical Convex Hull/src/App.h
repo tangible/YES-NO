@@ -30,6 +30,7 @@ public:
 	void onFileChangeQImg(FileDef& fd);	
 	void onClearQImg(int& i);	
 	void onSMSMsgRecieved(UpdateInfo& _upInfo);	
+	void onAllSMSMsgRecieved(vector<UpdateInfo>& _upInfos);
 	bool bAlreadyRestoreAllAnswer;	
 	void onRestoreAllSMSAnswer(int& i);
 	void resotoreCamOrbit(int & z);
@@ -49,19 +50,28 @@ public:
 	QuestionImage	qImage;
 	UpdateInfo		upInfo;		
 	
-	bool bgenY;
+	UpdateInfo      generatedUpInfo;
+	bool bCheckSetting;
+	bool processAllSMS;
+	int genYesNum;
+	int genNoNum;
 	
 	ofImage bg;
 	ofVideoPlayer*		bgPlayer;	
 	bool				isVidBG;	
 	vector<UpdateInfo> smsQue;
+	vector<UpdateInfo> allSmsQue;
 	
 	//ofxEasyCam		cam;
 	ofxCamera		cam;
 	ofxTween		camOrbitTween;
-//	ofxEasingQuad	camOrbitEasing;
-	ofxEasingSine	camOrbitEasing;	
+	ofxEasingBack	camOrbitEasing;
+//	ofxEasingSine	camOrbitEasing;	
 	float			camOrbitAmt;
+	float			camOrbitDur;
+	ofxVec3f		camOrbitAxis;
+	ofxVec3f		camOrbitAxisY;
+	ofxVec3f		camOrbitAxisN;
 	int				prevOrbit;
 
 };
