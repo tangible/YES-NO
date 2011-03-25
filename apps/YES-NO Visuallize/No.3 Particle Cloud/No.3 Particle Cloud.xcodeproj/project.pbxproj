@@ -18,7 +18,6 @@
 		31B5E31C130F576B00388627 /* BoidList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31B5E317130F576B00388627 /* BoidList.cpp */; };
 		31B5E31D130F576B00388627 /* Flock3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31B5E319130F576B00388627 /* Flock3D.cpp */; };
 		31B5E8F41310C04C00388627 /* ofxColorPicker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31B5E8F21310C04C00388627 /* ofxColorPicker.cpp */; };
-		31C2DA2B1328A249005C6A85 /* VerticeContainer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31C2DA2A1328A249005C6A85 /* VerticeContainer.cpp */; };
 		31DED79B1311E056007CC1D3 /* StateText.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31DED7991311E056007CC1D3 /* StateText.cpp */; };
 		31DED7AA1311E06E007CC1D3 /* HTTPSMSClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31DED7A81311E06E007CC1D3 /* HTTPSMSClient.cpp */; };
 		31DED8071311E92D007CC1D3 /* ofxHttpUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31DED7CA1311E92D007CC1D3 /* ofxHttpUtils.cpp */; };
@@ -316,8 +315,6 @@
 		31B5E31A130F576B00388627 /* Flock3D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flock3D.h; sourceTree = "<group>"; };
 		31B5E8F21310C04C00388627 /* ofxColorPicker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxColorPicker.cpp; sourceTree = "<group>"; };
 		31B5E8F31310C04C00388627 /* ofxColorPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxColorPicker.h; sourceTree = "<group>"; };
-		31C2DA291328A249005C6A85 /* VerticeContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerticeContainer.h; sourceTree = "<group>"; };
-		31C2DA2A1328A249005C6A85 /* VerticeContainer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VerticeContainer.cpp; sourceTree = "<group>"; };
 		31DED7991311E056007CC1D3 /* StateText.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StateText.cpp; sourceTree = "<group>"; };
 		31DED79A1311E056007CC1D3 /* StateText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StateText.h; sourceTree = "<group>"; };
 		31DED7A81311E06E007CC1D3 /* HTTPSMSClient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HTTPSMSClient.cpp; sourceTree = "<group>"; };
@@ -1777,8 +1774,6 @@
 				31E8170A130E23290053787E /* YesNoObj.cpp */,
 				31E81749130E287F0053787E /* Obj.h */,
 				31E8174A130E287F0053787E /* Obj.cpp */,
-				31C2DA291328A249005C6A85 /* VerticeContainer.h */,
-				31C2DA2A1328A249005C6A85 /* VerticeContainer.cpp */,
 			);
 			path = ParticleCloud;
 			sourceTree = "<group>";
@@ -2640,7 +2635,6 @@
 				31DED8441311E967007CC1D3 /* TimedCounter.cpp in Sources */,
 				31DED89513121C6C007CC1D3 /* ofxFileDialogOSX.cpp in Sources */,
 				31F4000B1313414D0082B942 /* QuestionImage.cpp in Sources */,
-				31C2DA2B1328A249005C6A85 /* VerticeContainer.cpp in Sources */,
 				318BE09C132F320A00E818E9 /* XMLSetting.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

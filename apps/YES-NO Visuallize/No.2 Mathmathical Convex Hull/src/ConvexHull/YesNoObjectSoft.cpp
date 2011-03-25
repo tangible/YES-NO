@@ -82,14 +82,7 @@ void YesNoObjectSoft::updateRotateion() {
 	ofxVec3f axis; float angle;
 	from.getRotate(angle, axis);
 	glRotatef(ofRadToDeg(angle), axis.x, axis.y, axis.z);
-	
-//	if (!quatTween.isRunning()) {
-//		//cout << "rot funning" << endl;
-//		ofxVec3f rdmAxis = ofxVec3f(ofRandomf(),ofRandomf(),ofRandomf());
-////		ofRotate(ofRadToDeg(ofNoise(ofGetFrameNum())), 0, 1, 0);
-////		ofRotate(ofGetFrameNum(), rdmRot.x, rdmRot.y, rdmRot.z);		
-//		
-//	}
+
 }
 
 void YesNoObjectSoft::updateTranslation() {	
@@ -97,15 +90,10 @@ void YesNoObjectSoft::updateTranslation() {
 	ofxVec3f cen = yesORno->getBodyCentroid();
 	if ((isnan(cen.x) || isnan(cen.y) || isnan(cen.z)) ||
 		(isnan(objCentroid.x) || isnan(objCentroid.y) || isnan(objCentroid.z))) {
-//		cout << "cen NaN!!" << endl;
 		float x = preservedObjCentroid.x;
 		float y = preservedObjCentroid.y;
 		float z = preservedObjCentroid.z;	
-//		cout << ofToString(x)+" "+ofToString(y)+" "+ofToString(z) << endl;
 		ofTranslate(-x, -y, -z);	
-		
-		
-		//return;
 	}else {
 		objCentroid = cen;	
 		preservedObjCentroid = objCentroid;
@@ -116,12 +104,10 @@ void YesNoObjectSoft::updateTranslation() {
 			translationTween.setParameters(translationEasing, ofxTween::easeIn, x, objCentroid.x, 1000, 0);
 			translationTween.addValue(y, objCentroid.y);
 			translationTween.addValue(z, objCentroid.z);
-//			cout << ofToString(x)+" "+ofToString(y)+" "+ofToString(z) << endl;
 		}
 		float x = translationTween.update();
 		float y = translationTween.getTarget(1);
 		float z = translationTween.getTarget(2);	
-//		cout << ofToString(x)+" "+ofToString(y)+" "+ofToString(z) << endl;
 		ofTranslate(-x, -y, -z);	
 	}
 }
@@ -232,11 +218,6 @@ void YesNoObjectSoft::draw() {
 		
 	}
 
-//	if (yesORno == 0) {
-//		ofSetColor(255, 255, 255);
-//		btSoftBody::tFaceArray& faces(yesORno->getSoftBody()->m_faces);
-//		ofDrawBitmapString(ofToString((int)faces.size()), 10, 20);
-//	}
 }
 
 void YesNoObjectSoft::genShapeAtOnce(int numEvolve) {
@@ -258,63 +239,42 @@ void YesNoObjectSoft::genShapeAtOnce(int numEvolve) {
 int YesNoObjectSoft::genShapeProgramatically() {
 	
 	suddenMotion = false;	
+
+	ofxVec3f cen = yesORno->getBodyCentroid();
+	vector<int> sortedFaces = yesORno->sortFaceByPosition(cen);
+	int fid = sortedFaces[ofRandom(0, sortedFaces.size()-1*0.3)];
+	incomingSMSFaceID = fid;	
 	
-//	for (int i = 0; i < numEvolve; i++) {
-		
-		ofxVec3f cen = yesORno->getBodyCentroid();
-		vector<int> sortedFaces = yesORno->sortFaceByPosition(cen);
-		int fid = sortedFaces[ofRandom(0, sortedFaces.size()-1*0.3)];
-		incomingSMSFaceID = fid;	
-		
-		vector<ofxVec3f> face = yesORno->getFaceAsVerts(fid);
-		ofxVec3f fa = face[0];
-		ofxVec3f fb = face[1];
-		ofxVec3f fc = face[2];	
-		ofxVec3f normc = yesORno->getFaceNormal(fid);
-		normc *= height;
-		ofxVec3f cenc = yesORno->getFaceCentroid(fid);
-		cenc += normc;
-		smsPosition = ofxVec3f(cenc.x, cenc.y, cenc.z);			
-		addedSMSFaces.clear();
-		addedSMSFaces.push_back(fb);
-		addedSMSFaces.push_back(cenc);
-		addedSMSFaces.push_back(fa);
-		addedSMSFaces.push_back(fc);
-		addedSMSFaces.push_back(cenc);
-		addedSMSFaces.push_back(fb);
-		addedSMSFaces.push_back(fa);
-		addedSMSFaces.push_back(cenc);
-		addedSMSFaces.push_back(fc);	
-		
-			
-		
-		fillMeshInput();
-		
-		yesORno->remove(bullet->getSoftDynamicsWorld());
-		delete yesORno;
-		yesORno = bullet->createSoftTriMesh(ofxVec3f(0, 0, 0), &floatVertices[0], &faceIndices[0], numFace);		
+	vector<ofxVec3f> face = yesORno->getFaceAsVerts(fid);
+	ofxVec3f fa = face[0];
+	ofxVec3f fb = face[1];
+	ofxVec3f fc = face[2];	
+	ofxVec3f normc = yesORno->getFaceNormal(fid);
+	normc *= height;
+	ofxVec3f cenc = yesORno->getFaceCentroid(fid);
+	cenc += normc;
+	smsPosition = ofxVec3f(cenc.x, cenc.y, cenc.z);			
+	addedSMSFaces.clear();
+	addedSMSFaces.push_back(fb);
+	addedSMSFaces.push_back(cenc);
+	addedSMSFaces.push_back(fa);
+	addedSMSFaces.push_back(fc);
+	addedSMSFaces.push_back(cenc);
+	addedSMSFaces.push_back(fb);
+	addedSMSFaces.push_back(fa);
+	addedSMSFaces.push_back(cenc);
+	addedSMSFaces.push_back(fc);	
+	
+	fillMeshInput();
+	
+	yesORno->remove(bullet->getSoftDynamicsWorld());
+	delete yesORno;
+	yesORno = bullet->createSoftTriMesh(ofxVec3f(0, 0, 0), &floatVertices[0], &faceIndices[0], numFace);		
 
-		addedSMSFaces.clear();
-		
-		objCentroid = yesORno->getBodyCentroid();
+	addedSMSFaces.clear();
+	
+	objCentroid = yesORno->getBodyCentroid();
 
-//		cout << "#########################################" << endl;
-//		cout << "height = "+ofToString(height) << endl;
-//		cout << "sortedFaces.size() = " + ofToString((int)sortedFaces.size()) << endl;
-//		cout << "fid = " + ofToString(fid) << endl;
-//		cout << "smsPosition = " + ofToString(cenc.x)+" "+ofToString(cenc.y)+" "+ofToString(cenc.z) << endl;
-//		cout << " " << endl;
-		
-		//cout << "generated face size = " + ofToString((int)faces.size()) << endl;		
-
-//	}
-
-//	colorPointerTween.setParameters(easing, ofxTween::easeIn, 0, 100, 1000, 0);
-//	int i =0;
-//	changeColBySMSRecievedFace(i);		
-//	updateColorPointer();
-//	
-//	incomingSMSFaceID = 0;
 	btSoftBody::tFaceArray& faces(yesORno->getSoftBody()->m_faces);
 	return (int)faces.size();
 }
@@ -331,15 +291,11 @@ void YesNoObjectSoft::startFaceingToCam(ofxCamera* cam, ofxVec3f offset) {
 	ofxVec3f center = _objCentroid;
 	ofxVec3f tar = camPos;
 	ofxVec3f normal = tar - center;
-//	ofxVec3f normal = center - tar;	
 	normal.normalize();
-//	ofxVec3f forward = faceCentroid - objCentroid;
 	ofxVec3f forward = _objCentroid - faceCentroid;	
 	forward.normalize();	
-//	ofxVec3f axis = forward.crossed(normal);
 	ofxVec3f axis = normal.crossed(forward);	
 	axis.normalize();
-//	float angle = forward.angle(normal);
 	float angle = normal.angle(forward);	
 	
 	quatTween.setParameters(quatEasing, ofxTween::easeIn, 0.0, 1.0, 950, 0);
@@ -347,11 +303,6 @@ void YesNoObjectSoft::startFaceingToCam(ofxCamera* cam, ofxVec3f offset) {
 	from = ofxQuaternion(prevFacingAxis.x, prevFacingAxis.y, prevFacingAxis.z, ofDegToRad(prevFaceAngle));
 	to = ofxQuaternion(axis.x, axis.y, axis.z, ofDegToRad(angle));
 
-//	cout << "prev angle = "+ofToString(prevFaceAngle) << endl;
-//	cout << "prev axis = "+ofToString(prevFacingAxis.x)+" "+ofToString(prevFacingAxis.y)+" "+ofToString(prevFacingAxis.z) << endl;		
-//	cout << "angle = "+ofToString(angle) << endl;
-//	cout << "axis = "+ofToString(axis.x)+" "+ofToString(axis.y)+" "+ofToString(axis.z) << endl;	
-	
 	prevFaceAngle = angle;
 	prevFacingAxis = axis;		
 	
@@ -412,13 +363,7 @@ vector<float> YesNoObjectSoft::changeColBySMSRecievedFace(int z) {
 		
 		float scaleFactor = 0.0;
 		float radiusFactor = 0.0;
-//		if (i < faceIDVec.size()/2) {
-//			scaleFactor = ofMap(i, 0, faceIDVec.size(), 0.1, 0.499);
-//			radiusFactor = ofMap(i, 0, faceIDVec.size(), 0.001, 0.699);
-//		}else {
-//			scaleFactor = ofMap(i, 0, faceIDVec.size(), 0.499, 0.1);
-//			radiusFactor = ofMap(i, 0, faceIDVec.size(), 0.699, 0.001);					
-//		}
+
 		if (i < faceIDVec.size()/2) {
 			scaleFactor = ofMap(i, 0, faceIDVec.size(), 0.3, 0.699);
 			radiusFactor = ofMap(i, 0, faceIDVec.size(), 0.3, 0.899);
@@ -454,11 +399,13 @@ vector<float> YesNoObjectSoft::changeColBySMSRecievedFace(int z) {
 		
 	}
 	
-	if (YesOrNo == 0) {
-		ofNotifyEvent(notifyUpdateStextColorYesEvent, YesOrNo);
-	}else {
-		ofNotifyEvent(notifyUpdateStextColorNoEvent, YesOrNo);
-	}		
+	if (!suddenMotion) {
+		if (YesOrNo == 0) {
+			ofNotifyEvent(notifyUpdateStextColorYesEvent, YesOrNo);
+		}else {
+			ofNotifyEvent(notifyUpdateStextColorNoEvent, YesOrNo);
+		}		
+	}
 	
 	destColorPointer = colPtrRtn;
 	return colPtrRtn;	
@@ -496,9 +443,9 @@ void YesNoObjectSoft::addSMSCompleted(int & z) {
 	
 	btSoftBody::tFaceArray& faces(yesORno->getSoftBody()->m_faces);
 	
-	ofxVec3f a = ofxBulletStaticUtil::btVec3ToOfxVec3(faces[faceID].m_n[0]->m_x);//.rescale(2.0);
-	ofxVec3f b = ofxBulletStaticUtil::btVec3ToOfxVec3(faces[faceID].m_n[1]->m_x);//.rescale(2.0);
-	ofxVec3f c = ofxBulletStaticUtil::btVec3ToOfxVec3(faces[faceID].m_n[2]->m_x);//.rescale(2.0);				
+	ofxVec3f a = ofxBulletStaticUtil::btVec3ToOfxVec3(faces[faceID].m_n[0]->m_x);
+	ofxVec3f b = ofxBulletStaticUtil::btVec3ToOfxVec3(faces[faceID].m_n[1]->m_x);
+	ofxVec3f c = ofxBulletStaticUtil::btVec3ToOfxVec3(faces[faceID].m_n[2]->m_x);				
 	
 	ofxVec3f norm = ofxBulletStaticUtil::btVec3ToOfxVec3(faces[faceID].m_normal);
 	norm *= 50;
@@ -510,7 +457,7 @@ void YesNoObjectSoft::addSMSCompleted(int & z) {
 	as->node2 = faces[faceID].m_n[2];
 	float minl = ofMap(resolusion, minRes, maxRes, 140, 70);
 	float maxl = ofMap(resolusion, minRes, maxRes, 160, 120);
-	as->length = height;//sqrt(6)/2*(a.distance(b));//sqrt(6)*100/3;//ofRandom(minl, maxl);
+	as->length = height;
 	as->faceID = faceID;
 	as->angle = ofRandomuf();
 	as->tw.setParameters(as->ea, ofxTween::easeOut, 0.0, as->length, 800, 0);

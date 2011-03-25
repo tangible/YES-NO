@@ -41,8 +41,6 @@ void App::setup(){
 	prevOrbit = 2;
 	camOrbitAmt = 6.5;
 	camOrbitDur = 600;
-//	camOrbitAxisY = ofxVec3f(-0.3,1.3,0);
-//	camOrbitAxisN = ofxVec3f(0.2,0.8,0);
 	camOrbitAxisY = ofxVec3f(0.0,1,0);
 	camOrbitAxisN = ofxVec3f(0.0,1,0);	
 	
@@ -64,11 +62,9 @@ void App::camOrbit(int & z) {
 		float oamt = 0.0;
 		if (upInfo.sms.YesOrNo == 0) {
 			oamt = -camOrbitAmt;
-			//camOrbitAxisY.x = ofRandom(-0.1, 0.0);
 			camOrbitAxis = camOrbitAxisY;
 		}else {
 			oamt = camOrbitAmt;
-			//camOrbitAxisN.x = ofRandom(0.0, 0.11);			
 			camOrbitAxis = camOrbitAxisN;			
 		}
 		if (prevOrbit != 2) oamt *= 2;
@@ -84,11 +80,9 @@ void App::resotoreCamOrbit(int & z) {
 	if (smsQue.size() == 0) {
 		float oamt = 0.0;
 		if (prevOrbit == 0) { // yes
-			oamt = camOrbitAmt;
-			//camOrbitAxis = camOrbitAxisY;			
+			oamt = camOrbitAmt;		
 		}else if (prevOrbit == 1) { // no
 			oamt = -camOrbitAmt;
-			//camOrbitAxis = camOrbitAxisN;			
 		}
 		camOrbitTween.setParameters(camOrbitEasing, ofxTween::easeInOut, oamt, 0.0, camOrbitDur, 0);
 		prevOrbit = 2;	
@@ -190,8 +184,6 @@ void App::draw(){
 	adminPanel.draw();	
 	ofSetColor(255, 255, 255);	
 
-//	glDisable(GL_LIGHTING);		
-//	ofDrawBitmapString(ofToString(prevOrbit), 10, 20);
 }
 
 //--------------------------------------------------------------
@@ -324,14 +316,9 @@ void App::changeImgBG(string path) {
 
 //--------------------------------------------------------------
 void App::keyReleased(int key){}
-//--------------------------------------------------------------
 void App::mouseMoved(int x, int y ){}
-//--------------------------------------------------------------
 void App::mouseDragged(int x, int y, int button){}
-//--------------------------------------------------------------
 void App::mousePressed(int x, int y, int button){}
-//--------------------------------------------------------------
 void App::mouseReleased(int x, int y, int button){}
-//--------------------------------------------------------------
 void App::windowResized(int w, int h){}
 

@@ -173,10 +173,4 @@ public:
 	static const float maxNumScale = 2.0;
 	static const float maxRatioScale = 6.0;
 
-//	float curScale;
-//	ofxTween scaleTween;
-//	ofxEasingBounce scaleEasing;
-//	void setCurrentScale(int & z);
-//	float getScale();
-	
 };

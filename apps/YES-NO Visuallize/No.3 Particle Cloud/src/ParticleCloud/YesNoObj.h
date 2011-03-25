@@ -22,7 +22,6 @@ public:
 	void update();
 	void draw();
 	void computeCloudShape();
-	void computeMovement();
 	void addSMSObj(int size, bool bInitial = false);
 	void changeParticleObjNum(ofxBullet* bullet, int numPart);
 	void changeSizeObjNum(ofxBullet* bullet, int numSize);

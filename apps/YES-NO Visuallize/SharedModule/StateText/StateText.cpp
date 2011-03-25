@@ -329,6 +329,8 @@ string StateText::insertComma(string num) {
 
 void StateText::updateColor(float colAngYes, float colAngNo) {
 	
+	cout << "updateColor(float colAngYes, float colAngNo)" << endl;
+	
 	ofColor thisYesCol;
 	ofColor thisNoCol;
 	
@@ -358,13 +360,7 @@ void StateText::updateColor(float colAngYes, float colAngNo) {
 
 void StateText::updateColor(ofColor yesCol, ofColor noCol) {
 	
-//	yesColTween.setParameters(colTweenEasing, ofxTween::easeIn, yesCol.r, 255.0, 2000, 0);
-//	yesColTween.addValue(yesCol.g, 255.0);
-//	yesColTween.addValue(yesCol.b, 255.0);
-//	
-//	noColTween.setParameters(colTweenEasing, ofxTween::easeIn, noCol.r, 255.0, 2000, 0);
-//	noColTween.addValue(noCol.g, 255.0);
-//	noColTween.addValue(noCol.b, 255.0);
+	cout << "updateColor(ofColor yesCol, ofColor noCol)" << endl;
 	
 	yesColTween.setParameters(colTweenEasing, ofxTween::easeIn, yesCol.r, yesCol.r, 0, 0);
 	yesColTween.addValue(yesCol.g, yesCol.g);

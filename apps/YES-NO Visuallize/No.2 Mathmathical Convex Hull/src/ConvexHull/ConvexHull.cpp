@@ -205,7 +205,6 @@ void ConvexHull::setupGLStuff(){
     glCullFace(GL_FRONT);
     glShadeModel(GL_SMOOTH);
 	
-    //glColor3f(admin->BASECOL[0], admin->BASECOL[1], admin->BASECOL[2]);
     GLfloat on[]  = {1.0};
     GLfloat off[] = {0.0};
     glLightModelfv( GL_LIGHT_MODEL_TWO_SIDE, on);

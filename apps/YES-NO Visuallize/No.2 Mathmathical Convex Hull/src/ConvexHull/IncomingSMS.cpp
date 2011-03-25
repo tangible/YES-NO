@@ -65,18 +65,7 @@ void IncomingSMS::debugDraw() {
 	ac *= factorC;
 	bc *= factorC;
 	cc *= factorC;
-	
-//	ofSetLineWidth(4);
-//	glDisable(GL_CULL_FACE);	
-//	glDisable(GL_LIGHTING);
-//	ofSetColor(0, 0, 0);
-//	ofxLine(a+norm+ac, b+norm+bc);
-//	ofxLine(b+norm+bc, c+norm+cc);
-//	ofxLine(c+norm+cc, a+norm+ac);
-//	glEnable(GL_CULL_FACE);
-//	glEnable(GL_LIGHTING);
-//	ofSetLineWidth(1);
-	
+
 	if (factor < 50 && !bNotify) {
 		SmsInfo si;
 		si.YesOrNo = YesOrNo;		
