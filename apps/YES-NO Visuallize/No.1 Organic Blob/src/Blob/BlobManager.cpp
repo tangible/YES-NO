@@ -277,14 +277,14 @@ void BlobManager::update() {
 						float tmpImpulse = yesDiff*total;
 						float impulseY = ofMap(tmpImpulse, 0.0, maxImpulseParam, minImpulse, maxImpulse);
 						//cout << "impulse Yes = "+ofToString(impulseY) << endl;
-						impulse *= impulseY;
+						impulse *= impulseY * 1.2;
 					}else if (i == 1) {
 						float total = upInfo.numTotalNo;
 						total = ofClamp(total, 0, maxSMSnum);				
 						float tmpImpulse = noDiff*total;				
 						float impulseN = ofMap(tmpImpulse, 0.0, maxImpulseParam, minImpulse, maxImpulse);
 						//cout << "impulse No = "+ofToString(impulseN) << endl;						
-						impulse *= impulseN;
+						impulse *= impulseN * 1.2;
 					}					
 				}
 

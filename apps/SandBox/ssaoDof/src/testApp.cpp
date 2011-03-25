@@ -38,7 +38,7 @@ void testApp::setup(){
 	ssaoFBO.setup(ofGetWidth(), ofGetHeight());
 	
 	ofxSetSphereResolution(100);
-	numObj = 500;
+	numObj = 250;
 	for (int i = 0; i < numObj; i++) {
 		float x = ofRandom(ofGetWidth()/2-200, ofGetWidth()/2+200);
 		float y = ofRandom(ofGetHeight()/2-200, ofGetHeight()/2+200);

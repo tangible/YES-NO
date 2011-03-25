@@ -59,9 +59,9 @@ void YesNoObj::update() {
 		}
 		for (int i = 0; i < addedObjs.size(); i++) {
 			if (i == addedObjs.size()-1) {
-				addedObjs[i]->movetoForcePoint(0, true);
+				addedObjs[i]->movetoForcePoint(10, true);
 			}else {
-				addedObjs[i]->movetoForcePoint(0);
+				addedObjs[i]->movetoForcePoint(10);
 			}
 		}
 	}

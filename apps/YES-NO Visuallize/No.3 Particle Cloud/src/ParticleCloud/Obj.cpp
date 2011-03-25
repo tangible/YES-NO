@@ -47,12 +47,12 @@ void Obj::movetoForcePoint(int impulseFactor, bool bSMS) {
 	btVector3 btImpulse(force.x, force.y, force.z);
 	body->getRigidBody()->applyCentralImpulse(btImpulse);
 	
-//	ofxVec3f impulse;
-//	impulse.set(ofRandomf(), ofRandomf(), ofRandomf());
-//	impulse *= impulseFactor;
-//	
-//	btImpulse = btVector3(impulse.x, impulse.y, impulse.z);
-//	body->getRigidBody()->applyCentralImpulse(btImpulse);	
+	ofxVec3f impulse;
+	impulse.set(ofRandomf(), ofRandomf(), ofRandomf());
+	impulse *= impulseFactor;
+	
+	btImpulse = btVector3(impulse.x, impulse.y, impulse.z);
+	body->getRigidBody()->applyCentralImpulse(btImpulse);	
 	
 	if (bSMS) {
 		int numManifolds = bullet->getWorld()->getDispatcher()->getNumManifolds();

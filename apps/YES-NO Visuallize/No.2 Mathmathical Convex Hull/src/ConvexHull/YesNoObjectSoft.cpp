@@ -59,14 +59,18 @@ void YesNoObjectSoft::update() {
 	updateColorPointer();
 	
 	if (suddenMotion) {	
-//		btVector3 f = btVector3(0.0, 0.0, 0.0);
-//		f.setX(ofSignedNoise(ofGetElapsedTimef())*ofRandom(10, 38));
-//		f.setY(ofSignedNoise(ofGetElapsedTimef())*ofRandom(10, 38));
-//		f.setZ(ofSignedNoise(ofGetElapsedTimef())*ofRandom(10, 38));	
-//		yesORno->getSoftBody()->addForce(f);	
+		btVector3 f = btVector3(0.0, 0.0, 0.0);
+		f.setX(ofSignedNoise(ofGetElapsedTimef())*ofRandom(10, 38));
+		f.setY(ofSignedNoise(ofGetElapsedTimef())*ofRandom(10, 38));
+		f.setZ(ofSignedNoise(ofGetElapsedTimef())*ofRandom(10, 38));	
+		yesORno->getSoftBody()->addForce(f);	
 		
 		if (ofGetFrameNum() % (int)ofRandom(20, 100) == 0) {	
 			yesORno->blowUp(ofRandom(500, 1000));		
+		}
+		
+		if (ofGetFrameNum() % (int)ofRandom(20, 100) == 0) {	
+			yesORno->pinchFace(incomingSMSFaceID, ofMap(resolusion, minRes, maxRes, 25000, 9700));			
 		}
 	}
 	
@@ -79,6 +83,13 @@ void YesNoObjectSoft::updateRotateion() {
 	from.getRotate(angle, axis);
 	glRotatef(ofRadToDeg(angle), axis.x, axis.y, axis.z);
 	
+//	if (!quatTween.isRunning()) {
+//		//cout << "rot funning" << endl;
+//		ofxVec3f rdmAxis = ofxVec3f(ofRandomf(),ofRandomf(),ofRandomf());
+////		ofRotate(ofRadToDeg(ofNoise(ofGetFrameNum())), 0, 1, 0);
+////		ofRotate(ofGetFrameNum(), rdmRot.x, rdmRot.y, rdmRot.z);		
+//		
+//	}
 }
 
 void YesNoObjectSoft::updateTranslation() {	
@@ -401,13 +412,20 @@ vector<float> YesNoObjectSoft::changeColBySMSRecievedFace(int z) {
 		
 		float scaleFactor = 0.0;
 		float radiusFactor = 0.0;
+//		if (i < faceIDVec.size()/2) {
+//			scaleFactor = ofMap(i, 0, faceIDVec.size(), 0.1, 0.499);
+//			radiusFactor = ofMap(i, 0, faceIDVec.size(), 0.001, 0.699);
+//		}else {
+//			scaleFactor = ofMap(i, 0, faceIDVec.size(), 0.499, 0.1);
+//			radiusFactor = ofMap(i, 0, faceIDVec.size(), 0.699, 0.001);					
+//		}
 		if (i < faceIDVec.size()/2) {
-			scaleFactor = ofMap(i, 0, faceIDVec.size(), 0.1, 0.499);
-			radiusFactor = ofMap(i, 0, faceIDVec.size(), 0.001, 0.699);
+			scaleFactor = ofMap(i, 0, faceIDVec.size(), 0.3, 0.699);
+			radiusFactor = ofMap(i, 0, faceIDVec.size(), 0.3, 0.899);
 		}else {
-			scaleFactor = ofMap(i, 0, faceIDVec.size(), 0.499, 0.1);
-			radiusFactor = ofMap(i, 0, faceIDVec.size(), 0.699, 0.001);					
-		}
+			scaleFactor = ofMap(i, 0, faceIDVec.size(), 0.699, 0.3);
+			radiusFactor = ofMap(i, 0, faceIDVec.size(), 0.899, 0.3);					
+		}		
 		
 		float angleFactor = defaultColAng+thisTimeAngle;
 		float factor = 4;

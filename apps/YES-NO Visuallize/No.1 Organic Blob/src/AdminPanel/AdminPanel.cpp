@@ -105,6 +105,11 @@ void AdminPanel::update(){
 		openFileDialogueSetting("setting");		
 	}
 	
+	if (!gui.isOn()) {
+		ofHideCursor();
+	}else {
+		ofShowCursor();
+	}	
 	
 }
 

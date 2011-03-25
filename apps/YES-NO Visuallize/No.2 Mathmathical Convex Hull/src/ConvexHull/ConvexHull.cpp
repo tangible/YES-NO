@@ -66,6 +66,7 @@ void ConvexHull::draw() {
 	
 	ofPushMatrix();
 	ofTranslate(yesPoint.x, yesPoint.y, yesPoint.z);
+	ofRotate(ofGetFrameNum()*0.2, 0, 1, 0);
 	yesSoft.updateRotateion();	
 	yesSoft.updateTranslation();
 	yesSoft.draw();
@@ -73,7 +74,8 @@ void ConvexHull::draw() {
 	
 	
 	ofPushMatrix();
-	ofTranslate(noPoint.x, noPoint.y, noPoint.z);	
+	ofTranslate(noPoint.x, noPoint.y, noPoint.z);
+	ofRotate(ofGetFrameNum()*0.2, 0, 1, 0);
 	noSoft.updateRotateion();	
 	noSoft.updateTranslation();
 	noSoft.draw();
